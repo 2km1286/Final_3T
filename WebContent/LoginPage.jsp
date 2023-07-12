@@ -13,7 +13,7 @@
 </head>
 <body>
 <div>
-      <c:import url="./WEB-INF/components/login.jsp"></c:import>
+      <c:import url="./WEB-INF/components/LoginForm.jsp"></c:import>
 </div>
 <div>
 </div>
