@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController
 {
 	@RequestMapping("/memberlogin.action")
-	public String MemberLoginCheck(HttpServletRequest req)
+	public String print(HttpServletRequest request)
 	{
-		req.setAttribute("userId", req.getParameter("userId"));
-		req.setAttribute("userPw", req.getParameter("userPw"));
+		String view = "/MainPage.jsp";
 		
+		request.setAttribute("userId", request.getParameter("userId"));
+		request.setAttribute("userPw", request.getParameter("userPw"));
 		
-		
-		return "/MainPage.jsp";
+		return view;
 	}
-	
 }
