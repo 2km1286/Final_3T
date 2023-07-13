@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지</title>
+<title>메페이지</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -18,5 +18,8 @@
       	<c:param name="userPw" value="${userPw }"></c:param>
       </c:import>
 </div>
+<div>
+</div>
+
 </body>
 </html>
