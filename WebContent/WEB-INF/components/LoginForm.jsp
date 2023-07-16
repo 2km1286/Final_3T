@@ -24,8 +24,8 @@ String cp = request.getContextPath();
 </head>
 <body>
 
-	<section class="h-100 gradient-form" style="background-color: #eee;">
-		<div class="container py-5 h-100">
+	<section class="gradient-form" style="background-color: #eee; height: 100%;">
+		<div class="container py-5">
 			<div
 				class="row d-flex justify-content-center align-items-center h-100">
 				<div class="col-xl-10">
@@ -87,6 +87,7 @@ String cp = request.getContextPath();
 			</div>
 		</div>
 	</section>
-	<script type="text/javascript" src="js/mdb.min.js"></script>
+	
 </body>
+<script type="text/javascript" src="js/mdb.min.js"></script>
 </html>

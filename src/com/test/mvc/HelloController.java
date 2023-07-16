@@ -5,28 +5,35 @@
 
 package com.test.mvc;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 // ※ Spring MVC 의 『Controller』 인터페이스를 구현하는 방법을 통해
 //    사용자 정의 컨트롤러 클래스를 구성한다.
 
-public class HelloController implements Controller
+@Controller
+public class HelloController 
 {
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
+	@RequestMapping("/login.action")
+	public String loginPage()
 	{
-		// 액션 코드
+		String result="";
 		
-		ModelAndView mav = new ModelAndView();
+		result = "/WEB-INF/views/LoginPage.jsp";
 		
-		
-		
-		return mav;
+		return result;
 		
 	}
+	@RequestMapping("/main.action")
+	public String main()
+	{
+		String result="";
+		
+		result="/WEB-INF/views/Main.jsp";
+		
+		return result;
+	}
+	
 	
 }
+
