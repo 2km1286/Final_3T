@@ -10,6 +10,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Main</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(function()
+	{
+		$(".userProfile").click(function()
+		{
+			alert("마이페이지클릭");
+		});
+	})
+</script>
 </head>
 <body>
 	<c:import url="/WEB-INF/components/MenuForm.jsp">

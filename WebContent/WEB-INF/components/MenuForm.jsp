@@ -11,6 +11,7 @@
 <title>메뉴바</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" href="css/mdb.min.css" />
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-secondary" style="background-color: white;">
@@ -23,8 +24,7 @@
       data-mdb-target="#navbarNav"
       aria-controls="navbarNav"
       aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+      aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -38,6 +38,8 @@
         <li class="nav-item"  style="margin-left: 100px;">
           <a class="nav-link" href="#">서비스 소개</a>
         </li>
+        <li class="nav-item" style="margin-left: 200px;">
+        	<a class="nav-link userProfile" href="#" >프로필</a>
       </ul>
     </div>
   </div>
