@@ -13,12 +13,12 @@
 </head>
 <body>
 <div>
-<<<<<<< HEAD:WebContent/LoginPage.jsp
+<<<<<<<< HEAD:WebContent/LoginPage.jsp
       <c:import url="./WEB-INF/components/LoginForm.jsp">
       </c:import>
-=======
+========
      <c:import url="/WEB-INF/components/LoginForm.jsp"></c:import>
->>>>>>> 074a1e4e1c22925359a05447d406275d93e88f9f:WebContent/WEB-INF/views/LoginPage.jsp
+>>>>>>>> 074a1e4e1c22925359a05447d406275d93e88f9f:WebContent/WEB-INF/views/LoginPage.jsp
 </div>
 <div>
 </div>
