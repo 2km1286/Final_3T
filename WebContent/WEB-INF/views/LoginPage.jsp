@@ -8,15 +8,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지</title>
+<title>로그인페이지</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 <div>
-      <c:import url="./WEB-INF/components/MainForm.jsp">
-      	<c:param name="userId" value="${userId }"></c:param>
-      	<c:param name="userPw" value="${userPw }"></c:param>
+      <c:import url="/WEB-INF/components/LoginForm.jsp">
       </c:import>
+
 </div>
+<div>
+</div>
+
 </body>
 </html>
