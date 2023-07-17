@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //    사용자 정의 컨트롤러 클래스를 구성한다.
 
 @Controller
-public class HelloController 
+public class MemberController 
 {
 	@RequestMapping("/login.action")
 	public String loginPage()
@@ -29,7 +29,7 @@ public class HelloController
 	{
 		String result="";
 		
-		result="/WEB-INF/views/Main.jsp";
+		result="/WEB-INF/views/MainPage.jsp";
 		
 		return result;
 	}

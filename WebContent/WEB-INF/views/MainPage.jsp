@@ -12,6 +12,11 @@
 <title>Main</title>
 </head>
 <body>
-메인페이지 입니다.
+	<c:import url="/WEB-INF/components/MenuForm.jsp">
+	</c:import>
+	<div>
+		동적요소
+	</div>
+
 </body>
 </html>
