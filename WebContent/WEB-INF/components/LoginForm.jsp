@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,6 @@ String cp = request.getContextPath();
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
 <!-- MDB -->
 <link rel="stylesheet" href="css/mdb.min.css" />
-
 </head>
 <body>
 

@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="./images/logo_transparent.png"/>
 <meta charset="UTF-8">
 <title>Main</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -26,8 +27,15 @@
 	<c:import url="/WEB-INF/components/MenuForm.jsp">
 	</c:import>
 	<div>
-		동적요소
+		동적요소<br><br><br><br><br><br>
+		<br><br><br><br><br><br>
+		<br><br><br><br><br><br>
+		<br><br><br><br><br><br>
+		<br><br><br><br><br><br>
+		
 	</div>
+	<c:import url="/WEB-INF/components/FooterForm.jsp">
+	</c:import>
 
 </body>
 </html>
