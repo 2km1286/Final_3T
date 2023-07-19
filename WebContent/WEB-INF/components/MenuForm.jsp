@@ -8,42 +8,113 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>메뉴바</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" href="css/mdb.min.css" />
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-secondary" style="background-color: white;">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <!-- Container wrapper -->
   <div class="container-fluid">
-    <a class="navbar-brand me-5" href="#">맡겨보개</a>
+    <!-- Toggle button -->
     <button
       class="navbar-toggler"
       type="button"
       data-mdb-toggle="collapse"
-      data-mdb-target="#navbarNav"
-      aria-controls="navbarNav"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
       aria-expanded="false"
-      aria-label="Toggle navigation">
+      aria-label="Toggle navigation"
+    >
       <i class="fas fa-bars"></i>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item" style="margin-left: 500px;">
-          <a class="nav-link active" aria-current="page" href="#">대리산책</a>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+          height="15"
+          alt="MDB Logo"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">대리산책</a>
         </li>
-        <li class="nav-item"  style="margin-left: 100px;">
+        <li class="nav-item">
           <a class="nav-link" href="#">펫시팅</a>
         </li>
-        <li class="nav-item"  style="margin-left: 100px;">
+        <li class="nav-item">
           <a class="nav-link" href="#">서비스 소개</a>
         </li>
-        <li class="nav-item" style="margin-left: 200px;">
-        	<a class="nav-link userProfile" href="#" >프로필</a>
       </ul>
+      <!-- Left links -->
     </div>
-  </div>
+    <!-- Collapsible wrapper -->
+
+
+      <!-- Notifications -->
+      <div>
+        <a
+          class="link-secondary me-3 dropdown-toggle hidden-arrow"
+          href="#"
+          id="navbarDropdownMenuLink"
+          role="button"
+          data-mdb-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img  src="./images/alert.png" height="25">
+          <span class="badge rounded-pill badge-notification bg-danger">1</span>
+        </a>
+        
+      </div>
+      <!-- Avatar -->
+      <div class="dropdown">
+        <a
+          class="dropdown-toggle d-flex align-items-center hidden-arrow"
+          href="#"
+          id="navbarDropdownMenuAvatar"
+          role="button"
+          data-mdb-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="./images/profile.png"
+            class="rounded-circle"
+            height="25"
+            alt="Black and White Portrait of a Man"
+          />
+        </a>
+        <div class="profile">
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuAvatar"
+        >
+     
+          <li>
+            <a class="dropdown-item" href="#">마이 페이지</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">찜한 목록</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">로그아웃</a>
+          </li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Right elements -->
+  
+  <!-- Container wrapper -->
 </nav>
+<!-- Navbar -->
 
 </body>
 <script type="text/javascript" src="js/mdb.min.js"></script>
