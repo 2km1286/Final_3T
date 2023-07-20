@@ -13,10 +13,11 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" href="css/mdb.min.css" />
 
+
 </head>
 <body>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 100px;">
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Toggle button -->
@@ -37,18 +38,18 @@
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
         <img
-          src="./images/home.png"
-          width="30" alt="logo"/>
+          src="./images/logo_transparent.png"
+          height="150px;" alt="logo"/>
       </a>
       <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#">대리산책</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="padding-left: 50%;">
+        <li class="nav-item" >
+          <a class="nav-link" href="#" style="font-style:inherit; font-size: 18pt;">대리산책</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left: 100px; font-size: 18pt;">
           <a class="nav-link" href="#">펫시팅</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left: 100px; font-size: 18pt;">
           <a class="nav-link" href="#">서비스 소개</a>
         </li>
       </ul>
@@ -67,7 +68,7 @@
           data-mdb-toggle="dropdown"
           aria-expanded="false"
         >
-          <img  src="./images/alert.png" height="25">
+          <img  src="./images/alert.png" height="50px;">
           <span class="badge rounded-pill badge-notification bg-danger">1</span>
         </a>
         
@@ -85,7 +86,7 @@
           <img
             src="./images/profile.png"
             class="rounded-circle"
-            height="25"
+            height="50px;"
             alt="Black and White Portrait of a Man"
           />
         </a>
