@@ -24,18 +24,24 @@
 </script>
 </head>
 <body>
+	<section>
+	<div>
 	<c:import url="/WEB-INF/components/MenuForm.jsp">
 	</c:import>
-	<div>
-		동적요소<br><br><br><br><br><br>
-		<br><br><br><br><br><br>
-		<br><br><br><br><br><br>
-		<br><br><br><br><br><br>
-		<br><br><br><br><br><br>
-		
 	</div>
+	</section>
+	<section>
+	<div>
+	<c:import url="/WEB-INF/components/DefaultMainForm.jsp">
+	</c:import>
+	</div>
+	</section>
+	<section>
+	<div>
 	<c:import url="/WEB-INF/components/FooterForm.jsp">
 	</c:import>
+	</div>
+	</section>
 
 </body>
 </html>
