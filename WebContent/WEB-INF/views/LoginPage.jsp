@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="./images/logo_transparent.png"/>
 <meta charset="UTF-8">
 <title>로그인페이지</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
