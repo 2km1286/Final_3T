@@ -16,13 +16,15 @@
 	.card
 	{
 		text-align: center;
-		width: 500px;
-		height: 500px;
-		margin: 200px 200px 200px 500px;
+		width: 20vw;
+		height: 20vh;
+		margin: 40px 20px 40px 700px;;
 	}
-	.btn btn-primary
+	.btn-test
 	{
 		text-align: center;
+		background-color: #FFE090;
+		color: white;
 	}
 
 </style>
@@ -34,7 +36,7 @@
   <div class="card-body">
     <h5 class="card-title">대리산책러 자격검증 테스트</h5>
     <p class="card-text">60점 이상의 점수를 얻어 대리산책러가 되어보세요!</p>
-    <a href="#!" class="btn btn-primary">테스트 시작</a>
+    <a href="#!" class="btn-test">테스트 시작</a>
   </div>
 </div>
 
