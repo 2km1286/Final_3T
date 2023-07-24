@@ -4,22 +4,6 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- Font Awesome -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-<!-- Google Fonts Roboto -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
-<!-- MDB -->
-<link rel="stylesheet" href="css/mdb.min.css" />
-</head>
-<body>
-
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-  text-muted">
   <!-- Section: Social media -->
@@ -76,5 +60,3 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-</body>
-</html>
