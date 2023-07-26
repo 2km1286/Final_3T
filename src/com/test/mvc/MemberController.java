@@ -34,6 +34,16 @@ public class MemberController
 		return result;
 	}
 	
+	@RequestMapping("/walktest.action")
+	public String walktest()
+	{
+		String result="";
+		
+		result="/WEB-INF/views/WalkTestPage.jsp";
+		
+		return result;
+	}
+
 	@RequestMapping("/result.action")
 	public String result()
 	{
