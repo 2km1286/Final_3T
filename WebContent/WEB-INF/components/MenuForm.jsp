@@ -4,17 +4,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>메뉴바</title>
-<link rel="stylesheet" href="css/mdb.min.css" />
 
-
-</head>
-<body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 100px;">
   <!-- Container wrapper -->
@@ -113,7 +103,3 @@
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
-
-</body>
-<script type="text/javascript" src="js/mdb.min.js"></script>
-</html>
