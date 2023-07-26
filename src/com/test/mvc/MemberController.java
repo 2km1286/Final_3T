@@ -43,6 +43,17 @@ public class MemberController
 		
 		return result;
 	}
+
+	@RequestMapping("/result.action")
+	public String result()
+	{
+		String result = "";
+		
+		result = "/WEB-INF/views/ResultPage.jsp";
+		
+		return result;
+	}
+	
 	
 }
 
