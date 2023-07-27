@@ -23,7 +23,7 @@
           <a class="nav-link" href="#" style="color:orange; font-weight:900;">대리산책</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color:orange; font-weight:900;">펫시팅</a>
+          <a class="nav-link" href="#" style="color:orange; font-weight:900;" id="petSeatingMenu">펫시팅</a>
         </li>
         
       </ul>

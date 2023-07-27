@@ -24,6 +24,17 @@
 <title>로그인페이지</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="icon" href="./images/logo_transparent.png"/>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function()
+	{
+		$("#loginBtn").click(function()
+		{
+			//alert($("#userId").val());
+			$(location).attr('href',"main.action?userId="+$("#userId").val()+"?userPw="+$("#userPw").val());
+		});
+	});
+</script>
 
 
 </head>

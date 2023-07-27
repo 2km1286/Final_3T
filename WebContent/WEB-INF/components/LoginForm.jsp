@@ -25,22 +25,22 @@
 									<form>
 
 										<div class="form-outline mb-4">
-											<input type="email" id="form2Example11" class="form-control"
-												placeholder="아이디를 입력해주세요" /> <label
-												class="form-label" for="form2Example11">아이디</label>
+											<input type="text" id="userId" class="form-control"
+												placeholder="아이디를 입력해주세요"> <label
+												class="form-label" for="userId">아이디</label>
 										</div>
 
 										<div class="form-outline mb-4">
-											<input type="password" id="form2Example22"
+											<input type="password" id="userPw"
 												class="form-control" placeholder="비밀번호를 입력해주세요"/> 
 												<label class="form-label"
-												for="form2Example22">비밀번호</label>
+												for="userPw">비밀번호</label>
 										</div>
 
 										<div class="text-center pt-1 mb-5 pb-1">
 											<button
 												class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-												type="button">로그인</button>
+												type="button" style="background-color: #FFE090; color:black;"id="loginBtn">로그인</button>
 											<a class="me-5 ml-5" href="" style="font-size: small;">아이디를 잊으셨나요?</a>
 											
 											<a class="ml-5 mr-5" href="" style="font-size: small;">비밀번호를 잊으셨나요?</a>

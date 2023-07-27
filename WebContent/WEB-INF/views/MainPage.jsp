@@ -17,13 +17,35 @@
 
 <script type="text/javascript">
 
-	$(function()
-	{
-		$(".userProfile").click(function()
-		{
-			alert("마이페이지클릭");
+	$().ready(function(){
+		
+		$("#petSeatingMenu").click(function(){
+			
+			// json 형식으로 데이터를 전송할 형식 지정
+			var params = {
+				id : $("#id").val() ,
+				pwd : $("#pwd").val(),
+				account : $("#account").val()
+			}
+			
+			// ajax 통신
+			$.ajax({
+				url : "ajaxEx02Pro.jsp",
+				type : "post",
+				data : params,
+				success: function(){
+					alert("성공하였습니다.");
+					$("#id , #pwd , #account").prop("disabled" , true);
+				},
+				error : function(){
+					alert("통신이 실패하였습니다.");
+				}
+				
+			});
+			
 		});
-	})
+		
+	});
 </script>
 
 <style type="text/css">
