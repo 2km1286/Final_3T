@@ -14,11 +14,11 @@
 
 	.one
 	{
-		background-color: lightgray;
+		background-color: #e5e5e5;
 	}
 	.two
 	{
-		background-color: lightgray;
+		background-color: #e5e5e5;
 	}
 	.three
 	{
@@ -91,39 +91,60 @@
 		<!-- Carousel wrapper -->
 		<br />
 		
-		<div class="row gx-5">
+		<div>어필태그 선택</div>
+				
+		<div class="row gy-2">
 		  <div class="col-4">
-		  	<button type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">홈캠 가능</button>
+		  	<button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-color="dark">홈캠 가능</button>
 		  </div>
 		   <div class="col-4">
-		  	<button type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">목욕 가능</button>
+		  	<button type="button" class="btn btn-secondary btn-rounded" data-mdb-ripple-color="dark">목욕 가능</button>
 		  </div>
 		   <div class="col-4">
-		  	<button type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">응급처치 가능</button>
+		  	<button type="button" class="btn btn-secondary btn-rounded" data-mdb-ripple-color="dark">응급처치 가능</button>
 		  </div>
 		   <div class="col-4">
-		  	<button type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">반려견유무</button>
+		  	<button type="button" class="btn btn-secondary btn-rounded" data-mdb-ripple-color="dark">반려견유무</button>
 		  </div>
 		   <div class="col-4">
-		  	<button type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">꼼꼼한 타임라인</button>
+		  	<button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-color="dark">꼼꼼한 타임라인</button>
 		  </div>
 		   <div class="col-4">
-		  	<button type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">모발관리 가능</button>
+		  	<button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-color="dark">모발관리 가능</button>
 		  </div>
 		   <div class="col-4">
-		  	<button type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">장애견 케어 가능</button>
+		  	<button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-color="dark">장애견 케어 가능</button>
 		  </div>
 		   <div class="col-4">
-		  	<button type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">노견 케어 가능</button>
+		  	<button type="button" class="btn btn-secondary btn-rounded" data-mdb-ripple-color="dark">노견 케어 가능</button>
 		  </div>
 		</div>
 		
+		<br />
+		<div>반려견 태그 선택</div>
+		<div class="row gy-2">
+			<div class="col-4">
+			  	<button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-color="dark">15kg 이상 가능</button>
+			</div>
+			<div class="col-4">
+			  	<button type="button" class="btn btn-secondary btn-rounded" data-mdb-ripple-color="dark">15kg 이하 가능</button>
+			</div>
+		</div><!-- 반려견 태그 선택 -->
+		
+		<!-- max number of pets -->
+		<div>최대 반려견 수</div>
+		<div>
+		</div>
+		
+		
 		<br />	
-    </div><!-- col-md-6 one -->
+    </div><!-- col-md-6 one (왼쪽영역) -->
+
+
 
     <div class="col-md-6 two">
-
-    </div>
+		<div>오른쪽</div>
+    </div><!-- 오른쪽 영역 -->
 
   </div>
 </div>
