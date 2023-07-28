@@ -119,7 +119,7 @@ img
 					<div class="card mb-3">
 					  <div class="row g-0">
 					    <div class="col-md-3">
-					      이미지 넣는 곳
+					      <img src="<%=cp %>/images/walkTest.png" class="card-img-top">
 					    </div>
 					    <div class="col-md-9">
 					      <div class="card-body">
