@@ -170,6 +170,8 @@
     
     <!-- compoments 불러오는 부분 -->
     <c:import url="/WEB-INF/components/MPSPBookForm.jsp"></c:import>
+    <%-- <c:import url="/WEB-INF/components/MPSPReviewForm.jsp"></c:import> --%>
+    <%-- <c:import url="/WEB-INF/components/MPSPIncomeForm.jsp"></c:import> --%>
     
     </div><!-- 오른쪽 끝 -->
     </div>
