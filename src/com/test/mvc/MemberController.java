@@ -54,6 +54,14 @@ public class MemberController
 		return result;
 	}
 	
+	@RequestMapping("/mypage.action")
+	public String mypage()
+	{
+		String result = "";
+		result = "/WEB-INF/views/MyPage.jsp";
+		return result;
+	}
+	
 	
 }
 
