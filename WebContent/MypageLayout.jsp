@@ -69,6 +69,15 @@
 .EndTh, .EndTd { border: 1px solid #FFE090; text-align: center; padding: 8px; }
 .EndTh { background-color: #FFE090;}
 
+/* 마이페이지 대리산책 스타일 */
+.superscript { font-size: 1.0em; vertical-align: super;}
+#totalEarningsLabel { display: inline; }
+#totalEarningsValue { display: inline; }
+.mypageWalkDon {width: 150px; height: 36px; font-size: 15pt;}
+.mypageWalkMonDon {width: 200px; margin-left: 430px;}
+
+
+
 </style>
 
 </head>
