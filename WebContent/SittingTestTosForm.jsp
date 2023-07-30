@@ -10,20 +10,9 @@
 <link rel="icon" href="./images/logo_transparent.png"/>
 <link rel="stylesheet" href="css/mdb.min.css" />
 <meta charset="UTF-8"> 
-<title>Main</title>
+<title>SittingTesetTosForm</title>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
-<script type="text/javascript">
-
-	$(function()
-	{
-		$(".userProfile").click(function()
-		{
-			alert("마이페이지클릭");
-		});
-	})
-</script>
 
 <style type="text/css">
 	.image-container { text-align: center; }
