@@ -66,14 +66,14 @@
 	            <section>
 					<div class="card mypageListCard">
 					  <div class="card-body">
-					    <h5 class="card-title mypageListTitle">대리산책</h5>
+					    <h5 class="card-title mypageListTitle">펫시팅</h5>
 					    <p class="card-text">
-					    <span class="mypageListSub">[만남장소]</span>
-					    <span>서울시 도봉구 시루봉로 OO공원 2번 출구 앞</span><br>
-					    <span class="mypageListSub">[산책시작일시 ~ 산책종료일시]</span>
-					    <span> 2023-07-29 14:00 ~ 2023-07-29 16:00</span><br>
+					    <span class="mypageListSub">[돌봄장소]</span>
+					    <span>서울시 도봉구 시루봉로 OO길 OO-OO OO아파트 OOO동 OOO호</span><br>
+					    <span class="mypageListSub">[펫시팅시작일시 ~ 펫시팅종료일시]</span>
+					    <span> 2023-07-29 14:00 ~ 2023-07-30 10:00</span><br>
 					    <span class="mypageListSub">[선택한 반려견]</span>
-					    <span>까미</span><br>
+					    <span>구찌</span><br>
 					    <button type="button" class="btn btn-primary mypageNomore">자세히보기</button>
 					    </p>
 					  </div>
@@ -83,14 +83,14 @@
 				<section>
 					<div class="card mypageListCard">
 					  <div class="card-body">
-					    <h5 class="card-title mypageListTitle">대리산책</h5>
+					    <h5 class="card-title mypageListTitle">펫시팅</h5>
 					    <p class="card-text">
-					    <span class="mypageListSub">[만남장소]</span>
-					    <span>서울시 도봉구 시루봉로 OO공원 2번 출구 앞</span><br>
-					    <span class="mypageListSub">[산책시작일시 ~ 산책종료일시]</span>
-					    <span> 2023-07-29 14:00 ~ 2023-07-29 16:00</span><br>
+					    <span class="mypageListSub">[돌봄장소]</span>
+					    <span>서울시 도봉구 시루봉로 OO길 OO-OO OO아파트 OOO동 OOO호</span><br>
+					    <span class="mypageListSub">[펫시팅시작일시 ~ 펫시팅종료일시]</span>
+					    <span> 2023-07-29 14:00 ~ 2023-07-30 10:00</span><br>
 					    <span class="mypageListSub">[선택한 반려견]</span>
-					    <span>까미</span><br>
+					    <span>구찌</span><br>
 					    <button type="button" class="btn btn-primary mypageNomore">자세히보기</button>
 					    </p>
 					  </div>
@@ -100,14 +100,14 @@
 				<section>
 					<div class="card mypageListCard">
 					  <div class="card-body">
-					    <h5 class="card-title mypageListTitle">대리산책</h5>
+					    <h5 class="card-title mypageListTitle">펫시팅</h5>
 					    <p class="card-text">
-					    <span class="mypageListSub">[만남장소]</span>
-					    <span>서울시 도봉구 시루봉로 OO공원 2번 출구 앞</span><br>
-					    <span class="mypageListSub">[산책시작일시 ~ 산책종료일시]</span>
-					    <span> 2023-07-29 14:00 ~ 2023-07-29 16:00</span><br>
+					    <span class="mypageListSub">[돌봄장소]</span>
+					    <span>서울시 도봉구 시루봉로 OO길 OO-OO OO아파트 OOO동 OOO호</span><br>
+					    <span class="mypageListSub">[펫시팅시작일시 ~ 펫시팅종료일시]</span>
+					    <span> 2023-07-29 14:00 ~ 2023-07-30 10:00</span><br>
 					    <span class="mypageListSub">[선택한 반려견]</span>
-					    <span>까미</span><br>
+					    <span>구찌</span><br>
 					    <button type="button" class="btn btn-primary mypageNomore">자세히보기</button>
 					    </p>
 					  </div>
@@ -117,14 +117,14 @@
 				<section>
 					<div class="card mypageListCard">
 					  <div class="card-body">
-					    <h5 class="card-title mypageListTitle">대리산책</h5>
+					    <h5 class="card-title mypageListTitle">펫시팅</h5>
 					    <p class="card-text">
-					    <span class="mypageListSub">[만남장소]</span>
-					    <span>서울시 도봉구 시루봉로 OO공원 2번 출구 앞</span><br>
-					    <span class="mypageListSub">[산책시작일시 ~ 산책종료일시]</span>
-					    <span> 2023-07-29 14:00 ~ 2023-07-29 16:00</span><br>
+					    <span class="mypageListSub">[돌봄장소]</span>
+					    <span>서울시 도봉구 시루봉로 OO길 OO-OO OO아파트 OOO동 OOO호</span><br>
+					    <span class="mypageListSub">[펫시팅시작일시 ~ 펫시팅종료일시]</span>
+					    <span> 2023-07-29 14:00 ~ 2023-07-30 10:00</span><br>
 					    <span class="mypageListSub">[선택한 반려견]</span>
-					    <span>까미</span><br>
+					    <span>구찌</span><br>
 					    <button type="button" class="btn btn-primary mypageNomore">자세히보기</button>
 					    </p>
 					  </div>
@@ -134,14 +134,14 @@
 				<section>
 					<div class="card mypageListCard">
 					  <div class="card-body">
-					    <h5 class="card-title mypageListTitle">대리산책</h5>
+					    <h5 class="card-title mypageListTitle">펫시팅</h5>
 					    <p class="card-text">
-					    <span class="mypageListSub">[만남장소]</span>
-					    <span>서울시 도봉구 시루봉로 OO공원 2번 출구 앞</span><br>
-					    <span class="mypageListSub">[산책시작일시 ~ 산책종료일시]</span>
-					    <span> 2023-07-29 14:00 ~ 2023-07-29 16:00</span><br>
+					    <span class="mypageListSub">[돌봄장소]</span>
+					    <span>서울시 도봉구 시루봉로 OO길 OO-OO OO아파트 OOO동 OOO호</span><br>
+					    <span class="mypageListSub">[펫시팅시작일시 ~ 펫시팅종료일시]</span>
+					    <span> 2023-07-29 14:00 ~ 2023-07-30 10:00</span><br>
 					    <span class="mypageListSub">[선택한 반려견]</span>
-					    <span>까미</span><br>
+					    <span>구찌</span><br>
 					    <button type="button" class="btn btn-primary mypageNomore">자세히보기</button>
 					    </p>
 					  </div>

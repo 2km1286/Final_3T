@@ -15,7 +15,7 @@
 
 <style type="text/css">
 /* 마이페이지 레이아웃 스타일 */
-.all { padding: 20px 20px 20px 20px; height: 1000px; }
+.all { padding: 20px 20px 20px 20px; }
 .mypageMain
 {
 	padding: 20px 20px 20px 20px;
@@ -85,7 +85,7 @@
 	<div class="row all">
 		<div class="col-md-10 mypageMain"> <!-- component 가 들어갈 곳 -->
 			
-			
+			<c:import url="/MypageNoticeForm.jsp"></c:import>
 								
 		</div> <!-- component 가 들어갈 곳 끝 -->
 		<div class="col-md-2 mypagemenu"> <!-- 마이페이지 사이드바 -->

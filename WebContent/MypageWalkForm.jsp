@@ -102,7 +102,7 @@
 	<div class="col-md-6">
 		
 		<div class="row"> <!-- 얘약 확정(당일) -->
-		<h3><span class="badge badge-warning mypageNoticBtn">얘약 확정(당일 진행)</span></h3>
+		<h3><span class="badge badge-warning mypageNoticBtn">예약 확정(당일 진행)</span></h3>
 			<div class="col-md-12 mypageNoAllDiv">
 				
 				<div
