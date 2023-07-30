@@ -14,13 +14,44 @@
 
 	.btn-style
 	{
-		margin: 5px;
+		margin: 3px;
 	}
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(function()
+	{
+		$("#reviewList").click(function()
+		{
+			// jQuery 의 ajax() 함수 사용(호출)
+			/* 	
+			$.ajax(
+			{
+				type:"POST"							// 데이터 전송 및 페이지 요청 방식
+				, url="AJaxTest01_ok.jsp"			// 데이터 전송 및 요청 URL 
+				, data:params						// AjaxTest01_ok.jsp 에서 수신하게 되는 데이터
+				, success:동작						// 데이터 요청 및 전달이 성공했을 때 처리
+				, beforeSend:반환값확인				// 요청 전 확인해야 할 항목 처리(true/false)
+				, error:동작						// 처리 과정에서 문제가 발생했을 때 
+			});
+			*/
+		 	$.ajax(
+		 	{
+				success:function()
+				{
+					$("#result").html("후기버튼클릭");
+				}
+		 	});
+			
+		});
+	});
+
+</script>
 </head>
 <body>
 
-<div class="center">
+<div class="row all">
   <div class="col-md-6 one" style="margin: 0%;">
     	
 		
@@ -168,8 +199,20 @@
 	<!-- 오른쪽 -->
     <div class="col-md-6 two">
     
+     <div class="card">
+	     <!-- 수익, 등등 -->
+		  <h5 class="card-title">
+		  <button type="button" class="btn btn-warning" id="bookList">예약 내역</button>
+		  <button type="button" class="btn btn-warning" id="reviewList">후기 목록</button>
+		  <button type="button" class="btn btn-warning" id="incomeList">수익 관리</button>
+		  <span class="text-right">$[7월 수익] 180,000원</span> </h5>	
+		  <!-- 수익, 등등 끝-->
+     </div>
+      
+    
     <!-- compoments 불러오는 부분 -->
-    <c:import url="/WEB-INF/components/MPSPBookForm.jsp"></c:import>
+    <div id="result"></div>
+    <%-- <c:import url="/WEB-INF/components/MPSPBookForm.jsp"></c:import> --%>
     <%-- <c:import url="/WEB-INF/components/MPSPReviewForm.jsp"></c:import> --%>
     <%-- <c:import url="/WEB-INF/components/MPSPIncomeForm.jsp"></c:import> --%>
     
