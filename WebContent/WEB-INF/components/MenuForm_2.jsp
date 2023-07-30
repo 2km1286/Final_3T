@@ -44,11 +44,11 @@
   </style>
 </head>
     <!-- header section strats -->
-    <header class="header_section">
+    <header class="header_section" style="background-color: white; ">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
-            <img src="images/logo.png" alt="">
+            <img src="./images/logo_main.png" alt="png_logo" style="width: 85px;">
            
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

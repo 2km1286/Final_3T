@@ -20,7 +20,7 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <p>
-           	<img src="./images/logo_transparent.png" alt="logo" style="height: 150px;"/>
+           	<img src="./images/logo_main.png" alt="logo" style="height: 150px;"/>
            	
           </p>
           
