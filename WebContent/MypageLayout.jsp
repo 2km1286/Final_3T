@@ -61,7 +61,8 @@
 .mypageTabName { height: 50px;} 
 .tab-pane { height: 400px;}
 #mypageWishTab-1, #mypageWishTab-2  { font-size: 13pt; font-weight: bold;}
-.mypageWishSeating, .mypageWishWalk, .mypageReview, .mypageEnd { position: relative; height: 400px; overflow: auto; }
+.mypageWishSeating, .mypageWishWalk, .mypageEnd { position: relative; height: 400px; overflow: auto; }
+.mypageReview { position: relative; height: 650px; overflow: auto;}
 .mypageReview { padding-left: 170px;}
 .reviewCard { margin-bottom: 30px; width: 23rem; height: }
 .EndTable { border-collapse: collapse; width: 100%; }
@@ -85,7 +86,7 @@
 	<div class="row all">
 		<div class="col-md-10 mypageMain"> <!-- component 가 들어갈 곳 -->
 			
-			<c:import url="/MypageNoticeForm.jsp"></c:import>
+			
 								
 		</div> <!-- component 가 들어갈 곳 끝 -->
 		<div class="col-md-2 mypagemenu"> <!-- 마이페이지 사이드바 -->

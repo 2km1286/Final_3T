@@ -182,7 +182,9 @@
 				  <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/062.webp" class="card-img-top" alt="Chicago Skyscrapers"/>
 				  <div class="card-body">
 				    <h5 class="card-title">후기 제목</h5>
-				    <p class="card-text">후기 내용</p>
+				    <p class="card-text">후기 내용 길게썼다쳐봐요~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+				    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				    ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
 				  </div>
 				  <ul class="list-group list-group-light list-group-small">
 				    <li class="list-group-item px-4">별점 / 작성일</li>
