@@ -18,13 +18,6 @@
 
 	<!-- 오른쪽 카드 구역 -->
 	<div class="card">
-		<!-- 수익, 등등 -->
-		  <h5 class="card-title">
-		  <button type="button" class="btn btn-warning">예약 내역</button>
-		  <button type="button" class="btn btn-warning">후기 목록</button>
-		  <button type="button" class="btn btn-warning">수익 관리</button>
-		  <span class="text-right">$[7월 수익] 180,000원</span> </h5>	
-		  <!-- 수익, 등등 끝-->
 		<div class="card-body">
 			<h4 class="card-title">이번 달 수익 내역</h4>
 			<ul class="list-group list-group-horizontal">
