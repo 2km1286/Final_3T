@@ -10,7 +10,7 @@
 <link rel="icon" href="./images/logo_transparent.png"/>
 <link rel="stylesheet" href="css/mdb.min.css" />
 <meta charset="UTF-8"> 
-<title>PopupMemberForm</title>
+<title>PopupWalkForm</title>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -68,7 +68,10 @@
 .following-count { grid-area: following; color: #888; width: 200px;}
 .popProDiv { margin-top: 100px; margin-bottom: 200px;}
 /* 팝업 프로필카드스타일 끝 */
-	
+.mypageWalkMonDon {width: 200px; font-size: 15pt; padding-top: 40px;}
+.WalkMap { border: 1px solid #FFE090; width: 500px; height: 500px;}	
+.popWlakInfo { width: 700px; margin-left: 100px;}
+
 </style>
 
 </head>
@@ -76,63 +79,28 @@
 
 <div class="row">
 <div class="col-md-7 popCol"> 
-<h3><span class="badge badge-warning popBadge">내 반려견</span></h3>
-	<div class="row popRowCol"> <!-- 내 반려견 -->
+<h3><span class="badge badge-warning popBadge">대리산책 정보</span></h3>
+	<div class="row popRowCol"> <!-- 대리산책 정보 -->
 		<div class="col-md-12">
-			<!-- Spied element -->
-		    <div
-               data-mdb-spy="scroll"
-               data-mdb-target="#scrollspy1"
-               data-mdb-offset="0"
-               class="scrollspy-example popMypet"
-            >
-	            <section>
-					
-					<div class="card popPetCard">
-					  <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/062.webp" class="card-img-top" alt="Chicago Skyscrapers"/>
-					  <div class="card-body">
-					    <h5 class="card-title">까미</h5>
-					    <p class="card-text">까미 특이사항 ~~~~ </p>
-					  </div>
-					  <ul class="list-group list-group-light list-group-small">
-					    <li class="list-group-item px-4">성별 : <span>O</span> </li>
-					    <li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
-					    <li class="list-group-item px-4">태어난 날 : <span>2023.07.30</span></li>
-					    <li class="list-group-item px-4">반려견 정보 : 
-					    	<span class="badge rounded-pill badge-warning petTag">소형견</span>
-					    </li>									  
-					  </ul>
-					</div>
-					
-				</section>
-				
-				<section>
-					
-					<div class="card popPetCard">
-					  <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/062.webp" class="card-img-top" alt="Chicago Skyscrapers"/>
-					  <div class="card-body">
-					    <h5 class="card-title">구찌</h5>
-					    <p class="card-text">구찌 특이사항 ~~~~ </p>
-					  </div>
-					  <ul class="list-group list-group-light list-group-small">
-					    <li class="list-group-item px-4">성별 : <span>O</span> </li>
-					    <li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
-					    <li class="list-group-item px-4">태어난 날 : <span>2023.07.30</span></li>
-					    <li class="list-group-item px-4">반려견 정보 : 
-					    	<span class="badge rounded-pill badge-warning petTag">소형견</span>
-					    </li>									  
-					  </ul>
-					</div>
-
-				</section>
-			
+			<div class="row popWlakInfo">
+				<div class="col-md-6 WalkMap">
+					지도가 뿌려질 곳
+				</div>
+				<div class="col-md-6 mypageWalkMonDon">
+					<span class="badge badge-warning popBadge">수익</span>
+					<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
+					<h4><span id="totalEarningsLabel">1,000,000 원</span></h4><br>
+					<p class="badge badge-warning popBadge">별점</p><br>
+					<span>4.9점</span><br><br>
+					<p class="badge badge-warning popBadge">후기</p><br>
+					<span>20건의 후기</span>
+				</div>
 			</div>
-		    <!-- Spied element -->
 		</div>
-	</div> <!-- 내 반려견 끝 -->
+	</div> <!-- 대리산책 정보 끝 -->
 	
 	<div class="row"> <!-- 확정된 예약 -->
-	<h3><span class="badge badge-warning popBadge">내가(견주) 맡긴 예약</span></h3>
+	<h3><span class="badge badge-warning popBadge">내가(대리산책러) 서비스 할 예약</span></h3>
 		<div class="col-md-12">
 			<div
                data-mdb-spy="scroll"
@@ -163,14 +131,14 @@
 					
 					<div class="card mypageListCard">
 					  <div class="card-body">
-					    <h5 class="card-title mypageListTitle">펫시팅</h5>
+					    <h5 class="card-title mypageListTitle">대리산책</h5>
 					    <p class="card-text">
-					    <span class="mypageListSub">[돌봄장소]</span>
-					    <span>서울시 도봉구 시루봉로 OO길 OO-OO OO아파트 OOO동 OOO호</span><br>
-					    <span class="mypageListSub">[펫시팅시작일시 ~ 펫시팅종료일시]</span>
-					    <span> 2023-07-29 14:00 ~ 2023-07-30 10:00</span><br>
+					    <span class="mypageListSub">[만남장소]</span>
+					    <span>서울시 도봉구 시루봉로 OO공원 2번 출구 앞</span><br>
+					    <span class="mypageListSub">[산책시작일시 ~ 산책종료일시]</span>
+					    <span> 2023-07-29 14:00 ~ 2023-07-29 16:00</span><br>
 					    <span class="mypageListSub">[선택한 반려견]</span>
-					    <span>구찌</span><br>
+					    <span>까미</span><br>
 					    <button type="button" class="btn btn-primary mypageNomore">자세히보기</button>
 					    </p>
 					  </div>
@@ -178,28 +146,9 @@
 
 				</section>
 				
-				<section>
-					
-					<div class="card mypageListCard">
-					  <div class="card-body">
-					    <h5 class="card-title mypageListTitle">펫시팅</h5>
-					    <p class="card-text">
-					    <span class="mypageListSub">[돌봄장소]</span>
-					    <span>서울시 도봉구 시루봉로 OO길 OO-OO OO아파트 OOO동 OOO호</span><br>
-					    <span class="mypageListSub">[펫시팅시작일시 ~ 펫시팅종료일시]</span>
-					    <span> 2023-07-29 14:00 ~ 2023-07-30 10:00</span><br>
-					    <span class="mypageListSub">[선택한 반려견]</span>
-					    <span>구찌</span><br>
-					    <button type="button" class="btn btn-primary mypageNomore">자세히보기</button>
-					    </p>
-					  </div>
-					</div>
-					
-				</section>
-				
 			</div>	
 		</div>
-	</div> <!-- 확정된 예약 끝-->
+	</div> <!-- 내가(대리산책러) 서비스 할 예약 -->
 	
 </div>
 
@@ -219,15 +168,15 @@
 			    </div>
 			    <div class="user-grade">
 			    	<span class="badge badge-warning">등급</span><br>
-			    	<span>(등급이 없습니다.)</span>
+			    	<span>초보산책러</span>
 			    </div>
 			    <div class="user-rating">
 			    <span class="badge badge-warning">별점</span><br>
-			    	<span>(달린 별점이 없습니다.)</span>
+			    	<span>4.9</span>
 			    </div>
 			    <div class="user-review-count">
 			    	<span class="badge badge-warning">후기</span><br>
-			    	<span>(달린 후기가 없습니다.)</span>
+			    	<span>20건</span>
 			    </div>
 			    <div class="notification-count">
 			    	<span class="badge badge-warning">알림</span><br>
@@ -254,7 +203,7 @@
 			    var data = {
 			      labels: ['견주', '대리산책러', '펫시터'],
 			      datasets: [{
-			        data: [70, 20, 10],
+			        data: [0, 100, 0],
 			        backgroundColor: ['#FF6384', '#82f77e', '#78aafa'],
 			      }],
 			    };

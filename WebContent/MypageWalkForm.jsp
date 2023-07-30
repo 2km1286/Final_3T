@@ -155,7 +155,7 @@
 			<div class="mypageWalkMonDon">
 				<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
 				<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
-	         		</div>
+	         </div>
 			<div class="col-md-12 mypageNoAllDiv">
 				<div
 	               data-mdb-spy="scroll"
