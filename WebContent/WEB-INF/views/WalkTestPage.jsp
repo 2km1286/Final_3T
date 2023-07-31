@@ -32,7 +32,9 @@
 	</section>
 	<section>
 	<div>
-	<c:import url="/WEB-INF/components/WalkTestMainForm.jsp">
+	<%-- <c:import url="/WEB-INF/components/WalkTestMainForm.jsp"> --%>
+	<%-- <c:import url="/WEB-INF/components/WalkTestPageForm.jsp"> --%>
+	<c:import url="/WEB-INF/components/SitterTestPageForm.jsp">
 	</c:import>
 	</div>
 	</section>

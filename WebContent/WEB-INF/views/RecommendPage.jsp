@@ -79,7 +79,7 @@
 	</section>
 	<section>
 	<div>
-	<c:import url="/WEB-INF/components/DefaultMainForm.jsp"></c:import>
+	<c:import url="/WEB-INF/components/RecommendForm.jsp"></c:import>
 	</div>
 	</section>
 	<section>

@@ -6,6 +6,7 @@
 package com.test.mvc;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 // ※ Spring MVC 의 『Controller』 인터페이스를 구현하는 방법을 통해
@@ -51,6 +52,30 @@ public class MemberController
 		
 		result = "/WEB-INF/views/ResultPage.jsp";
 		
+		return result;
+	}
+	
+	@RequestMapping("/mypage.action")
+	public String mypage()
+	{
+		String result = "";
+		result = "/WEB-INF/views/MyPage.jsp";
+		return result;
+	}
+	
+	@RequestMapping("/mpspinsert.action")
+	public String mpspinsert()
+	{
+		String result = "";
+		result = "/WEB-INF/views/Mypage.jsp";
+		return result;
+	}
+	
+	@RequestMapping("/recommend.action")
+	public String recommend()
+	{
+		String result = "";
+		result = "/WEB-INF/views/RecommendPage.jsp";
 		return result;
 	}
 	
