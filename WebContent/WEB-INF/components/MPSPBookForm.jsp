@@ -264,7 +264,6 @@
     		</td>
     	</tr>
     </table>
-    </p>
     
   </div>
 </div>
