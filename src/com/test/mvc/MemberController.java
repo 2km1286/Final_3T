@@ -15,70 +15,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MemberController 
 {
-	@RequestMapping("/login.action")
-	public String loginPage()
-	{
-		String result="";
-		
-		result = "/WEB-INF/views/LoginPage.jsp";
-		
-		return result;
-		
-	}
-	@RequestMapping("/main.action")
-	public String main()
-	{
-		String result="";
-		
-		result="/WEB-INF/views/MainPage.jsp";
-		
-		return result;
-	}
-	
-	@RequestMapping("/walktest.action")
-	public String walktest()
-	{
-		String result="";
-		
-		result="/WEB-INF/views/WalkTestPage.jsp";
-		
-		return result;
-	}
-
-	@RequestMapping("/result.action")
-	public String result()
-	{
-		String result = "";
-		
-		result = "/WEB-INF/views/ResultPage.jsp";
-		
-		return result;
-	}
-	
-	@RequestMapping("/mypage.action")
-	public String mypage()
-	{
-		String result = "";
-		result = "/WEB-INF/views/MyPage.jsp";
-		return result;
-	}
-	
-	@RequestMapping("/mpspinsert.action")
-	public String mpspinsert()
-	{
-		String result = "";
-		result = "/WEB-INF/views/Mypage.jsp";
-		return result;
-	}
-	
-	@RequestMapping("/recommend.action")
-	public String recommend()
-	{
-		String result = "";
-		result = "/WEB-INF/views/RecommendPage.jsp";
-		return result;
-	}
-	
+	/*
+	 * @RequestMapping("/login.action") public String loginPage() { String
+	 * result="";
+	 * 
+	 * result = "/WEB-INF/views/LoginPage.jsp";
+	 * 
+	 * return result;
+	 * 
+	 * }
+	 * 
+	 * @RequestMapping("/main.action") public String main() { String result="";
+	 * 
+	 * result="/WEB-INF/views/MainPage.jsp";
+	 * 
+	 * return result; }
+	 * 
+	 * @RequestMapping("/walktest.action") public String walktest() { String
+	 * result="";
+	 * 
+	 * result="/WEB-INF/views/WalkTestPage.jsp";
+	 * 
+	 * return result; }
+	 * 
+	 * @RequestMapping("/result.action") public String result() { String result =
+	 * "";
+	 * 
+	 * result = "/WEB-INF/views/ResultPage.jsp";
+	 * 
+	 * return result; }
+	 * 
+	 * @RequestMapping("/mypage.action") public String mypage() { String result =
+	 * ""; result = "/WEB-INF/views/MyPage.jsp"; return result; }
+	 * 
+	 * @RequestMapping("/mpspinsert.action") public String mpspinsert() { String
+	 * result = ""; result = "/WEB-INF/views/Mypage.jsp"; return result; }
+	 * 
+	 * @RequestMapping("/recommend.action") public String recommend() { String
+	 * result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
+	 */
 	
 }
 

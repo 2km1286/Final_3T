@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MemberController
 {
+	/*
 	@RequestMapping("/memberlogin.action")
 	public String print(HttpServletRequest request)
 	{
@@ -18,4 +19,5 @@ public class MemberController
 		
 		return view;
 	}
+	*/
 }
