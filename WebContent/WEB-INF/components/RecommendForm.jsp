@@ -25,7 +25,7 @@
 <div class="card-body recc">
 	<div class="row row-cols-1 row-cols-md-3 g-4">
 	  <div class="col rec">
-	    <div class="card h-100">
+	    <div class="card h-100" style="width: 25rem; height: 550px;">
 	      <img src="./images/welcome-registerpet.png" class="card-img-top hover-shadow" alt="welcome-registerpet"/>
 	      <div class="card-body">
 	        <h5 class="card-title">반려견 등록하기</h5>
@@ -40,7 +40,7 @@
 	    </div>
 	  </div>
 	  <div class="col rec">
-	    <div class="card h-100">
+	    <div class="card h-100" style="width: 25rem; height: 550px;">
 	      <img src="./images/welcome-walk.png" class="card-img-top hover-shadow" alt="Los Angeles Skyscrapers"/>
 	      <div class="card-body">
 	        <h5 class="card-title">대리산책러 되러가기</h5>
@@ -55,7 +55,7 @@
 	    </div>
 	  </div>
 	  <div class="col rec">
-	    <div class="card h-100">
+	    <div class="card h-100" style="width: 25rem; height: 550px;">
 	      <img src="./images/welcome-petsitter.png" class="card-img-top hover-shadow" alt="Palm Springs Road"/>
 	      <div class="card-body"> 
 	        <h5 class="card-title">펫시터 되러가기</h5>
