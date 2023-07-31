@@ -88,7 +88,6 @@
 	</c:import>
 	</div>
 	</section>
-
 </body>
 <script type="text/javascript" src="js/mdb.min.js"></script>
 </html>
