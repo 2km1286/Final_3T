@@ -76,7 +76,8 @@
 	<div class="row all">
 		<div class="col-md-10 mypageMain"> <!-- component 가 들어갈 곳 -->
 			
-			<c:import url="/WEB-INF/components/MPSeatingPlaceForm.jsp"></c:import>
+			<c:import url="/WEB-INF/components/MPSittingPlaceForm.jsp"></c:import>
+			<%-- <c:import url="/WEB-INF/components/MPSittingPlaceInsertForm.jsp"></c:import> --%>
 								
 		</div> <!-- component 가 들어갈 곳 끝 -->
 		<div class="col-md-2 mypagemenu"> <!-- 마이페이지 사이드바 -->
