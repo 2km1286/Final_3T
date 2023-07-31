@@ -29,7 +29,7 @@
 .popRowCol { margin-bottom: 20px; }
 .popMypet, .popMyprofil { position: relative; height: 600px; overflow: auto; padding-left: 200px;}
 .popPetCard { margin-bottom: 30px; width: 30rem; }
-.popCol {padding: 10px 20px 10px 20px; border: solid 1px #FFE090;}
+.popCol {padding: 10px 20px 10px 20px;}
 .petTag { font-size: 13pt;}
 .popMyres { position: relative; height: 400px; overflow: auto; }
 
@@ -48,7 +48,8 @@
    "notifications reservations following";
   width: 600px;
   height: 300px;
-  font-size: 25px;
+  width: 610px;
+  font-size: 20px;
 }
 .profile-picture {
   grid-area: image;
@@ -62,11 +63,11 @@
 .proName { font-size: 35px;}
 .user-grade {grid-area: grade;width: 200px;}
 .user-rating {grid-area: rating;width: 200px;}
-.user-review-count {grid-area: reviews;width: 200px;margin-right: 20px;}
+.user-review-count {grid-area: reviews;width: 200px;}
 .notification-count {grid-area: notifications;color: #888;  width: 200px;}
 .reservation-count { grid-area: reservations;color: #888; width: 200px;}
 .following-count { grid-area: following; color: #888; width: 200px;}
-.popProDiv { margin-top: 100px; margin-bottom: 200px;}
+.popProDiv {margin-bottom: 310px;}
 /* 팝업 프로필카드스타일 끝 */
 	
 </style>

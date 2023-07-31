@@ -13,6 +13,27 @@
 <title>PopupWalkForm</title>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de44c01e008c94b07ba5b53bec52bcb8"></script>
+<script type="text/javascript">
+	
+	function initialize()
+	{
+	   container = document.getElementById("map");
+	   
+	   mapCenter = new kakao.maps.LatLng(37.5566, 126.9195);
+	   options =
+	   {
+	         center: mapCenter,
+	         level: 3,
+	   };
+	   
+	   map = new kakao.maps.Map(container,options);
+	   
+	   
+	}
+
+</script>
+
 
 <style type="text/css">
 
@@ -29,7 +50,7 @@
 .popRowCol { margin-bottom: 20px; }
 .popMypet, .popMyprofil { position: relative; height: 600px; overflow: auto; padding-left: 200px;}
 .popPetCard { margin-bottom: 30px; width: 30rem; }
-.popCol {padding: 10px 20px 10px 20px; border: solid 1px #FFE090;}
+.popCol {padding: 10px 20px 10px 20px;}
 .petTag { font-size: 13pt;}
 .popMyres { position: relative; height: 400px; overflow: auto; }
 
@@ -48,7 +69,8 @@
    "notifications reservations following";
   width: 600px;
   height: 300px;
-  font-size: 25px;
+  width: 610px;
+  font-size: 20px;
 }
 .profile-picture {
   grid-area: image;
@@ -62,11 +84,11 @@
 .proName { font-size: 35px;}
 .user-grade {grid-area: grade;width: 200px;}
 .user-rating {grid-area: rating;width: 200px;}
-.user-review-count {grid-area: reviews;width: 200px;margin-right: 20px;}
+.user-review-count {grid-area: reviews;width: 200px;}
 .notification-count {grid-area: notifications;color: #888;  width: 200px;}
 .reservation-count { grid-area: reservations;color: #888; width: 200px;}
 .following-count { grid-area: following; color: #888; width: 200px;}
-.popProDiv { margin-top: 100px; margin-bottom: 200px;}
+.popProDiv {margin-bottom: 210px;}
 /* 팝업 프로필카드스타일 끝 */
 .mypageWalkMonDon {width: 200px; font-size: 15pt; padding-top: 40px;}
 .WalkMap { border: 1px solid #FFE090; width: 500px; height: 500px;}	
@@ -75,7 +97,7 @@
 </style>
 
 </head>
-<body>
+<body onload="initialize()">
 
 <div class="row">
 <div class="col-md-7 popCol"> 
@@ -84,7 +106,7 @@
 		<div class="col-md-12">
 			<div class="row popWlakInfo">
 				<div class="col-md-6 WalkMap">
-					지도가 뿌려질 곳
+					<div id="map" style="width: 100%; height: 100%;"></div>
 				</div>
 				<div class="col-md-6 mypageWalkMonDon">
 					<span class="badge badge-warning popBadge">수익</span>
