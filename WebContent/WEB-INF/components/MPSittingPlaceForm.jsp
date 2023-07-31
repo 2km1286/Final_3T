@@ -20,7 +20,9 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 
-	/* $(function()
+	/* 
+	// ajax 시도하다가 포기
+	$(function()
 	{
 		$("#bookList").click(function()
 		{
@@ -208,7 +210,7 @@
      </div>
       
     
-    <!-- compoments 불러오는 부분 -->
+    <!-- 예약내역/후기내역/수입내역 compoments 불러오는 부분 -->
     
     	<div id="result">
     		<c:import url="/WEB-INF/components/MPSPBookForm.jsp"></c:import>
