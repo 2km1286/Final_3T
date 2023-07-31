@@ -54,6 +54,15 @@ public class MemberController
 		return result;
 	}
 	
+	@RequestMapping("/walkpost.action")
+	public String walkPost()
+	{
+		String result = "";
+		
+		result = "/WEB-INF/views/WalkPostPage.jsp";
+		
+		return result;
+	}
 	
 }
 
