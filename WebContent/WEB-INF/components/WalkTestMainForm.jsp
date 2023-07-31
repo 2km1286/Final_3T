@@ -11,8 +11,6 @@
 <title>WalkTestMainForm.jsp</title>
 
 <style type="text/css">
-
-	
 	.card
 	{
 		text-align: center;
@@ -26,8 +24,8 @@
 		background-color: #FFE090;
 		color: white;
 	}
-
 </style>
+<link rel="stylesheet" type="text/css" href="css/mdb.min.css">
 </head>
 <body>
 
@@ -36,7 +34,8 @@
   <div class="card-body">
     <h5 class="card-title">대리산책러 자격검증 테스트</h5>
     <p class="card-text">60점 이상의 점수를 얻어 대리산책러가 되어보세요!</p>
-    <a href="#!" class="btn-test">테스트 시작</a>
+    <a href="#" class="btn-test">테스트 시작</a>
+    <button type="button" id="teststart"></button>
   </div>
 </div>
 
