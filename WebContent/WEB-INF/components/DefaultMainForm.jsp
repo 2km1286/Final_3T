@@ -25,7 +25,6 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
   <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
@@ -118,7 +117,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="slider_img-box">
-                    <img src="images/main_walkgirl.png" alt="walk_girlImg" style="width: 300px; margin-left: 180px;">
+                    <img src="images/main_walkgirl.png" alt="walk_girlImg" style="width: 300px; margin-left: 150px;">
                   </div>
                 </div>
               </div>
