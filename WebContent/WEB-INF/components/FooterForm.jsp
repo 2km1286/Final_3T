@@ -12,7 +12,7 @@
 
   <!-- Section: Links  -->
   <hr>
-  <section class="" style="height: 150px; background-color: light;">
+  <section class="" style="height: 90px; background-color: light;">
     <div class="container text-center text-md-start mt-5">
       <!-- Grid row -->
       <div class="row mt-3">
@@ -20,7 +20,7 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <p>
-           	<img src="./images/logo_main.png" alt="logo" style="height: 150px;"/>
+           	<img src="./images/logo_main.png" alt="logo" style="height: 70px;"/>
            	
           </p>
           
@@ -34,19 +34,17 @@
         <div class="col-md-4 col-lg-3 col-xl-3 ">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p>서울 마포구 월드컵북로 21</p>
-          <p>031-1234-8888</p>
+          <p>서울 마포구 월드컵북로 21 <br> 031-1234-8888</p>
             </div>
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             <h6 class="text-uppercase fw-bold mb-4">EMAIL</h6>
           <p>giveyourdogplease@gmail.com</p>
-          <p>SSY-Team3/Final_3T</p>
         	</div>
         <!-- Grid column -->
       </div>
       <!-- Grid row -->
     </div>
-  </section>
+  </section><br>
   <!-- Section: Links  -->
 
   <!-- Copyright -->

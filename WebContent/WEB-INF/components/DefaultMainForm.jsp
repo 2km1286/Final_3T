@@ -96,29 +96,29 @@
                 <div class="col-md-4 offset-md-2">
                   <div class="slider_detail-box">
                     <h1>
-                      Professional
-                      <span>
-                        Care Your Pet
+                      건강,행복,일상
+                      <span style="font-style: inherit;">
+                        대리산책 서비스
                       </span>
                     </h1>
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                      Lorem Ipsum has been the industry's standard dummy text ever
+                      반려견 대리산책 서비스, 강아지를 사랑하는 전문 산책러들이<br>
+                      여러분의 소중한 아이를 책임 있게 돌봐드립니다. 
+                      행복한 산책 시간을 선물하고 싶은 당신을 위해 기다리고 있습니다!
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn-1">
-                        Buy now
+                        대리산책러 찾기
                       </a>
                       <a href="" class="btn-2">
-                        Contact
+                        대리산책러 지원
                       </a>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="slider_img-box">
-                    <img src="images/slider-img.png" alt="">
+                    <img src="images/main_walkgirl.png" alt="walk_girlImg" style="width: 300px; margin-left: 180px;">
                   </div>
                 </div>
               </div>
