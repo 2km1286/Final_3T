@@ -31,7 +31,7 @@
 
 <script type="text/javascript">
 
-	/* $().ready(function(){
+	 $().ready(function(){
 		
 		$("#petSeatingMenu").click(function(){
 			
@@ -59,7 +59,7 @@
 			
 		});
 		
-	}); */
+	}); 
 </script>
 
 </head>
