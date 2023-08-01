@@ -87,6 +87,7 @@ form {
 }
 
 form input {
+
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -126,7 +127,8 @@ form button {
   padding: 10px 15px;
   color: #53e3a6;
   border-radius: 3px;
-  width: 250px;
+  height: auto;
+
   cursor: pointer;
   font-size: 18px;
   -webkit-transition-duration: 0.25s;
@@ -134,11 +136,55 @@ form button {
   width: 120px;
 }
 
-form button:hover {
+form button:hover 
+{
   background-color: #f5f7f9;
 }
 
+.container .select-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
 
+.container .select-container label {
+  margin-right: 10px;
+}
+
+.container .select-container select 
+{
+  width: 200px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2); 
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 300;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.container .select-container select option 
+{
+  background-color: rgba(80, 163, 162, 0.9); 
+  color: white;
+  font-weight: 300;
+}
+
+.container .select-container select:hover 
+{
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.container .select-container select:focus 
+{
+  background-color: white;
+  color: #53e3a6;
+}
 
 
 </style>
@@ -160,62 +206,137 @@ form button:hover {
   max-width: 150px;
   margin-bottom: 20px;
 }
+
+.container .input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.container .input-container input {
+  flex: 1;
+}
+
+.container .input-container button {
+
+  background-color: white;
+  border: 0;
+  padding: 5px 10px;
+  color: #53e3a6;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  margin-left: 10px;
+}
+
+.container .input-container button {
+  /* Updated style for the buttons */
+  background-color: white;
+  border: 0;
+  padding: 10px 15px; /* Changed the padding to match the text boxes */
+  color: #53e3a6;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px; /* Changed the font size to match the text boxes */
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  margin-left: 10px;
+}
+
+form input[name="userId"] {
+  width: 350px; /* Reduced the width to 350px */
+}
+
+form input[name="userNick"] {
+  width: 350px; /* Reduced the width to 350px */
+}
+
+
+
+
+
   
-  </style>
+</style>
 </head>
 <body>
   <div class="wrapper">
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>회원가입</h1>
-      <form action="join.action" method="post" id="joinForm">
-        <input type="text" placeholder="이름" name="jmName" id="jmName">
-        <input type="text" placeholder="아이디" name="jmId" id="jmId">
-        <input type="text" placeholder="성별" name="jmGender" id="jmGender">
-        <input type="password" placeholder="비밀번호" name="jmPw" id="jmPw">
-        <input type="password" placeholder="비밀번호 확인" name="jmPwCheck" id="jmPwCheck">
-        <input type="text" placeholder="닉네임" name="jmNickName" id="jmNickName">
-        <input type="text" placeholder="주민등록번호" name="jmSsn" id="jmSsn">
-        <input type="tel" placeholder="전화번호" name="jmTel" id="jmTel">
-        <input type="text" placeholder="주소" name="jmAddr1" id="jmAddr1">
-        <input type="text" placeholder="상세주소" name="jmAddr2" id="jmAddr2">
-        <input type="text" placeholder="우편번호" name="jmZipCode" id="jmZipCode">
-        <input type="text" placeholder="이미지" name="jmImage" id="jmImage">
+      
+      <form class="form" action="join.action" method="post">
+         <div class="input-container">
+          <input type="text" placeholder="사용하실 아이디를 입력해주세요." name="jmId" id="jmId">
+          <button type="button" id="checkUserIdBtn">중복확인</button>
+        </div>
+        <input type="text" placeholder="이름을 입력해주세요." name="jmName" id="jmName" style="width: 100%;">
+        
+        
+        <div class="select-container">
+          <label for="gender">성별 선택</label>
+          <select id="jmGender" name="jmGender">
+            <option value="1">남자</option>
+            <option value="2">여자</option>
+          </select>
+        </div>
+        
+        
+        <input type="file" name="jmImage" id="jmImage" accept="image/*" style="display: block;">
+        
+   
+        
+        <input type="password" placeholder="사용하실 비밀번호를 입력해주세요." name="jmPw" id="jmPw" style="width: 100%;">
+        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요." name="userPwCheck" id="userPwCheck" style="width: 100%;">
+      <div class="input-container">
+          <input type="text" placeholder="사용하실 닉네임을 입력해주세요." name="jmNickName" id="jmNickName">
+          <button type="button" id="checkUserNickBtn">중복확인</button>
+        </div>
+        
+       <div class="input-container">
+        <input type="text" placeholder="주민등록번호를 입력해주세요." name="jmSsn" id="jmSsn" style="width: 40%;">
+      </div>
+
+        
+       <div class="input-container">
+        <input type="tel" placeholder="전화번호를 입력해주세요." name="jmTel" id="jmTel">
+        <button type="button" id="telCheck">인증번호</button>
+       </div>
+        
+       <div class="input-container">
+        <input type="text" placeholder="주소를 입력해주세요." name="jmAddr1" id="jmAddr1">
+        <button type="button" id="checkZipcodeBtn">우편번호</button>
+       </div>
+        
+        <input type="text" placeholder="우편번호" name="jmZipCode" id="jmZipCode" style="width: 100%;">
+        
+        <input type="text" placeholder="상세주소를 입력해주세요." name="jmAddr2" id="jmAddr2" style="width: 100%;">
+        
+        
         <br />
-        <span id="err" style="color: blue; font-weight: bold; display: none;"></span>
+        <span id="err" style="display: block;">* 필수 항목들을 모두 입력해주세요.</span>
         <br />
-        <button type="reset" >취소</button>
-        <button type="button" id="join-button">회원가입</button>
+        
+        <button type="button" id="login-button">회원가입</button>
+        <button type="reset" id="reset-button">초기화</button>
       </form>
     </div>
   </div>
    <script>
-   $(function()
-	{
-	   $("#join-button").click(function() 
-	    {
-	      if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#jmPwCheck").val()=="" || $("#jmName").val()=="" || 
-	    		  $("#jmSsn").val()=="" || $("#jmGender").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
-	    		  $("#jmAddr1").val()=="" || $("#jmAddr2").val()=="" || $("#jmZipCode").val()=="")
-	      {
-	    	  $("#err").html("모두 입력해주세요").css("display", "inline");
-	    	  return;
-	      }
-	      
-	      $("#joinForm").submit();
-	      /* 
-	      $('form').fadeOut(500, function() 
-	      {
-	        // Hide the form and update the h1 content to "로그인 성공"
-	        $('.container h1').text('회원가입 완료');
-	        // Remove border from the container
-	        $('.container').css('border', 'none');
-	      });
-	      $('.wrapper').addClass('form-success');
-	       */
-	    });	
-	});
-    
+    $("#login-button").click(function(event) 
+    {
+    	 if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#userPwCheck").val()=="" || $("#jmName").val()=="" || 
+       		  $("#jmSsn").val()=="" || $("#jmGen").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
+       		  $("#jmAddr1").val()=="" || $("#jmAddr2").val()=="" || $("#jmZipCode").val()=="")
+         {
+       	  $("#err").html("모두 입력해주세요").css("display", "inline");
+       	  return;
+         }
+         
+         $(".form").submit();
+    });
   </script>
 </body>
 </html>
