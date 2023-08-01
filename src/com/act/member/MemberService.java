@@ -16,7 +16,7 @@ public class MemberService
    private SqlSession sqlSession;
    
    @Transactional
-   public void join(HttpSession session, MemberDTO dto)
+   public int join(HttpSession session, MemberDTO dto)
    {
 	   IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 	      
@@ -24,14 +24,15 @@ public class MemberService
 	      int num = random.nextInt(100);
 	      String strNum = String.valueOf(num);
 	      
-	      dao.add(strNum);
+	      int result = dao.add(strNum);
 	      System.out.println("MemberService 온거 확인");
 	      
 	      dto.setMemSid(strNum);
 	      dao.join(dto);
 	      
 	      session.setAttribute("memberId", dto.getJmId());
-      
+	      
+	      return result;
       
    }
    
