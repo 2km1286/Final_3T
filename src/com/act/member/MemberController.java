@@ -1,9 +1,7 @@
 package com.act.member;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,14 +29,14 @@ public class MemberController
 	public String join(HttpSession session, MemberDTO dto)
 	{
 		String result = "";
-		System.out.println("확인1");
 		int num = memberService.join(session, dto);
+		
+		
 		if(num!=1)
 			result = "redirect:join.action";
 		else
 			result = "redirect:main.action"; 
 		
-		System.out.println("확인2");
 		
 		return result;
 	}
@@ -46,7 +44,7 @@ public class MemberController
 	@RequestMapping("/main.action")
 	public String main()
 	{
-		String result = "MenuForm3.jsp";
+		String result = "/WEB-INF/views/MainPage.jsp";
 		return result;
 	}
 	
