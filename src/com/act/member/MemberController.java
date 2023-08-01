@@ -32,9 +32,14 @@ public class MemberController
 	{
 		String result = "";
 		System.out.println("확인1");
-		memberService.join(session, dto);
+		int num = memberService.join(session, dto);
+		if(num!=1)
+			result = "redirect:join.action";
+		else
+			result = "redirect:main.action"; 
+		
 		System.out.println("확인2");
-		result = "/WEB-INF/views/MainPage.jsp";
+		
 		return result;
 	}
 	
