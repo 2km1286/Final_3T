@@ -32,7 +32,7 @@ public class MemberController
 	{
 		String result = "";
 		System.out.println("확인1");
-		//memberService.join(session, dto);
+		memberService.join(session, dto);
 		System.out.println("확인2");
 		result = "/WEB-INF/views/MainPage.jsp";
 		return result;
