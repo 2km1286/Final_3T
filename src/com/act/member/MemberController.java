@@ -96,7 +96,7 @@ public class MemberController
 	
 	// 이름, 주빈번호로 아이디 찾기
 	@RequestMapping("/idFind.action")
-	public String idFind(HttpServletRequest request, HttpSession session)
+	public String idFind(HttpServletRequest request)
 	{ 
 		String view = "";
 		
@@ -117,7 +117,7 @@ public class MemberController
 			result = "등록된 아이디는 [" + result + "] 입니다.";
 		}
 	
-		session.setAttribute("result", result);
+		request.setAttribute("result", result);
 	
 		view = "/WEB-INF/views/AjaxIdFind.jsp";
 	
