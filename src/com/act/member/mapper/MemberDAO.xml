@@ -4,21 +4,20 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.act.member.IMemberDAO">
    
-   <select id="getRandom">
-   	   SELECT DBMS_RANDOM.STRING('X', 15) AS RANDSTR
-   	   FROM DUAL	
-   </select>
-   
-   
    <insert id="add">
       INSERT INTO MEMBER(MEM_SID)
       VALUES(#{memSid})
    </insert>
    
+   <select id="getMemSid" resultType="string">
+   	  SELECT DBMS_RANDOM.STRING('X', 15) AS MEM_SID
+	  FROM DUAL
+   </select>
+   
    <insert id="join" >
-      INSERT INTO JOIN_MEMBER(JM_SID, MEM_SID, JM_ID, JM_PW, JM_NAME, JM_SSN, JM_GENDER, JM_NICKNAME, JM_TEL, JM_ADDR1, JM_ADDR2, JM_ZIPCODE, JM_IMAGE)
-      VALUES(SEQ_JM.NEXTVAL, #{memSid}, #{jmId},#{jmPw}, #{jmName}, #{jmSsn}, #{jmGender}
-      , #{jmNickName}, #{jmTel}, #{jmAddr1}, #{jmAddr2}, #{jmZipCode}, #{jmImage})
+      INSERT INTO JOIN_MEMBER(JM_SID, MEM_SID, JM_ID, JM_PW, JM_NAME, JM_SSN, JM_GENDER, JM_NICKNAME, JM_TEL, JM_ADDR1, JM_ADDR2, JM_ZIPCODE, JM_MAGE)
+      VALUES(SEQ_JM.NEXTVAL, #{memSid}, #{jmId},CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw}), #{jmName}, #{jmSsn}, #{jmGender}
+      , #{jmNickName}, #{jmTel}, #{jmAddr1}, #{jmAddr2}, #{jmZipCode}, #{jmMage})
    </insert>
 
 </mapper>
