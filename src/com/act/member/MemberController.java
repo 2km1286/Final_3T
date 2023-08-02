@@ -17,6 +17,46 @@ public class MemberController
 	@Autowired
 	private MemberService MemberService;
 
+	// 액션 처리 ---------------------------------------------------------------------------------
+	 @RequestMapping("/login.action") public String loginPage() { String
+	  result="";
+	  
+	  result = "/WEB-INF/views/LoginPage.jsp";
+	  
+	  return result;
+	  
+	  }
+	  
+	  @RequestMapping("/main.action") public String main() { String result="";
+	  
+	  result="/WEB-INF/views/MainPage.jsp";
+	  
+	  return result; }
+	  
+	  @RequestMapping("/walktest.action") public String walktest() { String
+	  result="";
+	  
+	  result="/WEB-INF/views/WalkTestPage.jsp";
+	  
+	  return result; }
+	  
+	  @RequestMapping("/result.action") public String result() { String result =
+	  "";
+	  
+	  result = "/WEB-INF/views/ResultPage.jsp";
+	  
+	  return result; }
+	  
+	  @RequestMapping("/mypage.action") public String mypage() { String result =
+	  ""; result = "/WEB-INF/views/MyPage.jsp"; return result; }
+	  
+	  @RequestMapping("/mpspinsert.action") public String mpspinsert() { String
+	  result = ""; result = "/WEB-INF/views/Mypage.jsp"; return result; }
+	  
+	  @RequestMapping("/recommend.action") public String recommend() { String
+	  result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
+	//액션 처리 ---------------------------------------------------------------------------------
+	
 	// 로그인 성공/실패
 	@RequestMapping("/memberlogin.action")
 	public String loginCount(JoinMemberDTO dto, HttpSession session)
@@ -56,13 +96,17 @@ public class MemberController
 	
 	// 이름, 주빈번호로 아이디 찾기
 	@RequestMapping("/idFind.action")
-	public String idFind(@RequestBody JoinMemberDTO dto, HttpSession session)
+	public String idFind(HttpServletRequest request, HttpSession session)
 	{ 
 		String view = "";
 		
 		String result = "";
 		
-		result =MemberService.idFind(dto);
+		JoinMemberDTO dto = new JoinMemberDTO();
+		dto.setJmName(request.getParameter("jmName"));
+		dto.setJmSsn(request.getParameter("jmSsn"));
+		
+		result = MemberService.idFind(dto);
 	
 		if(result.equals("0"))
 		{ 
@@ -80,36 +124,60 @@ public class MemberController
 		return view;
 	}
 	
-	/*
-	 * // 비밀번호 재설정을 위해 아이디, 이름, 주민번호를 입력받는 폼
-	 * 
-	 * @RequestMapping("/pwFindFormPage.action") public String
-	 * pwRemakeForm(HttpServletRequest request) { String view =
-	 * "/WEB-INF/views/PwFindFormPage.jsp";
-	 * 
-	 * int result = 1; // 최초요청시에는 res로 1을 넘겨주어 alert이 뜨지 않도록 함
-	 * request.setAttribute("res", result);
-	 * 
-	 * return view; }
-	 * 
-	 * // 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사
-	 * 
-	 * @RequestMapping("/pwFind.action") public String pwFind(JoinMemberDTO dto,
-	 * HttpServletRequest request) { String view="";
-	 * 
-	 * IJoinMemberDAO dao = sqlSession.getMapper(IJoinMemberDAO.class);
-	 * 
-	 * int result = dao.findPw(dto);
-	 * 
-	 * if(result==0) // 조회결과 jmSid 가 없으면 { // res 로 0을 넘겨주며 다시 PwFindFormPage.jsp 을
-	 * 요청, 이 때는 alert이 뜸 request.setAttribute("res", result); view =
-	 * "/WEB-INF/views/PwFindFormPage.jsp"; } else // 조회결과 jmSid 가 있으면 { // res 로
-	 * jmSid 를 넘겨주며 비밀번호 재설정 폼을 요청. request.setAttribute("jmSid", result); view =
-	 * "/WEB-INF/views/PwRemakeForm.jsp"; }
-	 * 
-	 * 
-	 * return view; }
-	 */
+	
+	// 비밀번호 재설정을 위해 아이디, 이름, 주민번호를 입력받는 폼
+	@RequestMapping("/pwFindFormPage.action")
+	public String pwRemakeForm()
+	{ 
+		String view = "/WEB-INF/views/PwFindFormPage.jsp";
+		return view;
+	}
+	
+	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사
+	@RequestMapping("/pwFind.action")
+	public String pwFind(JoinMemberDTO dto, HttpSession session)
+	{
+		String view="";
+		
+		String result = "";
+		
+		result = MemberService.pwFind(dto);
+		
+		if(result.equals("0") ) // 조회결과 memSid 가 없으면
+		{ 
+			// result에 0이 담긴채로 PwFindFormPage.jsp 을 요청, 이 때는 alert이 뜸
+			session.setAttribute("resultPwFind", result); 
+			view ="/WEB-INF/views/PwFindFormPage.jsp";
+		}
+		else // 조회결과 jmSid 가 있으면
+		{ 
+			// memSid에 조회한 memSid을 담아  를 넘겨주며 비밀번호 재설정 폼을 요청. 
+			session.setAttribute("memSid", result); 
+			view =	"/WEB-INF/views/PwRemakeForm.jsp";
+		}
+
+		return view;	 
+	}
+	
+	// 비밀번호 재설정하기
+	@RequestMapping("/updatePw.action")
+	public String updatePw(JoinMemberDTO dto, HttpSession session)
+	{
+		String view="";
+		
+		int result = 0;
+		
+		result = MemberService.updatePw(dto);
+		
+		if (result>0)
+		{
+			session.setAttribute("result", result);
+			view = "LoginForm.jsp";
+		}
+
+		
+		return view;
+	}
 	
 
 }

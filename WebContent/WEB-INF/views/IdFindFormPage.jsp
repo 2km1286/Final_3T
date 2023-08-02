@@ -15,6 +15,7 @@
 
 	$(function()
 	{
+		
 		$("#find-button").click(function()
 		{
 			//alert("확인");
@@ -40,13 +41,6 @@
 				
 			});		
 	
-			
-			$("#login-button").click(function()
-			{
-				
-			});
-	
-	
 		});
 	
 		
@@ -70,6 +64,14 @@
 			
 			return true;
 		}
+		
+		
+		$("#loginPage").click(function()
+		{
+		      window.location.href = "LoginForm.jsp";
+		  
+		});
+		
 		
 		
 	});
@@ -262,7 +264,7 @@ margin-left: 20px;
       <form class="form" id="idForm">
         <input type="text" placeholder="이름" name="jmName" id="jmName">
         <input type="password" placeholder="주민번호" name="jmSsn" id="jmSsn">
-        <button type="button" id="login-button"  >로그인페이지</button>
+        <button type="button" id="loginPage" onclick="loginPage()" >로그인페이지</button>
         <button type="button" id="find-button">아이디찾기</button><br>
       </form>
 		<div id="idRes"></div>

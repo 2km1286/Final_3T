@@ -5,11 +5,12 @@
 	String cp = request.getContextPath();
 %>
 <%
-	int res = (int)request.getAttribute("res");
+	String result = (String)session.getAttribute("resultPwFind");
 
-	if( res==0 )
+	if( result!=null && result.equals("0") )
 	{
 		out.println("<script>alert('등록된 정보가 없습니다. ') </script>");
+		session.removeAttribute("resultPwFind");
 	}
 	
 %>
@@ -17,8 +18,53 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-<title>비밀번호 재설정</title>
+<title>비밀번호 찾기</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function()
+	{
+		$("#pw-button").click(function()
+		{
+			if( !$("#jmId").val() )
+			{
+				alert("아이디를 입력해야 합니다.");
+				$("#jmId").focus();
+				
+				return false;
+			}
+			
+			if( !$("#jmName").val() )
+			{
+				alert("이름을 입력해야 합니다.");
+				$("#jmName").focus();
+				
+				return false;
+			}
+			
+			if( !$("#jmSsn").val() )
+			{
+				alert("주민번호를 입력해야 합니다.");
+				$("#jmSsn").focus();
+				
+				return false;
+			}
+			
+			return true;
+		});
+	});
+	
+
+
+
+
+
+</script>
+
+
+
+
 
 <style>
 * {
@@ -202,12 +248,12 @@ margin-left: 20px;
   <div class="wrapper">
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
-      <h1>비밀번호 재설정</h1>
+      <h1>비밀번호 찾기</h1>
       <form class="form" action="pwFind.action">
         <input type="text" placeholder="아이디" name="jmId" id="jmId">
         <input type="text" placeholder="이름" name="jmName" id="jmName">
         <input type="text" placeholder="주민번호" name="jmSsn" id="jmSsn">
-        <button type="submit" id="pw-button">비밀번호 재설정</button><br>
+        <button type="submit" id="pw-button">비밀번호 찾기</button><br>
       </form>
     </div>
   </div>

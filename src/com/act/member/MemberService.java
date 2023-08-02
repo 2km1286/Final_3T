@@ -37,6 +37,32 @@ public class MemberService
 		return result;
 	}
 	
+	// 아이디, 이름, 주민번호로 memSid 찾기 
+	public String pwFind(JoinMemberDTO dto)
+	{
+		 String result = "";
+		
+		IJoinMemberDAO dao = sqlSession.getMapper(IJoinMemberDAO.class);
+		
+		result = dao.findPw(dto);
+		
+		return result;
+	}
+	
+	// 비밀번호 재설정
+	public int updatePw(JoinMemberDTO dto)
+	{
+		int result = 0;
+		
+		IJoinMemberDAO dao = sqlSession.getMapper(IJoinMemberDAO.class);
+		
+		result = dao.updatePw(dto);
+		
+		return result;
+	}
+	
+	
+	
 	
 	
 }

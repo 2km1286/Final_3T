@@ -4,22 +4,54 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<%
-	int res = (int)request.getAttribute("res");
-
-	if( res==0 )
-	{
-		out.println("<script>alert('등록된 정보가 없습니다. ') </script>");
-		session.removeAttribute("res");
-	}
-	
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset='UTF-8'>
 <title>비밀번호 재설정</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript">
+
+		$(function()
+		{
+			$("#pw-button").click(function()
+			{
+				if( !$("#jmPw").val() )
+				{
+					alert("새 비밀번호를 입력해야 합니다.");
+					$("#jmPw").focus();
+					
+					return false;
+				}
+				
+				if( !$("#jmPw2").val() )
+				{
+					alert("새 비밀번호를 다시 입력해야 합니다.");
+					$("#jmPw2").focus();
+					
+					return false;
+				}
+				
+				if( $("#jmPw").val() != $("#jmPw2").val() )
+				{
+					alert("입력하신 비밀번호가 일치하지 않습니다.");
+					$("#jmPw2").focus();
+					
+					return false;
+				}
+				
+				alert("비밀번호를 변경했습니다. ");
+				
+				return true;
+			});
+		});
+
+
+
+
+
+</script>
 
 <style>
 * {
@@ -204,10 +236,10 @@ margin-left: 20px;
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>비밀번호 재설정</h1>
-      <form class="form" action="pwFind.action">
-        <input type="text" placeholder="아이디" name="jmId" id="jmId">
-        <input type="text" placeholder="이름" name="jmName" id="jmName">
-        <input type="text" placeholder="주민번호" name="jmSsn" id="jmSsn">
+      <form class="form" action="updatePw.action">
+        <input type="text" placeholder="새 비밀번호" name="jmPw" id="jmPw">
+        <input type="text" placeholder="새 비밀번호 다시 입력" name="jmPw2" id="jmPw2">
+        <input type="hidden" name="memSid" id="memSid" value="${memSid }">
         <button type="submit" id="pw-button">비밀번호 재설정</button><br>
       </form>
     </div>

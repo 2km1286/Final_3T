@@ -7,7 +7,7 @@
 	<select id="searchMemsid" resultType="java.lang.String">
 		SELECT NVL(MAX(MEM_SID), '0') AS MEM_SID
 		FROM JOIN_MEMBER
-		WHERE JM_ID = #{jmId} AND JM_PW = #{jmPw}
+		WHERE JM_ID= #{jmId} AND JM_PW = CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw})
 	</select>
 
 	<select id="findId" resultType="java.lang.String">
@@ -16,11 +16,17 @@
 		WHERE JM_NAME = #{jmName} AND JM_SSN = #{jmSsn}
 	</select>
 	
-	<select id="findPw" resultType="java.lang.Integer">
-		SELECT NVL( (SELECT JM_SID
+	<select id="findPw" resultType="java.lang.String">
+		SELECT NVL( (SELECT MEM_SID
             		FROM JOIN_MEMBER
-            		WHERE JM_ID = #{jmId} AND JM_SSN = #{jmSsn} AND JM_NAME = #{jmName}), 0) AS JM_SID
+            		WHERE JM_ID = #{jmId} AND JM_SSN = #{jmSsn} AND JM_NAME = #{jmName}), '0') AS MEM_SID
 		FROM DUAL
 	</select>
+	
+	<update id="updatePw">
+		UPDATE JOIN_MEMBER
+		SET JM_PW = CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw})
+		WHERE MEM_SID = #{memSid}
+	</update>
 
 </mapper>
