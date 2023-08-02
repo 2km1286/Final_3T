@@ -3,7 +3,7 @@ package com.act.member;
 public class MemberDTO
 {
 	private int jmSid, jmGender;
-   private String memSid, memRegistDate, jmId, jmPw, jmName, jmSsn, jmNickName, jmTel, jmAddr1, jmAddr2, jmZipCode, jmMage, randStr;
+   private String memSid, memRegistDate, jmId, jmPw, jmName, jmSsn, jmNickName, jmTel, jmAddr1, jmAddr2, jmZipCode, jmImage, randStr;
    
 	public String getRandStr()
 	{
@@ -117,13 +117,13 @@ public class MemberDTO
    {
       this.jmZipCode = jmZipCode;
    }
-   public String getJmMage()
+   public String getjmImage()
    {
-      return jmMage;
+      return jmImage;
    }
-   public void setJmMage(String jmMage)
+   public void setjmImage(String jmImage)
    {
-      this.jmMage = jmMage;
+      this.jmImage = jmImage;
    }
 
 }

@@ -284,7 +284,7 @@ form input[name="userNick"] {
         </div>
         
         
-        <input type="file" name="jmMage" id="jmMage" accept="image/*" style="display: block;">
+        <input type="file" name="jmImage" id="jmImage" accept="image/*" style="display: block;">
         
    
         
