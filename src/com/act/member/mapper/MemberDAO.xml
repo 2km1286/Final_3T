@@ -33,10 +33,9 @@
 	</select>
 	
 	<select id="findPw" resultType="java.lang.String">
-		SELECT NVL( (SELECT MEM_SID
-            		FROM JOIN_MEMBER
-            		WHERE JM_ID = #{jmId} AND JM_SSN = #{jmSsn} AND JM_NAME = #{jmName}), '0') AS MEM_SID
-		FROM DUAL
+		SELECT NVL(MAX(MEM_SID), '0')
+        FROM JOIN_MEMBER
+        WHERE JM_ID = #{jmId} AND JM_SSN = #{jmSsn} AND JM_NAME = #{jmName}
 	</select>
 	
 	<update id="updatePw">

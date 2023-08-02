@@ -16,193 +16,221 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MemberController
 {
-	@Autowired
-
-	private MemberService MemberService;
-
-	// 액션 처리 ---------------------------------------------------------------------------------
-	 @RequestMapping("/login.action") public String loginPage() { String
-	  result="";
-	  
-	  result = "/WEB-INF/views/LoginPage.jsp";
-	  
-	  return result;
-	  
-	  }
-	  
-	  @RequestMapping("/main.action") public String main() { String result="";
-	  
-	  result="/WEB-INF/views/MainPage.jsp";
-	  
-	  return result; }
-	  
-	  @RequestMapping("/walktest.action") public String walktest() { String
-	  result="";
-	  
-	  result="/WEB-INF/views/WalkTestPage.jsp";
-	  
-	  return result; }
-	  
-	  @RequestMapping("/result.action") public String result() { String result =
-	  "";
-	  
-	  result = "/WEB-INF/views/ResultPage.jsp";
-	  
-	  return result; }
-	  
-	  @RequestMapping("/mypage.action") public String mypage() { String result =
-	  ""; result = "/WEB-INF/views/MyPage.jsp"; return result; }
-	  
-	  @RequestMapping("/mpspinsert.action") public String mpspinsert() { String
-	  result = ""; result = "/WEB-INF/views/Mypage.jsp"; return result; }
-	  
-	  @RequestMapping("/recommend.action") public String recommend() { String
-	  result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
-	//액션 처리 ---------------------------------------------------------------------------------
-	
-	// 로그인 성공/실패
-
-	@RequestMapping("/memberlogin.action")
-	public String loginCount(MemberDTO dto, HttpSession session)
-	{
-		String view = "";
-
-		String result = "";
-
-		result = MemberService.searchMemsid(dto);
-
-		//System.out.println(result);
-
-		if (result.equals("0")) // 로그인 실패
+		@Autowired
+		
+		private MemberService MemberService;
+		
+		// 메인페이지로 가는 액션
+		 @RequestMapping("/main.action")
+		 public String main()
+		 { 
+			 String result="";
+			 result="/WEB-INF/views/MainPage.jsp";
+		  
+			 return result;
+		 }
+		
+		// 로그인(+ 회원가입버튼) 페이지로 가는 액션
+		 @RequestMapping("/loginJoin.action")
+		 public String loginJoinPage()
+		 { 
+			 String result="";
+		  
+			 result = "/WEB-INF/views/LoginJoin.jsp";
+		  
+			 return result;
+		  
+		  }
+		  
+		// 설명 써주세
+		@RequestMapping("/join.action")
+		public String join(HttpSession session, MemberDTO dto)
 		{
-			session.setAttribute("fail", result);
-			view = "redirect:LoginForm.jsp";
-		}
-		else // 로그인 성공
-		{
+			String result = "";
+			int num = MemberService.join(session, dto);
+		
+		
+			if(num!=1)
+				result = "redirect:join.action";
+			else
+				result = "redirect:main.action"; 
 			
-			session.setAttribute("memSid", result);
-			view = "/main.action";
+			
+			return result;
 		}
-
-		return view;
-	}
-
-	
-	// 아이디찾는 폼으로 가기
-	@RequestMapping("/idFindFormPage.action")
-	public String idFindForm()
-	{ 
-		String view = "/WEB-INF/views/IdFindFormPage.jsp";
-		return view;
-	}
-	
-	
-	// 이름, 주빈번호로 아이디 찾기
-	@RequestMapping("/idFind.action")
-	public String idFind(HttpServletRequest request)
-	{ 
-		String view = "";
-		
-		String result = "";
-		
-		MemberDTO dto = new MemberDTO();
-		dto.setJmName(request.getParameter("jmName"));
-		dto.setJmSsn(request.getParameter("jmSsn"));
-		
-		result = MemberService.idFind(dto);
-	
-		if(result.equals("0"))
-		{ 
-			result = "아이디가 존재하지 않습니다."; 
-		}
-		else
-		{ 
-			result = "등록된 아이디는 [" + result + "] 입니다.";
-		}
-	
-		request.setAttribute("result", result);
-	
-		view = "/WEB-INF/views/AjaxIdFind.jsp";
-	
-		return view;
-	}
-
-	
-	
-	// 비밀번호 재설정을 위해 아이디, 이름, 주민번호를 입력받는 폼
-	@RequestMapping("/pwFindFormPage.action")
-	public String pwRemakeForm()
-	{ 
-		String view = "/WEB-INF/views/PwFindFormPage.jsp";
-		return view;
-	}
-	
-	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사
-	@RequestMapping("/pwFind.action")
-	public String pwFind(MemberDTO dto, HttpSession session)
-	{
-		String view="";
-		
-		String result = "";
-		
-		result = MemberService.pwFind(dto);
-		
-		if(result.equals("0") ) // 조회결과 memSid 가 없으면
-		{ 
-			// result에 0이 담긴채로 PwFindFormPage.jsp 을 요청, 이 때는 alert이 뜸
-			session.setAttribute("resultPwFind", result); 
-			view ="/WEB-INF/views/PwFindFormPage.jsp";
-		}
-		else // 조회결과 jmSid 가 있으면
-		{ 
-			// memSid에 조회한 memSid을 담아  를 넘겨주며 비밀번호 재설정 폼을 요청. 
-			session.setAttribute("memSid", result); 
-			view =	"/WEB-INF/views/PwRemakeForm.jsp";
-		}
-
-		return view;	 
-	}
-	
-	// 비밀번호 재설정하기
-	@RequestMapping("/updatePw.action")
-	public String updatePw(MemberDTO dto, HttpSession session)
-	{
-		String view="";
-		
-		int result = 0;
-		
-		result = MemberService.updatePw(dto);
-		
-		if (result>0)
+		 
+		// 회원인지 아닌지 조회, 로그인 성공/실패
+		@RequestMapping("/memberlogin.action")
+		public String loginCount(MemberDTO dto, HttpSession session)
 		{
-			session.setAttribute("result", result);
-			view = "LoginForm.jsp";
+			String view = "";
+		
+			// "0" 또는 특정 memSid 를 반환
+			String result = MemberService.searchMemsid(dto);
+			
+			//System.out.println(result);
+			
+			if (result.equals("0")) // 회원정보 없음, 로그인/회원가입 페이지로가서 로그인 실패를 띄워주기
+			{	
+				result = "-1";
+				session.setAttribute("memSid", result);
+				view = "redirect:loginJoin.action";
+			}
+			else // memSid 있음, 메인페이지로 가기, 로그인 성공
+			{
+				session.setAttribute("memSid", result);
+				view = "redirect:main.action";
+			}
+		
+			return view;
 		}
-
-		
-		return view;
-	}
 	
+		// 로그아웃하고(session) 다시 메인페이지로 가기
+		@RequestMapping("/logOut.action")
+		public String logOut(HttpSession session)
+		{ 
+			session.removeAttribute("memSid");
+			String view = "redirect:main.action";
+			return view;
+		}
+		
+		// 아이디찾는 폼으로 가기
+		@RequestMapping("/findIdForm.action")
+		public String findIdForm()
+		{ 
+			String view = "/WEB-INF/views/FindIdForm.jsp";
+			return view;
+		}
+		
+		// 이름, 주빈번호로 아이디 찾기
+		@RequestMapping("/findId.action")
+		public String findId(HttpServletRequest request)
+		{ 
+			String view = "";
+			
+			String result = "";
+			
+			MemberDTO dto = new MemberDTO();
+			dto.setJmName(request.getParameter("jmName"));
+			dto.setJmSsn(request.getParameter("jmSsn"));
+			
+			// "0" 또는 특정 jmId 를 반환
+			result = MemberService.findId(dto);
+		
+			if(result.equals("0"))
+			{ 
+				result = "아이디가 존재하지 않습니다."; 
+			}
+			else
+			{ 
+				result = "등록된 아이디는 [" + result + "] 입니다.";
+			}
+		
+			request.setAttribute("result", result);
+		
+			view = "/WEB-INF/views/AjaxFindId.jsp";
+		
+			return view;
+		}
+		
 
+		// 비밀번호 재설정을 위해 아이디, 이름, 주민번호를 입력받는 폼
+		@RequestMapping("/findPwForm.action")
+		public String pwRemakeForm()
+		{ 
+			String view = "/WEB-INF/views/FindPwForm.jsp";
+			return view;
+		}
+		
+		// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사
+		@RequestMapping("/findPw.action")
+		public String findPw(MemberDTO dto, HttpSession session)
+		{
+			String view="";
+			
+			String result = "";
+			
+			// "0" 또는 특정 memSid 를 반환
+			result = MemberService.findPw(dto);
+			
+			if(result.equals("0") ) // 회원정보 없음
+			{ 
+				// result에 0이 담긴채로 FindPwForm.jsp 을 요청, 이 때는 alert이 뜸
+				session.setAttribute("result", result); 
+				view ="redirect:findPwForm.action";
+			}
+			else // 회원정보 있음
+			{ 
+				// memSid에 조회한 memSid을 담아 넘겨주며 비밀번호 재설정 폼을 요청. 
+				session.setAttribute("memSid", result); 
+				view =	"/WEB-INF/views/UpdatePwForm.jsp";
+			}
 
+			return view;	 
+		}
+		
+		// 비밀번호 재설정하기
+		@RequestMapping("/updatePw.action")
+		public String updatePw(MemberDTO dto, HttpSession session)
+		{
+			String view="";
+			
+			int result = 0;
+			
+			// 0 or 성공시 1
+			result = MemberService.updatePw(dto);		
+			
+			if (result>0)
+			{
+				session.removeAttribute("memSid");		// null로 만들어주고
+				view = "redirect:main.action";
+			}
 
-	
-	@RequestMapping("/join.action")
-	public String join(HttpSession session, MemberDTO dto)
-	{
-		String result = "";
-		int num = MemberService.join(session, dto);
+			
+			return view;
+		}
+		
+		// 대리산책 리스트업 페이지로 가기
+		@RequestMapping("/WalkList.action")
+		public String walkList()
+		{
+			String view = "";
+			view = "/WEB-INF/views/WalkListPage.jsp";
+			return view;
+		}
+		
+		// 돌봄장소 리스트업 페이지로 가시
+		@RequestMapping("/SittingList.action")
+		public String sittingList()
+		{
+			String view = "";
+			view = "/WEB-INF/views/SittingListPage.jsp";
+			return view;
+		}
 		
 		
-		if(num!=1)
-			result = "redirect:join.action";
-		else
-			result = "redirect:main.action"; 
+		@RequestMapping("/walktest.action") public String walktest() { String
+		result="";
 		
+		result="/WEB-INF/views/WalkTestPage.jsp";
 		
-		return result;
-	}
+		return result; }
+		
+		@RequestMapping("/result.action") public String result() { String result =
+		"";
+		
+		result = "/WEB-INF/views/ResultPage.jsp";
+		
+		return result; }
+		
+		@RequestMapping("/mypage.action") public String mypage() { String result =
+		""; result = "/WEB-INF/views/MyPage.jsp"; return result; }
+		
+		@RequestMapping("/mpspinsert.action") public String mpspinsert() { String
+		result = ""; result = "/WEB-INF/views/Mypage.jsp"; return result; }
+		
+		@RequestMapping("/recommend.action") public String recommend() { String
+		result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
 	
 	
 

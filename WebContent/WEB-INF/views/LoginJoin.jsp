@@ -4,75 +4,57 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%
+	String memSid = (String)session.getAttribute("memSid");		// 최초요청시 "0", 등록된 정보 없을 시 "-1"
+	if( memSid.equals("-1") )
+	{
+		out.println("<script>alert('등록된 정보가 없습니다. ') </script>");
+		session.removeAttribute("memSid");
+	}
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset='UTF-8'>
-<title>아이디찾기</title>
+<title>로그인</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <script type="text/javascript">
 
 	$(function()
-	{
-		
-		$("#find-button").click(function()
+	{	
+		// 회원가입 폼 페이지로 가기
+		$("#join-button").click(function()
 		{
-			//alert("확인");
-			
-			var params = "jmName=" + $("#jmName").val() + "&jmSsn=" + $("#jmSsn").val();
-			
-			$.ajax(
-			{
-				type:"POST"
-				, url:"idFind.action"
-				, data:params
-				, async:true
-				, success:function(data)
-				{
-					$("#idRes").html(data);
-										
-				}
-				, beforeSend:showRequest
-				, error:function(e)
-				{
-					alert(e.responseText);
-				}
-				
-			});		
-	
+			//window.location.href = "join.action";   어디에요?
 		});
-	
 		
-		function showRequest()
+		
+		// 로그인 버튼 눌렀을 때
+		$("#login-button").click(function()
 		{
-			if( !$("#jmName").val() )
+			if( !$("#jmId").val() )
 			{
-				alert("이름을 입력해야 합니다.");
-				$("#jmName").focus();
+				alert("아이디를 입력해야 합니다.");
+				$("#jmId").focus();
 				
 				return false;
 			}
 			
-			if( !$("#jmSsn").val() )
+			if( !$("#jmPw").val() )
 			{
-				alert("주민번호를 입력해야 합니다.");
-				$("#jmSsn").focus();
+				alert("비밀번호를 입력해야 합니다.");
+				$("#jmPw").focus();
 				
 				return false;
 			}
 			
-			return true;
-		}
-		
-		
-		$("#loginPage").click(function()
-		{
-		      window.location.href = "LoginForm.jsp";
-		  
+			// memberlogin.action 요청
+			$("#loginForm").submit();
+	
 		});
-		
-		
+	
 		
 	});
 	
@@ -254,21 +236,47 @@ margin-left: 20px;
 
 }
 
+  
   </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
-      <h1>아이디찾기</h1>
-      <form class="form" id="idForm">
-        <input type="text" placeholder="이름" name="jmName" id="jmName">
-        <input type="password" placeholder="주민번호" name="jmSsn" id="jmSsn">
-        <button type="button" id="loginPage" onclick="loginPage()" >로그인페이지</button>
-        <button type="button" id="find-button">아이디찾기</button><br>
+      <h1>로그인</h1>
+      
+      <form class="form" action="memberlogin.action" id="loginForm">
+        <input type="text" placeholder="아이디" name="jmId" id="jmId">
+        <input type="password" placeholder="비밀번호" name="jmPw" id="jmPw"><br>
+        
+        <button type="button" id="join-button">회원가입</button>
+        
+        <button type="button" id="login-button">로그인</button><br>
       </form>
-		<div id="idRes"></div>
+      
+      <div class="subDiv">
+    	<form class="subForm" action="findIdForm.action">
+    		<button class="subBtn" type="submit" id="findIdBtn">아이디 찾기</button>
+    	</form>
+    	<form class="subForm" action="findPwForm.action">
+    		<button class="subBtn" type="submit" id="findPwBtn">비밀번호 재설정</button>
+    	</form>
     </div>
     </div>
+  </div>
+   <!-- <script>
+    $("#login-button").click(function(event) 
+    {
+      //event.preventDefault();
+      $('form').fadeOut(500, function() 
+      {
+        // Hide the form and update the h1 content to "로그인 성공"
+        $('.container h1').text('로그인 성공');
+        // Remove border from the container
+        $('.container').css('border', 'none');
+      });
+      $('.wrapper').addClass('form-success');
+    });
+  </script> -->
 </body>
 </html>

@@ -1,20 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-%>
-<%
-	String memSid = (String)session.getAttribute("memSid");		// 최초요청시 null
-	
-	if(memSid == null)
-	{
-		memSid = "0";
-		 session.setAttribute("memSid", memSid);
-	}
-
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -22,7 +10,7 @@
 <link rel="icon" href="./images/logo_transparent.png"/>
 
 <meta charset="UTF-8"> 
-<title>Main</title>
+<title>펫시팅</title>
 
 <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -51,15 +39,9 @@
 	<c:import url="/WEB-INF/components/MenuForm_2.jsp">
 	</c:import>
 	<section>
-	<div>
-	<c:import url="/WEB-INF/components/DefaultMainForm.jsp"></c:import>
-	</div>
-	</section>
-	<section>
-	<div>
-	<c:import url="/WEB-INF/components/MostSittingList.jsp">
-	</c:import>
-	</div>
+		
+		돌봄장소 리스트 페이지
+
 	</section>
 	<section>
 	<div>

@@ -17,6 +17,30 @@
   <meta name="author" content="" />
 
   <title>Menu</title>
+	
+  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+  
+  <script type="text/javascript">
+
+	 $().ready(function()
+	{
+		 
+		// 로그인/회원가입 페이지로 가는 function
+		$("#loginJoin").click(function()
+		{
+			//alert("확인");
+			window.location.href = "loginJoin.action";
+		});
+		
+		//로그아웃하는 function
+		$("#logOut").click(function()
+		{
+			window.location.href = "logOut.action";
+		});
+		
+	}); 
+</script>
+  
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -63,20 +87,30 @@
                   <a class="nav-link" href="service.html" >서비스 소개 </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="pet.html">대리산책 </a>
+                  <a class="nav-link" href="<%=cp %>/WalkList.action" id="walkList">대리산책 </a>
                 </li> 
                 <li class="nav-item">
-                  <a class="nav-link" href="clinic.html"> 펫시팅</a>
+                  <a class="nav-link" href="<%=cp %>/SittingList.action" id="sittingList"> 펫시팅</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="contact.html">고객지원</a>
                 </li>
-				    
-                <li class="nav-item dropdown" style="font-size: medium;">
+				
+				<c:choose>
+				<c:when test="${memSid eq '0' }">
+					<li class="nav-item dropdown" style="font-size: medium;">
+				  	<button type="button" id="loginJoin" >회원가입/로그인</button>
+					</li>
+				</c:when>
+				<c:when test=" }">
+				
+				</c:when>
+				<c:otherwise>
+					<li class="nav-item dropdown" style="font-size: medium;">
 				  <a class="nav-link dropdown-toggle pl-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="30" height="30" class="rounded-circle">
 				   
-				    <span style="font-style: italic; font-weight: lighter; color: orange;">불타는 맨발산책</span>
+				    <span style="font-style: italic; font-weight: lighter; color: orange;">${memSid }</span>
 				  </a>
 				  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				    <a class="dropdown-item" href="#">알림  
@@ -85,10 +119,11 @@
   					</a>
 				    <a class="dropdown-item" href="#">찜한 목록</a>
 				    <a class="dropdown-item" href="#">마이페이지</a>
-				    <a class="dropdown-item" href="#">로그아웃</a>
+				    <a class="dropdown-item" href="#" id="logOut">로그아웃</a>
 				  </div>
 				</li>
- 
+				</c:otherwise>
+				</c:choose>
 				  </ul>
 				 
             </div>
