@@ -29,6 +29,7 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
+
 <script type="text/javascript">
 
 	 $().ready(function(){
@@ -62,6 +63,8 @@
 	}); 
 </script>
 
+
+
 </head>
 <body>
 
@@ -70,6 +73,12 @@
 	<section>
 	<div>
 	<c:import url="/WEB-INF/components/DefaultMainForm.jsp"></c:import>
+	</div>
+	</section>
+	<section>
+	<div>
+	<c:import url="/WEB-INF/components/MostSittingList.jsp">
+	</c:import>
 	</div>
 	</section>
 	<section>
