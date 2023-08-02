@@ -1,7 +1,5 @@
 package com.act.member;
 
-import java.util.Random;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,28 +17,13 @@ public class MemberService
    public int join(HttpSession session, MemberDTO dto)
    {
 	   IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-	      
-	      Random random = new Random();
-	      int num = random.nextInt(100);
-	      String strNum = String.valueOf(num);
-	      
-	      int result = dao.add(strNum);
-	      System.out.println("MemberService 온거 확인");
-	      
-	      dto.setMemSid(strNum);
-	      dao.join(dto);
-	      
-	      session.setAttribute("memberId", dto.getJmId());
-	      
-	      return result;
-      
+	   String memSid = dao.getMemSid();		//난수 생성
+	   dto.setMemSid(memSid);					// dto에 MEM_SID 세팅
+	   dao.add(memSid);						// member 테이블에 MEM_SID insert
+	   int result = dao.join(dto);				// JOIN_MEMBER 테이블에 회원가입 데이터 INSERT
+	   
+	   return result;
    }
    
-	/*
-	 * // 랜덤 알파벳 + 숫자 난수 발생 코드 private String randomNum() { String result = "";
-	 * 
-	 * IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class); result =
-	 * dao.getRandom(); return result; }
-	 */
    
 }
