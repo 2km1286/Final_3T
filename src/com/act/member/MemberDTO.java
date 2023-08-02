@@ -3,116 +3,126 @@ package com.act.member;
 public class MemberDTO
 {
 	private int jmSid, jmGender;
-	private String memSid, jmId, jmPw, jmName, jmSsn, jmNickName, jmTel
-					, jmAddr1, jmAddr2, jmZipCode, jmImage;
-	
-	
-	public int getJmSid()
+   private String memSid, memRegistDate, jmId, jmPw, jmName, jmSsn, jmNickName, jmTel, jmAddr1, jmAddr2, jmZipCode, jmImage, randStr;
+   
+	public String getRandStr()
 	{
-		return jmSid;
+		return randStr;
 	}
-	public void setJmSid(int jmSid)
+	public void setRandStr(String randStr)
 	{
-		this.jmSid = jmSid;
+		this.randStr = randStr;
 	}
-	public int getJmGender()
-	{
-		return jmGender;
-	}
-	public void setJmGender(int jmGender)
-	{
-		this.jmGender = jmGender;
-	}
-	public String getMemSid()
-	{
-		return memSid;
-	}
-	public void setMemSid(String memSid)
-	{
-		this.memSid = memSid;
-	}
-	public String getJmId()
-	{
-		return jmId;
-	}
-	public void setJmId(String jmId)
-	{
-		this.jmId = jmId;
-	}
-	public String getJmPw()
-	{
-		return jmPw;
-	}
-	public void setJmPw(String jmPw)
-	{
-		this.jmPw = jmPw;
-	}
-	public String getJmName()
-	{
-		return jmName;
-	}
-	public void setJmName(String jmName)
-	{
-		this.jmName = jmName;
-	}
-	public String getJmSsn()
-	{
-		return jmSsn;
-	}
-	public void setJmSsn(String jmSsn)
-	{
-		this.jmSsn = jmSsn;
-	}
-	public String getJmNickName()
-	{
-		return jmNickName;
-	}
-	public void setJmNickName(String jmNickName)
-	{
-		this.jmNickName = jmNickName;
-	}
-	public String getJmTel()
-	{
-		return jmTel;
-	}
-	public void setJmTel(String jmTel)
-	{
-		this.jmTel = jmTel;
-	}
-	public String getJmAddr1()
-	{
-		return jmAddr1;
-	}
-	public void setJmAddr1(String jmAddr1)
-	{
-		this.jmAddr1 = jmAddr1;
-	}
-	public String getJmAddr2()
-	{
-		return jmAddr2;
-	}
-	public void setJmAddr2(String jmAddr2)
-	{
-		this.jmAddr2 = jmAddr2;
-	}
-	public String getJmZipCode()
-	{
-		return jmZipCode;
-	}
-	public void setJmZipCode(String jmZipCode)
-	{
-		this.jmZipCode = jmZipCode;
-	}
-	public String getJmImage()
-	{
-		return jmImage;
-	}
-	public void setJmImage(String jmImage)
-	{
-		this.jmImage = jmImage;
-	}
-	
-	
-	
-	
+   public int getJmSid()
+   {
+      return jmSid;
+   }
+   public void setJmSid(int jmSid)
+   {
+      this.jmSid = jmSid;
+   }
+   public int getJmGender()
+   {
+      return jmGender;
+   }
+   public void setJmGender(int jmGender)
+   {
+      this.jmGender = jmGender;
+   }
+   public String getMemSid()
+   {
+      return memSid;
+   }
+   public void setMemSid(String memSid)
+   {
+      this.memSid = memSid;
+   }
+   public String getMemRegistDate()
+   {
+      return memRegistDate;
+   }
+   public void setMemRegistDate(String memRegistDate)
+   {
+      this.memRegistDate = memRegistDate;
+   }
+   public String getJmId()
+   {
+      return jmId;
+   }
+   public void setJmId(String jmId)
+   {
+      this.jmId = jmId;
+   }
+   public String getJmPw()
+   {
+      return jmPw;
+   }
+   public void setJmPw(String jmPw)
+   {
+      this.jmPw = jmPw;
+   }
+   public String getJmName()
+   {
+      return jmName;
+   }
+   public void setJmName(String jmName)
+   {
+      this.jmName = jmName;
+   }
+   public String getJmSsn()
+   {
+      return jmSsn;
+   }
+   public void setJmSsn(String jmSsn)
+   {
+      this.jmSsn = jmSsn;
+   }
+   public String getJmNickName()
+   {
+      return jmNickName;
+   }
+   public void setJmNickName(String jmNickName)
+   {
+      this.jmNickName = jmNickName;
+   }
+   public String getJmTel()
+   {
+      return jmTel;
+   }
+   public void setJmTel(String jmTel)
+   {
+      this.jmTel = jmTel;
+   }
+   public String getJmAddr1()
+   {
+      return jmAddr1;
+   }
+   public void setJmAddr1(String jmAddr1)
+   {
+      this.jmAddr1 = jmAddr1;
+   }
+   public String getJmAddr2()
+   {
+      return jmAddr2;
+   }
+   public void setJmAddr2(String jmAddr2)
+   {
+      this.jmAddr2 = jmAddr2;
+   }
+   public String getJmZipCode()
+   {
+      return jmZipCode;
+   }
+   public void setJmZipCode(String jmZipCode)
+   {
+      this.jmZipCode = jmZipCode;
+   }
+   public String getjmImage()
+   {
+      return jmImage;
+   }
+   public void setjmImage(String jmImage)
+   {
+      this.jmImage = jmImage;
+   }
 }

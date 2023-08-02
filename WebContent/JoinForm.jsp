@@ -279,6 +279,7 @@ form input[name="userNick"] {
         
         <input type="text" placeholder="이름을 입력해주세요." name="jmName" id="jmName" style="width: 100%;">
         
+
         <div class="select-container">
           <label for="gender">성별 선택</label>
           <select id="jmGender" name="jmGender">
@@ -297,7 +298,8 @@ form input[name="userNick"] {
       <div class="input-container">
           <input type="text" placeholder="사용하실 닉네임을 입력해주세요." name="jmNickName" id="jmNickName">
           <button type="button" id="checkUserNickBtn">중복확인</button>
-          
+
+
         </div>
         
        <div class="input-container">
@@ -321,10 +323,11 @@ form input[name="userNick"] {
         
         
         <br />
-        <span id="err" style="display: block;"></span>
+
+        <span id="err" style="display: block;">* 필수 항목들을 모두 입력해주세요.</span>
         <br />
         
-        <button type="submit" id="join-button">회원가입</button>
+        <button type="button" id="login-button">회원가입</button>
         <button type="reset" id="reset-button">초기화</button>
       </form>
     </div>
@@ -437,6 +440,7 @@ form input[name="userNick"] {
    
 
   </script>
+
 
 </body>
 </html>

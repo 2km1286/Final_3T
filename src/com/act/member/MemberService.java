@@ -1,69 +1,85 @@
 package com.act.member;
 
-import java.util.Random;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class MemberService
 {
+
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Transactional
-	public void join(HttpSession session, MemberDTO dto)
+	// 아이디 비밀번호로 memSid 조회하기
+	public String searchMemsid(MemberDTO dto)
 	{
+		String result = "";
+		
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
-		Random random = new Random();
-		int num = random.nextInt(100);
-		String strNum = String.valueOf(num);
+		result = dao.searchMemsid(dto);
 		
-		dao.add(strNum);
-		
-		dto.setMemSid(strNum);
-		dao.join(dto);
-		
-		session.setAttribute("memberId", dto.getMemSid());
+		return result;
 		
 	}
 	
-	// 랜덤 알파벳 + 숫자 난수 발생 코드
-	/*
-	private String randomNum()
-	{	
+	// 이름, 주민번호로 아이디 찾기
+	public String idFind(MemberDTO dto)
+	{
 		String result = "";
 		
-		int leftLimit = 48;
-		int rightLimit = 122;
-		int targetStringLength = 10;
-		
-		Random random = new Random();
-		
-		result = random.ints(leftLimit, rightLimit + 1)
-						.filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
-						.limit(targetStringLength)
-						.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-						.toString();
-		
-		return result;
-	}
-	*/
-
-	public int checkId(String jmId)
-	{
-		int result = 0;
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
-		result = dao.searchId(jmId);
+		result = dao.findId(dto);
 		
 		return result;
 	}
 	
 }
+
+	// 아이디, 이름, 주민번호로 memSid 찾기 
+	public String pwFind(MemberDTO dto)
+	{
+		 String result = "";
+		
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		
+		result = dao.findPw(dto);
+		
+		return result;
+	}
+	
+	// 비밀번호 재설정
+	public int updatePw(MemberDTO dto)
+	{
+		int result = 0;
+		
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		
+		result = dao.updatePw(dto);
+		
+		return result;
+	}
+	
+	// 설명써주세
+   @Transactional
+   public int join(HttpSession session, MemberDTO dto)
+   {
+	   IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+	   String memSid = dao.getMemSid();		//난수 생성
+	   dto.setMemSid(memSid);					// dto에 MEM_SID 세팅
+	   dao.add(memSid);						// member 테이블에 MEM_SID insert
+	   int result = dao.join(dto);				// JOIN_MEMBER 테이블에 회원가입 데이터 INSERT
+	   
+	   return result;
+   }
+   
+   
+}
+

@@ -20,7 +20,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>맡겨보개</title>
+  <title>Petology</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -46,7 +46,7 @@
           <a class="navbar-brand" href="index.html">
             <img src="images/logo.png" alt="">
             <span>
-              맡겨보개
+              Petology
             </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
