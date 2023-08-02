@@ -17,11 +17,11 @@ public class MemberService
 	private SqlSession sqlSession;
 	
 	// 아이디 비밀번호로 memSid 조회하기
-	public String searchMemsid(JoinMemberDTO dto)
+	public String searchMemsid(MemberDTO dto)
 	{
 		String result = "";
 		
-		IJoinMemberDAO dao = sqlSession.getMapper(IJoinMemberDAO.class);
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
 		result = dao.searchMemsid(dto);
 		
@@ -30,11 +30,11 @@ public class MemberService
 	}
 	
 	// 이름, 주민번호로 아이디 찾기
-	public String idFind(JoinMemberDTO dto)
+	public String idFind(MemberDTO dto)
 	{
 		String result = "";
 		
-		IJoinMemberDAO dao = sqlSession.getMapper(IJoinMemberDAO.class);
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
 		result = dao.findId(dto);
 		
@@ -42,11 +42,11 @@ public class MemberService
 	}
 	
 	// 아이디, 이름, 주민번호로 memSid 찾기 
-	public String pwFind(JoinMemberDTO dto)
+	public String pwFind(MemberDTO dto)
 	{
 		 String result = "";
 		
-		IJoinMemberDAO dao = sqlSession.getMapper(IJoinMemberDAO.class);
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
 		result = dao.findPw(dto);
 		
@@ -54,23 +54,18 @@ public class MemberService
 	}
 	
 	// 비밀번호 재설정
-	public int updatePw(JoinMemberDTO dto)
+	public int updatePw(MemberDTO dto)
 	{
 		int result = 0;
 		
-		IJoinMemberDAO dao = sqlSession.getMapper(IJoinMemberDAO.class);
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
 		result = dao.updatePw(dto);
 		
 		return result;
 	}
 	
-	
-	
-	
-	
-}
-
+	// 설명써주세
    @Transactional
    public int join(HttpSession session, MemberDTO dto)
    {

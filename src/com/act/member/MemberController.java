@@ -63,7 +63,7 @@ public class MemberController
 	// 로그인 성공/실패
 
 	@RequestMapping("/memberlogin.action")
-	public String loginCount(JoinMemberDTO dto, HttpSession session)
+	public String loginCount(MemberDTO dto, HttpSession session)
 	{
 		String view = "";
 
@@ -82,7 +82,7 @@ public class MemberController
 		{
 			
 			session.setAttribute("memSid", result);
-			view = "/WEB-INF/views/MainPage.jsp";
+			view = "/main.action";
 		}
 
 		return view;
@@ -106,7 +106,7 @@ public class MemberController
 		
 		String result = "";
 		
-		JoinMemberDTO dto = new JoinMemberDTO();
+		MemberDTO dto = new MemberDTO();
 		dto.setJmName(request.getParameter("jmName"));
 		dto.setJmSsn(request.getParameter("jmSsn"));
 		
@@ -140,7 +140,7 @@ public class MemberController
 	
 	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사
 	@RequestMapping("/pwFind.action")
-	public String pwFind(JoinMemberDTO dto, HttpSession session)
+	public String pwFind(MemberDTO dto, HttpSession session)
 	{
 		String view="";
 		
@@ -166,7 +166,7 @@ public class MemberController
 	
 	// 비밀번호 재설정하기
 	@RequestMapping("/updatePw.action")
-	public String updatePw(JoinMemberDTO dto, HttpSession session)
+	public String updatePw(MemberDTO dto, HttpSession session)
 	{
 		String view="";
 		
@@ -192,7 +192,7 @@ public class MemberController
 	public String join(HttpSession session, MemberDTO dto)
 	{
 		String result = "";
-		int num = memberService.join(session, dto);
+		int num = MemberService.join(session, dto);
 		
 		
 		if(num!=1)
@@ -204,12 +204,6 @@ public class MemberController
 		return result;
 	}
 	
-	@RequestMapping("/main.action")
-	public String main()
-	{
-		String result = "/WEB-INF/views/MainPage.jsp";
-		return result;
-	}
 	
 
 }
