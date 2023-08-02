@@ -170,7 +170,7 @@ form button:hover {
   </div>
    <script>
     $("#login-button").click(function(event) {
-      event.preventDefault();
+      //event.preventDefault();						//-- submit 안되게 막는것?
       $('form').fadeOut(500, function() {
         // Hide the form and update the h1 content to "로그인 성공"
         $('.container h1').text('로그인 성공');
