@@ -3,8 +3,16 @@ package com.act.member;
 public class MemberDTO
 {
 	private int jmSid, jmGender;
-   private String memSid, memRegistDate, jmId, jmPw, jmName, jmSsn, jmNickName, jmTel, jmAddr1, jmAddr2, jmZipCode, jmImage;
+   private String memSid, memRegistDate, jmId, jmPw, jmName, jmSsn, jmNickName, jmTel, jmAddr1, jmAddr2, jmZipCode, jmMage, randStr;
    
+	public String getRandStr()
+	{
+		return randStr;
+	}
+	public void setRandStr(String randStr)
+	{
+		this.randStr = randStr;
+	}
    public int getJmSid()
    {
       return jmSid;
@@ -109,13 +117,13 @@ public class MemberDTO
    {
       this.jmZipCode = jmZipCode;
    }
-   public String getJmImage()
+   public String getJmMage()
    {
-      return jmImage;
+      return jmMage;
    }
-   public void setJmImage(String jmImage)
+   public void setJmMage(String jmMage)
    {
-      this.jmImage = jmImage;
+      this.jmMage = jmMage;
    }
 
 }
