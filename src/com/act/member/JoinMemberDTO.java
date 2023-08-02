@@ -19,7 +19,7 @@ JM_IMAGE
 public class JoinMemberDTO
 {
 	private int jmSid, jmGender;	// 조인멤버시드, 조인멤버성별
-	private String memSid, jmId, jmPw, jmName, jmSsn, jmNickname, jmTel, jmAddr1, jmAddr2, jmZipcode, jmImage;
+	private String memSid, jmId, jmPw, jmName, jmSsn, jmNickname, jmTel, jmAddr1, jmAddr2, jmZipcode, jmMage;
 	public int getJmSid()
 	{
 		return jmSid;
@@ -116,14 +116,15 @@ public class JoinMemberDTO
 	{
 		this.jmZipcode = jmZipcode;
 	}
-	public String getJmImage()
+	public String getJmMage()
 	{
-		return jmImage;
+		return jmMage;
 	}
-	public void setJmImage(String jmImage)
+	public void setJmMage(String jmMage)
 	{
-		this.jmImage = jmImage;
-	}      
+		this.jmMage = jmMage;
+	}
+	
 	
 	
 
