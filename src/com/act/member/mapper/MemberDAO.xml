@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.act.member.IMemberDAO">
+	
+	<insert id="add">
+		INSERT INTO MEMBER(MEM_SID)
+		VALUES(#{memSid})
+	</insert>
+	
+	<insert id="join">
+		INSERT INTO JOIN_MEMBER(JM_SID, MEM_SID, JM_ID, JM_PW, JM_NAME, JM_SSN, JM_GENDER, JM_NICKNAME
+							  , JM_TEL, JM_ADDR1, JM_ADDR2, JM_ZIPCODE, JM_IMAGE)
+		VALUES(SEQ_JM.NEXTVAL, #{memSid}, #{jmId}, #{jmPw}, #{jmName}, #{jmSsn}, #{jmGender}
+		, #{jmNickName}, #{jmTel}, #{jmAddr1}, #{jmAddr2}, #{jmImage})
+	</insert>
+	
+	<select id="searchId" parameterType="String" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM JOIN_MEMBER
+		WHERE JM_ID = #{jmId}
+	</select>
+	
+	<select id="searchNick" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM JOIN_MEMBER
+		WHERE JM_NICKNAME = #{jmNickName}
+	</select>
+</mapper>

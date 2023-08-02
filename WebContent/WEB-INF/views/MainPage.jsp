@@ -29,7 +29,7 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 	$().ready(function(){
 		
@@ -60,7 +60,7 @@
 		});
 		
 	});
-</script>
+</script> -->
 
 </head>
 <body>
