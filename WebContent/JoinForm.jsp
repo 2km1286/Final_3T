@@ -292,10 +292,16 @@ form input[name="userNick"] {
         <input type="file" name="jmImage" id="jmImage" accept="image/*" style="display: block;">
         
    
-        
+        <div class="input-container">
         <input type="password" placeholder="사용하실 비밀번호를 입력해주세요." name="jmPw" id="jmPw" style="width: 100%;">
-        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요." name="userPwCheck" id="userPwCheck" style="width: 100%;">
-      <div class="input-container">
+        </div>
+        
+        <div class="input-container">
+        <input type="password" placeholder="비밀번호를 한번 더 입력해주세요."name="userPwCheck" id="userPwCheck" style="width: 100%;" onkeyup="checkPwd()">
+        <span id="pwdConfirm"></span> <!-- 비밀번호 재확인시 위의 입력값과 다르다면 다시 설정하도록 -->
+        </div>
+        
+        <div class="input-container">
           <input type="text" placeholder="사용하실 닉네임을 입력해주세요." name="jmNickName" id="jmNickName">
           <button type="button" id="checkUserNickBtn">중복확인</button>
           
@@ -417,7 +423,6 @@ form input[name="userNick"] {
 					});
 					
 					
-					
 				    $("#login-button").click(function(event) 
 				    {
 				        if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#userPwCheck").val()=="" || $("#jmName").val()=="" || 
@@ -433,6 +438,39 @@ form input[name="userNick"] {
 				 
 					
 				});
+	
+			function checkPwd()
+			{
+				var pw1 = $("#jmPw").val();
+				var pw2 = $("#userPwCheck").val();
+				
+				
+				if(pw1 != "" && pw1 == pw2)
+				{
+					$("#pwdConfirm").html("비밀번호가 일치합니다.");	
+				}
+				else
+				{
+					$("#pwdConfirm").html("비밀번호가 일치하지 않습니다.");		
+				}
+				
+				validationPassword();
+			}
+			
+			function validationPassword()
+			{
+				var pw1 = $("#jmPw").val();
+				var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+				
+				if(!re.test(pw1))
+				{
+					alert("비밀번호는 숫자, 소문자, 대문자를 포함해 8자리 이상이어야 합니다.");
+					return false;
+				}
+				
+				return true;
+				
+			}
 
 </script>
 
