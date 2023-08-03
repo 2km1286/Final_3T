@@ -78,6 +78,36 @@ h2 span {
   background-color: #ff0000;
 }
 
+ /* 버튼 스타일 */
+.radio-button {
+    display: inline-block;
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+/* 선택된 라디오 버튼의 스타일 */
+.radio-button.selected {
+    background-color: #ff0000;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+
+/* 모든 p 태그 글자 폰트 적용 */
+p {
+  font-family: "Jua";
+  font-weight: Regular;
+}
+
+/* .btn-box 클래스 글자 폰트 적용 */
+.btn-box {
+  font-family: "Jua";
+}
 </style>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -87,123 +117,96 @@ h2 span {
 	<c:import url="/WEB-INF/components/MenuForm_2.jsp">
 	</c:import>
 	<section>
-	      <div class="py-5 bg-light">
-	     <div class="container">
-	       <!-- Selection Bar -->
-	       <div class="selection-bar">
-	         <label for="location">지역:</label>
-	         <select id="location">
-	         	<!-- memSid가 있으면 addr1 에 따라서 지역 checked  -->
-	           <option value="seoul">서울</option>      
-	           <option value="busan">부산</option>
-	           <!-- Add more options as needed -->
-	         </select>
-				
-	           <label for="datepicker">날짜 선택:</label>
-	        <input type="text" id="datepicker" class="custom-textbox" readonly>
-	
-	
-	         <label for="time">시간:</label>
-	         <input type="time" id="time">
-	
-	         <label for="dogs">견수:</label>
-	         <input type="number" id="dogs" min="1" max="5">
-	
-	         <button onclick="filterList()">적용</button>
-	       </div>
-	    
-	    
-	    
-	     <h2>대리산책 공고글 </h2>
-	     <hr>
-	      <div class="row">
-	        <div class="col-md-4">
-	          <div class="card">
-	            <div class="card-block">
-	            <span class="card-title">마스터 산책러</span><br>
-	            <img alt="" src="images/profilEx.png"  style="width: 120px;">
-	              <h4 class="card-title">멍뭉 마스터</h4>
-	              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다 !</h6>
-	              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-	              <a href="#" class="card-link">link</a>
-	              <a href="#" class="card-link">Second link</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-4">
-	          <div class="card">
-	            <div class="card-block">
-	            <span class="card-title">프로 산책러</span><br>
-	            <img alt="" src="images/profilEx.png"  style="width: 120px;">
-	              <h4 class="card-title">섬세하나</h4>
-	              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다 !</h6>
-	              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-	              <a href="#" class="card-link">link</a>
-	              <a href="#" class="card-link">Second link</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-4">
-	          <div class="card">
-	            <div class="card-block">
-	            <span class="card-title">프로 산책러</span><br>
-	            <img alt="" src="images/profilEx.png"  style="width: 120px;">
-	              <h4 class="card-title">달려라구찌</h4>
-	              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다 !</h6>
-	              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-	              <a href="#" class="card-link">link</a>
-	              <a href="#" class="card-link">Second link</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-	      </div><br><br>	
-	     <div class="container">
-	      <div class="row">
-	        <div class="col-md-4">
-	          <div class="card">
-	            <div class="card-block">
-	            <span class="card-title">초보 산책러</span><br>
-	            <img alt="" src="images/profilEx.png"  style="width: 120px;">
-	              <h4 class="card-title">우사인볼트</h4>
-	              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다 !</h6>
-	              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-	              <a href="#" class="card-link">link</a>
-	              <a href="#" class="card-link">Second link</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-4">
-	          <div class="card">
-	            <div class="card-block">
-	            <span class="card-title">마스터 산책러</span><br>
-	            <img alt="" src="images/profilEx.png"  style="width: 120px;">
-	              <h4 class="card-title">철인3종경기</h4>
-	              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다 !</h6>
-	              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-	              <a href="#" class="card-link">link</a>
-	              <a href="#" class="card-link">Second link</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-4">
-	          <div class="card">
-	            <div class="card-block">
-	            <span class="card-title">초보 산책러</span><br>
-	            <img alt="" src="images/profilEx.png"  style="width: 120px;">
-	              <h4 class="card-title">느릿거북이</h4>
-	              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다 !</h6>
-	              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-	              <a href="#" class="card-link">link</a>
-	              <a href="#" class="card-link">Second link</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-	      <hr>
-	      </div>
-	    
-	  </div>
+		<div class="container py-5 bg-light">
+		  <!-- Selection Bar -->
+		  <div class="selection-bar mb-4">
+		    <label for="location">지역:</label>
+		    <select id="location" class="custom-textbox">
+		      <option value="seoul">서울</option>
+		      <option value="busan">부산</option>
+		      <!-- Add more options as needed -->
+		    </select>
+		
+		    <label for="datepicker">날짜 선택:</label>
+		    <input type="text" id="datepicker" class="custom-textbox" readonly>
+		
+		    <label for="time">시간:</label>
+		    <input type="time" id="time" class="custom-textbox">
+		
+		    <label for="dogs">견수:</label>
+		    <input type="number" id="dogs" class="custom-textbox" min="1" max="5">
+		
+		    <button class="btn btn-danger" onclick="filterList()">적용</button>
+		  </div>
+		
+		  <div class="mb-4">
+		    <!-- 버튼 모양의 복수 선택 라디오 버튼 -->
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그1</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그2</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그3</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그4</button>
+		  </div>
+		
+		     <h2>대리산책 공고글</h2>
+		    <hr>
+		    <div id="cardContainer" class="row">
+		      <!-- 카드 데이터를 미리 선언 -->
+		      <c:set var="cards">
+		        <div class="col-md-4">
+		          <div class="card">
+		            <img src="images/profilEx.png" alt="" class="card-img-top" style="width: 120px;">
+		            <div class="card-body">
+		              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
+		              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6>
+		            </div>
+		          </div>
+		        </div>
+		      </c:set>
+		
+		      <!-- 기본 카드 9개 표시 -->
+		      <c:forEach var="i" begin="1" end="9">
+		        <c:if test="${i % 3 == 1}">
+		          <div class="row">
+		        </c:if>
+		        <c:out value="${cards}" escapeXml="false" />
+		        <c:if test="${i % 3 == 0 || i == 9}">
+		          </div>
+		        </c:if>
+		      </c:forEach>
+		    </div>
+		  </div>
+		
+		  <script>
+		    // 무한 스크롤 함수
+		    function infiniteScroll() {
+		      // 현재 스크롤 위치
+		      var scrollTop = $(window).scrollTop();
+		      // 화면의 높이
+		      var windowHeight = $(window).height();
+		      // 문서 전체 높이
+		      var documentHeight = $(document).height();
+		
+		      // 스크롤이 문서 맨 아래에 도달하면 새로운 카드를 추가
+		      if (scrollTop + windowHeight >= documentHeight) {
+		        // 새로운 카드를 추가하는 작업을 여기에 작성합니다.
+		        // 예시로 9개의 기존 카드를 복사하여 추가하는 코드를 작성합니다.
+		        var cards = `<c:out value="${cards}" escapeXml="false" />`;
+		        for (var i = 0; i < 9; i++) {
+		          $("#cardContainer").append(cards);
+		        }
+		      }
+		    }
+		
+		    // 스크롤 이벤트를 감지하여 무한 스크롤 함수 호출
+		    $(window).on("scroll", infiniteScroll);
+		
+		    // 초기에 한번 스크롤 이벤트를 발생시키기 위해 호출
+		    infiniteScroll();
+		  </script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+		<script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	</section>
 	<section>
 	<div>
@@ -222,7 +225,7 @@ h2 span {
 	    });
 	  </script>
 	  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 	  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
-	  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+	   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </html>
