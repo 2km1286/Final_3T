@@ -10,7 +10,7 @@
 <head>
 <link rel="icon" href="./images/logo_transparent.png"/>
 <meta charset="UTF-8"> 
-<title>MyPageNoticeForm</title>
+<title>마이페이지_대리산책</title>
 
 <style type="text/css">
 
@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-md-6 noticeAll">
 					
-					<h3><span class="badge">알림</span></h3>
+					<h3><span class="badge">대리산책으로 바꼈나?</span></h3>
 					
 						<div class="card noticeCard">
 						  <div class="card-header">

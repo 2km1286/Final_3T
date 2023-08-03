@@ -245,7 +245,7 @@ public class MemberController
 			return view;
 		}
 		
-		// 마이페이지로 가기, 디폴트 알림창
+		// 메뉴바를 통해 마이페이지로 가기, 디폴트 알림창
 		@RequestMapping("/myPage.action")
 		public String myPage()
 		{
@@ -254,18 +254,38 @@ public class MemberController
 			return result;
 		}
 		
-		// 마이페이지 펫시팅
+		// 마이페이지 펫시팅. AJAX로 처리.
+		@RequestMapping("/myPageNotice.action")
+		public String myPageNotice(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageNoticeForm.jsp";
+			return result;
+		}
+		
+		
+		// 마이페이지 펫시팅. AJAX로 처리.
 		@RequestMapping("/myPageSitting.action")
 		public String myPageSitting(HttpServletRequest request)
 		{
 			String result = "";
-			
-			String url = "<c:import url=\\\"/WEB-INF/components/MyPageSittingForm.jsp\\\"></c:import>";
-			request.setAttribute("url", url);
-			
-			result = "/WEB-INF/ajax/MyPageSitting.jsp";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageSittingForm.jsp";
 			return result;
 		}
+		
+		// 마이페이지 대리산책. AJAX로 처리.
+		@RequestMapping("/myPageWalk.action")
+		public String myPageWalk(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageWalkForm.jsp";
+			return result;
+		}
+		
+		
 		
 		/*
 		 * @RequestMapping("/walktest.action") public String walktest() { String

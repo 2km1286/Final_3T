@@ -32,12 +32,29 @@
 
 	$(function()
 	{
+		// 알림창
 		$("#myPageNotice").click(function()
 		{
-			
+			$.ajax(
+			{
+				type:"POST"
+				, url:"myPageNotice.action"
+				, async:true
+				, success:function(data)
+				{
+					$("#myPageMain").html(data);
+										
+				}
+				, error:function(e)
+				{
+					alert(e.responseText);
+				}
+				
+			});	
 		});
 		
 		
+		// 펫시팅
 		$("#myPageSitting").click(function()
 		{
 			$.ajax(
@@ -57,6 +74,32 @@
 				
 			});	
 		});
+		
+		
+		// 대리산책
+		$("#myPageWalk").click(function()
+		{
+			$.ajax(
+			{
+				type:"POST"
+				, url:"myPageWalk.action"
+				, async:true
+				, success:function(data)
+				{
+					$("#myPageMain").html(data);
+										
+				}
+				, error:function(e)
+				{
+					alert(e.responseText);
+				}
+				
+			});	
+		});
+		
+		
+		
+		
 	});
 
 </script>
@@ -154,15 +197,13 @@
 		</div>
 		<div class="col-md-2 mypageSidevar"> <!-- 마이페이지 사이드바 -->
 			<div class="list-group list-group-light">
-			  <button type="button" class="list-group-item list-group-item-action px-3 border-0 active"
-			  						id="myPageNotice">
+			  <button type="button" id="myPageNotice" class="list-group-item list-group-item-action px-3 border-0">
 			    알림창
 			  </button>
-			  <button type="button" class="list-group-item list-group-item-action px-3 border-0"
-			  						id="myPageSitting">
+			  <button type="button" id="myPageSitting" class="list-group-item list-group-item-action px-3 border-0" >
 			    펫시팅
 			  </button>
-			  <button type="button" class="list-group-item list-group-item-action px-3 border-0">
+			  <button type="button" id="myPageWalk" class="list-group-item list-group-item-action px-3 border-0">
 			    대리산책
 			  </button>
 			  <button type="button" class="list-group-item list-group-item-action px-3 border-0">
