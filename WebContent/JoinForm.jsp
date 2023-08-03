@@ -316,16 +316,16 @@ form input[name="userNick"] {
         
         
         <br />
-        <span id="err" style="display: block;">* 필수 항목들을 모두 입력해주세요.</span>
+        <span id="err" style="display: none;">* 필수 항목들을 모두 입력해주세요.</span>
         <br />
         
-        <button type="button" id="login-button">회원가입</button>
+        <button type="button" id="join-button">회원가입</button>
         <button type="reset" id="reset-button">초기화</button>
       </form>
     </div>
   </div>
    <script>
-    $("#login-button").click(function(event) 
+    $("#join-button").click(function(event) 
     {
     	 if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#userPwCheck").val()=="" || $("#jmName").val()=="" || 
        		  $("#jmSsn").val()=="" || $("#jmGen").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
