@@ -4,54 +4,64 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%
+	String memSid = (String)session.getAttribute("memSid");		// 최초요청시 "0", 등록된 정보 없을 시 "-1"
+	if( memSid.equals("-1") )
+	{
+		out.println("<script>alert('등록된 정보가 없습니다. ') </script>");
+		session.removeAttribute("memSid");
+	}
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset='UTF-8'>
-<title>비밀번호 재설정</title>
+<title>로그인</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <script type="text/javascript">
 
-		$(function()
+	$(function()
+	{	
+		// 회원가입 폼 페이지로 가기
+		$("#join-button").click(function()
 		{
-			$("#pw-button").click(function()
-			{
-				if( !$("#jmPw").val() )
-				{
-					alert("새 비밀번호를 입력해야 합니다.");
-					$("#jmPw").focus();
-					
-					return false;
-				}
-				
-				if( !$("#jmPw2").val() )
-				{
-					alert("새 비밀번호를 다시 입력해야 합니다.");
-					$("#jmPw2").focus();
-					
-					return false;
-				}
-				
-				if( $("#jmPw").val() != $("#jmPw2").val() )
-				{
-					alert("입력하신 비밀번호가 일치하지 않습니다.");
-					$("#jmPw2").focus();
-					
-					return false;
-				}
-				
-				alert("비밀번호를 변경했습니다. ");
-				
-				return true;
-			});
+			window.location.href = "joinForm.action";
 		});
-
-
-
+		
+		
+		// 로그인 버튼 눌렀을 때
+		$("#login-button").click(function()
+		{
+			if( !$("#jmId").val() )
+			{
+				alert("아이디를 입력해야 합니다.");
+				$("#jmId").focus();
+				
+				return false;
+			}
+			
+			if( !$("#jmPw").val() )
+			{
+				alert("비밀번호를 입력해야 합니다.");
+				$("#jmPw").focus();
+				
+				return false;
+			}
+			
+			// memberlogin.action 요청
+			$("#loginForm").submit();
+	
+		});
+	
+		
+	});
+	
 
 
 </script>
+
 
 <style>
 * {
@@ -226,8 +236,6 @@ margin-left: 20px;
 
 }
 
-#pw-button { width: 200px;}
-
   
   </style>
 </head>
@@ -235,14 +243,41 @@ margin-left: 20px;
   <div class="wrapper">
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
-      <h1>비밀번호 재설정</h1>
-      <form class="form" action="updatePw.action">
-        <input type="text" placeholder="새 비밀번호" name="jmPw" id="jmPw">
-        <input type="text" placeholder="새 비밀번호 다시 입력" name="jmPw2" id="jmPw2">
-        <input type="hidden" name="memSid" id="memSid" value="${memSid }">
-        <button type="submit" id="pw-button">비밀번호 재설정</button><br>
+      <h1>로그인</h1>
+      
+      <form class="form" action="memberlogin.action" id="loginForm">
+        <input type="text" placeholder="아이디" name="jmId" id="jmId">
+        <input type="password" placeholder="비밀번호" name="jmPw" id="jmPw"><br>
+        
+        <button type="button" id="join-button">회원가입</button>
+        
+        <button type="button" id="login-button">로그인</button><br>
       </form>
+      
+      <div class="subDiv">
+    	<form class="subForm" action="findIdForm.action">
+    		<button class="subBtn" type="submit" id="findIdBtn">아이디 찾기</button>
+    	</form>
+    	<form class="subForm" action="findPwForm.action">
+    		<button class="subBtn" type="submit" id="findPwBtn">비밀번호 재설정</button>
+    	</form>
+    </div>
     </div>
   </div>
+
+   <!-- <script>
+    $("#login-button").click(function(event) 
+    {
+      //event.preventDefault();
+      $('form').fadeOut(500, function() 
+      {
+        // Hide the form and update the h1 content to "로그인 성공"
+        $('.container h1').text('로그인 성공');
+        // Remove border from the container
+        $('.container').css('border', 'none');
+      });
+      $('.wrapper').addClass('form-success');
+    });
+  </script> -->
 </body>
 </html>

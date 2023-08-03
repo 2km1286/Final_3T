@@ -8,8 +8,9 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-<title>로그인폼</title>
+<title>회원가입</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 <style>
 * {
   box-sizing: border-box;
@@ -267,14 +268,19 @@ form input[name="userNick"] {
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>회원가입</h1>
       
-      <form class="form" action="join.action" method="post">
+      <form class="form" action="join.action" method="post" id="joinForm">
          <div class="input-container">
           <input type="text" placeholder="사용하실 아이디를 입력해주세요." name="jmId" id="jmId">
           <button type="button" id="checkUserIdBtn">중복확인</button>
+       
+        
+          <span id="result"></span><!-- 중복 일때 뿌려줌 -->
+       
         </div>
+        
         <input type="text" placeholder="이름을 입력해주세요." name="jmName" id="jmName" style="width: 100%;">
         
-        
+
         <div class="select-container">
           <label for="gender">성별 선택</label>
           <select id="jmGender" name="jmGender">
@@ -293,6 +299,8 @@ form input[name="userNick"] {
       <div class="input-container">
           <input type="text" placeholder="사용하실 닉네임을 입력해주세요." name="jmNickName" id="jmNickName">
           <button type="button" id="checkUserNickBtn">중복확인</button>
+          
+          <span id="resultNick"></span><!-- 닉네임 중복 일때 뿌려줌 -->
         </div>
         
        <div class="input-container">
@@ -316,27 +324,119 @@ form input[name="userNick"] {
         
         
         <br />
-        <span id="err" style="display: block;">* 필수 항목들을 모두 입력해주세요.</span>
+
+        <span id="err" style="display: none;">* 필수 항목들을 모두 입력해주세요.</span>
         <br />
         
-        <button type="button" id="login-button">회원가입</button>
+        <button type="button" id="join-button">회원가입</button>
         <button type="reset" id="reset-button">초기화</button>
       </form>
     </div>
   </div>
-   <script>
-    $("#login-button").click(function(event) 
-    {
-    	 if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#userPwCheck").val()=="" || $("#jmName").val()=="" || 
-       		  $("#jmSsn").val()=="" || $("#jmGen").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
-       		  $("#jmAddr1").val()=="" || $("#jmAddr2").val()=="" || $("#jmZipCode").val()=="")
+  
+   <script type="text/javascript">
+   
+   $(function()
          {
-       	  $("#err").html("모두 입력해주세요").css("display", "inline");
-       	  return;
-         }
-         
-         $(".form").submit();
-    });
+            
+		    $("#join-button").click(function(event) 
+		    {
+		        if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#userPwCheck").val()=="" || $("#jmName").val()=="" || 
+		               $("#jmSsn").val()=="" || $("#jmGen").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
+		               $("#jmAddr1").val()=="" || $("#jmAddr2").val()=="" || $("#jmZipCode").val()=="")
+		         {
+		            $("#err").html("모두 입력해주세요").css("display", "inline");
+		            return;
+		         }
+		         
+		         $(".form").submit();
+		    });
+	   
+	   
+            $("#checkUserIdBtn").click(function()
+            {
+               if ( $("#jmId").val() != "") 
+               {
+                  var params = "jmId=" + $("#jmId").val();
+                  
+                  
+                  /* jQuery로 ajax 처리하기 */
+                  $.ajax({
+                     
+                     type:"POST"
+                     , url:"idDupli.action"
+                     , data:params
+                     , datayType : "json"
+                     , success : function(jsonObj)
+                     {
+                        if(jsonObj == 0) 
+                        {
+                           $("#result").html("사용 가능한 아이디입니다.");   
+                        }
+                        else
+                        {
+                           $("#result").html("이미 사용중인 아이디입니다.");   
+                        }
+                        
+                        
+                     }, error : function(e)
+                        {
+                           alert(e.responseText);
+                        }
+                     
+                     });
+                  }
+                  else 
+                  {
+                     $("#result").html("아이디를 입력해주세요.");   
+                  }
+               });
+            
+               
+               $("#checkUserNickBtn").click(function()
+               {
+                  if ( $("#jmNickName").val() != "") 
+                  {
+                     var params = "jmNickName=" + $("#jmNickName").val();
+                     
+                     $.ajax({
+                        
+                        type:"POST"
+                        , url:"nickDupli.action"
+                        , data:params
+                        , datayType : "json"
+                        , success : function(jsonObj)
+                        {
+                           if(jsonObj == 0) 
+                           {
+                              $("#resultNick").html("사용 가능한 닉네임입니다.");   
+                           }
+                           else
+                           {
+                              $("#resultNick").html("이미 사용중인 닉네임입니다.");   
+                           }
+                           
+                           
+                        }, error : function(e)
+                        {
+                              alert(e.responseText);
+                        }
+                        
+                        });
+                  
+                  } else 
+                  {
+                     $("#resultNick").html("닉네임을 입력해주세요.");   
+                  }
+                  
+               });
+               
+            });
+            
+      
+   
   </script>
+
+
 </body>
 </html>
