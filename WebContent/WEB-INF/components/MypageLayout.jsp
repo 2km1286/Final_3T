@@ -74,16 +74,13 @@
 </head>
 <body>
 	<div class="row all">
-		<div class="col-md-10 mypageMain"> <!-- component 가 들어갈 곳 -->
-			
-			<c:import url="/WEB-INF/components/MPSittingPlaceForm.jsp"></c:import>
-			<%-- <c:import url="/WEB-INF/components/MPSittingPlaceInsertForm.jsp"></c:import> --%>
-								
-		</div> <!-- component 가 들어갈 곳 끝 -->
+		<div class="col-md-10 mypageMain"> <!-- 마이페이지 메인 -->
+			<!-- 마이페이지 첫 요청시 디폴트 알림창 -->
+			<c:import url="/WEB-INF/components/MypageNoticeForm.jsp"></c:import>
+		</div>
 		<div class="col-md-2 mypagemenu"> <!-- 마이페이지 사이드바 -->
 			<div class="list-group list-group-light">
-			  <button type="button" class="list-group-item list-group-item-action px-3 border-0 active"
-			    aria-current="true">
+			  <button type="button" class="list-group-item list-group-item-action px-3 border-0">
 			    알림창
 			  </button>
 			  <button type="button" class="list-group-item list-group-item-action px-3 border-0">

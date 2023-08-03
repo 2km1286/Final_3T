@@ -43,7 +43,7 @@
 			
 			$("#findPw").submit();
 			var result = <%=(String)session.getAttribute("result")%>;
-			if ( result=="0" )
+			if ( result == "0" )
 			{
 				alert("등록된 정보가 없습니다.");
 			}
