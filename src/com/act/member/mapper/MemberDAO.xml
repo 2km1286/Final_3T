@@ -39,6 +39,19 @@
 		FROM DUAL
 	</select>
 	
+	<select id="searchId" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM JOIN_MEMBER
+		WHERE JM_ID = #{jmId,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="searchNick" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM JOIN_MEMBER
+		WHERE JM_NICKNAME = #{jmNickName}
+	</select>
+	
+	
 	<update id="updatePw">
 		UPDATE JOIN_MEMBER
 		SET JM_PW = CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw})

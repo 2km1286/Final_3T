@@ -24,4 +24,10 @@ public interface IMemberDAO
 	
 	// 비밀번호 재설정하기
 	public int updatePw(MemberDTO dto);
+	
+	// 아이디 중복 확인
+	public int searchId(String jmId);
+	
+	// 닉네임 중복 확인
+	public int searchNick(String jmNickName);
 }
