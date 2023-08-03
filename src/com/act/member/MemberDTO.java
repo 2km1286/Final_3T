@@ -125,5 +125,4 @@ public class MemberDTO
    {
       this.jmImage = jmImage;
    }
-
 }
