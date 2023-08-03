@@ -246,7 +246,7 @@ public class MemberController
 		}
 		
 		// 마이페이지로 가기
-		@RequestMapping("/mypage.action")
+		@RequestMapping("/myPage.action")
 		public String mypage()
 		{
 			String result = "";
@@ -254,28 +254,25 @@ public class MemberController
 			return result;
 		}
 				
-		
-		@RequestMapping("/walktest.action") public String walktest() { String
-		result="";
-		
-		result="/WEB-INF/views/WalkTestPage.jsp";
-		
-		return result; }
-		
-		@RequestMapping("/result.action") public String result() { String result =
-		"";
-		
-		result = "/WEB-INF/views/ResultPage.jsp";
-		
-		return result; }
-		
-		
-		@RequestMapping("/mpspinsert.action") public String mpspinsert() { String
-		result = ""; result = "/WEB-INF/views/Mypage.jsp"; return result; }
-		
-		@RequestMapping("/recommend.action") public String recommend() { String
-		result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
-	
+		/*
+		 * @RequestMapping("/walktest.action") public String walktest() { String
+		 * result="";
+		 * 
+		 * result="/WEB-INF/views/WalkTestPage.jsp";
+		 * 
+		 * return result; }
+		 * 
+		 * @RequestMapping("/result.action") public String result() { String result =
+		 * "";
+		 * 
+		 * result = "/WEB-INF/views/ResultPage.jsp";
+		 * 
+		 * return result; }
+		 * 
+		 * 
+		 * @RequestMapping("/recommend.action") public String recommend() { String
+		 * result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
+		 */
 	
 
 }

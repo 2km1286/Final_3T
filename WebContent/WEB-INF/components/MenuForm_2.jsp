@@ -59,7 +59,7 @@
 		// 마이페이지로 가는 function
 		$("#myPage").click(function()
 		{
-			window.location.href = "mypage.action";
+			window.location.href = "myPage.action";
 		});
 		
 		
