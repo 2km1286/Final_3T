@@ -324,7 +324,7 @@ form input[name="userNick"] {
         
         <br />
 
-        <span id="err" style="display: block;">* 필수 항목들을 모두 입력해주세요.</span>
+        <span id="err" style="display: none;">* 필수 항목들을 모두 입력해주세요.</span>
         <br />
         
         <button type="button" id="login-button">회원가입</button>
@@ -416,11 +416,25 @@ form input[name="userNick"] {
 						
 					});
 					
+					
+					
+				    $("#login-button").click(function(event) 
+				    {
+				        if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#userPwCheck").val()=="" || $("#jmName").val()=="" || 
+				               $("#jmSsn").val()=="" || $("#jmGen").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
+				               $("#jmAddr1").val()=="" || $("#jmAddr2").val()=="" || $("#jmZipCode").val()=="")
+				         {
+				            $("#err").html("모두 입력해주세요").css("display", "inline");
+				            return;
+				         }
+				         
+				         $(".form").submit();
+				    });
+				 
+					
 				});
-				
-		
-   
-  </script>
+
+</script>
 
 
 </body>
