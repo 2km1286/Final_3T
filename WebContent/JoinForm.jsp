@@ -298,8 +298,8 @@ form input[name="userNick"] {
       <div class="input-container">
           <input type="text" placeholder="사용하실 닉네임을 입력해주세요." name="jmNickName" id="jmNickName">
           <button type="button" id="checkUserNickBtn">중복확인</button>
-
-
+          
+          <span id="resultNick"></span><!-- 닉네임 중복 일때 뿌려줌 -->
         </div>
         
        <div class="input-container">
@@ -334,111 +334,92 @@ form input[name="userNick"] {
   </div>
   
    <script type="text/javascript">
-   	
-   	$(function()
-	{
-   		$("#checkUserIdBtn").click(function()
-   		{
-   			/* if($("#jmId").val() != "")
-   			{ */
-   				var params = "jmId=" + $("#jmId").val();
-   						
-   						$.ajax
-   						({
-   							type : "POST"
-   						  , url : "idCheck.action"
-   						  , data : params
-   						  , async : true
-   						  , success : function(result)
-   						{
-   							/* if(result == 0)
-   							{
-   								$("#result").text("사용 가능한 아이디입니다.");	
-   							} else 
-   							{
-   								$("#result").text("이미 사용중인 아이디입니다.");	
-   							} */
-   							
-   							$("#result").html(result);
-   							
-   							
-   						},
-   						
-   						error : function(e)
-   						{
-   							alert(e.responseText);
-   						}
-   						
-   					});
-   					/* /* 	
-   					} else 
-   					{
-   						alert("아이디를 입력하세요.");
-   						$("#jmId").focus();
-   					}
-   					*/ 
-   				});
-		});
-   	
-   
-   	/* $(function()
-	{
-   	 		$("#join-button").click(function(event) 
-   		    {
-   		    	
-   		        if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#jmPwCheck").val()=="" || $("#jmName").val()=="" || 
-   		                $("#jmSsn").val()=="" || $("#jmGender").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
-   		                $("#jmAddr1").val()=="" || $("#jmAddr2").val()=="" || $("#jmZipCode").val()=="")
-   		         {
-   		             $("#err").html("* 필수 항목들을 모두 입력해주세요.").css("display", "inline");
-   		             
-   		             return;
-   		         }
-   		          
-   		        
-   		          $("#joinForm").submit();
-   		         
-   		     });
-   		    
-   		    $("#checkUserNickBtn").click(function()
-   			{
-   				
-   			
-   				var id = $("#jmId").val();
-   				alert(id);
-   				
-   				$.ajax({
-   					url : "./idCheck.action"
-   				 , type : "post"
-   				 , data : {id:id}
-   				 , success:function(cnt) 
-   				 {
-   					if(cnt == 0) // cnt가 0인 부분은 아이디가 현재 없음
-   					{
-   						$(".id_ok").css("display", "inline-block");
-   						$(".id_already").css("display", "none");
-   					} else
-   					{
-   						$(".id_already").css("display", "inline-block");
-   						$(".id_ok").css("display", "none");
-   						alert("아이디를 다시 입력해주세요.");
-   						$("#jmId").val("");
-   					}
-   				 
-   				 },
-   				 
-   				 error:function()
-   				 {
-   					 alert("에러입니다.");
-   				 }
-   				 
-   				});
-
-   			});
 	
-	}); */
+	$(function()
+			{
+				
+				$("#checkUserIdBtn").click(function()
+				{
+					if ( $("#jmId").val() != "") 
+					{
+						var params = "jmId=" + $("#jmId").val();
+						
+						
+						/* jQuery로 ajax 처리하기 */
+						$.ajax({
+							
+							type:"POST"
+							, url:"idDupli.action"
+							, data:params
+							, datayType : "json"
+							, success : function(jsonObj)
+							{
+								if(jsonObj == 0) 
+								{
+									$("#result").html("사용 가능한 아이디입니다.");	
+								}
+								else
+								{
+									$("#result").html("이미 사용중인 아이디입니다.");	
+								}
+								
+								
+							}, error : function(e)
+								{
+									alert(e.responseText);
+								}
+							
+							});
+						}
+						else 
+						{
+							$("#result").html("아이디를 입력해주세요.");	
+						}
+					});
+				
+					
+					$("#checkUserNickBtn").click(function()
+					{
+						if ( $("#jmNickName").val() != "") 
+						{
+							var params = "jmNickName=" + $("#jmNickName").val();
+							
+							$.ajax({
+								
+								type:"POST"
+								, url:"nickDupli.action"
+								, data:params
+								, datayType : "json"
+								, success : function(jsonObj)
+								{
+									if(jsonObj == 0) 
+									{
+										$("#resultNick").html("사용 가능한 닉네임입니다.");	
+									}
+									else
+									{
+										$("#resultNick").html("이미 사용중인 닉네임입니다.");	
+									}
+									
+									
+								}, error : function(e)
+								{
+										alert(e.responseText);
+								}
+								
+								});
+						
+						} else 
+						{
+							$("#resultNick").html("닉네임을 입력해주세요.");	
+						}
+						
+					});
+					
+				});
+				
+		
    
-
   </script>
 
 
