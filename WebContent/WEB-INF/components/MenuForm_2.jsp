@@ -38,6 +38,17 @@
 			window.location.href = "logOut.action";
 		});
 		
+		// 대리산책 리스트업 페이지로 가는 function
+		$("#walkList").click(function()
+		{
+			window.location.href = "walkList.action";
+		})
+		
+		// 펫시팅 리스트업 페이지로 가는 function
+		$("#sittingList").click(function()
+		{
+			window.location.href = "sittingList.action";
+		})
 	}); 
 </script>
   
@@ -87,10 +98,10 @@
                   <a class="nav-link" href="service.html" >서비스 소개 </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<%=cp %>/WalkList.action" id="walkList">대리산책 </a>
+                  <a class="nav-link" href="#" id="walkList">대리산책 </a>
                 </li> 
                 <li class="nav-item">
-                  <a class="nav-link" href="<%=cp %>/SittingList.action" id="sittingList"> 펫시팅</a>
+                  <a class="nav-link" href="#" id="sittingList"> 펫시팅</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="contact.html">고객지원</a>
