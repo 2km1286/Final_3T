@@ -41,7 +41,6 @@ public class MemberService
 		return result;
 	}
 	
-}
 
 	// 아이디, 이름, 주민번호로 memSid 찾기 
 	public String findPw(MemberDTO dto)
@@ -80,6 +79,25 @@ public class MemberService
 	   return result;
    }
    
+   // 아이디 중복확인 조회
+   public int searchId(String jmId)
+   {
+      int result = 0;
+      IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+      
+      result = dao.searchId(jmId);
+      return result;
+   }
+   
+   // 닉네임 중복확인 조회
+   public int searchNick(String jmNickName)
+   {
+      int result = 0;
+      IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+      
+      result = dao.searchNick(jmNickName);
+      return result;
+   }
    
 }
 

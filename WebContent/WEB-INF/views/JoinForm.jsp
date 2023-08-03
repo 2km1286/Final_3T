@@ -10,6 +10,7 @@
 <meta charset='UTF-8'>
 <title>회원가입</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 <style>
 * {
   box-sizing: border-box;
@@ -324,10 +325,10 @@ form input[name="userNick"] {
         
         <br />
 
-        <span id="err" style="display: block;">* 필수 항목들을 모두 입력해주세요.</span>
+        <span id="err" style="display: none;">* 필수 항목들을 모두 입력해주세요.</span>
         <br />
         
-        <button type="button" id="login-button">회원가입</button>
+        <button type="button" id="join-button">회원가입</button>
         <button type="reset" id="reset-button">초기화</button>
       </form>
     </div>
@@ -338,6 +339,20 @@ form input[name="userNick"] {
    $(function()
          {
             
+		    $("#join-button").click(function(event) 
+		    {
+		        if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#userPwCheck").val()=="" || $("#jmName").val()=="" || 
+		               $("#jmSsn").val()=="" || $("#jmGen").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
+		               $("#jmAddr1").val()=="" || $("#jmAddr2").val()=="" || $("#jmZipCode").val()=="")
+		         {
+		            $("#err").html("모두 입력해주세요").css("display", "inline");
+		            return;
+		         }
+		         
+		         $(".form").submit();
+		    });
+	   
+	   
             $("#checkUserIdBtn").click(function()
             {
                if ( $("#jmId").val() != "") 
@@ -418,109 +433,7 @@ form input[name="userNick"] {
                
             });
             
-   	
-   	$(function()
-	{
-   		$("#checkUserIdBtn").click(function()
-   		{
-   			/* if($("#jmId").val() != "")
-   			{ */
-   				var params = "jmId=" + $("#jmId").val();
-   						
-   						$.ajax
-   						({
-   							type : "POST"
-   						  , url : "idCheck.action"
-   						  , data : params
-   						  , async : true
-   						  , success : function(result)
-   						{
-   							/* if(result == 0)
-   							{
-   								$("#result").text("사용 가능한 아이디입니다.");	
-   							} else 
-   							{
-   								$("#result").text("이미 사용중인 아이디입니다.");	
-   							} */
-   							
-   							$("#result").html(result);
-   							
-   							
-   						},
-   						
-   						error : function(e)
-   						{
-   							alert(e.responseText);
-   						}
-   						
-   					});
-   					/* /* 	
-   					} else 
-   					{
-   						alert("아이디를 입력하세요.");
-   						$("#jmId").focus();
-   					}
-   					*/ 
-   				});
-		});
-   	
-   
-   	/* $(function()
-	{
-   	 		$("#join-button").click(function(event) 
-   		    {
-   		    	
-   		        if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#jmPwCheck").val()=="" || $("#jmName").val()=="" || 
-   		                $("#jmSsn").val()=="" || $("#jmGender").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
-   		                $("#jmAddr1").val()=="" || $("#jmAddr2").val()=="" || $("#jmZipCode").val()=="")
-   		         {
-   		             $("#err").html("* 필수 항목들을 모두 입력해주세요.").css("display", "inline");
-   		             
-   		             return;
-   		         }
-   		          
-   		        
-   		          $("#joinForm").submit();
-   		         
-   		     });
-   		    
-   		    $("#checkUserNickBtn").click(function()
-   			{
-   				
-   			
-   				var id = $("#jmId").val();
-   				alert(id);
-   				
-   				$.ajax({
-   					url : "./idCheck.action"
-   				 , type : "post"
-   				 , data : {id:id}
-   				 , success:function(cnt) 
-   				 {
-   					if(cnt == 0) // cnt가 0인 부분은 아이디가 현재 없음
-   					{
-   						$(".id_ok").css("display", "inline-block");
-   						$(".id_already").css("display", "none");
-   					} else
-   					{
-   						$(".id_already").css("display", "inline-block");
-   						$(".id_ok").css("display", "none");
-   						alert("아이디를 다시 입력해주세요.");
-   						$("#jmId").val("");
-   					}
-   				 
-   				 },
-   				 
-   				 error:function()
-   				 {
-   					 alert("에러입니다.");
-   				 }
-   				 
-   				});
-
-   			});
-	
-	}); */
+      
    
   </script>
 

@@ -4,26 +4,16 @@ package com.act.member;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
-import org.apache.ibatis.session.SqlSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.HttpServerErrorException;
 
 
 @Controller
 public class MemberController
 {
 		@Autowired
-		
-		private MemberService MemberService;
+		private MemberService memberService;
 		
 		// 메인페이지로 가는 액션
 		 @RequestMapping("/main.action")
@@ -56,13 +46,41 @@ public class MemberController
 			 return result;
 		 }
 		 
-		 
+		// 아이디 중복확인 
+	   @RequestMapping("/idDupli.action")
+	   public String idDupli(HttpServletRequest request)
+	   {
+	      String view = "";
+	      
+	      String jmId = request.getParameter("jmId");
+	      int result = memberService.searchId(jmId);
+	      
+	      request.setAttribute("result", result);
+	      view = "/WEB-INF/views/SearchId.jsp";
+
+	      return view;
+	   }
+		   
+	   // 닉네임 중복확인
+	   @RequestMapping("/nickDupli.action")
+	   public String nickDupli(HttpServletRequest request)
+	   {
+	      String view = "";
+	      
+	      String jmNickName = request.getParameter("jmNickName");
+	      int result = memberService.searchNick(jmNickName);
+	      
+	      request.setAttribute("resultNick", result);
+	      view = "/WEB-INF/views/SearchNick.jsp";
+	      return view;
+	   }
+	   
 		// 설명 써주세
 		@RequestMapping("/join.action")
 		public String join(HttpSession session, MemberDTO dto)
 		{
 			String result = "";
-			int num = MemberService.join(session, dto);
+			int num = memberService.join(session, dto);
 		
 		
 			if(num!=1)
@@ -81,7 +99,7 @@ public class MemberController
 			String view = "";
 		
 			// "0" 또는 특정 memSid 를 반환
-			String result = MemberService.searchMemsid(dto);
+			String result = memberService.searchMemsid(dto);
 			
 			//System.out.println(result);
 			
@@ -133,7 +151,7 @@ public class MemberController
 			dto.setJmSsn(request.getParameter("jmSsn"));
 			
 			// "0" 또는 특정 jmId 를 반환
-			result = MemberService.findId(dto);
+			result = memberService.findId(dto);
 		
 			if(result.equals("0"))
 			{ 
@@ -169,7 +187,7 @@ public class MemberController
 			String result = "";
 			
 			// "0" 또는 특정 memSid 를 반환
-			result = MemberService.findPw(dto);
+			result = memberService.findPw(dto);
 			
 			if(result.equals("0") ) // 회원정보 없음
 			{ 
@@ -196,7 +214,7 @@ public class MemberController
 			int result = 0;
 			
 			// 0 or 성공시 1
-			result = MemberService.updatePw(dto);		
+			result = memberService.updatePw(dto);		
 			
 			if (result>0)
 			{

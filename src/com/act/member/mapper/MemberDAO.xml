@@ -15,7 +15,7 @@
    </select>
    
    <insert id="join" >
-      INSERT INTO JOIN_MEMBER(JM_SID, MEM_SID, JM_ID, JM_PW, JM_NAME, JM_SSN, JM_GENDER, JM_NICKNAME, JM_TEL, JM_ADDR1, JM_ADDR2, JM_ZIPCODE, JM_MAGE)
+      INSERT INTO JOIN_MEMBER(JM_SID, MEM_SID, JM_ID, JM_PW, JM_NAME, JM_SSN, JM_GENDER, JM_NICKNAME, JM_TEL, JM_ADDR1, JM_ADDR2, JM_ZIPCODE, JM_IMAGE)
       VALUES(SEQ_JM.NEXTVAL, #{memSid}, #{jmId},CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw}), #{jmName}, #{jmSsn}, #{jmGender}
       , #{jmNickName}, #{jmTel}, #{jmAddr1}, #{jmAddr2}, #{jmZipCode}, #{jmImage})
    </insert>
@@ -44,5 +44,15 @@
 		WHERE MEM_SID = #{memSid}
 	</update>
 	
-	
+	<select id="searchId" resultType="java.lang.Integer">
+      SELECT COUNT(*) AS COUNT
+      FROM JOIN_MEMBER
+      WHERE JM_ID = #{jmId,jdbcType=VARCHAR}
+   </select>
+   
+   <select id="searchNick" resultType="java.lang.Integer">
+      SELECT COUNT(*) AS COUNT
+      FROM JOIN_MEMBER
+      WHERE JM_NICKNAME = #{jmNickName}
+   </select>
 </mapper>
