@@ -19,7 +19,7 @@ public class MemberService
 	// 아이디 비밀번호로 memSid 조회하기
 	public String searchMemsid(MemberDTO dto)
 	{
-		String result;
+		String result = "";
 		
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
