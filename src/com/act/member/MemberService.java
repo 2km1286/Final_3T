@@ -41,6 +41,8 @@ public class MemberService
 		return result;
 	}
 	
+}
+
 	// 아이디, 이름, 주민번호로 memSid 찾기 
 	public String findPw(MemberDTO dto)
 	{
