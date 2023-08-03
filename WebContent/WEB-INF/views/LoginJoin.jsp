@@ -4,15 +4,6 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<%
-	String memSid = (String)session.getAttribute("memSid");		// 최초요청시 "0", 등록된 정보 없을 시 "-1"
-	if( memSid.equals("-1") )
-	{
-		out.println("<script>alert('등록된 정보가 없습니다. ') </script>");
-		session.removeAttribute("memSid");
-	}
-	
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +43,13 @@
 			
 			// memberlogin.action 요청
 			$("#loginForm").submit();
-	
+			var memSid = <%=(String)session.getAttribute("memSid")%>;
+			if( memSid == "0")
+			{
+				alert("등록된 정보가 없습니다.");
+			}
+			
+			
 		});
 	
 		
