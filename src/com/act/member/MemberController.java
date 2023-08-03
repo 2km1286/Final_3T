@@ -41,7 +41,17 @@ public class MemberController
 			 return result;
 		  
 		  }
-		  
+		 
+		 // 회원가입 폼 페이지로 가는 액션
+		 @RequestMapping("/joinForm.action")
+		 public String joinForm()
+		 {
+			 String result = "";
+			 result = "/WEB-INF/views/JoinForm.jsp";
+			 return result;
+		 }
+		 
+		 
 		// 설명 써주세
 		@RequestMapping("/join.action")
 		public String join(HttpSession session, MemberDTO dto)
@@ -76,8 +86,11 @@ public class MemberController
 				session.setAttribute("memSid", result);
 				view = "redirect:loginJoin.action";
 			}
-			else // memSid 있음, 메인페이지로 가기, 로그인 성공
+			else // memSid 있음, 그럼 웰컴페이지 / 견주팝업+메인페이지 / 대리산책러팝업+메인페이지 / 펫시터팝업+메인페이지 로 나눠짐
 			{
+				// 메인페이지에서 분기를 나눠주려면 session에 분기할 때 쓰일 값 하나를 더 담아 보내줘야함
+				// 매칭기록이 없으면:1, 매칭기록은 있는데 견주활동이 많은지 대리산책러활도잉 많은지 펫시터활동이 많은지에 따라: 2, 3, 4
+				// 메인페이지 가서 나눠 아니면 여기서 나눠서 각각 다른 페이지로 보내?
 				session.setAttribute("memSid", result);
 				view = "redirect:main.action";
 			}

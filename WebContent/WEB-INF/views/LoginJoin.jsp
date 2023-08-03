@@ -27,7 +27,7 @@
 		// 회원가입 폼 페이지로 가기
 		$("#join-button").click(function()
 		{
-			//window.location.href = "join.action";   어디에요?
+			window.location.href = "joinForm.action";
 		});
 		
 		

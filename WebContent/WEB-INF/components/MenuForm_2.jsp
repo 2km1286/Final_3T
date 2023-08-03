@@ -102,9 +102,6 @@
 				  	<button type="button" id="loginJoin" >회원가입/로그인</button>
 					</li>
 				</c:when>
-				<c:when test=" }">
-				
-				</c:when>
 				<c:otherwise>
 					<li class="nav-item dropdown" style="font-size: medium;">
 				  <a class="nav-link dropdown-toggle pl-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
