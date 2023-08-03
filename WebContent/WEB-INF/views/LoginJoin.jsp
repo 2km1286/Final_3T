@@ -44,7 +44,7 @@
 			// memberlogin.action 요청
 			$("#loginForm").submit();
 			var memSid = <%=(String)session.getAttribute("memSid")%>;
-			if( memSid=="0")
+			if( memSid == "0")
 			{
 				alert("등록된 정보가 없습니다.");
 			}

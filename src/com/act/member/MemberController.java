@@ -105,7 +105,6 @@ public class MemberController
 			
 			if (result.equals("0")) // 회원정보 없음, 로그인/회원가입 페이지로가서 로그인 실패를 띄워주기
 			{	
-				//result = "-1";
 				session.setAttribute("memSid", result);
 				view = "redirect:loginJoin.action";
 			}
@@ -237,7 +236,7 @@ public class MemberController
 			return view;
 		}
 	
-		// 돌봄장소 리스트업 페이지로 가기
+		// 펫시팅(돌봄장소) 리스트업 페이지로 가기
 		@RequestMapping("/sittingList")
 		public String sittingList()
 		{
@@ -246,30 +245,34 @@ public class MemberController
 			return view;
 		}
 		
-		
-		@RequestMapping("/walktest.action") public String walktest() { String
-		result="";
-		
-		result="/WEB-INF/views/WalkTestPage.jsp";
-		
-		return result; }
-		
-		@RequestMapping("/result.action") public String result() { String result =
-		"";
-		
-		result = "/WEB-INF/views/ResultPage.jsp";
-		
-		return result; }
-		
-		@RequestMapping("/mypage.action") public String mypage() { String result =
-		""; result = "/WEB-INF/views/MyPage.jsp"; return result; }
-		
-		@RequestMapping("/mpspinsert.action") public String mpspinsert() { String
-		result = ""; result = "/WEB-INF/views/Mypage.jsp"; return result; }
-		
-		@RequestMapping("/recommend.action") public String recommend() { String
-		result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
-	
+		// 마이페이지로 가기
+		@RequestMapping("/myPage.action")
+		public String mypage()
+		{
+			String result = "";
+			result = "/WEB-INF/views/MyPage.jsp";
+			return result;
+		}
+				
+		/*
+		 * @RequestMapping("/walktest.action") public String walktest() { String
+		 * result="";
+		 * 
+		 * result="/WEB-INF/views/WalkTestPage.jsp";
+		 * 
+		 * return result; }
+		 * 
+		 * @RequestMapping("/result.action") public String result() { String result =
+		 * "";
+		 * 
+		 * result = "/WEB-INF/views/ResultPage.jsp";
+		 * 
+		 * return result; }
+		 * 
+		 * 
+		 * @RequestMapping("/recommend.action") public String recommend() { String
+		 * result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
+		 */
 	
 
 }
