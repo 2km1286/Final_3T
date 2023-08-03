@@ -9,7 +9,6 @@
 <html>
 <head>
 <link rel="icon" href="./images/logo_transparent.png"/>
-<link rel="stylesheet" href="css/mdb.min.css" />
 <meta charset="UTF-8"> 
 <title>MyPage</title>
 
@@ -29,25 +28,74 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
+<script type="text/javascript">
+
+	$(function()
+	{
+		$("#myPageNotice").click(function()
+		{
+			
+		});
+		
+		
+		$("#myPageSitting").click(function()
+		{
+			$.ajax(
+			{
+				type:"POST"
+				, url:"myPageSitting.action"
+				, async:true
+				, success:function(data)
+				{
+					$("#myPageMain").html(data);
+										
+				}
+				, error:function(e)
+				{
+					alert(e.responseText);
+				}
+				
+			});	
+		});
+	});
+
+</script>
 
 <style type="text/css">
 /* 마이페이지 레이아웃 스타일 */
-.all { padding: 20px 20px 20px 20px; }
-.mypageMain
+.container-mypage {
+  margin: 20px;;
+  padding: 30px; /* 테두리와 요소들 사이의 간격 조정 */
+  border: 2px solid black; /* 폼에 테두리 설정 */
+  border-radius: 10px; /* 테두리의 둥근 정도 설정 */
+}
+.myPageMain
 {
 	padding: 20px 20px 20px 20px;
-	border: 1px solid;
-	border-color: #FFE090;
 }
-.mypagemenu
+
+.mypageSidevar
 {
-	padding: 20px 0px 20px 0px;
+	padding: 20px 10px 20px 10px;
 	background-color: white;
-	border-bottom: 1px solid;
-	border-right: 1px solid;
-	border-top: 1px solid;
-	border-color: #FFE090;
+	border-left: 2px solid;
+	
 }
+.badge	
+{-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+}
+
+
 
 /* 마이페이지 알림화면 스타일 */
 .mypageNoAllDiv {border-bottom: 1px solid #FFE090; margin-bottom: 20px;}
@@ -87,22 +135,31 @@
 .EndTh { background-color: #FFE090;}
 
 </style>
+<!-- FONT jua -->
+<style>
+ @import url('https://fonts.googleapis.com/css?family=Jua:400');
+.badge { font-family: "Jua"; }
+.mypageSidevar { font-family: "Jua"; font-size: 15pt;}
+</style>
 
 </head>
 <body>
 	<c:import url="/WEB-INF/components/MenuForm_2.jsp">
 	</c:import>
+	<div class="container-mypage">
 	<div class="row all">
-		<div class="col-md-10 mypageMain"> <!-- 마이페이지 메인 -->
+		<div class="col-md-10 myPageMain" id="myPageMain"><!-- 마이페이지 메인 -->
 			<!-- 마이페이지 첫 요청시 디폴트 알림창 -->
-			<c:import url="/WEB-INF/components/MypageNoticeForm.jsp"></c:import>
+			<c:import url="/WEB-INF/components/MyPageNoticeForm.jsp"></c:import>
 		</div>
-		<div class="col-md-2 mypagemenu"> <!-- 마이페이지 사이드바 -->
+		<div class="col-md-2 mypageSidevar"> <!-- 마이페이지 사이드바 -->
 			<div class="list-group list-group-light">
-			  <button type="button" class="list-group-item list-group-item-action px-3 border-0">
+			  <button type="button" class="list-group-item list-group-item-action px-3 border-0 active"
+			  						id="myPageNotice">
 			    알림창
 			  </button>
-			  <button type="button" class="list-group-item list-group-item-action px-3 border-0">
+			  <button type="button" class="list-group-item list-group-item-action px-3 border-0"
+			  						id="myPageSitting">
 			    펫시팅
 			  </button>
 			  <button type="button" class="list-group-item list-group-item-action px-3 border-0">
@@ -119,6 +176,7 @@
 			  </button>
 			</div>
 		</div>
+	</div>
 	</div>
 	<c:import url="/WEB-INF/components/FooterForm.jsp">
 	</c:import>

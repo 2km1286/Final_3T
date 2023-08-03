@@ -165,7 +165,7 @@ public class MemberController
 		
 			request.setAttribute("result", result);
 		
-			view = "/WEB-INF/views/AjaxFindId.jsp";
+			view = "/WEB-INF/ajax/FindId.jsp";
 		
 			return view;
 		}
@@ -245,15 +245,28 @@ public class MemberController
 			return view;
 		}
 		
-		// 마이페이지로 가기
+		// 마이페이지로 가기, 디폴트 알림창
 		@RequestMapping("/myPage.action")
-		public String mypage()
+		public String myPage()
 		{
 			String result = "";
 			result = "/WEB-INF/views/MyPage.jsp";
 			return result;
 		}
-				
+		
+		// 마이페이지 펫시팅
+		@RequestMapping("/myPageSitting.action")
+		public String myPageSitting(HttpServletRequest request)
+		{
+			String result = "";
+			
+			String url = "<c:import url=\\\"/WEB-INF/components/MyPageSittingForm.jsp\\\"></c:import>";
+			request.setAttribute("url", url);
+			
+			result = "/WEB-INF/ajax/MyPageSitting.jsp";
+			return result;
+		}
+		
 		/*
 		 * @RequestMapping("/walktest.action") public String walktest() { String
 		 * result="";
