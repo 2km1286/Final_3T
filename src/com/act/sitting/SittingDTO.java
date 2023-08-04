@@ -7,7 +7,7 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 
 public class SittingDTO
 {
-	private String jmNickName, spTitle, spAddr1, spAddr2, memSid, shpStart, shpEnd, srStart, srEnd;
+	private String jmNickname, spTitle, spAddr1, spAddr2, memSid, sphStart, sphEnd, srStart, srEnd;
 	private int sphSid, srwSid, stleSid, spMaxPet, spSid;
 	private String isptSid, isptName;
 	
@@ -27,13 +27,29 @@ public class SittingDTO
 	{
 		this.isptName = isptName;
 	}
-	public String getJmNickName()
+	public String getJmNickname()
 	{
-		return jmNickName;
+		return jmNickname;
 	}
-	public void setJmNickName(String jmNickName)
+	public void setJmNickname(String jmNickname)
 	{
-		this.jmNickName = jmNickName;
+		this.jmNickname = jmNickname;
+	}
+	public String getSphStart()
+	{
+		return sphStart;
+	}
+	public void setSphStart(String sphStart)
+	{
+		this.sphStart = sphStart;
+	}
+	public String getSphEnd()
+	{
+		return sphEnd;
+	}
+	public void setSphEnd(String sphEnd)
+	{
+		this.sphEnd = sphEnd;
 	}
 	public String getSpTitle()
 	{
@@ -66,22 +82,6 @@ public class SittingDTO
 	public void setMemSid(String memSid)
 	{
 		this.memSid = memSid;
-	}
-	public String getShpStart()
-	{
-		return shpStart;
-	}
-	public void setShpStart(String shpStart)
-	{
-		this.shpStart = shpStart;
-	}
-	public String getShpEnd()
-	{
-		return shpEnd;
-	}
-	public void setShpEnd(String shpEnd)
-	{
-		this.shpEnd = shpEnd;
 	}
 	public String getSrStart()
 	{
