@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MemberController
@@ -92,30 +93,23 @@ public class MemberController
 	@RequestMapping("/memberlogin.action")
 	public String loginCount(MemberDTO dto, HttpSession session)
 	{
-		String view = "";
 
-		// "0" 또는 특정 memSid 를 반환
+		String url = "";
 		String result = memberService.searchMemsid(dto);
-
-		// System.out.println(result);
-
-		if (result.equals("0")) // 회원정보 없음, 로그인/회원가입 페이지로가서 로그인 실패를 띄워주기
+		if (result.equals("0")) {
+            url = "redirect:loginJoin.action?error=1"; 
+            
+		}
+		else
 		{
-			session.setAttribute("memSid", result);
-			view = "redirect:loginJoin.action";
-		} else // memSid 있음, 그럼 웰컴페이지 / 견주팝업+메인페이지 / 대리산책러팝업+메인페이지 / 펫시터팝업+메인페이지 로 나눠짐
-		{
-			// 메인페이지에서 분기를 나눠주려면 session에 분기할 때 쓰일 값 하나를 더 담아 보내줘야함
-			// 매칭기록이 없으면:1, 매칭기록은 있는데 견주활동이 많은지 대리산책러활도잉 많은지 펫시터활동이 많은지에 따라: 2, 3, 4
-			// 메인페이지 가서 나눠 아니면 여기서 나눠서 각각 다른 페이지로 보내?
 
 			session.setAttribute("memSid", result);
-			view = "redirect:main.action";
+			url = "redirect:main.action";
 		}
 
-		return view;
+		return url;
 	}
-
+	
 	// 로그아웃하고(session) 다시 메인페이지로 가기
 	@RequestMapping("/logOut.action")
 	public String logOut(HttpSession session)
@@ -213,17 +207,10 @@ public class MemberController
 			session.removeAttribute("memSid"); // null로 만들어주고
 			view = "redirect:main.action";
 		}
+		
 		return view;
 	}
 
-	// 펫시터 리스트업 페이지로 가기
-	@RequestMapping("/sittingList.action")
-	public String walkList()
-	{
-		String view = "";
-		view = "/WEB-INF/views/PetListPage.jsp";
-		return view;
-	}
 
 	// 대리산책 리스트업 페이지로 가기
 	@RequestMapping("/walkList.action")
