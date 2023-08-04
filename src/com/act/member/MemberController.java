@@ -227,26 +227,18 @@ public class MemberController
 			return view;
 		}
 		
-		// 펫시터 리스트업 페이지로 가기
+		
+		// 대리산책 리스트업 페이지로 가기
 		@RequestMapping("/walkList.action")
-		public String walkList()
+		public String petList()
 		{
 			String view = "";
 			view = "/WEB-INF/views/WalkListPage.jsp";
 			return view;
 		}
-		
-		// 대리산책 리스트업 페이지로 가기
-		@RequestMapping("/sittingList.action")
-		public String petList()
-		{
-			String view = "";
-			view = "/WEB-INF/views/PetListPage.jsp";
-			return view;
-		}
 	
 		// 펫시팅(돌봄장소) 리스트업 페이지로 가기
-		@RequestMapping("/sittingList")
+		@RequestMapping("/sittingList.action")
 		public String sittingList()
 		{
 			String view = "";
