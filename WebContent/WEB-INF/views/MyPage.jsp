@@ -198,31 +198,40 @@
   -webkit-transition-duration: 0.25s;
   transition-duration: 0.25s;
 }
+div.col-md-6 { padding: 20px 20px 20px 20px; }
+div.card {margin-bottom: 10px;}
+div.card-header {padding: 5px; }
+div.cardImage {padding-right: 0;}
+div.cardInfo {padding-right: 0; padding-left: 0;}
+div .porfilSu{margin-left:20px; width: 300px; }
 
-
-
-/* 마이페이지 알림화면 스타일 */
-/* .mypageNoAllDiv {border-bottom: 1px solid #FFE090; margin-bottom: 20px;}
-.mypageNoticeAllList
+.nick {font-size: 16pt;}
+.oneText {margin-bottom: 3px; border-bottom: 1px solid gray; }
+.detailBtn
 {
-  background-color: #fcf8de;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  height: 50px;
+	-webkit-appearance: none;
+	  -moz-appearance: none;
+	  appearance: none;
+	  outline: 0;
+	  border: 1px solid #53e3a6;
+	  background-color: white;
+	  padding: 5px 5px 5px 5px;
+	  color: #53e3a6;
+	  border-radius: 3px;
+	  width: 120px;
+	  height: 35px;
+	  cursor: pointer;
+	  font-size: 18px;
+	  -webkit-transition-duration: 0.25s;
+	  transition-duration: 0.25s;
 }
-.mypageNoticeAll { position: relative; height: 400px; overflow: auto; }
-.mypageNoticBtn { font-weight: bold;}
-.mypageNomore
-{ 
-	background-color: #FFE090; font-size: 15px; font-weight: bold; margin-left: 500px; 
-	position: absolute; position: absolute; bottom: 10px; right: 10px;
-}
-.mypageListCard { background-color: #fcf8de; border-radius: 10px; height: 180px; margin-bottom: 20px; position: relative;}
-.mypageListCard .card-body { height: 100%; }
-.mypageListTitle { font-size: 20px; font-weight: bold; background-color: white; padding: 5px; }
-.mypageListSub {font-size: 18px; font-weight: bold;} */
 
+div.profil
+{ 
+  padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
+  border: 2px solid black; /* 폼에 테두리 설정 */
+  border-radius: 10px; /* 테두리의 둥근 정도 설정 */
+}
 /* 마이페이지 나의 활동 스타일 */
 /* .mypageMyAcBtn { font-weight: bold;}
 .wishlist{ height: 470px; border-bottom: 1px solid #FFE090; margin-bottom: 10px; }
@@ -244,8 +253,8 @@
  @import url('https://fonts.googleapis.com/css?family=Jua:400');
 .badge { font-family: "Jua"; }
 .mypageSidevar { font-family: "Jua"; font-size: 15pt;}
-.card-header { font-family: "Jua"; font-size: 13pt;}
-
+.card-header { font-family: "Jua"; font-size: 17pt;}
+.card {font-family: "Jua";}
 </style>
 
 </head>

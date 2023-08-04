@@ -14,156 +14,118 @@
 
 <style type="text/css">
 
-.noticeAll, .noticePet, .noticeWalk, .noticeSeating
-{
-	padding: 20px 20px 20px 20px;
-}
-
-.noticeCard { margin-bottom: 20px;}
-
 
 </style>
 </head>
 <body>
 	<!-- <div class="row all"> -->
 			<div class="row">
-				<div class="col-md-6 noticeAll">
+				<div class="col-md-6">
 					
-					<h3><span class="badge">펫시팅으로 바꼈나?</span></h3>
-					
-						<div class="card noticeCard">
-						  <div class="card-header">
-						    대리산책
-						  </div>
-						  <div class="card-body">
-						    <blockquote class="blockquote mb-0">
-						      <p>후기가 달렸습니다. </p>
-						    </blockquote>
-						  </div>
-						</div>
-					
-					<div class="card noticeCard">
-					  <div class="card-header">
-					    펫시팅
-					  </div>
-					  <div class="card-body">
-					    <blockquote class="blockquote mb-0">
-					      <p>예약이 확정되었습니다. </p>
-					    </blockquote>
-					  </div>
-					</div>
-					
+					<h3><span class="badge">펫시팅(돌봄공간) 정보</span></h3>
 					
 				</div>
 				
 				
-				<div class="col-md-6 noticePet">
-					<h3><span class="badge">예약내역(견주)</span></h3>
+				<div class="col-md-6">
+					<h3><span class="badge">내가 서비스 할 예약(펫시터)</span></h3>
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-				
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted"></small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+					<div class="card">
+						<div class="card-header d-flex justify-content-between">
+							펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+						</div>	
+				    	  <div class="row g-0">
+				    	    <div class="col-md cardInfo" >
+				    	      <div class="card-body">
+				    	      	<div class="oneText">
+				    	      		<span class="nick card-text">폴폴이</span>
+				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
+				    	      	</div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+				    		        <span class="card-text">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
+				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길 어디주택 00동 00호</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
+				    		        <span class="card-text">까미</span><br>
+				    	        </div>
+				    	      </div>
+				    	    </div>
+				    	  </div>
+				    </div>
+					
+					<div class="card">
+						<div class="card-header d-flex justify-content-between">
+							펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+						</div>	
+				    	  <div class="row g-0">
+				    	    <div class="col-md cardInfo" >
+				    	      <div class="card-body">
+				    	      	<div class="oneText">
+				    	      		<span class="nick card-text">폴폴이</span>
+				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
+				    	      	</div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+				    		        <span class="card-text">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
+				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길 어디주택 00동 00호</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
+				    		        <span class="card-text">까미</span><br>
+				    	        </div>
+				    	      </div>
+				    	    </div>
+				    	  </div>
+				    </div>
 					
 				</div>
 				
 			</div>
 			
 			<div class="row">
-				<div class="col-md-6 noticeWalk">
-					<h3><span class="badge">예약내역(대리산책러)</span></h3>
+				<div class="col-md-6"> <!-- 이미지, 닉네임, 등급, 별점, 알람, 후기, 팔로잉 -->
+					<h3><span class="badge">내 프로필(펫시터)</span></h3>
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-				</div>
-				<div class="col-md-6 noticeSeating">
-					<h3><span class="badge">예약내역(펫시터)</span></h3>
+					<div class="card profil">
+				    	  
+				    	  <div class="row g-0">
+				    	  	<div class="col-md-4">
+				    	  		<img src="images/client.jpg" class="img-fluid rounded-start" alt="프로필이미지">
+				    	  	</div>
+				    	    <div class="col-md-8 cardInfo" >
+				    	      <div class="card-body">
+				    	      	<div class="oneText">
+				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span><br>
+				    	      		<span class="nick card-text">폴폴이</span>
+				    	      	</div>
+				    		        <span class="card-text">4.8 ⭐  (40개의 후기)</span>
+				    	        </div>
+				    	        <div class="porfilSu">
+			    		        	<small class="text-muted ">알람</small>&nbsp;&nbsp;
+			    		        	<small class="text-muted">후기</small>&nbsp;&nbsp;
+			    		        	<small class="text-muted">팔로잉</small><br>
+				    		        <span>1건</span>&nbsp;&nbsp;
+				    		        <span>30건</span>&nbsp;&nbsp;
+				    		        <span>5건</span>
+				    		    </div>
+				    	      </div>
+				    	    </div>
+				     </div>
+				   </div>
+						
+				
+				<div class="col-md-6">
+					<h3><span class="badge">나의 활동비율</span></h3>
 					
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
 					
 				</div>
 			</div>
