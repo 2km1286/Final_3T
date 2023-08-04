@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>대리산책 공고글</title>
+<title>펫시터 공고글</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 <style>
@@ -130,9 +130,6 @@ p {
 		    <label for="datepicker">날짜 선택:</label>
 		    <input type="text" id="datepicker" class="custom-textbox" readonly>
 		
-		    <label for="time">시간:</label>
-		    <input type="time" id="time" class="custom-textbox">
-		
 		    <label for="dogs">견수:</label>
 		    <input type="number" id="dogs" class="custom-textbox" min="1" max="5">
 		
@@ -141,24 +138,28 @@ p {
 		
 		  <div class="mb-4">
 		    <!-- 버튼 모양의 복수 선택 라디오 버튼 -->
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">비흡연자</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">노견 가능</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">장애견 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">홈캠 구비</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">놀이 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">목욕 가능</button>
 		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">응급처치 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">반려견 있음</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">모발관리 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">비흡연자</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">장애견 케어 가능</button>
 		  </div>
 		
-		     <h2>대리산책 공고글</h2>
+		     <h2>펫시터 공고글</h2>
 		    <hr>
 		    <div id="cardContainer" class="row">
 		      <!-- 카드 데이터를 미리 선언 -->
 		      <c:set var="cards">
 		        <div class="col-md-4">
 		          <div class="card">
-		            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 220px;">
+		            <img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 320px;">
 		            <div class="card-body">
-		              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
-		              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
-		              <p>4.2 ⭐ (991개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
+		              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
+		              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6><br>
+		              <p>4.8 ⭐ (452개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박 </p>
 		            </div>
 		          </div>
 		        </div>
