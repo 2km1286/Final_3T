@@ -287,7 +287,7 @@ public class MemberController
 		
 			request.setAttribute("result", result);
 		
-			view = "/WEB-INF/views/AjaxFindId.jsp";
+			view = "/WEB-INF/ajax/FindId.jsp";
 		
 			return view;
 		}
@@ -367,15 +367,76 @@ public class MemberController
 			return view;
 		}
 		
-		// 마이페이지로 가기
+		// 메뉴바를 통해 마이페이지로 가기, 디폴트 알림창
 		@RequestMapping("/myPage.action")
-		public String mypage()
+		public String myPage()
 		{
 			String result = "";
 			result = "/WEB-INF/views/MyPage.jsp";
 			return result;
 		}
-				
+		
+		// 마이페이지 펫시팅. AJAX로 처리.
+		@RequestMapping("/myPageNotice.action")
+		public String myPageNotice(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageNoticeForm.jsp";
+			return result;
+		}
+		
+		
+		// 마이페이지 펫시팅. AJAX로 처리.
+		@RequestMapping("/myPageSitting.action")
+		public String myPageSitting(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageSittingForm.jsp";
+			return result;
+		}
+		
+		// 마이페이지 대리산책. AJAX로 처리.
+		@RequestMapping("/myPageWalk.action")
+		public String myPageWalk(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageWalkForm.jsp";
+			return result;
+		}
+		
+		// 마이페이지 내 정보 및 반려견 관리. AJAX로 처리.
+		@RequestMapping("/myPageInfo.action")
+		public String myPageInfo(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageInfoForm.jsp";
+			return result;
+		}
+		
+		// 마이페이지 나의 활동. AJAX로 처리.
+		@RequestMapping("/myPageActive.action")
+		public String myPageActive(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageActiveForm.jsp";
+			return result;
+		}
+		
+		// 마이페이지 나의 활동. AJAX로 처리.
+		@RequestMapping("/myPageReport.action")
+		public String myPageReport(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageReportForm.jsp";
+			return result;
+		}
+
 		/*
 		 * @RequestMapping("/walktest.action") public String walktest() { String
 		 * result="";
