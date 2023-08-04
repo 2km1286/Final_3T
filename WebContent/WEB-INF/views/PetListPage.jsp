@@ -130,9 +130,6 @@ p {
 		    <label for="datepicker">날짜 선택:</label>
 		    <input type="text" id="datepicker" class="custom-textbox" readonly>
 		
-		    <label for="time">시간:</label>
-		    <input type="time" id="time" class="custom-textbox">
-		
 		    <label for="dogs">견수:</label>
 		    <input type="number" id="dogs" class="custom-textbox" min="1" max="5">
 		
