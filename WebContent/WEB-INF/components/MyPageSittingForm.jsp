@@ -13,123 +13,119 @@
 <title>마이페이지_펫시팅</title>
 
 <style type="text/css">
-
+.place
+{
+	padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
+  	border-right: 2px solid black;
+}
 
 </style>
 </head>
 <body>
-	<!-- <div class="row all"> -->
+	<div class="row">
+	    <div class="col place">
 			<div class="row">
 				<div class="col-md-6">
-					
-					<h3><span class="badge">펫시팅(돌봄공간) 정보</span></h3>
-					
+					핫도그님의 돌봄장소
 				</div>
-				
-				
 				<div class="col-md-6">
-					<h3><span class="badge">내가 서비스 할 예약(펫시터)</span></h3>
-					
-					<div class="card">
-						<div class="card-header d-flex justify-content-between">
-							펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-						</div>	
-				    	  <div class="row g-0">
-				    	    <div class="col-md cardInfo" >
-				    	      <div class="card-body">
-				    	      	<div class="oneText">
-				    	      		<span class="nick card-text">폴폴이</span>
-				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
-				    	      	</div>
-				    	        <div class="oneText">
-				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-				    		        <span class="card-text">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
-				    	        </div>
-				    	        <div class="oneText">
-				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
-				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길 어디주택 00동 00호</span>
-				    	        </div>
-				    	        <div class="oneText">
-				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
-				    		        <span class="card-text">까미</span><br>
-				    	        </div>
-				    	      </div>
-				    	    </div>
-				    	  </div>
-				    </div>
-					
-					<div class="card">
-						<div class="card-header d-flex justify-content-between">
-							펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-						</div>	
-				    	  <div class="row g-0">
-				    	    <div class="col-md cardInfo" >
-				    	      <div class="card-body">
-				    	      	<div class="oneText">
-				    	      		<span class="nick card-text">폴폴이</span>
-				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
-				    	      	</div>
-				    	        <div class="oneText">
-				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-				    		        <span class="card-text">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
-				    	        </div>
-				    	        <div class="oneText">
-				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
-				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길 어디주택 00동 00호</span>
-				    	        </div>
-				    	        <div class="oneText">
-				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
-				    		        <span class="card-text">까미</span><br>
-				    	        </div>
-				    	      </div>
-				    	    </div>
-				    	  </div>
-				    </div>
-					
+					팔로워:5명
 				</div>
-				
 			</div>
+				
+			<!-- 돌봄장소 슬라이드 사진 시작 -->
+			<div id="carouselExample" class="carousel slide">
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="images/sitterroom.jpg" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="d-block w-100" alt="...">
+			    </div>
+			  </div>
+			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Previous</span>
+			  </button>
+			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Next</span>
+			  </button>
+			</div>
+			<!-- 돌봄장소 슬라이드 사진 끝 -->
 			
-			<div class="row">
-				<div class="col-md-6"> <!-- 이미지, 닉네임, 등급, 별점, 알람, 후기, 팔로잉 -->
-					<h3><span class="badge">내 프로필(펫시터)</span></h3>
+			
+			<!-- Carousel wrapper -->
+			  <div class="card-body">
+			    <h5 class="card-title">돌봄장소 어필 태그(검색태그)</h5>
+			    <p class="card-text">
+			      <div class="row gx-5">
+					  <div class="col-4">
+					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">홈캠 가능</button>
+					  </div>
+					   <div class="col-4">
+					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">목욕 가능</button>
+					  </div>
+					   <div class="col-4">
+					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">응급처치 가능</button>
+					  </div>
+					   <div class="col-4">
+					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">반려견유무</button>
+					  </div>
+					   <div class="col-4">
+					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">꼼꼼한 타임라인</button>
+					  </div>
+					   <div class="col-4">
+					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">모발관리 가능</button>
+					  </div>
+					   <div class="col-4">
+					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">장애견 케어 가능</button>
+					  </div>
+					   <div class="col-4">
+					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">노견 케어 가능</button>
+					  </div>
+				 </div>
+			    <p class="card-text">
+			    <p class="card-text">
+			    	최대 가능 견수
+			    	<select name="max-dog" id="max-dog">
+			    		<option value="1">1마리</option>
+			    		<option value="2">2마리</option>
+			    		<option value="3">3마리</option>
+			    		<option value="4">4마리</option>
+			    		<option value="5">5마리</option>
+			    	</select>
+			    </p>
+			    <form>
+					  <!-- Name input -->
+					  <div class="form-outline mb-4">
+					    <input type="text" id="form4Example1" class="form-control" />
+					    <label class="form-label" for="form4Example1">돌봄장소 이름</label>
+					  </div>
 					
-					<div class="card profil">
-				    	  
-				    	  <div class="row g-0">
-				    	  	<div class="col-md-4">
-				    	  		<img src="images/client.jpg" class="img-fluid rounded-start" alt="프로필이미지">
-				    	  	</div>
-				    	    <div class="col-md-8 cardInfo" >
-				    	      <div class="card-body">
-				    	      	<div class="oneText">
-				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span><br>
-				    	      		<span class="nick card-text">폴폴이</span>
-				    	      	</div>
-				    		        <span class="card-text">4.8 ⭐  (40개의 후기)</span>
-				    	        </div>
-				    	        <div class="porfilSu">
-			    		        	<small class="text-muted ">알람</small>&nbsp;&nbsp;
-			    		        	<small class="text-muted">후기</small>&nbsp;&nbsp;
-			    		        	<small class="text-muted">팔로잉</small><br>
-				    		        <span>1건</span>&nbsp;&nbsp;
-				    		        <span>30건</span>&nbsp;&nbsp;
-				    		        <span>5건</span>
-				    		    </div>
-				    	      </div>
-				    	    </div>
-				     </div>
-				   </div>
-						
-				
-				<div class="col-md-6">
-					<h3><span class="badge">나의 활동비율</span></h3>
-					
-					
-					
-				</div>
-			</div>
-		<!-- </div> -->
+					  <!-- Message input -->
+					  <div class="form-outline mb-4">
+					    <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+					    <label class="form-label" for="form4Example3">돌봄장소 소개</label>
+					  </div>
+				</form>
+			      <small class="text-muted">
+						<!-- Checked switch -->
+						<div class="form-check form-switch">
+						  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked />
+						  <label class="form-check-label" for="flexSwitchCheckChecked">공개/비공개</label>
+						</div>
+						<div class="text-end"><button type="button" class="btn btn-warning card-right text-end">수정</button></div>
+				  </small>
+			  </div>
+	    </div>
+	    <div class="col">
+	      
+	    </div>
+  	</div>			
 </body>
 </html>
 

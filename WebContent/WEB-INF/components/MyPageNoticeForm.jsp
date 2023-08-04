@@ -19,7 +19,6 @@
 </style>
 </head>
 <body>
-	<!-- <div class="row all"> -->
 			<div class="row">
 				<div class="col-md-6">
 					
@@ -249,7 +248,6 @@
 					
 				</div>
 			</div>
-		<!-- </div> -->
 </body>
 </html>
 
