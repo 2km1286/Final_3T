@@ -138,14 +138,18 @@ p {
 		
 		  <div class="mb-4">
 		    <!-- 버튼 모양의 복수 선택 라디오 버튼 -->
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">홈캠 구비</button>
+		    <c:forEach var="dto" items="${list }">
+		    	<button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">${dto.nickName }</button>
+		    
+		    </c:forEach>
+		    <!-- <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">홈캠 구비</button>
 		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">놀이 가능</button>
 		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">목욕 가능</button>
 		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">응급처치 가능</button>
 		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">반려견 있음</button>
 		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">모발관리 가능</button>
 		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">비흡연자</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">장애견 케어 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">장애견 케어 가능</button> -->
 		  </div>
 		
 		     <h2>펫시터 공고글</h2>
