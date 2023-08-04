@@ -349,12 +349,21 @@ public class MemberController
 			return view;
 		}
 		
-		// 대리산책 리스트업 페이지로 가기
-		@RequestMapping("/walkList.action")
+		// 펫시터 리스트업 페이지로 가기
+		@RequestMapping("/sittingList.action")
 		public String walkList()
 		{
 			String view = "";
 			view = "/WEB-INF/views/WalkListPage.jsp";
+			return view;
+		}
+		
+		// 대리산책 리스트업 페이지로 가기
+		@RequestMapping("/walkList.action")
+		public String petList()
+		{
+			String view = "";
+			view = "/WEB-INF/views/PetListPage.jsp";
 			return view;
 		}
 	
