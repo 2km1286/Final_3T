@@ -9,11 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class MemberService
+public class MemberService implements MemberServiceI
 {
-
-	@Autowired
-	private SqlSession sqlSession;
+	
+	 @Autowired private SqlSession sqlSession;
 
 	// 아이디 비밀번호로 memSid 조회하기
 	public String searchMemsid(MemberDTO dto)
@@ -21,9 +20,7 @@ public class MemberService
 		String result = "";
 
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-
 		result = dao.searchMemsid(dto);
-
 		return result;
 
 	}

@@ -3,7 +3,6 @@ package com.act.member;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController
 {
 	@Autowired
-	private MemberService memberService;
+	private MemberServiceI memberService;
 
 	// 액션 처리
 	// ---------------------------------------------------------------------------------
@@ -94,8 +93,6 @@ public class MemberController
 
 		result = memberService.searchMemsid(dto);
 
-		// System.out.println(result);
-
 		if (result.equals("0")) // 로그인 실패
 		{
 			session.setAttribute("fail", result);
@@ -117,32 +114,31 @@ public class MemberController
 		String view = "/WEB-INF/views/IdFindFormPage.jsp";
 		return view;
 	}
-	
-	
-	// 아이디 중복확인 
+
+	// 아이디 중복확인
 	@RequestMapping("/idDupli.action")
 	public String idDupli(HttpServletRequest request)
 	{
 		String view = "";
-		
+
 		String jmId = request.getParameter("jmId");
 		int result = memberService.searchId(jmId);
-		
+
 		request.setAttribute("result", result);
 		view = "/WEB-INF/views/SearchId.jsp";
 
 		return view;
 	}
-	
+
 	// 닉네임 중복확인
 	@RequestMapping("/nickDupli.action")
 	public String nickDupli(HttpServletRequest request)
 	{
 		String view = "";
-		
+
 		String jmNickName = request.getParameter("jmNickName");
 		int result = memberService.searchNick(jmNickName);
-		
+
 		request.setAttribute("resultNick", result);
 		view = "/WEB-INF/views/SearchNick.jsp";
 		return view;
@@ -235,11 +231,12 @@ public class MemberController
 		String result = "";
 		int num = memberService.join(session, dto);
 
-		if (num != 1)
-			result = "redirect:join.action";
-		else
-			result = "redirect:main.action";
-
+		
+		 if (num != 1) 
+			 result = "redirect:join.action"; 
+		 else 
+			 result ="redirect:main.action";
+		 
 		return result;
 	}
 

@@ -46,8 +46,8 @@
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>	<!-- 생성자의 아규먼트의 0번째 인덱스에 이 값을 주입-->
 	</bean>
 	
-
-	<!--  @Transactional 어노테이션을 사용하기 위해 TransactionManager 설정 -->
+	
+	<!-- @Transactional 어노테이션을 사용하기 위해 TransactionManager 설정 -->
 	<bean id="transactionManager" class='org.springframework.jdbc.datasource.DataSourceTransactionManager'>
 		<property name="dataSource" ref="localDataSource"></property>
 	</bean>
