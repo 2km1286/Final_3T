@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.act.member.IMemberDAO">
+<mapper namespace="com.act.sitting.ISittingDAO">
 
-	<select id="list" resultType="SittingDTO">
-		SELECT JM_NICKNAME, SP_TITLE, SP_ADDR1. SP_ADDR2, MEM_SID, SPH_SID, SHP_S, SHP_E, SR_START, SR_END, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
-		FROM SITTING_PLACE_LIST_VIEW;
+	<select id="list" resultType="com.act.sitting.SittingDTO">
+		SELECT JM_NICKNAME, SP_TITLE, SP_ADDR1, SP_ADDR2, MEM_SID, SPH_SID, SPH_START, SPH_END, SR_START, SR_END, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
+		FROM SITTING_PLACE_LIST_VIEW
 	</select>
 
 </mapper>
