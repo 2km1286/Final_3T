@@ -8,61 +8,77 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 
-
 @Service
-public class MemberService
+public class MemberService implements MemberServiceI
 {
-
-	@Autowired
-	private SqlSession sqlSession;
 	
+	 @Autowired private SqlSession sqlSession;
+
 	// 아이디 비밀번호로 memSid 조회하기
 	public String searchMemsid(MemberDTO dto)
 	{
 		String result = "";
-		
+
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		
 		result = dao.searchMemsid(dto);
-		
 		return result;
-		
+
 	}
 	
+	// 아이디 중복확인 조회
+	public int searchId(String jmId)
+	{
+		int result = 0;
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		
+		result = dao.searchId(jmId);
+		return result;
+	}
+	
+	// 닉네임 중복확인 조회
+	public int searchNick(String jmNickName)
+	{
+		int result = 0;
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		
+		result = dao.searchNick(jmNickName);
+		return result;
+	}
+
 	// 이름, 주민번호로 아이디 찾기
 	public String findId(MemberDTO dto)
 	{
 		String result = "";
-		
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		
-		result = dao.findId(dto);
-		
-		return result;
-	}
-	
 
-	// 아이디, 이름, 주민번호로 memSid 찾기 
-	public String findPw(MemberDTO dto)
-	{
-		 String result = "";
-		
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		
-		result = dao.findPw(dto);
-		
+
+		result = dao.findId(dto);
+
 		return result;
 	}
-	
+
+
+	// 아이디, 이름, 주민번호로 memSid 찾기
+	public String pwFind(MemberDTO dto)
+	{
+		String result = "";
+
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+
+		result = dao.findPw(dto);
+
+		return result;
+	}
+
 	// 비밀번호 재설정
 	public int updatePw(MemberDTO dto)
 	{
 		int result = 0;
-		
+
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		
+
 		result = dao.updatePw(dto);
-		
+
 		return result;
 	}
 	
@@ -101,3 +117,20 @@ public class MemberService
    
 }
 
+	
+	@Transactional
+	public int join(HttpSession session, MemberDTO dto)
+	{
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		
+		String memSid = dao.getMemSid(); // 난수 생성
+		dto.setMemSid(memSid); // dto에 생성된 난수 MEM_SID set
+		
+		dao.add(memSid); // member 테이블에 MEM_SID insert
+		
+		int result = dao.join(dto); // JOIN_MEMBER 테이블에 회원가입 데이터 INSERT
+
+		return result;
+	}
+
+}
