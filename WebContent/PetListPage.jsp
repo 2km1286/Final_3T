@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>대리산책</title>
+<title>펫시터 공고글</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 <style>
@@ -158,10 +158,11 @@ p {
 		      <c:set var="cards">
 		        <div class="col-md-4">
 		          <div class="card">
-		            <img src="images/profilEx.png" alt="" class="card-img-top" style="width: 120px;">
+		            <img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 320px;">
 		            <div class="card-body">
 		              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
-		              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6>
+		              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6><br>
+		              <p>4.8 ⭐ (452개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박 </p>
 		            </div>
 		          </div>
 		        </div>
@@ -175,6 +176,7 @@ p {
 		        <c:out value="${cards}" escapeXml="false" />
 		        <c:if test="${i % 3 == 0 || i == 9}">
 		          </div>
+		          <br>
 		        </c:if>
 		      </c:forEach>
 		    </div>
