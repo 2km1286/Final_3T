@@ -27,7 +27,7 @@ public interface IMemberDAO
 	
 	// 아이디 중복 확인
 	public int searchId(String jmId);
-	   
-   // 닉네임 중복 확인
-   public int searchNick(String jmNickName);
+	
+	// 닉네임 중복 확인
+	public int searchNick(String jmNickName);
 }
