@@ -11,11 +11,13 @@ public interface MemberServiceI
 	
 	public int searchNick(String jmNickName);
 	
-	public String idFind(MemberDTO dto);
+	public String findId(MemberDTO dto);
 	
-	public String pwFind(MemberDTO dto);
+	public String findPw(MemberDTO dto);
 	
 	public int updatePw(MemberDTO dto);
 	
 	public int join(HttpSession session, MemberDTO dto);
+	
+	
 }
