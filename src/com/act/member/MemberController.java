@@ -105,7 +105,6 @@ public class MemberController
 			
 			if (result.equals("0")) // 회원정보 없음, 로그인/회원가입 페이지로가서 로그인 실패를 띄워주기
 			{	
-				result = "-1";
 				session.setAttribute("memSid", result);
 				view = "redirect:loginJoin.action";
 			}
@@ -114,6 +113,8 @@ public class MemberController
 				// 메인페이지에서 분기를 나눠주려면 session에 분기할 때 쓰일 값 하나를 더 담아 보내줘야함
 				// 매칭기록이 없으면:1, 매칭기록은 있는데 견주활동이 많은지 대리산책러활도잉 많은지 펫시터활동이 많은지에 따라: 2, 3, 4
 				// 메인페이지 가서 나눠 아니면 여기서 나눠서 각각 다른 페이지로 보내?
+				
+				
 				session.setAttribute("memSid", result);
 				view = "redirect:main.action";
 			}
@@ -227,16 +228,16 @@ public class MemberController
 		}
 		
 		// 대리산책 리스트업 페이지로 가기
-		@RequestMapping("/WalkList.action")
+		@RequestMapping("/walkList.action")
 		public String walkList()
 		{
 			String view = "";
 			view = "/WEB-INF/views/WalkListPage.jsp";
 			return view;
 		}
-		
-		// 돌봄장소 리스트업 페이지로 가시
-		@RequestMapping("/SittingList.action")
+	
+		// 펫시팅(돌봄장소) 리스트업 페이지로 가기
+		@RequestMapping("/sittingList")
 		public String sittingList()
 		{
 			String view = "";
@@ -244,30 +245,34 @@ public class MemberController
 			return view;
 		}
 		
-		
-		@RequestMapping("/walktest.action") public String walktest() { String
-		result="";
-		
-		result="/WEB-INF/views/WalkTestPage.jsp";
-		
-		return result; }
-		
-		@RequestMapping("/result.action") public String result() { String result =
-		"";
-		
-		result = "/WEB-INF/views/ResultPage.jsp";
-		
-		return result; }
-		
-		@RequestMapping("/mypage.action") public String mypage() { String result =
-		""; result = "/WEB-INF/views/MyPage.jsp"; return result; }
-		
-		@RequestMapping("/mpspinsert.action") public String mpspinsert() { String
-		result = ""; result = "/WEB-INF/views/Mypage.jsp"; return result; }
-		
-		@RequestMapping("/recommend.action") public String recommend() { String
-		result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
-	
+		// 마이페이지로 가기
+		@RequestMapping("/myPage.action")
+		public String mypage()
+		{
+			String result = "";
+			result = "/WEB-INF/views/MyPage.jsp";
+			return result;
+		}
+				
+		/*
+		 * @RequestMapping("/walktest.action") public String walktest() { String
+		 * result="";
+		 * 
+		 * result="/WEB-INF/views/WalkTestPage.jsp";
+		 * 
+		 * return result; }
+		 * 
+		 * @RequestMapping("/result.action") public String result() { String result =
+		 * "";
+		 * 
+		 * result = "/WEB-INF/views/ResultPage.jsp";
+		 * 
+		 * return result; }
+		 * 
+		 * 
+		 * @RequestMapping("/recommend.action") public String recommend() { String
+		 * result = ""; result = "/WEB-INF/views/RecommendPage.jsp"; return result; }
+		 */
 	
 
 }

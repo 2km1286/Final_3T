@@ -25,6 +25,12 @@
 	 $().ready(function()
 	{
 		 
+		 // 메인로고 버튼
+		 $("#mainLogo").click(function()
+		{
+			 window.location.href = "main.action";
+		});
+		 
 		// 로그인/회원가입 페이지로 가는 function
 		$("#loginJoin").click(function()
 		{
@@ -37,6 +43,26 @@
 		{
 			window.location.href = "logOut.action";
 		});
+		
+		// 대리산책 리스트업 페이지로 가는 function
+		$("#walkList").click(function()
+		{
+			window.location.href = "walkList.action";
+		})
+		
+		// 펫시팅 리스트업 페이지로 가는 function
+		$("#sittingList").click(function()
+		{
+			window.location.href = "sittingList.action";
+		})
+		
+		// 마이페이지로 가는 function
+		$("#myPage").click(function()
+		{
+			window.location.href = "myPage.action";
+		});
+		
+		
 		
 	}); 
 </script>
@@ -71,7 +97,7 @@
     <header class="header_section" style="background-color: white; ">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="#" id="mainLogo">
             <img src="./images/logo_main.png" alt="png_logo" style="width: 85px;">
            
           </a>
@@ -84,16 +110,16 @@
             <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item">
-                  <a class="nav-link" href="service.html" >서비스 소개 </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<%=cp %>/WalkList.action" id="walkList">대리산책 </a>
+                  <a class="nav-link" href="#" id="walkList">대리산책</a>
                 </li> 
                 <li class="nav-item">
-                  <a class="nav-link" href="<%=cp %>/SittingList.action" id="sittingList"> 펫시팅</a>
+                  <a class="nav-link" href="#" id="sittingList">펫시팅</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html">고객지원</a>
+                  <a class="nav-link" href="#" id="myPage">마이페이지</a>
+                </li>
+				<li class="nav-item">
+                  <a class="nav-link" href="#" id="center">고객센터/사고접수</a>
                 </li>
 				
 				<c:choose>

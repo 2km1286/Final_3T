@@ -1,0 +1,9 @@
+diff a/src/com/act/member/MemberService.java b/src/com/act/member/MemberService.java	(rejected hunks)
+@@ -19,6 +19,7 @@
+ 	// 아이디 비밀번호로 memSid 조회하기
+ 	public String searchMemsid(MemberDTO dto)
+ 	{
++		String result;
+ 		
+ 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+ 		

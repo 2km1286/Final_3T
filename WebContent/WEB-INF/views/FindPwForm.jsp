@@ -4,16 +4,6 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<%
-	String result = (String)session.getAttribute("result");		// 최초요청시 null
-
-	if( result!=null && result.equals("0") )
-	{
-		out.println("<script>alert('등록된 정보가 없습니다. ') </script>");
-		session.removeAttribute("result");
-	}
-	
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +41,13 @@
 				return false;
 			}
 			
-			return true;
+			$("#findPw").submit();
+			var result = <%=(String)session.getAttribute("result")%>;
+			if ( result == "0" )
+			{
+				alert("등록된 정보가 없습니다.");
+			}
+			
 		});
 	});
 	
@@ -249,11 +245,11 @@ margin-left: 20px;
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>비밀번호 재설정</h1>
-      <form class="form" action="findPw.action">
+      <form class="form" action="findPw.action" id="findPw">
         <input type="text" placeholder="아이디" name="jmId" id="jmId">
         <input type="text" placeholder="이름" name="jmName" id="jmName">
         <input type="password" placeholder="주민번호" name="jmSsn" id="jmSsn">
-        <button type="submit" id="pw-button">비밀번호 재설정</button><br>
+        <button type="button" id="pw-button">비밀번호 재설정</button><br>
       </form>
     </div>
   </div>
