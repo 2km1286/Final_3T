@@ -141,13 +141,17 @@ p {
 		
 		  <div class="mb-4">
 		    <!-- 버튼 모양의 복수 선택 라디오 버튼 -->
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그1</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그2</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그3</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그4</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">홈캠 구비</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">놀이 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">목욕 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">응급처치 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">반려견 있음</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">모발관리 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">비흡연자</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">장애견 케어 가능</button>
 		  </div>
 		
-		     <h2>대리산책 공고글</h2>
+		     <h2>펫시터 공고글</h2>
 		    <hr>
 		    <div id="cardContainer" class="row">
 		      <!-- 카드 데이터를 미리 선언 -->
@@ -156,8 +160,8 @@ p {
 		          <div class="card">
 		            <img src="images/profilEx.png" alt="" class="card-img-top" style="width: 120px;">
 		            <div class="card-body">
-		              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
-		              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6>
+		              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
+		              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6>
 		            </div>
 		          </div>
 		        </div>
