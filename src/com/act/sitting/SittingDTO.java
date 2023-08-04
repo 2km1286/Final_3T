@@ -9,7 +9,24 @@ public class SittingDTO
 {
 	private String jmNickName, spTitle, spAddr1, spAddr2, memSid, shpStart, shpEnd, srStart, srEnd;
 	private int sphSid, srwSid, stleSid, spMaxPet, spSid;
+	private String isptSid, isptName;
 	
+	public String getIsptSid()
+	{
+		return isptSid;
+	}
+	public void setIsptSid(String isptSid)
+	{
+		this.isptSid = isptSid;
+	}
+	public String getIsptName()
+	{
+		return isptName;
+	}
+	public void setIsptName(String isptName)
+	{
+		this.isptName = isptName;
+	}
 	public String getJmNickName()
 	{
 		return jmNickName;
