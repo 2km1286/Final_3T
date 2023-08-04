@@ -198,10 +198,12 @@
   -webkit-transition-duration: 0.25s;
   transition-duration: 0.25s;
 }
+div.col-md-6 { padding: 20px 20px 20px 20px; }
 div.card {margin-bottom: 10px;}
 div.card-header {padding: 5px; }
 div.cardImage {padding-right: 0;}
 div.cardInfo {padding-right: 0; padding-left: 0;}
+div .porfilSu{margin-left:20px; width: 300px; }
 
 .nick {font-size: 16pt;}
 .oneText {margin-bottom: 3px; border-bottom: 1px solid gray; }
@@ -224,28 +226,12 @@ div.cardInfo {padding-right: 0; padding-left: 0;}
 	  transition-duration: 0.25s;
 }
 
-/* 마이페이지 알림화면 스타일 */
-/* .mypageNoAllDiv {border-bottom: 1px solid #FFE090; margin-bottom: 20px;}
-.mypageNoticeAllList
-{
-  background-color: #fcf8de;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  height: 50px;
-}
-.mypageNoticeAll { position: relative; height: 400px; overflow: auto; }
-.mypageNoticBtn { font-weight: bold;}
-.mypageNomore
+div.profil
 { 
-	background-color: #FFE090; font-size: 15px; font-weight: bold; margin-left: 500px; 
-	position: absolute; position: absolute; bottom: 10px; right: 10px;
+  padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
+  border: 2px solid black; /* 폼에 테두리 설정 */
+  border-radius: 10px; /* 테두리의 둥근 정도 설정 */
 }
-.mypageListCard { background-color: #fcf8de; border-radius: 10px; height: 180px; margin-bottom: 20px; position: relative;}
-.mypageListCard .card-body { height: 100%; }
-.mypageListTitle { font-size: 20px; font-weight: bold; background-color: white; padding: 5px; }
-.mypageListSub {font-size: 18px; font-weight: bold;} */
-
 /* 마이페이지 나의 활동 스타일 */
 /* .mypageMyAcBtn { font-weight: bold;}
 .wishlist{ height: 470px; border-bottom: 1px solid #FFE090; margin-bottom: 10px; }

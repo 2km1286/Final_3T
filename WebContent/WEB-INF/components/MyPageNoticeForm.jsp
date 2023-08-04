@@ -10,24 +10,18 @@
 <head>
 <link rel="icon" href="./images/logo_transparent.png"/>
 <meta charset="UTF-8"> 
-<title>MyPageNoticeForm</title>
+<title>마이페이지_알림창</title>
 
 <style type="text/css">
 
-.noticeAll, .noticePet, .noticeWalk, .noticeSeating
-{
-	padding: 20px 20px 20px 20px;
-}
-
 .noticeCard { margin-bottom: 20px;}
-
 
 </style>
 </head>
 <body>
 	<!-- <div class="row all"> -->
 			<div class="row">
-				<div class="col-md-6 noticeAll">
+				<div class="col-md-6">
 					
 					<h3><span class="badge">알림</span></h3>
 					
@@ -57,7 +51,7 @@
 				</div>
 				
 				
-				<div class="col-md-6 noticePet">
+				<div class="col-md-6">
 					<h3><span class="badge">내가 맡긴 예약(견주)</span></h3>
 					
 					<div class="card">
@@ -125,7 +119,7 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-md-6 noticeWalk">
+				<div class="col-md-6">
 					<h3><span class="badge">내가 서비스 할 예약(대리산책러)</span></h3>
 					
 					<div class="card">
@@ -194,7 +188,7 @@
 				    </div>
 					
 				</div>
-				<div class="col-md-6 noticeSeating">
+				<div class="col-md-6">
 					<h3><span class="badge">내가 서비스 할 예약(펫시터)</span></h3>
 					
 					<div class="card">
