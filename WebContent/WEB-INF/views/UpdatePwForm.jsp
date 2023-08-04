@@ -8,78 +8,50 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-<title>아이디찾기</title>
+<title>비밀번호 재설정</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <script type="text/javascript">
 
-	$(function()
-	{
-		
-		$("#find-button").click(function()
+		$(function()
 		{
-			//alert("확인");
-			
-			var params = "jmName=" + $("#jmName").val() + "&jmSsn=" + $("#jmSsn").val();
-			
-			$.ajax(
+			$("#pw-button").click(function()
 			{
-				type:"POST"
-				, url:"idFind.action"
-				, data:params
-				, async:true
-				, success:function(data)
+				if( !$("#jmPw").val() )
 				{
-					$("#idRes").html(data);
-										
-				}
-				, beforeSend:showRequest
-				, error:function(e)
-				{
-					alert(e.responseText);
+					alert("새 비밀번호를 입력해야 합니다.");
+					$("#jmPw").focus();
+					
+					return false;
 				}
 				
-			});		
-	
-		});
-	
-		
-		function showRequest()
-		{
-			if( !$("#jmName").val() )
-			{
-				alert("이름을 입력해야 합니다.");
-				$("#jmName").focus();
+				if( !$("#jmPw2").val() )
+				{
+					alert("새 비밀번호를 다시 입력해야 합니다.");
+					$("#jmPw2").focus();
+					
+					return false;
+				}
 				
-				return false;
-			}
-			
-			if( !$("#jmSsn").val() )
-			{
-				alert("주민번호를 입력해야 합니다.");
-				$("#jmSsn").focus();
+				if( $("#jmPw").val() != $("#jmPw2").val() )
+				{
+					alert("입력하신 비밀번호가 일치하지 않습니다.");
+					$("#jmPw2").focus();
+					
+					return false;
+				}
 				
-				return false;
-			}
-			
-			return true;
-		}
-		
-		
-		$("#loginPage").click(function()
-		{
-		      window.location.href = "LoginForm.jsp";
-		  
+				alert("비밀번호를 변경했습니다. ");
+				
+				return true;
+			});
 		});
-		
-		
-		
-	});
-	
+
+
+
 
 
 </script>
-
 
 <style>
 * {
@@ -254,21 +226,23 @@ margin-left: 20px;
 
 }
 
+#pw-button { width: 200px;}
+
+  
   </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
-      <h1>아이디찾기</h1>
-      <form class="form" id="idForm">
-        <input type="text" placeholder="이름" name="jmName" id="jmName">
-        <input type="password" placeholder="주민번호" name="jmSsn" id="jmSsn">
-        <button type="button" id="loginPage" onclick="loginPage()" >로그인페이지</button>
-        <button type="button" id="find-button">아이디찾기</button><br>
+      <h1>비밀번호 재설정</h1>
+      <form class="form" action="updatePw.action">
+        <input type="password" placeholder="새 비밀번호" name="jmPw" id="jmPw">
+        <input type="password" placeholder="새 비밀번호 다시 입력" name="jmPw2" id="jmPw2">
+        <input type="hidden" name="memSid" id="memSid" value="${memSid }">
+        <button type="submit" id="pw-button">비밀번호 재설정</button><br>
       </form>
-		<div id="idRes"></div>
     </div>
-    </div>
+  </div>
 </body>
 </html>
