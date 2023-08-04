@@ -258,7 +258,6 @@ margin-left: 20px;
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>로그인</h1>
-      
       <form class="form" action="memberlogin.action" id="loginForm">
         <input type="text" placeholder="아이디" name="jmId" id="jmId">
         <input type="password" placeholder="비밀번호" name="jmPw" id="jmPw"><br>
@@ -266,7 +265,6 @@ margin-left: 20px;
             로그인 실패!!
         </h3>
         <button type="button" id="join-button">회원가입</button>
-        
         <button type="button" id="login-button">로그인</button><br>
         
       </form>

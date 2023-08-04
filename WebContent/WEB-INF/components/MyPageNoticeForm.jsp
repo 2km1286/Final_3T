@@ -10,24 +10,18 @@
 <head>
 <link rel="icon" href="./images/logo_transparent.png"/>
 <meta charset="UTF-8"> 
-<title>MyPageNoticeForm</title>
+<title>마이페이지_알림창</title>
 
 <style type="text/css">
 
-.noticeAll, .noticePet, .noticeWalk, .noticeSeating
-{
-	padding: 20px 20px 20px 20px;
-}
-
 .noticeCard { margin-bottom: 20px;}
-
 
 </style>
 </head>
 <body>
 	<!-- <div class="row all"> -->
 			<div class="row">
-				<div class="col-md-6 noticeAll">
+				<div class="col-md-6">
 					
 					<h3><span class="badge">알림</span></h3>
 					
@@ -57,120 +51,201 @@
 				</div>
 				
 				
-				<div class="col-md-6 noticePet">
-					<h3><span class="badge">예약내역(견주)</span></h3>
+				<div class="col-md-6">
+					<h3><span class="badge">내가 맡긴 예약(견주)</span></h3>
 					
 					<div class="card">
-						<div class="card-header">대리산책</div>
-						  <div class="row g-0">
-						    <div class="col-md-4">
-						      <img src="images/client.jpg" class="img-fluid rounded-start" alt="예약글대표이미지">
-						    </div>
-						    <div class="col-md-8">
-						      <div class="card-body">
-						      	<p>
-						      		<span class="card-text"><small class="text-muted">프로산책러</small></span>
-						      		<span class="card-text">매칭상대닉네임</span>
-						      	</p>
-						        <h5 class="card-title">공고글/돌봄장소글 제목</h5>
-						        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-						        <span class="card-text">2023-08-04 14:00~16:00</span><br><br>
-						        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
-						        <span class="card-text">서울시 마포구 어디동 어디로 홍대입구역 2번 출구 앞</span><br>
-						      </div>
-						    </div>
-						  </div>
-					</div>
+						<div class="card-header d-flex justify-content-between"">
+							대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
+						</div>	
+				    	  <div class="row g-0">
+				    	    <div class="col-md cardInfo" >
+				    	      <div class="card-body">
+				    	      	<div class="oneText">
+				    	      		<span class="nick card-text">폴폴이</span>
+				    	      		<span class="card-text"><small class="text-muted">프로산책러</small></span>
+				    	      	</div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+				    		        <span class="card-text">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
+				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길</span>
+				    	        </div>
+				    	         <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">만남장소</small></span><br>
+				    		        <span class="card-text">홍대입구역 2번 출구 앞</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
+				    		        <span class="card-text">까미</span><br>
+				    	        </div>
+				    	      </div>
+				    	    </div>
+				    	  </div>
+				    </div>
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="images/client.jpg" class="img-fluid rounded-start">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted"></small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+					<div class="card">
+						<div class="card-header d-flex justify-content-between">
+							펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+						</div>	
+				    	  <div class="row g-0">
+				    	    <div class="col-md cardInfo" >
+				    	      <div class="card-body">
+				    	      	<div class="oneText">
+				    	      		<span class="nick card-text">폴폴이</span>
+				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
+				    	      	</div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+				    		        <span class="card-text">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
+				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길 어디주택 00동 00호</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
+				    		        <span class="card-text">까미</span><br>
+				    	        </div>
+				    	      </div>
+				    	    </div>
+				    	  </div>
+				    </div>
 					
 				</div>
 				
 			</div>
 			
 			<div class="row">
-				<div class="col-md-6 noticeWalk">
-					<h3><span class="badge">예약내역(대리산책러)</span></h3>
+				<div class="col-md-6">
+					<h3><span class="badge">내가 서비스 할 예약(대리산책러)</span></h3>
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+					<div class="card">
+						<div class="card-header d-flex justify-content-between"">
+							대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
+						</div>	
+				    	  <div class="row g-0">
+				    	    <div class="col-md cardInfo" >
+				    	      <div class="card-body">
+				    	      	<div class="oneText">
+				    	      		<span class="nick card-text">폴폴이</span>
+				    	      		<span class="card-text"><small class="text-muted">프로산책러</small></span>
+				    	      	</div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+				    		        <span class="card-text">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
+				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길</span>
+				    	        </div>
+				    	         <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">만남장소</small></span><br>
+				    		        <span class="card-text">홍대입구역 2번 출구 앞</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
+				    		        <span class="card-text">까미</span><br>
+				    	        </div>
+				    	      </div>
+				    	    </div>
+				    	  </div>
+				    </div>
 					
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+					<div class="card">
+						<div class="card-header d-flex justify-content-between"">
+							대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
+						</div>	
+				    	  <div class="row g-0">
+				    	    <div class="col-md cardInfo" >
+				    	      <div class="card-body">
+				    	      	<div class="oneText">
+				    	      		<span class="nick card-text">폴폴이</span>
+				    	      		<span class="card-text"><small class="text-muted">프로산책러</small></span>
+				    	      	</div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+				    		        <span class="card-text">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
+				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길</span>
+				    	        </div>
+				    	         <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">만남장소</small></span><br>
+				    		        <span class="card-text">홍대입구역 2번 출구 앞</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
+				    		        <span class="card-text">까미</span><br>
+				    	        </div>
+				    	      </div>
+				    	    </div>
+				    	  </div>
+				    </div>
 					
 				</div>
-				<div class="col-md-6 noticeSeating">
-					<h3><span class="badge">예약내역(펫시터)</span></h3>
+				<div class="col-md-6">
+					<h3><span class="badge">내가 서비스 할 예약(펫시터)</span></h3>
 					
+					<div class="card">
+						<div class="card-header d-flex justify-content-between">
+							펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+						</div>	
+				    	  <div class="row g-0">
+				    	    <div class="col-md cardInfo" >
+				    	      <div class="card-body">
+				    	      	<div class="oneText">
+				    	      		<span class="nick card-text">폴폴이</span>
+				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
+				    	      	</div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+				    		        <span class="card-text">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
+				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길 어디주택 00동 00호</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
+				    		        <span class="card-text">까미</span><br>
+				    	        </div>
+				    	      </div>
+				    	    </div>
+				    	  </div>
+				    </div>
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+					<div class="card">
+						<div class="card-header d-flex justify-content-between">
+							펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+						</div>	
+				    	  <div class="row g-0">
+				    	    <div class="col-md cardInfo" >
+				    	      <div class="card-body">
+				    	      	<div class="oneText">
+				    	      		<span class="nick card-text">폴폴이</span>
+				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
+				    	      	</div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+				    		        <span class="card-text">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
+				    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길 어디주택 00동 00호</span>
+				    	        </div>
+				    	        <div class="oneText">
+				    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
+				    		        <span class="card-text">까미</span><br>
+				    	        </div>
+				    	      </div>
+				    	    </div>
+				    	  </div>
+				    </div>
 					
 				</div>
 			</div>
