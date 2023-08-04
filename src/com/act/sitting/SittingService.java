@@ -18,7 +18,6 @@ public class SittingService
 		ArrayList<SittingDTO> list = new ArrayList<SittingDTO>();
 		
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		
 		list = dao.list();
 		
 		return list;
