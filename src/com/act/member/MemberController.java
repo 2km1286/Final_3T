@@ -147,156 +147,111 @@ public class MemberController
 			result = "아이디가 존재하지 않습니다.";
 		} else
 		{
-			result = "등록된 아이디는 [" + result + "] 입니다.";
-		}
-	
-		request.setAttribute("result", result);
-	
-		view = "/WEB-INF/ajax/FindId.jsp";
-	
-		return view;
-	}
-	
-	// 비밀번호 재설정을 위해 아이디, 이름, 주민번호를 입력받는 폼
-	@RequestMapping("/findPwForm.action")
-	public String pwRemakeForm()
-	{
-		String view = "/WEB-INF/views/FindPwForm.jsp";
-		return view;
-	}
+			String view="";
+			
+			int result = 0;
+			
+			// 0 or 성공시 1
+			result = memberService.updatePw(dto);		
+			
+			if (result>0)
+			{
+				session.removeAttribute("memSid");		// null로 만들어주고
+				view = "redirect:main.action";
+			}
 
-	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사
-	@RequestMapping("/findPw.action")
-	public String findPw(MemberDTO dto, HttpSession session)
-	{
-		String view = "";
-	
-		String result = "";
-	
-		// "0" 또는 특정 memSid 를 반환
-		result = memberService.findPw(dto);
-	
-		if (result.equals("0")) // 회원정보 없음
-		{
-			// result에 0이 담긴채로 FindPwForm.jsp 을 요청, 이 때는 alert이 뜸
-			session.setAttribute("result", result);
-			view = "redirect:findPwForm.action";
-		} else // 회원정보 있음
-		{
-			// memSid에 조회한 memSid을 담아 넘겨주며 비밀번호 재설정 폼을 요청.
-			session.setAttribute("memSid", result);
-			view = "/WEB-INF/views/UpdatePwForm.jsp";
-		}
-	
-		return view;
-	}
-
-	// 비밀번호 재설정하기
-	@RequestMapping("/updatePw.action")
-	public String updatePw(MemberDTO dto, HttpSession session)
-	{
-		String view = "";
-	
-		int result = 0;
-	
-		// 0 or 성공시 1
-		result = memberService.updatePw(dto);
-	
-		if (result > 0)
-		{
-			session.removeAttribute("memSid"); // null로 만들어주고
-			view = "redirect:main.action";
+			
+			return view;
 		}
 		
-		return view;
-	}
+		
+		// 대리산책 리스트업 페이지로 가기
+		@RequestMapping("/walkList.action")
+		public String petList()
+		{
+			String view = "";
+			view = "/WEB-INF/views/WalkListPage.jsp";
+			return view;
+		}
 	
-	// 대리산책 리스트업 페이지로 가기
-	@RequestMapping("/walkList.action")
-	public String petList()
-	{
-		String view = "";
-		view = "/WEB-INF/views/WalkListPage.jsp";
-		return view;
-	}
-	
-	// 펫시팅(돌봄장소) 리스트업 페이지로 가기
-	@RequestMapping("/sittingList.action")
-	public String sittingList()
-	{
-		String view = "";
-		view = "/WEB-INF/views/SittingListPage.jsp";
-		return view;
-	}
-	
-	// 메뉴바를 통해 마이페이지로 가기, 디폴트 알림창
-	@RequestMapping("/myPage.action")
-	public String myPage()
-	{
-		String result = "";
-		result = "/WEB-INF/views/MyPage.jsp";
-		return result;
-	}
-	
-	// 마이페이지 펫시팅. AJAX로 처리.
-	@RequestMapping("/myPageNotice.action")
-	public String myPageNotice(HttpServletRequest request)
-	{
-		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/MyPageNoticeForm.jsp";
-		return result;
-	}
-	
-	// 마이페이지 펫시팅. AJAX로 처리.
-	@RequestMapping("/myPageSitting.action")
-	public String myPageSitting(HttpServletRequest request)
-	{
-		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/MyPageSittingForm.jsp";
-		return result;
-	}
-	
-	// 마이페이지 대리산책. AJAX로 처리.
-	@RequestMapping("/myPageWalk.action")
-	public String myPageWalk(HttpServletRequest request)
-	{
-		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/MyPageWalkForm.jsp";
-		return result;
-	}
-	
-	// 마이페이지 내 정보 및 반려견 관리. AJAX로 처리.
-	@RequestMapping("/myPageInfo.action")
-	public String myPageInfo(HttpServletRequest request)
-	{
-		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/MyPageInfoForm.jsp";
-		return result;
-	}
-	
-	// 마이페이지 나의 활동. AJAX로 처리.
-	@RequestMapping("/myPageActive.action")
-	public String myPageActive(HttpServletRequest request)
-	{
-		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/MyPageActiveForm.jsp";
-		return result;
-	}
-	
-	// 마이페이지 나의 활동. AJAX로 처리.
-	@RequestMapping("/myPageReport.action")
-	public String myPageReport(HttpServletRequest request)
-	{
-		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/MyPageReportForm.jsp";
-		return result;
-	}
+		// 펫시팅(돌봄장소) 리스트업 페이지로 가기
+		@RequestMapping("/sittingList.action")
+		public String sittingList()
+		{
+			String view = "";
+			view = "/WEB-INF/views/SittingListPage.jsp";
+			return view;
+		}
+		
+		// 메뉴바를 통해 마이페이지로 가기, 디폴트 알림창
+		@RequestMapping("/myPage.action")
+		public String myPage()
+		{
+			String result = "";
+			result = "/WEB-INF/views/MyPage.jsp";
+			return result;
+		}
+		
+		// 마이페이지 펫시팅. AJAX로 처리.
+		@RequestMapping("/myPageNotice.action")
+		public String myPageNotice(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageNoticeForm.jsp";
+			return result;
+		}
+		
+		
+		// 마이페이지 펫시팅. AJAX로 처리.
+		@RequestMapping("/myPageSitting.action")
+		public String myPageSitting(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageSittingForm.jsp";
+			return result;
+		}
+		
+		// 마이페이지 대리산책. AJAX로 처리.
+		@RequestMapping("/myPageWalk.action")
+		public String myPageWalk(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageWalkForm.jsp";
+			return result;
+		}
+		
+		// 마이페이지 내 정보 및 반려견 관리. AJAX로 처리.
+		@RequestMapping("/myPageInfo.action")
+		public String myPageInfo(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageInfoForm.jsp";
+			return result;
+		}
+		
+		// 마이페이지 나의 활동. AJAX로 처리.
+		@RequestMapping("/myPageActive.action")
+		public String myPageActive(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageActiveForm.jsp";
+			return result;
+		}
+		
+		// 마이페이지 나의 활동. AJAX로 처리.
+		@RequestMapping("/myPageReport.action")
+		public String myPageReport(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageReportForm.jsp";
+			return result;
+		}
 
 	
 
