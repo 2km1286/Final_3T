@@ -1,290 +1,234 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%
+	String memSid = (String)session.getAttribute("memSid");		// 최초 요청시 "0"
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="./images/logo_transparent.png"/>
-<meta charset="UTF-8"> 
-<title>MyPage</title>
+<meta charset="UTF-8">
+<title>펫시터 공고글</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-<!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
-
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
-<script type="text/javascript">
-
-	$(function()
-	{
-		// 알림창
-		$("#myPageNotice").click(function()
-		{
-			$.ajax(
-			{
-				type:"POST"
-				, url:"myPageNotice.action"
-				, async:true
-				, success:function(data)
-				{
-					$("#myPageMain").html(data);
-										
-				}
-				, error:function(e)
-				{
-					alert(e.responseText);
-				}
-				
-			});	
-		});
-		
-		
-		// 펫시팅
-		$("#myPageSitting").click(function()
-		{
-			$.ajax(
-			{
-				type:"POST"
-				, url:"myPageSitting.action"
-				, async:true
-				, success:function(data)
-				{
-					$("#myPageMain").html(data);
-										
-				}
-				, error:function(e)
-				{
-					alert(e.responseText);
-				}
-				
-			});	
-		});
-		
-		
-		// 대리산책
-		$("#myPageWalk").click(function()
-		{
-			$.ajax(
-			{
-				type:"POST"
-				, url:"myPageWalk.action"
-				, async:true
-				, success:function(data)
-				{
-					$("#myPageMain").html(data);
-										
-				}
-				, error:function(e)
-				{
-					alert(e.responseText);
-				}
-				
-			});	
-		});
-		
-		
-		// 내 정보 및 반려견 관리
-		$("#myPageInfo").click(function()
-		{
-			$.ajax(
-			{
-				type:"POST"
-				, url:"myPageInfo.action"
-				, async:true
-				, success:function(data)
-				{
-					$("#myPageMain").html(data);
-										
-				}
-				, error:function(e)
-				{
-					alert(e.responseText);
-				}
-				
-			});	
-		});
-		
-		// 나의 활동
-		$("#myPageActive").click(function()
-		{
-			$.ajax(
-			{
-				type:"POST"
-				, url:"myPageActive.action"
-				, async:true
-				, success:function(data)
-				{
-					$("#myPageMain").html(data);
-										
-				}
-				, error:function(e)
-				{
-					alert(e.responseText);
-				}
-				
-			});	
-		});
-		
-		// 신고내역
-		$("#myPageReport").click(function()
-		{
-			$.ajax(
-			{
-				type:"POST"
-				, url:"myPageReport.action"
-				, async:true
-				, success:function(data)
-				{
-					$("#myPageMain").html(data);
-										
-				}
-				, error:function(e)
-				{
-					alert(e.responseText);
-				}
-				
-			});	
-		});
-		
-	});
-
-</script>
-
-<style type="text/css">
-/* 마이페이지 레이아웃 스타일 */
-.container-mypage {
-  margin: 20px;;
-  padding: 30px; /* 테두리와 요소들 사이의 간격 조정 */
-  border: 2px solid black; /* 폼에 테두리 설정 */
-  border-radius: 10px; /* 테두리의 둥근 정도 설정 */
-}
-.myPageMain
-{
-	padding: 20px 20px 20px 20px;
-}
-
-.mypageSidevar
-{
-	padding: 20px 10px 20px 10px;
-	background-color: white;
-	border-left: 2px solid;
-	
-}
-.badge	
-{-webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: 0;
-  border: 0;
-  padding: 10px 15px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 18px;
-  -webkit-transition-duration: 0.25s;
-  transition-duration: 0.25s;
-}
-
-
-
-/* 마이페이지 알림화면 스타일 */
-/* .mypageNoAllDiv {border-bottom: 1px solid #FFE090; margin-bottom: 20px;}
-.mypageNoticeAllList
-{
-  background-color: #fcf8de;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  height: 50px;
-}
-.mypageNoticeAll { position: relative; height: 400px; overflow: auto; }
-.mypageNoticBtn { font-weight: bold;}
-.mypageNomore
-{ 
-	background-color: #FFE090; font-size: 15px; font-weight: bold; margin-left: 500px; 
-	position: absolute; position: absolute; bottom: 10px; right: 10px;
-}
-.mypageListCard { background-color: #fcf8de; border-radius: 10px; height: 180px; margin-bottom: 20px; position: relative;}
-.mypageListCard .card-body { height: 100%; }
-.mypageListTitle { font-size: 20px; font-weight: bold; background-color: white; padding: 5px; }
-.mypageListSub {font-size: 18px; font-weight: bold;} */
-
-/* 마이페이지 나의 활동 스타일 */
-/* .mypageMyAcBtn { font-weight: bold;}
-.wishlist{ height: 470px; border-bottom: 1px solid #FFE090; margin-bottom: 10px; }
-.mypageTabLine .mypageWishLink.active { color: #FFE090; border-bottom-color: #FFE090;}
-.mypageTabName { height: 50px;} 
-.tab-pane { height: 400px;}
-#mypageWishTab-1, #mypageWishTab-2  { font-size: 13pt; font-weight: bold;}
-.mypageWishSeating, .mypageWishWalk, .mypageReview, .mypageEnd { position: relative; height: 400px; overflow: auto; }
-.mypageReview { padding-left: 170px;}
-.reviewCard { margin-bottom: 30px; width: 23rem; height: }
-.EndTable { border-collapse: collapse; width: 100%; }
-.EndTable tr:hover { background-color: #fcf8de; }
-.EndTh, .EndTd { border: 1px solid #FFE090; text-align: center; padding: 8px; }
-.EndTh { background-color: #FFE090;} */
-
-</style>
-<!-- FONT jua -->
 <style>
- @import url('https://fonts.googleapis.com/css?family=Jua:400');
-.badge { font-family: "Jua"; }
-.mypageSidevar { font-family: "Jua"; font-size: 15pt;}
-.card-header { font-family: "Jua"; font-size: 13pt;}
 
+
+h2,h4 {
+  font-family: "Jua";
+  font-size: 20pt;
+}
+
+h2 span {
+  font-weight: lighter;
+  font-size: 18pt;
+  color: red;
+}
+
+.card-rank {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #f00;
+  color: #fff;
+  border-radius: 50%;
+}
+
+ .custom-textbox 
+ {
+	padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+ }
+
+
+
+.card-content {
+  padding-top: 40px; /* Adjust the value to add space between card title and rank */
+}
+
+.selection-bar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.selection-bar label,
+.selection-bar select,
+.selection-bar button {
+  margin-right: 10px;
+}
+
+.selection-bar button {
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.selection-bar button:hover {
+  background-color: #ff0000;
+}
+
+ /* 버튼 스타일 */
+.radio-button {
+    display: inline-block;
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+/* 선택된 라디오 버튼의 스타일 */
+.radio-button.selected {
+    background-color: #ff0000;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+
+/* 모든 p 태그 글자 폰트 적용 */
+p {
+  font-family: "Jua";
+  font-weight: Regular;
+}
+
+/* .btn-box 클래스 글자 폰트 적용 */
+.btn-box {
+  font-family: "Jua";
+}
 </style>
 
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 </head>
 <body>
+현재 접속자 : 0이면 게스트 → ${memSid }
 	<c:import url="/WEB-INF/components/MenuForm_2.jsp">
 	</c:import>
-	<div class="container-mypage">
-	<div class="row all">
-		<div class="col-md-10 myPageMain" id="myPageMain"><!-- 마이페이지 메인 -->
-			<!-- 마이페이지 첫 요청시 디폴트 알림창 -->
-			<c:import url="/WEB-INF/components/MyPageNoticeForm.jsp"></c:import>
-		</div>
-		<div class="col-md-2 mypageSidevar"> <!-- 마이페이지 사이드바 -->
-			<div class="list-group list-group-light">
-			  <button type="button" id="myPageNotice" class="list-group-item list-group-item-action px-3 border-0">
-			    알림창
-			  </button>
-			  <button type="button" id="myPageSitting" class="list-group-item list-group-item-action px-3 border-0" >
-			    펫시팅
-			  </button>
-			  <button type="button" id="myPageWalk" class="list-group-item list-group-item-action px-3 border-0">
-			    대리산책
-			  </button>
-			  <button type="button" id="myPageInfo" class="list-group-item list-group-item-action px-3 border-0">
-			    내 정보 및 반려견 관리
-			  </button>
-			  <button type="button" id="myPageActive" class="list-group-item list-group-item-action px-3 border-0">
-			    나의 활동
-			  </button>
-			  <button type="button" id="myPageReport"class="list-group-item list-group-item-action px-3 border-0">
-			    신고내역
-			  </button>
-			</div>
-		</div>
-	</div>
-	</div>
+	<section>
+		<div class="container py-5 bg-light">
+		  <!-- Selection Bar -->
+		  <div class="selection-bar mb-4">
+		    <label for="location">지역:</label>
+		    <select id="location" class="custom-textbox">
+		      <option value="seoul">서울</option>
+		      <option value="busan">부산</option>
+		      <!-- Add more options as needed -->
+		    </select>
+		
+		    <label for="datepicker">날짜 선택:</label>
+		    <input type="text" id="datepicker" class="custom-textbox" readonly>
+		
+		    <label for="dogs">견수:</label>
+		    <input type="number" id="dogs" class="custom-textbox" min="1" max="5">
+		
+		    <button class="btn btn-danger" onclick="filterList()">적용</button>
+		  </div>
+		
+		  <div class="mb-4">
+		    <!-- 버튼 모양의 복수 선택 라디오 버튼 -->
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">홈캠 구비</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">놀이 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">목욕 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">응급처치 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">반려견 있음</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">모발관리 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">비흡연자</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">장애견 케어 가능</button>
+		  </div>
+		
+		     <h2>펫시터 공고글</h2>
+		    <hr>
+		    <div id="cardContainer" class="row">
+		      <!-- 카드 데이터를 미리 선언 -->
+		      <c:set var="cards">
+		        <div class="col-md-4">
+		          <div class="card">
+		            <img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 320px;">
+		            <div class="card-body">
+		              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
+		              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6><br>
+		              <p>4.8 ⭐ (452개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박 </p>
+		            </div>
+		          </div>
+		        </div>
+		      </c:set>
+		
+		      <!-- 기본 카드 9개 표시 -->
+		      <c:forEach var="i" begin="1" end="9">
+		        <c:if test="${i % 3 == 1}">
+		          <div class="row">
+		        </c:if>
+		        <c:out value="${cards}" escapeXml="false" />
+		        <c:if test="${i % 3 == 0 || i == 9}">
+		          </div>
+		          <br>
+		        </c:if>
+		      </c:forEach>
+		    </div>
+		  </div>
+		
+		  <script>
+		    // 무한 스크롤 함수
+		    function infiniteScroll() {
+		      // 현재 스크롤 위치
+		      var scrollTop = $(window).scrollTop();
+		      // 화면의 높이
+		      var windowHeight = $(window).height();
+		      // 문서 전체 높이
+		      var documentHeight = $(document).height();
+		
+		      // 스크롤이 문서 맨 아래에 도달하면 새로운 카드를 추가
+		      if (scrollTop + windowHeight >= documentHeight) {
+		        // 새로운 카드를 추가하는 작업을 여기에 작성합니다.
+		        // 예시로 9개의 기존 카드를 복사하여 추가하는 코드를 작성합니다.
+		        var cards = `<c:out value="${cards}" escapeXml="false" />`;
+		        for (var i = 0; i < 9; i++) {
+		          $("#cardContainer").append(cards);
+		        }
+		      }
+		    }
+		
+		    // 스크롤 이벤트를 감지하여 무한 스크롤 함수 호출
+		    $(window).on("scroll", infiniteScroll);
+		
+		    // 초기에 한번 스크롤 이벤트를 발생시키기 위해 호출
+		    infiniteScroll();
+		  </script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+		<script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	</section>
+	<section>
+	<div>
 	<c:import url="/WEB-INF/components/FooterForm.jsp">
 	</c:import>
+	</div>
+	</section>  
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
-<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script>
+	    flatpickr("#datepicker", {
+	      dateFormat: 'Y-m-d',
+	      position: "below",
+	      defaultDate: "today",
+	      theme: "airbnb"
+	    });
+	  </script>
+	  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+	   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </html>
