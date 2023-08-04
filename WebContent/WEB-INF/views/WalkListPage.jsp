@@ -141,10 +141,10 @@ p {
 		
 		  <div class="mb-4">
 		    <!-- 버튼 모양의 복수 선택 라디오 버튼 -->
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그1</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그2</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그3</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">태그4</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">비흡연자</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">노견 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">장애견 가능</button>
+		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">응급처치 가능</button>
 		  </div>
 		
 		     <h2>대리산책 공고글</h2>
@@ -157,7 +157,8 @@ p {
 		            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 320px;">
 		            <div class="card-body">
 		              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
-		              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6>
+		              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
+		              <p>4.2 ⭐ (991개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
 		            </div>
 		          </div>
 		        </div>
