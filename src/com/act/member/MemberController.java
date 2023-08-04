@@ -228,7 +228,7 @@ public class MemberController
 		}
 		
 		// 펫시터 리스트업 페이지로 가기
-		@RequestMapping("/sittingList.action")
+		@RequestMapping("/walkList.action")
 		public String walkList()
 		{
 			String view = "";
@@ -237,7 +237,7 @@ public class MemberController
 		}
 		
 		// 대리산책 리스트업 페이지로 가기
-		@RequestMapping("/walkList.action")
+		@RequestMapping("/sittingList.action")
 		public String petList()
 		{
 			String view = "";
