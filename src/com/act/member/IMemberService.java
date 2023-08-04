@@ -2,7 +2,7 @@ package com.act.member;
 
 import javax.servlet.http.HttpSession;
 
-public interface MemberServiceI
+public interface IMemberService
 {
 	
 	public String searchMemsid(MemberDTO dto);

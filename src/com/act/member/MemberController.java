@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController
 {
 	@Autowired
-	private MemberServiceI memberService;
+	private IMemberService memberService;
 
 	// 메인페이지로 가는 액션
 	@RequestMapping("/main.action")
