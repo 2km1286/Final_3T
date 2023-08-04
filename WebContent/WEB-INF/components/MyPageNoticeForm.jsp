@@ -51,7 +51,7 @@
 				
 				
 				<div class="col-md-6">
-					<h3><span class="badge">내가 맡긴 예약(견주)</span></h3>
+					<h3><span class="badge">견주 예약내역</span></h3>
 					
 					<div class="card">
 						<div class="card-header d-flex justify-content-between"">
@@ -119,7 +119,7 @@
 			
 			<div class="row">
 				<div class="col-md-6">
-					<h3><span class="badge">내가 서비스 할 예약(대리산책러)</span></h3>
+					<h3><span class="badge">대리산책러 예약내역</span></h3>
 					
 					<div class="card">
 						<div class="card-header d-flex justify-content-between"">
@@ -188,7 +188,7 @@
 					
 				</div>
 				<div class="col-md-6">
-					<h3><span class="badge">내가 서비스 할 예약(펫시터)</span></h3>
+					<h3><span class="badge">펫시터 예약내역</span></h3>
 					
 					<div class="card">
 						<div class="card-header d-flex justify-content-between">

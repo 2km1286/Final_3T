@@ -62,70 +62,95 @@
 			</div>
 			<!-- 돌봄장소 슬라이드 사진 끝 -->
 			
-			  <div class="card-body">
-			    <h3><span class="badge">돌봄장소 어필 태그(검색태그)</span></h3>
-			    <p class="card-text">
-			      <div class="row gx-5">
-					  <div class="col-4">
-					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">홈캠 가능</button>
-					  </div>
-					   <div class="col-4">
-					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">목욕 가능</button>
-					  </div>
-					   <div class="col-4">
-					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">응급처치 가능</button>
-					  </div>
-					   <div class="col-4">
-					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">반려견유무</button>
-					  </div>
-					   <div class="col-4">
-					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">꼼꼼한 타임라인</button>
-					  </div>
-					   <div class="col-4">
-					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">모발관리 가능</button>
-					  </div>
-					   <div class="col-4">
-					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">장애견 케어 가능</button>
-					  </div>
-					   <div class="col-4">
-					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">노견 케어 가능</button>
-					  </div>
-				 </div>
-			    <p class="card-text">
-			    	최대 가능 견수
-			    	<select name="max-dog" id="max-dog">
+			<div class="card-body">
+			    <h3><span class="badge">돌봄장소 특이사항</span></h3>
+			    <div class="checkBox">
+				  <input type="checkbox" id="homeCam">
+				  <label for="homeCam">홈캠 가능</label>
+				</div>
+				
+				<div  class="checkBox">
+				  <input type="checkbox" id="bathing">
+				  <label for="bathing">목욕 가능</label>
+				</div>
+				
+				<div  class="checkBox">
+				  <input type="checkbox" id="emergencyTreatment">
+				  <label for="emergencyTreatment">응급처치 가능</label>
+				</div>
+				
+				<div class="checkBox">
+				  <input type="checkbox" id="petOwner">
+				  <label for="petOwner">반려견 있음</label>
+				</div>
+				
+				<div class="checkBox">
+				  <input type="checkbox" id="detailedTimeline">
+				  <label for="detailedTimeline">꼼꼼한 타임라인</label>
+				</div>
+				
+				<div class="checkBox">
+				  <input type="checkbox" id="haircare">
+				  <label for="haircare">모발관리 가능</label>
+				</div>
+				
+				<div class="checkBox">
+				  <input type="checkbox" id="disabledCare">
+				  <label for="disabledCare">장애견 케어 가능</label>
+				</div>
+				
+				<div class="checkBox">
+				  <input type="checkbox" id="seniorDog">
+				  <label for="seniorDog">노견 가능</label>
+				</div>
+				
+				<div class="checkBox">
+				  <input type="checkbox" id="smallMediumDog">
+				  <label for="smallMediumDog">소/중형견 가능</label>
+				</div>
+				
+				<div class="checkBox">
+				  <input type="checkbox" id="largeDog">
+				  <label for="largeDog">대형견 가능</label>
+				</div>
+				<br>
+			    <h3><span class="badge">최대 가능 견수</span></h3>
+		    	<select name="max-dog" id="max-dog" class="form-select form-select-lg mb-3" aria-label="Large select example"
+		    			style="width: 400px;">
 			    		<option value="1">1마리</option>
 			    		<option value="2">2마리</option>
 			    		<option value="3">3마리</option>
 			    		<option value="4">4마리</option>
 			    		<option value="5">5마리</option>
-			    	</select>
-			    </p>
-			    <form>
-					  <!-- Name input -->
+			    </select>
+			    
+			    <h3><span class="badge">사진첨부</span></h3>
+			    
+			    <form>	<!-- 얘만 form 인 이유는? -->
 					  <div class="form-outline mb-4">
+					  	<h3><span class="badge">돌봄장소 이름</span></h3>
+					  	<!-- <label class="form-label" for="form4Example1">돌봄장소 이름</label> -->
 					    <input type="text" id="form4Example1" class="form-control" />
-					    <label class="form-label" for="form4Example1">돌봄장소 이름</label>
 					  </div>
-					
-					  <!-- Message input -->
 					  <div class="form-outline mb-4">
+					  	<h3><span class="badge">돌봄장소 소개</span></h3>
+					  	<!-- <label class="form-label" for="form4Example3">돌봄장소 소개</label> -->
 					    <textarea class="form-control" id="form4Example3" rows="4"></textarea>
-					    <label class="form-label" for="form4Example3">돌봄장소 소개</label>
 					  </div>
 				</form>
-			      <small class="text-muted">
-						<!-- Checked switch -->
-						<div class="form-check form-switch">
-						  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked />
-						  <label class="form-check-label" for="flexSwitchCheckChecked">공개/비공개</label>
-						</div>
-						<div class="text-end"><button type="button" class="btn btn-warning card-right text-end">수정</button></div>
-				  </small>
-			  </div>
+			    <div class="form-check checkBox">
+					<input class="form-check-input" type="checkbox" value="open" id="openClose">
+					<label class="form-check-label" for="openClose">공개/비공개</label><br>
+				</div>
+					 <button type="button" class="updatePlace">수정</button>
+			</div>
 	    </div>
 	    <div class="col">
-	      
+	    	<a href="#">예약내역</a>
+	    	<a href="#">후기</a>
+	    	<a href="#">수익</a>
+	    	
+	    	<div class="myPageSittingInfo" id="myPageSittingInfo">뿌려</div>
 	    </div>
   	</div>			
 </body>
