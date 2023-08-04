@@ -12,11 +12,18 @@
 <meta charset="UTF-8"> 
 <title>마이페이지_펫시팅</title>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2IqcO3" crossorigin="anonymous"></script>
+
 <style type="text/css">
 .place
 {
 	padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
   	border-right: 2px solid black;
+}
+.carousel-control-prev, .carousel-control-next
+{
+    background-color: transparent; /* 배경색 투명으로 설정 */
+    border: none; /* 테두리 제거 */
 }
 
 </style>
@@ -26,10 +33,10 @@
 	    <div class="col place">
 			<div class="row">
 				<div class="col-md-6">
-					핫도그님의 돌봄장소
+					<h2><span class="badge">핫도그님의 돌봄장소</span></h2>
 				</div>
 				<div class="col-md-6">
-					팔로워:5명
+					<h3><span class="badge">팔로워 5명</span></h3>
 				</div>
 			</div>
 				
@@ -48,19 +55,15 @@
 			  </div>
 			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
 			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			    <span class="visually-hidden">Previous</span>
 			  </button>
 			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
 			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			    <span class="visually-hidden">Next</span>
 			  </button>
 			</div>
 			<!-- 돌봄장소 슬라이드 사진 끝 -->
 			
-			
-			<!-- Carousel wrapper -->
 			  <div class="card-body">
-			    <h5 class="card-title">돌봄장소 어필 태그(검색태그)</h5>
+			    <h3><span class="badge">돌봄장소 어필 태그(검색태그)</span></h3>
 			    <p class="card-text">
 			      <div class="row gx-5">
 					  <div class="col-4">
@@ -88,7 +91,6 @@
 					  	<button type="button" class="btn btn-primary btn-rounded btn-style" data-mdb-ripple-color="dark">노견 케어 가능</button>
 					  </div>
 				 </div>
-			    <p class="card-text">
 			    <p class="card-text">
 			    	최대 가능 견수
 			    	<select name="max-dog" id="max-dog">
