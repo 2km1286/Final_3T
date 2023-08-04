@@ -198,8 +198,31 @@
   -webkit-transition-duration: 0.25s;
   transition-duration: 0.25s;
 }
+div.card {margin-bottom: 10px;}
+div.card-header {padding: 5px; }
+div.cardImage {padding-right: 0;}
+div.cardInfo {padding-right: 0; padding-left: 0;}
 
-
+.nick {font-size: 16pt;}
+.oneText {margin-bottom: 3px; border-bottom: 1px solid gray; }
+.detailBtn
+{
+	-webkit-appearance: none;
+	  -moz-appearance: none;
+	  appearance: none;
+	  outline: 0;
+	  border: 1px solid #53e3a6;
+	  background-color: white;
+	  padding: 5px 5px 5px 5px;
+	  color: #53e3a6;
+	  border-radius: 3px;
+	  width: 120px;
+	  height: 35px;
+	  cursor: pointer;
+	  font-size: 18px;
+	  -webkit-transition-duration: 0.25s;
+	  transition-duration: 0.25s;
+}
 
 /* 마이페이지 알림화면 스타일 */
 /* .mypageNoAllDiv {border-bottom: 1px solid #FFE090; margin-bottom: 20px;}
@@ -244,8 +267,8 @@
  @import url('https://fonts.googleapis.com/css?family=Jua:400');
 .badge { font-family: "Jua"; }
 .mypageSidevar { font-family: "Jua"; font-size: 15pt;}
-.card-header { font-family: "Jua"; font-size: 13pt;}
-
+.card-header { font-family: "Jua"; font-size: 17pt;}
+.card {font-family: "Jua";}
 </style>
 
 </head>
