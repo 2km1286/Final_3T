@@ -47,7 +47,7 @@
 	<select id="searchId" resultType="java.lang.Integer">
       SELECT COUNT(*) AS COUNT
       FROM JOIN_MEMBER
-      WHERE JM_ID = #{jmId,jdbcType=VARCHAR}
+      WHERE JM_ID = #{jmId}
    </select>
    
    <select id="searchNick" resultType="java.lang.Integer">
@@ -56,7 +56,7 @@
       WHERE JM_NICKNAME = #{jmNickName}
    </select>
    
-   <select id="sitterInfo" resultType="com.act.member.SitterDTO">
+   <select id="sitterInfo" resultType="com.act.sitting.SittingDTO">
    	SELECT JM_NICKNAME, SP_TITLE, SP_ADDR1, SP_ADDR2, MEM_SID, SPH_SID, SHP_START, SHP_END, SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 	FROM SITTING_PLACE_LIST_VIEW
 	WHERE MEM_SID= #{memSid}
