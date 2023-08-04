@@ -23,7 +23,7 @@ public class SittingController
 		ArrayList<SittingDTO> list = sittingService.list();
 
 		model.addAttribute("list", list);
-		
+		System.out.println("list: " + list);
 		view = "/WEB-INF/views/SittingListPage.jsp";
 		return view;
 	}
