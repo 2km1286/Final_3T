@@ -154,7 +154,7 @@ p {
 		      <c:set var="cards">
 		        <div class="col-md-4">
 		          <div class="card">
-		            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 320px;">
+		            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 220px;">
 		            <div class="card-body">
 		              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
 		              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
@@ -169,12 +169,12 @@ p {
 		        <c:if test="${i % 3 == 1}">
 		          <div class="row">
 		        </c:if>
-		         <c:out value="${cards}" escapeXml="false" />
-       			<c:if test="${i % 3 == 0 || i == 9}">
-        		    </div>
-        		    <br>
-        		</c:if>			 
-   			    </c:forEach>
+		        <c:out value="${cards}" escapeXml="false" />
+		        <c:if test="${i % 3 == 0 || i == 9}">
+		          </div>
+		          <br>
+		        </c:if>
+		      </c:forEach>
 		    </div>
 		  </div>
 		
