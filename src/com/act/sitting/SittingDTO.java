@@ -7,7 +7,7 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 
 public class SittingDTO
 {
-	private String jmNickname, spTitle, spAddr1, spAddr2, memSid, sphStart, sphEnd, srStart, srEnd;
+	private String nickName, spTitle, spAddr1, spAddr2, memSid, sphStart, sphEnd, srStart, srEnd;
 	private int sphSid, srwSid, stleSid, spMaxPet, spSid;
 	private String isptSid, isptName;
 	
@@ -27,14 +27,19 @@ public class SittingDTO
 	{
 		this.isptName = isptName;
 	}
-	public String getJmNickname()
+	
+	
+	public String getNickName()
 	{
-		return jmNickname;
+		return nickName;
 	}
-	public void setJmNickname(String jmNickname)
+	public void setNickName(String nickName)
 	{
-		this.jmNickname = jmNickname;
+		this.nickName = nickName;
 	}
+	
+	
+	
 	public String getSphStart()
 	{
 		return sphStart;
