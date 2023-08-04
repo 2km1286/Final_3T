@@ -285,8 +285,36 @@ public class MemberController
 			return result;
 		}
 		
+		// 마이페이지 내 정보 및 반려견 관리. AJAX로 처리.
+		@RequestMapping("/myPageInfo.action")
+		public String myPageInfo(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageInfoForm.jsp";
+			return result;
+		}
 		
+		// 마이페이지 나의 활동. AJAX로 처리.
+		@RequestMapping("/myPageActive.action")
+		public String myPageActive(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageActiveForm.jsp";
+			return result;
+		}
 		
+		// 마이페이지 나의 활동. AJAX로 처리.
+		@RequestMapping("/myPageReport.action")
+		public String myPageReport(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/MyPageReportForm.jsp";
+			return result;
+		}
+
 		/*
 		 * @RequestMapping("/walktest.action") public String walktest() { String
 		 * result="";
