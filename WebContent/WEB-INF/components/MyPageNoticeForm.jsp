@@ -77,6 +77,8 @@
 						        <span class="card-text">2023-08-04 14:00~16:00</span><br><br>
 						        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
 						        <span class="card-text">서울시 마포구 어디동 어디로 홍대입구역 2번 출구 앞</span><br>
+						        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
+						        <span class="card-text">까미</span><br>
 						      </div>
 						    </div>
 						  </div>

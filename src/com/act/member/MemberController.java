@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController
 {
 	@Autowired
-	private MemberServiceI memberService;
+	private IMemberService memberService;
 	
 	// 메인페이지로 가는 액션
 	@RequestMapping("/main.action")
@@ -220,29 +220,20 @@ public class MemberController
 			view = "redirect:main.action";
 		}
 
-		
+		return view;
+	}
 
-		// 펫시터 리스트업 페이지로 가기
-		@RequestMapping("/sittingList.action")
-		public String walkList()
-		{
-			String view = "";
-			view = "/WEB-INF/views/WalkListPage.jsp";
-			return view;
-		}
-		
 		// 대리산책 리스트업 페이지로 가기
 		@RequestMapping("/walkList.action")
 		public String petList()
 		{
 			String view = "";
-			view = "/WEB-INF/views/PetListPage.jsp";
+			view = "/WEB-INF/views/WalkListPage.jsp";
 			return view;
 		}
-
 	
 		// 펫시팅(돌봄장소) 리스트업 페이지로 가기
-		@RequestMapping("/sittingList")
+		@RequestMapping("/sittingList.action")
 		public String sittingList()
 		{
 			String view = "";
