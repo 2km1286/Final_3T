@@ -244,6 +244,8 @@
  @import url('https://fonts.googleapis.com/css?family=Jua:400');
 .badge { font-family: "Jua"; }
 .mypageSidevar { font-family: "Jua"; font-size: 15pt;}
+.card-header { font-family: "Jua"; font-size: 13pt;}
+
 </style>
 
 </head>
