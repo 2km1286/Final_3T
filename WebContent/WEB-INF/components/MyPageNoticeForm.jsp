@@ -61,8 +61,8 @@
 				    	    <div class="col-md cardInfo" >
 				    	      <div class="card-body">
 				    	      	<div class="oneText">
-				    	      		<span class="nick card-text">폴폴이</span>
-				    	      		<span class="card-text"><small class="text-muted">프로산책러</small></span>
+				    	      		<span class="nick card-text">상대방닉네임</span>
+				    	      		<span class="card-text"><small class="text-muted">상대방등급</small></span>
 				    	      	</div>
 				    	        <div class="oneText">
 				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
@@ -93,8 +93,8 @@
 				    	    <div class="col-md cardInfo" >
 				    	      <div class="card-body">
 				    	      	<div class="oneText">
-				    	      		<span class="nick card-text">폴폴이</span>
-				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
+				    	      		<span class="nick card-text">상대방닉네임</span>
+				    	      		<span class="card-text"><small class="text-muted">상대방등급</small></span>
 				    	      	</div>
 				    	        <div class="oneText">
 				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
@@ -129,8 +129,8 @@
 				    	    <div class="col-md cardInfo" >
 				    	      <div class="card-body">
 				    	      	<div class="oneText">
-				    	      		<span class="nick card-text">폴폴이</span>
-				    	      		<span class="card-text"><small class="text-muted">프로산책러</small></span>
+				    	      		<span class="nick card-text">상대방닉네임</span>
+				    	      		<span class="card-text"><small class="text-muted">상대방등급</small></span>
 				    	      	</div>
 				    	        <div class="oneText">
 				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
@@ -162,8 +162,8 @@
 				    	    <div class="col-md cardInfo" >
 				    	      <div class="card-body">
 				    	      	<div class="oneText">
-				    	      		<span class="nick card-text">폴폴이</span>
-				    	      		<span class="card-text"><small class="text-muted">프로산책러</small></span>
+				    	      		<span class="nick card-text">상대방닉네임</span>
+				    	      		<span class="card-text"><small class="text-muted">상대방등급</small></span>
 				    	      	</div>
 				    	        <div class="oneText">
 				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
@@ -198,8 +198,8 @@
 				    	    <div class="col-md cardInfo" >
 				    	      <div class="card-body">
 				    	      	<div class="oneText">
-				    	      		<span class="nick card-text">폴폴이</span>
-				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
+				    	      		<span class="nick card-text">상대방닉네임</span>
+				    	      		<span class="card-text"><small class="text-muted">상대방등급</small></span>
 				    	      	</div>
 				    	        <div class="oneText">
 				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
@@ -226,8 +226,8 @@
 				    	    <div class="col-md cardInfo" >
 				    	      <div class="card-body">
 				    	      	<div class="oneText">
-				    	      		<span class="nick card-text">폴폴이</span>
-				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span>
+				    	      		<span class="nick card-text">상대방닉네임</span>
+				    	      		<span class="card-text"><small class="text-muted">상대방등급</small></span>
 				    	      	</div>
 				    	        <div class="oneText">
 				    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>

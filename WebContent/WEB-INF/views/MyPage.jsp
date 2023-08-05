@@ -283,6 +283,7 @@ div.profil
 .card-header { font-family: "Jua"; font-size: 17pt;}
 .card {font-family: "Jua";}
 .checkBox {font-family: "Jua"; font-size: 15pt;}
+.superscript {font-family: "Jua";}
 </style>
 
 </head>
