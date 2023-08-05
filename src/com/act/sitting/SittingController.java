@@ -20,10 +20,12 @@ public class SittingController
 	{
 		String view = "";
 		
-		ArrayList<SittingDTO> list = sittingService.list();
+		//ArrayList<SittingDTO> list = zsittingService.list();
 
-		model.addAttribute("list", list);
-		System.out.println("list: " + list);
+		model.addAttribute("list", sittingService.list());
+		model.addAttribute("tagList", sittingService.tagList());
+		System.out.println("list: " + sittingService.list());
+		System.out.println("tagList: " + sittingService.tagList());
 		view = "/WEB-INF/views/SittingListPage.jsp";
 		return view;
 	}
