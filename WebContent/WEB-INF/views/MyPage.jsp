@@ -203,7 +203,7 @@ div.card {margin-bottom: 10px;}
 div.card-header {padding: 5px; }
 div.cardImage {padding-right: 0;}
 div.cardInfo {padding-right: 0; padding-left: 0;}
-div .porfilSu{margin-left:20px; width: 300px; }
+div.porfilSu{margin-left:20px; width: 300px; }
 
 .nick {font-size: 16pt;}
 .oneText {margin-bottom: 3px; border-bottom: 1px solid gray; }
@@ -232,6 +232,33 @@ div.profil
   border: 2px solid black; /* 폼에 테두리 설정 */
   border-radius: 10px; /* 테두리의 둥근 정도 설정 */
 }
+
+.tagBtn
+{
+	  border: 1px solid #53e3a6;
+	  background-color: white;
+	  padding: 2px 2px 2px 2px;
+	  color: #53e3a6;
+	  border-radius: 3px;
+	  height: 35px;
+	  font-size: 16pt;
+	  font-weight: bold;
+	  margin-bottom: 10px;
+}
+.updatePlace
+{
+	  border: 1px solid #53e3a6;
+	  background-color: #53e3a6;
+	  padding: 2px 2px 2px 2px;
+	  color: white;
+	  border-radius: 3px;
+	  height: 35px;
+	  font-size: 16pt;
+	  font-weight: bold;
+	  margin-bottom: 10px;
+	  width: 200px;
+	  
+}
 /* 마이페이지 나의 활동 스타일 */
 /* .mypageMyAcBtn { font-weight: bold;}
 .wishlist{ height: 470px; border-bottom: 1px solid #FFE090; margin-bottom: 10px; }
@@ -255,6 +282,7 @@ div.profil
 .mypageSidevar { font-family: "Jua"; font-size: 15pt;}
 .card-header { font-family: "Jua"; font-size: 17pt;}
 .card {font-family: "Jua";}
+.checkBox {font-family: "Jua"; font-size: 15pt;}
 </style>
 
 </head>
