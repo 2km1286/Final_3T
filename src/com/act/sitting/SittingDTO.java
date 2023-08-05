@@ -7,63 +7,26 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 
 public class SittingDTO
 {
-	private String nickName, title, spAddr1, spAddr2, memSid, sphStart, sphEnd, srStart, srEnd;
+	private String jmNickName, sptitle, spAddr1, spAddr2, memSid, sphStart, sphEnd, srStart, srEnd;
 	private int sphSid, srwSid, stleSid, spMaxPet, spSid;
-	private String isptSid, isptName;
+	private int isptSid;
+	private String isptName;
 	
-	public String getIsptSid()
+	public String getJmNickName()
 	{
-		return isptSid;
+		return jmNickName;
 	}
-	public void setIsptSid(String isptSid)
+	public void setJmNickName(String jmNickName)
 	{
-		this.isptSid = isptSid;
+		this.jmNickName = jmNickName;
 	}
-	public String getIsptName()
+	public String getSptitle()
 	{
-		return isptName;
+		return sptitle;
 	}
-	public void setIsptName(String isptName)
+	public void setSptitle(String sptitle)
 	{
-		this.isptName = isptName;
-	}
-	
-	
-	public String getNickName()
-	{
-		return nickName;
-	}
-	public void setNickName(String nickName)
-	{
-		this.nickName = nickName;
-	}
-	
-	
-	
-	public String getSphStart()
-	{
-		return sphStart;
-	}
-	public void setSphStart(String sphStart)
-	{
-		this.sphStart = sphStart;
-	}
-	public String getSphEnd()
-	{
-		return sphEnd;
-	}
-	public void setSphEnd(String sphEnd)
-	{
-		this.sphEnd = sphEnd;
-	}
-	
-	public String getTitle()
-	{
-		return title;
-	}
-	public void setTitle(String title)
-	{
-		this.title = title;
+		this.sptitle = sptitle;
 	}
 	public String getSpAddr1()
 	{
@@ -88,6 +51,22 @@ public class SittingDTO
 	public void setMemSid(String memSid)
 	{
 		this.memSid = memSid;
+	}
+	public String getSphStart()
+	{
+		return sphStart;
+	}
+	public void setSphStart(String sphStart)
+	{
+		this.sphStart = sphStart;
+	}
+	public String getSphEnd()
+	{
+		return sphEnd;
+	}
+	public void setSphEnd(String sphEnd)
+	{
+		this.sphEnd = sphEnd;
 	}
 	public String getSrStart()
 	{
@@ -145,6 +124,24 @@ public class SittingDTO
 	{
 		this.spSid = spSid;
 	}
+	public int getIsptSid()
+	{
+		return isptSid;
+	}
+	public void setIsptSid(int isptSid)
+	{
+		this.isptSid = isptSid;
+	}
+	public String getIsptName()
+	{
+		return isptName;
+	}
+	public void setIsptName(String isptName)
+	{
+		this.isptName = isptName;
+	}
+	
+	
 	
 	
 	
