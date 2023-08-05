@@ -14,6 +14,39 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2IqcO3" crossorigin="anonymous"></script>
 
+<script type="text/javascript">
+
+	$(function()
+	{
+		//alert("확인");
+		$("#bookList").click(function()
+		{
+			$.ajax(
+			{
+				type:"POST"
+				, url:"myPageSittingBookList.action"
+				, async:true
+				, success:function(data)
+				{
+					$("#myPageSittingInfo").html(data);
+										
+				}
+				, error:function(e)
+				{
+					alert(e.responseText);
+				}
+				
+			});
+			
+		});
+		
+		
+		
+	});
+	
+
+</script>
+
 <style type="text/css">
 .place
 {
@@ -61,6 +94,7 @@
 			  </button>
 			</div>
 			<!-- 돌봄장소 슬라이드 사진 끝 -->
+			
 			
 			<div class="card-body">
 			    <h3><span class="badge">돌봄장소 특이사항</span></h3>
@@ -142,15 +176,82 @@
 					<input class="form-check-input" type="checkbox" value="open" id="openClose">
 					<label class="form-check-label" for="openClose">공개/비공개</label><br>
 				</div>
-					 <button type="button" class="updatePlace">수정</button>
+					 <button type="button" class="updatePlace">돌봄장소 수정</button>
 			</div>
-	    </div>
+			<div>
+				<div class="form-group">
+				  <label for="open-time"><h3><span class="badge">시작 시간</span></h3></label>
+				  <select class="form-select" id="open-time">
+				    <option value="1">1:00</option>
+				    <option value="2">2:00</option>
+				    <option value="3">3:00</option>
+				    <option value="4">4:00</option>
+				    <option value="5">5:00</option>
+				    <option value="6">6:00</option>
+				    <option value="7">7:00</option>
+				    <option value="8">8:00</option>
+				    <option value="9">9:00</option>
+				    <option value="10">10:00</option>
+				    <option value="11">11:00</option>
+				    <option value="12">12:00</option>
+				    <option value="13">13:00</option>
+				    <option value="14">14:00</option>
+				    <option value="15">15:00</option>
+				    <option value="16">16:00</option>
+				    <option value="17">17:00</option>
+				    <option value="18">18:00</option>
+				    <option value="19">19:00</option>
+				    <option value="20">20:00</option>
+				    <option value="21">21:00</option>
+				    <option value="22">22:00</option>
+				    <option value="23">23:00</option>
+				    <option value="24">24:00</option>
+				  </select>
+				</div>
+				
+				<div class="form-group">
+				  <label for="close-time"><h3><span class="badge">종료 시간</span></h3></label>
+				  <select class="form-select" id="close-time">
+				    <option value="1">1:00</option>
+				    <option value="2">2:00</option>
+				    <option value="3">3:00</option>
+				    <option value="4">4:00</option>
+				    <option value="5">5:00</option>
+				    <option value="6">6:00</option>
+				    <option value="7">7:00</option>
+				    <option value="8">8:00</option>
+				    <option value="9">9:00</option>
+				    <option value="10">10:00</option>
+				    <option value="11">11:00</option>
+				    <option value="12">12:00</option>
+				    <option value="13">13:00</option>
+				    <option value="14">14:00</option>
+				    <option value="15">15:00</option>
+				    <option value="16">16:00</option>
+				    <option value="17">17:00</option>
+				    <option value="18">18:00</option>
+				    <option value="19">19:00</option>
+				    <option value="20">20:00</option>
+				    <option value="21">21:00</option>
+				    <option value="22">22:00</option>
+				    <option value="23">23:00</option>
+				    <option value="24">24:00</option>
+				  </select>
+				</div>
+				
+				 <button type="button" class="updatePlace">운영시간 수정</button>
+
+
+
+			</div>	
+	    </div><!-- 왼쪽 끝 -->
 	    <div class="col">
-	    	<a href="#">예약내역</a>
-	    	<a href="#">후기</a>
-	    	<a href="#">수익</a>
+	    	<button type="button" id="bookList">예약내역</button>
+	    	<button type="button" id="review">후기</button>
+	    	<button type="button" id="money">수익</button>
 	    	
-	    	<div class="myPageSittingInfo" id="myPageSittingInfo">뿌려</div>
+	    	<div class="myPageSittingInfo" id="myPageSittingInfo">
+	    	</div>
 	    </div>
   	</div>			
 </body>
