@@ -5,9 +5,15 @@
 <mapper namespace="com.act.sitting.ISittingDAO">
 
 	<select id="list" resultType="com.act.sitting.SittingDTO">
-		SELECT NICKNAME, TITLE, SP_ADDR1, SP_ADDR2, MEM_SID, SPH_SID, SPH_START, SPH_END
-		, SR_START, SR_END, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
+		SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, MEMSID, SPHSID, SPHSTART, SPHEND
+		, SRSTART, SREND, SRWSID, STLESID, SPMAXPET, SPSID
 		FROM SITTING_PLACE_LIST_VIEW
+	</select>
+	
+	<select id="tagList" resultType="com.act.sitting.SittingDTO">
+		SELECT ISPT_SID, ISPT_NAME
+		FROM INDEX_SITTING_PLACE_TAG
+		ORDER BY ISPT_SID
 	</select>
 
 </mapper>
