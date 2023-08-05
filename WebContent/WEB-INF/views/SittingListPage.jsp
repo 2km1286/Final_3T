@@ -172,6 +172,7 @@ p {
 		        </c:if>
 		        <c:out value="${cards}" escapeXml="false" />
 		        <c:if test="${i % 3 == 0 || i == 9}">
+		      
 		          </div>
 		          <br>
 		        </c:if>
