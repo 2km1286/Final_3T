@@ -23,4 +23,15 @@ public class SittingService
 		return list;
 	}
 	
+	// 펫시터 돌봄장소 범례태그 리스트 가져오기
+	public ArrayList<SittingDTO> tagList()
+	{
+		ArrayList<SittingDTO> tagList = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		tagList = dao.tagList();
+		
+		return tagList;
+	}
+	
 }
