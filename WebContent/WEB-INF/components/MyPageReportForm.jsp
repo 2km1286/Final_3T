@@ -14,75 +14,92 @@
 
 <style type="text/css">
 
-.noticeAll, .noticePet, .noticeWalk, .noticeSeating
-{
-	padding: 20px 20px 20px 20px;
-}
-
-.noticeCard { margin-bottom: 20px;}
-
-
+.EndTable{margin: 20px 20px 20px 20px; width: 900px;}
 </style>
 </head>
 <body>
-	<!-- <div class="row all"> -->
+			<h3><span class="badge">내가 한 신고</span></h3>
 			<div class="row">
-				<div class="col-md-6 noticeAll">
-					
-					<h3><span class="badge">신고내역으로 바꼈나?</span></h3>
-					<div>
-					
-					</div>
-					
-					
-				</div>
+				<!-- 신고일자, 상태(접수완료/처리결과), 대상 유형, 사유 -->
+				<div>
+					<table class="EndTable">
+					<tr>
+						<th class="EndTh">신고일자</th>
+						<th class="EndTh">상태</th>
+						<th class="EndTh">대상 유형</th>
+						<th class="EndTh">사유</th>
+					</tr>
+					<tr>
+						<td class="EndTd">2023-07-29</td>
+						<td class="EndTd">접수완료</td>
+						<td class="EndTd">프로필</td>
+						<td class="EndTd">부적절한 프로필</td>
+					</tr>
+					<tr>
+						<td class="EndTd">2023-07-30</td>
+						<td class="EndTd">영구정지</td>
+						<td class="EndTd">대리산책공고글</td>
+						<td class="EndTd">광고/도배</td>
+					</tr>
+					<tr>
+						<td class="EndTd">2023-07-31</td>
+						<td class="EndTd">반려</td>
+						<td class="EndTd">펫시팅글</td>
+						<td class="EndTd">욕설</td>
+					</tr>
+					<tr>
+						<td class="EndTd">2023-07-29</td>
+						<td class="EndTd">접수완료</td>
+						<td class="EndTd">프로필</td>
+						<td class="EndTd">부적절한 프로필</td>
+					</tr>
+					<tr>
+						<td class="EndTd">2023-07-30</td>
+						<td class="EndTd">영구정지</td>
+						<td class="EndTd">대리산책공고글</td>
+						<td class="EndTd">광고/도배</td>
+					</tr>
+					<tr>
+						<td class="EndTd">2023-07-31</td>
+						<td class="EndTd">반려</td>
+						<td class="EndTd">펫시팅글</td>
+						<td class="EndTd">욕설</td>
+					</tr>
+					</table>
 				
+				</div>
+			</div><!--1행 끝  -->
+			
+			<h3><span class="badge">내가 받은 신고</span></h3>
+			<div class="row">
+				<!-- 정지시작일, 정지종료일, 처분내용, 대상 유형, 사유 -->
+				<div>
+					<table class="EndTable">
+						    <tr>
+								<th class="EndTh">정지시작일</th>
+								<th class="EndTh">정지종료일</th>
+								<th class="EndTh">처분내용</th>
+								<th class="EndTh">대상 유형</th>
+								<th class="EndTh">사유</th>
+						    </tr>
+						    <tr>
+				                <td class="EndTd">2023-08-01</td>
+				                <td class="EndTd">2023-08-15</td>
+				                <td class="EndTd">영구정지</td>
+				                <td class="EndTd">프로필</td>
+				                <td class="EndTd">욕설</td>
+				            </tr>
+				            <tr>
+				                <td class="EndTd">2023-08-02</td>
+				                <td class="EndTd">2023-08-07</td>
+				                <td class="EndTd">경고</td>
+				                <td class="EndTd">대리산책 공고글</td>
+				                <td class="EndTd">불쾌감 조성</td>
+				            </tr>
+					</table>
 				
-				<div class="col-md-6 noticePet">
-					<h3><span class="badge">예약내역(견주)</span></h3>
-					<div>
-					
-					</div>
-					
 				</div>
-				<div class="col-md-6 noticeSeating">
-					<h3><span class="badge">예약내역(펫시터)</span></h3>
-					
-					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-				</div>
-			</div>
-		<!-- </div> -->
+			</div><!-- 2행 끝 -->
 </body>
 </html>
 

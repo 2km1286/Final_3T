@@ -23,10 +23,6 @@
 .walkCard{width: 350px;}
 .sittingCard{width: 400px;}
 .reviewCard { margin-bottom: 30px; width: 23rem;  margin-left: 100px; margin-top: 10px;}
-.EndTable { border-collapse: collapse; width: 100%; }
-.EndTable tr:hover { background-color: #d6ffee; }
-.EndTh, .EndTd { border: 1px solid ##53e3a6; text-align: center; padding: 8px; }
-.EndTh { background-color: #53e3a6;}
 </style>
 </head>
 <body>
