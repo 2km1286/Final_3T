@@ -111,6 +111,21 @@ p {
 </style>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+		$().ready(function()
+		{
+			 
+			 // 펫시팅 돌봄장소 클릭시 예약화면
+			 $("#cardContainer").click(function()
+			{
+				 window.location.href = "sitting-reservation.action";
+			});
+		});
+	
+</script>
+
 </head>
 <body>
 현재 접속자 : 0이면 게스트 → ${memSid }

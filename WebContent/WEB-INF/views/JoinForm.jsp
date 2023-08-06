@@ -271,6 +271,7 @@ form input[name="userNick"] {
          <div class="input-container">
           <input type="text" placeholder="사용하실 아이디를 입력해주세요." name="jmId" id="jmId">
           <button type="button" id="checkUserIdBtn">중복확인</button>
+          <span id="result"></span>
         </div>
         <input type="text" placeholder="이름을 입력해주세요." name="jmName" id="jmName" style="width: 100%;">
         
@@ -299,6 +300,7 @@ form input[name="userNick"] {
         <div class="input-container">
           <input type="text" placeholder="사용하실 닉네임을 입력해주세요." name="jmNickName" id="jmNickName">
           <button type="button" id="checkUserNickBtn">중복확인</button>
+          <span id="resultNick"></span>
         </div>
         
        <div class="input-container">
