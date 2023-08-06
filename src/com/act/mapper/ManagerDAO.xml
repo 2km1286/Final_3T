@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.act.member.IManagerDAO">
+
+<select id="searchMansid" resultType="java.lang.String">
+		SELECT NVL(MAX(MI_SID), '0') AS MI_SID
+		FROM MANAGER_INFO
+		WHERE MI_ID= #{miId} AND MI_PW = CRYPTPACK.ENCRYPT(#{miPw}, #{miPw})
+	</select>
+</mapper>
