@@ -7,100 +7,110 @@ String cp = request.getContextPath();
 <%
 	String memSid = (String) session.getAttribute("memSid"); // 최초 요청시 "0"
 %>
+<%
+	String memSid = (String)session.getAttribute("memSid");		// 최초 요청시 "0"
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>펫시터 공고글</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 <style>
-h2, h4 {
-	font-family: "Jua";
-	font-size: 20pt;
+
+
+h2,h4 {
+  font-family: "Jua";
+  font-size: 20pt;
 }
 
 h2 span {
-	font-weight: lighter;
-	font-size: 18pt;
-	color: red;
+  font-weight: lighter;
+  font-size: 18pt;
+  color: red;
 }
 
 .card-rank {
-	display: inline-block;
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
-	text-align: center;
-	background-color: #f00;
-	color: #fff;
-	border-radius: 50%;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #f00;
+  color: #fff;
+  border-radius: 50%;
 }
 
-.custom-textbox {
+ .custom-textbox 
+ {
 	padding: 8px;
-	font-size: 16px;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	outline: none;
-}
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+ }
+
+
 
 .card-content {
-	padding-top: 40px;
-	/* Adjust the value to add space between card title and rank */
+  padding-top: 40px; /* Adjust the value to add space between card title and rank */
 }
 
 .selection-bar {
-	background-color: #333;
-	color: #fff;
-	padding: 10px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
 }
 
-.selection-bar label, .selection-bar select, .selection-bar button {
-	margin-right: 10px;
+.selection-bar label,
+.selection-bar select,
+.selection-bar button {
+  margin-right: 10px;
 }
 
 .selection-bar button {
-	background-color: #f00;
-	color: #fff;
-	border: none;
-	padding: 5px 10px;
-	cursor: pointer;
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 .selection-bar button:hover {
-	background-color: #ff0000;
+  background-color: #ff0000;
 }
 
-/* 버튼 스타일 */
+ /* 버튼 스타일 */
 .radio-button {
-	display: inline-block;
-	background-color: #f00;
-	color: #fff;
-	border: none;
-	padding: 5px 10px;
-	cursor: pointer;
-	margin-right: 10px;
-	border-radius: 5px;
+    display: inline-block;
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
 /* 선택된 라디오 버튼의 스타일 */
 .radio-button.selected {
-	background-color: #ff0000;
+    background-color: #ff0000;
 }
+
 
 @import url('https://fonts.googleapis.com/css?family=Jua:400');
 
 /* 모든 p 태그 글자 폰트 적용 */
 p {
-	font-family: "Jua";
-	font-weight: Regular;
+  font-family: "Jua";
+  font-weight: Regular;
 }
 
 /* .btn-box 클래스 글자 폰트 적용 */
 .btn-box {
-	font-family: "Jua";
+  font-family: "Jua";
 }
 </style>
 
@@ -112,6 +122,7 @@ p {
 	</c:import>
 	<section>
 		<div class="container py-5 bg-light">
+
 			<!-- Selection Bar -->
 			<div class="selection-bar mb-4">
 				<label for="location">지역:</label> <select id="location"
@@ -134,14 +145,7 @@ p {
 						onclick="toggleRadioButton(this)" value="${dto.isptSid }">${dto.isptName }</button>
 
 				</c:forEach>
-				<!-- <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">홈캠 구비</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">놀이 가능</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">목욕 가능</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">응급처치 가능</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">반려견 있음</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">모발관리 가능</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">비흡연자</button>
-		    <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">장애견 케어 가능</button> -->
+
 			</div>
 
 			<h2>펫시터 공고글</h2>
@@ -253,4 +257,5 @@ p {
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 </html>

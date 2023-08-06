@@ -56,5 +56,5 @@
       WHERE JM_NICKNAME = #{jmNickName}
    </select>
    
- 
+
 </mapper>

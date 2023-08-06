@@ -4,17 +4,22 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset='UTF-8'>
 <title>로그인</title>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
 <script type="text/javascript">
 
 	$(function()
 	{	
+		 <% if (request.getParameter("error") != null && request.getParameter("error").equals("1")) { %>
+	        $("#message").fadeIn().delay(2000).fadeOut();	// 보였다 사라지기
+
+		  <% } %>
 		// 회원가입 폼 페이지로 가기
 		$("#join-button").click(function()
 		{
@@ -25,6 +30,8 @@
 		// 로그인 버튼 눌렀을 때
 		$("#login-button").click(function()
 		{
+			var jmId = $("#jmId").val();
+			var jmPw = $("#jmPw").val();
 			if( !$("#jmId").val() )
 			{
 				alert("아이디를 입력해야 합니다.");
@@ -41,23 +48,17 @@
 				return false;
 			}
 			
-			// memberlogin.action 요청
+			// 로그인 버튼 클릭시 AJAX 처리
 			$("#loginForm").submit();
-			var memSid = <%=(String)session.getAttribute("memSid")%>;
-			if( memSid == "0")
-			{
-				alert("등록된 정보가 없습니다.");
-			}
 			
+		
 			
 		});
 	
 		
 	});
-	
-
-
 </script>
+
 
 
 <style>
@@ -109,7 +110,7 @@ body ::-webkit-input-placeholder {
 
 .container {
   margin: 0 auto;
-  height: 430px;
+  height: 450px;
   text-align: center;
   padding: 30px; /* 테두리와 요소들 사이의 간격 조정 */
   border: 2px solid white; /* 폼에 테두리 설정 */
@@ -232,6 +233,22 @@ margin-left: 20px;
   font-family: "Jua";
 
 }
+#message {
+    color: white;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 0, 0, 0.7); /* 빨간색 배경 불투명도 설정 */
+    border-radius: 5px;
+    display: none;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* 빨간색 테두리 효과 */
+    
+   
+}
+
+
+
+
 
   
   </style>
@@ -241,14 +258,15 @@ margin-left: 20px;
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>로그인</h1>
-      
       <form class="form" action="memberlogin.action" id="loginForm">
         <input type="text" placeholder="아이디" name="jmId" id="jmId">
         <input type="password" placeholder="비밀번호" name="jmPw" id="jmPw"><br>
-        
+        <h3 id="message" style="text-align: center;">
+            로그인 실패!!
+        </h3>
         <button type="button" id="join-button">회원가입</button>
-        
         <button type="button" id="login-button">로그인</button><br>
+        
       </form>
       
       <div class="subDiv">
