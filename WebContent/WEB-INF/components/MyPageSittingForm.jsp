@@ -58,7 +58,7 @@
     background-color: transparent; /* 배경색 투명으로 설정 */
     border: none; /* 테두리 제거 */
 }
-
+.sittingtime { font-size: 13pt;}
 </style>
 </head>
 <body>
@@ -162,24 +162,34 @@
 			    <h3><span class="badge">사진첨부</span></h3>
 			    <input type="file">
 			    
+			    <br><br>
 			  	<h3><span class="badge">돌봄장소 이름</span></h3>
 			    <input type="text" id="" class="" style="width: 600px;">
 			    
+			    <br><br>
 			  	<h3><span class="badge">돌봄장소 소개</span></h3>
 			    <textarea rows="5" cols="80"></textarea>
-					  
-			    <div class="form-check checkBox">
-					<input class="form-check-input" type="checkbox" value="open" id="openClose">
-					<label class="form-check-label" for="openClose">공개/비공개</label><br>
-				</div>
 				
-				<button type="button" class="updatePlace">돌봄장소 수정</button>
+				<br><br>
+				<h3><span class="badge">돌봄장소 공개/비공개</span></h3>
+				<div class="form-check">
+				    <input class="form-check-input" type="radio" name="visibility" id="public" value="public">
+				    <label class="form-check-label" for="public">공개</label>
+				</div>
+				<div class="form-check">
+				    <input class="form-check-input" type="radio" name="visibility" id="private" value="private">
+				    <label class="form-check-label" for="private">비공개</label>
+				</div>
+				<br>
+				
+				<button type="button" class="updatePlace">돌봄장소 수정</button><!-- 첫 등록이라면 등록 -->
 				
 			</div>
 			
 			<div>
+				<h3><span class="badge">운영 시간</span></h3>
 				<div class="form-group">
-				  <label for="open-time"><h3><span class="badge">시작 시간</span></h3></label>
+				  <label for="open-time"><span class="badge sittingtime">시작 시간</span></label>
 				  <select class="form-select" id="open-time">
 				    <option value="1">1:00</option>
 				    <option value="2">2:00</option>
@@ -209,7 +219,7 @@
 				</div>
 				
 				<div class="form-group">
-				  <label for="close-time"><h3><span class="badge">종료 시간</span></h3></label>
+				  <label for="close-time"><span class="badge sittingtime">종료 시간</span></label>
 				  <select class="form-select" id="close-time">
 				    <option value="1">1:00</option>
 				    <option value="2">2:00</option>
