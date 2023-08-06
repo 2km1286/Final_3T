@@ -41,8 +41,8 @@
 <body>
 			<h3><span class="badge">내 정보 관리</span></h3> <!-- 첫 요청 시 채워진 상태. 한 마디로 내 정보 관리==업데이트폼 -->
 			<div class="row">
-			
-				<form class="form" action="" method="post">
+				
+				<form class="form" action="" method="post"><!-- 내 정보 시작 -->
 				
 					<span class="badge myInfo">아이디</span>
 			        <div class="input-container">
@@ -94,86 +94,89 @@
 			        <button type="button" id="" class="detailBtn">수정하기</button>
 			        <button type="button" id="" class="detailBtn">되돌리기</button>
 			        <button type="button" class="detailBtn" style="width: 180px;">비밀번호 재설정</button><!-- 비밀번호재설정페이지로 보내기 -->
-		      </form>
-			</div>
+		      </form><!-- 내 정보 끝 -->
+		      
+			</div><!-- 1행 끝 -->
 			<button type="button" id="withdraw-button" class="detailBtn">탈퇴하기</button>
 			<br><br>
 			 
-			<h3><span class="badge">반려견 관리</span></h3> <!--  사진, 이름, 특이사항, 성별, 반려견 무게, 출생년도, 종 -->
+			<span class="badge" style="font-size: 17pt;">반려견 관리</span>
+			<button type="button" id="" class="detailBtn" style="width: 150px;">반려견 등록하기</button>
+			 <!--  사진, 이름, 특이사항, 성별, 반려견 무게, 출생년도, 종 -->
 			<div class="row"> 
 			
-			 <div class="card profil">
-				    	  
-		    	  <div class="row g-0">
-		    	  	<div class="col-md-4">
-		    	  		<img src="images/client.jpg" class="img-fluid rounded-start" alt="반려견이미지">
-		    	  	</div>
-		    	    <div class="col-md-8 cardInfo" >
-		    	      <div class="card-body">
-		    	      	<div class="oneText">
-		    	      		<span class="nick card-text">인절미</span>
-		    	      	</div>
-		    	      	<small class="text-muted ">특이사항</small>
-		    	      	<span class="card-text">특이사항이 적혀있음</span>
-		    	      </div>
-		    	        <div class="porfilSu" style="width: 350px;">
-	    		        	<small class="text-muted ">성별</small>&nbsp;
-	    		        	<small class="text-muted">반려견 무게</small>&nbsp;&nbsp;
-	    		        	<small class="text-muted">출생년도</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	    		        	<small class="text-muted">종</small><br>
-		    		        <span>남</span>&nbsp;&nbsp;
-		    		        <span>15kg</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    		        <span>2023.08.06</span>
-		    		        <span>시고르브잡종이에요</span>
-		    		    </div>
-		    		    <div class="button-container">
-			                <button type="button" id="join-button" class="detailBtn petBtn">수정하기</button>
-			                <button type="button" id="" class="detailBtn petBtn">되돌리기</button>
-			                <button type="button" id="" class="detailBtn petBtn">삭제하기</button>
-			            </div>
-		    	      </div>
-		    	    </div>
-		     </div><!-- 반려견카드 끝 -->
-		     
-		     <div class="card profil">
-				    	  
-		    	  <div class="row g-0">
-		    	  	<div class="col-md-4">
-		    	  		<img src="images/client.jpg" class="img-fluid rounded-start" alt="반려견이미지">
-		    	  	</div>
-		    	    <div class="col-md-8 cardInfo" >
-		    	      <div class="card-body">
-		    	      	<div class="oneText">
-		    	      		<span class="nick card-text">깜돌이</span>
-		    	      	</div>
-		    	      	<small class="text-muted ">특이사항</small>
-		    	      	<span class="card-text">특이사항이 적혀있음</span>
-		    	      </div>
-		    	        <div class="porfilSu" style="width: 350px;">
-	    		        	<small class="text-muted ">성별</small>&nbsp;
-	    		        	<small class="text-muted">반려견 무게</small>&nbsp;&nbsp;
-	    		        	<small class="text-muted">출생년도</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	    		        	<small class="text-muted">종</small><br>
-		    		        <span>남</span>&nbsp;&nbsp;
-		    		        <span>15kg</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    		        <span>2023.08.06</span>
-		    		        <span>시고르브잡종이에요</span>
-		    		    </div>
-		    		    <div class="button-container">
-			                <button type="button" id="join-button" class="detailBtn petBtn">수정하기</button>
-			                <button type="button" id="" class="detailBtn petBtn">되돌리기</button>
-			                <button type="button" id="" class="detailBtn petBtn">삭제하기</button>
-			            </div>
-		    	      </div>
-		    	    </div>
-		     </div><!-- 반려견카드 끝 -->
-		     
-			</div>
+			<div><!-- 반려견 카드 목록 시작 -->
 			
-			<button type="button" id="" class="detailBtn" style="width: 150px;">반려견 등록하기</button>
+				 <div class="card profil">
+					    	  
+			    	  <div class="row g-0">
+			    	  	<div class="col-md-4">
+			    	  		<img src="images/client.jpg" class="img-fluid rounded-start" alt="반려견이미지">
+			    	  	</div>
+			    	    <div class="col-md-8 cardInfo" >
+			    	      <div class="card-body">
+			    	      	<div class="oneText">
+			    	      		<span class="nick card-text">인절미</span>
+			    	      	</div>
+			    	      	<small class="text-muted ">특이사항</small>
+			    	      	<span class="card-text">특이사항이 적혀있음</span>
+			    	      </div>
+			    	        <div class="porfilSu" style="width: 350px;">
+		    		        	<small class="text-muted ">성별</small>&nbsp;
+		    		        	<small class="text-muted">반려견 무게</small>&nbsp;&nbsp;
+		    		        	<small class="text-muted">출생년도</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    		        	<small class="text-muted">종</small><br>
+			    		        <span>남</span>&nbsp;&nbsp;
+			    		        <span>15kg</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			    		        <span>2023.08.06</span>
+			    		        <span>시고르브잡종이에요</span>
+			    		    </div>
+			    		    <div class="button-container">
+				                <button type="button" id="join-button" class="detailBtn petBtn">수정하기</button>
+				                <button type="button" id="" class="detailBtn petBtn">되돌리기</button>
+				                <button type="button" id="" class="detailBtn petBtn">삭제하기</button>
+				            </div>
+			    	      </div>
+			    	    </div>
+			     </div><!-- 반려견카드 하나 끝 -->
+			     
+			     <div class="card profil">
+					    	  
+			    	  <div class="row g-0">
+			    	  	<div class="col-md-4">
+			    	  		<img src="images/client.jpg" class="img-fluid rounded-start" alt="반려견이미지">
+			    	  	</div>
+			    	    <div class="col-md-8 cardInfo" >
+			    	      <div class="card-body">
+			    	      	<div class="oneText">
+			    	      		<span class="nick card-text">깜돌이</span>
+			    	      	</div>
+			    	      	<small class="text-muted ">특이사항</small>
+			    	      	<span class="card-text">특이사항이 적혀있음</span>
+			    	      </div>
+			    	        <div class="porfilSu" style="width: 350px;">
+		    		        	<small class="text-muted ">성별</small>&nbsp;
+		    		        	<small class="text-muted">반려견 무게</small>&nbsp;&nbsp;
+		    		        	<small class="text-muted">출생년도</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    		        	<small class="text-muted">종</small><br>
+			    		        <span>남</span>&nbsp;&nbsp;
+			    		        <span>15kg</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			    		        <span>2023.08.06</span>
+			    		        <span>시고르브잡종이에요</span>
+			    		    </div>
+			    		    <div class="button-container">
+				                <button type="button" id="join-button" class="detailBtn petBtn">수정하기</button>
+				                <button type="button" id="" class="detailBtn petBtn">되돌리기</button>
+				                <button type="button" id="" class="detailBtn petBtn">삭제하기</button>
+				            </div>
+			    	      </div>
+			    	    </div>
+			     </div><!-- 반려견카드 하나 끝 -->
+		     
+			</div><!-- 반려견 카드 목록 끝 -->
 			
-			<br>
-			반려견 등록하기/수정하기 누르면 나올 폼 일단은 여기에 작성
+		
+			반려견 등록하기/수정하기 누르면 나올 폼 일단은 여기에 작성<br>
 			<form class="form" action="" method="post">
 			
 					<span class="badge myInfo">사진</span>
@@ -221,7 +224,8 @@
 			        <button type="button" id="" class="detailBtn">등록하기</button>
 			        <button type="reset" id="" class="detailBtn">초기화</button>
 		      </form>
-			
+		      
+		</div><!-- 2행 끝 -->
 </body>
 </html>
 

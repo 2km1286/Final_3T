@@ -210,7 +210,7 @@
 				</div>
 				
 				<div class="form-group">
-				  <label for="close-time"><h3><span class="badge">종료 시간</span></h3></label>
+				  <h3><label for="close-time"><span class="badge">종료 시간</span></label></h3>
 				  <select class="form-select" id="close-time">
 				    <option value="1">1:00</option>
 				    <option value="2">2:00</option>
@@ -242,9 +242,8 @@
 				 <button type="button" class="updatePlace">운영시간 수정</button>
 
 
-
 			</div>	
-	    </div><!-- 왼쪽 끝 -->
+	    </div><!-- 1행 1열 끝 -->
 	    <div class="col">
 	    	<button type="button" id="bookList">예약내역</button>
 	    	<button type="button" id="review">후기</button>
