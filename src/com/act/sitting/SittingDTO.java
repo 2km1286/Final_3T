@@ -7,11 +7,34 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 
 public class SittingDTO
 {
+	// SITTING_PLACE_LIST_VIEW
 	private String jmNickName, sptitle, spAddr1, spAddr2, memSid, sphStart, sphEnd, srStart, srEnd;
 	private int sphSid, srwSid, stleSid, spMaxPet, spSid;
+	
+	// INDEX_SITTING_PLACE_TAG
 	private int isptSid;
 	private String isptName;
 	
+	// SITTING_GRADE_VIEW
+	private String grade;
+	private int price;
+	
+	public String getGrade()
+	{
+		return grade;
+	}
+	public void setGrade(String grade)
+	{
+		this.grade = grade;
+	}
+	public int getPrice()
+	{
+		return price;
+	}
+	public void setPrice(int price)
+	{
+		this.price = price;
+	}
 	public String getJmNickName()
 	{
 		return jmNickName;
