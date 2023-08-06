@@ -63,9 +63,10 @@
 </head>
 <body>
 	<div class="row">
-	    <div class="col place">
-			<div class="row">
-				<div class="col-md-6">
+	    <div class="col place"> <!-- 펫시터 위상이 있다면 처음 들어왔을 때 채워진 상태. 한 마디로==업데이트폼 -->
+	    						<!-- 그러므로 펫시터가 되고 첫 등록이라면 아무것도 채워져 있지 않다.  -->
+			<div class="row">	
+				<div class="col-md-6">	
 					<h2><span class="badge">핫도그님의 돌봄장소</span></h2>
 				</div>
 				<div class="col-md-6">
@@ -159,25 +160,23 @@
 			    </select>
 			    
 			    <h3><span class="badge">사진첨부</span></h3>
+			    <input type="file">
 			    
-			    <form>	<!-- 얘만 form 인 이유는? -->
-					  <div class="form-outline mb-4">
-					  	<h3><span class="badge">돌봄장소 이름</span></h3>
-					  	<!-- <label class="form-label" for="form4Example1">돌봄장소 이름</label> -->
-					    <input type="text" id="form4Example1" class="form-control" />
-					  </div>
-					  <div class="form-outline mb-4">
-					  	<h3><span class="badge">돌봄장소 소개</span></h3>
-					  	<!-- <label class="form-label" for="form4Example3">돌봄장소 소개</label> -->
-					    <textarea class="form-control" id="form4Example3" rows="4"></textarea>
-					  </div>
-				</form>
+			  	<h3><span class="badge">돌봄장소 이름</span></h3>
+			    <input type="text" id="" class="" style="width: 600px;">
+			    
+			  	<h3><span class="badge">돌봄장소 소개</span></h3>
+			    <textarea rows="5" cols="80"></textarea>
+					  
 			    <div class="form-check checkBox">
 					<input class="form-check-input" type="checkbox" value="open" id="openClose">
 					<label class="form-check-label" for="openClose">공개/비공개</label><br>
 				</div>
-					 <button type="button" class="updatePlace">돌봄장소 수정</button>
+				
+				<button type="button" class="updatePlace">돌봄장소 수정</button>
+				
 			</div>
+			
 			<div>
 				<div class="form-group">
 				  <label for="open-time"><h3><span class="badge">시작 시간</span></h3></label>
@@ -210,7 +209,7 @@
 				</div>
 				
 				<div class="form-group">
-				  <h3><label for="close-time"><span class="badge">종료 시간</span></label></h3>
+				  <label for="close-time"><h3><span class="badge">종료 시간</span></h3></label>
 				  <select class="form-select" id="close-time">
 				    <option value="1">1:00</option>
 				    <option value="2">2:00</option>
@@ -244,15 +243,22 @@
 
 			</div>	
 	    </div><!-- 1행 1열 끝 -->
+	    
 	    <div class="col">
-	    	<button type="button" id="bookList">예약내역</button>
-	    	<button type="button" id="review">후기</button>
-	    	<button type="button" id="money">수익</button>
-	    	
-	    	<div class="myPageSittingInfo" id="myPageSittingInfo">
+	    
+	    	<div><!--  -->
+		    	<button type="button" id="bookList">예약내역</button>
+		    	<button type="button" id="review">후기</button>
+		    	<button type="button" id="money">수익</button>
+		    
+		    	
+		    
+		    	<div class="myPageSittingInfo" id="myPageSittingInfo"></div>	
+		    	
 	    	</div>
-	    </div>
-  	</div>			
+	    	
+	    </div><!-- 1행 2열 끝 -->
+  	</div><!-- 1행 끝 -->			
 </body>
 </html>
 
