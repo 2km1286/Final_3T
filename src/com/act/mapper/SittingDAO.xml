@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.act.sitting.ISittingDAO">
+
+	<select id="list" resultType="com.act.sitting.SittingDTO">
+		SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, MEMSID, SPHSID, SPHSTART, SPHEND
+		, SRSTART, SREND, SRWSID, STLESID, SPMAXPET, SPSID
+		FROM SITTING_PLACE_LIST_VIEW
+	</select>
+	
+	<select id="IndexTagList" resultType="com.act.sitting.SittingDTO">
+		SELECT ISPT_SID AS ISPTSID, ISPT_NAME AS ISPTNAME
+		FROM INDEX_SITTING_PLACE_TAG
+		ORDER BY ISPT_SID
+	</select>
+	
+	<select id="gradeList" resultType="com.act.sitting.SittingDTO">
+		SELECT GRADE, PRICE
+		FROM SITTING_GRADE_VIEW
+	</select>
+	
+	<!-- <select id="tagList" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, JMNICKNAME, ISPTSID, ISPTNAME
+		FROM SITTING_PLACE_TAGS_VIEW
+		WHERE MEMSID=#{memSid}
+	</select> -->
+
+</mapper>
