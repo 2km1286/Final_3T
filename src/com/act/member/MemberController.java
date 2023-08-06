@@ -68,8 +68,9 @@ public class MemberController
 		int result = memberService.searchId(jmId);
 
 		request.setAttribute("result", result);
-		view = "/WEB-INF/views/SearchId.jsp";
 
+		view = "/WEB-INF/ajax/SearchId.jsp";
+	
 		return view;
 	}
 
@@ -83,7 +84,7 @@ public class MemberController
 		int result = memberService.searchNick(jmNickName);
 
 		request.setAttribute("resultNick", result);
-		view = "/WEB-INF/views/SearchNick.jsp";
+		view = "/WEB-INF/ajax/SearchNick.jsp";
 		return view;
 	}
 
@@ -266,10 +267,42 @@ public class MemberController
 			result = "/WEB-INF/components/ManagerReportList.jsp";
 			return result;
 		}
+    
+    
+		// 대리산책러 예약화면
+		@RequestMapping("/walk-reservation.action")
+		public String getReservationView()
+		{
+			String result = "";
+			
+			result = "/WEB-INF/components/WalkReservationForm.jsp";
+			
+			return result;
+		}
+		
+		// 대리산책러 결제화면
+		@RequestMapping("/pay.action")
+		public String getReservationPaymentView()
+		{
+			String result = "";
+			
+			result = "/WEB-INF/components/WalkReservationPaymentForm.jsp";
+			
+			return result;
+		}
+		
+		// 펫시터 예약화면
+		@RequestMapping("/sitting-reservation.action")
+		public String getSittingReservationView()
+		{
+			String result = "";
+			
+			result = "/WEB-INF/components/SittingReservationForm.jsp";
+			
+			return result;
+		}
+	
 
-
-		return view;
-	}
 
 	// 대리산책 리스트업 페이지로 가기
 	@RequestMapping("/walkList.action")
