@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 public interface IMemberService
 {
 	
+	
+	
 	public String searchMemsid(MemberDTO dto);
 	
 	public int searchId(String jmId);

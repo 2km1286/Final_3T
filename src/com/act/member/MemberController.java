@@ -13,6 +13,9 @@ public class MemberController
 {
 	@Autowired
 	private IMemberService memberService;
+	@Autowired
+	private IManagerService managerService;
+	
 	
 	// 메인페이지로 가는 액션
 	@RequestMapping("/main.action")
@@ -44,6 +47,15 @@ public class MemberController
 		result = "/WEB-INF/views/JoinForm.jsp";
 		return result;
 	}
+	// 관리자 폼 페이지로 가는 액션
+	@RequestMapping("/adminmain.action")
+	public String adminmain()
+	{
+		String result = "";
+		result = "/WEB-INF/views/ManagerForm.jsp";
+		return result;
+	}
+
 	
 	// 아이디 중복확인
 	@RequestMapping("/idDupli.action")
@@ -95,6 +107,7 @@ public class MemberController
 	{
 	
 		String url = "";
+		
 		String result = memberService.searchMemsid(dto);
 		if (result.equals("0")) {
 	        url = "redirect:loginJoin.action?error=1"; 
@@ -107,6 +120,28 @@ public class MemberController
 			url = "redirect:main.action";
 		}
 	
+		return url;
+	}
+	
+	// 매니저인지 아닌지 조회, 로그인 성공/실패
+	@RequestMapping("/managerlogin.action")
+	public String manLoginCount(ManagerDTO dto, HttpSession session)
+	{
+		
+		String url = "";
+		
+		String result = managerService.searchMansid(dto);
+		if (result.equals("0")) {
+			url = "redirect:loginJoin.action?error=1"; 
+			
+		}
+		else
+		{
+			
+			session.setAttribute("miSid", result);
+			url = "redirect:adminmain.action";
+		}
+		
 		return url;
 	}
 	
@@ -298,6 +333,30 @@ public class MemberController
 			result = "/WEB-INF/components/MyPageReportForm.jsp";
 			return result;
 		}
+		
+		
+		
+		// 관리자 처리완료된 신고. AJAX로 처리.
+		@RequestMapping("/completereport.action")
+		public String completeReport(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/ManagerCompleteReport.jsp";
+			return result;
+		}
+		
+		
+		// 관리자 신고현안 및 비상관리. AJAX로 처리.
+		@RequestMapping("/reportlist.action")
+		public String reportList(HttpServletRequest request)
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/ManagerReportList.jsp";
+			return result;
+		}
+
 
 	
 

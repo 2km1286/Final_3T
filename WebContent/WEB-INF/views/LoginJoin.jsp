@@ -48,9 +48,20 @@
 				return false;
 			}
 			
-			// 로그인 버튼 클릭시 AJAX 처리
-			$("#loginForm").submit();
+			// 로그인 버튼 클릭시 관리자 체크 여부 확인 
 			
+			var isAdminLogin = $("#adminChecked").prop("checked");
+			
+			if(isAdminLogin)
+			{
+				//alert($("#jmId").val());
+				$(location).attr("href", "managerlogin.action?miId="+$("#jmId").val()+"&miPw="+$("#jmPw").val());
+
+			}
+			else
+			{
+				$("#loginForm").submit();
+			}
 		
 			
 		});
@@ -132,7 +143,8 @@ form {
   z-index: 2;
 }
 
-form input {
+form input
+ {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -258,12 +270,18 @@ margin-left: 20px;
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>로그인</h1>
+      <label style="margin-right: 150px;">
+      <input type="checkbox" name="adminChecked" value="admin" id="adminChecked">
+      <span style="font-size:x-small;">관리자로 로그인</span>
+      </label>
       <form class="form" action="memberlogin.action" id="loginForm">
         <input type="text" placeholder="아이디" name="jmId" id="jmId">
         <input type="password" placeholder="비밀번호" name="jmPw" id="jmPw"><br>
         <h3 id="message" style="text-align: center;">
             로그인 실패!!
         </h3>
+        
+        
         <button type="button" id="join-button">회원가입</button>
         <button type="button" id="login-button">로그인</button><br>
         
