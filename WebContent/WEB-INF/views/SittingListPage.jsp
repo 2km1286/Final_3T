@@ -7,9 +7,6 @@ String cp = request.getContextPath();
 <%
 	String memSid = (String) session.getAttribute("memSid"); // 최초 요청시 "0"
 %>
-<%
-	String memSid = (String)session.getAttribute("memSid");		// 최초 요청시 "0"
-%>
 <!DOCTYPE html>
 <html>
 <head>
