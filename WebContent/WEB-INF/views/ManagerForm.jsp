@@ -109,6 +109,42 @@
 .report-button:hover {
     background-color: #0056b3;
 }
+
+#emergency-report
+{
+   background-color: #FF0000; /* 붉은색 배경 */
+   color: #FFFFFF; /* 흰색 텍스트 */
+   font-size: 16px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* 그림자 효과 */
+   transition: background-color 0.3s ease; /* 색상 변경 시 부드러운 전환 */
+   cursor: pointer;
+   animation: vibration 3s infinite; /* 0.5초 간격으로 진동하는 애니메이션 반복 적용 있을 경우에만?? 가능?*/
+   
+  
+}
+#emergency-report:hover
+{
+	background-color: #FF3333; /* 더 진한 붉은색 배경 */
+  	transform: scale(1.05); /* 호버 시 약간 커지는 효과 */
+}
+
+/* 애니메이션 흔들기 */
+@keyframes vibration {
+  0% { transform: translateX(0) translateY(0); }
+  10% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  20% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
+  30% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  40% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
+  50% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  60% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
+  70% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  80% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
+  90% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  100% { transform: translateX(0) translateY(0); }
+}
 .card-buttons {
         display: flex;
         justify-content: center;
@@ -177,10 +213,10 @@ $(function()
 <!------ Include the above in your HEAD tag ---------->
 
 
-<div class="container" >
+<div class="container">
     <div class="row">
-        <!-- Sidebar -->
-        <div class="col-lg-3" >
+        <!-- 사이드바 -->
+        <div class="col-lg-3">
             <div id="sidebar-wrapper">
             	<h2 style="margin-left: 20px; color: white; margin-top: 20px;">관리 페이지</h2>
             	
@@ -189,7 +225,7 @@ $(function()
                 <ul class="sidebar-nav" style="margin-left:0;">
                     
                     <li id="reportList">
-                            <span style="margin-left:10px;">	신고 현안 및 비상관리</span>
+                            <span style="margin-left:10px;">신고 현안 및 비상관리</span>
                     </li>
                     <li id="graph">
                             <span style="margin-left:10px;">통계</span>
@@ -208,15 +244,24 @@ $(function()
             <!-- /#sidebar-wrapper -->
         </div>
 
-        <!-- Main Content -->
-        <div class="mainArea" id="mainContent" >
+        <!-- 메인 콘텐츠 -->
+        <div class="mainArea" id="mainContent">
 			<c:import url="/WEB-INF/components/ManagerReportList.jsp"></c:import>
-		  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
-		  </div>
-		  </div>
-		  </div>
+		</div>
+	</div>
+</div>
 
+
+	
+
+       
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
 
 </html>

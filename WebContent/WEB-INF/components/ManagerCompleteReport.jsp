@@ -32,7 +32,7 @@
     			<button class="report-button" id="dog-walking-report">대리산책 신고</button>
    				<button class="report-button" id="profile-report">프로필 신고</button>
         </div>
-        <div id="cardContainer" class="col-lg-9 mt-4"style="margin-left: 100px;">
+        <div id="completeTable" class="col-lg-9 mt-4"style="margin-left: 100px;">
             <table class="table table-bordered table-hover">
                 <thead class="thead-light">
                     <tr>

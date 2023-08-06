@@ -10,6 +10,9 @@
 <meta charset="UTF-8">
 <title>관리자 현안</title>
 
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
         <div class="col-lg-9" style="margin-left: 100px; width: 1200px;">
@@ -18,6 +21,7 @@
              	<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
     			<button class="report-button" id="dog-walking-report">대리산책 신고</button>
    				<button class="report-button" id="profile-report">프로필 신고</button>
+   				<button class="report-button" id="emergency-report" >비상 상황</button>
         </div>
         
         <div id="cardContainer" class="col-lg-9 mt-4"style="margin-left: 100px;">
@@ -55,6 +59,8 @@
 		          <br>
 		        </c:if>
 		      </c:forEach>
+		      
+		      
 		    
 		     <!-- 징계 선택 모달 창 -->
     <div class="modal fade" id="penaltyModal" tabindex="-1" role="dialog" aria-labelledby="penaltyModalLabel"
@@ -106,32 +112,34 @@
         	}
         }
     </script>
-		     <script>
-		    // 무한 스크롤 함수
-		    function infiniteScroll() {
-		      // 현재 스크롤 위치
-		      var scrollTop = $(window).scrollTop();
-		      // 화면의 높이
-		      var windowHeight = $(window).height();
-		      // 문서 전체 높이
-		      var documentHeight = $(document).height();
-		
-		      // 스크롤이 문서 맨 아래에 도달하면 새로운 카드를 추가
-		      if (scrollTop + windowHeight >= documentHeight) {
-		        // 새로운 카드를 추가하는 작업을 여기에 작성합니다.
-		        // 예시로 9개의 기존 카드를 복사하여 추가하는 코드를 작성합니다.
-		        var cards = `<c:out value="${cards}" escapeXml="false" />`;
-		        for (var i = 0; i < 9; i++) {
-		          $("#cardContainer").append(cards);
-		        }
-		      }
-		    }
-		
-		    // 스크롤 이벤트를 감지하여 무한 스크롤 함수 호출
-		    $(window).on("scroll", infiniteScroll);
-		
-		    // 초기에 한번 스크롤 이벤트를 발생시키기 위해 호출
-		    infiniteScroll();
-		  </script>
-		  </body>
+    <script>
+    // 무한 스크롤 함수
+    function infiniteScroll() 
+    {
+	      // 현재 스크롤 위치
+	      var scrollTop = $(window).scrollTop();
+	      // 화면의 높이
+	      var windowHeight = $(window).height();
+	      // 문서 전체 높이
+	      var documentHeight = $(document).height();
+	
+	      // 스크롤이 문서 맨 아래에 도달하면 새로운 카드를 추가
+	      if (scrollTop + windowHeight >= documentHeight) {
+	        // 새로운 카드를 추가하는 작업을 여기에 작성합니다.
+	        // 예시로 9개의 기존 카드를 복사하여 추가하는 코드를 작성합니다.
+	        var cards = `<c:out value="${cards}" escapeXml="false" />`;
+	        for (var i = 0; i < 9; i++) 
+	        {
+	          $("#cardContainer").append(cards);
+	        }
+	      }
+    }
+
+    // 스크롤 이벤트를 감지하여 무한 스크롤 함수 호출
+    $(window).on("scroll", infiniteScroll);
+
+    // 초기에 한번 스크롤 이벤트를 발생시키기 위해 호출
+    infiniteScroll();
+  	</script>
+	</body>
 </html>
