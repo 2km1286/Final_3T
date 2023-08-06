@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="tagList" resultType="com.act.sitting.SittingDTO">
-		SELECT ISPT_SID, ISPT_NAME
+		SELECT ISPT_SID AS ISPTSID, ISPT_NAME AS ISPTNAME
 		FROM INDEX_SITTING_PLACE_TAG
 		ORDER BY ISPT_SID
 	</select>
