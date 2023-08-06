@@ -264,6 +264,8 @@ div.profil
 .EndTh, .EndTd { border: 1px solid ##53e3a6; text-align: center; padding: 8px; }
 .EndTh { background-color: #53e3a6;}
 
+.reviewCard { margin-bottom: 30px; width: 23rem;  margin-left: 100px; margin-top: 10px;}
+
 </style>
 <!-- FONT jua -->
 <style>
@@ -274,6 +276,8 @@ div.profil
 .card {font-family: "Jua";}
 .checkBox {font-family: "Jua"; font-size: 15pt;}
 .superscript {font-family: "Jua";}
+.detailBtn {font-family: "Jua"; }
+.updatePlace {font-family: "Jua"; font-weight: normal;}
 </style>
 
 </head>

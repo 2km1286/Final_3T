@@ -18,6 +18,31 @@
 
 	$(function()
 	{
+		// 돌봄장소 수정하기를 누르면
+		$("#updateSPInfo").click(function()
+		{
+			$.ajax(
+			{
+				type:"POST"
+				, url:"updateSPInfoForm.action"
+				, async:true
+				, success:function(data)
+				{
+					$("#sittingPlaceDiv").html(data);
+										
+				}
+				, error:function(e)
+				{
+					alert(e.responseText);
+				}
+				
+			});
+			
+			
+		});
+		
+		
+		
 		//alert("확인");
 		$("#bookList").click(function()
 		{
@@ -59,18 +84,23 @@
     border: none; /* 테두리 제거 */
 }
 .sittingtime { font-size: 13pt;}
+.mypageWalkMonDon {margin-left: 500px;}
+.firstInfo { font-size: 15pt; font-weight: bold; color: #2dd0fc;}
 </style>
 </head>
 <body>
-	<div class="row">
-	    <div class="col place"> <!-- 펫시터 위상이 있다면 처음 들어왔을 때 채워진 상태. 한 마디로==업데이트폼 -->
-	    						<!-- 그러므로 펫시터가 되고 첫 등록이라면 아무것도 채워져 있지 않다.  -->
+	<div class="row" id="sittingPlaceDiv">
+	    
+	    <div class="col place" > 
 			<div class="row">	
-				<div class="col-md-6">	
+				<div class="col-md-4">	
 					<h2><span class="badge">핫도그님의 돌봄장소</span></h2>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<h3><span class="badge">팔로워 5명</span></h3>
+				</div>
+				<div class="col-md-4">
+					<button type="button" class="updatePlace">돌봄장소 변경하기</button>
 				</div>
 			</div>
 				
@@ -99,171 +129,197 @@
 			
 			<div class="card-body">
 			    <h3><span class="badge">돌봄장소 특이사항</span></h3>
-			    <div class="checkBox">
-				  <input type="checkbox" id="homeCam">
-				  <label for="homeCam">홈캠 가능</label>
-				</div>
-				
-				<div  class="checkBox">
-				  <input type="checkbox" id="bathing">
-				  <label for="bathing">목욕 가능</label>
-				</div>
-				
-				<div  class="checkBox">
-				  <input type="checkbox" id="emergencyTreatment">
-				  <label for="emergencyTreatment">응급처치 가능</label>
-				</div>
-				
-				<div class="checkBox">
-				  <input type="checkbox" id="petOwner">
-				  <label for="petOwner">반려견 있음</label>
-				</div>
-				
-				<div class="checkBox">
-				  <input type="checkbox" id="detailedTimeline">
-				  <label for="detailedTimeline">꼼꼼한 타임라인</label>
-				</div>
-				
-				<div class="checkBox">
-				  <input type="checkbox" id="haircare">
-				  <label for="haircare">모발관리 가능</label>
-				</div>
-				
-				<div class="checkBox">
-				  <input type="checkbox" id="disabledCare">
-				  <label for="disabledCare">장애견 케어 가능</label>
-				</div>
-				
-				<div class="checkBox">
-				  <input type="checkbox" id="seniorDog">
-				  <label for="seniorDog">노견 가능</label>
-				</div>
-				
-				<div class="checkBox">
-				  <input type="checkbox" id="smallMediumDog">
-				  <label for="smallMediumDog">소/중형견 가능</label>
-				</div>
-				
-				<div class="checkBox">
-				  <input type="checkbox" id="largeDog">
-				  <label for="largeDog">대형견 가능</label>
-				</div>
+			    <span class="firstInfo">[홈캠가능]</span>
+			    <span class="firstInfo">[목욕 가능]</span>
+			    <span class="firstInfo">[반려견 있음]</span>
+			    <span class="firstInfo">[대형견 가능]</span><br> <!-- 4개마다 br하기 -->
+			    <span class="firstInfo">[소/중형견 가능]</span>
+			    
 				<br>
 			    <h3><span class="badge">최대 가능 견수</span></h3>
-		    	<select name="max-dog" id="max-dog" class="form-select form-select-lg mb-3" aria-label="Large select example"
-		    			style="width: 400px;">
-			    		<option value="1">1마리</option>
-			    		<option value="2">2마리</option>
-			    		<option value="3">3마리</option>
-			    		<option value="4">4마리</option>
-			    		<option value="5">5마리</option>
-			    </select>
-			    
-			    <h3><span class="badge">사진첨부</span></h3>
-			    <input type="file">
+		    	<span class="firstInfo">[2마리]</span>
 			    
 			    <br><br>
-			  	<h3><span class="badge">돌봄장소 이름</span></h3>
-			    <input type="text" id="" class="" style="width: 600px;">
+			  	<h3><span class="badge">돌봄장소 이름</span></h3><!-- 가져와져있음 -->
+			    <input type="text" id="" class="" style="width: 600px;" readonly="readonly">
 			    
 			    <br><br>
-			  	<h3><span class="badge">돌봄장소 소개</span></h3>
-			    <textarea rows="5" cols="80"></textarea>
+			  	<h3><span class="badge">돌봄장소 소개</span></h3><!-- 가져와져있음 -->
+			    <textarea rows="5" cols="80" readonly="readonly"></textarea>
 				
 				<br><br>
 				<h3><span class="badge">돌봄장소 공개/비공개</span></h3>
-				<div class="form-check">
-				    <input class="form-check-input" type="radio" name="visibility" id="public" value="public">
-				    <label class="form-check-label" for="public">공개</label>
-				</div>
-				<div class="form-check">
-				    <input class="form-check-input" type="radio" name="visibility" id="private" value="private">
-				    <label class="form-check-label" for="private">비공개</label>
-				</div>
-				<br>
+				<span class="firstInfo">[공개]</span>
 				
-				<button type="button" class="updatePlace">돌봄장소 수정</button><!-- 첫 등록이라면 등록 -->
-				
+				<br><br>
+				<button type="button" class="updatePlace" id="updateSPInfo">돌봄장소 수정하기</button><!-- 첫 등록이라면 등록하기 -->
 			</div>
-			
-			<div>
-				<h3><span class="badge">운영 시간</span></h3>
-				<div class="form-group">
-				  <label for="open-time"><span class="badge sittingtime">시작 시간</span></label>
-				  <select class="form-select" id="open-time">
-				    <option value="1">1:00</option>
-				    <option value="2">2:00</option>
-				    <option value="3">3:00</option>
-				    <option value="4">4:00</option>
-				    <option value="5">5:00</option>
-				    <option value="6">6:00</option>
-				    <option value="7">7:00</option>
-				    <option value="8">8:00</option>
-				    <option value="9">9:00</option>
-				    <option value="10">10:00</option>
-				    <option value="11">11:00</option>
-				    <option value="12">12:00</option>
-				    <option value="13">13:00</option>
-				    <option value="14">14:00</option>
-				    <option value="15">15:00</option>
-				    <option value="16">16:00</option>
-				    <option value="17">17:00</option>
-				    <option value="18">18:00</option>
-				    <option value="19">19:00</option>
-				    <option value="20">20:00</option>
-				    <option value="21">21:00</option>
-				    <option value="22">22:00</option>
-				    <option value="23">23:00</option>
-				    <option value="24">24:00</option>
-				  </select>
-				</div>
 				
-				<div class="form-group">
-				  <label for="close-time"><span class="badge sittingtime">종료 시간</span></label>
-				  <select class="form-select" id="close-time">
-				    <option value="1">1:00</option>
-				    <option value="2">2:00</option>
-				    <option value="3">3:00</option>
-				    <option value="4">4:00</option>
-				    <option value="5">5:00</option>
-				    <option value="6">6:00</option>
-				    <option value="7">7:00</option>
-				    <option value="8">8:00</option>
-				    <option value="9">9:00</option>
-				    <option value="10">10:00</option>
-				    <option value="11">11:00</option>
-				    <option value="12">12:00</option>
-				    <option value="13">13:00</option>
-				    <option value="14">14:00</option>
-				    <option value="15">15:00</option>
-				    <option value="16">16:00</option>
-				    <option value="17">17:00</option>
-				    <option value="18">18:00</option>
-				    <option value="19">19:00</option>
-				    <option value="20">20:00</option>
-				    <option value="21">21:00</option>
-				    <option value="22">22:00</option>
-				    <option value="23">23:00</option>
-				    <option value="24">24:00</option>
-				  </select>
-				</div>
-				
-				 <button type="button" class="updatePlace">운영시간 수정</button>
-
-
-			</div>	
 	    </div><!-- 1행 1열 끝 -->
 	    
 	    <div class="col">
 	    
-	    	<div><!--  -->
+	    	<div id="sittingUpdate"><!-- 오른쪽 -->
+	    	
 		    	<button type="button" id="bookList">예약내역</button>
 		    	<button type="button" id="review">후기</button>
 		    	<button type="button" id="money">수익</button>
 		    
-		    	
-		    
+		    	<!-- 우선은 아래에 다 적는데 이 div #myPageSittingInfo에 ajax로 처리해주면 될것같습니다. 오른쪽 디폴트 예약 내역-->
 		    	<div class="myPageSittingInfo" id="myPageSittingInfo"></div>	
+		    	
+		    	
+		    	<div><!-- 예약내역 눌렀을 때 -->
+		    		<div>달력이 있고</div>
+		    		
+		    		<h3><span class="badge">예약 내역</span></h3><!-- 그 달의 예약 내역이 보인다-->
+		    		<div>
+		    		
+		    			<div class="card">
+							<div class="card-header d-flex justify-content-between"">
+								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+							</div>	
+					    	  <div class="row g-0">
+					    	    <div class="col-md cardInfo" >
+					    	      <div class="card-body">
+					    	        <div class="oneText">
+					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-05 16:00</span>
+					    	        </div>
+					    	      </div>
+					    	    </div>
+					    	  </div>
+					    </div>
+					    
+					    <div class="card">
+							<div class="card-header d-flex justify-content-between"">
+								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+							</div>	
+					    	  <div class="row g-0">
+					    	    <div class="col-md cardInfo" >
+					    	      <div class="card-body">
+					    	        <div class="oneText">
+					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+					    		        <span class="card-text" style="font-size: 14pt;">2023-08-06 14:00 ~ 2023-08-06 22:00</span>
+					    	        </div>
+					    	      </div>
+					    	    </div>
+					    	  </div>
+					    </div>
+		    		
+		    		</div>
+			    		
+		    	</div><!-- 예약내역 눌렀을 때 끝 -->
+		    	
+		    	<div><!-- 후기 눌렀을 때 -->
+			    	
+			    	<h3><span class="badge">후기</span></h3>
+			    	<div>
+			    		
+			    		<div class="card reviewCard">
+						  <img src="..." class="card-img-top"/>
+						  <div class="card-body">
+						    <h5 class="card-title">후기 제목 입니다아아아</h5>
+						    <p class="card-text">후기 내용 어쩌고 저쩌고 </p>
+						  </div>
+						  <ul class="list-group list-group-light list-group-small">
+						    <li class="list-group-item px-4">별점 : ⭐ </li>
+						    <li class="list-group-item px-4">작성자 : 견주닉네임</li>
+						    <li class="list-group-item px-4">작성일 : 2023-08-05 </li>
+						  </ul>
+						</div>
+						
+						<div class="card reviewCard">
+						  <img src="..." class="card-img-top"/>
+						  <div class="card-body">
+						    <h5 class="card-title">후기 제목 입니다아아아</h5>
+						    <p class="card-text">후기 내용 어쩌고 저쩌고 </p>
+						  </div>
+						  <ul class="list-group list-group-light list-group-small">
+						    <li class="list-group-item px-4">별점 : ⭐ </li>
+						    <li class="list-group-item px-4">작성자 : 견주닉네임</li>
+						    <li class="list-group-item px-4">작성일 : 2023-08-05 </li>
+						  </ul>
+						</div>
+			    		
+			    	</div>
+		    		
+		    	</div><!-- 후기 눌렀을 때 끝 -->
+		    	
+		    	<div><!-- 수익 눌렀을 때 -->
+		    		<h3><span class="badge">수익내역</span></h3>
+					<div><!-- 수익내역 시작 -->
+						<div class="mypageWalkMonDon">
+							<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
+							<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
+				        </div>
+						
+						<table class="EndTable">
+						    <tr>
+						      <th class="EndTh">서비스 완료일</th>
+						      <th class="EndTh">매칭상대(닉네임)</th>
+						      <th class="EndTh">가격</th>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						   <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">뭐뭐닉네임</td>
+						      <td class="EndTd">30,000원</td>
+						    </tr>
+						</table>
+						
+					</div><!-- 수익내역 끝 -->
+		    	
+		    	</div><!-- 수익 눌렀을 때 끝 -->
 		    	
 	    	</div>
 	    	

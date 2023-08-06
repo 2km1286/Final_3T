@@ -22,7 +22,6 @@
 .noticeCard { margin-bottom: 20px;}
 .walkCard{width: 350px;}
 .sittingCard{width: 400px;}
-.reviewCard { margin-bottom: 30px; width: 23rem;  margin-left: 100px; margin-top: 10px;}
 </style>
 </head>
 <body>

@@ -19,7 +19,6 @@
 	padding: 20px 20px 20px 20px;
 }
 .noticeCard { margin-bottom: 20px;}
-.reviewCard { margin-bottom: 30px; width: 23rem;  margin-left: 100px; margin-top: 10px;}
 .superscript { font-size: 1.0em; vertical-align: super;}
 #totalEarningsLabel { display: inline; }
 #totalEarningsValue { display: inline; }
@@ -60,25 +59,9 @@
 					    	  <div class="row g-0">
 					    	    <div class="col-md cardInfo" >
 					    	      <div class="card-body">
-					    	      	<div class="oneText">
-					    	      		<span class="nick card-text">상대방닉네임</span>
-					    	      		<span class="card-text"><small class="text-muted">상대방등급</small></span>
-					    	      	</div>
 					    	        <div class="oneText">
 					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
-					    	        </div>
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
-					    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길</span>
-					    	        </div>
-					    	         <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">만남장소</small></span><br>
-					    		        <span class="card-text">홍대입구역 2번 출구 앞</span>
-					    	        </div>
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
-					    		        <span class="card-text">까미</span><br>
+					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
 					    	        </div>
 					    	      </div>
 					    	    </div>
@@ -93,25 +76,9 @@
 					    	  <div class="row g-0">
 					    	    <div class="col-md cardInfo" >
 					    	      <div class="card-body">
-					    	      	<div class="oneText">
-					    	      		<span class="nick card-text">상대방닉네임</span>
-					    	      		<span class="card-text"><small class="text-muted">상대방등급</small></span>
-					    	      	</div>
 					    	        <div class="oneText">
 					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text">2023-08-04 17:00 ~ 2023-08-04 18:00</span>
-					    	        </div>
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">지역(상세주소)</small></span><br>
-					    		        <span class="card-text">서울시 마포구 어디동 어디로 어디길</span>
-					    	        </div>
-					    	         <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">만남장소</small></span><br>
-					    		        <span class="card-text">홍대입구역 2번 출구 앞</span>
-					    	        </div>
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">함께할 반려견</small></span><br>
-					    		        <span class="card-text">까미</span><br>
+					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 17:00 ~ 2023-08-04 18:00</span>
 					    	        </div>
 					    	      </div>
 					    	    </div>

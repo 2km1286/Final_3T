@@ -299,6 +299,47 @@ public class MemberController
 			return result;
 		}
 
-	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// 마이페이지 펫시팅의 수정하기를 눌렀을 때, AJAX처리
+		@RequestMapping("/updateSPInfoForm.action")
+		public String updateSPInfoForm()
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/updateSPInfoForm.jsp";
+			return result;
+		}
+		
+		
+		
+		
 
 }
