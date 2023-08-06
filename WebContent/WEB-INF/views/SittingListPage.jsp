@@ -138,8 +138,8 @@ p {
 		
 		  <div class="mb-4">
 		    <!-- 버튼 모양의 복수 선택 라디오 버튼 -->
-		    <c:forEach var="dto" items="${list }">
-		    	<button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)" value="${dto.sphStart }">${dto.sphEnd }</button>
+		    <c:forEach var="dto" items="${tagList }">
+		    	<button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)" value="${dto.isptSid }">${dto.isptName }</button>
 		    
 		    </c:forEach>
 		    <!-- <button class="btn btn-danger radio-button" onclick="toggleRadioButton(this)">홈캠 구비</button>
