@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>I돌봄장소후기</title>
+<title>돌봄장소후기</title>
 </head>
 <body>
 
