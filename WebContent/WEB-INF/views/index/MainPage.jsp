@@ -49,7 +49,7 @@
 	</c:import>
 	<section>
 	<div>
-	<c:import url="/WEB-INF/components/DefaultMainForm.jsp"></c:import>
+	<c:import url="/WEB-INF/components/BestListForm.jsp"></c:import>
 	</div>
 	</section>
 	<section>
