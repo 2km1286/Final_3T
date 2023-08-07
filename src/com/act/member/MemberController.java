@@ -245,7 +245,8 @@ public class MemberController
 			view = "redirect:main.action";
 		}
 		
-		
+		return view;
+	}
 		
 		// 관리자 처리완료된 신고. AJAX로 처리.
 		@RequestMapping("/completereport.action")
