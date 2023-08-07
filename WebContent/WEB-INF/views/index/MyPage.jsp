@@ -38,7 +38,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"myPageNotice.action"
+				, url:"mypagenoticeform.action"
 				, async:true
 				, success:function(data)
 				{
@@ -104,7 +104,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"myPageInfo.action"
+				, url:"mypageinfoform.action"
 				, async:true
 				, success:function(data)
 				{
@@ -125,7 +125,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"myPageActive.action"
+				, url:"mypageactiveform.action"
 				, async:true
 				, success:function(data)
 				{
@@ -146,7 +146,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"myPageReport.action"
+				, url:"mypagereportform.action"
 				, async:true
 				, success:function(data)
 				{

@@ -245,7 +245,7 @@ margin-left: 20px;
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>비밀번호 재설정</h1>
-      <form class="form" action="findPw.action" id="findPw">
+      <form class="form" action="findpw.action" id="findPw">
         <input type="text" placeholder="아이디" name="jmId" id="jmId">
         <input type="text" placeholder="이름" name="jmName" id="jmName">
         <input type="password" placeholder="주민번호" name="jmSsn" id="jmSsn">
