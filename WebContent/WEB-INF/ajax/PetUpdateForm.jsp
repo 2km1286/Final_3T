@@ -14,12 +14,12 @@
 
 	$(function()
 	{
-		$("#petInsertCancel").click(function()
+		$("#petUpdateCancel").click(function()
 		{
 			$.ajax(
 			{
 				type:"POST"
-				, url:"petinsertcancel.action"
+				, url:"petupdatecancel.action"
 				, async:true
 				, success:function(data)
 				{
@@ -45,7 +45,7 @@
 <body>
 <div>
 
-		<h2><span class="badge">반려견 등록하기</span></h2>
+		<h2><span class="badge">반려견 수정하기</span></h2>
 				
 		<h3><span class="badge">사진</span></h3>
         <input type="file" accept="image/*" style="display: block;">
@@ -89,9 +89,9 @@
         <span id="err" style="display: none;">* 필수 항목들을 모두 입력해주세요.</span>
         <br />
         
-        <button type="button" id="petInsert" class="detailBtn">등록하기</button>
+        <button type="button" id="petUpdate" class="detailBtn">수정하기</button>
         <button type="reset" id="" class="detailBtn">초기화</button>
-        <button type="button" id="petInsertCancel" class="detailBtn">등록취소</button>
+        <button type="button" id="petUpdateCancel" class="detailBtn">수정취소</button>
 
 </div>
 </body>

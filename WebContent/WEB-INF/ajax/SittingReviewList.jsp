@@ -4,13 +4,11 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<!-- 벼리언니 이거 지우면 안대 화이팅해 언니 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<title>I돌봄장소후기</title>
 </head>
 <body>
 

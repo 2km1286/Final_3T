@@ -16,7 +16,7 @@
 	
 	$(function()
 	{
-		$("#petInsertForm").click(function()
+		$("#petInsertBtn").click(function()
 		{
 			$.ajax(
 			{
@@ -35,6 +35,31 @@
 				
 			});
 		});
+		
+		/* 나중에 데이터 받아오면 여기도 #petUpdateBtn${petSid} 이런식? */
+		$("#petUpdateBtn123").click(function()
+		{
+			$.ajax(
+			{
+				type:"POST"
+				, url:"petupdateform.action"
+				, async:true
+				, success:function(data)
+				{
+					$("#petRigthDiv").html(data);
+										
+				}
+				, error:function(e)
+				{
+					alert(e.responseText);
+				}
+				
+			});
+			
+			
+		});
+		
+		
 	});
 
 
@@ -65,12 +90,20 @@
     margin-top: 10px;
     width: 350px;
 }
-.petCard {width: 300px;}
-.px-4 {padding: 2px 5px 2px 5px; width: 350px; }
-.petBtn { width: 80px;}
+.petCard {width: 320px;}
+ .petCardContainer
+{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.px-4 {padding: 2px 5px 2px 5px; width: 320px; }
+.petUpdateBtn { width: 80px;}
+.petDeletBtn { width: 80px;}
 .profil { padding-right: 5px; padding-left: 5px; margin-right: 10px; margin-top: 10px;}
 .myInfoDiv { padding-bottom: 20px;}
-
+#petInsertBtn {background-color: white; border: 0; font-size: 40pt; color: #53e3a6;}
 </style>
 </head>
 <body>
@@ -140,7 +173,7 @@
 			<div class="row"> 
 			
 			<div class="col-md-6"><!-- 2행 1열 시작 -->
-				<div><!-- 반려견 카드 목록 시작 -->
+				<div class="petCardContainer"><!-- 반려견 카드 목록 시작 -->
 				
 					<div class="card petCard">
 						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
@@ -154,9 +187,27 @@
 							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
 							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
 							<li class="list-group-item px-4">
-								<button type="button" id="" class="detailBtn petBtn">수정하기</button>
-								<button type="button" id="" class="detailBtn petBtn">되돌리기</button>
-								<button type="button" id="" class="detailBtn petBtn">삭제하기</button>
+								<button type="button" id="petUpdateBtn123" class="detailBtn petUpdateBtn">수정하기</button>
+								<button type="button" id="petDeleteBrn${petSid }" class="detailBtn petDeleteBtn">삭제하기</button>
+							</li>
+						</ul>
+					</div>
+					
+					
+					<div class="card petCard">
+						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
+						<div class="card-body">
+						<h5 class="card-title">인절미</h5>
+						<p class="card-text">특이사항이 적혀있어요. 우리 절미는 뛰는걸 싫어해요. 걷기만 해주세요</p>
+					</div>
+						<ul class="list-group list-group-light list-group-small">
+							<li class="list-group-item px-4">성별 : <span>남</span> </li>
+							<li class="list-group-item px-4">무게(kg) : <span>15</span> </li>
+							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
+							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
+							<li class="list-group-item px-4">
+								<button type="button" id="petUpdateBtn123" class="detailBtn petUpdateBtn">수정하기</button>
+								<button type="button" id="" class="detailBtn petDeleteBtn">삭제하기</button>
 							</li>
 						</ul>
 					</div>
@@ -172,10 +223,11 @@
 							<li class="list-group-item px-4">무게(kg) : <span>15</span> </li>
 							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
 							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
+							<li class="list-group-item px-4">
+								<button type="button" id="" class="detailBtn petUpdateBtn">수정하기</button>
+								<button type="button" id="" class="detailBtn petDeleteBtn">삭제하기</button>
+							</li>
 						</ul>
-						<button type="button" id="" class="detailBtn petBtn">수정하기</button>
-						<button type="button" id="" class="detailBtn petBtn">되돌리기</button>
-						<button type="button" id="" class="detailBtn petBtn">삭제하기</button>
 					</div>
 				
 				</div><!-- 반려견 카드 목록 끝 -->
@@ -183,7 +235,9 @@
 			</div><!-- 2행 1열 끝 -->
 			
 			<div class="col-md-6" id="petRigthDiv"><!-- 2행 2열 시작 -->
-				<button type="button" id="petInsertForm">반려견 등록하기</button>
+				<div>
+					<button type="button" class="petInsertBtn" id="petInsertBtn">✚</button>
+				</div>
 				
 			</div><!-- 2행 2열 끝 -->
 		

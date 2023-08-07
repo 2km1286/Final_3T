@@ -273,6 +273,35 @@ public class MemberController
 		return result;
 	}
 	
+	// 마이페이지 내 정보 및 반려견관리의 반려견 등록하는 폼 없애기. AJAX로 처리.
+	@RequestMapping("/petinsertcancel.action")
+	public String petInsertCancel()
+	{
+		String result = "";
+		// AJAX
+		result = "/WEB-INF/ajax/PetInsertCancel.jsp";
+		return result;
+	}
 	
-
+	// 마이페이지 내 정보 및 반려견관리의 반려견 수정하는 폼. AJAX로 처리.
+	@RequestMapping("/petupdateform.action")
+	public String petUpdateForm()
+	{
+		String result = "";
+		// AJAX
+		result = "/WEB-INF/ajax/PetUpdateForm.jsp";
+		return result;
+	}
+	
+	// 마이페이지 내 정보 및 반려견관리의 반려견 수정하는 폼 없애기. AJAX로 처리.
+	@RequestMapping("/petupdatecancel.action")
+	public String petUpdateCancel()
+	{
+		String result = "";
+		// AJAX
+		result = "/WEB-INF/ajax/PetInsertCancel.jsp";
+		return result;
+	}
+	
+	
 }

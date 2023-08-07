@@ -4,18 +4,16 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<!-- 벼리언니 이거 지우면 안대 화이팅해 언니 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<title>돌봄장소수익</title>
 </head>
 <body>
 
 <div><!-- 수익 눌렀을 때 -->
-   		<h3><span class="badge">수익내역</span></h3>
+   		<h3><span class="badge">수익</span></h3>
 		<div><!-- 수익내역 시작 -->
 			<div class="mypageWalkMonDon">
 				<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
