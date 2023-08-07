@@ -10,13 +10,6 @@
 <meta charset="UTF-8">
 <title>RecommendForm.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/mdb.min.css">
-<style type="text/css">
-	
-	.rec
-	{
-	}
-
-</style>
 </head>
 <body>
 <div class="all">

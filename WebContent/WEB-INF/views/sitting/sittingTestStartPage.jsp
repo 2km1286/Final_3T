@@ -7,13 +7,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="./images/logo_transparent.png"/>
-<link rel="stylesheet" href="css/mdb.min.css" />
-<meta charset="UTF-8"> 
-<title>SittingTesetTosForm</title>
+<meta charset="UTF-8">
+<title>WalkTestMainForm.jsp</title>
 
-
-
+<style type="text/css">
+	.card
+	{
+		text-align: center;
+		width: 20vw;
+		height: 20vh;
+		margin: 40px 20px 40px 700px;;
+	}
+	.btn-test
+	{
+		text-align: center;
+		background-color: #FFE090;
+		color: white;
+	}
+</style>
 <style type="text/css">
 	.image-container { text-align: center; }
 	.image-container img
@@ -45,9 +56,10 @@
 	.tosBtn { color: #FFE090; font-size: 15pt;}
 	.tosBtn:hover { color: white; background-color: #FFE090;}
 </style>
+<link rel="stylesheet" type="text/css" href="css/mdb.min.css">
 </head>
 <body>
-		<div class="image-container">
+<div class="image-container">
 	            <img src="images/‎sittingTestTosExImage‎.png" alt="펫시터 위상 얻을 시 약관">
 	            <div class="form-check">
 	                <input class="form-check-input" type="checkbox" value="" id="SittingTosCheck" />
@@ -58,5 +70,20 @@
 	        <button type="button" class="btn tosBtn">취소</button>
 	        <button type="button" class="btn tosBtn">다음</button>
 		</div>
+
+
+<div class="card">
+  <img src="<%=cp %>/images/walkTest.png" class="card-img-top" />
+  <div class="card-body">
+    <h5 class="card-title">대리산책러 자격검증 테스트</h5>
+    <p class="card-text">60점 이상의 점수를 얻어 대리산책러가 되어보세요!</p>
+    <a href="#" class="btn-test">테스트 시작</a>
+    <button type="button" id="teststart"></button>
+  </div>
+</div>
+
+
+
+
 </body>
 </html>
