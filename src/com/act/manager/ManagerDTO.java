@@ -1,4 +1,4 @@
-package com.act.member;
+package com.act.manager;
 
 
 

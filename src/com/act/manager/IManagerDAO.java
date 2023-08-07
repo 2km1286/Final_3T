@@ -1,4 +1,6 @@
-package com.act.member;
+package com.act.manager;
+
+import com.act.manager.ManagerDTO;
 
 public interface IManagerDAO
 {
