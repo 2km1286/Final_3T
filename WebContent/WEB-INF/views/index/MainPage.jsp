@@ -7,6 +7,7 @@
 %>
 <%
 	String memSid = (String)session.getAttribute("memSid");		// 최초요청시 null
+	String memNickName = (String)session.getAttribute("memNickName");   // 최초요청시 null
 	
 	if(memSid == null)
 	{
