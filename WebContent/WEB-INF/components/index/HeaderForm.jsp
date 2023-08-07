@@ -29,6 +29,7 @@
 		 $("#mainLogo").click(function()
 		{
 
+
 			 window.location.href = "mainpage.action";
 
 		});
@@ -37,15 +38,13 @@
 		$("#loginJoin").click(function()
 		{
 			//alert("확인");
-
 			window.location.href = "loginpage.action";
-
 		});
 		
 		//로그아웃하는 function
 		$("#logOut").click(function()
 		{
-			window.location.href = "logOut.action";
+			window.location.href = "logout.action";
 		});
 		
 		// 대리산책 리스트업 페이지로 가는 function
@@ -57,15 +56,13 @@
 		// 펫시팅 리스트업 페이지로 가는 function
 		$("#sittingList").click(function()
 		{
-
 			window.location.href = "sittinglistpage.action";
-
 		})
 		
 		// 마이페이지로 가는 function
 		$("#myPage").click(function()
 		{
-			window.location.href = "myPage.action";
+			window.location.href = "mypage.action";
 		});
 		
 		
@@ -131,7 +128,7 @@
 				<c:choose>
 				<c:when test="${memSid eq '0' }">
 					<li class="nav-item dropdown" style="font-size: medium;">
-				  	<button type="button" id="loginJoin" >회원가입/로그인</button>
+				  	<button type="button" id="loginPage" >회원가입/로그인</button>
 					</li>
 				</c:when>
 				<c:otherwise>

@@ -25,7 +25,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"findId.action"
+				, url:"findidform.action"
 				, data:params
 				, async:true
 				, success:function(data)

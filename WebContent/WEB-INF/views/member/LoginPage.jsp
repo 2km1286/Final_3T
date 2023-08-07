@@ -23,7 +23,7 @@
 		// 회원가입 폼 페이지로 가기
 		$("#join-button").click(function()
 		{
-			window.location.href = "joinForm.action";
+			window.location.href = "joinpage.action";
 		});
 		
 		
@@ -288,10 +288,10 @@ margin-left: 20px;
       </form>
       
       <div class="subDiv">
-    	<form class="subForm" action="findIdForm.action">
+    	<form class="subForm" action="findidpage.action">
     		<button class="subBtn" type="submit" id="findIdBtn">아이디 찾기</button>
     	</form>
-    	<form class="subForm" action="findPwForm.action">
+    	<form class="subForm" action="findpwpage.action">
     		<button class="subBtn" type="submit" id="findPwBtn">비밀번호 재설정</button>
     	</form>
     </div>
