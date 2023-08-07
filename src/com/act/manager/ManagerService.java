@@ -1,9 +1,12 @@
-package com.act.member;
+package com.act.manager;
 
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.act.manager.IManagerDAO;
+import com.act.manager.IManagerService;
 
 
 @Service
