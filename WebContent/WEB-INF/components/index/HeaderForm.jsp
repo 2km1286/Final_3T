@@ -35,7 +35,7 @@
 		});
 		 
 		// 로그인/회원가입 페이지로 가는 function
-		$("#loginJoin").click(function()
+		$("#loginPage").click(function()
 		{
 			//alert("확인");
 			window.location.href = "loginpage.action";
