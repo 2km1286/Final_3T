@@ -45,22 +45,22 @@ public class ManagerController
 	}
 
 	// 관리자 처리완료된 신고. AJAX로 처리.
-	@RequestMapping("/completereport.action")
+	@RequestMapping("/managercompletereport.action")
 	public String completeReport(HttpServletRequest request)
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/ManagerCompleteReport.jsp";
+		result = "/WEB-INF/ajax/ManagerCompleteReport.jsp";
 		return result;
 	}
 
 	// 관리자 신고현안 및 비상관리. AJAX로 처리.
-	@RequestMapping("/reportlist.action")
+	@RequestMapping("/managerreportlist.action")
 	public String reportList(HttpServletRequest request)
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/ManagerReportList.jsp";
+		result = "/WEB-INF/ajax/ManagerReportList.jsp";
 		return result;
 	}
 }
