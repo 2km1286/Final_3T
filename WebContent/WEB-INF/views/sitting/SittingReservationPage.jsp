@@ -25,6 +25,9 @@ h2, h4, h5 {
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2IqcO3" crossorigin="anonymous"></script>
+
 
 <script type="text/javascript">
 	$().ready(function()
@@ -55,6 +58,11 @@ h2, h4, h5 {
 </script>
 
 <style>
+
+.card-img-top {
+    margin-left: 30px; /* 이미지를 오른쪽으로 10픽셀 이동 */
+}
+
 .custom-btn {
 	background-color: #4CAF50; /* 버튼 배경 색 */
 	color: white; /* 글자 색 */
@@ -81,23 +89,23 @@ h2, h4, h5 {
     width: 100%;
     height: 50vh; /* 뷰포트 높이에 맞게 조절 */
 }
-
 .image-half {
-    width: 55%; /* 각 이미지가 화면의 절반을 차지하도록 설정 */
+    width: 90%; /* 각 이미지가 화면의 절반을 차지하도록 설정 */
     height:100%;
     background-size: cover; /* 이미지 크기를 컨테이너에 맞게 조절 */
     background-position: center; /* 이미지를 중앙에 배치 */
     position: relative;
-    margin-left: 15%;
+    /* margin-left: 15%; */
 }
-
 #calendar {
-    position: absolute; /* 캘린더를 절대 위치로 설정 */
-    top: 50%; /* 상단에서 50% 위치에 배치 */
-    left: 50%; /* 왼쪽에서 50% 위치에 배치 */
+	
+   position: absolute; /* 캘린더를 절대 위치로 설정 */
+   width:40%;
+   height:100%;
+    top: 100%; /* 상단에서 50% 위치에 배치 */
+    left: 100%; /* 왼쪽에서 50% 위치에 배치 */
     transform: translate(-50%, -50%); /* 좌표를 정확하게 중앙으로 이동 */
 }
-
 
 </style>
 
@@ -109,27 +117,15 @@ h2, h4, h5 {
 	</section>
 
 	<section>
-		<h2>펫시팅 예약</h2>
-		<hr>
-		<!-- 여기에는 펫시터 프로필 카드 -->
-
-		<!-- 프로필 신고 위치선정 고민 -->
-		<!-- <div class="d-flex align-items-center justify-content-start" style="margin-left: 880px;">
-			<button type="button" class="btn btn-outline-danger" id="reportButton">
-				<i class="fas fa-exclamation-triangle"></i>프로필 신고
-			</button>
-		</div> -->
+		<!-- 맨 위에 사진과 캘린더 -->
 		<div class="image-container">
-			<div class="image-half" style="background-image: url('images/sitterroom.jpg');"></div>
+			<div class="image-half" style="background-image: url('images/sittingroom.png');"></div>
 			<div id="calendar"></div>
 		</div>
-
+			
 		<div class="d-flex justify-content-center align-items-center" style="height: 100vh; overflow: hidden;">
-			<div id="cardContainer" class="row"
-				style="margin: 50px 10px 10px 10px; height: 100%;">
-				<!-- style="margin: 20px 10px 10px 10px;" -->
+			<div id="cardContainer" class="row" style="margin: 50px 10px 10px 10px; height: 100%;">
 				<div class="col-md-7" style="height: 100%;">
-					<!-- 4 -->
 					<div class="card" style="height: 100%; overflow: auto;">
 					<br>
 						<div style="text-align: right;">
@@ -138,39 +134,45 @@ h2, h4, h5 {
 								<i class="fas fa-exclamation-triangle"></i>프로필 신고
 							</button>
 						</div>
-						<br><img src="images/dogdog.png" alt="" class="card-img-top" style="width: 220px; margin-left: 20px;">
-						<div class="card-body">
-							<h5 class="card-title">[프로 펫시터] 퍼피러버</h5>
-							<h6 class="card-subtitle text-muted">아이에게 편안한 환경을 제공합니다!</h6>
+						<br>
+							<div class="profile-card">
+								<div class="text-center">
+									<img src="images/dogdog.png" alt="" class="rounded-circle" style="width: 200px; margin: 20px;">
+								</div>
+								<div class="text-center">
+									<h5>[프로 펫시터] 퍼피러버</h5>
+									<h6 class="text-muted">아이에게 편안한 환경을 제공합니다!</h6>
+									<p>4.2 ⭐ (991개의 후기) 45,000원 / 1박</p>
+								</div>
+							</div>
 							<br>
-							<p>4.2 ⭐ (991개의
-								후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박</p>
-							<br>
+							<hr>
 							<div>
-								<h5 class="card-title">퍼피러버 펫시터님을 소개합니다</h5>
-								<h6 class="card-subtitle text-muted">
-									반갑습니다~ 반려동물을 사랑하는 펫시터입니당 <br>샬라샬라~
+								<h5 class="card-title text-center">퍼피러버 펫시터님을 소개합니다</h5><br>
+								<h6 class="card-subtitle text-muted text-center">
+									반갑습니다~ 반려동물을 사랑하는 펫시터입니당 <br>귀하의 반려 동물에게 집처럼 편안한 경험을 제공합니다.<br>
+									여러분이 없을 때도 사랑받는 가족처럼 대해드립니다.
 								</h6>
 							</div>
 							<hr>
 							<br>
 							<div>
-								<h5 class="card-title">어필 태그</h5>
-								<button class="btn btn-outline-warning">대형견 가능</button>
+								<h5 class="card-title text-center">이용 가능 서비스</h5>
+								<button class="btn btn-outline-warning" style="margin-left: 130px;">대형견 가능</button>
 								<button class="btn btn-outline-warning">노견 가능</button>
 								<button class="btn btn-outline-warning">홈캠 가능</button>
 								<button class="btn btn-outline-warning">모발관리 가능</button>
 							</div>
 							<br>
-							<hr>
+							<hr><br>
 
 							<!-- 이용요금 -->
 							<div>
-								<h5 class="card-title">이용 요금</h5>
+								<h5 class="card-title text-center">이용 요금</h5>
 								<br>
 								<div class="row">
 									<div class="col">
-										<h6 class="card-title">초보 펫시터</h6>
+										<h6 class="card-title text-center">초보 펫시터</h6>
 									</div>
 									<div class="col">
 										<h6 class="card-subtitle text-muted">20,000원 (24시간 기준)</h6>
@@ -178,7 +180,7 @@ h2, h4, h5 {
 								</div>
 								<div class="row">
 									<div class="col">
-										<h6 class="card-title">프로 펫시터</h6>
+										<h6 class="card-title text-center">프로 펫시터</h6>
 									</div>
 									<div class="col">
 										<h6 class="card-subtitle text-muted">45,000원 (24시간 기준)</h6>
@@ -186,84 +188,98 @@ h2, h4, h5 {
 								</div>
 								<div class="row">
 									<div class="col">
-										<h6 class="card-title">마스터 펫시터</h6>
+										<h6 class="card-title text-center">마스터 펫시터</h6>
 									</div>
 									<div class="col">
 										<h6 class="card-subtitle text-muted">55,000원 (24시간 기준)</h6>
 									</div>
 								</div>
 								<br>
-								<h5 class="card-title">반려견 추가비</h5>
+								<h5 class="card-title text-center">반려견 추가비</h5><br>
 								<div class="row">
 									<div class="col">
-										<h6 class="card-title">초보 펫시터</h6>
+										<h6 class="card-title text-center">초보 펫시터</h6>
 									</div>
 									<div class="col">
-										<h6 class="card-subtitle text-muted">1마리 추가당 10,000원</h6>
+										<h6 class="card-subtitle text-muted">1마리 추가시 10,000원</h6>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col">
-										<h6 class="card-title">프로 펫시터</h6>
+										<h6 class="card-title text-center">프로 펫시터</h6>
 									</div>
 									<div class="col">
-										<h6 class="card-subtitle text-muted">1마리 추가당 22,500원</h6>
+										<h6 class="card-subtitle text-muted">1마리 추가시 22,500원</h6>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col">
-										<h6 class="card-title">마스터 펫시터</h6>
+										<h6 class="card-title text-center">마스터 펫시터</h6>
 									</div>
 									<div class="col">
-										<h6 class="card-subtitle text-muted">1마리 추가당 27,500원</h6>
+										<h6 class="card-subtitle text-muted">1마리 추가시 27,500원</h6>
 									</div>
-								</div>
+								</div><br>
 								
+									
+							<div class="alert alert-warning alert-dismissible fade show"
+								role="alert">
+								<i class="fas fa-exclamation-circle"></i>
+								<h6 class="text-center">
+									체크아웃 시간을 엄수해주시기 바랍니다.<br> 만약 늦게 체크아웃하실 경우, 10분마다 3,000원의
+									추가 비용이 발생하오니<br> 예약 시 이 점을 꼭 고려해주시기 바랍니다.
+								</h6>
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
 							</div>
+
+						</div>
 							<br>
 							<hr>
 
 							<!-- 후기 -->
 							<div>
-								<h5 class="card-title">고객 후기 991개 ⭐⭐⭐⭐⭐</h5>
+								<h5 class="card-title text-center">고객 후기 991개 ⭐⭐⭐⭐⭐</h5>
 								<br>
 
 								<!-- 후기 사진 -->
-								<div id="carouselExample" class="carousel slide">
-									<div class="carousel-inner">
-										<div class="carousel-item active">
-											<img src="images/walktestpro.jpg" class="d-block w-40" alt="...">
-										</div>
-										<div class="carousel-item">
-											<img
-												src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp"
-												class="d-block w-40" alt="...">
-										</div>
-										<div class="carousel-item">
-											<img
-												src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp"
-												class="d-block w-40" alt="...">
-										</div>
+							<div id="carouselExample" class="carousel slide">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<img src="images/walktestpro.jpg" class="d-block w-100"
+											alt="...">
 									</div>
-									<button class="carousel-control-prev" type="button"
-										data-bs-target="#carouselExample" data-bs-slide="prev">
-										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									</button>
-									<button class="carousel-control-next" type="button"
-										data-bs-target="#carouselExample" data-bs-slide="next">
-										<span class="carousel-control-next-icon" aria-hidden="true"></span>
-									</button>
-								</div><!-- 후기 사진 -->
-								<br>
+									<div class="carousel-item">
+										<img
+											src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp"
+											class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img
+											src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp"
+											class="d-block w-100" alt="...">
+									</div>
+								</div>
+								<button class="carousel-control-prev" type="button"
+									data-bs-target="#carouselExample" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								</button>
+								<button class="carousel-control-next" type="button"
+									data-bs-target="#carouselExample" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								</button>
+							</div>
+							<br>
 								<hr>
 								
 								<div class="row">
 									<div class="col-4">
-										<img src="images/cute.png" alt="" class="card-img-top"
-											style="width: 200px; height: 200px; border-radius: 50%;">
+										<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px; border-radius: 50%;">
 									</div>
 									<div class="col-8">
-										<h5 class="card-title" style="margin-top: 50px;">baby</h5>
+										<h5 class="card-title" style="margin-top: 8px;">baby</h5>
 										<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
 										<br>
 										<h6 class="card-subtitle text-muted mt-2">
@@ -276,13 +292,13 @@ h2, h4, h5 {
 								<br>
 							</div>
 
-						</div>
+						<!-- </div> -->
 					</div>
 				</div>
 
 				<!-- 여기에는 견주의 정보입력칸  -->
 				<div class="col-md-5">
-					<div class="card" style="height: 935px; width: 35rem;">
+					<div class="card" style="height: 945px; width: 38rem;">
 						<div class="card-header d-flex justify-content-between">
 							예약정보 입력</div>
 						<div class="row g-0">
@@ -300,11 +316,11 @@ h2, h4, h5 {
 									</div>
 									<hr>
 									<div class="oneText row">
-										<div class="rol">&nbsp;&nbsp;
+										<div class="col">
 											<span class="card-text"><small class="text-muted">체크인 날짜</small></span><br>
-											&nbsp;&nbsp;<label for="datepicker"></label><input type="text" id="datepicker" class="custom-textbox" readonly>
-										</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<div class="rol">
+											<label for="datepicker"></label><input type="text" id="datepicker" class="custom-textbox" readonly>
+										</div>
+										<div class="col">
 											<span class="card-text"><small class="text-muted">체크아웃 날짜</small></span><br>
 											<label for="datepicker"></label><input type="text" id="datepicker" class="custom-textbox" readonly>
 										</div>
@@ -328,15 +344,19 @@ h2, h4, h5 {
 									</div>
 									<hr>
 									<div class="oneText">
-										<span class="card-text"><small class="text-muted">반려견
-												선택</small></span><br>
+										<span class="card-text"><small class="text-muted">반려견 선택</small></span><br>
 										<div class="row">
+											<div class="col d-flex align-items-center justify-content-center"><!-- 마이너스 버튼  -->
+												<button class="btn btn-warning">
+													<i class="fas fa-minus"></i>
+												</button>
+											</div>
 											<div class="col">
 												<!-- <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 190px;"><br> -->
 												<img src="images/cute.png" alt="" class="card-img-top" style="width: 150px; height: 150px; border-radius: 50%;">
 												<br>
 												<div class="text-center">
-													<span class="card-text">까미</span>
+													<span class="card-text">&nbsp;&nbsp;까미</span>
 												</div>
 											</div>
 											<div class="col">
@@ -344,11 +364,10 @@ h2, h4, h5 {
 												<img src="images/dogdog.png" alt="" class="card-img-top" style="width: 150px; height: 150px; border-radius: 50%;">
 												<br>
 												<div class="text-center">
-													<span class="card-text">깜돌이</span>
+													<span class="card-text">&nbsp;&nbsp;깜돌이</span>
 												</div>
 											</div>
-											<div
-												class="col d-flex align-items-center justify-content-center">
+											<div class="col d-flex align-items-center justify-content-center"><!-- 플러스버튼  -->
 												<button class="btn btn-warning">
 													<i class="fas fa-plus"></i>
 												</button>
@@ -357,13 +376,13 @@ h2, h4, h5 {
 									</div>
 									<hr>
 									<div class="oneText">
-										<span class="card-text"><small class="text-muted">최종금액</small></span><br>
+										<span class="card-text"><small class="text-muted">최종금액</small></span><br><br>
 										<div class="row">
 											<div class="col">
 												<span class="card-text">기본금액</span>
 											</div>
 											<div class="col">
-												<span class="card-text"> + 45,000원</span>
+												<span class="card-text">&nbsp; + 45,000원</span>
 											</div>
 										</div>
 										<!-- .row -->
@@ -372,7 +391,7 @@ h2, h4, h5 {
 												<span class="card-text"> + 1마리 추가</span>
 											</div>
 											<div class="col">
-												<span class="card-text"> + 22,500원</span>
+												<span class="card-text">&nbsp; + 22,500원</span>
 											</div>
 										</div>
 									</div>
@@ -399,13 +418,13 @@ h2, h4, h5 {
 				</div>
 			</div>
 		</div>
+		<!-- </div> -->
 	</section>
-
 	<!-- 게시글 신고버튼  -->
 	<div class="d-flex align-items-center justify-content-end">
 		<button type="button" class="btn btn-outline-danger" id="reportPost"
-			style="margin-right: 292px;">
-			<i class="fas fa-exclamation-triangle"></i>신고하기
+			style="margin-right: 320px;">
+			<i class="fas fa-exclamation-triangle"></i>게시글 신고
 		</button>
 	</div>
 	
