@@ -28,43 +28,45 @@
 		
 		
 		// 로그인 버튼 눌렀을 때
-		$("#login-button").click(function()
-		{
-			var jmId = $("#jmId").val();
-			var jmPw = $("#jmPw").val();
-			if( !$("#jmId").val() )
-			{
-				alert("아이디를 입력해야 합니다.");
-				$("#jmId").focus();
-				
-				return false;
-			}
-			
-			if( !$("#jmPw").val() )
-			{
-				alert("비밀번호를 입력해야 합니다.");
-				$("#jmPw").focus();
-				
-				return false;
-			}
-			
-			// 로그인 버튼 클릭시 관리자 체크 여부 확인 
-			
-			var isAdminLogin = $("#adminChecked").prop("checked");
-			
-			if(isAdminLogin)
-			{
-				//alert($("#jmId").val());
-				$(location).attr("href", "managerlogin.action?miId="+$("#jmId").val()+"&miPw="+$("#jmPw").val());
+		 $(function() {
+	            function performLogin() {
+	                var jmId = $("#jmId").val();
+	                var jmPw = $("#jmPw").val();
+	                
+	                if (!jmId) {
+	                    alert("아이디를 입력해야 합니다.");
+	                    $("#jmId").focus();
+	                    return false;
+	                }
+	                
+	                if (!jmPw) {
+	                    alert("비밀번호를 입력해야 합니다.");
+	                    $("#jmPw").focus();
+	                    return false;
+	                }
+	                
+	                var isAdminLogin = $("#adminChecked").prop("checked");
+	                
+	                if (isAdminLogin) {
+	                    // 관리자 체크가 되어 있을 때
+	                    $(location).attr("href", "managerlogin.action?miId=" + jmId + "&miPw=" + jmPw);
+	                } else {
+	                    // 일반 로그인
+	                    $("#loginForm").submit();
+	                }
+	            }
 
-			}
-			else
-			{
-				$("#loginForm").submit();
-			}
-		
-			
-		});
+	            $("#login-button").click(function() {
+	                performLogin();
+	            });
+
+	            // 엔터 키를 눌렀을 때 로그인 처리
+	            $("#jmId, #jmPw").keypress(function(event) {
+	                if (event.key === "Enter") {
+	                    performLogin();
+	                }
+	            });
+	        });
 	
 		
 	});
