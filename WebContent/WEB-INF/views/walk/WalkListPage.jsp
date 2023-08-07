@@ -124,8 +124,9 @@ p {
 </head>
 <body>
 	현재 접속자 : 0이면 게스트 → ${memSid }
-	<c:import url="/WEB-INF/components/MenuForm_2.jsp">
+	<c:import url="/WEB-INF/components/HeaderForm.jsp">
 	</c:import>
+
 	<section>
 		<div class="container py-5 bg-light">
 			<!-- Selection Bar -->
