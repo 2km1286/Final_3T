@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>팝업_펫시터</title>
+<title>팝업_대리산책러</title>
 
 <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -25,9 +25,6 @@
   <link href="css/responsive.css" rel="stylesheet" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
-<!-- 돌봄장소 이미지 넘기는 스크립트 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <style type="text/css">
 .container-mypage {
@@ -106,37 +103,9 @@ div.profil
 <div class="container-mypage">
 	<div class="row">
 				<div class="col-md-6"><!-- 1행 1열 시작 -->
-				<h3><span class="badge">내 돌봄장소</span></h3>
-					<div class="row">	
-						<div class="col-md-6">	
-							<h2><span class="badge">핫도그님의 돌봄장소</span></h2>
-						</div>
-						<div class="col-md-6">
-							<h3><span class="badge">팔로워 5명</span></h3>
-						</div>
-					</div>
+				<h3><span class="badge">맡겨보개 회원분포지도</span></h3>
 					<div style="float: left; margin-left: 20px;">
-						<!-- 돌봄장소 슬라이드 사진 시작 -->
-						<div id="carouselExample" class="carousel slide" style="width: 600px;">
-						  <div class="carousel-inner">
-						    <div class="carousel-item active">
-						      <img src="images/sitterroom.jpg" class="d-block w-100" alt="...">
-						    </div>
-						    <div class="carousel-item">
-						      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="d-block w-100" alt="...">
-						    </div>
-						    <div class="carousel-item">
-						      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="d-block w-100" alt="...">
-						    </div>
-						  </div>
-						  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						  </button>
-						  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-						  </button>
-						</div>
-						<!-- 돌봄장소 슬라이드 사진 끝 -->
+						
 					</div>
 					<div style="float: left;">
 						<div class="moneyReview" style="margin-left: 15px;">

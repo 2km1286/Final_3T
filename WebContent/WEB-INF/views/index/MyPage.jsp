@@ -185,7 +185,7 @@
 	border-left: 2px solid;
 	
 }
-.badge	
+..badge	
 {-webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -212,10 +212,10 @@ div.porfilSu{margin-left:20px; width: 300px; }
 	  -moz-appearance: none;
 	  appearance: none;
 	  outline: 0;
-	  border: 1px solid #53e3a6;
+	  border: 1px solid #4caf50;
 	  background-color: white;
 	  padding: 5px 5px 5px 5px;
-	  color: #53e3a6;
+	  color: #4caf50;
 	  border-radius: 3px;
 	  width: 120px;
 	  height: 35px;
@@ -246,8 +246,8 @@ div.profil
 }
 .updatePlace
 {
-	  border: 1px solid #53e3a6;
-	  background-color: #53e3a6;
+	  border: 1px solid #4caf50;
+	  background-color: #4caf50;
 	  padding: 2px 2px 2px 2px;
 	  color: white;
 	  border-radius: 3px;
@@ -259,9 +259,9 @@ div.profil
 	  
 }
 .EndTable { border-collapse: collapse; width: 100%; }
-.EndTable tr:hover { background-color: #d6ffee; }
-.EndTh, .EndTd { border: 1px solid ##53e3a6; text-align: center; padding: 8px; }
-.EndTh { background-color: #53e3a6;}
+.EndTable tr:hover { background-color: #daf5db; }
+.EndTh, .EndTd { border: 1px solid #4caf50; text-align: center; padding: 8px; }
+.EndTh { background-color: #4caf50;}
 
 .reviewCard { margin-bottom: 30px; width: 23rem;  margin-left: 100px; margin-top: 10px;}
 
