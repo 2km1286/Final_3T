@@ -45,7 +45,7 @@ public class WalkController
 	
 	// 마이페이지 대리산책. AJAX로 처리.
 	@RequestMapping("/mypagewalkform.action")
-	public String myPageWalk(HttpServletRequest request)
+	public String myPageWalk()
 	{
 		String result = "";
 		// AJAX이자 컴포넌트

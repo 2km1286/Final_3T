@@ -206,7 +206,6 @@ div.cardInfo {padding-right: 0; padding-left: 0;}
 div.porfilSu{margin-left:20px; width: 300px; }
 
 .nick {font-size: 16pt;}
-.oneText {margin-bottom: 3px; border-bottom: 1px solid gray; }
 .detailBtn
 {
 	-webkit-appearance: none;

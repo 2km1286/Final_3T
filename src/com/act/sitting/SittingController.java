@@ -45,7 +45,7 @@ public class SittingController
 	
 	// 마이페이지 펫시팅. AJAX로 처리.
 	@RequestMapping("/mypagesittingform.action")
-	public String myPageSitting(HttpServletRequest request)
+	public String myPageSitting()
 	{
 		String result = "";
 		// AJAX

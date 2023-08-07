@@ -10,14 +10,19 @@
 <head>
 <link rel="icon" href="./images/logo_transparent.png"/>
 <meta charset="UTF-8"> 
+
 <title>마이페이지_펫시팅</title>
 
+<!-- 돌봄장소 이미지 넘기는 스크립트 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2IqcO3" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
 
 	$(function()
 	{
+		// 돌봄장소 변경하기를 누르면
+		
+		
 		// 돌봄장소 수정하기를 누르면
 		$("#updateSPInfo").click(function()
 		{
@@ -127,6 +132,7 @@
 .sittingtime { font-size: 13pt;}
 .mypageWalkMonDon {margin-left: 500px;}
 .firstInfo { font-size: 15pt; font-weight: bold; color: #2dd0fc;}
+
 </style>
 </head>
 <body>
@@ -170,15 +176,13 @@
 			
 			<div class="card-body">
 			    <h3><span class="badge">돌봄장소 특이사항</span></h3>
-			    <span class="firstInfo">[홈캠가능]</span>
-			    <span class="firstInfo">[목욕 가능]</span>
-			    <span class="firstInfo">[반려견 있음]</span>
-			    <span class="firstInfo">[대형견 가능]</span><br> <!-- 4개마다 br하기 -->
-			    <span class="firstInfo">[소/중형견 가능]</span>
+			    <button class="btn btn-outline-warning">대형견 가능</button>
+				<button class="btn btn-outline-warning">노견 가능</button>
+				<button class="btn btn-outline-warning">홈캠 가능</button>
 			    
 				<br>
 			    <h3><span class="badge">최대 가능 견수</span></h3>
-		    	<span class="firstInfo">[2마리]</span>
+		    	<button class="btn btn-outline-warning">2마리</button>
 			    
 			    <br><br>
 			  	<h3><span class="badge">돌봄장소 이름</span></h3><!-- 가져와져있음 -->
@@ -189,8 +193,20 @@
 			    <textarea rows="5" cols="80" readonly="readonly"></textarea>
 				
 				<br><br>
+			  	<h3><span class="badge">돌봄장소 주소</span></h3><!-- 가져와져있음 -->
+			    <input type="text" id="" class="" style="width: 600px;" readonly="readonly">
+			    
+			    <h3><span class="badge">돌봄장소 우편번호</span></h3><!-- 가져와져있음 -->
+				<input type="text" id="" class="" style="width: 600px;" readonly="readonly">
+				
+				<br><br>
+			  	<h3><span class="badge">돌봄장소 상세주소</span></h3><!-- 가져와져있음 -->
+			    <input type="text" id="" class="" style="width: 600px;" readonly="readonly">
+				
+				
+				<br><br>
 				<h3><span class="badge">돌봄장소 공개/비공개</span></h3>
-				<span class="firstInfo">[공개]</span>
+				<button class="btn btn-outline-warning">공개</button>
 				
 				<br><br>
 				<button type="button" class="updatePlace" id="updateSPInfo">돌봄장소 수정하기</button><!-- 첫 등록이라면 등록하기 -->
@@ -206,7 +222,54 @@
 		    	<button type="button" id="sittingReviewList">후기</button>
 		    	<button type="button" id="sittingMoney">수익</button>
 		    
-		    	<div class="myPageSPrigth" id="myPageSPrigth"></div>	
+		    	<div class="myPageSPrigth" id="myPageSPrigth"><!-- 오른쪽 버튼 아래 시작 -->
+		    	
+		    		<div><!-- 마이페이지 펫시팅 들어왔을 때 디폴트 -->
+				   		<div id="calendar"></div>
+				   		
+				   		<h3><span class="badge">예약 내역</span></h3><!-- 그 달의 예약 내역이 보인다-->
+				   		<div>
+				   		
+				   			<div class="card">
+								<div class="card-header d-flex justify-content-between"">
+									펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+								</div>	
+						    	  <div class="row g-0">
+						    	    <div class="col-md cardInfo" >
+						    	      <div class="card-body">
+						    	        <div class="oneText">
+						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+						    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-05 16:00</span>
+						    	        </div>
+						    	      </div>
+						    	    </div>
+						    	  </div>
+						    </div>
+						    
+						    <div class="card">
+								<div class="card-header d-flex justify-content-between"">
+									펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+								</div>	
+						    	  <div class="row g-0">
+						    	    <div class="col-md cardInfo" >
+						    	      <div class="card-body">
+						    	        <div class="oneText">
+						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+						    		        <span class="card-text" style="font-size: 14pt;">2023-08-06 14:00 ~ 2023-08-06 22:00</span>
+						    	        </div>
+						    	      </div>
+						    	    </div>
+						    	  </div>
+						    </div>
+				   		
+				   		</div>
+				    		
+				   	</div><!-- 예약내역 눌렀을 때 끝 -->
+		    	
+		    	
+		    	
+		    	
+		    	</div><!-- 오른쪽 버튼 아래 끝 -->	
 		    	
 	    	</div>
 	    	
