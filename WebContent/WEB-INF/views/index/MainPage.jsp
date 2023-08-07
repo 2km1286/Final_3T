@@ -45,7 +45,7 @@
 </head>
 <body>
 현재 접속자 : 0이면 게스트 → ${memSid }
-	<c:import url="/WEB-INF/components/MenuForm_2.jsp">
+	<c:import url="/WEB-INF/components/HeaderForm.jsp">
 	</c:import>
 	<section>
 	<div>
@@ -54,7 +54,7 @@
 	</section>
 	<section>
 	<div>
-	<c:import url="/WEB-INF/components/MostSittingList.jsp">
+	<c:import url="/WEB-INF/components/MostSittingListForm.jsp">
 	</c:import>
 	</div>
 	</section>

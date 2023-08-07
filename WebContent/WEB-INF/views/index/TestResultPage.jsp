@@ -21,7 +21,8 @@
 
 </head>
 <body>
-
+<c:import url="/WEB-INF/components/HeaderForm.jsp">
+</c:import>
 <div class="container py-5 mx-auto">
 	<h2 class="mb-4" style="margin:40px 20px 40px 225px;">대리산책 시험 결과</h2>
 				<div class="card" style="width: 50rem; height: 650px; margin:40px 20px 40px 225px;">
@@ -36,7 +37,8 @@
 					</div>
 				</div>
 </div>
-
+<c:import url="/WEB-INF/components/FooterForm.jsp">
+</c:import>
 </body>
 <script type="text/javascript" src="js/mdb.min.js"></script>
 </html>
