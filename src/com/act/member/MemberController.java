@@ -98,6 +98,7 @@ public class MemberController
 		String url = "";
 
 		String result = memberService.searchMemsid(dto);
+		
 		if (result.equals("0"))
 		{
 			url = "redirect:loginpage.action?error=1";

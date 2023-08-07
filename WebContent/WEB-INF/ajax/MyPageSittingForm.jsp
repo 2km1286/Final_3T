@@ -24,7 +24,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"updateSPInfoForm.action"
+				, url:"updatespinfoform.action"
 				, async:true
 				, success:function(data)
 				{
@@ -47,7 +47,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"sittingBookList.action"
+				, url:"sittingbooklist.action"
 				, async:true
 				, success:function(data)
 				{
@@ -69,7 +69,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"sittingReviewList.action"
+				, url:"sittingreviewlist.action"
 				, async:true
 				, success:function(data)
 				{
@@ -84,6 +84,29 @@
 			});
 			
 		});
+		
+		// 수익을 누르면
+		$("#sittingMoney").click(function()
+		{
+			$.ajax(
+			{
+				type:"POST"
+				, url:"sittingmoney.action"
+				, async:true
+				, success:function(data)
+				{
+					$("#myPageSPrigth").html(data);
+										
+				}
+				, error:function(e)
+				{
+					alert(e.responseText);
+				}
+				
+			});
+			
+		});
+		
 		
 	});
 	
@@ -181,87 +204,9 @@
 	    	
 		    	<button type="button" id="sittingBookList">예약내역</button>
 		    	<button type="button" id="sittingReviewList">후기</button>
-		    	<button type="button" id="moneyTable">수익</button>
+		    	<button type="button" id="sittingMoney">수익</button>
 		    
-		    	<!-- 우선은 아래에 다 적는데 이 div #myPageSPrigth에 ajax로 처리해주면 될것같습니다. 오른쪽 디폴트 예약 내역-->
 		    	<div class="myPageSPrigth" id="myPageSPrigth"></div>	
-		    	
-		    	
-		    	
-		    	<div><!-- 수익 눌렀을 때 -->
-		    		<h3><span class="badge">수익내역</span></h3>
-					<div><!-- 수익내역 시작 -->
-						<div class="mypageWalkMonDon">
-							<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
-							<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
-				        </div>
-						
-						<table class="EndTable">
-						    <tr>
-						      <th class="EndTh">서비스 완료일</th>
-						      <th class="EndTh">매칭상대(닉네임)</th>
-						      <th class="EndTh">가격</th>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						   <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						</table>
-						
-					</div><!-- 수익내역 끝 -->
-		    	
-		    	</div><!-- 수익 눌렀을 때 끝 -->
 		    	
 	    	</div>
 	    	

@@ -50,7 +50,7 @@
 		// 대리산책 리스트업 페이지로 가는 function
 		$("#walkList").click(function()
 		{
-			window.location.href = "walkList.action";
+			window.location.href = "walklistpage.action";
 		})
 		
 		// 펫시팅 리스트업 페이지로 가는 function
