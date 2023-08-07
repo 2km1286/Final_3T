@@ -145,6 +145,7 @@
   90% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
   100% { transform: translateX(0) translateY(0); }
 }
+
 .card-buttons {
         display: flex;
         justify-content: center;
@@ -212,8 +213,6 @@ $(function()
 <body>
 <!------ Include the above in your HEAD tag ---------->
 
-<c:import url="/WEB-INF/components/HeaderForm.jsp">
-</c:import>
 <div class="container">
     <div class="row">
         <!-- 사이드바 -->
@@ -252,13 +251,7 @@ $(function()
 	</div>
 </div>
 
-<c:import url="/WEB-INF/components/FooterForm.jsp">
-</c:import>
 	
-
-       
-
-
 
 
 
