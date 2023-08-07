@@ -169,7 +169,7 @@ $(function()
 				$.ajax(
 				{
 					type:"POST"
-					, url:"completereport.action"
+					, url:"managercompletereport.action"
 					, async:true
 					, success:function(data)
 					{
@@ -190,7 +190,7 @@ $(function()
 				$.ajax(
 				{
 					type:"POST"
-					, url:"reportlist.action"
+					, url:"managerreportlist.action"
 					, async:true
 					, success:function(data)
 					{
@@ -245,7 +245,7 @@ $(function()
         </div>
 
         <!-- 메인 콘텐츠 -->
-        <div class="mainArea" id="mainContent">
+        <div class="col" id="mainContent" style="margin-left: -200px;">
 			<c:import url="/WEB-INF/ajax/ManagerReportList.jsp"></c:import>
 		</div>
 	</div>
