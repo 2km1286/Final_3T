@@ -48,7 +48,7 @@ h2, h4, h5 {
 	});
 	
     function openPopup() {
-      window.open("pay.action", "paymentWindow", "width=600,height=600");
+      window.open("reservationpaymentpage.action", "paymentWindow", "width=600,height=600");
     }
     
     

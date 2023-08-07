@@ -97,15 +97,19 @@ public class MemberController
 
 		String url = "";
 
-		String result = memberService.searchMemsid(dto);
-		if (result.equals("0"))
+		String memNickName = memberService.searchMemNickName(dto);
+		String memSid = memberService.searchMemsid(dto);
+		
+		if (memSid.equals("0"))
+
 		{
 			url = "redirect:loginpage.action?error=1";
 
 		} else
 		{
-
-			session.setAttribute("memSid", result);
+			
+			session.setAttribute("memNickName", memNickName);
+			session.setAttribute("memSid", memSid);
 			url = "redirect:mainpage.action";
 		}
 
@@ -224,7 +228,7 @@ public class MemberController
 	// 마이페이지 알림창. AJAX로 처리.
 
 	@RequestMapping("/mypagenoticeform.action")
-	public String myPageNotice(HttpServletRequest request)
+	public String myPageNotice()
 	{
 		String result = "";
 		// AJAX
@@ -234,32 +238,73 @@ public class MemberController
 
 	// 마이페이지 내 정보 및 반려견 관리. AJAX로 처리.
 	@RequestMapping("/mypageinfoform.action")
-	public String myPageInfo(HttpServletRequest request)
+	public String myPageInfo()
 	{
 		String result = "";
-		// AJAX이자 컴포넌트
+		// AJAX
 		result = "/WEB-INF/ajax/MyPageInfoForm.jsp";
 		return result;
 	}
 
 	// 마이페이지 나의 활동. AJAX로 처리.
 	@RequestMapping("/mypageactiveform.action")
-	public String myPageActive(HttpServletRequest request)
+	public String myPageActive()
 	{
 		String result = "";
-		// AJAX이자 컴포넌트
+		// AJAX
 		result = "/WEB-INF/ajax/MyPageActiveForm.jsp";
 		return result;
 	}
 
 	// 마이페이지 나의 신고. AJAX로 처리.
 	@RequestMapping("/mypagereportform.action")
-	public String myPageReport(HttpServletRequest request)
+	public String myPageReport()
 	{
 		String result = "";
-		// AJAX이자 컴포넌트
+		// AJAX
 		result = "/WEB-INF/ajax/MyPageReportForm.jsp";
 		return result;
 	}
-
+	
+	// 마이페이지 내 정보 및 반려견관리의 반려견 등록하는 폼으로 가기. AJAX로 처리.
+	@RequestMapping("/petinsertform.action")
+	public String petInsertForm()
+	{
+		String result = "";
+		// AJAX
+		result = "/WEB-INF/ajax/PetInsertForm.jsp";
+		return result;
+	}
+	
+	// 마이페이지 내 정보 및 반려견관리의 반려견 등록하는 폼 없애기. AJAX로 처리.
+	@RequestMapping("/petinsertcancel.action")
+	public String petInsertCancel()
+	{
+		String result = "";
+		// AJAX
+		result = "/WEB-INF/ajax/PetInsertCancel.jsp";
+		return result;
+	}
+	
+	// 마이페이지 내 정보 및 반려견관리의 반려견 수정하는 폼. AJAX로 처리.
+	@RequestMapping("/petupdateform.action")
+	public String petUpdateForm()
+	{
+		String result = "";
+		// AJAX
+		result = "/WEB-INF/ajax/PetUpdateForm.jsp";
+		return result;
+	}
+	
+	// 마이페이지 내 정보 및 반려견관리의 반려견 수정하는 폼 없애기. AJAX로 처리.
+	@RequestMapping("/petupdatecancel.action")
+	public String petUpdateCancel()
+	{
+		String result = "";
+		// AJAX
+		result = "/WEB-INF/ajax/PetInsertCancel.jsp";
+		return result;
+	}
+	
+	
 }

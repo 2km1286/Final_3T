@@ -115,7 +115,7 @@ p {
 			 // 대리산책 공고글 클릭시 예약화면
 			 $("#cardContainer").click(function()
 			{
-				 window.location.href = "walk-reservation.action";
+				 window.location.href = "walkreservationpage.action";
 			});
 		});
 	

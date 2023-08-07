@@ -42,14 +42,24 @@ public class SittingController
 
 		return result;
 	}
-
-	// 마이페이지 펫시팅의 수정하기를 눌렀을 때, AJAX처리
+	
+	// 마이페이지 펫시팅. AJAX로 처리.
+	@RequestMapping("/mypagesittingform.action")
+	public String myPageSitting()
+	{
+		String result = "";
+		// AJAX
+		result = "/WEB-INF/ajax/MyPageSittingForm.jsp";
+		return result;
+	}
+	
+	// 마이페이지 펫시팅의 돌봄장소 수정하기를 눌렀을 때, AJAX처리
 	@RequestMapping("/updatespinfoform.action")
 	public String updateSPInfoForm()
 	{
 		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/updateSPInfoForm.jsp";
+		// AJAX
+		result = "/WEB-INF/ajax/UpdateSPInfoForm.jsp";
 		return result;
 	}
 
@@ -58,8 +68,8 @@ public class SittingController
 	public String sittingBookList()
 	{
 		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/sittingBookList.jsp";
+		// AJAX
+		result = "/WEB-INF/ajax/SittingBookList.jsp";
 		return result;
 	}
 
@@ -68,19 +78,22 @@ public class SittingController
 	public String sittingReviewList()
 	{
 		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/sittingReviewList.jsp";
+		// AJAX
+		result = "/WEB-INF/ajax/SittingReviewList.jsp";
 		return result;
 	}
-
-	// 마이페이지 펫시팅. AJAX로 처리.
-	@RequestMapping("/mypagesitting.action")
-	public String myPageSitting(HttpServletRequest request)
+	
+	// 마이페이지 펫시팅의 수익을 눌렀을 때, AJAX처리
+	@RequestMapping("/sittingmoney.action")
+	public String sittingMoney()
 	{
 		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/ajax/MyPageSittingForm.jsp";
+		// AJAX
+		result = "/WEB-INF/ajax/SittingMoney.jsp";
 		return result;
 	}
+	
+	
+	
 
 }
