@@ -348,7 +348,7 @@ form input[name="userNick"] {
 						$.ajax({
 							
 							type:"POST"
-							, url:"idDupli.action"
+							, url:"searchidform.action"
 							, data:params
 							, datayType : "json"
 							, success : function(jsonObj)
@@ -386,7 +386,7 @@ form input[name="userNick"] {
 							$.ajax({
 								
 								type:"POST"
-								, url:"nickDupli.action"
+								, url:"searchnickform.action"
 								, data:params
 								, datayType : "json"
 								, success : function(jsonObj)

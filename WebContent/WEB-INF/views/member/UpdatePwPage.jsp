@@ -236,7 +236,7 @@ margin-left: 20px;
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>비밀번호 재설정</h1>
-      <form class="form" action="updatePw.action">
+      <form class="form" action="updatepw.action">
         <input type="password" placeholder="새 비밀번호" name="jmPw" id="jmPw">
         <input type="password" placeholder="새 비밀번호 다시 입력" name="jmPw2" id="jmPw2">
         <input type="hidden" name="memSid" id="memSid" value="${memSid }">
