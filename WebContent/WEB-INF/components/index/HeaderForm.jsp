@@ -94,6 +94,28 @@
   	font-weight: Regular;
   	font-size: large;
   }
+  
+  .login-button 
+  {
+    margin-top: 4px;
+  }
+  
+  .styled-button 
+  {
+    background-color: #4caf50; 
+    color: white; 
+    border: none; 
+    padding: 8px 16px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .styled-button:hover 
+  {
+    background-color: #45a049;
+  }
   </style>
 </head>
     <!-- header section strats -->
@@ -128,7 +150,7 @@
 				<c:choose>
 				<c:when test="${memSid eq '0' }">
 					<li class="nav-item dropdown" style="font-size: medium;">
-				  	<button type="button" id="loginPage" >회원가입/로그인</button>
+				  	<button type="button" id="loginPage" class="login-button styled-button">회원가입/로그인</button>
 					</li>
 				</c:when>
 				<c:otherwise>
