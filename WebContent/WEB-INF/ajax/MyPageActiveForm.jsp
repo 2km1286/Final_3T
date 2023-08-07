@@ -20,154 +20,166 @@
 }
 
 .noticeCard { margin-bottom: 20px;}
-
-
+.walkCard{width: 350px;}
+.sittingCard{width: 400px;}
 </style>
 </head>
 <body>
-	<!-- <div class="row all"> -->
 			<div class="row">
 				<div class="col-md-6 noticeAll">
+					<h3><span class="badge">팔로잉 한 돌봄장소</span></h3>
+					<div><!-- 팔로잉 한 돌봄장속 목록 시작 -->
 					
-					<h3><span class="badge">나의 활동으로 바꼈나?</span></h3>
+					<div class="card sittingCard">
+			            <img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 100%;">
+			            <div class="card-body">
+			              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
+			              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6><br>
+			              <p>4.8 ⭐ (452개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박 </p>
+			            </div>
+			         </div>
+			         
+			         <div class="card sittingCard">
+			            <img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 100%;">
+			            <div class="card-body">
+			              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
+			              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6><br>
+			              <p>4.8 ⭐ (452개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박 </p>
+			            </div>
+			         </div>
+			         
+			         <div class="card sittingCard">
+			            <img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 100%;">
+			            <div class="card-body">
+			              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
+			              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6><br>
+			              <p>4.8 ⭐ (452개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박 </p>
+			            </div>
+			         </div>
 					
-						<div class="card noticeCard">
-						  <div class="card-header">
-						    대리산책
-						  </div>
-						  <div class="card-body">
-						    <blockquote class="blockquote mb-0">
-						      <p>후기가 달렸습니다. </p>
-						    </blockquote>
-						  </div>
-						</div>
 					
-					<div class="card noticeCard">
-					  <div class="card-header">
-					    펫시팅
-					  </div>
-					  <div class="card-body">
-					    <blockquote class="blockquote mb-0">
-					      <p>예약이 확정되었습니다. </p>
-					    </blockquote>
-					  </div>
-					</div>
+					</div><!-- 팔로잉 한 돌봄장속 목록 끝 -->
 					
-					
-				</div>
+				</div><!-- 1행1열 끝 -->
 				
 				
 				<div class="col-md-6 noticePet">
-					<h3><span class="badge">예약내역(견주)</span></h3>
+					<h3><span class="badge">팔로잉 한 대리산책 공고글</span></h3>
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-				
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted"></small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+					<div><!-- 팔로잉 한 대리산책 목록 시작 -->
+						<div class="card walkCard">
+				            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 100%;">
+				            <div class="card-body">
+				              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
+				              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
+				              <p>4.2 ⭐ (991개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
+				            </div>
+				          </div>
+				          
+				          <div class="card walkCard">
+				            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 100%;">
+				            <div class="card-body">
+				              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
+				              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
+				              <p>4.2 ⭐ (991개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
+				            </div>
+				          </div>	
+				          
+				          <div class="card walkCard">
+				            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 100%;">
+				            <div class="card-body">
+				              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
+				              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
+				              <p>4.2 ⭐ (991개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
+				            </div>
+				          </div>
+				          
+					</div><!-- 팔로잉 한 대리산책 목록 끝 -->
 					
-				</div>
+				</div><!-- 1행2열끝  -->
 				
-			</div>
+			</div><!-- 1행 끝 -->
 			
 			<div class="row">
 				<div class="col-md-6 noticeWalk">
-					<h3><span class="badge">예약내역(대리산책러)</span></h3>
+					<h3><span class="badge">내가 쓴 후기</span></h3>
+					<div><!-- 내가 쓴 후기 시작  -->
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+						<div class="card reviewCard">
+						  <img src="..." class="card-img-top"/>
+						  <div class="card-body">
+						    <h5 class="card-title">후기 제목 입니다아아아</h5>
+						    <p class="card-text">후기 내용 어쩌고 저쩌고 </p>
+						  </div>
+						  <ul class="list-group list-group-light list-group-small">
+						    <li class="list-group-item px-4">별점 : ⭐ </li>
+						    <li class="list-group-item px-4">작성자 : 견주닉네임</li>
+						    <li class="list-group-item px-4">작성일 : 2023-08-05 </li>
+						  </ul>
+						</div>
+						
+						
+						<div class="card reviewCard">
+						  <img src="..." class="card-img-top"/>
+						  <div class="card-body">
+						    <h5 class="card-title">후기 제목</h5>
+						    <p class="card-text">후기 내용</p>
+						  </div>
+						  <ul class="list-group list-group-light list-group-small">
+						    <li class="list-group-item px-4">별점</li>
+						    <li class="list-group-item px-4">작성자</li>
+						    <li class="list-group-item px-4">작성일</li>
+						  </ul>
+						</div>
+					
+					</div><!-- 내가 쓴 후기 끝  -->
 					
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-				</div>
+				</div><!-- 2행 1열 끝 -->
+				
 				<div class="col-md-6 noticeSeating">
-					<h3><span class="badge">예약내역(펫시터)</span></h3>
+					<h3><span class="badge">서비스 완료 내역</span></h3>
+					<div><!-- 서비스 완료 내역 시작 -->
+					
+						<table class="EndTable">
+						    <tr>
+						      <th class="EndTh">이용날짜</th>
+						      <th class="EndTh">이용서비스</th>
+						      <th class="EndTh">진행상태</th>
+						      <th class="EndTh">서비스제목</th>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">대리산책</td>
+						      <td class="EndTd">진행완료</td>
+						      <td class="EndTd">폴폴이와 함꼐하는 산책~!!!</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">대리산책</td>
+						      <td class="EndTd">진행완료</td>
+						      <td class="EndTd">폴폴이와 함꼐하는 산책~!!!</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">대리산책</td>
+						      <td class="EndTd">진행완료</td>
+						      <td class="EndTd">폴폴이와 함꼐하는 산책~!!!</td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">대리산책</td>
+						      <td class="EndTd">진행완료</td>
+						      <td class="EndTd">폴폴이와 함꼐하는 산책~!!!</td>
+						    </tr>
+						</table>
 					
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+					</div><!-- 서비스 완료 내역 끝 -->
 					
 					
-					<div class="card mb-3">
-					  <div class="row g-0">
-					    <div class="col-md-4">
-					      <img src="..." class="img-fluid rounded-start" alt="...">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">예약글 제목</h5>
-					        <p class="card-text">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-					        <p class="card-text"><small class="text-muted">뭐넣어야함</small></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-				</div>
-			</div>
-		<!-- </div> -->
+				</div><!-- 2행 2열 끝 -->
+			</div><!-- 2행 끝  -->
 </body>
 </html>
 

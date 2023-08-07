@@ -259,20 +259,12 @@ div.profil
 	  width: 200px;
 	  
 }
-/* 마이페이지 나의 활동 스타일 */
-/* .mypageMyAcBtn { font-weight: bold;}
-.wishlist{ height: 470px; border-bottom: 1px solid #FFE090; margin-bottom: 10px; }
-.mypageTabLine .mypageWishLink.active { color: #FFE090; border-bottom-color: #FFE090;}
-.mypageTabName { height: 50px;} 
-.tab-pane { height: 400px;}
-#mypageWishTab-1, #mypageWishTab-2  { font-size: 13pt; font-weight: bold;}
-.mypageWishSeating, .mypageWishWalk, .mypageReview, .mypageEnd { position: relative; height: 400px; overflow: auto; }
-.mypageReview { padding-left: 170px;}
-.reviewCard { margin-bottom: 30px; width: 23rem; height: }
 .EndTable { border-collapse: collapse; width: 100%; }
-.EndTable tr:hover { background-color: #fcf8de; }
-.EndTh, .EndTd { border: 1px solid #FFE090; text-align: center; padding: 8px; }
-.EndTh { background-color: #FFE090;} */
+.EndTable tr:hover { background-color: #d6ffee; }
+.EndTh, .EndTd { border: 1px solid ##53e3a6; text-align: center; padding: 8px; }
+.EndTh { background-color: #53e3a6;}
+
+.reviewCard { margin-bottom: 30px; width: 23rem;  margin-left: 100px; margin-top: 10px;}
 
 </style>
 <!-- FONT jua -->
@@ -283,6 +275,9 @@ div.profil
 .card-header { font-family: "Jua"; font-size: 17pt;}
 .card {font-family: "Jua";}
 .checkBox {font-family: "Jua"; font-size: 15pt;}
+.superscript {font-family: "Jua";}
+.detailBtn {font-family: "Jua"; }
+.updatePlace {font-family: "Jua"; font-weight: normal;}
 </style>
 
 </head>
