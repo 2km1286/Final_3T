@@ -59,7 +59,7 @@ public class MemberController
 		request.setAttribute("result", result);
 
 		view = "/WEB-INF/ajax/SearchId.jsp";
-	
+
 		return view;
 	}
 
@@ -98,7 +98,7 @@ public class MemberController
 	{
 
 		String url = "";
-		
+
 		String result = memberService.searchMemsid(dto);
 		if (result.equals("0"))
 		{
@@ -213,7 +213,7 @@ public class MemberController
 			session.removeAttribute("memSid"); // null로 만들어주고
 			view = "redirect:main.action";
 		}
-		
+
 		return view;
 	}
 		
@@ -253,38 +253,59 @@ public class MemberController
 			return result;
 		}
 
+	// 관리자 처리완료된 신고. AJAX로 처리.
+	@RequestMapping("/completereport.action")
+	public String completeReport(HttpServletRequest request)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		result = "/WEB-INF/components/ManagerCompleteReport.jsp";
+		return result;
+	}
 
-		
-		// 마이페이지 펫시팅의 수정하기를 눌렀을 때, AJAX처리
-		@RequestMapping("/updateSPInfoForm.action")
-		public String updateSPInfoForm()
-		{
-			String result = "";
-			// AJAX이자 컴포넌트
-			result = "/WEB-INF/components/updateSPInfoForm.jsp";
-			return result;
-		}
-		
-		// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
-		@RequestMapping("/sittingBookList.action")
-		public String sittingBookList()
-		{
-			String result = "";
-			// AJAX이자 컴포넌트
-			result = "/WEB-INF/components/sittingBookList.jsp";
-			return result;
-		}
-		
-		// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
-		@RequestMapping("/sittingReviewList.action")
-		public String sittingReviewList()
-		{
-			String result = "";
-			// AJAX이자 컴포넌트
-			result = "/WEB-INF/components/sittingReviewList.jsp";
-			return result;
-		}
-		
+	// 관리자 신고현안 및 비상관리. AJAX로 처리.
+	@RequestMapping("/reportlist.action")
+	public String reportList(HttpServletRequest request)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		result = "/WEB-INF/components/ManagerReportList.jsp";
+		return result;
+	}
+
+	// 대리산책러 예약화면
+	@RequestMapping("/walk-reservation.action")
+	public String getReservationView()
+	{
+		String result = "";
+
+		result = "/WEB-INF/components/WalkReservationForm.jsp";
+
+		return result;
+	}
+
+	// 대리산책러 결제화면
+	@RequestMapping("/pay.action")
+	public String getReservationPaymentView()
+	{
+		String result = "";
+
+		result = "/WEB-INF/components/WalkReservationPaymentForm.jsp";
+
+		return result;
+	}
+
+	// 펫시터 예약화면
+	// → sittingController 로 이동
+
+	// 마이페이지 펫시팅의 수정하기를 눌렀을 때, AJAX처리
+	// → sittingController 로 이동
+
+	// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
+	// → sittingController 로 이동
+
+	// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
+	// → sittingController 로 이동
 
 	// 대리산책 리스트업 페이지로 가기
 	@RequestMapping("/walkList.action")
@@ -306,7 +327,7 @@ public class MemberController
 		return result;
 	}
 
-	// 마이페이지 펫시팅. AJAX로 처리.
+	// 마이페이지 알림창. AJAX로 처리.
 	@RequestMapping("/myPageNotice.action")
 	public String myPageNotice(HttpServletRequest request)
 	{
@@ -317,14 +338,7 @@ public class MemberController
 	}
 
 	// 마이페이지 펫시팅. AJAX로 처리.
-	@RequestMapping("/myPageSitting.action")
-	public String myPageSitting(HttpServletRequest request)
-	{
-		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/MyPageSittingForm.jsp";
-		return result;
-	}
+	// → sittingController 로 이동
 
 	// 마이페이지 대리산책. AJAX로 처리.
 	@RequestMapping("/myPageWalk.action")
