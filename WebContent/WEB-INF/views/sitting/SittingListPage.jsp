@@ -171,9 +171,9 @@ p {
 						<div class="row">
 					</c:if>
 
-					<div class="card">
+					<div class="card" style="margin: 5px; width: 30%;">
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
-							style="width: 320px;">
+							style="width: 100%;">
 						<div class="card-body">
 							<h5 class="card-title">${gradeList[status.index].grade}
 								${dto.jmNickName}</h5>
@@ -189,7 +189,7 @@ p {
 					</div>
 					<!-- end .card -->
 
-					<c:if test="${status.count % 3 == 0 || status.count == 9}">
+					<c:if test="${status.count % 3 == 0}">
 			</div>
 			<!-- end .row -->
 			</c:if>
