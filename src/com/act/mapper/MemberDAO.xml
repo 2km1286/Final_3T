@@ -25,6 +25,12 @@
 		FROM JOIN_MEMBER
 		WHERE JM_ID= #{jmId} AND JM_PW = CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw})
 	</select>
+	
+	<select id="searchMemNickName" resultType="java.lang.String">
+		SELECT JM_NICKNAME
+		FROM JOIN_MEMBER
+		WHERE JM_ID= #{jmId} AND JM_PW = CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw})
+	</select>
 
 	<select id="findId" resultType="java.lang.String">
 		SELECT NVL(MAX(JM_ID), '0') AS JM_ID
