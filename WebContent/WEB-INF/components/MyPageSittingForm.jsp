@@ -41,19 +41,17 @@
 			
 		});
 		
-		
-		
-		//alert("확인");
-		$("#bookList").click(function()
+		// 예약내역을 누르면
+		$("#sittingBookList").click(function()
 		{
 			$.ajax(
 			{
 				type:"POST"
-				, url:"myPageSittingBookList.action"
+				, url:"sittingBookList.action"
 				, async:true
 				, success:function(data)
 				{
-					$("#myPageSittingInfo").html(data);
+					$("#myPageSPrigth").html(data);
 										
 				}
 				, error:function(e)
@@ -65,7 +63,27 @@
 			
 		});
 		
-		
+		// 후기를 누르면
+		$("#sittingReviewList").click(function()
+		{
+			$.ajax(
+			{
+				type:"POST"
+				, url:"sittingReviewList.action"
+				, async:true
+				, success:function(data)
+				{
+					$("#myPageSPrigth").html(data);
+										
+				}
+				, error:function(e)
+				{
+					alert(e.responseText);
+				}
+				
+			});
+			
+		});
 		
 	});
 	
@@ -161,90 +179,14 @@
 	    
 	    	<div id="sittingUpdate"><!-- 오른쪽 -->
 	    	
-		    	<button type="button" id="bookList">예약내역</button>
-		    	<button type="button" id="review">후기</button>
-		    	<button type="button" id="money">수익</button>
+		    	<button type="button" id="sittingBookList">예약내역</button>
+		    	<button type="button" id="sittingReviewList">후기</button>
+		    	<button type="button" id="moneyTable">수익</button>
 		    
-		    	<!-- 우선은 아래에 다 적는데 이 div #myPageSittingInfo에 ajax로 처리해주면 될것같습니다. 오른쪽 디폴트 예약 내역-->
-		    	<div class="myPageSittingInfo" id="myPageSittingInfo"></div>	
+		    	<!-- 우선은 아래에 다 적는데 이 div #myPageSPrigth에 ajax로 처리해주면 될것같습니다. 오른쪽 디폴트 예약 내역-->
+		    	<div class="myPageSPrigth" id="myPageSPrigth"></div>	
 		    	
 		    	
-		    	<div><!-- 예약내역 눌렀을 때 -->
-		    		<div>달력이 있고</div>
-		    		
-		    		<h3><span class="badge">예약 내역</span></h3><!-- 그 달의 예약 내역이 보인다-->
-		    		<div>
-		    		
-		    			<div class="card">
-							<div class="card-header d-flex justify-content-between"">
-								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-05 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
-					    
-					    <div class="card">
-							<div class="card-header d-flex justify-content-between"">
-								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-06 14:00 ~ 2023-08-06 22:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
-		    		
-		    		</div>
-			    		
-		    	</div><!-- 예약내역 눌렀을 때 끝 -->
-		    	
-		    	<div><!-- 후기 눌렀을 때 -->
-			    	
-			    	<h3><span class="badge">후기</span></h3>
-			    	<div>
-			    		
-			    		<div class="card reviewCard">
-						  <img src="..." class="card-img-top"/>
-						  <div class="card-body">
-						    <h5 class="card-title">후기 제목 입니다아아아</h5>
-						    <p class="card-text">후기 내용 어쩌고 저쩌고 </p>
-						  </div>
-						  <ul class="list-group list-group-light list-group-small">
-						    <li class="list-group-item px-4">별점 : ⭐ </li>
-						    <li class="list-group-item px-4">작성자 : 견주닉네임</li>
-						    <li class="list-group-item px-4">작성일 : 2023-08-05 </li>
-						  </ul>
-						</div>
-						
-						<div class="card reviewCard">
-						  <img src="..." class="card-img-top"/>
-						  <div class="card-body">
-						    <h5 class="card-title">후기 제목 입니다아아아</h5>
-						    <p class="card-text">후기 내용 어쩌고 저쩌고 </p>
-						  </div>
-						  <ul class="list-group list-group-light list-group-small">
-						    <li class="list-group-item px-4">별점 : ⭐ </li>
-						    <li class="list-group-item px-4">작성자 : 견주닉네임</li>
-						    <li class="list-group-item px-4">작성일 : 2023-08-05 </li>
-						  </ul>
-						</div>
-			    		
-			    	</div>
-		    		
-		    	</div><!-- 후기 눌렀을 때 끝 -->
 		    	
 		    	<div><!-- 수익 눌렀을 때 -->
 		    		<h3><span class="badge">수익내역</span></h3>
