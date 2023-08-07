@@ -59,6 +59,11 @@
 <link rel="stylesheet" type="text/css" href="css/mdb.min.css">
 </head>
 <body>
+
+<c:import url="/WEB-INF/components/HeaderForm.jsp">
+</c:import>
+
+
 <div class="image-container">
 	            <img src="images/‎sittingTestTosExImage‎.png" alt="펫시터 위상 얻을 시 약관">
 	            <div class="form-check">
@@ -82,7 +87,8 @@
   </div>
 </div>
 
-
+<c:import url="/WEB-INF/components/FooterForm.jsp">
+</c:import>
 
 
 </body>
