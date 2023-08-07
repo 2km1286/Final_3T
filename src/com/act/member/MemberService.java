@@ -25,6 +25,17 @@ public class MemberService implements IMemberService
 
 	}
 	
+	// 아이디 비밀번호로 memNickName 조회하기
+		public String searchMemNickName(MemberDTO dto)
+		{
+			String result = "";
+
+			IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+			result = dao.searchMemNickName(dto);
+			return result;
+
+		}
+	
 
 	// 이름, 주민번호로 아이디 찾기
 	public String findId(MemberDTO dto)

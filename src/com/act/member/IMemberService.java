@@ -21,5 +21,7 @@ public interface IMemberService
 	
 	public int join(HttpSession session, MemberDTO dto);
 	
+	public String searchMemNickName(MemberDTO dto);
+	
 	
 }
