@@ -82,7 +82,7 @@ h2, h4, h5 {
 </head>
 <body>
 	<section>
-		<c:import url="/WEB-INF/components/HeaderForm.jsp">
+		<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
 	    </c:import>
 	</section>
 
@@ -348,7 +348,7 @@ h2, h4, h5 {
 		</button>
 	</div>
 	
-	<c:import url="/WEB-INF/components/FooterForm.jsp">
+	<c:import url="/WEB-INF/components/index/FooterForm.jsp">
 	</c:import>
 
 
