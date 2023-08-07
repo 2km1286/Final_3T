@@ -4,13 +4,11 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<!-- 벼리언니 이거 지우면 안대 화이팅해 언니 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<title>돌봄장소수정폼</title>
 
 <style type="text/css">
 .place
@@ -35,37 +33,11 @@ div .card { width: 700px;}
 <div class="row" id="sittingPlaceDiv">
 	<div class="col place">
 		<div class="row">	
-			<div class="col-md-6">	
+			<div class="col-md">	
 				<h2><span class="badge">핫도그님의 돌봄장소</span></h2>
-			</div>
-			<div class="col-md-6">
-				<h3><span class="badge">팔로워 5명</span></h3>
 			</div>
 		</div>
 			
-		<!-- 돌봄장소 슬라이드 사진 시작 -->
-		<div id="carouselExample" class="carousel slide">
-		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-		      <img src="images/sitterroom.jpg" class="d-block w-100" alt="...">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="d-block w-100" alt="...">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="d-block w-100" alt="...">
-		    </div>
-		  </div>
-		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		  </button>
-		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		  </button>
-		</div>
-		<!-- 돌봄장소 슬라이드 사진 끝 -->
-		
-		
 		<div class="card-body">
 		    <h3><span class="badge">돌봄장소 특이사항</span></h3>
 		    <div class="checkBox">
@@ -138,6 +110,17 @@ div .card { width: 700px;}
 		    <br><br>
 		  	<h3><span class="badge">돌봄장소 소개</span></h3>
 		    <textarea rows="5" cols="80"></textarea>
+			
+			<br><br>
+		  	<h3><span class="badge">돌봄장소 주소</span></h3><!-- 주소는 수정불가 -->
+		    <input type="text" id="" class="" style="width: 600px;" readonly="readonly">
+		    
+		    <h3><span class="badge">돌봄장소 우편번호</span></h3><!-- 가져와져있음 -->
+			<input type="text" id="" class="" style="width: 600px;" readonly="readonly">
+			
+			<br><br>
+		  	<h3><span class="badge">돌봄장소 상세주소</span></h3><!-- 가져와져있음 -->
+		    <input type="text" id="" class="" style="width: 600px;" readonly="readonly">
 			
 			<br><br>
 			<h3><span class="badge">돌봄장소 공개/비공개</span></h3>

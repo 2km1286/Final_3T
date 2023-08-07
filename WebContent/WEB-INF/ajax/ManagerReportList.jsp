@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+
 	request.setCharacterEncoding("UTF-8");
+
 String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
@@ -23,6 +25,7 @@ String cp = request.getContextPath();
 	<button class="report-button" id="dog-walking-report">대리산책 신고</button>
 	<button class="report-button" id="profile-report">프로필 신고</button>
 	<button class="report-button" id="emergency-report">비상 상황</button>
+
 </div>
 
 <div id="cardContainer" class="mt-4" style="margin-left: 100px;">
@@ -56,9 +59,6 @@ String cp = request.getContextPath();
 	</c:if>
 </c:forEach>
 
-
-
-
 	<!-- 징계 선택 모달 창 -->
 	<div class="modal fade" id="penaltyModal" tabindex="-1" role="dialog"
 		aria-labelledby="penaltyModalLabel" aria-hidden="true">
@@ -88,6 +88,7 @@ String cp = request.getContextPath();
 		</div>
 	</div>
 	<script>
+
         // 모달 창 열기
         function openPenaltyModal() {
             $("#penaltyModal").modal("show");
@@ -108,12 +109,13 @@ String cp = request.getContextPath();
         }
         
         function alertReturn(){
-        	if (confirm("정말 반려시키겠습니까?")) {
-        	    // 사용자가 확인 버튼을 누른 경우
-        	    alert("반려되었습니다.");
-        	}
+           if (confirm("정말 반려시키겠습니까?")) {
+               // 사용자가 확인 버튼을 누른 경우
+               alert("반려되었습니다.");
+           }
         }
     </script>
+  
 	<script>
   function loadMoreCards() {
     var newCards = `
@@ -127,6 +129,7 @@ String cp = request.getContextPath();
                 <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6>
               </div>
               <div class="card-buttons">
+              
 	              <button class="btn btn-danger mr-1" onclick="openPenaltyModal()">징계</button>
 	              <button class="btn btn-warning mr-1" onclick="alertReturn()">반려</button>
 	              <button class="btn btn-info mr-1">수정요청</button>
@@ -135,6 +138,7 @@ String cp = request.getContextPath();
 	              <button class="btn btn-secondary mr-1">블라인드처리</button>
 	              <button class="btn btn-secondary">블라인드해제</button>
           	  </div>
+
             </div>
           </div>
         </c:forEach>
