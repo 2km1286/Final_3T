@@ -27,8 +27,8 @@
 </style>
 </head>
 <body>
-			<div class="row">
-				<div class="col-md-6 noticeAll">
+			<div class="row" style="border-bottom: 2px solid black;">
+				<div class="col-md-6 noticeAll" style="border-right: 2px solid black;">
 					
 					<h3><span class="badge">내가 올린 대리산책 공고글</span></h3>
 					<div><!-- 내가 올린 대리산책 공고글 시작 -->
@@ -91,7 +91,7 @@
 			</div><!-- 1행 끝 -->
 			
 			<div class="row">
-				<div class="col-md-6 noticeWalk">
+				<div class="col-md-6 noticeWalk" style="border-right: 2px solid black;"> 
 					<h3><span class="badge">나에게 달린 대리산책 후기</span></h3>
 					<div><!-- 나에게 달린 대리산책 후기 시작 -->
 					

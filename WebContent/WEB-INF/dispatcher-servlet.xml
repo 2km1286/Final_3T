@@ -15,6 +15,7 @@
 	<!-- ※ 어노테이션 을 활용하여 Controller 객체를 등록할 수 있도록 한다. -->
 	<context:component-scan base-package="com.act.member" />
 	<context:component-scan base-package="com.act.sitting" />
+	<context:component-scan base-package="com.act.walk" />
 	<context:component-scan base-package="com.act.manager" />
 	
 	<!-- ③ mybatis 등록 과정에서 생겨나는 추가 코드 『2』 -->

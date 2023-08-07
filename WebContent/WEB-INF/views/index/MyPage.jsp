@@ -60,7 +60,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"mypagesitting.action"
+				, url:"mypagesittingform.action"
 				, async:true
 				, success:function(data)
 				{
@@ -82,7 +82,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"myPageWalk.action"
+				, url:"mypagewalkform.action"
 				, async:true
 				, success:function(data)
 				{
@@ -206,7 +206,6 @@ div.cardInfo {padding-right: 0; padding-left: 0;}
 div.porfilSu{margin-left:20px; width: 300px; }
 
 .nick {font-size: 16pt;}
-.oneText {margin-bottom: 3px; border-bottom: 1px solid gray; }
 .detailBtn
 {
 	-webkit-appearance: none;
@@ -282,13 +281,13 @@ div.profil
 
 </head>
 <body>
-	<c:import url="/WEB-INF/components/HeaderForm.jsp">
+	<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
 	</c:import>
 	<div class="container-mypage">
 	<div class="row all">
 		<div class="col-md-10 myPageMain" id="myPageMain"><!-- 마이페이지 메인 -->
 			<!-- 마이페이지 첫 요청시 디폴트 알림창 -->
-			<c:import url="/WEB-INF/components/MyPageNoticeForm.jsp"></c:import>
+			<c:import url="/WEB-INF/ajax/MyPageNoticeForm.jsp"></c:import>
 		</div>
 		<div class="col-md-2 mypageSidevar"> <!-- 마이페이지 사이드바 -->
 			<div class="list-group list-group-light">
@@ -314,7 +313,7 @@ div.profil
 		</div>
 	</div>
 	</div>
-	<c:import url="/WEB-INF/components/FooterForm.jsp">
+	<c:import url="/WEB-INF/components/index/FooterForm.jsp">
 	</c:import>
 </body>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
