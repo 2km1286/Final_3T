@@ -60,7 +60,7 @@
 </head>
 <body>
 
-<c:import url="/WEB-INF/components/HeaderForm.jsp">
+<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
 </c:import>
 
 
@@ -87,7 +87,7 @@
   </div>
 </div>
 
-<c:import url="/WEB-INF/components/FooterForm.jsp">
+<c:import url="/WEB-INF/components/index/FooterForm.jsp">
 </c:import>
 
 
