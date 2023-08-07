@@ -1,15 +1,40 @@
-package com.act.member;
+package com.act.sitting;
 
 /*
 JM_NICKNAME, SP_TITLE, SP_ADDR1, SP_ADDR2, MEM_SID, SPH_SID, SHP_START, SHP_END, 
 SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 */
 
-public class SitterDTO
+public class SittingDTO
 {
-	private String jmNickName, spTitle, spAddr1, spAddr2, memSid, shpStart, shpEnd, srStart, srEnd;
+	// SITTING_PLACE_LIST_VIEW
+	private String jmNickName, sptitle, spAddr1, spAddr2, memSid, sphStart, sphEnd, srStart, srEnd;
 	private int sphSid, srwSid, stleSid, spMaxPet, spSid;
 	
+	// INDEX_SITTING_PLACE_TAG
+	private int isptSid;
+	private String isptName;
+	
+	// SITTING_GRADE_VIEW
+	private String grade;
+	private int price;
+	
+	public String getGrade()
+	{
+		return grade;
+	}
+	public void setGrade(String grade)
+	{
+		this.grade = grade;
+	}
+	public int getPrice()
+	{
+		return price;
+	}
+	public void setPrice(int price)
+	{
+		this.price = price;
+	}
 	public String getJmNickName()
 	{
 		return jmNickName;
@@ -18,13 +43,13 @@ public class SitterDTO
 	{
 		this.jmNickName = jmNickName;
 	}
-	public String getSpTitle()
+	public String getSptitle()
 	{
-		return spTitle;
+		return sptitle;
 	}
-	public void setSpTitle(String spTitle)
+	public void setSptitle(String sptitle)
 	{
-		this.spTitle = spTitle;
+		this.sptitle = sptitle;
 	}
 	public String getSpAddr1()
 	{
@@ -50,21 +75,21 @@ public class SitterDTO
 	{
 		this.memSid = memSid;
 	}
-	public String getShpStart()
+	public String getSphStart()
 	{
-		return shpStart;
+		return sphStart;
 	}
-	public void setShpStart(String shpStart)
+	public void setSphStart(String sphStart)
 	{
-		this.shpStart = shpStart;
+		this.sphStart = sphStart;
 	}
-	public String getShpEnd()
+	public String getSphEnd()
 	{
-		return shpEnd;
+		return sphEnd;
 	}
-	public void setShpEnd(String shpEnd)
+	public void setSphEnd(String sphEnd)
 	{
-		this.shpEnd = shpEnd;
+		this.sphEnd = sphEnd;
 	}
 	public String getSrStart()
 	{
@@ -122,6 +147,24 @@ public class SitterDTO
 	{
 		this.spSid = spSid;
 	}
+	public int getIsptSid()
+	{
+		return isptSid;
+	}
+	public void setIsptSid(int isptSid)
+	{
+		this.isptSid = isptSid;
+	}
+	public String getIsptName()
+	{
+		return isptName;
+	}
+	public void setIsptName(String isptName)
+	{
+		this.isptName = isptName;
+	}
+	
+	
 	
 	
 	

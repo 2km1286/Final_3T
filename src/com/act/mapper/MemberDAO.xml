@@ -47,7 +47,7 @@
 	<select id="searchId" resultType="java.lang.Integer">
       SELECT COUNT(*) AS COUNT
       FROM JOIN_MEMBER
-      WHERE JM_ID = #{jmId,jdbcType=VARCHAR}
+      WHERE JM_ID = #{jmId}
    </select>
    
    <select id="searchNick" resultType="java.lang.Integer">
