@@ -6,57 +6,46 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @Controller
 public class MemberController
 {
 	@Autowired
 	private IMemberService memberService;
-	@Autowired
-	private IManagerService managerService;
+	
 	
 
 	// 메인페이지로 가는 액션
-	@RequestMapping("/main.action")
+	@RequestMapping("/mainpage.action")
 	public String main()
 	{
 		String result = "";
-		result = "/WEB-INF/views/MainPage.jsp";
+		result = "/WEB-INF/views/index/MainPage.jsp";
 
 		return result;
 	}
 
 	// 로그인(+ 회원가입버튼) 페이지로 가는 액션
-	@RequestMapping("/loginJoin.action")
+	@RequestMapping("/loginpage.action")
 	public String loginJoinPage()
 	{
 		String result = "";
 
-		result = "/WEB-INF/views/LoginJoin.jsp";
+		result = "/WEB-INF/views/member/LoginPage.jsp";
 
 		return result;
 
 	}
 
 	// 회원가입 폼 페이지로 가는 액션
-	@RequestMapping("/joinForm.action")
+	@RequestMapping("/joinpage.action")
 	public String joinForm()
 	{
 		String result = "";
-		result = "/WEB-INF/views/JoinForm.jsp";
+		result = "/WEB-INF/views/member/JoinPage.jsp";
 		return result;
 	}
-
-	// 관리자 폼 페이지로 가는 액션
-	@RequestMapping("/adminmain.action")
-	public String adminmain()
-	{
-		String result = "";
-		result = "/WEB-INF/views/ManagerForm.jsp";
-		return result;
-	}
-
 
 	// 아이디 중복확인
 	@RequestMapping("/idDupli.action")
@@ -113,39 +102,19 @@ public class MemberController
 		String result = memberService.searchMemsid(dto);
 		if (result.equals("0"))
 		{
-			url = "redirect:loginJoin.action?error=1";
+			url = "redirect:loginpage.action?error=1";
 
 		} else
 		{
 
 			session.setAttribute("memSid", result);
-			url = "redirect:main.action";
+			url = "redirect:mainpage.action";
 		}
 
 		return url;
 	}
 
-	// 매니저인지 아닌지 조회, 로그인 성공/실패
-	@RequestMapping("/managerlogin.action")
-	public String manLoginCount(ManagerDTO dto, HttpSession session)
-	{
-		
-		String url = "";
-		
-		String result = managerService.searchMansid(dto);
-		if (result.equals("0")) {
-			url = "redirect:loginJoin.action?error=1"; 
-			
-		}
-		else
-		{
-			
-			session.setAttribute("miSid", result);
-			url = "redirect:adminmain.action";
-		}
-		
-		return url;
-	}
+	
 
 	// 로그아웃하고(session) 다시 메인페이지로 가기
 	@RequestMapping("/logOut.action")
@@ -248,26 +217,7 @@ public class MemberController
 		return view;
 	}
 		
-		// 관리자 처리완료된 신고. AJAX로 처리.
-		@RequestMapping("/completereport.action")
-		public String completeReport(HttpServletRequest request)
-		{
-			String result = "";
-			// AJAX이자 컴포넌트
-			result = "/WEB-INF/components/ManagerCompleteReport.jsp";
-			return result;
-		}
 		
-		
-		// 관리자 신고현안 및 비상관리. AJAX로 처리.
-		@RequestMapping("/reportlist.action")
-		public String reportList(HttpServletRequest request)
-		{
-			String result = "";
-			// AJAX이자 컴포넌트
-			result = "/WEB-INF/components/ManagerReportList.jsp";
-			return result;
-		}
     
     
 		// 대리산책러 예약화면
