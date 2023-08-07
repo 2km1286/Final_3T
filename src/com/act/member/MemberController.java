@@ -322,7 +322,7 @@ public class MemberController
 		return result;
 	}
 
-	// 마이페이지 펫시팅. AJAX로 처리.
+	// 마이페이지 알림창. AJAX로 처리.
 	@RequestMapping("/myPageNotice.action")
 	public String myPageNotice(HttpServletRequest request)
 	{
@@ -333,14 +333,7 @@ public class MemberController
 	}
 
 	// 마이페이지 펫시팅. AJAX로 처리.
-	@RequestMapping("/myPageSitting.action")
-	public String myPageSitting(HttpServletRequest request)
-	{
-		String result = "";
-		// AJAX이자 컴포넌트
-		result = "/WEB-INF/components/MyPageSittingForm.jsp";
-		return result;
-	}
+	// → sittingController 로 이동
 
 	// 마이페이지 대리산책. AJAX로 처리.
 	@RequestMapping("/myPageWalk.action")
