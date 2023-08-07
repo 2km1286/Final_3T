@@ -5,7 +5,7 @@
 	String cp = request.getContextPath();
 %>
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-  text-muted">
+<footer class="text-center text-lg-start bg-  text-muted" id="footer">
   <!-- Section: Social media -->
  
   <!-- Section: Social media -->

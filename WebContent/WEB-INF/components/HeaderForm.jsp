@@ -119,7 +119,7 @@
                   <a class="nav-link" href="#" id="myPage">마이페이지</a>
                 </li>
 				<li class="nav-item">
-                  <a class="nav-link" href="#" id="center">고객센터/사고접수</a>
+                  <a class="nav-link" href="#footer" id="center">고객센터/사고접수</a>
                 </li>
 				
 				<c:choose>
