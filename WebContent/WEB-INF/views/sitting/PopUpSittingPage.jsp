@@ -110,6 +110,10 @@ div.profil
 </head>
 <body>
 
+<c:import url="/WEB-INF/components/HeaderForm.jsp">
+</c:import>
+
+
 	<div class="row">
 				<div class="col-md-6">
 					
@@ -219,6 +223,8 @@ div.profil
 				</div>
 			</div>
 
+<c:import url="/WEB-INF/components/FooterForm.jsp">
+</c:import>
 
 </body>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
