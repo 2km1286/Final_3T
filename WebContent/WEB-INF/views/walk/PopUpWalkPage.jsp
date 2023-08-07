@@ -10,23 +10,25 @@
 <meta charset="UTF-8">
 <title>팝업_대리산책러</title>
 
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<!-- bootstrap core css -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+<!-- fonts style -->
+<link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<link href="css/responsive.css" rel="stylesheet" />
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de44c01e008c94b07ba5b53bec52bcb8"></script>
 <script type="text/javascript">
+
 	
 	function initialize()
 	{
@@ -119,7 +121,7 @@ div.profil
 </style>
 
 </head>
-<body>
+<body onload="initialize()">
 <div class="container-mypage">
 	<div class="row">
 				<div class="col-md-6"><!-- 1행 1열 시작 -->

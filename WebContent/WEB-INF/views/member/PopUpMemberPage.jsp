@@ -8,45 +8,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>팝업_대리산책러</title>
-
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<title>팝업_일반회원</title>
 
 <!-- slider stylesheet -->
-<link rel="stylesheet" type="text/css"
+  <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
 
-<!-- bootstrap core css -->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
-<!-- fonts style -->
-<link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="css/style.css" rel="stylesheet" />
-<!-- responsive style -->
-<link href="css/responsive.css" rel="stylesheet" />
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de44c01e008c94b07ba5b53bec52bcb8"></script>
-<script type="text/javascript">
-
-	
-	function initialize()
-	{
-	   container = document.getElementById("map");
-	   
-	   mapCenter = new kakao.maps.LatLng(37.5566, 126.9195);
-	   options =
-	   {
-	         center: mapCenter,
-	         level: 3,
-	   };
-	   
-	   map = new kakao.maps.Map(container,options);
-	   
-	   
-	}
-
-</script>
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
 
 <style type="text/css">
 .container-mypage {
@@ -70,7 +46,6 @@
   transition-duration: 0.25s;
 }
 div.col-md-6 { padding: 20px 20px 20px 20px; }
-div.card {margin-bottom: 10px; width: 700px;}
 div.card-header {padding: 5px; }
 div.cardImage {padding-right: 0;}
 div.cardInfo {padding-right: 0; padding-left: 0;}
@@ -110,6 +85,16 @@ div.profil
     border: none; /* 테두리 제거 */
 }
 
+.petCard {width: 320px;}
+ .petCardContainer
+{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 700px;
+}
+.px-4 {padding: 2px 5px 2px 5px; width: 320px; }
+
 </style>
 <!-- FONT jua -->
 <style>
@@ -121,28 +106,43 @@ div.profil
 </style>
 
 </head>
-<body onload="initialize()">
+<body>
 <div class="container-mypage">
 	<div class="row">
 				<div class="col-md-6"><!-- 1행 1열 시작 -->
-				<h3><span class="badge">맡겨보개 회원분포지도</span></h3>
-					<div style="float: left; margin-left: 20px;">
-						<div id="map" style="width: 100%; height: 100%;"></div>
+				<h3><span class="badge">반려견 카드</span></h3>
+					<div class="petCardContainer"><!-- 반려견 카드 목록 시작 -->
+				
+					<div class="card petCard">
+						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
+						<div class="card-body">
+						<h5 class="card-title">인절미</h5>
+						<p class="card-text">특이사항이 적혀있어요. 우리 절미는 뛰는걸 싫어해요. 걷기만 해주세요</p>
 					</div>
-					<div style="float: left;">
-						<div class="moneyReview" style="margin-left: 15px;">
-							<div class="mypageWalkMonDon">
-								<h3><span class="badge">수익</span></h3>
-								<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
-								<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
-					        </div>
-					        
-					        <div>
-					        	<h3><span class="badge">후기</span></h3>
-					        	4.8 ⭐  (40개의 후기)
-					        </div>
-						</div>
+						<ul class="list-group list-group-light list-group-small">
+							<li class="list-group-item px-4">성별 : <span>남</span> </li>
+							<li class="list-group-item px-4">무게(kg) : <span>15</span> </li>
+							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
+							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
+						</ul>
 					</div>
+					
+					
+					<div class="card petCard">
+						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
+						<div class="card-body">
+						<h5 class="card-title">인절미</h5>
+						<p class="card-text">특이사항이 적혀있어요. 우리 절미는 뛰는걸 싫어해요. 걷기만 해주세요</p>
+					</div>
+						<ul class="list-group list-group-light list-group-small">
+							<li class="list-group-item px-4">성별 : <span>남</span> </li>
+							<li class="list-group-item px-4">무게(kg) : <span>15</span> </li>
+							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
+							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
+						</ul>
+					</div>
+					
+				</div><!-- 반려견 카드 목록 끝 -->
 				</div><!-- 1행 1열 끝 -->
 				<div class="col-md-6">
 					
@@ -181,7 +181,7 @@ div.profil
 					
 					<h3><span class="badge">확정된 예약</span></h3>
 					
-					<div class="card">
+					<div class="card" style="margin-bottom: 10px;">
 								<div class="card-header d-flex justify-content-between"">
 									대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
 								</div>	
@@ -197,7 +197,7 @@ div.profil
 						    	  </div>
 					</div>
 						    
-					<div class="card">
+					<div class="card" style="margin-bottom: 10px;">
 								<div class="card-header d-flex justify-content-between"">
 									대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
 								</div>	
