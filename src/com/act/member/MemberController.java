@@ -97,15 +97,18 @@ public class MemberController
 
 		String url = "";
 
-		String result = memberService.searchMemsid(dto);
-		if (result.equals("0"))
+		String memNickName = memberService.searchMemNickName(dto);
+		String memSid = memberService.searchMemsid(dto);
+		
+		if (memSid.equals("0"))
 		{
 			url = "redirect:loginpage.action?error=1";
 
 		} else
 		{
-
-			session.setAttribute("memSid", result);
+			
+			session.setAttribute("memNickName", memNickName);
+			session.setAttribute("memSid", memSid);
 			url = "redirect:mainpage.action";
 		}
 

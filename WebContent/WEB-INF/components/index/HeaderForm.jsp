@@ -136,7 +136,7 @@
 				  <a class="nav-link dropdown-toggle pl-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="30" height="30" class="rounded-circle">
 				   
-				    <span style="font-style: italic; font-weight: lighter; color: orange;">${memSid }</span>
+				    <span style="font-style: italic; font-weight: lighter; color: orange;">${memNickName }</span>
 				  </a>
 				  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				    <a class="dropdown-item" href="#">알림  
