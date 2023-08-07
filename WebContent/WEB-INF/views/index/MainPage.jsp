@@ -45,22 +45,24 @@
 </head>
 <body>
 현재 접속자 : 0이면 게스트 → ${memSid }
-	<c:import url="/WEB-INF/components/HeaderForm.jsp">
+
+	<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
+
 	</c:import>
 	<section>
 	<div>
-	<c:import url="/WEB-INF/components/DefaultMainForm.jsp"></c:import>
+	<c:import url="/WEB-INF/components/index/DefaultMainForm.jsp"></c:import>
 	</div>
 	</section>
 	<section>
 	<div>
-	<c:import url="/WEB-INF/components/MostSittingListForm.jsp">
+	<c:import url="/WEB-INF/components/index/BestListForm.jsp">
 	</c:import>
 	</div>
 	</section>
 	<section>
 	<div>
-	<c:import url="/WEB-INF/components/FooterForm.jsp">
+	<c:import url="/WEB-INF/components/index/FooterForm.jsp">
 	</c:import>
 	</div>
 	</section>

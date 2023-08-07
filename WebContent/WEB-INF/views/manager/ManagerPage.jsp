@@ -247,7 +247,7 @@ $(function()
 
         <!-- 메인 콘텐츠 -->
         <div class="mainArea" id="mainContent">
-			<c:import url="/WEB-INF/components/ManagerReportList.jsp"></c:import>
+			<c:import url="/WEB-INF/ajax/ManagerReportList.jsp"></c:import>
 		</div>
 	</div>
 </div>
