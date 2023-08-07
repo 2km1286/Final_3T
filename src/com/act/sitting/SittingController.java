@@ -12,7 +12,7 @@ public class SittingController
 	private SittingService sittingService;
 
 	// 펫시팅(돌봄장소) 리스트업 페이지로 가기
-	@RequestMapping("/sittingList.action")
+	@RequestMapping("/sittingListPage.action")
 	public String sittingList(Model model, SittingDTO s)
 	{
 		String view = "";
@@ -31,7 +31,7 @@ public class SittingController
 	}
 
 	// 펫시터 예약화면
-	@RequestMapping("/sitting-reservation.action")
+	@RequestMapping("/sittingreservationpage.action")
 	public String getSittingReservationView()
 	{
 		String result = "";
