@@ -104,7 +104,7 @@ h2, h4, h5 {
 </head>
 <body>
 	<section>
-		<c:import url="/WEB-INF/components/MenuForm_2.jsp">
+		<c:import url="/WEB-INF/components/HeaderForm.jsp">
 		</c:import>
 	</section>
 
@@ -408,6 +408,13 @@ h2, h4, h5 {
 			<i class="fas fa-exclamation-triangle"></i>신고하기
 		</button>
 	</div>
+	
+	<section>
+		<div>
+			<c:import url="/WEB-INF/components/FooterForm.jsp">
+			</c:import>
+		</div>
+	</section>
 
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
