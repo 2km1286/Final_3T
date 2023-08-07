@@ -28,14 +28,18 @@
 		 // 메인로고 버튼
 		 $("#mainLogo").click(function()
 		{
+
 			 window.location.href = "mainpage.action";
+
 		});
 		 
 		// 로그인/회원가입 페이지로 가는 function
 		$("#loginJoin").click(function()
 		{
 			//alert("확인");
+
 			window.location.href = "loginpage.action";
+
 		});
 		
 		//로그아웃하는 function
@@ -53,7 +57,9 @@
 		// 펫시팅 리스트업 페이지로 가는 function
 		$("#sittingList").click(function()
 		{
+
 			window.location.href = "sittinglistpage.action";
+
 		})
 		
 		// 마이페이지로 가는 function
