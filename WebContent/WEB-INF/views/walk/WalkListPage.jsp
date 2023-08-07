@@ -247,9 +247,8 @@ p {
 		theme : "airbnb"
 	});
 </script>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script
-	src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
