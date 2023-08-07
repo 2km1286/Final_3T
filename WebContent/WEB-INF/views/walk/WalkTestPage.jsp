@@ -23,6 +23,10 @@
 </style>
 </head>
 <body>
+
+<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
+</c:import>
+
 <div class="row all text-center">
 	<div class="container">
 		<div class="card questions row d-flex justify-content-center">
@@ -186,5 +190,9 @@
 		</div>
 	</div>
 </div>
+
+<c:import url="/WEB-INF/components/index/FooterForm.jsp">
+</c:import>
+
 </body>
 </html>

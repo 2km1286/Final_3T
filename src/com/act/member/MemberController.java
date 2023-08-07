@@ -13,6 +13,7 @@ public class MemberController
 	@Autowired
 	private IMemberService memberService;
 
+
 	// 메인페이지로 가는 액션
 	@RequestMapping("/mainpage.action")
 	public String main()
@@ -208,7 +209,6 @@ public class MemberController
 			session.removeAttribute("memSid"); // null로 만들어주고
 			view = "redirect:mainpage.action";
 		}
-
 		return view;
 	}
 
@@ -222,6 +222,7 @@ public class MemberController
 	}
 
 	// 마이페이지 알림창. AJAX로 처리.
+
 	@RequestMapping("/mypagenoticeform.action")
 	public String myPageNotice(HttpServletRequest request)
 	{
