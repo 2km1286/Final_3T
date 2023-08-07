@@ -121,7 +121,7 @@ p {
 			 // 펫시팅 돌봄장소 클릭시 예약화면
 			 $("#cardContainer").click(function()
 			{
-				 window.location.href = "sitting-reservation.action";
+				 window.location.href = "sittingreservationpage.action";
 			});
 		});
 	
@@ -130,7 +130,7 @@ p {
 </head>
 <body>
 	현재 접속자 : 0이면 게스트 → ${memSid }
-	<c:import url="/WEB-INF/components/MenuForm_2.jsp">
+	<c:import url="/WEB-INF/components/Header.jsp">
 	</c:import>
 	<section>
 		<div class="container py-5 bg-light">

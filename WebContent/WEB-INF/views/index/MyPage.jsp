@@ -60,7 +60,7 @@
 			$.ajax(
 			{
 				type:"POST"
-				, url:"myPageSitting.action"
+				, url:"mypagesitting.action"
 				, async:true
 				, success:function(data)
 				{
