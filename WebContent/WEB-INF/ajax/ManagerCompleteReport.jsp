@@ -23,16 +23,24 @@
 	text-align: center;
 }
 </style>
+<script type="text/javascript">
+
+	$(function()
+	{
+		
+	});
+</script>
 </head>
 <body>
-        <div class="col-lg-9" style="margin-left: 100px; width: 1500px;">
+<div style="margin-left: 390px; width: 1400px;"">
+        <div  >
             <h2 style="margin-top: 20px;">접수된 신고 현안</h2>
             <hr/>
              	<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
     			<button class="report-button" id="dog-walking-report">대리산책 신고</button>
    				<button class="report-button" id="profile-report">프로필 신고</button>
         </div>
-        <div id="completeTable" class="col-lg-9 mt-4"style="margin-left: 100px;">
+        <div id="completeTable" class="mt-4">
             <table class="table table-bordered table-hover">
                 <thead class="thead-light">
                     <tr>
@@ -75,5 +83,6 @@
                     %>
                 </tbody>
             </table>
+        </div>
         </div>
 </html>
