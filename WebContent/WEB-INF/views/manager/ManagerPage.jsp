@@ -212,7 +212,8 @@ $(function()
 <body>
 <!------ Include the above in your HEAD tag ---------->
 
-
+<c:import url="/WEB-INF/components/HeaderForm.jsp">
+</c:import>
 <div class="container">
     <div class="row">
         <!-- 사이드바 -->
@@ -251,7 +252,8 @@ $(function()
 	</div>
 </div>
 
-
+<c:import url="/WEB-INF/components/FooterForm.jsp">
+</c:import>
 	
 
        

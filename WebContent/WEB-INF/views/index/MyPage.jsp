@@ -282,7 +282,7 @@ div.profil
 
 </head>
 <body>
-	<c:import url="/WEB-INF/components/MenuForm_2.jsp">
+	<c:import url="/WEB-INF/components/HeaderForm.jsp">
 	</c:import>
 	<div class="container-mypage">
 	<div class="row all">

@@ -45,7 +45,9 @@
 </head>
 <body>
 현재 접속자 : 0이면 게스트 → ${memSid }
+
 	<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
+
 	</c:import>
 	<section>
 	<div>
