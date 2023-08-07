@@ -1,4 +1,4 @@
-package com.act.member;
+package com.act.manager;
 
 
 import org.apache.ibatis.session.SqlSession;
