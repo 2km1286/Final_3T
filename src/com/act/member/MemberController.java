@@ -302,8 +302,39 @@ public class MemberController
 			
 			return result;
 		}
-	
 
+
+		
+		// 마이페이지 펫시팅의 수정하기를 눌렀을 때, AJAX처리
+		@RequestMapping("/updateSPInfoForm.action")
+		public String updateSPInfoForm()
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/updateSPInfoForm.jsp";
+			return result;
+		}
+		
+		// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
+		@RequestMapping("/sittingBookList.action")
+		public String sittingBookList()
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/sittingBookList.jsp";
+			return result;
+		}
+		
+		// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
+		@RequestMapping("/sittingReviewList.action")
+		public String sittingReviewList()
+		{
+			String result = "";
+			// AJAX이자 컴포넌트
+			result = "/WEB-INF/components/sittingReviewList.jsp";
+			return result;
+		}
+		
 
 	// 대리산책 리스트업 페이지로 가기
 	@RequestMapping("/walkList.action")
