@@ -1,5 +1,7 @@
 package com.act.sitting;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,7 @@ public class SittingController
 	private SittingService sittingService;
 
 	// 펫시팅(돌봄장소) 리스트업 페이지로 가기
-	@RequestMapping("/sittingListPage.action")
+	@RequestMapping("/sittinglistpage.action")
 	public String sittingList(Model model, SittingDTO s)
 	{
 		String view = "";
@@ -42,7 +44,7 @@ public class SittingController
 	}
 
 	// 마이페이지 펫시팅의 수정하기를 눌렀을 때, AJAX처리
-	@RequestMapping("/updateSPInfoForm.action")
+	@RequestMapping("/updatespinfoform.action")
 	public String updateSPInfoForm()
 	{
 		String result = "";
@@ -52,7 +54,7 @@ public class SittingController
 	}
 
 	// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingBookList.action")
+	@RequestMapping("/sittingbooklist.action")
 	public String sittingBookList()
 	{
 		String result = "";
@@ -62,12 +64,22 @@ public class SittingController
 	}
 
 	// 마이페이지 펫시팅의 후기내역을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingReviewList.action")
+	@RequestMapping("/sittingreviewlist.action")
 	public String sittingReviewList()
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
 		result = "/WEB-INF/components/sittingReviewList.jsp";
+		return result;
+	}
+
+	// 마이페이지 펫시팅. AJAX로 처리.
+	@RequestMapping("/mypagesitting.action")
+	public String myPageSitting(HttpServletRequest request)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		result = "/WEB-INF/components/ajax/MyPageSittingForm.jsp";
 		return result;
 	}
 
