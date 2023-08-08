@@ -27,6 +27,8 @@ String cp = request.getContextPath();
 		// 돌봄장소 수정하기를 누르면
 		$("#updateSPInfo").click(function()
 		{
+			
+			
 			$.ajax(
 			{
 				type : "POST",
