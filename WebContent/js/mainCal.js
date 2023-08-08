@@ -161,10 +161,11 @@ function new_event(event) {
 }
 
 // Adds a json event to event_data
-function new_event_json(name, count, date, day) {
+function new_event_json(name, count, link, date, day) {
     var event = {
         "occasion": name,
         "invited_count": count,
+        "link": link,
         "year": date.getFullYear(),
         "month": date.getMonth()+1,
         "day": day
@@ -187,20 +188,21 @@ function show_events(events, month, day) {
         $(".events-container").append(event_card);
     }
     else {
-        // Go through and add each event as a card to the events container
-        for(var i=0; i<events.length; i++) {
-            var event_card = $("<div class='event-card'></div>");
-            var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
-            var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" 마리</div>");
-            if(events[i]["cancelled"]===true) {
-                $(event_card).css({
-                    "border-left": "10px solid #FF1744"
-                });
-                event_count = $("<div class='event-cancelled'>Cancelled</div>");
-            }
-            $(event_card).append(event_name).append(event_count);
-            $(".events-container").append(event_card);
-        }
+    	// Go through and add each event as a card to the events container
+    	for(var i=0; i<events.length; i++) {
+    	    var event_card = $("<div class='event-card'></div>");
+    	    var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
+    	    var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+"</div>");
+    	    var event_link = $("<div class='event-link'><a href='"+events[i]["link"]+"' target='_blank'>자세히보기</a></div>"); // Add this line to create the link element
+    	    if(events[i]["cancelled"]===true) {
+    	        $(event_card).css({
+    	            "border-left": "10px solid #FF1744"
+    	        });
+    	        event_count = $("<div class='event-cancelled'>Cancelled</div>");
+    	    }
+    	    $(event_card).append(event_name).append(event_count).append(event_link); // Add the link element to the event card
+    	    $(".events-container").append(event_card);
+    	}
     }
 }
 
@@ -222,88 +224,15 @@ function check_events(day, month, year) {
 var event_data = {
     "events": [
     {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
+        "occasion": " 예약번호 ",
+        "invited_count": 3434,
+        "link" : "https://naver.com",
+        "year": 2023,
+        "month": 8,
         "day": 10,
-        "cancelled": true
+        "cancelled": false
     },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-        {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10
-    },
-        {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10
-    },
-        {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10
-    },
-        {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 10
-    },
-    {
-        "occasion": " Test Event",
-        "invited_count": 120,
-        "year": 2020,
-        "month": 5,
-        "day": 11
-    }
+    
     ]
 };
 
