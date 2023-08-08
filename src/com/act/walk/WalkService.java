@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.act.sitting.ISittingDAO;
+import com.act.sitting.SittingDTO;
 import com.act.walk.IWalkDAO;
 import com.act.walk.WalkDTO;
 
@@ -35,14 +37,17 @@ public class WalkService
 		return IndexTagList;
 	}
 
-	/*
-	 * // 대리산책러 등급과 기본가격 정보 public ArrayList<SittingDTO> gradeList() {
-	 * ArrayList<SittingDTO> grade = new ArrayList<SittingDTO>();
-	 * 
-	 * ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class); grade =
-	 * dao.gradeList();
-	 * 
-	 * return grade; }
-	 */
+	
+	 // 대리산책러 등급과 기본가격 정보 public ArrayList<SittingDTO> gradeList() {
+	public ArrayList<WalkDTO> gradeList()
+	{
+		ArrayList<WalkDTO> grade = new ArrayList<WalkDTO>();
+		
+		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
+		grade = dao.gradeList();
+		
+		return grade;
+	}
+	 
 
 }
