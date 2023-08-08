@@ -86,7 +86,7 @@
 				    </div>
 				        
 				   	<div class="infoOneNoline">
-						<h4><span class="smallTitle">닉네임</span></h4>
+						<h4><span class="smallTitle">이름</span></h4>
 				        <input type="text" name="jmName" id="jmName">
 				    </div>
 				    
