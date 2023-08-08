@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.act.walk.IWalkDAO">
+
+	<select id="list" resultType="com.act.walk.WalkDTO">
+	   SELECT WP_SID AS WPSID,
+       WP_TITLE AS WPTITLE,
+       WP_CONTENT AS WPCONTENT,
+       WP_START AS WPSTART,
+       WP_END AS WPEND,
+       WP_ADDR1 AS WPADDR1,
+       WP_CREATED AS WPCREATED,
+       WP_MAX_PET AS WPMAXPET,
+       IP_SID AS IPSID,
+       WL_SID AS WLSID
+       FROM WALK_POST
+	</select>
+	
+	<select id="IndexTagList" resultType="com.act.walk.WalkDTO">
+		SELECT IWPT_SID AS IWPTSID, IWPT_NAME AS IWPTNAME
+		FROM INDEX_WALK_POST_TAG
+		ORDER BY IWPT_SID
+	</select>
+	
+
+	
+
+
+</mapper>
