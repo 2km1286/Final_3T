@@ -80,7 +80,7 @@ h2 span {
 	background-color: #f00;
 	color: #fff;
 	border: none;
-	padding: 5px 10px;
+	padding: 10px 20px;
 	cursor: pointer;
 	margin-right: 10px;
 	border-radius: 5px;
@@ -88,7 +88,7 @@ h2 span {
 
 /* 선택된 라디오 버튼의 스타일 */
 .radio-button.selected {
-	background-color: #ff0000;
+	background-color: #367539; /* 선택된 버튼에 진한 녹색 계열 배경 색상 적용 */
 }
 
 @import url('https://fonts.googleapis.com/css?family=Jua:400');
@@ -103,9 +103,77 @@ p {
 .btn-box {
 	font-family: "Jua";
 }
-.tags
-{
+
+.tags {
 	margin-bottom: 50px;
+}
+
+.selection-bar.mb-4 {
+	background-color: #fff; /* 배경색을 하얀색으로 */
+	color: #000; /* 글자색을 검정색으로 */
+	padding: 10px; /* 패딩 추가 */
+	border: 2px solid #000; /* 테두리 추가 */
+	border-radius: 5px; /* 테두리 둥글기 설정 */
+	margin-bottom: 20px; /* 아래쪽 여백 추가 */
+}
+
+.selection-bar.mb-4 label, .selection-bar.mb-4 select, .selection-bar.mb-4 button
+	{
+	margin-right: 10px;
+}
+
+.selection-bar.mb-4 button {
+	background-color: #fff;
+	color: #000;
+	border: 2px solid #000;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.selection-bar.mb-4 button:hover {
+	background-color: #4caf50;
+}
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+
+.badge {
+	font-family: "Jua";
+}
+
+.mypageSidevar {
+	font-family: "Jua";
+	font-size: 15pt;
+}
+
+.card-header {
+	font-family: "Jua";
+	font-size: 17pt;
+}
+
+.card {
+	font-family: "Jua";
+	cursor: pointer;
+}
+
+.checkBox {
+	font-family: "Jua";
+	font-size: 15pt;
+}
+
+.superscript {
+	font-family: "Jua";
+}
+
+.detailBtn {
+	font-family: "Jua";
+}
+
+.updatePlace {
+	font-family: "Jua";
+	font-weight: normal;
 }
 </style>
 
@@ -129,32 +197,58 @@ p {
 	<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
 	</c:import>
 	<section>
-		<div class="container py-5 bg-light">
+		<div class="container-fluid py-5 bg-light"  style="padding-left: 80px; padding-right: 80px;">
 
 			<!-- Selection Bar -->
-			<div class="selection-bar mb-4">
+			<div class="selection-bar mb-4" 
+				style="font-family: Jua; font-size: 13pt;">
 				<label for="location">지역:</label> <select id="location"
 					class="custom-textbox">
 					<option value="seoul">서울</option>
 					<option value="busan">부산</option>
 					<!-- Add more options as needed -->
 				</select> <label for="datepicker">날짜 선택:</label> <input type="text"
-					id="datepicker" class="custom-textbox" readonly> <label
-					for="dogs">견수:</label> <input type="number" id="dogs"
-					class="custom-textbox" min="1" max="5">
+					id="datepicker" class="custom-textbox" readonly
+					style="width: 115px;"> <label for="dogs">견수:</label> <input
+					type="number" id="dogs" class="custom-textbox" min="1" max="5">
 
-				<button class="btn btn-danger" onclick="filterList()">적용</button>
+				<button class="button" onclick="filterList()">적용</button>
+				<button class="button" onclick="sittingTest()" style="float: right;">펫시터
+					지원하기</button>
+				<script>
+					function sittingTest()
+					{
+						window.location.href = "sittintest.action";
+					}
+				</script>
 			</div>
 
-			<div class="mb-4" >
+			<div class="mb-4" style="font-family: Jua; font-size: 25pt;">
 				<!-- 버튼 모양의 복수 선택 라디오 버튼 -->
 				<c:forEach var="dto" items="${IndexTagList }">
-					<button class="btn btn-danger radio-button" style="margin: 5px;"
-						onclick="toggleRadioButton(this)" value="${dto.isptSid }">${dto.isptName }</button>
-
+					<button class="btn radio-button"
+						style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
+						value="${dto.isptSid }">${dto.isptName }</button>
 				</c:forEach>
 			</div>
 
+			<script>
+				$(document).ready(function()
+				{
+					// 클릭한 버튼에 selected 클래스 추가 및 제거
+					$('.radio-button').click(function()
+					{
+						$(this).toggleClass('selected');
+						if ($(this).hasClass('selected'))
+						{
+							$(this).css('background-color', '#367539'); // 선택된 스타일로 변경
+						} else
+						{
+							$(this).css('background-color', '#4caf50'); // 원래 스타일로 변경
+						}
+					});
+				});
+			</script>
 
 
 
@@ -162,14 +256,14 @@ p {
 
 			<h2>펫시터 공고글</h2>
 			<hr>
-			
+
 			<div id="cardContainer">
 				<c:forEach var="dto" items="${list}" varStatus="status">
 					<c:if test="${status.count % 3 == 1}">
 						<div class="row" style="justify-content: space-around;">
 					</c:if>
-					
-					<div class="card" style="margin: 5px; width: 32%;">
+
+					<div class="card" style="margin: 5px; width: 27%;">
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
@@ -181,7 +275,9 @@ p {
 							<br>
 							<p>4.8 ⭐ (452개의 후기)
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								${gradeList[status.index].price}원/ 1박</p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp; ${gradeList[status.index].price}원/ 1박</p>
 						</div>
 						<!-- end .card-body -->
 					</div>
@@ -193,17 +289,6 @@ p {
 			</c:if>
 			</c:forEach>
 		</div>
-
-
-
-
-
-
-
-
-
-
-
 		</div>
 
 
