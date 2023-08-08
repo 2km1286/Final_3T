@@ -67,10 +67,6 @@
 
 </script>
 
-
-
-<style type="text/css">
-</style>
 </head>
 <body>
 			<!-- 첫 요청 시 채워진 상태. 한 마디로 내 정보 관리==업데이트폼 -->
