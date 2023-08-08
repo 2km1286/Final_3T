@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+	<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -123,7 +123,7 @@ body ::-webkit-input-placeholder {
 
 .container {
   margin: 0 auto;
-  height: 450px;
+  height: 500px;
   text-align: center;
   padding: 30px; /* 테두리와 요소들 사이의 간격 조정 */
   border: 2px solid white; /* 폼에 테두리 설정 */
