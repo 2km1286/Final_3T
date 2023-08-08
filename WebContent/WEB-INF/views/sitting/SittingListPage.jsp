@@ -201,7 +201,7 @@ p {
 
 			<!-- Selection Bar -->
 			<div class="selection-bar mb-4" 
-				style="font-family: Jua; font-size: 13pt;">
+				style="font-family: Jua; font-size: 13pt; padding-left: 30px; padding-right: 30px;">
 				<label for="location">지역:</label> <select id="location"
 					class="custom-textbox">
 					<option value="seoul">서울</option>
@@ -276,8 +276,8 @@ p {
 							<p>4.8 ⭐ (452개의 후기)
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp; ${gradeList[status.index].price}원/ 1박</p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								 ${gradeList[status.index].price}원/ 1박</p>
 						</div>
 						<!-- end .card-body -->
 					</div>
