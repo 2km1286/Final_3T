@@ -5,10 +5,15 @@ public class WalkDTO
 	private String wptitle, wpcontent, wpstart, wpend, wpaddr1, wpcreated;
 	private int wpsid, wpmaxpet, ipsid, wlsid;
 	
+
 	
-	// 범례
+	// 범례 태그
 	private int iwptsid;     
 	private String iwptname;
+	
+	// 등급
+	private int iwisid, iwiprice, iwicount;
+	private String iwigrade;
 	
 	public int getIwptsid() {
 		return iwptsid;
