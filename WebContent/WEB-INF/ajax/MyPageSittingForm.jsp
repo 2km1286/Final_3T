@@ -46,71 +46,6 @@ String cp = request.getContextPath();
 
 		});
 
-		// 예약내역을 누르면
-		$("#sittingBookList").click(function()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "sittingbooklist.action",
-				async : true,
-				success : function(data)
-				{
-					$("#myPageSPrigth").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-
-		});
-
-		// 후기를 누르면
-		$("#sittingReviewList").click(function()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "sittingreviewlist.action",
-				async : true,
-				success : function(data)
-				{
-					$("#myPageSPrigth").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-
-		});
-
-		// 수익을 누르면
-		$("#sittingMoney").click(function()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "sittingmoney.action",
-				async : true,
-				success : function(data)
-				{
-					$("#myPageSPrigth").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-
-		});
 
 	});
 </script>
@@ -318,76 +253,124 @@ String cp = request.getContextPath();
 		</div>
 		<!-- 1행 1열 끝 -->
 
+		<!-- 1행 2열 시작 -->
 		<div class="col">
-
-			<div id="sittingUpdate">
-				<!-- 오른쪽 -->
-
-				<button type="button" id="sittingBookList">예약내역</button>
-				<button type="button" id="sittingReviewList">후기</button>
-				<button type="button" id="sittingMoney">수익</button>
-
-				<div class="myPageSprigth" id="myPageSPrigth">
-					<!-- 오른쪽 버튼 아래 시작 -->
-
-					<div>
-						<!-- 마이페이지 펫시팅 들어왔을 때 디폴트 -->
-						<div id="calendar"></div>
-
-						<h3>
-							<span class="badge">예약 내역</span>
-						</h3>
-						<!-- 그 달의 예약 내역이 보인다-->
-						<div>
-
-							<div class="card">
-								<div class="card-header d-flex justify-content-between">
-									펫시팅
-									<button type="button" class="detailBtn">자세히보러가기</button>
-								</div>
-								<div class="row g-0">
-									<div class="col-md cardInfo">
-										<div class="card-body">
-											<div class="oneText">
-												<span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-												<span class="card-text" style="font-size: 14pt;">2023-08-04
-													14:00 ~ 2023-08-05 16:00</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="card">
-								<div class="card-header d-flex justify-content-between"">
-									펫시팅
-									<button type="button" class="detailBtn">자세히보러가기</button>
-								</div>
-								<div class="row g-0">
-									<div class="col-md cardInfo">
-										<div class="card-body">
-											<div class="oneText">
-												<span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-												<span class="card-text" style="font-size: 14pt;">2023-08-06
-													14:00 ~ 2023-08-06 22:00</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-
+			
+			<!-- 1행 2열의 1행 시작 -->
+			<div class="row">
+				<h3>
+					<span class="badge">후기</span>
+				</h3>
+				
+				<div><!-- 후기 시작 -->
+				
+			   		<div class="card reviewCard">
+					  <img src="..." class="card-img-top"/>
+					  <div class="card-body">
+					    <h5 class="card-title">후기 제목 입니다아아아</h5>
+					    <p class="card-text">후기 내용 어쩌고 저쩌고 </p>
+					  </div>
+					  <ul class="list-group list-group-light list-group-small">
+					    <li class="list-group-item px-4">별점 : ⭐ </li>
+					    <li class="list-group-item px-4">작성자 : 견주닉네임</li>
+					    <li class="list-group-item px-4">작성일 : 2023-08-05 </li>
+					  </ul>
 					</div>
-					<!-- 예약내역 눌렀을 때 끝 -->
-
-
-
-
-				</div>
-				<!-- 오른쪽 버튼 아래 끝 -->
-
+					
+					<div class="card reviewCard">
+					  <img src="..." class="card-img-top"/>
+					  <div class="card-body">
+					    <h5 class="card-title">후기 제목 입니다아아아</h5>
+					    <p class="card-text">후기 내용 어쩌고 저쩌고 </p>
+					  </div>
+					  <ul class="list-group list-group-light list-group-small">
+					    <li class="list-group-item px-4">별점 : ⭐ </li>
+					    <li class="list-group-item px-4">작성자 : 견주닉네임</li>
+					    <li class="list-group-item px-4">작성일 : 2023-08-05 </li>
+					  </ul>
+					</div>
+			   		
+			   	</div><!-- 후기 끝 -->
 			</div>
+			<!-- 1행 2열의 1행 끝 -->
+			
+			<!-- 1행 2열의 2행 시작 -->
+			<div class="row">
+				<h3>
+					<span class="badge">수익</span>
+				</h3>
+				<div><!-- 수익내역 시작 -->
+					<div class="mypageWalkMonDon">
+						<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
+						<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
+			        </div>
+					
+					<table class="EndTable" style="width: 700px;">
+					    <tr>
+					      <th class="EndTh">서비스 완료일</th>
+					      <th class="EndTh">매칭상대(닉네임)</th>
+					      <th class="EndTh">가격</th>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					   <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					    <tr>
+					      <td class="EndTd">2023-07-29</td>
+					      <td class="EndTd">뭐뭐닉네임</td>
+					      <td class="EndTd">30,000원</td>
+					    </tr>
+					</table>
+				</div>
+				<!-- 수익내역 끝 -->
+			</div>
+			<!-- 1행 2열의 2행 끝 -->
 
 		</div>
 		<!-- 1행 2열 끝 -->
