@@ -99,32 +99,31 @@ h2 span {
             </div>
           </div>
         </div>
-        <div class="col-md-4">
         
+        <div class="col-md-4">
           <div class="card">
             <div class="card-block">
             <span class="card-rank card-rank-2">2위</span>
-              <h4 class="card-title">섬세하나</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
+              <h4 class="card-title">[마스터 펫시터] 멍뭉스토리기민 <br></h4>
+              <h6 class="card-subtitle text-muted">후기 2,001개<br>예약완료 횟수 2,812건 </h6>
+              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,021<br></p>
+              <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
-          
         </div>
+        
         <div class="col-md-4">
           <div class="card">
             <div class="card-block">
             <span class="card-rank card-rank-3">3위</span>
-              <h4 class="card-title">노력형집순이</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
+              <h4 class="card-title">[마스터 펫시터] 코딩왕별희<br></h4>
+              <h6 class="card-subtitle text-muted">후기 1,928개<br>예약완료 횟수 2,421건 </h6>
+              <p class="card-text p-y-1" style="float: right;"><br>❤️ 2,888<br></p>
+              <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
         </div>
+
       </div>
       <hr>
       </div><br><br>	
@@ -135,42 +134,44 @@ h2 span {
      인기 대리산책러 <span>TOP 3</span></h2>
      <hr>
       <div class="row">
+      
         <div class="col-md-4">
           <div class="card">
             <div class="card-block">
             <span class="card-rank card-rank-1">1위</span>
-              <h4 class="card-title">달려라거북이</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
+              <h4 class="card-title">[마스터 산책러] 우사인볼트이서<br></h4>
+              <h6 class="card-subtitle text-muted">후기 4,928개<br>산책완료 횟수 5,221건 </h6>
+              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,888<br></p>
+              <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
         </div>
+        
         <div class="col-md-4">
           <div class="card">
             <div class="card-block">
             <span class="card-rank card-rank-2">2위</span>
-              <h4 class="card-title">전력질주토끼</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
+              <h4 class="card-title">[마스터 산책러] 철인3종하경<br></h4>
+              <h6 class="card-subtitle text-muted">후기 3,128개<br>산책완료 횟수 4,002건 </h6>
+              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,688<br></p>
+              <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
         </div>
+        
         <div class="col-md-4">
           <div class="card">
             <div class="card-block">
             <span class="card-rank card-rank-3">3위</span>
-              <h4 class="card-title">느릿거북이</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
+              <h4 class="card-title">[마스터 산책러] 파괴왕김덕배<br></h4>
+              <h6 class="card-subtitle text-muted">후기 2,918개<br>산책완료 횟수 3,821건 </h6>
+              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,128<br></p>
+              <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
         </div>
+        
+        
       </div>
       <hr>
       </div>
