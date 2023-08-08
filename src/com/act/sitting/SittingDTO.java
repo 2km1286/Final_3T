@@ -19,8 +19,8 @@ public class SittingDTO
 	private String grade;
 	private int price;
 	
-	// SITTING_BOOK_VIEW		
-	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pmemSid;		// pmemSid는 예약을 요청한 멤버시드
+	// SITTING_BOOK_VIEW	// sbStart 가 나눠져있는건 달력js에서 사용하기 위함, pmemSid는 예약을 요청한 멤버시드	
+	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pmemSid;	
 	private int sbSid, sbPrice;
 	
 	public String getSbStartYear()

@@ -50,58 +50,18 @@ String cp = request.getContextPath();
 	});
 </script>
 
-<style type="text/css">
-.place {
-	padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
-	border-right: 2px solid black;
-}
-
-.carousel-control-prev, .carousel-control-next {
-	background-color: transparent; /* 배경색 투명으로 설정 */
-	border: none; /* 테두리 제거 */
-}
-
-.sittingtime {
-	font-size: 13pt;
-}
-
-.mypageWalkMonDon {
-	margin-left: 500px;
-}
-
-.firstInfo {
-	font-size: 15pt;
-	font-weight: bold;
-	color: #2dd0fc;
-}
-
-</style>
 </head>
 <body>
-<c:forEach items="${bookList}" var="book">
-    <p>bookSid${book.sbSid}</p>
-    <p>year: ${book.sbStartYear}</p>
-    <p>month: ${book.sbStartMonth}</p>
-    <p>day: ${book.sbStartDay}</p>
-</c:forEach>
 
 	<div class="row" id="sittingPlaceDiv">
 
-		<div class="col place">
+		<div class="col container-mypage">
 			<div class="row">
-				<div class="col-md-4">
-					<h2>
-						<span class="badge">핫도그님의 돌봄장소</span>
-					</h2>
-					
+				<div class="col-md">
+					<span class="badge">핫도그님의 돌봄장소</span>
 				</div>
-				<div class="col-md-4">
-					<h3>
-						<span class="badge">팔로워 5명</span>
-					</h3>
-				</div>
-				<div class="col-md-4">
-					<button type="button" class="updatePlace">돌봄장소 변경하기</button>
+				<div class="col-md">
+					<button type="button" class="detailBtn" style="margin-left: 100px;">돌봄장소 변경하기</button>
 				</div>
 			</div>
 
@@ -184,7 +144,7 @@ String cp = request.getContextPath();
 									</div>
 								</div>
 							</div>
-							<div class="events-container" style="background-color: #53e3a6;"></div>
+							<div class="events-container" style="background-color: #4caf50;"></div>
 
 						</div>
 					</div>
@@ -456,52 +416,31 @@ const months = [
 			<!-- 캘린더 끝 -->
 
 			<div class="card-body">
-				<h3>
-					<span class="badge">돌봄장소 특이사항</span>
-				</h3>
+				<span class="badge">돌봄장소 특이사항</span>
 				<button class="btn btn-outline-warning">대형견 가능</button>
 				<button class="btn btn-outline-warning">노견 가능</button>
 				<button class="btn btn-outline-warning">홈캠 가능</button>
 
-				<br>
-				<h3>
-					<span class="badge">최대 가능 견수</span>
-				</h3>
+				<span class="badge">최대 가능 견수</span>
 				<button class="btn btn-outline-warning">2마리</button>
 
-				<br>
-				<br>
-				<h3>
-					<span class="badge">돌봄장소 이름</span>
-				</h3>
+				<span class="badge">돌봄장소 이름</span>
 				<!-- 가져와져있음 -->
-				<input type="text" id="" class="" style="width: 600px;"
-					readonly="readonly"> <br>
-				<br>
-				<h3>
-					<span class="badge">돌봄장소 소개</span>
-				</h3>
+				<input type="text" id="" class="" style="width: 600px;" readonly="readonly"> <br><br>
+				
+				<span class="badge">돌봄장소 소개</span>
 				<!-- 가져와져있음 -->
 				<textarea rows="5" cols="80" readonly="readonly"></textarea>
 
-				<br>
-				<br>
-				<h3>
-					<span class="badge">돌봄장소 주소</span>
-				</h3>
+				<span class="badge">돌봄장소 주소</span>
 				<!-- 가져와져있음 -->
-				<input type="text" id="" class="" style="width: 600px;"
-					readonly="readonly">
+				<input type="text" id="" class="" style="width: 600px;"	readonly="readonly">
 
-				<h3>
-					<span class="badge">돌봄장소 우편번호</span>
-				</h3>
+				<span class="badge">돌봄장소 우편번호</span>
 				<!-- 가져와져있음 -->
-				<input type="text" id="" class="" style="width: 600px;"
-					readonly="readonly"> <br>
-				<br>
-				<h3>
-					<span class="badge">돌봄장소 상세주소</span>
+				<input type="text" id="" class="" style="width: 600px;"	readonly="readonly"> <br>
+
+				<span class="badge">돌봄장소 상세주소</span>
 				</h3>
 				<!-- 가져와져있음 -->
 				<input type="text" id="" class="" style="width: 600px;"
@@ -523,7 +462,7 @@ const months = [
 		<!-- 1행 1열 끝 -->
 
 		<!-- 1행 2열 시작 -->
-		<div class="col">
+		<div class="col container-mypage">
 			
 			<!-- 1행 2열의 1행 시작 -->
 			<div class="row">
