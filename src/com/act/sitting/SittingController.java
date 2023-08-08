@@ -74,7 +74,6 @@ public class SittingController
 			view = "/WEB-INF/ajax/MyPageSittingRegisterForm.jsp";
 		
 		
-		view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 		
 		return view;
 	}
@@ -87,6 +86,15 @@ public class SittingController
 		String result = "";
 		// AJAX
 		result = "/WEB-INF/ajax/UpdateSPInfoForm.jsp";
+		return result;
+	}
+	
+	// 마이페이지에서 펫시팅의 돌봄장소 등록하기를 눌렀을 때
+	@RequestMapping("/registerspinfoform.action")
+	public String registerSpInfoForm()
+	{
+		String result = "";
+		result = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 		return result;
 	}
 
