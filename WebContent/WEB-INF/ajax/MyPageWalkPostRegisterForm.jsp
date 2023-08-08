@@ -10,7 +10,7 @@
 <head>
 <link rel="icon" href="./images/logo_transparent.png"/>
 <meta charset="UTF-8"> 
-<title>마이페이지_대리산책</title>
+<title>마이페이지_대리산책_시험만 봄</title>
 
 <style type="text/css">
 
@@ -30,9 +30,9 @@
 			<div class="row" style="border-bottom: 2px solid black;">
 				<div class="col-md-6 noticeAll" style="border-right: 2px solid black;">
 					
-					<h3><span class="badge">대리산책러가 되어보세요</span></h3>
+					<h3><span class="badge">공고글을 올려서 대리산책을 시작해보세요</span></h3>
 					<div><!-- 내가 올린 대리산책 공고글 시작 -->
-		               <button type="button" class="detailBtn">대리산책러 지원하러 가기</button>
+		               <button type="button" class="detailBtn">대리산책 공고글 올리러 가기</button>
 					</div><!-- 내가 올린 대리산책 공고글 끝-->
 					
 				</div><!-- 1행1열 끝 -->
