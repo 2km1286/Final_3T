@@ -19,24 +19,57 @@ public class SittingDTO
 	private String grade;
 	private int price;
 	
-	// SITTING_BOOK_VIEW		// memSid==견주멤시드는 위에 있음
-	private String sbSid, sbStart, sbEnd, sbPrice, petSid;
+	// SITTING_BOOK_VIEW		
+	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pmemSid;		// pmemSid는 예약을 요청한 멤버시드
+	private int sbSid, sbPrice;
 	
-	public String getSbSid()
+	public String getSbStartYear()
+	{
+		return sbStartYear;
+	}
+	public void setSbStartYear(String sbStartYear)
+	{
+		this.sbStartYear = sbStartYear;
+	}
+	public String getSbStartMonth()
+	{
+		return sbStartMonth;
+	}
+	public void setSbStartMonth(String sbStartMonth)
+	{
+		this.sbStartMonth = sbStartMonth;
+	}
+	public String getSbStartDay()
+	{
+		return sbStartDay;
+	}
+	public void setSbStartDay(String sbStartDay)
+	{
+		this.sbStartDay = sbStartDay;
+	}
+	public String getPmemSid()
+	{
+		return pmemSid;
+	}
+	public void setPmemSid(String pmemSid)
+	{
+		this.pmemSid = pmemSid;
+	}
+	public int getSbSid()
 	{
 		return sbSid;
 	}
-	public void setSbSid(String sbSid)
+	public void setSbSid(int sbSid)
 	{
 		this.sbSid = sbSid;
 	}
-	public String getSbStart()
+	public int getSbPrice()
 	{
-		return sbStart;
+		return sbPrice;
 	}
-	public void setSbStart(String sbStart)
+	public void setSbPrice(int sbPrice)
 	{
-		this.sbStart = sbStart;
+		this.sbPrice = sbPrice;
 	}
 	public String getSbEnd()
 	{
@@ -45,22 +78,6 @@ public class SittingDTO
 	public void setSbEnd(String sbEnd)
 	{
 		this.sbEnd = sbEnd;
-	}
-	public String getSbPrice()
-	{
-		return sbPrice;
-	}
-	public void setSbPrice(String sbPrice)
-	{
-		this.sbPrice = sbPrice;
-	}
-	public String getPetSid()
-	{
-		return petSid;
-	}
-	public void setPetSid(String petSid)
-	{
-		this.petSid = petSid;
 	}
 	public String getGrade()
 	{
