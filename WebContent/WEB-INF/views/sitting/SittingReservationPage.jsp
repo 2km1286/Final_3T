@@ -241,58 +241,107 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 
 							<!-- 후기 -->
 							<div>
-								<h5 class="card-title text-center">고객 후기 991개 ⭐⭐⭐⭐⭐</h5>
-								<br>
+								<h5 class="card-title text-center">고객 후기 991개&nbsp;&nbsp;⭐⭐⭐⭐⭐</h5>
+								<br><br>
 
-								<!-- 후기 사진 -->
-							<div id="carouselExample" class="carousel slide">
-								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<img src="images/walktestpro.jpg" class="d-block w-100"
-											alt="...">
-									</div>
-									<div class="carousel-item">
-										<img
-											src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp"
-											class="d-block w-100" alt="...">
-									</div>
-									<div class="carousel-item">
-										<img
-											src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp"
-											class="d-block w-100" alt="...">
-									</div>
-								</div>
-								<button class="carousel-control-prev" type="button"
-									data-bs-target="#carouselExample" data-bs-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								</button>
-								<button class="carousel-control-next" type="button"
-									data-bs-target="#carouselExample" data-bs-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								</button>
-							</div>
-							<br>
-								<hr>
-								
-								<div class="row">
-									<div class="col-4">
+								<!-- 후기 사진 -->								
+								<!-- <div class="row">
+									<div class="col-3">
 										<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px; border-radius: 50%;">
 									</div>
-									<div class="col-8">
-										<h5 class="card-title" style="margin-top: 8px;">baby</h5>
+									<div class="col-5">
+										<h5 class="card-title">baby</h5>
 										<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
 										<br>
 										<h6 class="card-subtitle text-muted mt-2">
-											저희 아기 산책 잘해주셔서 너무 감사해용~~<br> 다음에 또 이용할게요
+											저희 아기 산책 잘해주셔서 너무 감사해용~~ 다음에 또 이용할게요
 										</h6>
 									</div>
-								</div>
+								</div> -->
 
-								<br>
-								<br>
+							<div>
+							<div class="row">
+								<div class="col-3">
+									<img src="images/cute.png" alt="" class="card-img-top"
+										style="width: 100px; height: 100px; border-radius: 50%;">
+								</div>
+								<div class="col-5">
+									<h5 class="card-title">⭐⭐⭐⭐⭐</h5><h5 class="card-title">baby</h5>
+									<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
+									<br>
+									<h6 class="card-subtitle">
+									오늘 처음으로 이 산책 서비스를 이용해봤는데, 정말 만족스러웠어요!<br>
+									산책러 분이 우리 강아지와 정말 잘 어울려서, 강아지도 즐거워하는 모습을 봤어요.<br> 
+									다음에도 또 이용하려고 합니다.</h6>
+								</div>
+							</div><br>
+							
+							<div class="row">
+								<div class="col text-center" style="margin-right: 35px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+								</div>
+							</div>
+							</div>
+							<br><hr>
+							
+							<div>
+							<div class="row">
+								<div class="col-3">
+									<img src="images/cute.png" alt="" class="card-img-top"
+										style="width: 100px; height: 100px; border-radius: 50%;">
+								</div>
+								<div class="col-5">
+									<h5 class="card-title">⭐⭐⭐⭐⭐</h5><h5 class="card-title">baby</h5>
+									<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
+									<br>
+									<h6 class="card-subtitle">
+									오늘 처음으로 이 산책 서비스를 이용해봤는데, 정말 만족스러웠어요!<br>
+									산책러 분이 우리 강아지와 정말 잘 어울려서, 강아지도 즐거워하는 모습을 봤어요.<br> 
+									다음에도 또 이용하려고 합니다.</h6>
+								</div>
+							</div><br>
+							
+							<div class="row">
+								<div class="col text-center" style="margin-right: 35px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+								</div>
+							</div>
+							</div>
+							<br><hr>
+							
+							<div>
+							<div class="row">
+								<div class="col-3">
+									<img src="images/cute.png" alt="" class="card-img-top"
+										style="width: 100px; height: 100px; border-radius: 50%;">
+								</div>
+								<div class="col-5">
+									<h5 class="card-title">⭐⭐⭐⭐⭐</h5><h5 class="card-title">baby</h5>
+									<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
+									<br>
+									<h6 class="card-subtitle">
+									오늘 처음으로 이 산책 서비스를 이용해봤는데, 정말 만족스러웠어요!<br>
+									산책러 분이 우리 강아지와 정말 잘 어울려서, 강아지도 즐거워하는 모습을 봤어요.<br> 
+									다음에도 또 이용하려고 합니다.</h6>
+								</div>
+							</div><br>
+							
+							<div class="row">
+								<div class="col text-center" style="margin-right: 35px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+								</div>
+							</div>
+							</div>
+							<br>
+							<br>
 							</div>
 
-						<!-- </div> -->
 					</div>
 				</div>
 
@@ -311,8 +360,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">만남
-												장소</small></span><br> <span class="card-text">멍멍동 멍멍아파트 단지 앞 왈왈
-											공원 입구</span>
+												장소</small></span><br> <span class="card-text">멍멍동 멍멍아파트 단지 앞 왈왈 공원 입구</span>
 									</div>
 									<hr>
 									<div class="oneText row">
@@ -340,7 +388,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">최대 반려견 수</small></span><br> 
-										<label for="dogs"></label> <input type="number" id="dogs" class="custom-textbox" min="1" max="5" value="2">
+										<span class="card-text">2</span>
 									</div>
 									<hr>
 									<div class="oneText">
@@ -418,7 +466,6 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 				</div>
 			</div>
 		</div>
-		<!-- </div> -->
 	</section>
 	<!-- 게시글 신고버튼  -->
 	<div class="d-flex align-items-center justify-content-end">
