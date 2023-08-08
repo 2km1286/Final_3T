@@ -306,5 +306,13 @@ public class MemberController
 		return result;
 	}
 	
-	
+	// 마이페이지에서 자세히보러가기 클릭시 예약정보확인
+	@RequestMapping("/reservationinfo.action")
+	public String getReservationInfo()
+	{
+		String result = "";
+		
+		result = "/WEB-INF/views/index/ReservationInfo.jsp";
+		return result;
+	}
 }
