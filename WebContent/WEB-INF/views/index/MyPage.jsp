@@ -57,6 +57,8 @@
 		// 펫시팅
 		$("#myPageSitting").click(function()
 		{
+			
+			
 			$.ajax(
 			{
 				type:"POST"
