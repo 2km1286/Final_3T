@@ -136,6 +136,10 @@ h2, h3, h4, h5 {
 	color: gold;
 }
 
+.review-button {
+	visibility: hidden;
+}
+
 </style>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -154,36 +158,58 @@ h2, h3, h4, h5 {
 		
 		$(".timeline-end-button").click(function()
 		{
-			$("#reviewModal").modal("show"); 
-			
+			var result = confirm("타임라인을 종료하시겠습니까? 종료하시면 후기를 작성하실 수 있습니다.");
+
+			if (result)
+			{
+				alert("타임라인을 종료하셨습니다. 후기를 작성해주세요.");
+				$(".review-button").css("visibility", "visible");
+				$(".timeline-end-button").hide();
+				$(".emergency-button").hide();
+				$(".upload-btn").hide();
+
+			} else
+			{
+				console.log("타임라인을 종료하지 않으셨습니다.");
+			}
 		});
-		
-		$("#submitReview").click(function() {
-			 
-		   var reviewText = $("#reviewText").val(); 
-			
-		 $('#reviewModal').modal("hide"); 
-		
+
+		$(".review-button").click(function()
+		{
+			$("#reviewModal").modal("show");
+
 		});
-		
-		$(".star").click(function() {
+
+		$("#submitReview").click(function()
+		{
+			var reviewText = $("#reviewText").val();
+
+			$('#reviewModal').modal("hide");
+
+		});
+
+		$(".star").click(function()
+		{
 			var value = $(this).data("value");
-			$("#starRating .star").each(function() {
-				if ($(this).data("value") <= value) {
+			$("#starRating .star").each(function()
+			{
+				if ($(this).data("value") <= value)
+				{
 					$(this).addClass("selected");
-				} else {
+				} else
+				{
 					$(this).removeClass("selected");
 				}
 			});
 		});
-		
+
 		$("#submitReview").click(function()
 		{
 			alert("작성이 완료되었습니다.");
+			$(".review-button").hide();
 		});
-	
+
 	});
-	
 </script>
 
 </head>
@@ -390,8 +416,17 @@ h2, h3, h4, h5 {
 									<button class="btn btn-success timeline-end-button" style="width: 450px;">
 	  								<i class="fas fa-stopwatch"></i> 타임라인 종료
 									</button>
-								</div>	
-								</div> 
+								</div>
+
+
+								<div class="center-button-container">
+									<button class="btn btn-success review-button" style="width: 450px;">
+									후기 작성
+									</button>
+								</div>
+
+
+									</div> 
 							</div>
 							</div>
 					</div>
