@@ -11,8 +11,8 @@ String cp = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>대리산책 공고글</title>
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
@@ -80,7 +80,7 @@ h2 span {
 	background-color: #f00;
 	color: #fff;
 	border: none;
-	padding: 5px 10px;
+	padding: 10px 20px;
 	cursor: pointer;
 	margin-right: 10px;
 	border-radius: 5px;
@@ -88,7 +88,7 @@ h2 span {
 
 /* 선택된 라디오 버튼의 스타일 */
 .radio-button.selected {
-	background-color: #ff0000;
+	background-color: #367539; /* 선택된 버튼에 진한 녹색 계열 배경 색상 적용 */
 }
 
 @import url('https://fonts.googleapis.com/css?family=Jua:400');
@@ -103,93 +103,205 @@ p {
 .btn-box {
 	font-family: "Jua";
 }
+
+.tags {
+	margin-bottom: 50px;
+}
+
+.selection-bar.mb-4 {
+	background-color: #fff; /* 배경색을 하얀색으로 */
+	color: #000; /* 글자색을 검정색으로 */
+	padding: 10px; /* 패딩 추가 */
+	border: 2px solid #000; /* 테두리 추가 */
+	border-radius: 5px; /* 테두리 둥글기 설정 */
+	margin-bottom: 20px; /* 아래쪽 여백 추가 */
+}
+
+.selection-bar.mb-4 label, .selection-bar.mb-4 select, .selection-bar.mb-4 button
+	{
+	margin-right: 10px;
+}
+
+.selection-bar.mb-4 button {
+	background-color: #fff;
+	color: #000;
+	border: 2px solid #000;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.selection-bar.mb-4 button:hover {
+	background-color: #4caf50;
+}
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+
+.badge {
+	font-family: "Jua";
+}
+
+.mypageSidevar {
+	font-family: "Jua";
+	font-size: 15pt;
+}
+
+.card-header {
+	font-family: "Jua";
+	font-size: 17pt;
+}
+
+.card {
+	font-family: "Jua";
+	cursor: pointer;
+}
+
+.checkBox {
+	font-family: "Jua";
+	font-size: 15pt;
+}
+
+.superscript {
+	font-family: "Jua";
+}
+
+.detailBtn {
+	font-family: "Jua";
+}
+
+.updatePlace {
+	font-family: "Jua";
+	font-weight: normal;
+}
 </style>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+	$().ready(function()
+	{
 
-		$().ready(function()
+		// 펫시팅 돌봄장소 클릭시 예약화면
+		$("#cardContainer").click(function()
 		{
-			 
-			 // 대리산책 공고글 클릭시 예약화면
-			 $("#cardContainer").click(function()
-			{
-				 window.location.href = "walkreservationpage.action";
-			});
+			window.location.href = "walkreservation.action";
 		});
-	
+	});
 </script>
 
 </head>
 <body>
 	<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
 	</c:import>
-
 	<section>
-		<div class="container py-5 bg-light">
+		<div class="container-fluid py-5 bg-light"
+			style="padding-left: 80px; padding-right: 80px;">
+
 			<!-- Selection Bar -->
-			<div class="selection-bar mb-4">
+			<div class="selection-bar mb-4"
+				style="font-family: Jua; font-size: 13pt; padding-left: 30px; padding-right: 30px;">
 				<label for="location">지역:</label> <select id="location"
 					class="custom-textbox">
 					<option value="seoul">서울</option>
 					<option value="busan">부산</option>
 					<!-- Add more options as needed -->
 				</select> <label for="datepicker">날짜 선택:</label> <input type="text"
-					id="datepicker" class="custom-textbox" readonly> <label
-					for="time">시간:</label> <input type="time" id="time"
-					class="custom-textbox"> <label for="dogs">견수:</label> <input
-					type="number" id="dogs" class="custom-textbox" min="1" max="5">
+					id="datepicker" class="custom-textbox" readonly
+					style="width: 115px;"> 
+					
+					<label for="timepicker">시간:</label> <input type="text" 
+					id="timepicker" class="custom-textbox"
+					readonly style="width: 80px;"> 
+					
+					<label for="dogs">견수:</label>
+				    <input type="number" id="dogs" class="custom-textbox" min="1"
+					max="5">
 
-				<button class="btn btn-danger" onclick="filterList()">적용</button>
+				<button class="button" onclick="filterList()">적용</button>
+				
+				<button class="button" onclick="walkTest()" style="float: right;">대리산책러
+					지원하기</button>
+				<button class="button" onclick="walkWrite()" style="float: right;">대리산책 공고글 작성
+					</button>
+				<script>
+					function walkTest()
+					{
+						window.location.href = "walktest.action";
+					}
+				</script>
 			</div>
 
-			<div class="mb-4">
+			<div class="mb-4" style="font-family: Jua; font-size: 25pt;">
 				<!-- 버튼 모양의 복수 선택 라디오 버튼 -->
-				<button class="btn btn-danger radio-button"
-					onclick="toggleRadioButton(this)">비흡연자</button>
-				<button class="btn btn-danger radio-button"
-					onclick="toggleRadioButton(this)">노견 가능</button>
-				<button class="btn btn-danger radio-button"
-					onclick="toggleRadioButton(this)">장애견 가능</button>
-				<button class="btn btn-danger radio-button"
-					onclick="toggleRadioButton(this)">응급처치 가능</button>
+				<c:forEach var="dto" items="${IndexTagList }">
+					<button class="btn radio-button"
+						style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
+						value="${dto.iwptsid }">${dto.iwptname }</button>
+				</c:forEach>
 			</div>
+
+			<script>
+				$(document).ready(function()
+				{
+					// 클릭한 버튼에 selected 클래스 추가 및 제거
+					$('.radio-button').click(function()
+					{
+						$(this).toggleClass('selected');
+						if ($(this).hasClass('selected'))
+						{
+							$(this).css('background-color', '#367539'); // 선택된 스타일로 변경
+						} else
+						{
+							$(this).css('background-color', '#4caf50'); // 원래 스타일로 변경
+						}
+					});
+				});
+			</script>
+
+
+
+
 
 			<h2>대리산책 공고글</h2>
 			<hr>
-			<div id="cardContainer" class="row">
-				<!-- 카드 데이터를 미리 선언 -->
-				<c:set var="cards">
-					<div class="col-md-4">
-						<div class="card">
-							<img src="images/walktestpro.jpg" alt="" class="card-img-top"
-								style="width: 220px;">
-							<div class="card-body">
-								<h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
-								<h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한
-									집사입니다!</h6>
-								<br>
-								<p>4.2 ⭐ (991개의
-									후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
-							</div>
-						</div>
-					</div>
-				</c:set>
 
-				<!-- 기본 카드 9개 표시 -->
-				<c:forEach var="i" begin="1" end="9">
-					<c:if test="${i % 3 == 1}">
-						<div class="row">
+			<div id="cardContainer">
+				<c:forEach var="dto" items="${list}" varStatus="status">
+					<c:if test="${status.count % 3 == 1}">
+						<div class="row" style="justify-content: space-around;">
 					</c:if>
-					<c:out value="${cards}" escapeXml="false" />
-					<c:if test="${i % 3 == 0 || i == 9}">
+
+					<div class="card" style="margin: 5px; width: 27%;">
+						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
+							style="width: 100%;">
+						<div class="card-body">
+							<h5 class="card-title">
+								${dto.wptitle}</h5>
+							<h6 class="card-subtitle text-muted">${dto.wpaddr1}
+								<br /> ${dto.wpcontent}
+							</h6>
+							<br>
+							<p>4.8 ⭐ (452개의 후기)
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								45,000원/ 1박</p>
+						</div>
+						<!-- end .card-body -->
+					</div>
+					<!-- end .card -->
+
+					<c:if test="${status.count % 3 == 0}">
 			</div>
-			<br>
+			<!-- end .row -->
 			</c:if>
 			</c:forEach>
 		</div>
 		</div>
+
 
 		<script>
 			// 무한 스크롤 함수
@@ -251,4 +363,5 @@ p {
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 </html>
