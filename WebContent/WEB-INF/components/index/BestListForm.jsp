@@ -63,6 +63,16 @@ h2 span {
 .card-content {
   padding-top: 40px; /* Adjust the value to add space between card title and rank */
 }
+
+.card
+ {
+	background-color: #fff; /* 배경색을 하얀색으로 */
+	color: #000; /* 글자색을 검정색으로 */
+	padding: 10px; /* 패딩 추가 */
+	border: 2px solid #000; /* 테두리 추가 */
+	border-radius: 5px; /* 테두리 둥글기 설정 */
+	margin-bottom: 20px; /* 아래쪽 여백 추가 */
+}
 </style>
 
 <!-- 이하 동일한 HTML 코드 -->
@@ -82,15 +92,15 @@ h2 span {
           <div class="card">
             <div class="card-block">
             <span class="card-rank card-rank-1">1위</span>
-              <h4 class="card-title">케어왕기배씨</h4>
-              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-              <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-              <a href="#" class="card-link">link</a>
-              <a href="#" class="card-link">Second link</a>
+              <h4 class="card-title">[마스터 펫시터] 케어왕기배씨<br></h4>
+              <h6 class="card-subtitle text-muted">후기 2,128개<br>예약완료 횟수 3,012건 </h6>
+              <p class="card-text p-y-1" style="float: right;"><br>❤️ 5,102<br></p>
+              <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
+        
           <div class="card">
             <div class="card-block">
             <span class="card-rank card-rank-2">2위</span>
@@ -101,6 +111,7 @@ h2 span {
               <a href="#" class="card-link">Second link</a>
             </div>
           </div>
+          
         </div>
         <div class="col-md-4">
           <div class="card">
