@@ -112,21 +112,7 @@ public class MemberService implements IMemberService
 		return result;
 	}
 	
-	// 회원의 STS(시험제출번호) 유무(상태) 반환
-	public int sittingStsCount(MemberDTO dto)
-	{
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		int result = dao.stsCount(dto);
-		return result;
-	}
 	
-	// 회원의 SL(펫시팅면허번호) 유무(상태) 반환
-	public int sittingSlCount(MemberDTO dto)
-	{
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		int result = dao.slCount(dto);
-		return result;
-	}
 	
 	
 
