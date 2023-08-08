@@ -32,4 +32,11 @@ public interface IMemberDAO
 	
 	// 닉네임 중복 확인
 	public int searchNick(String jmNickName);
+	
+	// 회원의 시험제출 유무 확인
+	public int stsCount(MemberDTO dto);
+	
+	// 회원의 펫시터 면허번호 유무 확인
+	public int slCount(MemberDTO dto);
+	
 }
