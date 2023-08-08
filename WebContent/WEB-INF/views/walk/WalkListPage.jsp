@@ -283,7 +283,7 @@ p {
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
-							<h5 class="card-title">
+							<h5 class="card-title" >
 								${dto.wptitle}</h5>
 							<h6 class="card-subtitle text-muted">${dto.wpaddr1}
 								<br /> ${dto.wpcontent}
