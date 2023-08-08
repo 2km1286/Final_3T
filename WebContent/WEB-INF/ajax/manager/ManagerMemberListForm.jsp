@@ -9,6 +9,7 @@ String cp = request.getContextPath();
 <head>
 <meta charset="UTF-8">
 <title>ManagerMemberList</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
 <style>
@@ -32,75 +33,82 @@ input[type="button"] {
 	border: none;
 	border-radius: 5px;
 	padding: 10px;
-	cursor: pointer;
 	height: 40px;
 	cursor: pointer;
 }
 
-input[type="button"]:hover {
-	background-color: #0056b3;
+input[type="button"]:hover 
+{
+	background-color: gray;
+	
+}
+.table td
+{
+	border:none;
+	text-align: center;
 }
 </style>
+<script type="text/javascript">
+$(function()
+		{
+			// 처리완료된 신고
+			$("#searchMemberBtn").click(function()
+			{
+				
+				$.ajax(
+				{
+					type:"POST"
+					, url:"memberlistform.action"
+					, async:true
+					, success:function(data)
+					{
+						$("#tableMemberList").html(data);
+											
+					}
+					, error:function(e)
+					{
+						alert(e.responseText);
+					}
+					
+				});	
+			});
+			
+		});
+</script>
 </head>
 <body>
-	<div style="margin-left: -10%; width: 120%;">
+	
+<div style="margin-left: -10%; width: 120%;">
 		<div>
 			<h2 style="margin-top: 20px;">회원관리</h2>
 			<hr>
 		</div>
 
 		<div>
-			<form>
-				<input type="text" placeholder="아이디 검색" id="userId"> <input
-					type="button" value="검색" onclick="searchAjax()">
-			</form>
+				<input type="text" placeholder="닉네임" id="userNick"> 
+				<input type="button" value="검색" id="searchMemberBtn" style="background-color: #312A25;">
 		</div>
-
-		<div id="completeTable" class="mt-4">
-			<table class="table table-bordered table-hover">
+		<div id="tableMemberList" class="mt-4">
+			<table class="table table-bordered table-hover" >
 				<thead>
 					<tr>
-						<th style="color: black;">접수날짜</th>
-						<th style="color: black;">펫시터 등급</th>
-						<th style="color: black;">펫시터 닉네임</th>
-						<th style="color: black;">펫시팅 글 이름</th>
-						<th style="color: black;">신고사유</th>
-						<th style="color: black;">신고조치</th>
-						<th style="color: black;">신고처리한 관리자</th>
-						<th style="color: black;">처리날짜</th>
+						<th style="color: white;">회원ID</th>
+						<th style="color: white;">회원명</th>
+						<th style="color: white;">성별</th>
+						<th style="color: white;">닉네임</th>
+						<th style="color: white;">전화번호</th>
+						<th style="color: white;">가입일자</th>
 					</tr>
 				</thead>
-				<tbody>
-					<%
-						// 임의의 데이터 생성
-					String[][] data = { { "2023-08-01", "Gold", "PetLover123", "Summer Fun", "불적절한 언어 사용", "경고", "Admin1", "2023-08-02" },
-							{ "2023-08-02", "Silver", "AnimalLover", "Loving Paws", "매너 불이행", "휴면 계정", "Admin2", "2023-08-03" },
-							{ "2023-08-03", "Bronze", "CaringPal", "Cozy Retreat", "사기행위 및 도주 시도", "강제 탈퇴", "Admin3", "2023-08-04" },
-							{ "2023-08-04", "Platinum", "PawsomeCare", "Playful Pets", "신고 무시 및 협박", "계정 정지", "Admin4", "2023-08-05" },
-							{ "2023-08-05", "Gold", "PetWatchdog", "Lovely Comps", "반려동물 유기 및 방치", "계정 삭제", "Admin5", "2023-08-06" } };
-
-					// 데이터 출력
-					for (String[] row : data)
-					{
-					%>
-					<tr>
-						<td><%=row[0]%></td>
-						<td><%=row[1]%></td>
-						<td><%=row[2]%></td>
-						<td><%=row[3]%></td>
-						<td><%=row[4]%></td>
-						<td><%=row[5]%></td>
-						<td><%=row[6]%></td>
-						<td><%=row[7]%></td>
-					</tr>
-					<%
-						}
-					%>
-				</tbody>
+				
 			</table>
+			<div style="margin-top: 100px; text-align: center;">
+			<h2 style="text-align: center; color: gray;">검색 결과 없음</h2>
+			 <div style="display: flex; flex-direction: column; align-items: center;">
+                <img src="images/question.png" alt="questionImg" width="150px;">
+            </div>
+			</div>
 		</div>
-
-	</div>
-
+</div>
 </body>
 </html>

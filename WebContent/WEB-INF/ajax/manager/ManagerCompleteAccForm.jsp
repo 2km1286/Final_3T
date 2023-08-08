@@ -2,27 +2,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 처리완료 신고</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 </head>
 <body>
 	<div style="margin-left: -10%; width: 120%;">
 		<div>
-			<h2 style="margin-top: 20px;">처리완료된 신고</h2>
+			<h2 style="margin-top: 20px;">사고처리 내역</h2>
 			<hr />
 			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
 			<button class="report-button" id="dog-walking-report">대리산책
 				신고</button>
 			<button class="report-button" id="profile-report">프로필 신고</button>
+			<button class="report-button" id="emergency-report">비상 상황</button>
 		</div>
 		<div id="completeTable" class="mt-4">
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover" id="tableComplete">
 				<thead>
 					<tr>
 						<th style="color: white;">접수날짜</th>

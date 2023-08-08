@@ -19,13 +19,12 @@ String cp = request.getContextPath();
 			<h2 style="margin-top: 20px;">신고현안 및 비상관리</h2>
 			<hr />
 			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
-			<button class="report-button" id="dog-walking-report">대리산책
-				신고</button>
+			<button class="report-button" id="dog-walking-report">대리산책 신고</button>
 			<button class="report-button" id="profile-report">프로필 신고</button>
 			<button class="report-button" id="emergency-report">비상 상황</button>
 		</div>
 		<div id="completeTable" class="mt-4">
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover" id="tableComplete">
 				<thead>
 					<tr>
 						<th style="color: white;">접수날짜</th>
