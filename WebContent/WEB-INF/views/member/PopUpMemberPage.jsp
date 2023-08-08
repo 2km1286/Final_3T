@@ -157,10 +157,10 @@ div.profil
 				    	    <div class="col-md-8 cardInfo" >
 				    	      <div class="card-body">
 				    	      	<div class="oneText">
-				    	      		<span class="card-text"><small class="text-muted">프로산책러</small></span><br>
+				    	      		<span class="card-text"><small class="text-muted">일반회원</small></span><br>
 				    	      		<span class="nick card-text">폴폴이</span>
 				    	      	</div>
-				    		        <span class="card-text">4.8 ⭐  (40개의 후기)</span>
+				    		        <span class="card-text">달린 후기가 없습니다.</span>
 				    	        </div>
 				    	        <div class="porfilSu">
 			    		        	<small class="text-muted ">알람</small>&nbsp;&nbsp;&nbsp;
