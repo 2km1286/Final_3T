@@ -103,7 +103,7 @@
 .petDeletBtn { width: 80px;}
 .profil { padding-right: 5px; padding-left: 5px; margin-right: 10px; margin-top: 10px;}
 .myInfoDiv { padding-bottom: 20px;}
-#petInsertBtn {background-color: white; border: 0; font-size: 40pt; color: #53e3a6;}
+#petInsertBtn {background-color: white; border: 0; font-size: 40pt; color: #4caf50;}
 </style>
 </head>
 <body>
