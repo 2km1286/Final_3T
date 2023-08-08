@@ -8,4 +8,5 @@ public interface ISittingDAO
 	public ArrayList<SittingDTO> IndexTagList();
 	public ArrayList<SittingDTO> gradeList();
 	//public ArrayList<SittingDTO> tagList(String memSid);
+	public SittingDTO mybooklist();
 }

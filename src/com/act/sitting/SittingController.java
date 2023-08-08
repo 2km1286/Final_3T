@@ -43,11 +43,19 @@ public class SittingController
 		return result;
 	}
 	
-	// 마이페이지 펫시팅. AJAX로 처리.
+	// 마이페이지 펫시팅. AJAX로 처리. 들어온 예약 확인하기
 	@RequestMapping("/mypagesittingform.action")
-	public String myPageSitting()
+	public String myPageSitting(Model model)
 	{
 		String result = "";
+		
+		SittingDTO dto = new SittingDTO();
+		dto.setPetSid("1");
+		dto.setSbEnd("2023-08-10");
+		
+		
+		model.addAttribute("dto",dto);
+		
 		// AJAX
 		result = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 		return result;
@@ -68,6 +76,7 @@ public class SittingController
 	public String sittingBookList()
 	{
 		String result = "";
+		
 		// AJAX
 		result = "/WEB-INF/ajax/SittingBookList.jsp";
 		return result;
@@ -102,7 +111,6 @@ public class SittingController
 
 		return result;
 	}
-	
 	
 	
 
