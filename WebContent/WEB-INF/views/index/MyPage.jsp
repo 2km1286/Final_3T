@@ -229,6 +229,9 @@ sapn.card-text {font-size: 14pt;}
 
 /* 돌봄공간 정보 */
 .infoOne { padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid gray;}
+.infoOneNoline { padding-bottom: 10px; margin-bottom: 20px;}
+
+
 .smallTitle { color: #4caf50; width: 80%;}
 .smallText {font-size: 15pt;}
 
@@ -241,7 +244,21 @@ div.reviewCard { margin-left: 25%; margin-bottom: 20px; width: 50%;}
 .EndTh, .EndTd { border: 1px solid #4caf50; text-align: center; padding: 8px; }
 .EndTh { background-color: #4caf50;}
 
+/* 탈퇴하기버튼 */
+#withdraw-button {
+    position: absolute;
+    right: 0;
+    font-size: 10pt;
+    width: 80px;
+    margin-right: 10px;
+    border: 0;
+    color: black;
+}
+/* 반려견카드  */
+div.petCard {width: 25%;}
 
+/* 반려견 추가 버튼 */
+#petInsertBtn {background-color: white; border: 0; font-size: 30pt; color: #4caf50;}
 /* 
 div.cardImage {padding-right: 0;}
 div.cardInfo {padding-right: 0; padding-left: 0;}
