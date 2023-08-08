@@ -23,11 +23,5 @@ public interface IMemberService
 	
 	public String searchMemNickName(MemberDTO dto);
 	
-	public int sittingStsCount(MemberDTO dto);
-	
-	public int sittingSlCount(MemberDTO dto);
-	
-	
-	
 	
 }
