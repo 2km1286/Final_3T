@@ -24,6 +24,12 @@
 		ORDER BY IWPT_SID
 	</select>
 	
+	<select id="gradeList" resultType="com.act.walk.WalkDTO">
+		SELECT IWI_SID AS IWISID, IWI_PRICE AS IWIPRICE, IWI_POSSIBLE_MATCH_COUNTS AS IWICOUNT,
+        IWI_GRADE AS IWIGRADE
+        FROM INDEX_WALK_INFO
+	</select>
+	
 
 	
 
