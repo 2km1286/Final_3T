@@ -26,5 +26,18 @@
 		FROM SITTING_PLACE_TAGS_VIEW
 		WHERE MEMSID=#{memSid}
 	</select> -->
+	
+	<select id="stsCount" resultType="java.lang.Integer">
+		SELECT NVL(COUNT(STSSID), 0) AS STSCOUNT          
+		FROM STS_CONDITION_VIEW                                             
+		WHERE MEMSID = #{memSid}
+	</select>
+	
+	<select id="slCount" resultType="java.lang.Integer">
+		SELECT NVL(COUNT(SL_SID), 0) AS SLCOUNT
+		FROM SITTING_LICENSE SL JOIN STS_CONDITION_VIEW SCV
+                        		ON SL.STS_SID = SCV.STSSID
+                        		WHERE SCV.MEMSID = #{memSid}
+	</select>
 
 </mapper>
