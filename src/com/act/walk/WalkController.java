@@ -24,6 +24,7 @@ public class WalkController {
 
 		model.addAttribute("list", walkService.list());
 		model.addAttribute("IndexTagList", walkService.IndexTagList());
+		model.addAttribute("gradeList", walkService.gradeList());
 
 		view = "/WEB-INF/views/walk/WalkListPage.jsp";
 		return view;
