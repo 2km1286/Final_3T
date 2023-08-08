@@ -1,6 +1,7 @@
 package com.act.sitting;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,16 +46,13 @@ public class SittingController
 	
 	// 마이페이지 펫시팅. AJAX로 처리. 들어온 예약 확인하기
 	@RequestMapping("/mypagesittingform.action")
-	public String myPageSitting(Model model)
+	public String myPageSitting(HttpSession session ,Model model)
 	{
 		String result = "";
 		
-		SittingDTO dto = new SittingDTO();
-		dto.setPetSid("1");
-		dto.setSbEnd("2023-08-10");
+		String memSid = (String)session.getAttribute("memSid");
 		
-		
-		model.addAttribute("dto",dto);
+		model.addAttribute("bookList", sittingService.booklist(memSid));
 		
 		// AJAX
 		result = "/WEB-INF/ajax/MyPageSittingForm.jsp";
@@ -68,37 +66,6 @@ public class SittingController
 		String result = "";
 		// AJAX
 		result = "/WEB-INF/ajax/UpdateSPInfoForm.jsp";
-		return result;
-	}
-
-	// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingbooklist.action")
-	public String sittingBookList()
-	{
-		String result = "";
-		
-		// AJAX
-		result = "/WEB-INF/ajax/SittingBookList.jsp";
-		return result;
-	}
-
-	// 마이페이지 펫시팅의 후기내역을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingreviewlist.action")
-	public String sittingReviewList()
-	{
-		String result = "";
-		// AJAX
-		result = "/WEB-INF/ajax/SittingReviewList.jsp";
-		return result;
-	}
-	
-	// 마이페이지 펫시팅의 수익을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingmoney.action")
-	public String sittingMoney()
-	{
-		String result = "";
-		// AJAX
-		result = "/WEB-INF/ajax/SittingMoney.jsp";
 		return result;
 	}
 	

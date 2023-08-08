@@ -13,8 +13,6 @@ String cp = request.getContextPath();
 
 <title>마이페이지_펫시팅</title>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
 <!-- 돌봄장소 이미지 넘기는 스크립트 -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -80,15 +78,23 @@ String cp = request.getContextPath();
 </style>
 </head>
 <body>
+<c:forEach items="${bookList}" var="book">
+    <p>SBSID: ${book.sbSid}</p>
+    <p>SBSTARTYEAR: ${book.sbStartYear}</p>
+    <p>SBSTARTMONTH: ${book.sbStartMonth}</p>
+    <p>PMEMSID: ${book.pmemSid}</p>
+    <hr>
+</c:forEach>
+
 	<div class="row" id="sittingPlaceDiv">
 
 		<div class="col place">
 			<div class="row">
 				<div class="col-md-4">
 					<h2>
-						<span class="badge">${dto.petSid }핫도그님의 돌봄장소</span>
+						<span class="badge">핫도그님의 돌봄장소</span>
 					</h2>
-					<input type="hidden" id="test" value="${dto.petSid }">
+					
 				</div>
 				<div class="col-md-4">
 					<h3>
@@ -186,9 +192,6 @@ String cp = request.getContextPath();
 				</div>
 				<script type="text/javascript" src="js/popperCal.js"></script>
 				<script type="text/javascript" src="js/mainCal.js">
-					
-					
-				
 				</script>
 			</div>
 			<!-- 캘린더 끝 -->

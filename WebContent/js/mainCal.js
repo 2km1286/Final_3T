@@ -226,7 +226,7 @@ var event_data = {
     "events": [
     {
         "occasion": " 예약번호 ",
-        "bookSid": document.getElementById("test").value,
+        "bookSid": 1111,
         "link" : "mainpage.action",
         "year": 2023,
         "month": 8,
