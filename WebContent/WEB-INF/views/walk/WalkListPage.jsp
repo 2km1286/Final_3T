@@ -210,31 +210,26 @@ p {
 					<!-- Add more options as needed -->
 				</select> <label for="datepicker">날짜 선택:</label> <input type="text"
 					id="datepicker" class="custom-textbox" readonly
-					style="width: 115px;"> 
-					
-					<label for="timepicker">시간:</label> <input type="text" 
-					id="timepicker" class="custom-textbox"
-					readonly style="width: 80px;"> 
-					
-					<label for="dogs">견수:</label>
-				    <input type="number" id="dogs" class="custom-textbox" min="1"
-					max="5">
+					style="width: 115px;"> <label for="timepicker">시간:</label>
+				<input type="text" id="timepicker" class="custom-textbox" readonly
+					style="width: 80px;"> <label for="dogs">견수:</label> <input
+					type="number" id="dogs" class="custom-textbox" min="1" max="5">
 
 				<button class="button" onclick="filterList()">적용</button>
-				
+
 				<button class="button" onclick="walkTest()" style="float: right;">대리산책러
 					지원하기</button>
-				<button class="button" onclick="walkWrite()" style="float: right;">대리산책 공고글 작성
-					</button>
+				<button class="button" onclick="walkWrite()" style="float: right;">대리산책
+					공고글 작성</button>
 				<script>
 					function walkTest()
 					{
 						window.location.href = "walktest.action";
 					}
-					
+
 					function walkWrite()
 					{
-						
+
 					}
 				</script>
 			</div>
@@ -279,12 +274,12 @@ p {
 						<div class="row justify-content-between">
 					</c:if>
 
-					<div class="card" style="margin: 5px; width: 32%; margin-bottom: 50px;">
+					<div class="card"
+						style="margin: 5px; width: 32%; margin-bottom: 50px;">
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
-							<h5 class="card-title" >
-								${dto.wptitle}</h5>
+							<h5 class="card-title">${dto.wptitle}</h5>
 							<h6 class="card-subtitle text-muted">${dto.wpaddr1}
 								<br /> ${dto.wpcontent}
 							</h6>
@@ -293,8 +288,7 @@ p {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								45,000원/ 1박</p>
+								&nbsp;&nbsp;&nbsp;&nbsp; 45,000원/ 1박</p>
 						</div>
 						<!-- end .card-body -->
 					</div>
@@ -356,6 +350,17 @@ p {
 </body>
 
 <script>
+
+    flatpickr("#timepicker", 
+	{
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    defaultHour: 12, // 초기 기본 시간 설정
+    defaultMinute: 0, // 초기 기본 분 설정
+    minuteIncrement: 15 // 분 단위 설정
+    });
+
 	flatpickr("#datepicker",
 	{
 		dateFormat : 'Y-m-d',
