@@ -10,7 +10,7 @@
 <head>
 <link rel="icon" href="./images/logo_transparent.png"/>
 <meta charset="UTF-8"> 
-<title>마이페이지_대리산책</title>
+<title>마이페이지_대리산책_일반회원</title>
 
 <style type="text/css">
 
@@ -65,16 +65,10 @@
 			<div class="row" style="border-bottom: 2px solid black;">
 				<div class="col-md-6 noticeAll" style="border-right: 2px solid black;">
 					
-					<h3><span class="badge">공고글 등록하기</span></h3>
-					<div><!-- 공고글 등록하기 시작 -->
-					
-			          <div class="card walkCard">
-			            <div class="card-body">
-			               <button type="button" class="detailBtn" id="registerPost">공고 등록하기</button>
-			            </div>
-			          </div>
-			          
-					</div><!-- 공고글 등록하기 끝-->
+					<h3><span class="badge">대리산책러가 되어보세요</span></h3>
+					<div><!-- 내가 올린 대리산책 공고글 시작 -->
+		               <button type="button" class="detailBtn">대리산책러 지원하러 가기</button>
+					</div><!-- 내가 올린 대리산책 공고글 끝-->
 					
 				</div><!-- 1행1열 끝 -->
 				
@@ -83,38 +77,11 @@
 					<h3><span class="badge">당일예약내역</span></h3>
 					<div><!-- 당일예약내역 시작 -->
 						<div class="card">
-							<div class="card-header d-flex justify-content-between"">
-								대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
+							<div class="card-body">
+								내역이 없습니다.
+							</div>
 					    </div>
 						
-						
-						<div class="card">
-							<div class="card-header d-flex justify-content-between"">
-								대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 17:00 ~ 2023-08-04 18:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
-					    
 					</div><!-- 당일예약내역 끝 -->
 				</div><!-- 1행2열 끝 -->
 				
@@ -124,33 +91,7 @@
 				<div class="col-md-6 noticeWalk" style="border-right: 2px solid black;"> 
 					<h3><span class="badge">나에게 달린 대리산책 후기</span></h3>
 					<div><!-- 나에게 달린 대리산책 후기 시작 -->
-					
-						<div class="card reviewCard">
-						  <img src="..." class="card-img-top"/>
-						  <div class="card-body">
-						    <h5 class="card-title">후기 제목 입니다아아아</h5>
-						    <p class="card-text">후기 내용 어쩌고 저쩌고 </p>
-						  </div>
-						  <ul class="list-group list-group-light list-group-small">
-						    <li class="list-group-item px-4">별점 : ⭐ </li>
-						    <li class="list-group-item px-4">작성자 : 견주닉네임</li>
-						    <li class="list-group-item px-4">작성일 : 2023-08-05 </li>
-						  </ul>
-						</div>
-						
-						
-						<div class="card reviewCard">
-						  <img src="..." class="card-img-top"/>
-						  <div class="card-body">
-						    <h5 class="card-title">후기 제목</h5>
-						    <p class="card-text">후기 내용</p>
-						  </div>
-						  <ul class="list-group list-group-light list-group-small">
-						    <li class="list-group-item px-4">별점</li>
-						    <li class="list-group-item px-4">작성자</li>
-						    <li class="list-group-item px-4">작성일</li>
-						  </ul>
-						</div>
+						<p>내역이 없습니다.</p>
 						
 					</div><!-- 나에게 달린 대리산책 후기 끝 -->	
 						
@@ -159,74 +100,7 @@
 				<div class="col-md-6 noticeSeating">
 					<h3><span class="badge">수익내역</span></h3>
 					<div><!-- 수익내역 시작 -->
-						<div class="mypageWalkMonDon">
-							<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
-							<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
-				        </div>
-						
-						<table class="EndTable">
-						    <tr>
-						      <th class="EndTh">서비스 완료일</th>
-						      <th class="EndTh">매칭상대(닉네임)</th>
-						      <th class="EndTh">가격</th>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						   <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">뭐뭐닉네임</td>
-						      <td class="EndTd">30,000원</td>
-						    </tr>
-						</table>
-						
+						<p>대리산책러가 되어서 수익활동을 해보세요</p>
 					</div><!-- 수익내역 끝 -->
 					
 				</div><!-- 2행2열 끝 -->		
