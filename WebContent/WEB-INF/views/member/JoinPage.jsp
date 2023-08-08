@@ -254,6 +254,9 @@ form input[name="userNick"] {
   width: 350px; /* Reduced the width to 350px */
 }
 
+form input[name="jmZipCode"] {
+  width: 350px; /* Reduced the width to 350px */
+}
 
 
 
@@ -322,11 +325,18 @@ form input[name="userNick"] {
         
         <input type="text" placeholder="상세주소를 입력해주세요." name="jmAddr2" id="jmAddr2" style="width: 100%;"> -->
         
-        <input type="text" id="jmZipCode" placeholder="우편번호">
-		<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-		<input type="text" id="jmAddr1" placeholder="주소"><br>
-		<input type="text" id="jmAddr2" placeholder="상세주소">
-		<input type="text" id="extraAddress" placeholder="참고항목">
+        <div class="input-container">
+        <input type="text" id="jmZipCode" name="jmZipCode" placeholder="우편번호">
+		<button type="button" onclick="execDaumPostcode()" style="font-size: 95%;">우편번호 찾기</button>
+        </div>
+        <div class="input-container">
+		<input type="text" id="jmAddr1" name="jmAddr1" placeholder="주소"><br>
+        </div>
+        <div class="input-container">
+		<input type="text" id="jmAddr2" name="jmAddr2" placeholder="상세주소">
+        </div>
+        
+		<input type="hidden" id="extraAddress" placeholder="참고항목">
         
         <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 		<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer"
@@ -343,7 +353,7 @@ form input[name="userNick"] {
 		        element_layer.style.display = 'none';
 		    }
 		
-		    function sample2_execDaumPostcode() {
+		    function execDaumPostcode() {
 		        new daum.Postcode({
 		            oncomplete: function(data) {
 		                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -421,19 +431,7 @@ form input[name="userNick"] {
 		        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
 		    }
 		    
-		    let delay = 300;
-		    let timer = null;
 
-		    // Javascript
-		    window.addEventListener('resize', function(){
-		    	clearTimeout(timer);
-		    	timer = setTimeout(function(){
-		            
-		            if (window.innerWidth <= 800) {
-		          		alert('현재 브라우저 크기가 <= 800px');
-		       		}
-		    	}, delay);
-		    });
 
 		</script>
         
@@ -530,7 +528,7 @@ form input[name="userNick"] {
 					});
 					
 					
-				    $("#login-button").click(function(event) 
+				    $("#join-button").click(function(event) 
 				    {
 				        if($("#jmId").val()=="" || $("#jmPw").val()=="" || $("#userPwCheck").val()=="" || $("#jmName").val()=="" || 
 				               $("#jmSsn").val()=="" || $("#jmGen").val()=="" || $("#jmNickName").val()=="" || $("#jmTel").val()=="" || 
