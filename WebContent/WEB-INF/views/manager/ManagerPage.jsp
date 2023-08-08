@@ -15,17 +15,20 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 		 
-<!-- FONT jua -->
-  <style>
-  @import url('https://fonts.googleapis.com/css?family=Jua:400');
-  
-  </style>
   
   
   <style type="text/css">
   body 
   {
   overflow-x: hidden;
+}
+h2
+{
+	color: #312A25;;
+}
+hr
+{
+	background-color: #312A25;;
 }
 
 #sidebar-wrapper 
@@ -98,7 +101,7 @@
   background: none;
 }
 .report-button {
-    background-color: #007bff;
+    background-color: #312A25;;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -146,6 +149,7 @@
   100% { transform: translateX(0) translateY(0); }
 }
 
+
 .card-buttons {
         display: flex;
         justify-content: center;
@@ -159,7 +163,34 @@
     }
     
   </style>
-  
+
+<style type="text/css">
+
+.table
+{
+	border-color: #007BFF;
+}
+.table th
+{
+	padding: 0px;
+	text-align:center;
+	font-size: medium;
+	background-color: #312A25;;
+	
+}
+.table td
+{
+	padding: 2px;
+	font-size: medium;
+	text-align: center;
+	color: black;
+}
+ table.table-hover > tbody > tr:hover {
+    background-color: #gray;
+    color: white;
+    cursor: pointer;
+  }
+</style>
 <script type="text/javascript">
 $(function()
 		{
@@ -204,20 +235,59 @@ $(function()
 					
 				});	
 			});
+			
+			$("#memberList").click(function()
+					{
+						$.ajax(
+						{
+							type:"POST"
+							, url:"managermemberlist.action"
+							, async:true
+							, success:function(data)
+							{
+								$("#mainContent").html(data);
+													
+							}
+							, error:function(e)
+							{
+								alert(e.responseText);
+							}
+							
+						});	
+					});
+			$("#graph").click(function()
+					{
+						$.ajax(
+						{
+							type:"POST"
+							, url:"managerchartform.action"
+							, async:true
+							, success:function(data)
+							{
+								$("#mainContent").html(data);
+													
+							}
+							, error:function(e)
+							{
+								alert(e.responseText);
+							}
+							
+						});	
+					});
 		});
 </script>
 
 
 
 </head>
-<body>
+<body style="background-color: white;">
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
     <div class="row">
         <!-- 사이드바 -->
         <div class="col-lg-3">
-            <div id="sidebar-wrapper">
+            <div id="sidebar-wrapper" style="background-color: #312A25;">
             	<h2 style="margin-left: 20px; color: white; margin-top: 20px;">관리 페이지</h2>
             	
             	<span style="font-size: small; color: blue; margin-left:100px; font-style: italic;">
@@ -225,7 +295,7 @@ $(function()
                 <ul class="sidebar-nav" style="margin-left:0;">
                     
                     <li id="reportList">
-                            <span style="margin-left:10px;">신고 현안 및 비상관리</span>
+                            <span style="margin-left:10px;">신고현안 및 비상관리</span>
                     </li>
                     <li id="graph">
                             <span style="margin-left:10px;">통계</span>
@@ -257,6 +327,7 @@ $(function()
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </body>
 
 </html>

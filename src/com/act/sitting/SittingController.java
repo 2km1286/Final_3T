@@ -93,6 +93,16 @@ public class SittingController
 		return result;
 	}
 	
+	// 펫시팅 리스트에서 펫시터 지원하기 눌렀을때
+	@RequestMapping("/sittintest.action")
+	public String main()
+	{
+		String result = "";
+		result = "/WEB-INF/views/sitting/sittingTestStartPage.jsp";
+
+		return result;
+	}
+	
 	
 	
 

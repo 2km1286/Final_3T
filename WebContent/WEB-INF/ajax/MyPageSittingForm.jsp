@@ -246,8 +246,6 @@ String cp = request.getContextPath();
 						</div>
 					</div>
 				</div>
-				<script type="text/javascript" src="js/bootstrapCal.js"></script>
-				<script type="text/javascript" src="js/jquery.min.js"></script>
 				<script type="text/javascript" src="js/popperCal.js"></script>
 				<script type="text/javascript" src="js/mainCal.js"></script>
 			</div>
