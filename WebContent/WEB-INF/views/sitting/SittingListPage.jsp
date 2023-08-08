@@ -197,7 +197,7 @@ p {
 	<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
 	</c:import>
 	<section>
-		<div class="container-fluid py-5 bg-light"  style="padding-left: 80px; padding-right: 80px;">
+		<div class="container-fluid py-5 bg-light"  style="padding-left: 150px; padding-right: 150px;">
 
 			<!-- Selection Bar -->
 			<div class="selection-bar mb-4" 
@@ -260,10 +260,10 @@ p {
 			<div id="cardContainer">
 				<c:forEach var="dto" items="${list}" varStatus="status">
 					<c:if test="${status.count % 3 == 1}">
-						<div class="row" style="justify-content: space-around;">
+						<div class="row justify-content-between">
 					</c:if>
 
-					<div class="card" style="margin: 5px; width: 27%;">
+					<div class="card" style="margin: 5px; width: 32%; margin-bottom: 50px;">
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
