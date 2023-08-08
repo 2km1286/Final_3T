@@ -259,49 +259,8 @@ div.petCard {width: 25%;}
 
 /* 반려견 추가 버튼 */
 #petInsertBtn {background-color: white; border: 0; font-size: 30pt; color: #4caf50;}
-/* 
-div.cardImage {padding-right: 0;}
-div.cardInfo {padding-right: 0; padding-left: 0;}
-div.porfilSu{margin-left:20px; width: 300px; }
-.nick {font-size: 16pt;}
-div.profil
-{ 
-  padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
-  border: 2px solid black; /* 폼에 테두리 설정 */
-  border-radius: 10px; /* 테두리의 둥근 정도 설정 */
-}
-*/
 
-.tagBtn
-{
-	  border: 1px solid #53e3a6;
-	  background-color: white;
-	  padding: 2px 2px 2px 2px;
-	  color: #53e3a6;
-	  border-radius: 3px;
-	  height: 35px;
-	  font-size: 16pt;
-	  font-weight: bold;
-	  margin-bottom: 10px;
-}
-.updatePlace
-{
-	  border: 1px solid #4caf50;
-	  background-color: #4caf50;
-	  padding: 2px 2px 2px 2px;
-	  color: white;
-	  border-radius: 3px;
-	  height: 35px;
-	  font-size: 16pt;
-	  font-weight: bold;
-	  margin-bottom: 10px;
-	  width: 200px;
-	  
-} */
-
-
-
-
+button.list-group-item { margin-bottom: 3px;}
 
 </style>
 
