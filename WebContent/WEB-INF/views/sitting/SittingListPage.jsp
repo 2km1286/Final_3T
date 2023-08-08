@@ -166,10 +166,10 @@ p {
 			<div id="cardContainer">
 				<c:forEach var="dto" items="${list}" varStatus="status">
 					<c:if test="${status.count % 3 == 1}">
-						<div class="row">
+						<div class="row" style="justify-content: space-around;">
 					</c:if>
-
-					<div class="card" style="margin: 5px; width: 30%;">
+					
+					<div class="card" style="margin: 5px; width: 32%;">
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
