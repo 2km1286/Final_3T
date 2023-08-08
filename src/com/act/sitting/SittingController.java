@@ -63,35 +63,6 @@ public class SittingController
 		return result;
 	}
 
-	// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingbooklist.action")
-	public String sittingBookList()
-	{
-		String result = "";
-		// AJAX
-		result = "/WEB-INF/ajax/SittingBookList.jsp";
-		return result;
-	}
-
-	// 마이페이지 펫시팅의 후기내역을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingreviewlist.action")
-	public String sittingReviewList()
-	{
-		String result = "";
-		// AJAX
-		result = "/WEB-INF/ajax/SittingReviewList.jsp";
-		return result;
-	}
-	
-	// 마이페이지 펫시팅의 수익을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingmoney.action")
-	public String sittingMoney()
-	{
-		String result = "";
-		// AJAX
-		result = "/WEB-INF/ajax/SittingMoney.jsp";
-		return result;
-	}
 	
 	// 펫시팅 리스트에서 펫시터 지원하기 눌렀을때
 	@RequestMapping("/sittintest.action")
