@@ -101,7 +101,7 @@ hr
   background: none;
 }
 .report-button {
-    background-color: #312A25;;
+    background-color: #312A25;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -169,6 +169,7 @@ hr
 .table
 {
 	border-color: #007BFF;
+	
 }
 .table th
 {
@@ -274,6 +275,25 @@ $(function()
 							
 						});	
 					});
+			$("#completeAcc").click(function()
+					{
+						$.ajax(
+						{
+							type:"POST"
+							, url:"managercompleteacc.action"
+							, async:true
+							, success:function(data)
+							{
+								$("#mainContent").html(data);
+													
+							}
+							, error:function(e)
+							{
+								alert(e.responseText);
+							}
+							
+						});	
+					});
 		});
 </script>
 
@@ -288,11 +308,13 @@ $(function()
         <!-- 사이드바 -->
         <div class="col-lg-3">
             <div id="sidebar-wrapper" style="background-color: #312A25;">
-            	<h2 style="margin-left: 20px; color: white; margin-top: 20px;">관리 페이지</h2>
+            <h3 style="margin-left: 10px; color: white; margin-top: 20px;">
+            <img alt="adminImg" src="images/adminImg.png" width="50px;" style="margin: 5px;">
+            	관리 페이지</h3>
             	
             	<span style="font-size: small; color: blue; margin-left:100px; font-style: italic;">
             	<span style="color:white;">접속된 관리자 : </span>김기민</span>
-                <ul class="sidebar-nav" style="margin-left:0;">
+                <ul class="sidebar-nav" style="margin-left:0; margin-top: 50px;">
                     
                     <li id="reportList">
                             <span style="margin-left:10px;">신고현안 및 비상관리</span>
@@ -316,7 +338,7 @@ $(function()
 
         <!-- 메인 콘텐츠 -->
         <div class="col" id="mainContent" style="margin-left: -200px;">
-			<c:import url="/WEB-INF/ajax/ManagerReportList.jsp"></c:import>
+			<c:import url="/WEB-INF/ajax/manager/ManagerReportListForm.jsp"></c:import>
 		</div>
 	</div>
 </div>

@@ -8,31 +8,33 @@ String cp = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 처리완료 신고</title>
+<title>관리자 현안</title>
+
+
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 </head>
 <body>
 	<div style="margin-left: -10%; width: 120%;">
 		<div>
-			<h2 style="margin-top: 20px;">처리완료된 신고</h2>
+			<h2 style="margin-top: 20px;">신고현안 및 비상관리</h2>
 			<hr />
 			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
-			<button class="report-button" id="dog-walking-report">대리산책
-				신고</button>
+			<button class="report-button" id="dog-walking-report">대리산책 신고</button>
 			<button class="report-button" id="profile-report">프로필 신고</button>
+			<button class="report-button" id="emergency-report">비상 상황</button>
 		</div>
 		<div id="completeTable" class="mt-4">
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover" id="tableComplete">
 				<thead>
 					<tr>
-						<th style="color: black;">접수날짜</th>
-						<th style="color: black;">펫시터 등급</th>
-						<th style="color: black;">펫시터 닉네임</th>
-						<th style="color: black;">펫시팅 글 이름</th>
-						<th style="color: black;">신고사유</th>
-						<th style="color: black;">신고조치</th>
-						<th style="color: black;">신고처리한 관리자</th>
-						<th style="color: black;">처리날짜</th>
+						<th style="color: white;">접수날짜</th>
+						<th style="color: white;">펫시터 등급</th>
+						<th style="color: white;">펫시터 닉네임</th>
+						<th style="color: white;">펫시팅 글 이름</th>
+						<th style="color: white;">신고사유</th>
+						<th style="color: white;">신고조치</th>
+						<th style="color: white;">신고처리한 관리자</th>
+						<th style="color: white;">처리날짜</th>
 					</tr>
 				</thead>
 				<tbody>
