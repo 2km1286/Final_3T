@@ -19,6 +19,49 @@ public class SittingDTO
 	private String grade;
 	private int price;
 	
+	// SITTING_BOOK_VIEW		// memSid==견주멤시드는 위에 있음
+	private String sbSid, sbStart, sbEnd, sbPrice, petSid;
+	
+	public String getSbSid()
+	{
+		return sbSid;
+	}
+	public void setSbSid(String sbSid)
+	{
+		this.sbSid = sbSid;
+	}
+	public String getSbStart()
+	{
+		return sbStart;
+	}
+	public void setSbStart(String sbStart)
+	{
+		this.sbStart = sbStart;
+	}
+	public String getSbEnd()
+	{
+		return sbEnd;
+	}
+	public void setSbEnd(String sbEnd)
+	{
+		this.sbEnd = sbEnd;
+	}
+	public String getSbPrice()
+	{
+		return sbPrice;
+	}
+	public void setSbPrice(String sbPrice)
+	{
+		this.sbPrice = sbPrice;
+	}
+	public String getPetSid()
+	{
+		return petSid;
+	}
+	public void setPetSid(String petSid)
+	{
+		this.petSid = petSid;
+	}
 	public String getGrade()
 	{
 		return grade;
