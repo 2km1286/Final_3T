@@ -182,8 +182,10 @@ String cp = request.getContextPath();
 			    <input class="form-check-input" type="radio" name="visibility" id="private" value="private">
 			    <label class="form-check-label" for="private">비공개</label>
 			</div>
-			<button type="button" class="updatePlace" id="registerSPInfo">돌봄장소
+			<div>
+				<button type="button" class="updatePlace" id="registerSPInfo">돌봄장소
 					등록하기</button>
+			</div>
 		</div>
 	
 	</div><!-- 1행 1열 끝 -->
