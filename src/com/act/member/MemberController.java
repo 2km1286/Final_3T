@@ -315,4 +315,7 @@ public class MemberController
 		result = "/WEB-INF/views/index/ReservationInfo.jsp";
 		return result;
 	}
+	
+	
+	
 }
