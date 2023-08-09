@@ -60,15 +60,23 @@
 	</update>
 
 	<select id="searchId" resultType="java.lang.Integer">
-		SELECT COUNT(*) AS COUNT
-		FROM JOIN_MEMBER
-		WHERE JM_ID = #{jmId}
-	</select>
-
-	<select id="searchNick" resultType="java.lang.Integer">
-		SELECT COUNT(*) AS COUNT
-		FROM JOIN_MEMBER
-		WHERE JM_NICKNAME = #{jmNickName}
-	</select>
-	
+      SELECT COUNT(*) AS COUNT
+      FROM JOIN_MEMBER
+      WHERE JM_ID = #{jmId}
+   </select>
+   
+   <select id="searchNick" resultType="java.lang.Integer">
+      SELECT COUNT(*) AS COUNT
+      FROM JOIN_MEMBER
+      WHERE JM_NICKNAME = #{jmNickName}
+   </select>
+   
+   <select id="memberList" resultType="java.lang.Integer">
+   SELECT JM_ID AS USER_ID, JM_NAME AS USER_NAME,JM_GENDER AS USER_GENDER, JM_NICKNAME AS USER_NICKNAME
+	,JM_TEL AS USER_TEL, MEM_REGIST_DATE AS USER_REGIST
+	FROM JOIN_MEMBER JM
+	LEFT JOIN MEMBER MEM
+	ON JM.MEM_SID = MEM.MEM_SID
+</select>
+   
 </mapper>

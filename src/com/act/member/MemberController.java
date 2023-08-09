@@ -224,7 +224,7 @@ public class MemberController
 		result = "/WEB-INF/views/index/MyPage.jsp";
 		return result;
 	}
-
+	
 	// 마이페이지 알림창. AJAX로 처리.
 
 	@RequestMapping("/mypagenoticeform.action")
@@ -315,7 +315,15 @@ public class MemberController
 		result = "/WEB-INF/views/index/ReservationInfo.jsp";
 		return result;
 	}
-	
-	
-	
+
+	// 멤버 리스트 전체 출력 ajax
+	@RequestMapping("/memberlistform.action")
+	public String memberlistform()
+	{
+		String result = "";
+		
+		result = "/WEB-INF/ajax/member/MemberListForm.jsp";
+		return result;
+	}
+
 }

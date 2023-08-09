@@ -1,5 +1,7 @@
 package com.act.member;
 
+import java.util.ArrayList;
+
 public interface IMemberDAO
 {	
 	// 설명써주시고
@@ -33,4 +35,7 @@ public interface IMemberDAO
 	// 닉네임 중복 확인
 	public int searchNick(String jmNickName);
 	
+	// 멤버 리스트 전체 출력하기
+	public ArrayList<MemberDTO> memberList();
+
 }
