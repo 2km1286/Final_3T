@@ -21,7 +21,7 @@ div.sittingCard{ margin-left: 20%; width: 60%;}
 <body>
 			<div class="row">
 				<div class="col-md-6 container-mypage">
-					<h3><span class="badge">팔로잉 한 돌봄장소</span></h3>
+					<h3><span class="badge">팔로잉 한 펫시터</span></h3>
 					<div><!-- 팔로잉 한 돌봄장속 목록 시작 -->
 					
 					<div class="card sittingCard">
@@ -58,7 +58,7 @@ div.sittingCard{ margin-left: 20%; width: 60%;}
 				
 				
 				<div class="col-md-6 container-mypage">
-					<h3><span class="badge">팔로잉 한 대리산책 공고글</span></h3>
+					<h3><span class="badge">팔로잉 한 대리산책러</span></h3>
 					
 					<div><!-- 팔로잉 한 대리산책 목록 시작 -->
 						<div class="card walkCard">
