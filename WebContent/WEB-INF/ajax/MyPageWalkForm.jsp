@@ -12,6 +12,55 @@
 <meta charset="UTF-8"> 
 <title>마이페이지_대리산책</title>
 
+
+<style type="text/css">
+
+.noticeAll, .noticePet, .noticeWalk, .noticeSeating
+{
+	padding: 20px 20px 20px 20px;
+}
+.noticeCard { margin-bottom: 20px;}
+.superscript { font-size: 1.0em; vertical-align: super;}
+#totalEarningsLabel { display: inline; }
+#totalEarningsValue { display: inline; }
+.mypageWalkMonDon {width: 200px; margin-left: 560px;}
+.walkCard {width: 350px;}
+</style>
+
+<script type="text/javascript">
+	$(function()
+	{
+		// 돌봄장소 변경하기를 누르면
+
+		// 돌봄장소 수정하기를 누르면
+		$("#updateSPInfo").click(function()
+		{
+			
+			
+			$.ajax(
+			{
+				type : "POST",
+				url : "updatespinfoform.action",
+				async : true,
+				success : function(data)
+				{
+					$("#sittingPlaceDiv").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
+			});
+
+		});
+
+		
+
+	});
+</script>
+
 </head>
 <body>
 			<div class="row">
