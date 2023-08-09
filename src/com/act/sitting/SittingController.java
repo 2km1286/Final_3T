@@ -94,16 +94,29 @@ public class SittingController
 	}
 	
 	// 펫시팅 리스트에서 펫시터 지원하기 눌렀을때
-	@RequestMapping("/sittintest.action")
+	@RequestMapping("/sittingtest.action")
 	public String main()
 	{
 		String result = "";
-		result = "/WEB-INF/views/sitting/sittingTestStartPage.jsp";
-
+		result = "/WEB-INF/views/sitting/SittingTermsPage.jsp";
+		return result;
+	}
+	
+	// 펫시터 약관 동의하고 페이지로 감
+	@RequestMapping("/sittingteststart.action")
+	public String openSittingTestStart()
+	{
+		String result = "";
+		result = "/WEB-INF/views/sitting/SittingTestPage.jsp";
 		return result;
 	}
 	
 	
-	
-
+	@RequestMapping("/sittingtestpass.action")
+	public String openSittingTestPass()
+	{
+		String result = "";
+		result = "/WEB-INF/views/index/TestResultPage.jsp";
+		return result;
+	}
 }
