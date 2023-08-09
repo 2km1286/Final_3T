@@ -2,72 +2,38 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ManagerMemberList</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-<style>
-/* 검색창 스타일 */
-form {
-	display: flex;
-	max-width: 300px;
-}
-
-input[type="text"] {
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	flex: 1;
-	height: 40px;
-}
-
-input[type="button"] {
-	background-color: #007bff;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	padding: 10px;
-	cursor: pointer;
-	height: 40px;
-	cursor: pointer;
-}
-
-input[type="button"]:hover {
-	background-color: #0056b3;
-}
-</style>
 </head>
 <body>
 	<div style="margin-left: -10%; width: 120%;">
 		<div>
-			<h2 style="margin-top: 20px;">회원관리</h2>
-			<hr>
+			<h2 style="margin-top: 20px;">사고처리 내역</h2>
+			<hr />
+			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
+			<button class="report-button" id="dog-walking-report">대리산책
+				신고</button>
+			<button class="report-button" id="profile-report">프로필 신고</button>
+			<button class="report-button" id="emergency-report">비상 상황</button>
 		</div>
-
-		<div>
-			<form>
-				<input type="text" placeholder="아이디 검색" id="userId"> <input
-					type="button" value="검색" onclick="searchAjax()">
-			</form>
-		</div>
-
 		<div id="completeTable" class="mt-4">
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover" id="tableComplete">
 				<thead>
 					<tr>
-						<th style="color: black;">접수날짜</th>
-						<th style="color: black;">펫시터 등급</th>
-						<th style="color: black;">펫시터 닉네임</th>
-						<th style="color: black;">펫시팅 글 이름</th>
-						<th style="color: black;">신고사유</th>
-						<th style="color: black;">신고조치</th>
-						<th style="color: black;">신고처리한 관리자</th>
-						<th style="color: black;">처리날짜</th>
+						<th style="color: white;">접수날짜</th>
+						<th style="color: white;">펫시터 등급</th>
+						<th style="color: white;">펫시터 닉네임</th>
+						<th style="color: white;">펫시팅 글 이름</th>
+						<th style="color: white;">신고사유</th>
+						<th style="color: white;">신고조치</th>
+						<th style="color: white;">신고처리한 관리자</th>
+						<th style="color: white;">처리날짜</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -99,8 +65,6 @@ input[type="button"]:hover {
 				</tbody>
 			</table>
 		</div>
-
 	</div>
-
 </body>
 </html>

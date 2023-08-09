@@ -166,126 +166,102 @@
 </script>
 
 <style type="text/css">
-/* 마이페이지 레이아웃 스타일 */
-.container-mypage {
-  margin: 20px;;
-  padding: 30px; /* 테두리와 요소들 사이의 간격 조정 */
-  border: 2px solid black; /* 폼에 테두리 설정 */
-  border-radius: 10px; /* 테두리의 둥근 정도 설정 */
-}
-.myPageMain
-{
-	padding: 20px 20px 20px 20px;
-}
 
+/* 마이페이지 레이아웃 스타일 */
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+
+*{font-family: "Jua"}
+
+.mypageSidevar { font-size: 15pt;}
+
+.all { padding: 10px;}
+
+div.container-mypage {
+  margin: 20px 0px 20px 20px;
+  padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
+  border: 1px solid black; /* 폼에 테두리 설정 */
+  border-radius: 10px; /* 테두리의 둥근 정도 설정 */
+  max-width: 48%;
+}
 .mypageSidevar
 {
-	padding: 20px 10px 20px 10px;
+	padding: 20px 0px 20px 0px;
 	background-color: white;
 	border-left: 2px solid;
-	
 }
-.badge	
-{-webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: 0;
-  border: 0;
-  padding: 10px 15px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 18px;
-  -webkit-transition-duration: 0.25s;
-  transition-duration: 0.25s;
+span.badge
+{ 
+	font-family: "Jua"; font-size: 23px; border-radius: 3px; margin-bottom: 20px;
+	background-color: #4caf50; color: white; font-weight: lighter;
 }
-div.col-md-6 { padding: 20px 20px 20px 20px; }
-div.card {margin-bottom: 10px;}
-div.card-header {padding: 5px; }
-div.cardImage {padding-right: 0;}
-div.cardInfo {padding-right: 0; padding-left: 0;}
-div.porfilSu{margin-left:20px; width: 300px; }
 
-.nick {font-size: 16pt;}
 .detailBtn
 {
-	-webkit-appearance: none;
-	  -moz-appearance: none;
-	  appearance: none;
-	  outline: 0;
-	  border: 1px solid #53e3a6;
-	  background-color: white;
-	  padding: 5px 5px 5px 5px;
-	  color: #53e3a6;
-	  border-radius: 3px;
-	  width: 120px;
-	  height: 35px;
-	  cursor: pointer;
-	  font-size: 18px;
-	  -webkit-transition-duration: 0.25s;
-	  transition-duration: 0.25s;
+	 border: 1px solid #4caf50;
+	 background-color: white;
+	 padding: 5px 5px 5px 5px;
+	 color: #4caf50;
+	 border-radius: 3px;
+	 font-size: 18px;
 }
 
-div.profil
-{ 
-  padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
-  border: 2px solid black; /* 폼에 테두리 설정 */
-  border-radius: 10px; /* 테두리의 둥근 정도 설정 */
-}
+/* 알림카드, 예약내역카드 */
+div.card { margin-left: 10%; margin-bottom: 20px; width: 80%; border: 1px solid black;}
+div.card-header {padding: 5px; font-size: 14pt; background-color: white; border-bottom: 1px solid black;}
+sapn.card-text {font-size: 14pt;}
 
-.tagBtn
+/* 돌봄공간 사진 버튼 */
+.carousel-control-prev, .carousel-control-next
 {
-	  border: 1px solid #53e3a6;
-	  background-color: white;
-	  padding: 2px 2px 2px 2px;
-	  color: #53e3a6;
-	  border-radius: 3px;
-	  height: 35px;
-	  font-size: 16pt;
-	  font-weight: bold;
-	  margin-bottom: 10px;
+	background-color: transparent;
+	border: none;
 }
-.updatePlace
-{
-	  border: 1px solid #53e3a6;
-	  background-color: #53e3a6;
-	  padding: 2px 2px 2px 2px;
-	  color: white;
-	  border-radius: 3px;
-	  height: 35px;
-	  font-size: 16pt;
-	  font-weight: bold;
-	  margin-bottom: 10px;
-	  width: 200px;
-	  
-}
-.EndTable { border-collapse: collapse; width: 100%; }
-.EndTable tr:hover { background-color: #d6ffee; }
-.EndTh, .EndTd { border: 1px solid ##53e3a6; text-align: center; padding: 8px; }
-.EndTh { background-color: #53e3a6;}
 
-.reviewCard { margin-bottom: 30px; width: 23rem;  margin-left: 100px; margin-top: 10px;}
+/* 돌봄공간 정보 */
+.infoOne { padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid gray;}
+.infoOneNoline { padding-bottom: 10px; margin-bottom: 20px;}
+
+
+.smallTitle { color: #4caf50; width: 80%;}
+.smallText {font-size: 15pt;}
+
+/* 후기 카드  */
+div.reviewCard { margin-left: 25%; margin-bottom: 20px; width: 50%;}
+
+/* 테이블 */
+.EndTable { border-collapse: collapse;}
+.EndTable tr:hover { background-color: #daf5db; }
+.EndTh, .EndTd { border: 1px solid #4caf50; text-align: center; padding: 8px; }
+.EndTh { background-color: #4caf50;}
+
+/* 탈퇴하기버튼 */
+#withdraw-button {
+    position: absolute;
+    right: 0;
+    font-size: 10pt;
+    width: 80px;
+    margin-right: 10px;
+    border: 0;
+    color: black;
+}
+/* 반려견카드  */
+div.petCard {width: 25%;}
+
+/* 반려견 추가 버튼 */
+#petInsertBtn {background-color: white; border: 0; font-size: 30pt; color: #4caf50;}
+
+button.list-group-item { margin-bottom: 3px;}
 
 </style>
-<!-- FONT jua -->
-<style>
- @import url('https://fonts.googleapis.com/css?family=Jua:400');
-.badge { font-family: "Jua"; }
-.mypageSidevar { font-family: "Jua"; font-size: 15pt;}
-.card-header { font-family: "Jua"; font-size: 17pt;}
-.card {font-family: "Jua";}
-.checkBox {font-family: "Jua"; font-size: 15pt;}
-.superscript {font-family: "Jua";}
-.detailBtn {font-family: "Jua"; }
-.updatePlace {font-family: "Jua"; font-weight: normal;}
-</style>
+
 
 </head>
 <body>
 	<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
 	</c:import>
-	<div class="container-mypage">
+	<div class="">
 	<div class="row all">
-		<div class="col-md-10 myPageMain" id="myPageMain"><!-- 마이페이지 메인 -->
+		<div class="col-md-10" id="myPageMain"><!-- 마이페이지 메인 -->
 			<!-- 마이페이지 첫 요청시 디폴트 알림창 -->
 			<c:import url="/WEB-INF/ajax/MyPageNoticeForm.jsp"></c:import>
 		</div>

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>팝업_펫시터</title>
+<title>팝업_일반회원</title>
 
 <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -23,11 +23,6 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
-<!-- 돌봄장소 이미지 넘기는 스크립트 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <style type="text/css">
 .container-mypage {
@@ -51,7 +46,6 @@
   transition-duration: 0.25s;
 }
 div.col-md-6 { padding: 20px 20px 20px 20px; }
-div.card {margin-bottom: 10px; width: 700px;}
 div.card-header {padding: 5px; }
 div.cardImage {padding-right: 0;}
 div.cardInfo {padding-right: 0; padding-left: 0;}
@@ -91,6 +85,16 @@ div.profil
     border: none; /* 테두리 제거 */
 }
 
+.petCard {width: 320px;}
+ .petCardContainer
+{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 700px;
+}
+.px-4 {padding: 2px 5px 2px 5px; width: 320px; }
+
 </style>
 <!-- FONT jua -->
 <style>
@@ -106,56 +110,43 @@ div.profil
 <div class="container-mypage">
 	<div class="row">
 				<div class="col-md-6"><!-- 1행 1열 시작 -->
-				<h3><span class="badge">내 돌봄장소</span></h3>
-					<div class="row">	
-						<div class="col-md-6">	
-							<h2><span class="badge">핫도그님의 돌봄장소</span></h2>
-						</div>
-						<div class="col-md-6">
-							<h3><span class="badge">팔로워 5명</span></h3>
-						</div>
+				<h3><span class="badge">반려견 카드</span></h3>
+					<div class="petCardContainer"><!-- 반려견 카드 목록 시작 -->
+				
+					<div class="card petCard">
+						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
+						<div class="card-body">
+						<h5 class="card-title">인절미</h5>
+						<p class="card-text">특이사항이 적혀있어요. 우리 절미는 뛰는걸 싫어해요. 걷기만 해주세요</p>
 					</div>
-					<div style="float: left; margin-left: 20px;">
-						<!-- 돌봄장소 슬라이드 사진 시작 -->
-						<div id="carouselExample" class="carousel slide" style="width: 600px;">
-						  <div class="carousel-inner">
-						    <div class="carousel-item active">
-						      <img src="images/sitterroom.jpg" class="d-block w-100" alt="...">
-						    </div>
-						    <div class="carousel-item">
-						      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="d-block w-100" alt="...">
-						    </div>
-						    <div class="carousel-item">
-						      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="d-block w-100" alt="...">
-						    </div>
-						  </div>
-						  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						  </button>
-						  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-						  </button>
-						</div>
-						<!-- 돌봄장소 슬라이드 사진 끝 -->
+						<ul class="list-group list-group-light list-group-small">
+							<li class="list-group-item px-4">성별 : <span>남</span> </li>
+							<li class="list-group-item px-4">무게(kg) : <span>15</span> </li>
+							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
+							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
+						</ul>
 					</div>
-					<div style="float: left;">
-						<div class="moneyReview" style="margin-left: 15px;">
-							<div class="mypageWalkMonDon">
-								<h3><span class="badge">수익</span></h3>
-								<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
-								<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
-					        </div>
-					        
-					        <div>
-					        	<h3><span class="badge">후기</span></h3>
-					        	4.8 ⭐  (40개의 후기)
-					        </div>
-						</div>
+					
+					
+					<div class="card petCard">
+						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
+						<div class="card-body">
+						<h5 class="card-title">인절미</h5>
+						<p class="card-text">특이사항이 적혀있어요. 우리 절미는 뛰는걸 싫어해요. 걷기만 해주세요</p>
 					</div>
+						<ul class="list-group list-group-light list-group-small">
+							<li class="list-group-item px-4">성별 : <span>남</span> </li>
+							<li class="list-group-item px-4">무게(kg) : <span>15</span> </li>
+							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
+							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
+						</ul>
+					</div>
+					
+				</div><!-- 반려견 카드 목록 끝 -->
 				</div><!-- 1행 1열 끝 -->
 				<div class="col-md-6">
 					
-					<h3><span class="badge">내 프로필(펫시터)</span></h3>
+					<h3><span class="badge">내 프로필(대리산책러)</span></h3>
 					
 					<div class="card profil">
 				    	  
@@ -166,10 +157,10 @@ div.profil
 				    	    <div class="col-md-8 cardInfo" >
 				    	      <div class="card-body">
 				    	      	<div class="oneText">
-				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span><br>
+				    	      		<span class="card-text"><small class="text-muted">일반회원</small></span><br>
 				    	      		<span class="nick card-text">폴폴이</span>
 				    	      	</div>
-				    		        <span class="card-text">4.8 ⭐  (40개의 후기)</span>
+				    		        <span class="card-text">달린 후기가 없습니다.</span>
 				    	        </div>
 				    	        <div class="porfilSu">
 			    		        	<small class="text-muted ">알람</small>&nbsp;&nbsp;&nbsp;
@@ -190,9 +181,9 @@ div.profil
 					
 					<h3><span class="badge">확정된 예약</span></h3>
 					
-					<div class="card">
+					<div class="card" style="margin-bottom: 10px;">
 								<div class="card-header d-flex justify-content-between"">
-									펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+									대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
 								</div>	
 						    	  <div class="row g-0">
 						    	    <div class="col-md cardInfo" >
@@ -206,9 +197,9 @@ div.profil
 						    	  </div>
 					</div>
 						    
-					<div class="card">
+					<div class="card" style="margin-bottom: 10px;">
 								<div class="card-header d-flex justify-content-between"">
-									펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+									대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
 								</div>	
 						    	  <div class="row g-0">
 						    	    <div class="col-md cardInfo" >

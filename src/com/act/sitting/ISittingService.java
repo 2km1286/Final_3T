@@ -2,7 +2,7 @@ package com.act.sitting;
 
 import java.util.ArrayList;
 
-public interface ISittingDAO
+public interface ISittingService
 {
 	public ArrayList<SittingDTO> list();
 	public ArrayList<SittingDTO> IndexTagList();

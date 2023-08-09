@@ -50,7 +50,7 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-		result = "/WEB-INF/ajax/ManagerCompleteReport.jsp";
+		result = "/WEB-INF/ajax/manager/ManagerCompleteReportForm.jsp";
 		return result;
 	}
 
@@ -61,7 +61,7 @@ public class ManagerController
 		String result = "";
 		// AJAX이자 컴포넌트
 
-		result = "/WEB-INF/ajax/ManagerReportList.jsp";
+		result = "/WEB-INF/ajax/manager/ManagerReportListForm.jsp";
 		return result;
 	}
 
@@ -72,7 +72,7 @@ public class ManagerController
 		String result = "";
 		// AJAX이자 컴포넌트
 
-		result = "/WEB-INF/ajax/ManagerMemberList.jsp";
+		result = "/WEB-INF/ajax/manager/ManagerMemberListForm.jsp";
 		return result;
 	}
 
@@ -83,7 +83,18 @@ public class ManagerController
 		String result = "";
 		// AJAX이자 컴포넌트
 
-		result = "/WEB-INF/ajax/ManagerChartForm.jsp";
+		result = "/WEB-INF/ajax/manager/ManagerChartForm.jsp";
+		return result;
+	}
+	
+	// 관리자 통계. AJAX로 처리.
+	@RequestMapping("/managercompleteacc.action")
+	public String managerCompleteAcc(HttpServletRequest request)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		
+		result = "/WEB-INF/ajax/manager/ManagerCompleteAccForm.jsp";
 		return result;
 	}
 
