@@ -185,12 +185,37 @@ p {
 	{
 
 		// 펫시팅 돌봄장소 클릭시 예약화면
-		$("#cardContainer").click(function()
+		$("#spPost").click(function()
 		{
 			window.location.href = "sittingreservationpage.action";
 		});
+		
+		
+		
+		$("#filter").click(function()
+		{	
+			var AddrData = "extraAddr=" + $("#extraAddr").val();
+			alert("동 : " + $("#extraAddr").val());
+			
+			$.ajax(
+			{
+				type : "POST",
+				url : "sittingfilterlistform.action",
+				async : true,
+				success : function(data)
+				{
+					$("#cardContainer").html(data);
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+			});
+		});
+		
 	});
 </script>
+
 
 </head>
 <body>
@@ -205,9 +230,9 @@ p {
 				
 				
 				<!-- 동 검색 구역 시작 -->
-				<!-- <input type="text" id="sample2_postcode" placeholder="우편번호"> -->
-				<input type="button" onclick="sample2_execDaumPostcode()" value="지역 찾기"><br>
-				<input type="text" id="gu" placeholder="구">
+				<input type="text" id="zipCode" placeholder="우편번호" readonly="readonly">
+				<input type="button" onclick="sample2_execDaumPostcode()" value="지역 찾기">
+				<input type="text" id="jmAddr1" name="jmAddr1" placeholder="주소" readonly="readonly">
 				<!-- <input type="text" id="sample2_detailAddress" placeholder="구"> -->
 				<input type="text" id="extraAddr" placeholder="동" readonly="readonly">
 				
@@ -236,18 +261,13 @@ p {
 				            	// 각 주소의 노출 규칙에 따라 주소를 조합한다.
 				                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 				                var addr = ''; // 주소 변수
-				                var sido = '';
 				                var extraAddr = ''; // 참고항목 변수
-				                var roadName = '';
-				                
 				
 				                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
 				                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
 				                    addr = data.roadAddress;
-				                	sido = data.sigungu;
 				                } else { // 사용자가 지번 주소를 선택했을 경우(J)
 				                    addr = data.jibunAddress;
-				                    sido = data.sigungu;
 				                }
 				
 				                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
@@ -255,24 +275,21 @@ p {
 				                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
 				                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
 				                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-				                    	roadName += data.bname;
+				                        extraAddr += data.bname;
 				                    }
 				                    // 건물명이 있고, 공동주택일 경우 추가한다.
 				                    if(data.buildingName !== '' && data.apartment === 'Y'){
-				                    	roadName += (roadName !== '' ? ', ' + data.buildingName : data.buildingName);
+				                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
 				                    }
 				                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-				                    if(roadName !== ''){
-				                    	roadName = roadName;
+				                    if(extraAddr !== ''){
+				                        extraAddr = extraAddr;
 				                    }
 				                    // 조합된 참고항목을 해당 필드에 넣는다.
-				                    document.getElementById("gu").value = sido;
-				                    document.getElementById("extraAddr").value = roadName;
-				                
-				                } else {	// 선택한 주소가 지번 타입일 때 
-				                	extraAddr += data.bname;
-				                	document.getElementById("gu").value = sido;
 				                    document.getElementById("extraAddr").value = extraAddr;
+				                
+				                } else {
+				                    document.getElementById("extraAddr").value = '';
 				                }
 				
 				                // 우편번호와 주소 정보를 해당 필드에 넣는다.
@@ -316,8 +333,6 @@ p {
 				        element_layer.style.top = 180 + 'px';
 				    }
 				    
-				    
-				    
 				</script>
 				
 				<!-- 동 검색 구역 끝 -->
@@ -326,7 +341,7 @@ p {
 				 <input type="text" id="datepicker" class="custom-textbox" readonly style="width: 115px;"> 
 				 <label for="dogs">견수:</label> <input type="number" id="dogs" class="custom-textbox" min="1" max="2">
 
-				<button class="button" onclick="filterList()">적용</button>
+				<button class="button" id="filter">적용</button>
 				<button class="button" onclick="sittingTest()" style="float: right;">펫시터
 					지원하기</button>
 				<script>
@@ -363,6 +378,8 @@ p {
 					});
 				});
 			</script>
+			
+			
 
 
 
@@ -377,7 +394,7 @@ p {
 						<div class="row justify-content-between">
 					</c:if>
 
-					<div class="card" style="margin: 5px; width: 32%; margin-bottom: 50px;">
+					<div class="card" id="spPost" style="margin: 5px; width: 32%; margin-bottom: 50px;">
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
