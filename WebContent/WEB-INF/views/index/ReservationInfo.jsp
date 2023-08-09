@@ -23,7 +23,7 @@
   border-radius: 10px; /* 테두리의 둥근 정도 설정 */
 }
 
-h2, h4, h5 {
+h2, h3, h4, h5 {
 	font-family: "Jua";
 	font-size: 20pt;
 }
@@ -126,6 +126,20 @@ h2, h4, h5 {
   background-color: #2980b9;
 }
 
+.star {
+	cursor: pointer;
+	font-size: 24px;
+	color: #ccc;
+}
+
+.star.selected {
+	color: gold;
+}
+
+.review-button {
+	visibility: hidden;
+}
+
 </style>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -144,10 +158,58 @@ h2, h4, h5 {
 		
 		$(".timeline-end-button").click(function()
 		{
-			alert("타임라인이 종료되었습니다.");
+			var result = confirm("타임라인을 종료하시겠습니까? 종료하시면 후기를 작성하실 수 있습니다.");
+
+			if (result)
+			{
+				alert("타임라인을 종료하셨습니다. 후기를 작성해주세요.");
+				$(".review-button").css("visibility", "visible");
+				$(".timeline-end-button").hide();
+				$(".emergency-button").hide();
+				$(".upload-btn").hide();
+
+			} else
+			{
+				console.log("타임라인을 종료하지 않으셨습니다.");
+			}
 		});
+
+		$(".review-button").click(function()
+		{
+			$("#reviewModal").modal("show");
+
+		});
+
+		$("#submitReview").click(function()
+		{
+			var reviewText = $("#reviewText").val();
+
+			$('#reviewModal').modal("hide");
+
+		});
+
+		$(".star").click(function()
+		{
+			var value = $(this).data("value");
+			$("#starRating .star").each(function()
+			{
+				if ($(this).data("value") <= value)
+				{
+					$(this).addClass("selected");
+				} else
+				{
+					$(this).removeClass("selected");
+				}
+			});
+		});
+
+		$("#submitReview").click(function()
+		{
+			alert("작성이 완료되었습니다.");
+			$(".review-button").hide();
+		});
+
 	});
-	
 </script>
 
 </head>
@@ -160,8 +222,13 @@ h2, h4, h5 {
 
 	<section>
 	<div class="container-mypage">
-		<!-- <div class="container mt-4"> -->
-		<div class="container-fluid py-5bg-light">
+			<div class="card text-center" style="width: 1980px; margin-left: 20px; margin-right: 20px;">
+				<div class="card-body">
+					<h2 class="card-title">예약 정보 확인</h2>
+					<h3 class="card-subtitle mb-2 text-muted">예약번호 20230608178</h3>
+				</div>
+			</div><br>
+			<div class="container-fluid py-5bg-light">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="card" style="height: 935px;">
@@ -173,19 +240,17 @@ h2, h4, h5 {
 							<img src="images/dogdog.png" alt="" class="rounded-circle" style="width: 230px; margin: 20px;">
 						</div>
 						<div class="text-center">
-							<h5>예약번호 20230608178</h5>
 							<h5>깜돌이</h5>							
 							<h6 class="text-muted">소형견 / 7살 / 남자</h6>
 							<p class="card-text">
      							 🐾 특이사항: 물을 무서워함
    							</p>
-					    </div><br>
+					    </div><br><br>
 						
 						<div class="text-center">
 							<img src="images/cute.png" alt="" class="rounded-circle" style="width: 230px; margin: 20px;">
 						</div>
 						<div class="text-center">
-							<h5>예약번호 20230608178</h5>
 							<h5>퍼피</h5>							
 							<h6 class="text-muted">소형견 / 7살 / 남자</h6>
 							<p class="card-text">
@@ -351,8 +416,17 @@ h2, h4, h5 {
 									<button class="btn btn-success timeline-end-button" style="width: 450px;">
 	  								<i class="fas fa-stopwatch"></i> 타임라인 종료
 									</button>
-								</div>	
-								</div> 
+								</div>
+
+
+								<div class="center-button-container">
+									<button class="btn btn-success review-button" style="width: 450px;">
+									후기 작성
+									</button>
+								</div>
+
+
+									</div> 
 							</div>
 							</div>
 					</div>
@@ -365,6 +439,38 @@ h2, h4, h5 {
 		</div>
 	</section>
 	
+	<!-- 모달 페이지 -->
+		<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="reviewModalLabel">후기 작성</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+				<div class="modal-body">
+					<div id="starRating">
+						<span class="star" data-value="1">&#9733;</span> <span
+							class="star" data-value="2">&#9733;</span> <span class="star"
+							data-value="3">&#9733;</span> <span class="star" data-value="4">&#9733;</span>
+						<span class="star" data-value="5">&#9733;</span>
+					</div>
+					<textarea class="form-control" id="reviewText" rows="3"
+						placeholder="여기에 후기를 작성해주세요."></textarea>
+				</div>
+
+				<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">닫기</button>
+						<button type="button" class="btn btn-primary" id="submitReview">작성 완료</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
 	
 	<section>
 		<div>
@@ -373,7 +479,8 @@ h2, h4, h5 {
 		</div>
 	</section>
 	
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
 
 </html>

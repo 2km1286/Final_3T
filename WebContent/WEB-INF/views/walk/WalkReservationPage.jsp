@@ -114,8 +114,8 @@ h2, h4, h5 {
 	</section>
 	
 	<section>
-		<div class="d-flex justify-content-center align-items-center" style="height: 100vh; overflow: hidden;">
-			<div id="cardContainer" class="row" style="margin: 50px 10px 10px 10px; height: 100%;">
+		<div class="d-flex justify-content-center align-items-center bg-light" style="height: 100vh; overflow: hidden;">
+			<div id="cardContainer" class="row" style="margin: 30px 10px 10px 10px; height: 100%;">
 				<div class="col-md-7" style="height: 100%;">
 					<div class="card" style="height: 100%; overflow: auto;">
 					<br>
@@ -198,56 +198,96 @@ h2, h4, h5 {
 
 						</div>
 							<br>
-							<hr>
-
+							<hr><br>
+								
 							<!-- 후기 -->
 							<div>
-								<h5 class="card-title text-center">고객 후기 991개 ⭐⭐⭐⭐⭐</h5>
-								<br>
-
-								<!-- 후기 사진 -->
-							<div id="carouselExample" class="carousel slide">
-								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<img src="images/walktestpro.jpg" class="d-block w-100"
-											alt="...">
-									</div>
-									<div class="carousel-item">
-										<img
-											src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp"
-											class="d-block w-100" alt="...">
-									</div>
-									<div class="carousel-item">
-										<img
-											src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp"
-											class="d-block w-100" alt="...">
-									</div>
+								<h5 class="card-title text-center">고객 후기 991개&nbsp;&nbsp;⭐⭐⭐⭐⭐</h5>
+								<br><br>
+								
+							<div>
+							<div class="row">
+								<div class="col-3">
+									<img src="images/cute.png" alt="" class="card-img-top"
+										style="width: 100px; height: 100px; border-radius: 50%;">
 								</div>
-								<button class="carousel-control-prev" type="button"
-									data-bs-target="#carouselExample" data-bs-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								</button>
-								<button class="carousel-control-next" type="button"
-									data-bs-target="#carouselExample" data-bs-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								</button>
+								<div class="col-5">
+									<h5 class="card-title">⭐⭐⭐⭐⭐</h5><h5 class="card-title">baby</h5>
+									<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
+									<br>
+									<h6 class="card-subtitle">
+									오늘 처음으로 이 산책 서비스를 이용해봤는데, 정말 만족스러웠어요!<br>
+									산책러 분이 우리 강아지와 정말 잘 어울려서, 강아지도 즐거워하는 모습을 봤어요.<br> 
+									다음에도 또 이용하려고 합니다.</h6>
+								</div>
+							</div><br>
+							
+							<div class="row">
+								<div class="col text-center" style="margin-right: 35px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+								</div>
+							</div>
+							</div>
+							<br><hr><br>
+							
+							<div>
+							<div class="row">
+								<div class="col-3">
+									<img src="images/cute.png" alt="" class="card-img-top"
+										style="width: 100px; height: 100px; border-radius: 50%;">
+								</div>
+								<div class="col-5">
+									<h5 class="card-title">⭐⭐⭐⭐⭐</h5><h5 class="card-title">baby</h5>
+									<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
+									<br>
+									<h6 class="card-subtitle">
+									오늘 처음으로 이 산책 서비스를 이용해봤는데, 정말 만족스러웠어요!<br>
+									산책러 분이 우리 강아지와 정말 잘 어울려서, 강아지도 즐거워하는 모습을 봤어요.<br> 
+									다음에도 또 이용하려고 합니다.</h6>
+								</div>
 							</div>
 							<br>
-								<hr>
-								
-								<div class="row">
-									<div class="col-4">
-										<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px; border-radius: 50%;">
-									</div>
-									<div class="col-8">
-										<h5 class="card-title" style="margin-top: 8px;">baby</h5>
-										<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
-										<br>
-										<h6 class="card-subtitle text-muted mt-2">
-											저희 아기 산책 잘해주셔서 너무 감사해용~~<br> 다음에 또 이용할게요
-										</h6>
-									</div>
+							
+							<div class="row">
+								<div class="col text-center" style="margin-right: 35px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
 								</div>
+							</div>
+							</div>
+							<br><hr><br>
+							
+							<div>
+							<div class="row">
+								<div class="col-3">
+									<img src="images/cute.png" alt="" class="card-img-top"
+										style="width: 100px; height: 100px; border-radius: 50%;">
+								</div>
+								<div class="col-5">
+									<h5 class="card-title">⭐⭐⭐⭐⭐</h5><h5 class="card-title">baby</h5>
+									<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
+									<br>
+									<h6 class="card-subtitle">
+									오늘 처음으로 이 산책 서비스를 이용해봤는데, 정말 만족스러웠어요!<br>
+									산책러 분이 우리 강아지와 정말 잘 어울려서, 강아지도 즐거워하는 모습을 봤어요.<br> 
+									다음에도 또 이용하려고 합니다.</h6>
+								</div>
+							</div><br>
+							
+							<div class="row">
+								<div class="col text-center" style="margin-right: 35px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<img src="images/cute.png" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+								</div>
+							</div>
+							</div>
+							<br><hr>	
+								
+								
 
 								<br>
 								<br>
@@ -295,7 +335,7 @@ h2, h4, h5 {
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">최대 반려견 수</small></span><br> 
-										<label for="dogs"></label> <input type="number" id="dogs" class="custom-textbox" min="1" max="5" value="2">
+										<label for="dogs"></label><span class="card-text">2</span>
 									</div>
 									<hr>
 									<div class="oneText">
@@ -356,10 +396,6 @@ h2, h4, h5 {
 										<span class="card-text">30,000원(ajax 처리될 최종금액)</span>
 									</div>
 									<br>
-									<!-- <div
-										class="col d-flex align-items-center justify-content-center">
-										<button class="btn btn-warning">예약요청</button>
-									</div> -->
 									<div class="col d-flex align-items-center justify-content-center">
     									<button class="btn btn-warning custom-button" id="reportReservation" onclick="openPopup()">예약요청</button>
 									</div>
