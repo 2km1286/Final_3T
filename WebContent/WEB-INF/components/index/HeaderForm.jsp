@@ -192,7 +192,7 @@ li {
 										<a class="dropdown-item" href="mypage.action">알림 <span
 											class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
 										</span>
-										</a> <a class="dropdown-item" href="mypageactiveform.action">찜한 목록</a> <a
+										</a> <a class="dropdown-item" href="mypageactiveform.action">팔로잉</a> <a
 											class="dropdown-item" href="mypage.action">마이페이지</a> <a
 											class="dropdown-item" href="#" id="logOut">로그아웃</a>
 									</div></li>
