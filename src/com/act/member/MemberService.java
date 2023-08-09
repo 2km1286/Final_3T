@@ -111,5 +111,9 @@ public class MemberService implements IMemberService
 
 		return result;
 	}
+	
+	
+	
+	
 
 }

@@ -25,6 +25,41 @@
 .mypageWalkMonDon {width: 200px; margin-left: 560px;}
 .walkCard {width: 350px;}
 </style>
+
+<script type="text/javascript">
+	$(function()
+	{
+		// 돌봄장소 변경하기를 누르면
+
+		// 돌봄장소 수정하기를 누르면
+		$("#updateSPInfo").click(function()
+		{
+			
+			
+			$.ajax(
+			{
+				type : "POST",
+				url : "updatespinfoform.action",
+				async : true,
+				success : function(data)
+				{
+					$("#sittingPlaceDiv").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
+			});
+
+		});
+
+		
+
+	});
+</script>
+
 </head>
 <body>
 			<div class="row" style="border-bottom: 2px solid black;">

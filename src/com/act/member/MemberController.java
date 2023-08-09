@@ -315,6 +315,7 @@ public class MemberController
 		result = "/WEB-INF/views/index/ReservationInfo.jsp";
 		return result;
 	}
+
 	// 멤버 리스트 전체 출력 ajax
 	@RequestMapping("/memberlistform.action")
 	public String memberlistform()
@@ -324,4 +325,5 @@ public class MemberController
 		result = "/WEB-INF/ajax/member/MemberListForm.jsp";
 		return result;
 	}
+
 }

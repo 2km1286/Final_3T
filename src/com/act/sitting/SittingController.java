@@ -1,11 +1,13 @@
 package com.act.sitting;
 
-import javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 public class SittingController
@@ -45,13 +47,37 @@ public class SittingController
 	
 	// 마이페이지 펫시팅. AJAX로 처리.
 	@RequestMapping("/mypagesittingform.action")
-	public String myPageSitting()
+	public String myPageSitting(HttpSession session)
 	{
-		String result = "";
+		String view = "";
+		System.out.println("SittingController 에 왔다.");
+		SittingDTO dto = new SittingDTO();
+		
+		String memSid = (String)session.getAttribute("memSid");
+		
+		dto.setMemSid(memSid);
+		
+		
 		// AJAX
-		result = "/WEB-INF/ajax/MyPageSittingForm.jsp";
-		return result;
+		int stsCount = sittingService.sittingStsCount(dto);
+		int slCount = sittingService.sittingSlCount(dto);
+		
+		System.out.println("stsCount: " + stsCount + ", slCount: " + slCount);
+		if(stsCount!=0)			// 시험제출번호를 가지고 있다면
+		{
+			if(slCount!=0)		// 펫시팅면허번호를 가지고 있다면
+				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
+			else				// 시험은 보았지만, 공간등록을 하지 않은 경우
+				view = "/WEB-INF/ajax/MyPageSittingPlaceRegisterForm.jsp";
+		}
+		else					// 시험을 보지 않은 회원인 경우
+			view = "/WEB-INF/ajax/MyPageSittingRegisterForm.jsp";
+		
+		
+		
+		return view;
 	}
+	
 	
 	// 마이페이지 펫시팅의 돌봄장소 수정하기를 눌렀을 때, AJAX처리
 	@RequestMapping("/updatespinfoform.action")
@@ -62,36 +88,16 @@ public class SittingController
 		result = "/WEB-INF/ajax/UpdateSPInfoForm.jsp";
 		return result;
 	}
-
-	// 마이페이지 펫시팅의 예약내역을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingbooklist.action")
-	public String sittingBookList()
-	{
-		String result = "";
-		// AJAX
-		result = "/WEB-INF/ajax/SittingBookList.jsp";
-		return result;
-	}
-
-	// 마이페이지 펫시팅의 후기내역을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingreviewlist.action")
-	public String sittingReviewList()
-	{
-		String result = "";
-		// AJAX
-		result = "/WEB-INF/ajax/SittingReviewList.jsp";
-		return result;
-	}
 	
-	// 마이페이지 펫시팅의 수익을 눌렀을 때, AJAX처리
-	@RequestMapping("/sittingmoney.action")
-	public String sittingMoney()
+	// 마이페이지에서 펫시팅의 돌봄장소 등록하기를 눌렀을 때
+	@RequestMapping("/registerspinfoform.action")
+	public String registerSpInfoForm()
 	{
 		String result = "";
-		// AJAX
-		result = "/WEB-INF/ajax/SittingMoney.jsp";
+		result = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 		return result;
 	}
+
 	
 	// 펫시팅 리스트에서 펫시터 지원하기 눌렀을때
 	@RequestMapping("/sittintest.action")
@@ -102,6 +108,8 @@ public class SittingController
 
 		return result;
 	}
+	
+	
 	
 	
 	

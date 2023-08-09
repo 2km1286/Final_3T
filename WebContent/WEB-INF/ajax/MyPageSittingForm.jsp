@@ -27,6 +27,8 @@ String cp = request.getContextPath();
 		// 돌봄장소 수정하기를 누르면
 		$("#updateSPInfo").click(function()
 		{
+			
+			
 			$.ajax(
 			{
 				type : "POST",
@@ -46,71 +48,7 @@ String cp = request.getContextPath();
 
 		});
 
-		// 예약내역을 누르면
-		$("#sittingBookList").click(function()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "sittingbooklist.action",
-				async : true,
-				success : function(data)
-				{
-					$("#myPageSPrigth").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-
-		});
-
-		// 후기를 누르면
-		$("#sittingReviewList").click(function()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "sittingreviewlist.action",
-				async : true,
-				success : function(data)
-				{
-					$("#myPageSPrigth").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-
-		});
-
-		// 수익을 누르면
-		$("#sittingMoney").click(function()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "sittingmoney.action",
-				async : true,
-				success : function(data)
-				{
-					$("#myPageSPrigth").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-
-		});
+		
 
 	});
 </script>

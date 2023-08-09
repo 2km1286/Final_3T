@@ -37,4 +37,5 @@ public interface IMemberDAO
 	
 	// 멤버 리스트 전체 출력하기
 	public ArrayList<MemberDTO> memberList();
+
 }
