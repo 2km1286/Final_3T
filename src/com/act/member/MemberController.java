@@ -173,7 +173,7 @@ public class MemberController
 
 	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사
 	@RequestMapping("/findpw.action")
-	public String findPw(MemberDTO dto, HttpSession session)
+	public String findPw(MemberDTO dto, HttpSession session,HttpServletRequest request)
 	{
 		String view = "";
 
@@ -185,8 +185,10 @@ public class MemberController
 		if (result.equals("0")) // 회원정보 없음
 		{
 			// result에 0이 담긴채로 FindPwPage.jsp 을 요청, 이 때는 alert이 뜸
-			session.setAttribute("result", result);
+			result = "아이디가 존재하지 않습니다.";
+			request.setAttribute("result", result);
 			view = "redirect:findpwpage.action";
+			return view;
 		} else // 회원정보 있음
 		{
 			// memSid에 조회한 memSid을 담아 넘겨주며 비밀번호 재설정 페이지를 요청.

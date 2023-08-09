@@ -4,4 +4,4 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-${result}
+<span style="color: red; font-weight: bold; font-size: 15pt;">${result}</span>

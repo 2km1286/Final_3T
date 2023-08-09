@@ -285,7 +285,7 @@ margin-left: 20px;
         
         
         <button type="button" id="join-button">회원가입</button>
-        <button type="button" id="login-button">로그인</button><br>
+        <button type="button" id="login-button" style="background-color:#53e3a6; color: white;">로그인</button><br>
         
       </form>
       
