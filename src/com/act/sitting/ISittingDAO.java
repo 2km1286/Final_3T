@@ -16,5 +16,8 @@ public interface ISittingDAO
 	public int slCount(SittingDTO dto);
 
 	public ArrayList<SittingDTO> booklist(String memSid);
-
+	
+	// 회원번호로 펫시터 휴무일 확인
+	public ArrayList<SittingDTO> sittingRest(String memSid);
+	
 }

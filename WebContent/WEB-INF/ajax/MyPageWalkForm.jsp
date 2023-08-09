@@ -64,19 +64,19 @@
 </head>
 <body>
 			<div class="row">
-				<div class="col-md-6 container-mypage">
+				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					
 					<h3><span class="badge">내가 올린 대리산책 공고글</span></h3>
 					<div><!-- 내가 올린 대리산책 공고글 시작 -->
 					
 			          <div class="card">
-			            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 100%;">
 			            <div class="card-body">
 			              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
 			              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
 			              <p>4.2 ⭐ (991개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
-			               <button type="button" class="detailBtn">수정하기</button>
-			                <button type="button" class="detailBtn">삭제하기</button>
+				              <button type="button" class="detailBtn">자세히보러가기</button>
+				              <button type="button" class="detailBtn">수정하기</button>
+				              <button type="button" class="detailBtn">삭제하기</button>
 			            </div>
 			          </div>
 			          
@@ -85,7 +85,7 @@
 				</div><!-- 1행1열 끝 -->
 				
 				
-				<div class="col-md-6 container-mypage">
+				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">당일예약내역</span></h3>
 					<div><!-- 당일예약내역 시작 -->
 						<div class="card">
@@ -127,42 +127,48 @@
 			</div><!-- 1행 끝 -->
 			
 			<div class="row">
-				<div class="col-md-6 container-mypage" > 
-					<h3><span class="badge">나에게 달린 대리산책 후기</span></h3>
+				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;"> 
+					<h3><span class="badge">후기</span></h3>
 					<div><!-- 나에게 달린 대리산책 후기 시작 -->
-					
-						<div class="card reviewCard">
-						  <img src="..." class="card-img-top"/>
-						  <div class="card-body">
-						    <h5 class="card-title">후기 제목 입니다아아아</h5>
-						    <p class="card-text">후기 내용 어쩌고 저쩌고 </p>
-						  </div>
-						  <ul class="list-group list-group-light list-group-small">
-						    <li class="list-group-item px-4">별점 : ⭐ </li>
-						    <li class="list-group-item px-4">작성자 : 견주닉네임</li>
-						    <li class="list-group-item px-4">작성일 : 2023-08-05 </li>
-						  </ul>
-						</div>
 						
-						
-						<div class="card reviewCard">
-						  <img src="..." class="card-img-top"/>
-						  <div class="card-body">
-						    <h5 class="card-title">후기 제목</h5>
-						    <p class="card-text">후기 내용</p>
-						  </div>
-						  <ul class="list-group list-group-light list-group-small">
-						    <li class="list-group-item px-4">별점</li>
-						    <li class="list-group-item px-4">작성자</li>
-						    <li class="list-group-item px-4">작성일</li>
-						  </ul>
-						</div>
+						<table class="EndTable" style="width: 700px;">
+						    <tr>
+						      <th class="EndTh">후기 작성자</th>
+						      <th class="EndTh">후기 작성일</th>
+						      <th class="EndTh">별점</th>
+						      <th class="EndTh"></th>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">폴폴이</td>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">5</td>
+						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">폴폴이</td>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">5</td>
+						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">폴폴이</td>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">5</td>
+						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
+						    </tr>
+						    <tr>
+						      <td class="EndTd">폴폴이</td>
+						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">5</td>
+						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
+						    </tr>
+						</table>
 						
 					</div><!-- 나에게 달린 대리산책 후기 끝 -->	
 						
 				</div><!-- 2행1열 끝 -->
 				
-				<div class="col-md-6 container-mypage">
+				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">수익내역</span></h3>
 					<div><!-- 수익내역 시작 -->
 						<div class="money" style="margin-left: 75%;">

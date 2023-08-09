@@ -60,7 +60,7 @@ public class SittingController
 		int stsCount = sittingService.sittingStsCount(dto);
 		int slCount = sittingService.sittingSlCount(dto);
 		
-		System.out.println("stsCount: " + stsCount + ", slCount: " + slCount);
+		//System.out.println("stsCount: " + stsCount + ", slCount: " + slCount);
 		if(stsCount!=0)			// 시험제출번호를 가지고 있다면
 		{
 			if(slCount!=0)		// 펫시팅면허번호를 가지고 있다면
@@ -123,6 +123,16 @@ public class SittingController
 	{
 		String result = "";
 		result = "/WEB-INF/views/index/TestResultPage.jsp";
+		return result;
+	}
+	
+	@RequestMapping("/sittingreview.action")
+	public String walkReview()
+	{
+		String result = "";
+
+		result = "/WEB-INF/views/sitting/SittingReviewPage.jsp";
+
 		return result;
 	}
 
