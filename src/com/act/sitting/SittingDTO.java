@@ -8,7 +8,7 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 public class SittingDTO
 {
 	// SITTING_PLACE_LIST_VIEW
-	private String jmNickName, sptitle, spAddr1, spAddr2, memSid, sphStart, sphEnd, srStart, srEnd;
+	private String jmNickName, sptitle, spAddr1, spAddr2, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
 	private int sphSid, srwSid, stleSid, spMaxPet, spSid;
 	
 	// INDEX_SITTING_PLACE_TAG
@@ -23,6 +23,16 @@ public class SittingDTO
 	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pmemSid;	
 	private int sbSid, sbPrice;
 	
+	
+	
+	public String getExtraAddr()
+	{
+		return extraAddr;
+	}
+	public void setExtraAddr(String extraAddr)
+	{
+		this.extraAddr = extraAddr;
+	}
 	public String getSbStartYear()
 	{
 		return sbStartYear;
