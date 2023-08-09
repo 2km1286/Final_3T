@@ -8,26 +8,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>팝업_펫시터</title>
-
-<!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+<title>팝업_대리산책러</title>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
-<!-- 돌봄장소 이미지 넘기는 스크립트 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- slider stylesheet -->
+<link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+<!-- bootstrap core css -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+<!-- fonts style -->
+<link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<link href="css/responsive.css" rel="stylesheet" />
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de44c01e008c94b07ba5b53bec52bcb8"></script>
+<script type="text/javascript">
+
+	
+	function initialize()
+	{
+	   container = document.getElementById("map");
+	   
+	   mapCenter = new kakao.maps.LatLng(37.5566, 126.9195);
+	   options =
+	   {
+	         center: mapCenter,
+	         level: 3,
+	   };
+	   
+	   map = new kakao.maps.Map(container,options);
+	   
+	   
+	}
+
+</script>
 
 <style type="text/css">
 .container-mypage {
@@ -102,41 +121,13 @@ div.profil
 </style>
 
 </head>
-<body>
+<body onload="initialize()">
 <div class="container-mypage">
 	<div class="row">
 				<div class="col-md-6"><!-- 1행 1열 시작 -->
-				<h3><span class="badge">내 돌봄장소</span></h3>
-					<div class="row">	
-						<div class="col-md-6">	
-							<h2><span class="badge">핫도그님의 돌봄장소</span></h2>
-						</div>
-						<div class="col-md-6">
-							<h3><span class="badge">팔로워 5명</span></h3>
-						</div>
-					</div>
+				<h3><span class="badge">맡겨보개 회원분포지도</span></h3>
 					<div style="float: left; margin-left: 20px;">
-						<!-- 돌봄장소 슬라이드 사진 시작 -->
-						<div id="carouselExample" class="carousel slide" style="width: 600px;">
-						  <div class="carousel-inner">
-						    <div class="carousel-item active">
-						      <img src="images/sitterroom.jpg" class="d-block w-100" alt="...">
-						    </div>
-						    <div class="carousel-item">
-						      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="d-block w-100" alt="...">
-						    </div>
-						    <div class="carousel-item">
-						      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="d-block w-100" alt="...">
-						    </div>
-						  </div>
-						  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						  </button>
-						  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-						  </button>
-						</div>
-						<!-- 돌봄장소 슬라이드 사진 끝 -->
+						<div id="map" style="width: 100%; height: 100%;"></div>
 					</div>
 					<div style="float: left;">
 						<div class="moneyReview" style="margin-left: 15px;">
@@ -155,7 +146,7 @@ div.profil
 				</div><!-- 1행 1열 끝 -->
 				<div class="col-md-6">
 					
-					<h3><span class="badge">내 프로필(펫시터)</span></h3>
+					<h3><span class="badge">내 프로필(대리산책러)</span></h3>
 					
 					<div class="card profil">
 				    	  
@@ -166,7 +157,7 @@ div.profil
 				    	    <div class="col-md-8 cardInfo" >
 				    	      <div class="card-body">
 				    	      	<div class="oneText">
-				    	      		<span class="card-text"><small class="text-muted">프로펫시터</small></span><br>
+				    	      		<span class="card-text"><small class="text-muted">프로산책러</small></span><br>
 				    	      		<span class="nick card-text">폴폴이</span>
 				    	      	</div>
 				    		        <span class="card-text">4.8 ⭐  (40개의 후기)</span>
@@ -192,7 +183,7 @@ div.profil
 					
 					<div class="card">
 								<div class="card-header d-flex justify-content-between"">
-									펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+									대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
 								</div>	
 						    	  <div class="row g-0">
 						    	    <div class="col-md cardInfo" >
@@ -208,7 +199,7 @@ div.profil
 						    
 					<div class="card">
 								<div class="card-header d-flex justify-content-between"">
-									펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+									대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
 								</div>	
 						    	  <div class="row g-0">
 						    	    <div class="col-md cardInfo" >

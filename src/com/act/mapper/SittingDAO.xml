@@ -26,5 +26,11 @@
 		FROM SITTING_PLACE_TAGS_VIEW
 		WHERE MEMSID=#{memSid}
 	</select> -->
+	
+	<select id="booklist" resultType="com.act.sitting.SittingDTO">
+		SELECT SBSID, SBSTARTYEAR, SBSTARTMONTH, SBSTARTDAY, SBEND, SBPRICE, PMEMSID
+		FROM SITTING_BOOK_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
 
 </mapper>

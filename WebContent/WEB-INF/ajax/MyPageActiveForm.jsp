@@ -13,20 +13,14 @@
 <title>마이페이지_나의 활동</title>
 
 <style type="text/css">
-
-.noticeAll, .noticePet, .noticeWalk, .noticeSeating
-{
-	padding: 20px 20px 20px 20px;
-}
-
-.noticeCard { margin-bottom: 20px;}
-.walkCard{width: 350px;}
-.sittingCard{width: 400px;}
+div.walkCard{ margin-left: 20%; width: 60%;}
+div.sittingCard{ margin-left: 20%; width: 60%;}
 </style>
+
 </head>
 <body>
 			<div class="row">
-				<div class="col-md-6 noticeAll">
+				<div class="col-md-6 container-mypage">
 					<h3><span class="badge">팔로잉 한 돌봄장소</span></h3>
 					<div><!-- 팔로잉 한 돌봄장속 목록 시작 -->
 					
@@ -63,7 +57,7 @@
 				</div><!-- 1행1열 끝 -->
 				
 				
-				<div class="col-md-6 noticePet">
+				<div class="col-md-6 container-mypage">
 					<h3><span class="badge">팔로잉 한 대리산책 공고글</span></h3>
 					
 					<div><!-- 팔로잉 한 대리산책 목록 시작 -->
@@ -101,7 +95,7 @@
 			</div><!-- 1행 끝 -->
 			
 			<div class="row">
-				<div class="col-md-6 noticeWalk">
+				<div class="col-md-6 container-mypage">
 					<h3><span class="badge">내가 쓴 후기</span></h3>
 					<div><!-- 내가 쓴 후기 시작  -->
 					
@@ -137,11 +131,11 @@
 					
 				</div><!-- 2행 1열 끝 -->
 				
-				<div class="col-md-6 noticeSeating">
+				<div class="col-md-6 container-mypage">
 					<h3><span class="badge">서비스 완료 내역</span></h3>
 					<div><!-- 서비스 완료 내역 시작 -->
 					
-						<table class="EndTable">
+						<table class="EndTable" style="width: 720px;">
 						    <tr>
 						      <th class="EndTh">이용날짜</th>
 						      <th class="EndTh">이용서비스</th>
