@@ -36,10 +36,11 @@
 			});
 		});
 		
+		/* 에이잭스말고 모달할까 */
 		/* 나중에 데이터 받아오면 여기도 #petUpdateBtn${petSid} 이런식? */
 		$("#petUpdateBtn123").click(function()
 		{
-			$.ajax(
+			/* $.ajax(
 			{
 				type:"POST"
 				, url:"petupdateform.action"
@@ -54,7 +55,7 @@
 					alert(e.responseText);
 				}
 				
-			});
+			}); */
 			
 			
 		});
@@ -66,115 +67,96 @@
 
 </script>
 
-
-
-<style type="text/css">
-.myInfo {font-size: 12pt; margin-top: 10px;}
-
-#myPageMain {
-    position: relative;
-}
-
-#withdraw-button {
-    position: absolute;
-    right: 0;
-    font-size: 10pt;
-    width: 80px;
-    margin-right: 10px;
-    border: 0;
-    color: black;
-}
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    width: 350px;
-}
-.petCard {width: 320px;}
- .petCardContainer
-{
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
-.px-4 {padding: 2px 5px 2px 5px; width: 320px; }
-.petUpdateBtn { width: 80px;}
-.petDeletBtn { width: 80px;}
-.profil { padding-right: 5px; padding-left: 5px; margin-right: 10px; margin-top: 10px;}
-.myInfoDiv { padding-bottom: 20px;}
-#petInsertBtn {background-color: white; border: 0; font-size: 40pt; color: #53e3a6;}
-</style>
 </head>
 <body>
-			<h3><span class="badge">내 정보 관리</span></h3> <!-- 첫 요청 시 채워진 상태. 한 마디로 내 정보 관리==업데이트폼 -->
-			<div class="row" style="border-bottom: 2px solid black; margin-bottom: 20px;">
+			<!-- 첫 요청 시 채워진 상태. 한 마디로 내 정보 관리==업데이트폼 -->
+			<div class="row container-mypage" style="max-width: 100%;">
+				<h3><span class="badge">내 정보 관리</span></h3>
 				
-				<div class="myInfoDiv"><!-- 내 정보 시작 -->
+				<!-- 내 정보 시작 -->
+				<div class="col-md-12">
 					<form class="form" action="" method="post">
 					
-						<span class="badge myInfo">아이디</span>
+					<div class=infoOneNoline>
+						<h4><span class="smallTitle">아이디</span></h4>
 				        <div class="input-container">
-				          <input type="text" name="jmId" id="jmId">
-				          <button type="button" id="checkUserIdBtn">중복확인</button>
+				        	<input type="text" name="jmId" id="jmId">
+				        	<button type="button" id="checkUserIdBtn">중복확인</button>
 				        </div>
+				    </div>
 				        
-				        <span class="badge myInfo">닉네임</span>
-				        <input type="text" name="jmName" id="jmName" style="width: 100%;">
-				        
-				        <div class="select-container">
-				          <label for="gender"><span class="badge myInfo">성별</span></label>
-				          <select id="jmGender" name="jmGender">
-				            <option value="1">남자</option>
-				            <option value="2">여자</option>
-				          </select>
+				   	<div class="infoOneNoline">
+						<h4><span class="smallTitle">이름</span></h4>
+				        <input type="text" name="jmName" id="jmName">
+				    </div>
+				    
+				    <div class="infoOneNoline">
+				    	<div class="select-container">
+					        <label for="gender"><h4><span class="smallTitle">성별</span></h4></label>
+					        <select id="jmGender" name="jmGender">
+					        <option value="1">남자</option>
+					        <option value="2">여자</option>
+				       		</select>
 				        </div>
-				        
-				        <span class="badge myInfo">프로필사진</span>
+				    </div>
+				    
+				    <div class="infoOneNoline">    
+				        <h4><span class="smallTitle">프로필사진</span></h4>
 				        <img alt="기존 프로필사진" src="...">
 				        <input type="file" name="jmImage" id="jmImage" accept="image/*" style="display: block;">
-				        
-				        <span class="badge myInfo">닉네임</span>
+				    </div>
+				    
+				    <div class="infoOneNoline">    
+				        <h4><span class="smallTitle">닉네임</span></h4>
 				        <div class="input-container">
-				          <input type="text" name="jmNickName" id="jmNickName">
-				          <button type="button" id="checkUserNickBtn">중복확인</button>
+				        	<input type="text" name="jmNickName" id="jmNickName">
+				        	<button type="button" id="checkUserNickBtn">중복확인</button>
 				        </div>
-									
-				        <span class="badge myInfo">전화번호</span>
+					</div>				
+					
+					<div class="infoOneNoline">
+				        <h4><span class="smallTitle">전화번호</span></h4>
 				        <div class="input-container">
-				         <input type="tel" name="jmTel" id="jmTel">
-				         <button type="button" id="telCheck">인증번호</button>
+				        	<input type="tel" name="jmTel" id="jmTel">
+				        	<button type="button" id="telCheck">인증번호</button>
 				        </div>
-				        
-				        <span class="badge myInfo">주소</span>
-				        <div class="input-container">
-				         <input type="text"name="jmAddr1" id="jmAddr1">
-				         <button type="button" id="checkZipcodeBtn">우편번호</button>
+				    </div>
+				    
+				    <div class="infoOneNoline">    
+				        <h4><span class="smallTitle">주소</span></h4>
+					        <div class="input-container">
+				        	<input type="text"name="jmAddr1" id="jmAddr1">
+				        	<button type="button" id="checkZipcodeBtn">우편번호</button>
 				        </div>
-				        <input type="text" name="jmZipCode" id="jmZipCode" style="width: 100%;">
-				        
-				        <span class="badge myInfo">상세주소</span>
-				        <input type="text" name="jmAddr2" id="jmAddr2" style="width: 100%;">
-				        
+				        <input type="text" name="jmZipCode" id="jmZipCode">
+				    </div>
+				    
+				    <div class="infoOneNoline">      
+				        <h4><span class="smallTitle">상세주소</span></h4>
+				        <input type="text" name="jmAddr2" id="jmAddr2">
+				    </div>
 				        <br />
 				        <span id="err" style="display: none;">* 필수 항목들을 모두 입력해주세요.</span>
 				        <br />
 				        
 				        <button type="button" id="" class="detailBtn">수정하기</button>
 				        <button type="button" id="" class="detailBtn">되돌리기</button>
-				        <button type="button" class="detailBtn" style="width: 180px;">비밀번호 재설정</button><!-- 비밀번호재설정페이지로 보내기 -->
+				        <button type="button" class="detailBtn">비밀번호 재설정</button><!-- 비밀번호재설정페이지로 보내기 -->
+				        <button type="button" id="withdraw-button" class="detailBtn">탈퇴하기</button>
 			      </form>
-		      </div><!-- 내 정보 끝 -->
-		      <button type="button" id="withdraw-button" class="detailBtn">탈퇴하기</button>		      
-			</div><!-- 1행 끝 -->
+			      
+		      </div>
+		      <!-- 내 정보 끝 -->
+			</div>
+			<!-- 1행 끝 -->
 			
-			 
-			<h3><span class="badge">반려견 관리</span></h3>
-			<div class="row"> 
 			
-			<div class="col-md-6"><!-- 2행 1열 시작 -->
-				<div class="petCardContainer"><!-- 반려견 카드 목록 시작 -->
-				
+			<!-- 2행 시작 --> 
+			<div class="row container-mypage" style="max-width: 100%;">
+			<h3><span class="badge">반려견 관리</span> <button type="button" class="petInsertBtn" id="petInsertBtn">✚</button></h3>
+			
+			<!-- 반려견 카드 목록 시작 -->
+			<div class="col-md-12">
 					<div class="card petCard">
 						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
 						<div class="card-body">
@@ -187,8 +169,8 @@
 							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
 							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
 							<li class="list-group-item px-4">
-								<button type="button" id="petUpdateBtn123" class="detailBtn petUpdateBtn">수정하기</button>
-								<button type="button" id="petDeleteBrn${petSid }" class="detailBtn petDeleteBtn">삭제하기</button>
+								<button type="button" id="petUpdateBtn123" class="detailBtn">수정하기</button>
+								<button type="button" id="petDeleteBrn${petSid }" class="detailBtn">삭제하기</button>
 							</li>
 						</ul>
 					</div>
@@ -206,8 +188,8 @@
 							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
 							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
 							<li class="list-group-item px-4">
-								<button type="button" id="petUpdateBtn123" class="detailBtn petUpdateBtn">수정하기</button>
-								<button type="button" id="" class="detailBtn petDeleteBtn">삭제하기</button>
+								<button type="button" id="petUpdateBtn123" class="detailBtn">수정하기</button>
+								<button type="button" id="" class="detailBtn">삭제하기</button>
 							</li>
 						</ul>
 					</div>
@@ -230,19 +212,10 @@
 						</ul>
 					</div>
 				
-				</div><!-- 반려견 카드 목록 끝 -->
-				
-			</div><!-- 2행 1열 끝 -->
-			
-			<div class="col-md-6" id="petRigthDiv"><!-- 2행 2열 시작 -->
-				<div>
-					<button type="button" class="petInsertBtn" id="petInsertBtn">✚</button>
 				</div>
-				
-			</div><!-- 2행 2열 끝 -->
-		
-		      
-		</div><!-- 2행 끝 -->
+				<!-- 반려견 카드 목록 끝 -->
+		</div>
+		<!-- 2행 끝 -->
 </body>
 </html>
 

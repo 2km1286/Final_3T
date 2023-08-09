@@ -19,6 +19,66 @@ public class SittingDTO
 	private String grade;
 	private int price;
 	
+	// SITTING_BOOK_VIEW	// sbStart 가 나눠져있는건 달력js에서 사용하기 위함, pmemSid는 예약을 요청한 멤버시드	
+	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pmemSid;	
+	private int sbSid, sbPrice;
+	
+	public String getSbStartYear()
+	{
+		return sbStartYear;
+	}
+	public void setSbStartYear(String sbStartYear)
+	{
+		this.sbStartYear = sbStartYear;
+	}
+	public String getSbStartMonth()
+	{
+		return sbStartMonth;
+	}
+	public void setSbStartMonth(String sbStartMonth)
+	{
+		this.sbStartMonth = sbStartMonth;
+	}
+	public String getSbStartDay()
+	{
+		return sbStartDay;
+	}
+	public void setSbStartDay(String sbStartDay)
+	{
+		this.sbStartDay = sbStartDay;
+	}
+	public String getPmemSid()
+	{
+		return pmemSid;
+	}
+	public void setPmemSid(String pmemSid)
+	{
+		this.pmemSid = pmemSid;
+	}
+	public int getSbSid()
+	{
+		return sbSid;
+	}
+	public void setSbSid(int sbSid)
+	{
+		this.sbSid = sbSid;
+	}
+	public int getSbPrice()
+	{
+		return sbPrice;
+	}
+	public void setSbPrice(int sbPrice)
+	{
+		this.sbPrice = sbPrice;
+	}
+	public String getSbEnd()
+	{
+		return sbEnd;
+	}
+	public void setSbEnd(String sbEnd)
+	{
+		this.sbEnd = sbEnd;
+	}
 	public String getGrade()
 	{
 		return grade;

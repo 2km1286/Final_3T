@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class SittingService
+public class SittingService implements ISittingService
 {
 	@Autowired
 	private SqlSession sqlSession;
@@ -57,6 +57,7 @@ public class SittingService
 	 * return tagList; }
 	 */
 
+
 	// 회원의 STS(시험제출번호) 유무(상태) 반환
 	public int sittingStsCount(SittingDTO dto)
 	{
@@ -75,6 +76,27 @@ public class SittingService
 		int result = dao.slCount(dto);
 		System.out.println("4번 sittingSlCount: " + result);
 		return result;
+	}
+
+
+	
+	// 펫시터의 예약 내역 정보 가져오기
+	public ArrayList<SittingDTO> booklist(String memSid)
+	{
+		ArrayList<SittingDTO> bookList = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		bookList = dao.booklist(memSid);
+		
+		/*
+		 * for (SittingDTO sitting : bookList) { System.out.println("SBSID: " +
+		 * sitting.getSbSid()); System.out.println("SBSTART: " + sitting.getSbStart());
+		 * System.out.println("SBEND: " + sitting.getSbEnd());
+		 * System.out.println("SBPRICE: " + sitting.getSbPrice());
+		 * System.out.println("PMEMSID: " + sitting.getPmemSid()); }
+		 */
+		return bookList;
 	}
 
 }

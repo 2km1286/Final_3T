@@ -12,6 +12,7 @@
 <meta charset="UTF-8"> 
 <title>마이페이지_대리산책</title>
 
+
 <style type="text/css">
 
 .noticeAll, .noticePet, .noticeWalk, .noticeSeating
@@ -62,13 +63,13 @@
 
 </head>
 <body>
-			<div class="row" style="border-bottom: 2px solid black;">
-				<div class="col-md-6 noticeAll" style="border-right: 2px solid black;">
+			<div class="row">
+				<div class="col-md-6 container-mypage">
 					
 					<h3><span class="badge">내가 올린 대리산책 공고글</span></h3>
 					<div><!-- 내가 올린 대리산책 공고글 시작 -->
 					
-			          <div class="card walkCard">
+			          <div class="card">
 			            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 100%;">
 			            <div class="card-body">
 			              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
@@ -84,7 +85,7 @@
 				</div><!-- 1행1열 끝 -->
 				
 				
-				<div class="col-md-6 noticePet">
+				<div class="col-md-6 container-mypage">
 					<h3><span class="badge">당일예약내역</span></h3>
 					<div><!-- 당일예약내역 시작 -->
 						<div class="card">
@@ -126,7 +127,7 @@
 			</div><!-- 1행 끝 -->
 			
 			<div class="row">
-				<div class="col-md-6 noticeWalk" style="border-right: 2px solid black;"> 
+				<div class="col-md-6 container-mypage" > 
 					<h3><span class="badge">나에게 달린 대리산책 후기</span></h3>
 					<div><!-- 나에게 달린 대리산책 후기 시작 -->
 					
@@ -161,15 +162,15 @@
 						
 				</div><!-- 2행1열 끝 -->
 				
-				<div class="col-md-6 noticeSeating">
+				<div class="col-md-6 container-mypage">
 					<h3><span class="badge">수익내역</span></h3>
 					<div><!-- 수익내역 시작 -->
-						<div class="mypageWalkMonDon">
+						<div class="money" style="margin-left: 75%;">
 							<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
 							<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
 				        </div>
 						
-						<table class="EndTable">
+						<table class="EndTable" style="width: 700px;">
 						    <tr>
 						      <th class="EndTh">서비스 완료일</th>
 						      <th class="EndTh">매칭상대(닉네임)</th>

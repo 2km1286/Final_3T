@@ -1,6 +1,5 @@
 package com.act.sitting;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,12 +44,11 @@ public class SittingController
 		return result;
 	}
 	
-	// 마이페이지 펫시팅. AJAX로 처리.
+	// 마이페이지 펫시팅. AJAX로 처리. 들어온 예약 확인하기
 	@RequestMapping("/mypagesittingform.action")
-	public String myPageSitting(HttpSession session)
+	public String myPageSitting(HttpSession session ,Model model)
 	{
 		String view = "";
-		System.out.println("SittingController 에 왔다.");
 		SittingDTO dto = new SittingDTO();
 		
 		String memSid = (String)session.getAttribute("memSid");
@@ -66,15 +64,16 @@ public class SittingController
 		if(stsCount!=0)			// 시험제출번호를 가지고 있다면
 		{
 			if(slCount!=0)		// 펫시팅면허번호를 가지고 있다면
+      {
 				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
+        model.addAttribute("bookList", sittingService.booklist(memSid));
+      }
 			else				// 시험은 보았지만, 공간등록을 하지 않은 경우
 				view = "/WEB-INF/ajax/MyPageSittingPlaceRegisterForm.jsp";
 		}
 		else					// 시험을 보지 않은 회원인 경우
 			view = "/WEB-INF/ajax/MyPageSittingRegisterForm.jsp";
-		
-		
-		
+	
 		return view;
 	}
 	
@@ -88,6 +87,7 @@ public class SittingController
 		result = "/WEB-INF/ajax/UpdateSPInfoForm.jsp";
 		return result;
 	}
+
 	
 	// 마이페이지에서 펫시팅의 돌봄장소 등록하기를 눌렀을 때
 	@RequestMapping("/registerspinfoform.action")
@@ -95,23 +95,35 @@ public class SittingController
 	{
 		String result = "";
 		result = "/WEB-INF/ajax/MyPageSittingForm.jsp";
-		return result;
-	}
 
 	
 	// 펫시팅 리스트에서 펫시터 지원하기 눌렀을때
-	@RequestMapping("/sittintest.action")
+	@RequestMapping("/sittingtest.action")
 	public String main()
 	{
 		String result = "";
-		result = "/WEB-INF/views/sitting/sittingTestStartPage.jsp";
-
+		result = "/WEB-INF/views/sitting/SittingTermsPage.jsp";
 		return result;
 	}
 	
+	// 펫시터 약관 동의하고 페이지로 감
+	@RequestMapping("/sittingteststart.action")
+	public String openSittingTestStart()
+	{
+		String result = "";
+		result = "/WEB-INF/views/sitting/SittingTestPage.jsp";
+
+		return result;
+	}
+
 	
-	
-	
-	
+	@RequestMapping("/sittingtestpass.action")
+	public String openSittingTestPass()
+	{
+		String result = "";
+		result = "/WEB-INF/views/index/TestResultPage.jsp";
+		return result;
+	}
+
 
 }

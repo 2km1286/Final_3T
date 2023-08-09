@@ -27,6 +27,7 @@
 		WHERE MEMSID=#{memSid}
 	</select> -->
 	
+
 	<select id="stsCount" resultType="java.lang.Integer">
 		SELECT NVL(COUNT(STS_SID), 0) AS STSCOUNT          
 		FROM STS_CONDITION_VIEW                                             
@@ -38,6 +39,11 @@
 		FROM SITTING_LICENSE SL JOIN STS_CONDITION_VIEW SCV
                         		ON SL.STS_SID = SCV.STS_SID
                         		WHERE SCV.MEM_SID = #{memSid}
+
+	<select id="booklist" resultType="com.act.sitting.SittingDTO">
+		SELECT SBSID, SBSTARTYEAR, SBSTARTMONTH, SBSTARTDAY, SBEND, SBPRICE, PMEMSID
+		FROM SITTING_BOOK_VIEW
+		WHERE MEMSID = #{memSid}
 	</select>
 
 </mapper>
