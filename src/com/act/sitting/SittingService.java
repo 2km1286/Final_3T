@@ -62,9 +62,9 @@ public class SittingService implements ISittingService
 	public int sittingStsCount(SittingDTO dto)
 	{
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		System.out.println("1번 sittingStsCount");
+		//System.out.println("1번 sittingStsCount");
 		int result = dao.stsCount(dto);
-		System.out.println("2번 sittingStsCount: " + result);
+		//System.out.println("2번 sittingStsCount: " + result);
 		return result;
 	}
 
@@ -72,9 +72,9 @@ public class SittingService implements ISittingService
 	public int sittingSlCount(SittingDTO dto)
 	{
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		System.out.println("3번 sittingSlCount");
+		//System.out.println("3번 sittingSlCount");
 		int result = dao.slCount(dto);
-		System.out.println("4번 sittingSlCount: " + result);
+		//System.out.println("4번 sittingSlCount: " + result);
 		return result;
 	}
 

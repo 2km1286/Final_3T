@@ -21,74 +21,25 @@ div.sittingCard{ margin-left: 20%; width: 60%;}
 <body>
 			<div class="row">
 				<div class="col-md-6 container-mypage">
-					<h3><span class="badge">팔로잉 한 돌봄장소</span></h3>
-					<div><!-- 팔로잉 한 돌봄장속 목록 시작 -->
+					<h3><span class="badge">팔로잉 한 대리산책러</span></h3>
+					<div><!-- 팔로잉 한 대리산책러 시작 -->
 					
-					<div class="card sittingCard">
-			            <img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 100%;">
-			            <div class="card-body">
-			              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
-			              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6><br>
-			              <p>4.8 ⭐ (452개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박 </p>
-			            </div>
-			         </div>
-			         
-			         <div class="card sittingCard">
-			            <img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 100%;">
-			            <div class="card-body">
-			              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
-			              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6><br>
-			              <p>4.8 ⭐ (452개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박 </p>
-			            </div>
-			         </div>
-			         
-			         <div class="card sittingCard">
-			            <img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 100%;">
-			            <div class="card-body">
-			              <h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
-			              <h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고 행복한 해피 하우스 입니다.</h6><br>
-			              <p>4.8 ⭐ (452개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원 / 1박 </p>
-			            </div>
-			         </div>
+						
 					
 					
-					</div><!-- 팔로잉 한 돌봄장속 목록 끝 -->
+					</div><!-- 팔로잉 한 대리산책러 끝 -->
 					
 				</div><!-- 1행1열 끝 -->
 				
 				
 				<div class="col-md-6 container-mypage">
-					<h3><span class="badge">팔로잉 한 대리산책 공고글</span></h3>
+					<h3><span class="badge">팔로잉 한 펫시터</span></h3>
 					
-					<div><!-- 팔로잉 한 대리산책 목록 시작 -->
-						<div class="card walkCard">
-				            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 100%;">
-				            <div class="card-body">
-				              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
-				              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
-				              <p>4.2 ⭐ (991개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
-				            </div>
-				          </div>
+					<div><!-- 팔로잉 한 펫시터 시작 -->
 				          
-				          <div class="card walkCard">
-				            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 100%;">
-				            <div class="card-body">
-				              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
-				              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
-				              <p>4.2 ⭐ (991개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
-				            </div>
-				          </div>	
 				          
-				          <div class="card walkCard">
-				            <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 100%;">
-				            <div class="card-body">
-				              <h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
-				              <h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6><br>
-				              <p>4.2 ⭐ (991개의 후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
-				            </div>
-				          </div>
 				          
-					</div><!-- 팔로잉 한 대리산책 목록 끝 -->
+					</div><!-- 팔로잉 한 펫시터 끝 -->
 					
 				</div><!-- 1행2열끝  -->
 				

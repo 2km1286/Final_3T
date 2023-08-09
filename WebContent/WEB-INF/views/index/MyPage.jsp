@@ -206,10 +206,19 @@ span.badge
 	 border-radius: 3px;
 	 font-size: 18px;
 }
+.detailBtn:hover
+{
+	 border: 1px solid #4caf50;
+	 background-color: #4caf50;
+	 padding: 5px 5px 5px 5px;
+	 color: white;
+	 border-radius: 3px;
+	 font-size: 18px;
+}
 
 /* 알림카드, 예약내역카드 */
 div.card { margin-left: 10%; margin-bottom: 20px; width: 80%; border: 1px solid black;}
-div.card-header {padding: 5px; font-size: 14pt; background-color: white; border-bottom: 1px solid black;}
+div.card-header {padding: 5px; font-size: 14pt; border-bottom: 1px solid black;}
 sapn.card-text {font-size: 14pt;}
 
 /* 돌봄공간 사진 버튼 */
