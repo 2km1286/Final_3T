@@ -16,5 +16,7 @@ public interface ISittingDAO
 	public int slCount(SittingDTO dto);
 
 	public ArrayList<SittingDTO> booklist(String memSid);
+	
+	public ArrayList<SittingDTO> spfilterlist(String extraAddr);
 
 }
