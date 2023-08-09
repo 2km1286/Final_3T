@@ -14,56 +14,10 @@
 
 <script type="text/javascript">
 	
-	$(function()
-	{
-		$("#petInsertBtn").click(function()
-		{
-			$.ajax(
-			{
-				type:"POST"
-				, url:"petinsertform.action"
-				, async:true
-				, success:function(data)
-				{
-					$("#petRigthDiv").html(data);
-										
-				}
-				, error:function(e)
-				{
-					alert(e.responseText);
-				}
-				
-			});
-		});
-		
-		/* 에이잭스말고 모달할까 */
-		/* 나중에 데이터 받아오면 여기도 #petUpdateBtn${petSid} 이런식? */
-		$("#petUpdateBtn123").click(function()
-		{
-			/* $.ajax(
-			{
-				type:"POST"
-				, url:"petupdateform.action"
-				, async:true
-				, success:function(data)
-				{
-					$("#petRigthDiv").html(data);
-										
-				}
-				, error:function(e)
-				{
-					alert(e.responseText);
-				}
-				
-			}); */
-			
-			
-		});
-		
-		
-	});
-
-
+	function openPopup()
+	{	
+		window.open("petinsertpage.action", "petInsertPageWindow", "width=800,height=800");
+	}
 
 </script>
 
@@ -162,7 +116,8 @@
 			
 			<!-- 1행 2열 시작 --> 
 			<div class="col-md-6 container-mypage" style="overflow: auto; height: 1000px;">
-			<h3><span class="badge">반려견 관리</span> <button type="button" class="petInsertBtn" id="petInsertBtn">✚</button></h3>
+			<h3><span class="badge">반려견 관리</span>
+			 <button type="button" class="petInsertBtn" id="petInsertBtn" onclick="openPopup()">✚</button></h3>
 			
 			<!-- 반려견 카드 목록 시작 -->
 			<div class="col-md-12">

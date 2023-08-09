@@ -126,6 +126,7 @@ public class SittingController
 		return result;
 	}
 	
+	// 펫시터 후기 모달
 	@RequestMapping("/sittingreview.action")
 	public String walkReview()
 	{
