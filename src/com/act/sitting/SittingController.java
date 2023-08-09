@@ -1,5 +1,6 @@
 package com.act.sitting;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,6 +125,18 @@ public class SittingController
 		String result = "";
 		result = "/WEB-INF/views/index/TestResultPage.jsp";
 		return result;
+	}
+	
+	
+	// 펫시팅 리스트 검색필터 버튼
+	@RequestMapping("/sittingfilterlistform.action")
+	public String sittingFilterListForm(HttpServletRequest request)
+	{
+		String view = "";
+		String extraAddr = request.getParameter("extraAddr");
+		
+		
+		return view;
 	}
 
 
