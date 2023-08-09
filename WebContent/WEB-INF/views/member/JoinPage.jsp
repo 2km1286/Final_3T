@@ -326,17 +326,17 @@ form input[name="jmZipCode"] {
         <input type="text" placeholder="상세주소를 입력해주세요." name="jmAddr2" id="jmAddr2" style="width: 100%;"> -->
         
         <div class="input-container">
-        <input type="text" id="jmZipCode" name="jmZipCode" placeholder="우편번호">
+        <input type="text" id="jmZipCode" name="jmZipCode" placeholder="우편번호" readonly="readonly">
 		<button type="button" onclick="execDaumPostcode()" style="font-size: 95%;">우편번호 찾기</button>
         </div>
         <div class="input-container">
-		<input type="text" id="jmAddr1" name="jmAddr1" placeholder="주소"><br>
+		<input type="text" id="jmAddr1" name="jmAddr1" placeholder="주소" readonly="readonly"><br>
         </div>
         <div class="input-container">
 		<input type="text" id="jmAddr2" name="jmAddr2" placeholder="상세주소">
         </div>
         
-		<input type="hidden" id="extraAddress" placeholder="참고항목">
+		<input type="hidden" id="extraAddress" placeholder="참고항목" readonly="readonly">
         
         <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 		<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer"
