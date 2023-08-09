@@ -218,7 +218,7 @@ p {
 				<script>
 					function sittingTest()
 					{
-						window.location.href = "sittintest.action";
+						window.location.href = "sittingtest.action";
 					}
 				</script>
 			</div>
