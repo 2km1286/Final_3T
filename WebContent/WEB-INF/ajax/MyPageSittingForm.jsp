@@ -68,7 +68,7 @@ String cp = request.getContextPath();
 
 	<div class="row" id="sittingPlaceDiv">
 
-		<div class="col container-mypage">
+		<div class="col container-mypage" style="overflow: auto; height: 1200px;">
 			<div class="row">
 				<div class="col-md-6">
 					<span class="badge">핫도그님의 돌봄장소</span>
@@ -470,11 +470,11 @@ const months = [
 		<div class="col">
 			
 			<!-- 1행 2열의 1행 시작 -->
-			<div class="col-md-6 container-mypage" style="max-width: 95%;">
+			<div class="col-md-6 container-mypage" style="max-width: 95%; overflow: auto; height: 550px;">
 				<h3><span class="badge">후기</span></h3>
 				<div class=""><!-- 후기 시작 -->
 				
-			   		<table class="EndTable" style="width: 700px;">
+			   		<table class="EndTable" style="width: 680px;">
 						    <tr>
 						      <th class="EndTh">후기 작성자</th>
 						      <th class="EndTh">후기 작성일</th>
@@ -513,7 +513,7 @@ const months = [
 			<!-- 1행 2열의 1행 끝 -->
 			
 			<!-- 1행 2열의 2행 시작 -->
-			<div class="col-md-6 container-mypage" style="max-width: 95%;">
+			<div class="col-md-6 container-mypage" style="max-width: 95%; overflow: auto; height: 550px;">
 				<h3><span class="badge">수익</span></h3>
 				<div><!-- 수익내역 시작 -->
 				
@@ -522,7 +522,7 @@ const months = [
 						<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
 			        </div>
 					
-					<table class="EndTable" style="width: 700px;">
+					<table class="EndTable" style="width: 680px;">
 					    <tr>
 					      <th class="EndTh">서비스 완료일</th>
 					      <th class="EndTh">매칭상대(닉네임)</th>
