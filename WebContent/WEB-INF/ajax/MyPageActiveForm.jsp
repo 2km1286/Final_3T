@@ -13,8 +13,8 @@
 <title>마이페이지_나의 활동</title>
 
 <style type="text/css">
-.walkCard{width: 350px;}
-.sittingCard{width: 400px;}
+div.walkCard{ margin-left: 20%; width: 60%;}
+div.sittingCard{ margin-left: 20%; width: 60%;}
 </style>
 
 </head>
@@ -135,7 +135,7 @@
 					<h3><span class="badge">서비스 완료 내역</span></h3>
 					<div><!-- 서비스 완료 내역 시작 -->
 					
-						<table class="EndTable">
+						<table class="EndTable" style="width: 720px;">
 						    <tr>
 						      <th class="EndTh">이용날짜</th>
 						      <th class="EndTh">이용서비스</th>

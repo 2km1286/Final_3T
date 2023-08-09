@@ -61,7 +61,7 @@ String cp = request.getContextPath();
 					<span class="badge">핫도그님의 돌봄장소</span>
 				</div>
 				<div class="col-md">
-					<button type="button" class="detailBtn" style="margin-left: 100px;">돌봄장소 변경하기</button>
+					<button type="button" class="detailBtn" style="margin-left: 50%;">돌봄장소 변경하기</button>
 				</div>
 			</div>
 
@@ -415,62 +415,53 @@ const months = [
 			</div>
 			<!-- 캘린더 끝 -->
 
-			<div class="card-body">
-				<span class="badge">돌봄장소 특이사항</span>
-				<button class="btn btn-outline-warning">대형견 가능</button>
-				<button class="btn btn-outline-warning">노견 가능</button>
-				<button class="btn btn-outline-warning">홈캠 가능</button>
-
-				<span class="badge">최대 가능 견수</span>
-				<button class="btn btn-outline-warning">2마리</button>
-
-				<span class="badge">돌봄장소 이름</span>
-				<!-- 가져와져있음 -->
-				<input type="text" id="" class="" style="width: 600px;" readonly="readonly"> <br><br>
-				
-				<span class="badge">돌봄장소 소개</span>
-				<!-- 가져와져있음 -->
-				<textarea rows="5" cols="80" readonly="readonly"></textarea>
-
-				<span class="badge">돌봄장소 주소</span>
-				<!-- 가져와져있음 -->
-				<input type="text" id="" class="" style="width: 600px;"	readonly="readonly">
-
-				<span class="badge">돌봄장소 우편번호</span>
-				<!-- 가져와져있음 -->
-				<input type="text" id="" class="" style="width: 600px;"	readonly="readonly"> <br>
-
-				<span class="badge">돌봄장소 상세주소</span>
-				</h3>
-				<!-- 가져와져있음 -->
-				<input type="text" id="" class="" style="width: 600px;"
-					readonly="readonly"> <br>
-				<br>
-				<h3>
-					<span class="badge">돌봄장소 공개/비공개</span>
-				</h3>
-				<button class="btn btn-outline-warning">공개</button>
-
-				<br>
-				<br>
-				<button type="button" class="updatePlace" id="updateSPInfo">돌봄장소
-					수정하기</button>
-				<!-- 첫 등록이라면 등록하기 -->
+			<div class="infoOne">
+				<h4><span class="smallTitle">돌봄장소 특이사항</span></h4>
+				<button class="btn btn-warning">대형견 가능</button>
+				<button class="btn btn-warning">노견 가능</button>
+				<button class="btn btn-warning">홈캠 가능</button>
 			</div>
+			
+			<div class="infoOne">
+				<h4><span class="smallTitle">최대 가능 견수</span></h4>
+				<button class="btn btn-warning">2마리</button>
+			</div>
+			
+			<div class="infoOne">
+				<h4><span class="smallTitle">돌봄장소 이름</span></h4>
+				<span class="smallText">폴폴이의 행복한 공간~</span>
+			</div>
+			
+			<div class="infoOne">
+				<h4><span class="smallTitle">돌봄장소 소개</span></h4>
+				<span class="smallText">폴폴이의 행복한 공간~ 막 길게 말이 쓰여 있고 지금은 새벽이고 잠을 잘 수 없고
+				유튜브로 노래나 틀어놔야지</span>
+			</div>
+			
+			<div class="infoOne">
+				<h4><span class="smallTitle">돌봄장소 주소</span></h4> <!-- (우편번호까지 붙여나오기) -->
+				<span class="smallText">서울시 도봉구 어디로 어디길 12345</span><br>
+				<span class="smallText">무슨아파트 무슨동 무슨호</span>
+			</div>
+			
+			<div class="infoOne">
+				<h4><span class="smallTitle">돌봄장소 공개/비공개</span></h4>
+				<button class="btn btn-warning">공개</button>
+			</div>
+			
+			<button type="button" class="detailBtn" id="updateSPInfo"
+			style="margin-left: 40%;">돌봄장소 수정하기</button>
 
 		</div>
 		<!-- 1행 1열 끝 -->
 
 		<!-- 1행 2열 시작 -->
-		<div class="col container-mypage">
+		<div class="col">
 			
 			<!-- 1행 2열의 1행 시작 -->
-			<div class="row">
-				<h3>
-					<span class="badge">후기</span>
-				</h3>
-				
-				<div><!-- 후기 시작 -->
+			<div class="col-md-6 container-mypage" style="max-width: 95%;">
+				<h3><span class="badge">후기</span></h3>
+				<div class=""><!-- 후기 시작 -->
 				
 			   		<div class="card reviewCard">
 					  <img src="..." class="card-img-top"/>
@@ -503,12 +494,11 @@ const months = [
 			<!-- 1행 2열의 1행 끝 -->
 			
 			<!-- 1행 2열의 2행 시작 -->
-			<div class="row">
-				<h3>
-					<span class="badge">수익</span>
-				</h3>
+			<div class="col-md-6 container-mypage" style="max-width: 95%;">
+				<h3><span class="badge">수익</span></h3>
 				<div><!-- 수익내역 시작 -->
-					<div class="mypageWalkMonDon">
+				
+					<div class="money" style="margin-left: 75%;">
 						<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>
 						<h4><span id="totalEarningsLabel">1,000,000 원</span></h4>
 			        </div>

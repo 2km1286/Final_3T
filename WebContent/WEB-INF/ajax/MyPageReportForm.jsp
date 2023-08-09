@@ -14,15 +14,14 @@
 
 <style type="text/css">
 
-.EndTable{margin: 20px 20px 20px 20px; width: 900px;}
 </style>
 </head>
 <body>
-			<h3><span class="badge">내가 한 신고</span></h3>
-			<div class="row">
+			<div class="row container-mypage" style="max-width: 100%;">
+				<h3><span class="badge">내가 한 신고</span></h3>
 				<!-- 신고일자, 상태(접수완료/처리결과), 대상 유형, 사유 -->
-				<div>
-					<table class="EndTable">
+				<div class="col-md-12">
+					<table class="EndTable" style="margin-left: 20%; width: 800px;">
 					<tr>
 						<th class="EndTh">신고일자</th>
 						<th class="EndTh">상태</th>
@@ -70,11 +69,11 @@
 				</div>
 			</div><!--1행 끝  -->
 			
+			<div class="row container-mypage" style="max-width: 100%;">
 			<h3><span class="badge">내가 받은 신고</span></h3>
-			<div class="row">
 				<!-- 정지시작일, 정지종료일, 처분내용, 대상 유형, 사유 -->
-				<div>
-					<table class="EndTable">
+				<div class="col-md-12">
+					<table class="EndTable" style="margin-left: 20%; width: 800px;">
 						    <tr>
 								<th class="EndTh">정지시작일</th>
 								<th class="EndTh">정지종료일</th>

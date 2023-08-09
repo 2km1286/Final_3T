@@ -165,24 +165,14 @@
 
 </script>
 
-<!-- FONT jua -->
-<style>
-
-
-  
-.mypageSidevar { font-size: 15pt;}
-.card-header { font-size: 17pt;}
-.checkBox { font-size: 15pt;}
-.updatePlace {font-weight: normal;}
-</style>
-
-
 <style type="text/css">
 
 /* 마이페이지 레이아웃 스타일 */
 @import url('https://fonts.googleapis.com/css?family=Jua:400');
 
 *{font-family: "Jua"}
+
+.mypageSidevar { font-size: 15pt;}
 
 .all { padding: 10px;}
 
@@ -198,7 +188,6 @@ div.container-mypage {
 	padding: 20px 0px 20px 0px;
 	background-color: white;
 	border-left: 2px solid;
-	
 }
 span.badge
 { 
@@ -208,22 +197,16 @@ span.badge
 
 .detailBtn
 {
-	  border: 1px solid #4caf50;
-	  background-color: white;
-	  padding: 5px 5px 5px 5px;
-	  color: #4caf50;
-	  border-radius: 3px;
-	  font-size: 18px;
-}
-
-.smallTitle
-{
-	font-size: 16pt;
-	color: #4caf50;
+	 border: 1px solid #4caf50;
+	 background-color: white;
+	 padding: 5px 5px 5px 5px;
+	 color: #4caf50;
+	 border-radius: 3px;
+	 font-size: 18px;
 }
 
 /* 알림카드, 예약내역카드 */
-div.card { margin-left: 70px; margin-bottom: 20px; width: 80%; border: 1px solid black;}
+div.card { margin-left: 10%; margin-bottom: 20px; width: 80%; border: 1px solid black;}
 div.card-header {padding: 5px; font-size: 14pt; background-color: white; border-bottom: 1px solid black;}
 sapn.card-text {font-size: 14pt;}
 
@@ -234,58 +217,40 @@ sapn.card-text {font-size: 14pt;}
 	border: none;
 }
 
-/* 마이페이지 수익폰트위치? */
-.mypageWalkMonDon
-{
-	margin-left: 500px;
-}
-
-div.cardImage {padding-right: 0;}
-div.cardInfo {padding-right: 0; padding-left: 0;}
-div.porfilSu{margin-left:20px; width: 300px; }
-
-.nick {font-size: 16pt;}
+/* 돌봄공간 정보 */
+.infoOne { padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid gray;}
+.infoOneNoline { padding-bottom: 10px; margin-bottom: 20px;}
 
 
-div.profil
-{ 
-  padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
-  border: 2px solid black; /* 폼에 테두리 설정 */
-  border-radius: 10px; /* 테두리의 둥근 정도 설정 */
-}
+.smallTitle { color: #4caf50; width: 80%;}
+.smallText {font-size: 15pt;}
 
-.tagBtn
-{
-	  border: 1px solid #53e3a6;
-	  background-color: white;
-	  padding: 2px 2px 2px 2px;
-	  color: #53e3a6;
-	  border-radius: 3px;
-	  height: 35px;
-	  font-size: 16pt;
-	  font-weight: bold;
-	  margin-bottom: 10px;
-}
-.updatePlace
-{
-	  border: 1px solid #4caf50;
-	  background-color: #4caf50;
-	  padding: 2px 2px 2px 2px;
-	  color: white;
-	  border-radius: 3px;
-	  height: 35px;
-	  font-size: 16pt;
-	  font-weight: bold;
-	  margin-bottom: 10px;
-	  width: 200px;
-	  
-}
-.EndTable { border-collapse: collapse; width: 100%; }
+/* 후기 카드  */
+div.reviewCard { margin-left: 25%; margin-bottom: 20px; width: 50%;}
+
+/* 테이블 */
+.EndTable { border-collapse: collapse;}
 .EndTable tr:hover { background-color: #daf5db; }
 .EndTh, .EndTd { border: 1px solid #4caf50; text-align: center; padding: 8px; }
 .EndTh { background-color: #4caf50;}
 
-.reviewCard { margin-bottom: 30px; width: 23rem;  margin-left: 100px; margin-top: 10px;}
+/* 탈퇴하기버튼 */
+#withdraw-button {
+    position: absolute;
+    right: 0;
+    font-size: 10pt;
+    width: 80px;
+    margin-right: 10px;
+    border: 0;
+    color: black;
+}
+/* 반려견카드  */
+div.petCard {width: 25%;}
+
+/* 반려견 추가 버튼 */
+#petInsertBtn {background-color: white; border: 0; font-size: 30pt; color: #4caf50;}
+
+button.list-group-item { margin-bottom: 3px;}
 
 </style>
 
