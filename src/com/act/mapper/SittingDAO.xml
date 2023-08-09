@@ -53,5 +53,14 @@
 		SITTING_BOOK_VIEW
 		WHERE MEMSID = #{memSid}
 	</select>
+	
+	<select id="spfilterlist" resultType="com.act.sitting.SittingDTO">
+		SELECT JMNICKNAME, SPTITLE,
+		SPADDR1, SPADDR2, EXTRAADDR, MEMSID, SPHSID, SPHSTART, SPHEND
+		, SRSTART, SREND,
+		SRWSID, STLESID, SPMAXPET, SPSID
+		FROM SITTING_PLACE_LIST_VIEW
+		WHERE EXTRAADDR IN (#{extraAddr})
+	</select>
 
 </mapper>
