@@ -165,24 +165,14 @@
 
 </script>
 
-<!-- FONT jua -->
-<style>
-
-
-  
-.mypageSidevar { font-size: 15pt;}
-.card-header { font-size: 17pt;}
-.checkBox { font-size: 15pt;}
-.updatePlace {font-weight: normal;}
-</style>
-
-
 <style type="text/css">
 
 /* 마이페이지 레이아웃 스타일 */
 @import url('https://fonts.googleapis.com/css?family=Jua:400');
 
 *{font-family: "Jua"}
+
+.mypageSidevar { font-size: 15pt;}
 
 .all { padding: 10px;}
 

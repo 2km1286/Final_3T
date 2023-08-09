@@ -38,23 +38,49 @@
 
 *{font-family: "Jua"}
 
+span.badge
+{ 
+	font-family: "Jua"; font-size: 23px; border-radius: 3px; margin-bottom: 20px;
+	background-color: #4caf50; color: white; font-weight: lighter;
+}
 </style>
 
 </head>
 <body>
 	<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
 	</c:import>
-	
-	<div class="mb-3">
-	  <label for="formGroupExampleInput" class="form-label">Example label</label>
-	  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-	</div>
-	<div class="mb-3">
-	  <label for="formGroupExampleInput2" class="form-label">Another label</label>
-	  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
-	</div>
-	
-	
+		
+		<div class="card" style="margin-left: 15%; margin-top: 5%; width: 70%; overflow: auto;">
+			<h3><span class="badge">대리산책 공고글 올리기</span></h3>
+			<div class="cal-md">
+				
+				<div class="mb-3">
+				  <label for="formGroupExampleInput" class="form-label">주소</label>
+				  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+				  <button type="button" id="checkZipcodeBtn">우편번호</button>
+				</div>
+				<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+				
+				<div class="mb-3">
+				  <label for="formGroupExampleInput" class="form-label">상세주소</label>
+				  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+				</div>
+				
+				<div class="oneText row">
+					<div class="col">
+						<span class="card-text"><small class="text-muted">서비스 가능 시간</small></span><br> 
+						<label for="time"></label> <input type="time" id="time" class="custom-textbox">
+					</div>
+					<div class="col">
+						<span class="card-text"><small class="text-muted">서비스 종료 시간</small></span><br> 
+						<label for="time"></label> <input type="time" id="time" class="custom-textbox">
+						<span id="addResult"></span> <!-- 사용자가 시간을 추가한다면 ajax로 그 시간만큼 보여줘야함 -->
+					</div>
+				</div>
+			
+			</div>
+		
+		</div>
 	
 	
 	<c:import url="/WEB-INF/components/index/FooterForm.jsp">
