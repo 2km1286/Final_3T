@@ -95,7 +95,8 @@ public class SittingController
 	{
 		String result = "";
 		result = "/WEB-INF/ajax/MyPageSittingForm.jsp";
-
+		return result;
+	}
 	
 	// 펫시팅 리스트에서 펫시터 지원하기 눌렀을때
 	@RequestMapping("/sittingtest.action")

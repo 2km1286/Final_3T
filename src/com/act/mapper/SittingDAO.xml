@@ -5,44 +5,52 @@
 <mapper namespace="com.act.sitting.ISittingDAO">
 
 	<select id="list" resultType="com.act.sitting.SittingDTO">
-		SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, MEMSID, SPHSID, SPHSTART, SPHEND
-		, SRSTART, SREND, SRWSID, STLESID, SPMAXPET, SPSID
+		SELECT JMNICKNAME, SPTITLE,
+		SPADDR1, SPADDR2, MEMSID, SPHSID, SPHSTART, SPHEND
+		, SRSTART, SREND,
+		SRWSID, STLESID, SPMAXPET, SPSID
 		FROM SITTING_PLACE_LIST_VIEW
 	</select>
-	
-	<select id="IndexTagList" resultType="com.act.sitting.SittingDTO">
+
+	<select id="IndexTagList"
+		resultType="com.act.sitting.SittingDTO">
 		SELECT ISPT_SID AS ISPTSID, ISPT_NAME AS ISPTNAME
-		FROM INDEX_SITTING_PLACE_TAG
+		FROM
+		INDEX_SITTING_PLACE_TAG
 		ORDER BY ISPT_SID
 	</select>
-	
+
 	<select id="gradeList" resultType="com.act.sitting.SittingDTO">
 		SELECT GRADE, PRICE
-		FROM SITTING_GRADE_VIEW
+		FROM
+		SITTING_GRADE_VIEW
 	</select>
-	
-	<!-- <select id="tagList" resultType="com.act.sitting.SittingDTO">
-		SELECT MEMSID, JMNICKNAME, ISPTSID, ISPTNAME
-		FROM SITTING_PLACE_TAGS_VIEW
-		WHERE MEMSID=#{memSid}
-	</select> -->
-	
+
+	<!-- <select id="tagList" resultType="com.act.sitting.SittingDTO"> SELECT 
+		MEMSID, JMNICKNAME, ISPTSID, ISPTNAME FROM SITTING_PLACE_TAGS_VIEW WHERE 
+		MEMSID=#{memSid} </select> -->
+
 
 	<select id="stsCount" resultType="java.lang.Integer">
-		SELECT NVL(COUNT(STS_SID), 0) AS STSCOUNT          
-		FROM STS_CONDITION_VIEW                                             
+		SELECT NVL(COUNT(STS_SID), 0)
+		AS STSCOUNT
+		FROM STS_CONDITION_VIEW
 		WHERE MEM_SID = #{memSid}
 	</select>
-	
+
 	<select id="slCount" resultType="java.lang.Integer">
-		SELECT NVL(COUNT(SL_SID), 0) AS SLCOUNT
+		SELECT NVL(COUNT(SL_SID), 0) AS
+		SLCOUNT
 		FROM SITTING_LICENSE SL JOIN STS_CONDITION_VIEW SCV
-                        		ON SL.STS_SID = SCV.STS_SID
-                        		WHERE SCV.MEM_SID = #{memSid}
+		ON SL.STS_SID = SCV.STS_SID
+		WHERE SCV.MEM_SID = #{memSid}
+	</select>
 
 	<select id="booklist" resultType="com.act.sitting.SittingDTO">
-		SELECT SBSID, SBSTARTYEAR, SBSTARTMONTH, SBSTARTDAY, SBEND, SBPRICE, PMEMSID
-		FROM SITTING_BOOK_VIEW
+		SELECT SBSID, SBSTARTYEAR,
+		SBSTARTMONTH, SBSTARTDAY, SBEND, SBPRICE, PMEMSID
+		FROM
+		SITTING_BOOK_VIEW
 		WHERE MEMSID = #{memSid}
 	</select>
 
