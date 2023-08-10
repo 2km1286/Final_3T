@@ -1,6 +1,5 @@
 package com.act.sitting;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,12 +129,17 @@ public class SittingController
 	
 	// 펫시팅 리스트 검색필터 버튼
 	@RequestMapping("/sittingfilterlistform.action")
-	public String sittingFilterListForm(HttpServletRequest request)
+	public String sittingFilterListForm(SittingDTO dto)
 	{
 		String view = "";
-		String extraAddr = request.getParameter("extraAddr");
 		
+		System.out.println("extraAddr: " + dto.getExtraAddr());
+		System.out.println("datePicker: " + dto.getDatePicker());
+		System.out.println("spMaxPet:" + dto.getSpMaxPet());
 		
+		sittingService.sittingFilterList();
+		
+		view = "/WEB-INF/views/index/MainPage.jsp";
 		return view;
 	}
 
