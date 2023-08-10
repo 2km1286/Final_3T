@@ -16,19 +16,19 @@ public class SittingController
 
 	// 펫시팅(돌봄장소) 리스트업 페이지로 가기
 	@RequestMapping("/sittinglistpage.action")
-	public String sittingList(Model model, SittingDTO s)
+	public String sittingList(Model model)
 	{
 		String view = "";
 
 		model.addAttribute("list", sittingService.list());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
 		//model.addAttribute("gradeList", sittingService.gradeList(s));
-		// model.addAttribute("tagList", sittingService.tagList(s));
-
-		System.out.println("pmemSid: " + s.getMemSid());
+		model.addAttribute("tagList", sittingService.tagList());
+		
+		
 		
 		// System.out.println("list: " + sittingService.list());
-		// System.out.println("tagList: " + sittingService.tagList());
+		 System.out.println("tagList: " + sittingService.tagList());
 		// System.out.println("gradeList: " + sittingService.gradeList());
 
 		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
