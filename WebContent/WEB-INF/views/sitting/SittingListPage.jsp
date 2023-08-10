@@ -175,9 +175,46 @@ p {
 	font-family: "Jua";
 	font-weight: normal;
 }
+
+
+/* Custom styling for the Datepicker */
+    .datepicker-container {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .datepicker-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-bottom: 2px solid #007bff;
+      border-radius: 0;
+    }
+    .datepicker-icon {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 0;
+    }
+    /* Custom marker styling */
+    .datepicker .datepicker-days .active {
+      background-color: #f39c12;
+      border-radius: 50%;
+    }
+    .datepicker .datepicker-days .active:hover {
+      background-color: #2ecc71;
+    }
+
 </style>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
+
+
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
@@ -194,13 +231,17 @@ p {
 		
 		$("#filter").click(function()
 		{	
-			var AddrData = "extraAddr=" + $("#extraAddr").val();
+			var dateSend = "extraAddr=" + $("#extraAddr").val()
+						+ "&datePicker=" + $(".datepick").val()
+						+ "&spMaxPet=" + $("#spMaxPet").val();
 			alert("동 : " + $("#extraAddr").val());
+			alert("날짜 : " + $(".datepick").val());
 			
 			$.ajax(
 			{
 				type : "POST",
 				url : "sittingfilterlistform.action",
+				data : dateSend,
 				async : true,
 				success : function(data)
 				{
@@ -230,11 +271,9 @@ p {
 				
 				
 				<!-- 동 검색 구역 시작 -->
-				<input type="text" id="zipCode" placeholder="우편번호" readonly="readonly">
-				<input type="button" onclick="sample2_execDaumPostcode()" value="지역 찾기">
+				<input type="button" onclick="DaumPostcode()" value="지역 찾기">
 				<input type="text" id="jmAddr1" name="jmAddr1" placeholder="주소" readonly="readonly">
-				<!-- <input type="text" id="sample2_detailAddress" placeholder="구"> -->
-				<input type="text" id="extraAddr" placeholder="동" readonly="readonly">
+				<input type="text" id="extraAddr" name="extraAddr" placeholder="동" readonly="readonly">
 				
 				
 				<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
@@ -242,6 +281,7 @@ p {
 				<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 				</div>
 				
+				<!-- 주소 검색 메소드 시작 -->
 				<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 				<script>
 				    // 우편번호 찾기 화면을 넣을 element
@@ -253,7 +293,7 @@ p {
 				    } 
 					
 				    
-				    function sample2_execDaumPostcode() {
+				    function DaumPostcode() {
 				        new daum.Postcode({
 				            oncomplete: function(data) {
 				                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -271,7 +311,6 @@ p {
 				                }
 				
 				                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-				                if(data.userSelectedType === 'R'){
 				                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
 				                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
 				                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -288,15 +327,9 @@ p {
 				                    // 조합된 참고항목을 해당 필드에 넣는다.
 				                    document.getElementById("extraAddr").value = extraAddr;
 				                
-				                } else {
-				                    document.getElementById("extraAddr").value = '';
-				                }
 				
 				                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-				                //document.getElementById('sample2_postcode').value = data.zonecode;
-				                //document.getElementById("sample2_address").value = addr;
-				                // 커서를 상세주소 필드로 이동한다.
-				                //document.getElementById("sample2_detailAddress").focus();
+				                document.getElementById("jmAddr1").value = addr;
 				
 				                // iframe을 넣은 element를 안보이게 한다.
 				                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -334,16 +367,52 @@ p {
 				    }
 				    
 				</script>
-				
+				<!-- 주소 검색 메소드 끝 -->
 				<!-- 동 검색 구역 끝 -->
-					
+				<!-- 	
 				 <label for="datepicker">날짜 선택:</label> 
-				 <input type="text" id="datepicker" class="custom-textbox" readonly style="width: 115px;"> 
-				 <label for="dogs">견수:</label> <input type="number" id="dogs" class="custom-textbox" min="1" max="2">
+				 <input type="text" id="datepicker"  style="width: 115px;">
+				 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+				 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>	
+	
+				 <script>
+			    	$(document).ready(function(){               
+				    $.datepicker.setDefaults({
+				    closeText: "닫기",
+				    currentText: "오늘",
+				    prevText: '이전 달',
+				    nextText: '다음 달',
+				    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+				    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+				    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+				    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+				    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+				    weekHeader: "주",
+				    yearSuffix: '년',
+				    minDate: "0",
+				    maxDate: "+2M"
+				    });    
+				 });
+				</script>
+							 -->
+							 
+				<label for="datepicker">날짜 선택:</label> 
+				<input type="text" id="datepicker" class="custom-textbox datepick" readonly style="width: 115px;">			 		 
+				 <script>
+					var fp = flatpickr(document.getElementById("datepicker"), {
+						"locale": "ko" 
+						 
+					});
+					
+					
+				</script>
+				 
+				 
+				 
+				 <label for="dogs">견수:</label> <input type="number" id="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
 
 				<button class="button" id="filter">적용</button>
-				<button class="button" onclick="sittingTest()" style="float: right;">펫시터
-					지원하기</button>
+				<button class="button" onclick="sittingTest()" style="float: right;">펫시터 지원하기</button>
 				<script>
 					function sittingTest()
 					{
@@ -352,6 +421,9 @@ p {
 				</script>
 			</div>
 
+
+
+			<!-- 검색 조건 태그 시작 -->
 			<div class="mb-4" style="font-family: Jua; font-size: 25pt;">
 				<!-- 버튼 모양의 복수 선택 라디오 버튼 -->
 				<c:forEach var="dto" items="${IndexTagList }">
@@ -378,13 +450,13 @@ p {
 					});
 				});
 			</script>
+			<!-- 검색 조건 태그 끝 -->
 			
-			
 
 
 
 
-
+			<!-- 리스트 뿌리기 시작 -->
 			<h2>펫시터 공고글</h2>
 			<hr>
 
@@ -422,7 +494,7 @@ p {
 			</c:forEach>
 		</div>
 		</div>
-
+		<!-- 리스트 뿌리기 끝 -->
 
 		<script>
 			// 무한 스크롤 함수
@@ -454,12 +526,8 @@ p {
 			// 초기에 한번 스크롤 이벤트를 발생시키기 위해 호출
 			infiniteScroll();
 		</script>
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-		<script
-			src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+		
+      
 	</section>
 	<section>
 		<div>
@@ -467,22 +535,12 @@ p {
 			</c:import>
 		</div>
 	</section>
-	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+	
+
 </body>
 
-<script>
-	flatpickr("#datepicker",
-	{
-		dateFormat : 'Y-m-d',
-		position : "below",
-		defaultDate : "today",
-		theme : "airbnb"
-	});
-</script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </html>
