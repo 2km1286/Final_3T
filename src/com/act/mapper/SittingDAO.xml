@@ -60,7 +60,16 @@
 		, SRSTART, SREND,
 		SRWSID, STLESID, SPMAXPET, SPSID
 		FROM SITTING_PLACE_LIST_VIEW
-		WHERE EXTRAADDR IN (#{extraAddr})
+		WHERE 1=1
+			<if test="#{extraAddr} != null">
+				AND EXTRAADDR = #{extraAddr}
+			</if>
+			<if test="#{datePick} != null">
+				AND #{datePicker} NOT BETWEEN TO_CHAR(SRSTART, 'YYYY-MM-DD') AND TO_CHAR(SREND, 'YYYY-MM-DD')
+			</if>
+			<if test="#{spMaxPet} != null">
+				AND SPMAXPET >= #{spMaxPet}
+			</if>
 	</select>
 
 </mapper>
