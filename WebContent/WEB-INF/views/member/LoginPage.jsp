@@ -10,7 +10,7 @@
 <meta charset='UTF-8'>
 <title>로그인</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
 
 	$(function()
@@ -21,8 +21,13 @@
 		  <% } %>
 		 
 		  // 회원가입하고 난 후 로그인으로 이동 시 판단
-		<% if ((String)request.getAttribute("flag") != null ) { %>
+		<% if ("0".equals((String)request.getAttribute("flag"))) { %>
 	        alert("회원 가입을 환영합니다!");	// 로그인 폼 요청 시 flag 확인에 따라 회원가입에서 온건지..
+		  <% } %>
+		  
+		  // 회원가입하고 난 후 로그인으로 이동 시 판단
+		<% if ("1".equals((String)request.getAttribute("flag"))) { %>
+	        alert("비밀번호가 변경되었습니다.");	// 로그인 폼 요청 시 flag 확인에 따라 회원가입에서 온건지..
 		  <% } %>
 		  
 		  

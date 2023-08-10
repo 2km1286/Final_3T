@@ -17,48 +17,86 @@
 		{
 			$("#pw-button").click(function()
 			{
-				if( !$("#jmPw").val() )
-				{
-					alert("새 비밀번호를 입력해야 합니다.");
-					$("#jmPw").focus();
-					
-					return false;
-				}
-				
-				if( !$("#jmPw2").val() )
-				{
-					alert("새 비밀번호를 다시 입력해야 합니다.");
-					$("#jmPw2").focus();
-					
-					return false;
-				}
-				
-				if( $("#jmPw").val() != $("#jmPw2").val() )
-				{
-					alert("입력하신 비밀번호가 일치하지 않습니다.");
-					$("#jmPw2").focus();
-					
-					return false;
-				}
-				
-				alert("비밀번호를 변경했습니다. ");
-				
+				if ($("#jmPw").val() == ""
+					|| $("#userPwCheck").val() == "")
+			{
+				alert("필수 항목들을 모두 입력해 주세요");
+				return;
+			}
+				checkPwd();
+				$(".form").submit();
+
 				return true;
 			});
 			
 			$("#back-button").click(function()
+			{
+				window.location.href = "loginpage.action";
+				
+			});
+			
+			
+			$("#jmPw").blur(function() 
 					{
-						window.location.href = "loginpage.action";
 						
+						if ($("#jmPw").val()!="")
+						{
+							validationPassword();
+						}
+					    
 					});
+
+					// 패스워드확인 input 태그에서 포커싱이 나갔을때 호출
+					$("#userPwCheck").blur(function() 
+					{
+						
+						if ($("#userPwCheck").val()!="")
+						{
+							checkPwd();
+						}
+					    
+					});
+
+					function checkPwd()
+					{
+						var pw1 = $("#jmPw").val();
+						var pw2 = $("#userPwCheck").val();
+
+						if (pw1 != pw2)
+						{
+							alert("비밀번호가 일치하지 않습니다");	
+							$("#userPwCheck").val("");
+							$("#userPwCheck").focus();
+							return;
+						}
+
+						//validationPassword();
+					}
+
+					// 비밀번호 형식 오류시 비우고 다시 포커싱
+					function validationPassword()
+					{
+						var pw1 = $("#jmPw").val();
+						var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+						if (!re.test(pw1))
+						{
+							alert("비밀번호는 숫자, 소문자, 대문자를 포함해 8자리 이상이어야 합니다.");		
+							$("#jmPw").val("");
+							$("#jmPw").focus();
+							return false;
+						}
+
+						return true;
+
+					}
 		});
 
-
-
-
+</script>
+<script type="text/javascript">
+//패스워드 input 태그에서 포커싱이 나갔을때 호출
 
 </script>
-
 
 <style>
 * {
@@ -403,9 +441,9 @@ form button:hover {
     <div class="container">
     <img src="images/logo_main-removebg.png" alt="로고" class="logo"> <!-- 로고 이미지 추가 -->
       <h1>비밀번호 재설정</h1>
-      <form class="form" action="updatepw.action">
+      <form class="form" action="updatepw.action" method="post">
         <div class="input-container">
-				<label for="password">패스워드</label> 
+				<label for="password">새로운 패스워드</label> 
 					<input type="password" placeholder="비밀번호" name="jmPw"
 						id="jmPw" style="width: 100%;">
 				</div>

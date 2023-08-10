@@ -179,7 +179,9 @@ form button:hover {
 	color: #53e3a6;
 	
 }
-
+form button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
 </style>
 <!-- FONT jua -->
 <style>
@@ -281,6 +283,12 @@ form input[name="userNick"] {
 form input[name="jmZipCode"] {
 	width: 350px; /* Reduced the width to 350px */
 }
+#back-button:hover
+{
+	 background-color: light;
+	 color:white;
+}
+
 </style>
 </head>
 <body>
@@ -307,20 +315,24 @@ form input[name="jmZipCode"] {
 				<div class="input-container">
 				<label for="jmName">이름 </label>
 				<input type="text" placeholder="이름" name="jmName" 
-					id="jmName" style="width: 100%;">
+					id="jmName" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"
+					>
 				</div>
 				<div class="input-container">
 				<label for="jmSsn">주민등록번호</label>
 					<input type="text" placeholder="주민번호 앞자리" name="jmSsn1"
-						id="jmSsn1" style="width: 40%;"maxlength="6">&nbsp;-&nbsp;
+						id="jmSsn1" style="width: 40%;"maxlength="6" onkeyup="numberCheck(this)" 
+						onkeydown="numberCheck(this)">&nbsp;-&nbsp;
 						<input type="password" placeholder="주민번호 뒷자리" name="jmSsn2"
-						id="jmSsn2" style="width: 40%;"maxlength="7">
+						id="jmSsn2" style="width: 40%;"maxlength="7" 
+						 onkeyup="numberCheck(this)" 
+						onkeydown="numberCheck(this)">
 				</div>
 				<div class="input-container">
 				 <label for="jmId">아이디 </label>
 					<input type="text" placeholder="아이디" name="jmId"
-						id="jmId">
-					<button type="button" id="checkUserIdBtn">중복확인</button>
+						id="jmId" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)">
+					<button type="button" id="checkUserIdBtn" value="0">중복확인</button>
 				</div>
 				
 				<div class="input-container">
@@ -340,8 +352,9 @@ form input[name="jmZipCode"] {
 				<div class="input-container">
 				<label for="jmNickName">닉네임</label>
 					<input type="text" placeholder="닉네임"
-						name="jmNickName" id="jmNickName">
-					<button type="button" id="checkUserNickBtn">중복확인</button>
+						name="jmNickName" id="jmNickName" onkeyup="characterCheck(this)"
+						onkeydown="characterCheck(this)">
+					<button type="button" id="checkUserNickBtn" value="0">중복확인</button>
 				</div>
 
 				
@@ -350,11 +363,14 @@ form input[name="jmZipCode"] {
 				<div class="input-container">
 				<label for="jmTel">전화번호</label>
 					<input type="tel" value="010" name="jmTel1"
-						id="jmTel1" style="width: 20%;" maxlength="3">&nbsp;-&nbsp;
+						id="jmTel1" style="width: 20%;" maxlength="3" 
+						onkeyup="numberCheck(this)" onkeydown="numberCheck(this)">&nbsp;-&nbsp;
 						<input type="tel" name="jmTel2"
-						id="jmTel2" style="width: 30%;" maxlength="4">&nbsp;-&nbsp;
+						id="jmTel2" style="width: 30%;" maxlength="4"
+						onkeyup="numberCheck(this)" onkeydown="numberCheck(this)">&nbsp;-&nbsp;
 						<input type="tel"  name="jmTel3"
-						id="jmTel3" style="width: 30%;" maxlength="4">
+						id="jmTel3" style="width: 30%;" maxlength="4"
+						onkeyup="numberCheck(this)" onkeydown="numberCheck(this)">
 					<button type="button" id="telCheck">인증번호</button>
 				</div>
 				
@@ -362,13 +378,14 @@ form input[name="jmZipCode"] {
 				<div class="input-container">
 				<label for="jmZipCode">우편번호</label>
 					<input type="text" id="jmZipCode" name="jmZipCode"
-						placeholder="우편번호">
+						placeholder="우편번호" onclick="execDaumPostcode()" style="cursor: pointer;" readonly="readonly">
 					<button type="button" onclick="execDaumPostcode()"
-						style="font-size: 95%;">우편번호 찾기</button>
+						style="font-size: 95%; " >우편번호 찾기</button>
 				</div>
 				<div class="input-container">
 					<label for="jmAddr1">주소</label>
-					<input type="text" id="jmAddr1" name="jmAddr1" placeholder="도로명 주소"><br>
+					<input type="text" id="jmAddr1" name="jmAddr1" placeholder="도로명 주소"
+					onclick="execDaumPostcode()" readonly="readonly" style="cursor: pointer;"><br>
 				</div>
 				<div class="input-container">
 					<label for="jmAddr2">상세주소</label>
@@ -498,8 +515,8 @@ form input[name="jmZipCode"] {
 					}
 				</script>
 
-				<div  style="display: none;"><input name="jmSsn" id="jmSsn"></div>
-				<div  style="display: none;"><input name="jmTel" id="jmTel"></div>
+				<div style="display: none;"><input name="jmSsn" id="jmSsn" pattern="[0-9-]+"></div>
+				<div style="display: none;"><input name="jmTel" id="jmTel" pattern="[0-9-]+"></div>
 				
 				<div style="text-align: right; margin-top: 20px;">
 				<button type="button" id="back-button">뒤로가기</button>
@@ -514,7 +531,7 @@ form input[name="jmZipCode"] {
 			// 중복 여부 버튼 텍스트 자체를 바꿈  + 포커스 들어왔을땐 다시 버튼 초기화
 			$("#jmId").focus(function()
 			{
-				$("#checkUserIdBtn").html("중복확인");
+				$("#checkUserIdBtn").html("중복확인").val("0");
 				$("#checkUserIdBtn").css("background-color", "white");
 				$("#checkUserIdBtn").css("color", "#53e3a6"); 
 				
@@ -526,7 +543,7 @@ form input[name="jmZipCode"] {
 			// 중복 여부 버튼 텍스트 자체를 바꿈 + 포커스 들어왔을땐 다시 버튼 초기화
 			$("#jmNickName").focus(function()
 			{
-				$("#checkUserNickBtn").html("중복확인");
+				$("#checkUserNickBtn").html("중복확인").val("0");
 				$("#checkUserNickBtn").css("background-color", "white");
 				$("#checkUserNickBtn").css("color", "#53e3a6"); 
 				
@@ -551,12 +568,12 @@ form input[name="jmZipCode"] {
 						{
 							if (jsonObj == 0)
 							{
-								$("#checkUserIdBtn").html("사용가능");
+								$("#checkUserIdBtn").html("사용가능").val("1");	// value 값을 확인해서 중복확인 체크
 								$("#checkUserIdBtn").css("background-color", "#007bff");
 								$("#checkUserIdBtn").css("color", "white"); // 텍스트 색상 변경
 							} else
 							{
-								$("#checkUserIdBtn").html("사용불가");
+								$("#checkUserIdBtn").html("사용불가").val("0");
 								$("#checkUserIdBtn").css("background-color", "red");
 								$("#checkUserIdBtn").css("color", "white"); 
 							}
@@ -570,7 +587,7 @@ form input[name="jmZipCode"] {
 					});
 				} else
 				{
-					$("#checkUserIdBtn").html("입력없음");
+					$("#checkUserIdBtn").html("입력없음").val("0");
 					$("#checkUserIdBtn").css("background-color", "red");
 					$("#checkUserIdBtn").css("color", "white");
 				}
@@ -593,12 +610,12 @@ form input[name="jmZipCode"] {
 						{
 							if (jsonObj == 0)
 							{
-								$("#checkUserNickBtn").html("사용가능");
+								$("#checkUserNickBtn").html("사용가능").val("1");
 								$("#checkUserNickBtn").css("background-color", "#007bff");
 								$("#checkUserNickBtn").css("color", "white"); // 텍스트 색상 변경
 							} else
 							{
-								$("#checkUserNickBtn").html("사용불가");
+								$("#checkUserNickBtn").html("사용불가").val("0");
 								$("#checkUserNickBtn").css("background-color", "red");
 								$("#checkUserNickBtn").css("color", "white"); 
 							}
@@ -613,7 +630,7 @@ form input[name="jmZipCode"] {
 
 				} else
 				{
-					$("#checkUserNickBtn").html("입력없음");
+					$("#checkUserNickBtn").html("입력없음").val("0");
 					$("#checkUserNickBtn").css("background-color", "red");
 					$("#checkUserNickBtn").css("color", "white");
 				}
@@ -626,7 +643,7 @@ form input[name="jmZipCode"] {
 						
 						if ($("#jmId").val() == "" 
 								|| $("#jmPw").val() == ""
-								|| $("#jmPw").val() == ""
+								|| $("#userPwCheck").val() == ""
 								|| $("#jmName").val() == ""
 								|| $("#jmSsn1").val() == ""
 								|| $("#jmSsn2").val() == ""
@@ -639,10 +656,14 @@ form input[name="jmZipCode"] {
 								|| $("#jmAddr2").val() == ""
 								|| $("#jmZipCode").val() == "")
 						{
-							//$("#err").css("display", "inline");
 							alert("필수 항목들을 모두 입력해 주세요");
 							return;
 						}
+						if ($("#checkUserIdBtn").val() != "1" || $("#checkUserNickBtn").val() != "1")
+							{
+								alert("중복확인은 필수입니다");
+								return;
+							}
 						
 						// ssn1 과 ssn2 / tel1,tel2,tel3 를 합쳐 display none 으로 설정된 input 값을 넘김
 						var jmSsn = $("#jmSsn1").val() +"-"+ $("#jmSsn2").val()
@@ -718,6 +739,27 @@ form input[name="jmZipCode"] {
 
 		}
 	</script>
-
+<script>
+	// 특수문자 입력 방지
+	function characterCheck(obj)
+	{
+		var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
+		// 허용할 특수문자는 여기서 삭제하면 됨
+		// 지금은 띄어쓰기도 특수문자 처리됨 참고하셈
+		if( regExp.test(obj.value) )
+		{
+			alert("특수문자는 입력하실수 없습니다.");
+			obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
+		}
+	}
+	
+	function numberCheck(obj) {
+	    var regExp = /[^0-9]/g;
+	    if (regExp.test(obj.value)) {
+	        alert("숫자만 입력하실 수 있습니다.");
+	        obj.value = obj.value.replace(regExp, ""); // 숫자 이외의 문자 제거
+	    }
+	}
+</script>
 </body>
 </html>
