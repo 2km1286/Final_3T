@@ -35,10 +35,10 @@ public class SittingService implements ISittingService
 	}
 
 	// 펫시터의 등급과 기본가격 정보
-	public ArrayList<SittingDTO> gradeList()
+	public ArrayList<SittingDTO> gradeList(SittingDTO dto)
 	{
 		ArrayList<SittingDTO> grade = new ArrayList<SittingDTO>();
-
+		System.out.println("petmemsid : " + dto.getPmemSid());
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		grade = dao.gradeList();
 
@@ -100,9 +100,13 @@ public class SittingService implements ISittingService
 	}
 	
 	// 펫시팅 리스트 검색조건 리스트  반환
-	public ArrayList<SittingDTO> sittingFilterList()
+	public ArrayList<SittingDTO> sittingFilterList(SittingDTO dto)
 	{
 		ArrayList<SittingDTO> filterlist = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		filterlist = dao.spfilterlist(dto);
+		
+		System.out.println("filterlist : " + filterlist);
 		
 		return filterlist;
 	}
