@@ -206,7 +206,7 @@ p {
 			<hr>
 
 			<div id="cardContainer">
-				<c:forEach var="dto" items="${list}" varStatus="status">
+				<c:forEach var="dto" items="${filterlist}" varStatus="status">
 					<c:if test="${status.count % 3 == 1}">
 						<div class="row justify-content-between">
 					</c:if>
@@ -216,7 +216,7 @@ p {
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
-							<h5 class="card-title">${gradeList[status.index].grade}
+							<h5 class="card-title">${filtergradelist[status.index].grade}
 								${dto.jmNickName}</h5>
 							<h6 class="card-subtitle text-muted">${dto.spAddr1}
 								<br /> ${dto.sptitle}
@@ -226,7 +226,7 @@ p {
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp; ${gradeList[status.index].price}원/ 1박</p>
+								&nbsp;&nbsp;&nbsp;&nbsp; ${filtergradelist[status.index].price}원/ 1박</p>
 						</div>
 						<!-- end .card-body -->
 					</div>
