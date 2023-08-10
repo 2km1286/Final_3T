@@ -17,6 +17,6 @@ public interface ISittingDAO
 
 	public ArrayList<SittingDTO> booklist(String memSid);
 	
-	public ArrayList<SittingDTO> spfilterlist(String extraAddr);
+	public ArrayList<SittingDTO> spfilterlist(SittingDTO dto);
 
 }
