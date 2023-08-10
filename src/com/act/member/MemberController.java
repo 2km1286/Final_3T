@@ -26,10 +26,12 @@ public class MemberController
 
 	// 로그인(+ 회원가입버튼) 페이지로 가는 액션
 	@RequestMapping("/loginpage.action")
-	public String loginJoinPage()
+	public String loginJoinPage(HttpServletRequest request)
 	{
 		String result = "";
-
+		// 회원가입 폼에서 왔다면 flag를 받아야 하기 때문에..
+		String flag = request.getParameter("flag");
+		request.setAttribute("flag", flag);
 		result = "/WEB-INF/views/member/LoginPage.jsp";
 
 		return result;
@@ -75,17 +77,17 @@ public class MemberController
 		return view;
 	}
 
-	// 설명 써주세
+	// 회원가입 폼에서 회원가입 버튼 클릭
 	@RequestMapping("/join.action")
-	public String join(HttpSession session, MemberDTO dto)
+	public String join(MemberDTO dto)
 	{
 		String result = "";
-		int num = memberService.join(session, dto);
+		int num = memberService.join(dto);
 
 		if (num != 1)
 			result = "redirect:join.action";
 		else
-			result = "redirect:mainpage.action";
+			result = "redirect:loginpage.action?flag=0";
 
 		return result;
 	}
@@ -133,7 +135,7 @@ public class MemberController
 		return view;
 	}
 
-	// 이름, 주민번호로 아이디 찾기
+	// 이름, 주민번호로 아이디 찾기 --- 아이디 찾기
 	@RequestMapping("/findidform.action")
 	public String findId(HttpServletRequest request)
 	{
@@ -153,7 +155,7 @@ public class MemberController
 			result = "아이디가 존재하지 않습니다.";
 		} else
 		{
-			result = "등록된 아이디는 [" + result + "] 입니다.";
+			result = "등록된 아이디는 <span style='color: blue; font-weight: bold;'>" + result + "</span> 입니다.";
 		}
 
 		request.setAttribute("result", result);
@@ -163,7 +165,7 @@ public class MemberController
 		return view;
 	}
 
-	// 비밀번호 재설정을 위해 아이디, 이름, 주민번호를 입력받는 폼
+	// 비밀번호 재설정을 위해 아이디, 이름, 주민번호로 본인인증 폼
 	@RequestMapping("/findpwpage.action")
 	public String pwRemakeForm()
 	{
@@ -171,32 +173,46 @@ public class MemberController
 		return view;
 	}
 
-	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사
-	@RequestMapping("/findpw.action")
-	public String findPw(MemberDTO dto, HttpSession session)
+	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사 === 비밀번호 찾기
+	@RequestMapping("/findpwform.action")
+	public String findPw(MemberDTO dto, HttpSession session,HttpServletRequest request)
 	{
 		String view = "";
-
+		
 		String result = "";
 
 		// "0" 또는 특정 memSid 를 반환
 		result = memberService.findPw(dto);
-
 		if (result.equals("0")) // 회원정보 없음
 		{
+			
 			// result에 0이 담긴채로 FindPwPage.jsp 을 요청, 이 때는 alert이 뜸
 			session.setAttribute("result", result);
-			view = "redirect:findpwpage.action";
-		} else // 회원정보 있음
+			view = "/WEB-INF/ajax/FindIdSsnForm.jsp";
+			
+			return view;
+		} 
+		else // 회원정보 있음
 		{
 			// memSid에 조회한 memSid을 담아 넘겨주며 비밀번호 재설정 페이지를 요청.
-			session.setAttribute("memSid", result);
-			view = "/WEB-INF/views/member/UpdatePwPage.jsp";
+			
+			session.setAttribute("result", result);
+			view = "/WEB-INF/ajax/FindIdSsnForm.jsp";
 		}
 
 		return view;
 	}
-
+	
+	
+	// 아이디찾는 폼으로 가기
+		@RequestMapping("/updatepwpage.action")
+		public String updatepwpage()
+		{
+			String view = "/WEB-INF/views/member/UpdatePwPage.jsp";
+			return view;
+		}
+		
+		
 	// 비밀번호 재설정하기
 	@RequestMapping("/updatepw.action")
 	public String updatePw(MemberDTO dto, HttpSession session)

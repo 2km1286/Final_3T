@@ -1,6 +1,5 @@
 package com.act.member;
 
-import javax.servlet.http.HttpSession;
 
 public interface IMemberService
 {
@@ -19,7 +18,7 @@ public interface IMemberService
 	
 	public int updatePw(MemberDTO dto);
 	
-	public int join(HttpSession session, MemberDTO dto);
+	public int join(MemberDTO dto);
 	
 	public String searchMemNickName(MemberDTO dto);
 	

@@ -98,7 +98,7 @@ public class MemberService implements IMemberService
   
 
 	@Transactional
-	public int join(HttpSession session, MemberDTO dto)
+	public int join(MemberDTO dto)
 	{
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
