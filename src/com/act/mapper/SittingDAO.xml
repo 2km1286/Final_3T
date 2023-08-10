@@ -60,5 +60,12 @@
 		WHERE MEMSID = 'YDUW8CVB4J9TC2X'
 		ORDER BY SPCREATED DESC
 	</select>
+	
+	<select id="sittingPlaceTags" resultType="com.act.sitting.SittingDTO">
+		SELECT ISPTNAME
+		FROM SITTING_PLACE_TAGS_VIEW
+		WHERE SPSID = #{spSid}
+	</select>
+	
 
 </mapper>

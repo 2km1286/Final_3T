@@ -111,6 +111,19 @@ public class SittingService implements ISittingService
 		
 		return result;
 	}
+
+	// ※현재 사용하고 있는 돌봄장소※의 태그들 조회
+	@Override
+	public ArrayList<SittingDTO> sittingPlaceTags(int spSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingPlaceTags(spSid);
+		
+		return result;
+	}
 	
 	
 

@@ -20,6 +20,9 @@ public interface ISittingDAO
 	// 회원번호로 펫시터 휴무일 확인 → 수정필요 회원번호가 아니라 허브시드
 	public ArrayList<SittingDTO> sittingRest(String memSid);
 	
-	// 회원번호로 마이페이지에서 돌봄장소 기본정보 조회
+	// 회원번호로 예전~현재 돌봄장소 기본정보 조회
 	public ArrayList<SittingDTO> sittingPlaceBasic(String memSid);
+	
+	// ※현재 사용하고 있는 돌봄장소※의 태그들 조회
+	public ArrayList<SittingDTO> sittingPlaceTags(int spSid);
 }

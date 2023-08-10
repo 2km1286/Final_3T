@@ -67,6 +67,9 @@ public class SittingController
 			if(slCount!=0)		// 펫시팅면허번호를 가지고 있다면
 	        {
 				model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0) );
+				model.addAttribute("tags", sittingService.sittingPlaceTags(sittingService.sittingPlaceBasic(memSid).get(0).getSpSid()) );
+				System.out.println(sittingService.sittingPlaceTags(sittingService.sittingPlaceBasic(memSid).get(0).getSpSid()).get(0).getIsptName());
+				
 				model.addAttribute("bookList", sittingService.booklist(memSid));
 				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 	        }
