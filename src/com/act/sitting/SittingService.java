@@ -19,6 +19,8 @@ public class SittingService implements ISittingService
 
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		list = dao.list();
+		
+		
 
 		return list;
 	}
@@ -34,28 +36,30 @@ public class SittingService implements ISittingService
 		return IndexTagList;
 	}
 
-	// 펫시터의 등급과 기본가격 정보
-	public ArrayList<SittingDTO> gradeList(SittingDTO dto)
-	{
-		ArrayList<SittingDTO> grade = new ArrayList<SittingDTO>();
-		System.out.println("petmemsid : " + dto.getPmemSid());
-		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		grade = dao.gradeList();
-
-		return grade;
-	}
+	/*
+	 * // 펫시터의 등급과 기본가격 정보 public ArrayList<SittingDTO> gradeList(SittingDTO dto) {
+	 * ArrayList<SittingDTO> grade = new ArrayList<SittingDTO>();
+	 * System.out.println("petmemsid : " + dto.getPmemSid()); ISittingDAO dao =
+	 * sqlSession.getMapper(ISittingDAO.class); grade = dao.gradeList();
+	 * 
+	 * return grade; }
+	 */
 
 	// 해당 돌봄장소의 태그들 가져오기
-	/*
-	 * public ArrayList<SittingDTO> tagList(SittingDTO s) { ArrayList<SittingDTO>
-	 * tagList = new ArrayList<SittingDTO>();
-	 * 
-	 * ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-	 * 
-	 * tagList = dao.tagList(s.getMemSid());
-	 * 
-	 * return tagList; }
-	 */
+	
+	  public ArrayList<SittingDTO> tagList() 
+	  { 
+		  ArrayList<SittingDTO>
+		  tagList = new ArrayList<SittingDTO>();
+		  
+		  ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		  
+		  tagList = dao.tagList();
+		  
+		  return tagList; 
+	  }
+	  
+	 
 
 
 	// 회원의 STS(시험제출번호) 유무(상태) 반환
