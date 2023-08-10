@@ -231,7 +231,10 @@ p {
 		
 		$("#filter").click(function()
 		{	
-			var dateSend = "extraAddr=" + $("#extraAddr").val()
+			alert($(".selectedtag").val());
+			
+			
+			dateSend = "extraAddr=" + $("#extraAddr").val()
 						+ "&datePicker=" + $("#datepicker").val()
 						+ "&spMaxPet=" + $("#spMaxPet").val();
 			
@@ -397,8 +400,8 @@ p {
 			<!-- 검색 조건 태그 시작 -->
 			<div class="mb-4" style="font-family: Jua; font-size: 25pt;">
 				<!-- 버튼 모양의 복수 선택 라디오 버튼 -->
-				<c:forEach var="dto" items="${IndexTagList }">
-					<button class="btn radio-button"
+				<c:forEach var="dto" items="${IndexTagList }" varStatus="status" begin="1">
+					<button class="btn radio-button" name="${ }"
 						style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
 						value="${dto.isptSid }">${dto.isptName }</button>
 				</c:forEach>
@@ -410,10 +413,11 @@ p {
 					// 클릭한 버튼에 selected 클래스 추가 및 제거
 					$('.radio-button').click(function()
 					{
-						$(this).toggleClass('selected');
-						if ($(this).hasClass('selected'))
+						$(this).toggleClass('selectedtag');
+						if ($(this).hasClass('selectedtag'))
 						{
 							$(this).css('background-color', '#367539'); // 선택된 스타일로 변경
+							// 여기서 데이터를 추가해주면..?
 						} else
 						{
 							$(this).css('background-color', '#4caf50'); // 원래 스타일로 변경
