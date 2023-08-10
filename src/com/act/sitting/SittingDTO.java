@@ -10,14 +10,12 @@ public class SittingDTO
 	// SITTING_PLACE_LIST_VIEW
 	private String jmNickName, sptitle, spAddr1, spAddr2, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
 	private int sphSid, srwSid, stleSid, spMaxPet, spSid;
+	private String grade;
+	private int price;
 	
 	// INDEX_SITTING_PLACE_TAG
 	private int isptSid;
 	private String isptName;
-	
-	// SITTING_GRADE_VIEW
-	private String grade;
-	private int price;
 	
 	// SITTING_BOOK_VIEW	// sbStart 가 나눠져있는건 달력js에서 사용하기 위함, pmemSid는 예약을 요청한 멤버시드	
 	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pmemSid;	
