@@ -5,12 +5,12 @@
 <mapper namespace="com.act.sitting.ISittingDAO">
 
 	<select id="list" resultType="com.act.sitting.SittingDTO">
-		SELECT JMNICKNAME, SPTITLE,
-		SPADDR1, SPADDR2, MEMSID, SPHSID, SPHSTART, SPHEND
-		, SRSTART, SREND,
-		SRWSID, STLESID, SPMAXPET, SPSID
-		FROM SITTING_PLACE_LIST_VIEW
-	</select>
+      SELECT JMNICKNAME, SPTITLE,
+      SPADDR1, SPADDR2, EXTRAADDR, MEMSID, SPHSID, SPHSTART, SPHEND
+      , SRSTART, SREND,
+      SRWSID, STLESID, SPMAXPET, SPSID
+      FROM SITTING_PLACE_LIST_VIEW
+   </select>
 
 	<select id="IndexTagList"
 		resultType="com.act.sitting.SittingDTO">
@@ -20,12 +20,12 @@
 		ORDER BY ISPT_SID
 	</select>
 
+	
 	<select id="gradeList" resultType="com.act.sitting.SittingDTO">
 		SELECT GRADE, PRICE
-		FROM
-		SITTING_GRADE_VIEW
+		FROM SITTING_GRADE_VIEW
 	</select>
-
+	
 	<!-- <select id="tagList" resultType="com.act.sitting.SittingDTO"> SELECT 
 		MEMSID, JMNICKNAME, ISPTSID, ISPTNAME FROM SITTING_PLACE_TAGS_VIEW WHERE 
 		MEMSID=#{memSid} </select> -->
@@ -55,9 +55,9 @@
 	</select>
 	
 	<select id="sittingPlaceBasic" resultType="com.act.sitting.SittingDTO">
-		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, IPSID
+		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, IPSID, SPSID
 		FROM SITTING_PLACE_BASIC
-		WHERE MEMSID = 'YDUW8CVB4J9TC2X'
+		WHERE MEMSID = #{memSid}
 		ORDER BY SPCREATED DESC
 	</select>
 	

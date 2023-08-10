@@ -431,7 +431,7 @@ const months = [
 
 			<div class="infoOne">
 				<h4><span class="smallTitle">돌봄장소 특이사항</span></h4>
-				<c:forEach items="${tags}" var="tag">
+				<c:forEach items="${tags }" var="tag">
 					<button class="btn btn-warning">${tag.isptName}</button>
 				</c:forEach>
 			</div>

@@ -1,5 +1,7 @@
 package com.act.sitting;
 
+import java.util.ArrayList;
+
 /*
 JM_NICKNAME, SP_TITLE, SP_ADDR1, SP_ADDR2, MEM_SID, SPH_SID, SHP_START, SHP_END, 
 SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
@@ -252,6 +254,8 @@ public class SittingDTO
 	{
 		this.isptName = isptName;
 	}
+	
+	
 	
 	
 	

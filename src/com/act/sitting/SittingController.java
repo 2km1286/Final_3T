@@ -66,10 +66,16 @@ public class SittingController
 		{
 			if(slCount!=0)		// 펫시팅면허번호를 가지고 있다면
 	        {
-				model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0) );
-				model.addAttribute("tags", sittingService.sittingPlaceTags(sittingService.sittingPlaceBasic(memSid).get(0).getSpSid()) );
-				System.out.println(sittingService.sittingPlaceTags(sittingService.sittingPlaceBasic(memSid).get(0).getSpSid()).get(0).getIsptName());
+				// 현재 운영중인 돌봄장소번호
+				int spSid = sittingService.sittingPlaceBasic(memSid).get(0).getSpSid();
 				
+				// 현재 운영중인 돌봄장소의 기본정보(태그, 사진, 휴무일 제외)
+				model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0));
+				
+				// 현재 운영중인 돌봄장소의 특이사항
+				model.addAttribute("tags", sittingService.sittingPlaceTags(spSid));
+				
+				// 나의 휴무일
 				model.addAttribute("bookList", sittingService.booklist(memSid));
 				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 	        }

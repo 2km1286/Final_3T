@@ -1,6 +1,7 @@
 package com.act.sitting;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface ISittingService
 {
