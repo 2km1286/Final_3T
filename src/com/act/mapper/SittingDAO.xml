@@ -21,8 +21,9 @@
 	</select>
 
 	<select id="gradeList" resultType="com.act.sitting.SittingDTO">
-		SELECT GRADE, PRICE
+		SELECT MEMSID, GRADE, PRICE
 		FROM SITTING_GRADE_VIEW
+		WHERE MEMSID = #{memSid}
 	</select>
 
 	<!-- <select id="tagList" resultType="com.act.sitting.SittingDTO"> SELECT 
