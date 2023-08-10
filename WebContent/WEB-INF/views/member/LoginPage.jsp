@@ -4,7 +4,6 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +19,13 @@
 	        $("#message").fadeIn().delay(2000).fadeOut();	// 보였다 사라지기
 
 		  <% } %>
-		// 회원가입 폼 페이지로 가기
+		 
+		  // 회원가입하고 난 후 로그인으로 이동 시 판단
+		<% if ((String)request.getAttribute("flag") != null ) { %>
+	        alert("회원 가입을 환영합니다!");	// 로그인 폼 요청 시 flag 확인에 따라 회원가입에서 온건지..
+		  <% } %>
+		  
+		  
 		$("#join-button").click(function()
 		{
 			window.location.href = "joinpage.action";
@@ -195,8 +200,15 @@ form button {
 }
 
 form button:hover {
-  background-color: #f5f7f9;
+  background-color: rgba(255, 255, 255, 0.4);
 }
+#join-button:hover
+{
+	 background-color: light;
+	 color:white;
+}
+
+
 </style>
 <!-- FONT jua -->
   <style>

@@ -18,8 +18,11 @@ String cp = request.getContextPath();
 		$("#find-button").click(
 				function()
 				{
-					//alert("확인");
-
+					// ssn1, ssn2 합쳐서 전송
+					var jmSsn = $("#jmSsn1").val() +"-"+ $("#jmSsn2").val();
+					$("#jmSsn").val(jmSsn);
+					
+				
 					var params = "jmName=" + $("#jmName").val() + "&jmSsn="
 							+ $("#jmSsn").val();
 
@@ -32,7 +35,8 @@ String cp = request.getContextPath();
 						success : function(data)
 						{
 							// "아이디가 존재하지 않습니다." or "등록된 아이디는 [" + result + "] 입니다."
-							$("#idRes").html(data);
+							$("#idRes").html(data).fadeIn().delay(2000).fadeOut();
+							
 
 						},
 						beforeSend : showRequest,
@@ -110,7 +114,7 @@ body ::-webkit-input-placeholder {
 }
 
 .wrapper {
-	max-width: 600px;
+	max-width: 800px;
 	padding: 80px 0;
 	text-align: center;
 }
@@ -122,11 +126,12 @@ body ::-webkit-input-placeholder {
 
 .container {
 	margin: 0 auto;
-	height: 430px;
+	height: auto;
 	text-align: center;
 	padding: 30px; /* 테두리와 요소들 사이의 간격 조정 */
 	border: 2px solid white; /* 폼에 테두리 설정 */
 	border-radius: 10px; /* 테두리의 둥근 정도 설정 */
+	width: 570px;
 }
 
 .container h1 {
@@ -151,7 +156,7 @@ form input {
 	outline: 0;
 	border: 1px solid rgba(255, 255, 255, 0.4);
 	background-color: rgba(255, 255, 255, 0.2);
-	width: 250px;
+	width: 450px;
 	border-radius: 3px;
 	padding: 10px 15px;
 	margin: 0 auto 10px auto;
@@ -170,9 +175,11 @@ form input:hover {
 
 form input:focus {
 	background-color: white;
-	width: 300px;
+	width: 500px;
 	color: #53e3a6;
 }
+
+
 
 form button {
 	-webkit-appearance: none;
@@ -184,17 +191,175 @@ form button {
 	padding: 10px 15px;
 	color: #53e3a6;
 	border-radius: 3px;
-	width: 250px;
+	height: auto;
 	cursor: pointer;
 	font-size: 18px;
 	-webkit-transition-duration: 0.25s;
 	transition-duration: 0.25s;
 	width: 120px;
+    box-sizing: border-box; /* 내부 여백을 높이에 포함시킴 */
 }
 
 form button:hover {
 	background-color: #f5f7f9;
 }
+
+.container .select-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 0px 0px;
+	
+}
+
+.container .select-container label {
+	margin-right: 10px;
+}
+
+.container .select-container select {
+	width: 100px;
+	padding: 5px;
+	background-color: rgba(255, 255, 255, 0.2);
+	color: white;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	border-radius: 3px;
+	font-size: 16px;
+	font-weight: 300;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	text-align: center;
+	
+}
+
+.container .select-container select option {
+	background-color: rgba(80, 163, 162, 0.9);
+	color: white;
+	font-weight: 300;
+}
+
+.container .select-container select:hover {
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+.container .select-container select:focus {
+	background-color: white;
+	color: #53e3a6;
+	
+}
+
+#idRes
+{
+	color: white;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 0, 0, 0.7); /* 빨간색 배경 불투명도 설정 */
+    border-radius: 5px;
+    display: none;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* 빨간색 테두리 효과 */
+    
+}
+</style>
+<!-- FONT jua -->
+<style>
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+
+
+h1, button {
+	font-family: "Jua";
+	font-weight: Regular;
+}
+
+input {
+	font-family: "Jua";
+	font-weight: normal;
+}
+
+.logo {
+	max-width: 150px;
+	margin-bottom: 20px;
+	width: 100px;
+}
+
+.container .input-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+}
+
+
+
+.container .input-container input {
+	flex: 1;
+	margin: 0;
+}
+
+.container .select-container select {
+	flex: 1;
+	margin: 0;
+	
+}
+
+.container .input-container button {
+	background-color: white;
+	border: 0;
+	padding: 5px 10px;
+	color: #53e3a6;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 14px;
+	-webkit-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+	margin-left: 10px;
+}
+
+.container .input-container button {
+	/* Updated style for the buttons */
+	background-color: white;
+	border: 0;
+	padding: 10px 15px; /* Changed the padding to match the text boxes */
+	color: #53e3a6;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 18px; /* Changed the font size to match the text boxes */
+	-webkit-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+	margin-left: 10px;
+}
+
+.input-container label {
+    width: 150px;
+    text-align: center;
+    margin-right: 10px;
+    font-family: "Jua";
+    font-weight: normal;
+    font-size: 15pt;
+    color: white;
+    
+  }
+  .select-container label {
+    width: 150px;
+    text-align: center;
+    margin-right: 10px;
+    font-family: "Jua";
+	font-weight: normal;
+	font-size: 15pt;
+	color: white;
+
+  }
+
+form button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+#back-button:hover
+{
+	 background-color: light;
+	 color:white;
+}
+
 </style>
 <!-- FONT jua -->
 <style>
@@ -254,14 +419,27 @@ input {
 </head>
 <body>
 	<div class="wrapper">
-		<div class="container" style="height: 430px;">
+		<div class="container" style="height: 400px;">
 			<img src="images/logo_main-removebg.png" alt="로고" class="logo">
 			<!-- 로고 이미지 추가 -->
 			<h1>아이디찾기</h1>
 			<form class="form" id="idForm">
-				<input type="text" placeholder="이름" name="jmName" id="jmName">
-				<input type="password" placeholder="주민번호" name="jmSsn" id="jmSsn">
-				<div style="margin-top: 30px;">
+				<div class="input-container">
+				<label for="jmName">이름 </label>
+				<input type="text" placeholder="이름" name="jmName" 
+					id="jmName" style="width: 100%;">
+				</div>
+				<div class="input-container">
+				<label for="jmSsn">주민등록번호</label>
+					<input type="text" placeholder="주민번호 앞자리" name="jmSsn1"
+						id="jmSsn1" style="width: 40%;"maxlength="6">&nbsp;-&nbsp;
+						<input type="password" placeholder="주민번호 뒷자리" name="jmSsn2"
+						id="jmSsn2" style="width: 40%;"maxlength="7">
+				</div>
+				<div  style="display: none;"><input name="jmId" id="jmId"></div>
+				<div  style="display: none;"><input name="jmSsn" id="jmSsn"></div>
+				
+				<div style="text-align: right; margin-top: 20px;">
 					<button type="button" id="back-button" >로그인으로</button>
 					<button type="button" id="find-button"
 						style="background-color: #53e3a6; color: white;">아이디찾기</button>

@@ -298,7 +298,7 @@ form input[name="jmZipCode"] {
 				</div>
 				<div class="select-container">
 					<label for="jmGender">성별 선택</label> 
-					<select name="jmGender" id="jmGender">
+					<select name="jmGen" id="jmGen">
 						<option value="-1">--성별 선택--</option>
 						<option value="남">남성</option>
 					    <option value="여">여성</option>
@@ -306,20 +306,21 @@ form input[name="jmZipCode"] {
 				</div>
 				<div class="input-container">
 				<label for="jmName">이름 </label>
-				<input type="text" placeholder="이름" name="jmName"
+				<input type="text" placeholder="이름" name="jmName" 
 					id="jmName" style="width: 100%;">
 				</div>
 				<div class="input-container">
 				<label for="jmSsn">주민등록번호</label>
-					<input type="text" placeholder="주민등록번호" name="jmSsn"
-						id="jmSsn" style="width: 40%;">
+					<input type="text" placeholder="주민번호 앞자리" name="jmSsn1"
+						id="jmSsn1" style="width: 40%;"maxlength="6">&nbsp;-&nbsp;
+						<input type="password" placeholder="주민번호 뒷자리" name="jmSsn2"
+						id="jmSsn2" style="width: 40%;"maxlength="7">
 				</div>
 				<div class="input-container">
-				 <label for="jmName">아이디 </label>
+				 <label for="jmId">아이디 </label>
 					<input type="text" placeholder="아이디" name="jmId"
 						id="jmId">
 					<button type="button" id="checkUserIdBtn">중복확인</button>
-					<span id="result" style="font-size: small; color: red;"></span>
 				</div>
 				
 				<div class="input-container">
@@ -331,8 +332,7 @@ form input[name="jmZipCode"] {
 				<div class="input-container">
 				<label for="password">패스워드 확인</label> 
 					<input type="password" placeholder="비밀번호 재입력"
-						name="userPwCheck" id="userPwCheck" style="width: 100%;"
-						onkeyup="checkPwd()"> <span id="pwdConfirm"></span>
+						name="userPwCheck" id="userPwCheck" style="width: 100%;">
 					<!-- 비밀번호 재확인시 위의 입력값과 다르다면 다시 설정하도록 -->
 					
 				</div>
@@ -342,7 +342,6 @@ form input[name="jmZipCode"] {
 					<input type="text" placeholder="닉네임"
 						name="jmNickName" id="jmNickName">
 					<button type="button" id="checkUserNickBtn">중복확인</button>
-					<span id="resultNick"></span>
 				</div>
 
 				
@@ -350,8 +349,12 @@ form input[name="jmZipCode"] {
 
 				<div class="input-container">
 				<label for="jmTel">전화번호</label>
-					<input type="tel" placeholder="전화번호" name="jmTel"
-						id="jmTel">
+					<input type="tel" value="010" name="jmTel1"
+						id="jmTel1" style="width: 20%;" maxlength="3">&nbsp;-&nbsp;
+						<input type="tel" name="jmTel2"
+						id="jmTel2" style="width: 30%;" maxlength="4">&nbsp;-&nbsp;
+						<input type="tel"  name="jmTel3"
+						id="jmTel3" style="width: 30%;" maxlength="4">
 					<button type="button" id="telCheck">인증번호</button>
 				</div>
 				
@@ -365,7 +368,7 @@ form input[name="jmZipCode"] {
 				</div>
 				<div class="input-container">
 					<label for="jmAddr1">주소</label>
-					<input type="text" id="jmAddr1" name="jmAddr1" placeholder="주소"><br>
+					<input type="text" id="jmAddr1" name="jmAddr1" placeholder="도로명 주소"><br>
 				</div>
 				<div class="input-container">
 					<label for="jmAddr2">상세주소</label>
@@ -495,10 +498,10 @@ form input[name="jmZipCode"] {
 					}
 				</script>
 
-				<br /> <span id="err" style="display: none;">* 필수 항목들을 모두
-					입력해주세요.</span> <br />
+				<div  style="display: none;"><input name="jmSsn" id="jmSsn"></div>
+				<div  style="display: none;"><input name="jmTel" id="jmTel"></div>
 				
-				<div style="text-align: right;">
+				<div style="text-align: right; margin-top: 20px;">
 				<button type="button" id="back-button">뒤로가기</button>
 				<button type="button" id="join-button" style="background-color:#53e3a6; color: white;">회원가입</button>
 				</div>
@@ -508,9 +511,26 @@ form input[name="jmZipCode"] {
 	<script type="text/javascript">
 		$(function()
 		{
-			$("#checkUserIdBtn").focus(function()
+			// 중복 여부 버튼 텍스트 자체를 바꿈  + 포커스 들어왔을땐 다시 버튼 초기화
+			$("#jmId").focus(function()
 			{
-				alert("ddd");				
+				$("#checkUserIdBtn").html("중복확인");
+				$("#checkUserIdBtn").css("background-color", "white");
+				$("#checkUserIdBtn").css("color", "#53e3a6"); 
+				
+				
+			});
+			
+			
+			
+			// 중복 여부 버튼 텍스트 자체를 바꿈 + 포커스 들어왔을땐 다시 버튼 초기화
+			$("#jmNickName").focus(function()
+			{
+				$("#checkUserNickBtn").html("중복확인");
+				$("#checkUserNickBtn").css("background-color", "white");
+				$("#checkUserNickBtn").css("color", "#53e3a6"); 
+				
+				
 			});
 			
 			$("#checkUserIdBtn").click(function()
@@ -573,10 +593,14 @@ form input[name="jmZipCode"] {
 						{
 							if (jsonObj == 0)
 							{
-								$("#resultNick").html("사용 가능한 닉네임입니다.");
+								$("#checkUserNickBtn").html("사용가능");
+								$("#checkUserNickBtn").css("background-color", "#007bff");
+								$("#checkUserNickBtn").css("color", "white"); // 텍스트 색상 변경
 							} else
 							{
-								$("#resultNick").html("이미 사용중인 닉네임입니다.");
+								$("#checkUserNickBtn").html("사용불가");
+								$("#checkUserNickBtn").css("background-color", "red");
+								$("#checkUserNickBtn").css("color", "white"); 
 							}
 
 						},
@@ -589,7 +613,9 @@ form input[name="jmZipCode"] {
 
 				} else
 				{
-					$("#resultNick").html("닉네임을 입력해주세요.");
+					$("#checkUserNickBtn").html("입력없음");
+					$("#checkUserNickBtn").css("background-color", "red");
+					$("#checkUserNickBtn").css("color", "white");
 				}
 
 			});
@@ -597,22 +623,32 @@ form input[name="jmZipCode"] {
 			$("#join-button").click(
 					function(event)
 					{
-						if ($("#jmId").val() == "" || $("#jmPw").val() == ""
-								|| $("#userPwCheck").val() == ""
+						
+						if ($("#jmId").val() == "" 
+								|| $("#jmPw").val() == ""
+								|| $("#jmPw").val() == ""
 								|| $("#jmName").val() == ""
-								|| $("#jmSsn").val() == ""
+								|| $("#jmSsn1").val() == ""
+								|| $("#jmSsn2").val() == ""
 								|| $("#jmGen").val() == ""
 								|| $("#jmNickName").val() == ""
-								|| $("#jmTel").val() == ""
+								|| $("#jmTel1").val() == ""
+								|| $("#jmTel2").val() == ""
+								|| $("#jmTel3").val() == ""
 								|| $("#jmAddr1").val() == ""
 								|| $("#jmAddr2").val() == ""
 								|| $("#jmZipCode").val() == "")
 						{
-							$("#err").html("모두 입력해주세요")
-									.css("display", "inline");
+							//$("#err").css("display", "inline");
+							alert("필수 항목들을 모두 입력해 주세요");
 							return;
 						}
-
+						
+						// ssn1 과 ssn2 / tel1,tel2,tel3 를 합쳐 display none 으로 설정된 input 값을 넘김
+						var jmSsn = $("#jmSsn1").val() +"-"+ $("#jmSsn2").val()
+						var jmTel = $("#jmTel1").val() +"-"+ $("#jmTel2").val()+"-"+ $("#jmTel3").val()
+						$("#jmSsn").val(jmSsn);
+						$("#jmTel").val(jmTel);
 						$(".form").submit();
 					});
 			
@@ -624,23 +660,47 @@ form input[name="jmZipCode"] {
 			});
 
 		});
-
+		
+		// 패스워드 input 태그에서 포커싱이 나갔을때 호출
+		$("#jmPw").blur(function() 
+		{
+			
+			if ($("#jmPw").val()!="")
+			{
+				validationPassword();
+					
+			}
+		    
+		});
+		
+		// 패스워드확인 input 태그에서 포커싱이 나갔을때 호출
+		$("#userPwCheck").blur(function() 
+		{
+			
+			if ($("#userPwCheck").val()!="")
+			{
+				checkPwd();
+					
+			}
+		    
+		});
+		
 		function checkPwd()
 		{
 			var pw1 = $("#jmPw").val();
 			var pw2 = $("#userPwCheck").val();
 
-			if (pw1 != "" && pw1 == pw2)
+			if (pw1 != pw2)
 			{
-				$("#pwdConfirm").html("비밀번호가 일치합니다.");
-			} else
-			{
-				$("#pwdConfirm").html("비밀번호가 일치하지 않습니다.");
+				alert("비밀번호가 일치하지 않습니다");	
+				$("#userPwCheck").val("");
+				$("#userPwCheck").focus();
 			}
 
-			validationPassword();
+			//validationPassword();
 		}
-
+		
+		// 비밀번호 형식 오류시 비우고 다시 포커싱
 		function validationPassword()
 		{
 			var pw1 = $("#jmPw").val();
@@ -648,7 +708,9 @@ form input[name="jmZipCode"] {
 
 			if (!re.test(pw1))
 			{
-				alert("비밀번호는 숫자, 소문자, 대문자를 포함해 8자리 이상이어야 합니다.");
+				alert("비밀번호는 숫자, 소문자, 대문자를 포함해 8자리 이상이어야 합니다.");		
+				$("#jmPw").val("");
+				$("#jmPw").focus();
 				return false;
 			}
 
