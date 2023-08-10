@@ -53,5 +53,12 @@
 		SITTING_BOOK_VIEW
 		WHERE MEMSID = #{memSid}
 	</select>
+	
+	<select id="sittingPlaceBasic" resultType="com.act.sitting.SittingDTO">
+		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, IPSID
+		FROM SITTING_PLACE_BASIC
+		WHERE MEMSID = 'YDUW8CVB4J9TC2X'
+		ORDER BY SPCREATED DESC
+	</select>
 
 </mapper>

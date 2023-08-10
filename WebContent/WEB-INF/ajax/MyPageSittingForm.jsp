@@ -71,7 +71,7 @@ String cp = request.getContextPath();
 		<div class="col container-mypage" style="overflow: auto; height: 1200px;">
 			<div class="row">
 				<div class="col-md-6">
-					<span class="badge">핫도그님의 돌봄장소</span>
+					<span class="badge">${info.jmNickName }님의 돌봄장소</span>
 				</div>
 				<div class="col-md-6">
 					<button type="button" class="detailBtn" id="updateSPInfo" style="margin-right: 10px;" >돌봄장소 수정하기</button>
@@ -438,29 +438,33 @@ const months = [
 			
 			<div class="infoOne">
 				<h4><span class="smallTitle">최대 가능 견수</span></h4>
-				<button class="btn btn-warning">2마리</button>
+				<button class="btn btn-warning">${info.spMaxPet }마리</button>
 			</div>
 			
 			<div class="infoOne">
 				<h4><span class="smallTitle">돌봄장소 이름</span></h4>
-				<span class="smallText">폴폴이의 행복한 공간~</span>
+				<span class="smallText">${info.sptitle }</span>
 			</div>
 			
 			<div class="infoOne">
 				<h4><span class="smallTitle">돌봄장소 소개</span></h4>
-				<span class="smallText">폴폴이의 행복한 공간~ 막 길게 말이 쓰여 있고 지금은 새벽이고 잠을 잘 수 없고
-				유튜브로 노래나 틀어놔야지</span>
+				<span class="smallText">${info.spContent }</span>
 			</div>
 			
 			<div class="infoOne">
 				<h4><span class="smallTitle">돌봄장소 주소</span></h4> <!-- (우편번호까지 붙여나오기) -->
-				<span class="smallText">서울시 도봉구 어디로 어디길 12345</span><br>
-				<span class="smallText">무슨아파트 무슨동 무슨호</span>
+				<span class="smallText">${info.spAddr1 }</span><br>
+				<span class="smallText">${info.spAddr2 }</span>
 			</div>
 			
 			<div class="infoOne">
 				<h4><span class="smallTitle">돌봄장소 공개/비공개</span></h4>
-				<button class="btn btn-warning">공개</button>
+				<button class="btn btn-warning">
+				<c:choose>
+					<c:when test="${info.ipSid eq 1}">공개</c:when>
+					<c:otherwise>비공개</c:otherwise>
+				</c:choose>
+				</button>
 			</div>
 			
 		</div>

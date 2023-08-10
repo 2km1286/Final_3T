@@ -99,4 +99,19 @@ public class SittingService implements ISittingService
 		return bookList;
 	}
 
+	// 회원번호로 마이페이지에서 돌봄장소 기본정보 조회
+	@Override
+	public ArrayList<SittingDTO> sittingPlaceBasic(String memSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();		
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingPlaceBasic(memSid);
+		
+		return result;
+	}
+	
+	
+
 }

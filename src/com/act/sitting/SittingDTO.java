@@ -23,6 +23,35 @@ public class SittingDTO
 	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pmemSid;	
 	private int sbSid, sbPrice;
 	
+	private String extraAddr, spContent;
+	private int ipSid;
+	
+
+	public String getSpContent()
+	{
+		return spContent;
+	}
+	public void setSpContent(String spContent)
+	{
+		this.spContent = spContent;
+	}
+	public int getIpSid()
+	{
+		return ipSid;
+	}
+	public void setIpSid(int ipSid)
+	{
+		this.ipSid = ipSid;
+	}
+	public String getExtraAddr()
+	{
+		return extraAddr;
+	}
+	public void setExtraAddr(String extraAddr)
+	{
+		this.extraAddr = extraAddr;
+	}
+	
 	public String getSbStartYear()
 	{
 		return sbStartYear;

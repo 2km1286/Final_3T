@@ -1,5 +1,7 @@
 package com.act.sitting;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,14 +62,14 @@ public class SittingController
 		int stsCount = sittingService.sittingStsCount(dto);
 		int slCount = sittingService.sittingSlCount(dto);
 		
-		//System.out.println("stsCount: " + stsCount + ", slCount: " + slCount);
 		if(stsCount!=0)			// 시험제출번호를 가지고 있다면
 		{
 			if(slCount!=0)		// 펫시팅면허번호를 가지고 있다면
-      {
+	        {
+				model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0) );
+				model.addAttribute("bookList", sittingService.booklist(memSid));
 				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
-        model.addAttribute("bookList", sittingService.booklist(memSid));
-      }
+	        }
 			else				// 시험은 보았지만, 공간등록을 하지 않은 경우
 				view = "/WEB-INF/ajax/MyPageSittingPlaceRegisterForm.jsp";
 		}
