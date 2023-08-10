@@ -129,7 +129,7 @@ public class SittingController
 	
 	// 펫시팅 리스트 검색필터 버튼
 	@RequestMapping("/sittingfilterlistform.action")
-	public String sittingFilterListForm(SittingDTO dto)
+	public String sittingFilterListForm(SittingDTO dto, Model model)
 	{
 		String view = "";
 		
@@ -137,9 +137,11 @@ public class SittingController
 		System.out.println("datePicker: " + dto.getDatePicker());
 		System.out.println("spMaxPet:" + dto.getSpMaxPet());
 		
-		sittingService.sittingFilterList();
+		model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
+		model.addAttribute("filtergradelist", sittingService.gradeList());
 		
-		view = "/WEB-INF/views/index/MainPage.jsp";
+		
+		view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp";
 		return view;
 	}
 
