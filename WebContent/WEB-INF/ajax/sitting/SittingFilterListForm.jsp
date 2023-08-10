@@ -198,12 +198,7 @@ p {
 </head>
 <body>
 	<section>
-		<div class="container-fluid py-5 bg-light"
-			style="padding-left: 150px; padding-right: 150px;">
 
-			
-			<h2>펫시터 공고글</h2>
-			<hr>
 
 			<div id="cardContainer">
 				<c:forEach var="dto" items="${filterlist}" varStatus="status">
@@ -216,17 +211,26 @@ p {
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
-							<h5 class="card-title">${filtergradelist[status.index].grade}
+							<h5 class="card-title">${dto.grade}
 								${dto.jmNickName}</h5>
 							<h6 class="card-subtitle text-muted">${dto.spAddr1}
 								<br /> ${dto.sptitle}
 							</h6>
 							<br>
+							
+							<c:forEach var="tag" items="${tagList }">
+									<c:if test="${dto.spSid == tag.spSid}">
+											<button class="btn radio-button" readonly
+											style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
+											value="${tag.isptSid }">${tag.isptName }</button>
+									</c:if>
+							</c:forEach>
+							
 							<p>4.8 ⭐ (452개의 후기)
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp; ${filtergradelist[status.index].price}원/ 1박</p>
+								&nbsp;&nbsp;&nbsp;&nbsp; ${dto.price}원/ 1박</p>
 						</div>
 						<!-- end .card-body -->
 					</div>
@@ -237,7 +241,6 @@ p {
 			<!-- end .row -->
 			</c:if>
 			</c:forEach>
-		</div>
 		</div>
 
 
