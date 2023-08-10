@@ -22,6 +22,7 @@ String cp = request.getContextPath();
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 
+
 <script type="text/javascript">
 	$().ready(function()
 	{
@@ -127,6 +128,139 @@ li {
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
+			<div class="modal fade" id="followingModal" tabindex="-1"
+				role="dialog" aria-labelledby="followingModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2 class="modal-title" id="followingModalLabel">팔로잉 한 펫시터 및
+								대리산책러</h2>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<!-- 동적으로 생성된 팔로잉 목록 카드들이 여기에 들어갈 것입니다. -->
+							<div class="row">
+								<div class="col-md-6 container-mypage">
+									<h3>
+										<span class="badge">팔로잉 한 펫시터</span>
+									</h3>
+									<div>
+										<!-- 팔로잉 한 돌봄장속 목록 시작 -->
+
+										<div class="card sittingCard">
+											<img src="images/sitterroom.jpg" alt="" class="card-img-top"
+												style="width: 100%;">
+											<div class="card-body">
+												<h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
+												<h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고
+													행복한 해피 하우스 입니다.</h6>
+												<br>
+												<p>4.8 ⭐ (452개의
+													후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원
+													/ 1박</p>
+											</div>
+										</div>
+
+										<div class="card sittingCard">
+											<img src="images/sitterroom.jpg" alt="" class="card-img-top"
+												style="width: 100%;">
+											<div class="card-body">
+												<h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
+												<h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고
+													행복한 해피 하우스 입니다.</h6>
+												<br>
+												<p>4.8 ⭐ (452개의
+													후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원
+													/ 1박</p>
+											</div>
+										</div>
+
+										<div class="card sittingCard">
+											<img src="images/sitterroom.jpg" alt="" class="card-img-top"
+												style="width: 100%;">
+											<div class="card-body">
+												<h5 class="card-title">[마스터 펫시터] 까미의 하우스</h5>
+												<h6 class="card-subtitle text-muted">강아지들이 좋아하는 따뜻하고
+													행복한 해피 하우스 입니다.</h6>
+												<br>
+												<p>4.8 ⭐ (452개의
+													후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,000원
+													/ 1박</p>
+											</div>
+										</div>
+
+
+									</div>
+									<!-- 팔로잉 한 돌봄장속 목록 끝 -->
+
+								</div>
+								<!-- 1행1열 끝 -->
+
+
+								<div class="col-md-6 container-mypage">
+									<h3>
+										<span class="badge">팔로잉 한 대리산책러</span>
+									</h3>
+
+									<div>
+										<!-- 팔로잉 한 대리산책 목록 시작 -->
+										<div class="card walkCard">
+											<img src="images/walktestpro.jpg" alt="" class="card-img-top"
+												style="width: 100%;">
+											<div class="card-body">
+												<h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
+												<h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한
+													집사입니다!</h6>
+												<br>
+												<p>4.2 ⭐ (991개의
+													후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
+											</div>
+										</div>
+
+										<div class="card walkCard">
+											<img src="images/walktestpro.jpg" alt="" class="card-img-top"
+												style="width: 100%;">
+											<div class="card-body">
+												<h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
+												<h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한
+													집사입니다!</h6>
+												<br>
+												<p>4.2 ⭐ (991개의
+													후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
+											</div>
+										</div>
+
+										<div class="card walkCard">
+											<img src="images/walktestpro.jpg" alt="" class="card-img-top"
+												style="width: 100%;">
+											<div class="card-body">
+												<h5 class="card-title">[마스터 산책러] 멍멍박사</h5>
+												<h6 class="card-subtitle text-muted">시간 약속을 잘 지키는 성실한
+													집사입니다!</h6>
+												<br>
+												<p>4.2 ⭐ (991개의
+													후기)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15,000원</p>
+											</div>
+										</div>
+
+									</div>
+									<!-- 팔로잉 한 대리산책 목록 끝 -->
+
+								</div>
+								<!-- 1행2열끝  -->
+
+							</div>
+							<!-- 1행 끝 -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<div
 					class="d-flex mx-auto flex-column flex-lg-row align-items-center">
@@ -135,10 +269,9 @@ li {
 							id="walkList">대리산책</a></li>
 						<li class="nav-item"><a class="nav-link" href="#"
 							id="sittingList">펫시팅</a></li>
-						<li class="nav-item"><a class="nav-link" href="#" 
-					     	id="myPage">마이페이지</a>
+						<li class="nav-item"><a class="nav-link" href="#" id="myPage">마이페이지</a>
 						</li>
-						
+
 						<script>
 						$().ready(function() {
 						    // 마이페이지 버튼 클릭 시 이벤트 처리
@@ -163,10 +296,14 @@ li {
 						        }
 
 						    });
+						    
+						    $("#followingModalButton").click(function() {
+					            $("#followingModal").modal("show");
+					        });
 						});
 						
 						</script>
-						
+
 						<li class="nav-item"><a class="nav-link" href="#footer"
 							id="center">고객센터/사고접수</a></li>
 
@@ -192,8 +329,8 @@ li {
 										<a class="dropdown-item" href="mypage.action">알림 <span
 											class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
 										</span>
-										</a> <a class="dropdown-item" href="mypageactiveform.action">찜한 목록</a> <a
-											class="dropdown-item" href="mypage.action">마이페이지</a> <a
+										</a> <a class="dropdown-item" id="followingModalButton" href="#">팔로잉</a>
+										<a class="dropdown-item" href="mypage.action">마이페이지</a> <a
 											class="dropdown-item" href="#" id="logOut">로그아웃</a>
 									</div></li>
 							</c:otherwise>
@@ -201,6 +338,8 @@ li {
 					</ul>
 
 				</div>
+
+
 
 			</div>
 		</nav>

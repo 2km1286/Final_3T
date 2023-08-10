@@ -13,6 +13,20 @@ String cp = request.getContextPath();
 
 <title>마이페이지_펫시팅</title>
 
+<!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
 <!-- 돌봄장소 이미지 넘기는 스크립트 -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -103,6 +117,9 @@ String cp = request.getContextPath();
 				<div class="row">
 					<div class="col-md-12">
 						<div class="content w-100">
+						
+						
+						
 							<div class="calendar-container" style="padding: 0px;">
 								<div class="calendar">
 									<div class="year-header">
@@ -151,6 +168,19 @@ String cp = request.getContextPath();
 						</div>
 					</div>
 				</div>
+	<!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
 				<script type="text/javascript" src="js/popperCal.js"></script>
 <!-- ======================================================================================================캘린더 스크립트 -->
 <script type="text/javascript">
