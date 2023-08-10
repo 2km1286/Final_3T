@@ -232,10 +232,10 @@ p {
 		$("#filter").click(function()
 		{	
 			var dateSend = "extraAddr=" + $("#extraAddr").val()
-						+ "&datePicker=" + $(".datepick").val()
+						+ "&datePicker=" + $("#datepicker").val()
 						+ "&spMaxPet=" + $("#spMaxPet").val();
 			alert("동 : " + $("#extraAddr").val());
-			alert("날짜 : " + $(".datepick").val());
+			alert("날짜 : " + $("#datepicker").val());
 			
 			$.ajax(
 			{
@@ -470,12 +470,15 @@ p {
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
-							<h5 class="card-title">${gradeList[status.index].grade}
+							<h5 class="card-title">
+								${gradeList[status.index].grade}
+							
 								${dto.jmNickName}</h5>
 							<h6 class="card-subtitle text-muted">${dto.spAddr1}
 								<br /> ${dto.sptitle}
 							</h6>
 							<br>
+							<input type="hidden" value="${dto.memSid }" id="pmemSid"/>
 							<p>4.8 ⭐ (452개의 후기)
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
