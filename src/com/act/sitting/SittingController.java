@@ -22,9 +22,11 @@ public class SittingController
 
 		model.addAttribute("list", sittingService.list());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
-		model.addAttribute("gradeList", sittingService.gradeList());
+		//model.addAttribute("gradeList", sittingService.gradeList(s));
 		// model.addAttribute("tagList", sittingService.tagList(s));
 
+		System.out.println("pmemSid: " + s.getMemSid());
+		
 		// System.out.println("list: " + sittingService.list());
 		// System.out.println("tagList: " + sittingService.tagList());
 		// System.out.println("gradeList: " + sittingService.gradeList());
@@ -138,7 +140,7 @@ public class SittingController
 		System.out.println("spMaxPet:" + dto.getSpMaxPet());
 		
 		model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
-		model.addAttribute("filtergradelist", sittingService.gradeList());
+		//model.addAttribute("filtergradelist", sittingService.gradeList());
 		
 		
 		view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp";
