@@ -234,8 +234,6 @@ p {
 			var dateSend = "extraAddr=" + $("#extraAddr").val()
 						+ "&datePicker=" + $("#datepicker").val()
 						+ "&spMaxPet=" + $("#spMaxPet").val();
-			alert("동 : " + $("#extraAddr").val());
-			alert("날짜 : " + $("#datepicker").val());
 			
 			$.ajax(
 			{
@@ -369,32 +367,6 @@ p {
 				</script>
 				<!-- 주소 검색 메소드 끝 -->
 				<!-- 동 검색 구역 끝 -->
-				<!-- 	
-				 <label for="datepicker">날짜 선택:</label> 
-				 <input type="text" id="datepicker"  style="width: 115px;">
-				 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-				 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>	
-	
-				 <script>
-			    	$(document).ready(function(){               
-				    $.datepicker.setDefaults({
-				    closeText: "닫기",
-				    currentText: "오늘",
-				    prevText: '이전 달',
-				    nextText: '다음 달',
-				    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-				    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-				    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-				    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-				    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-				    weekHeader: "주",
-				    yearSuffix: '년',
-				    minDate: "0",
-				    maxDate: "+2M"
-				    });    
-				 });
-				</script>
-							 -->
 							 
 				<label for="datepicker">날짜 선택:</label> 
 				<input type="text" id="datepicker" class="custom-textbox datepick" readonly style="width: 115px;">			 		 
@@ -406,7 +378,6 @@ p {
 					
 					
 				</script>
-				 
 				 
 				 
 				 <label for="dogs">견수:</label> <input type="number" id="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
@@ -452,10 +423,6 @@ p {
 			</script>
 			<!-- 검색 조건 태그 끝 -->
 			
-
-
-
-
 			<!-- 리스트 뿌리기 시작 -->
 			<h2>펫시터 공고글</h2>
 			<hr>
@@ -471,20 +438,29 @@ p {
 							style="width: 100%;">
 						<div class="card-body">
 							<h5 class="card-title">
-								${gradeList[status.index].grade}
+								${dto.grade}
 							
 								${dto.jmNickName}</h5>
 							<h6 class="card-subtitle text-muted">${dto.spAddr1}
 								<br /> ${dto.sptitle}
 							</h6>
 							<br>
-							<input type="hidden" value="${dto.memSid }" id="pmemSid"/>
+							
+							<c:forEach var="tag" items="${tagList }">
+									<c:if test="${dto.spSid == tag.spSid}">
+											<button class="btn radio-button" readonly
+											style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
+											value="${tag.isptSid }">${tag.isptName }</button>
+									</c:if>
+							</c:forEach>
+							
+							
 							<p>4.8 ⭐ (452개의 후기)
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;
-								 ${gradeList[status.index].price}원/ 1박</p>
+								 ${dto.price}원/ 1박</p>
 						</div>
 						<!-- end .card-body -->
 					</div>
