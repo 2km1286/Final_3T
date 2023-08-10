@@ -22,8 +22,7 @@
 
 	<select id="gradeList" resultType="com.act.sitting.SittingDTO">
 		SELECT GRADE, PRICE
-		FROM
-		SITTING_GRADE_VIEW
+		FROM SITTING_GRADE_VIEW
 	</select>
 
 	<!-- <select id="tagList" resultType="com.act.sitting.SittingDTO"> SELECT 
@@ -64,7 +63,7 @@
 			<if test="#{extraAddr} != null">
 				AND EXTRAADDR = #{extraAddr}
 			</if>
-			<if test="#{datePick} != null">
+			<if test="#{datePicker} != null">
 				AND #{datePicker} NOT BETWEEN TO_CHAR(SRSTART, 'YYYY-MM-DD') AND TO_CHAR(SREND, 'YYYY-MM-DD')
 			</if>
 			<if test="#{spMaxPet} != null">
