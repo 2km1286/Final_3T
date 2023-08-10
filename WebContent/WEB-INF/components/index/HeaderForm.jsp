@@ -134,8 +134,8 @@ li {
 				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="followingModalLabel">팔로잉 한 펫시터 및
-								대리산책러</h5>
+							<h2 class="modal-title" id="followingModalLabel">팔로잉 한 펫시터 및
+								대리산책러</h2>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
