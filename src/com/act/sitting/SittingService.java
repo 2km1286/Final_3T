@@ -98,5 +98,13 @@ public class SittingService implements ISittingService
 		 */
 		return bookList;
 	}
+	
+	// 펫시팅 리스트 검색조건 리스트  반환
+	public ArrayList<SittingDTO> sittingFilterList()
+	{
+		ArrayList<SittingDTO> filterlist = new ArrayList<SittingDTO>();
+		
+		return filterlist;
+	}
 
 }
