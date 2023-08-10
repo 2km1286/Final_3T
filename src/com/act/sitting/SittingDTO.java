@@ -23,8 +23,20 @@ public class SittingDTO
 	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pmemSid;	
 	private int sbSid, sbPrice;
 	
+	// 펫시팅 리스트 검색조건 - 날짜
+	private String datePicker;
 	
 	
+	
+	
+	public String getDatePicker()
+	{
+		return datePicker;
+	}
+	public void setDatePicker(String datePicker)
+	{
+		this.datePicker = datePicker;
+	}
 	public String getExtraAddr()
 	{
 		return extraAddr;
