@@ -73,7 +73,7 @@
 		WHERE MEMSID = #{memSid}
 	</select>
 	
-	<select id="sittingReviewer" resultType="com.act.sitting.SittingDTO">
+	<select id="sittingReviewers" resultType="com.act.sitting.SittingDTO">
 		SELECT JM_NICKNAME AS PJMNICKNAME, MEM_SID AS PMEMSID
 		FROM JOIN_MEMBER
 	</select>

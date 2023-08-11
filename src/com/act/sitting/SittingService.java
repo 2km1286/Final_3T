@@ -141,13 +141,13 @@ public class SittingService implements ISittingService
 	
 	// 나에게 달린 후기를 쓴 회원번호로 그 회원의 닉네임 조회
 	@Override
-	public ArrayList<SittingDTO> sittingReviewer()
+	public ArrayList<SittingDTO> sittingReviewers()
 	{
 		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
 		
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
-		result = dao.sittingReviewer();
+		result = dao.sittingReviewers();
 		
 		return result;
 	}

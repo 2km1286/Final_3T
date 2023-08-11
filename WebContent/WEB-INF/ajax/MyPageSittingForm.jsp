@@ -489,9 +489,9 @@ const months = [
 						    <c:forEach items="${reviews }" var="review">
 						    <tr>
 						      <td class="EndTd">
-						      <c:forEach items="${reviewer }" var="pmem">
-						      	<c:if test="${pmem.pMemSid eq review.pMemSid }">
-						      		${pmem.pJmNickName }
+						      <c:forEach items="${reviewers }" var="reviewer">
+						      	<c:if test="${reviewer.pMemSid eq review.pMemSid }">
+						      		${reviewer.pJmNickName }
 						      	</c:if>	
 						      </c:forEach>
 						      </td>

@@ -82,7 +82,7 @@ public class SittingController
 				model.addAttribute("reviews", sittingService.sittingReviews(memSid));
 				
 				// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
-				model.addAttribute("reviewer", sittingService.sittingReviewer());
+				model.addAttribute("reviewers", sittingService.sittingReviewers());
 				
 				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 	        }

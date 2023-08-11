@@ -13,5 +13,5 @@ public interface ISittingService
 	public ArrayList<SittingDTO> sittingPlaceBasic(String memSid);
 	public ArrayList<SittingDTO> sittingPlaceTags(int spSid);
 	public ArrayList<SittingDTO> sittingReviews(String memSid);
-	public ArrayList<SittingDTO> sittingReviewer();
+	public ArrayList<SittingDTO> sittingReviewers();
 }
