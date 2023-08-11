@@ -30,5 +30,7 @@ public interface ISittingDAO
 	public ArrayList<SittingDTO> spfilterlist(SittingDTO dto);
 	
 	public ArrayList<SittingDTO> spFilterTagList(SittingDTO dto);
-
+	
+	// 오늘 펫시팅 예약 취소건수
+	public int sittingCancelNotice(String memSid);
 }

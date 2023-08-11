@@ -49,5 +49,14 @@ public class WalkService
 		return grade;
 	}
 	 
-
+	// 오늘 대리산책 예약 취소된 건이 있는지 카운팅
+	public int walkCancelNotice(String memSid)
+	{
+		int result = 0;
+		
+		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
+		dao.walkCancelNotice(memSid);
+		
+		return result;
+	}
 }

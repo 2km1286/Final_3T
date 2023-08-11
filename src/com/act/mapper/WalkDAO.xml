@@ -30,7 +30,22 @@
         FROM INDEX_WALK_INFO
 	</select>
 	
-
+	<select id="walkCancelNotice" resultType="java.lang.Integer">
+		SELECT COUNT(WC.WCL_SID) AS WCLCOUNT
+		FROM WALK_CANCEL WC
+		    JOIN WALK_BOOK WB
+		    ON WC.WB_SID = WB.WB_SID
+		        JOIN WALK_LICENSE WL
+		        ON WB.WL_SID = WL.WL_SID
+		            JOIN WALK_FOLLOWING_LIST WFL
+		            ON WL.WL_SID = WFL.WL_SID
+		                JOIN MEMBER MEM
+		                ON WFL.MEM_SID = MEM.MEM_SID
+		                    JOIN JOIN_MEMBER JM
+		                    ON MEM.MEM_SID = JM.MEM_SID
+		WHERE  WC.WCL_DATE = SYSDATE
+		AND MEM.MEM_SID = #{memSid}
+	</select>
 	
 
 

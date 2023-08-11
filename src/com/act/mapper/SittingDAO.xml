@@ -101,5 +101,23 @@
 		                </if>
 		                GROUP BY SPSID)
 	</select>
+	
+	<select id="sittingCancelNotice" resultType="java.lang.Integer">
+		SELECT COUNT(SCL.SCL_SID) AS SCLCOUNT
+		FROM SITTING_CANCEL SCL
+		     JOIN SITTING_BOOK SB
+		     ON SCL.SB_SID = SB.SB_SID
+		        JOIN SITTING_PLACE_HUB SPH
+		        ON SB.SPH_SID = SPH.SPH_SID
+		            JOIN SITTING_FOLLOWING_LIST SFL
+		            ON SPH.SPH_SID = SFL.SPH_SID
+		                JOIN MEMBER MEM
+		                ON SFL.MEM_SID = MEM.MEM_SID
+		                    JOIN JOIN_MEMBER JM
+		                    ON MEM.MEM_SID = JM.MEM_SID
+		WHERE SCL.SCL_DATE = SYSDATE
+		AND MEM.MEM_SID = #{memSid}
+	</select>
+	
 
 </mapper>

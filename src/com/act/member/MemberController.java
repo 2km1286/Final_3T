@@ -1,18 +1,30 @@
 package com.act.member;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.act.sitting.SittingService;
+import com.act.walk.WalkService;
 
 @Controller
 public class MemberController
 {
 	@Autowired
 	private IMemberService memberService;
-
+	
+	@Autowired
+	private WalkService walkService;
+	
+	@Autowired
+	private SittingService sittingCancelNotice;
 
 	// 메인페이지로 가는 액션
 	@RequestMapping("/mainpage.action")
@@ -265,12 +277,34 @@ public class MemberController
 	}
 	
 	// 마이페이지 알림창. AJAX로 처리.
-
 	@RequestMapping("/mypagenoticeform.action")
-	public String myPageNotice()
+	public String myPageNotice(HttpSession session, Model model)
 	{
 		String result = "";
-		// AJAX
+		String memSid = (String)session.getAttribute("memSid");
+		
+		// 오늘 대리산책 예약 취소건수
+		int countWalkCancel = walkService.walkCancelNotice(memSid);
+		
+		if(countWalkCancel > 0 )
+		{
+			//  대리산책 예약 취소 알림을 띄울 횟수을 넘기기
+			model.addAttribute("countWalkCancel", countWalkCancel);
+		}
+		
+		// 오늘 펫시팅 예약 취소건수
+		int countSittingCancel = sittingCancelNotice.sittingCancelNotice(memSid);
+		
+		if(countSittingCancel > 0)
+		{
+			//  펫시팅 예약 취소 알림을 띄울 횟수을 넘기기
+			model.addAttribute("countSittingCancel", countSittingCancel);
+		}
+		
+		
+		
+		
+		
 		result = "/WEB-INF/ajax/MyPageNoticeForm.jsp";
 		return result;
 	}

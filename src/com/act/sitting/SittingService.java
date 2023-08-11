@@ -160,6 +160,19 @@ public class SittingService implements ISittingService
 		
 		return result;
 	}
+	
+	// 오늘 펫시팅 예약 취소건수
+	@Override
+	public int sittingCancelNotice(String memSid)
+	{
+		int result = 0;
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingCancelNotice(memSid);
+		
+		return result;
+	}
 
 	
 	
