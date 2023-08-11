@@ -48,8 +48,7 @@
 		WHERE MEMSID = #{memSid}
 	</select>
 
-	<select id="spfilterlist"
-		resultType="com.act.sitting.SittingDTO">
+	<select id="spfilterlist" resultType="com.act.sitting.SittingDTO">
 		SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, EXTRAADDR, MEMSID,
 		SPHSID, SPHSTART, SPHEND, SRSTART, SREND, SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
 		FROM SITTING_PLACE_LIST_VIEW
@@ -58,12 +57,27 @@
 			AND EXTRAADDR = #{extraAddr}
 		</if>
 		<if test="#{datePicker} != null">
-			AND #{datePicker} NOT BETWEEN TO_CHAR(SRSTART, 'YYYY-MM-DD') AND
-			TO_CHAR(SREND, 'YYYY-MM-DD')
+			AND #{datePicker} NOT BETWEEN TO_CHAR(SRSTART, 'YYYY-MM-DD') 
+									  AND TO_CHAR(SREND, 'YYYY-MM-DD')
 		</if>
 		<if test="#{spMaxPet} != null">
 			AND SPMAXPET >= #{spMaxPet}
 		</if>
+	</select>
+	
+	<select id="spFilterTagList" resultType="com.act.sitting.SittingDTO">
+		SELECT SPSID, ISPTNAME, ISPTSID
+		FROM SITTING_PLACE_TAGS_VIEW 
+		WHERE SPSID IN (SELECT SPSID
+		                FROM SITTING_PLACE_TAGS_VIEW
+		                WHERE 1 =1 
+		                <if test="#{list} != null">
+		                 AND ISPTSID IN 
+			                <foreach collection="list" item="isptSid" open="(" separator="," close=")">
+			                	#{isptSid}
+			                </foreach>
+		                </if>
+		                GROUP BY SPSID)
 	</select>
 
 </mapper>
