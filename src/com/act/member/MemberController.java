@@ -92,30 +92,47 @@ public class MemberController
 		return result;
 	}
 
-	// 회원인지 아닌지 조회, 로그인 성공/실패
+	// 회원인지 아닌지 조회, 로그인 성공/실패 + 펫시팅과 대리산책 타임라인 종료 횟수 전송
 	@RequestMapping("/memberlogin.action")
 	public String loginCount(MemberDTO dto, HttpSession session)
 	{
+	    String url = "";
+	    String memNickName = memberService.searchMemNickName(dto);
+	    String memSid = memberService.searchMemsid(dto);
+	    String sittingCount = memberService.searchSittingcount(dto);
+	    String walkCount = memberService.searchWalkcount(dto);
+	    int dbValue;
 
-		String url = "";
+	    if (memSid.equals("0"))
+	    {
+	        url = "redirect:loginpage.action?error=1";
+	    }
+	    else
+	    {
+	        session.setAttribute("memNickName", memNickName);
+	        session.setAttribute("memSid", memSid);
 
-		String memNickName = memberService.searchMemNickName(dto);
-		String memSid = memberService.searchMemsid(dto);
-		
-		if (memSid.equals("0"))
+	        int sittingCountInt = Integer.parseInt(sittingCount);
+	        int walkCountInt = Integer.parseInt(walkCount);
 
-		{
-			url = "redirect:loginpage.action?error=1";
+	        if (sittingCountInt == 0 && walkCountInt == 0) 
+	        {
+	            dbValue = 0;
+	        } 
+	        else if (walkCountInt > sittingCountInt) 
+	        {
+	            dbValue = 1;
+	        } 
+	        else 
+	        {
+	            dbValue = 2;
+	        }
 
-		} else
-		{
-			
-			session.setAttribute("memNickName", memNickName);
-			session.setAttribute("memSid", memSid);
-			url = "redirect:mainpage.action";
-		}
+	        session.setAttribute("dbValue", dbValue);
+	        url = "redirect:mainpage.action";
+	    }
 
-		return url;
+	    return url;
 	}
 
 	// 로그아웃하고(session) 다시 메인페이지로 가기
