@@ -1,13 +1,13 @@
 package com.act.sitting;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface ISittingDAO
 {
 	public ArrayList<SittingDTO> list();
 	public ArrayList<SittingDTO> IndexTagList();
-	public ArrayList<SittingDTO> gradeList();
-	//public ArrayList<SittingDTO> tagList(String memSid);
+	public ArrayList<SittingDTO> tagList();
 
 	// 회원의 시험제출 유무 확인
 	public int stsCount(SittingDTO dto);
@@ -26,4 +26,9 @@ public interface ISittingDAO
 	
 	// 나에게 달린 후기를 쓴 회원번호로 그 회원의 닉네임 조회를 위한 전체출력
 	public ArrayList<SittingDTO> sittingReviewers();
+	
+	public ArrayList<SittingDTO> spfilterlist(SittingDTO dto);
+	
+	public ArrayList<SittingDTO> spFilterTagList(SittingDTO dto);
+
 }

@@ -20,6 +20,8 @@ public class SittingService implements ISittingService
 
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		list = dao.list();
+		
+		
 
 		return list;
 	}
@@ -35,28 +37,30 @@ public class SittingService implements ISittingService
 		return IndexTagList;
 	}
 
-	// 펫시터의 등급과 기본가격 정보
-	public ArrayList<SittingDTO> gradeList()
-	{
-		ArrayList<SittingDTO> grade = new ArrayList<SittingDTO>();
-
-		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		grade = dao.gradeList();
-
-		return grade;
-	}
+	/*
+	 * // 펫시터의 등급과 기본가격 정보 public ArrayList<SittingDTO> gradeList(SittingDTO dto) {
+	 * ArrayList<SittingDTO> grade = new ArrayList<SittingDTO>();
+	 * System.out.println("petmemsid : " + dto.getPmemSid()); ISittingDAO dao =
+	 * sqlSession.getMapper(ISittingDAO.class); grade = dao.gradeList();
+	 * 
+	 * return grade; }
+	 */
 
 	// 해당 돌봄장소의 태그들 가져오기
-	/*
-	 * public ArrayList<SittingDTO> tagList(SittingDTO s) { ArrayList<SittingDTO>
-	 * tagList = new ArrayList<SittingDTO>();
-	 * 
-	 * ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-	 * 
-	 * tagList = dao.tagList(s.getMemSid());
-	 * 
-	 * return tagList; }
-	 */
+	
+	  public ArrayList<SittingDTO> tagList() 
+	  { 
+		  ArrayList<SittingDTO>
+		  tagList = new ArrayList<SittingDTO>();
+		  
+		  ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		  
+		  tagList = dao.tagList();
+		  
+		  return tagList; 
+	  }
+	  
+	 
 
 
 	// 회원의 STS(시험제출번호) 유무(상태) 반환
@@ -91,6 +95,32 @@ public class SittingService implements ISittingService
 		
 		return result;
 	}
+	
+	// 펫시팅 리스트 검색조건 리스트  반환
+	public ArrayList<SittingDTO> sittingFilterList(SittingDTO dto)
+	{
+		ArrayList<SittingDTO> filterlist = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		filterlist = dao.spfilterlist(dto);
+		
+		System.out.println("filterlist : " + filterlist);
+		
+		return filterlist;
+	}
+	
+	  // 펫시팅 리스트 태그 검색조건 리스트 반환 public ArrayList<SittingDTO>
+	  public ArrayList<SittingDTO> sittingFilterTagList(SittingDTO dto) 
+	  { 
+		  ArrayList<SittingDTO> filtertaglist = new ArrayList<SittingDTO>(); 
+		  ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class); 
+		  filtertaglist =  dao.spFilterTagList(dto);
+		  
+		  System.out.println("filtertaglist : " + filtertaglist);
+		  
+		  return filtertaglist;
+	  
+	  }
+	 
 
 	// ※현재 사용하고 있는 돌봄장소※의 태그들 조회
 	@Override
