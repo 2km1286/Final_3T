@@ -1,6 +1,7 @@
 package com.act.sitting;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface ISittingDAO
 {
@@ -18,5 +19,7 @@ public interface ISittingDAO
 	public ArrayList<SittingDTO> booklist(String memSid);
 	
 	public ArrayList<SittingDTO> spfilterlist(SittingDTO dto);
+	
+	public ArrayList<SittingDTO> spFilterTagList(SittingDTO dto);
 
 }
