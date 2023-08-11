@@ -20,9 +20,6 @@ public class SittingDTO
 	private String grade;
 	private int price;
 	
-	// SITTING_BOOK_VIEW	// sbStart 가 나눠져있는건 달력js에서 사용하기 위함, pmemSid는 예약을 요청한 멤버시드	
-	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pMemSid;	
-	private int sbSid, sbPrice;
 	
 	private String extraAddr, spContent;
 	private int ipSid;
@@ -31,6 +28,9 @@ public class SittingDTO
 	private String srwTitle, srwContent, srwDate, pJmNickName;	//pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
 	private int srwRate;
 
+	// SITTING_BOOK_VIEW	// sbStart 가 나눠져있는건 달력js에서 사용하기 위함, pmemSid는 예약을 요청한 멤버시드	
+	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pMemSid;	
+	private int sbSid, sbPrice;
 	
 	public String getpJmNickName()
 	{

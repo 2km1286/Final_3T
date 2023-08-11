@@ -75,14 +75,13 @@ public class SittingController
 				// 현재 운영중인 돌봄장소의 특이사항
 				model.addAttribute("tags", sittingService.sittingPlaceTags(spSid));
 				
-				// 현재 운영중인 돌봄장소에 달린 예약
-				model.addAttribute("bookList", sittingService.booklist(memSid));
-				
 				// 나에게 달린 후기
 				model.addAttribute("reviews", sittingService.sittingReviews(memSid));
 				
 				// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
 				model.addAttribute("reviewers", sittingService.sittingReviewers());
+				
+				
 				
 				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 	        }

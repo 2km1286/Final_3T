@@ -79,27 +79,6 @@ public class SittingService implements ISittingService
 		return result;
 	}
 
-
-	
-	// 펫시터의 예약 내역 정보 가져오기
-	public ArrayList<SittingDTO> booklist(String memSid)
-	{
-		ArrayList<SittingDTO> bookList = new ArrayList<SittingDTO>();
-		
-		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		
-		bookList = dao.booklist(memSid);
-		
-		/*
-		 * for (SittingDTO sitting : bookList) { System.out.println("SBSID: " +
-		 * sitting.getSbSid()); System.out.println("SBSTART: " + sitting.getSbStart());
-		 * System.out.println("SBEND: " + sitting.getSbEnd());
-		 * System.out.println("SBPRICE: " + sitting.getSbPrice());
-		 * System.out.println("PMEMSID: " + sitting.getPmemSid()); }
-		 */
-		return bookList;
-	}
-
 	// 회원번호로 마이페이지에서 돌봄장소 기본정보 조회
 	@Override
 	public ArrayList<SittingDTO> sittingPlaceBasic(String memSid)
@@ -152,4 +131,6 @@ public class SittingService implements ISittingService
 		return result;
 	}
 
+	
+	
 }

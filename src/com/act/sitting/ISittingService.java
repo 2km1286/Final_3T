@@ -9,7 +9,6 @@ public interface ISittingService
 	public ArrayList<SittingDTO> IndexTagList();
 	public ArrayList<SittingDTO> gradeList();
 	//public ArrayList<SittingDTO> tagList(String memSid);
-	public ArrayList<SittingDTO> booklist(String memSid);
 	public ArrayList<SittingDTO> sittingPlaceBasic(String memSid);
 	public ArrayList<SittingDTO> sittingPlaceTags(int spSid);
 	public ArrayList<SittingDTO> sittingReviews(String memSid);
