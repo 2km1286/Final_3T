@@ -1,6 +1,7 @@
 package com.act.sitting;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,5 +115,19 @@ public class SittingService implements ISittingService
 		
 		return filterlist;
 	}
+	
+	  // 펫시팅 리스트 태그 검색조건 리스트 반환 public ArrayList<SittingDTO>
+	  public ArrayList<SittingDTO> sittingFilterTagList(SittingDTO dto) 
+	  { 
+		  ArrayList<SittingDTO> filtertaglist = new ArrayList<SittingDTO>(); 
+		  ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class); 
+		  filtertaglist =  dao.spFilterTagList(dto);
+		  
+		  System.out.println("filtertaglist : " + filtertaglist);
+		  
+		  return filtertaglist;
+	  
+	  }
+	 
 
 }
