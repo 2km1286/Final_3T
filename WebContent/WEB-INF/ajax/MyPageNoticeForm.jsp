@@ -27,10 +27,10 @@
 </head>
 <body>
 			<div class="row">
-				<div class="col-md-6 container-mypage">
+				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					
 					<h3><span class="badge">알림</span></h3>
-					<div><!-- 알림 목록 시작 -->
+					<div class="" ><!-- 알림 목록 시작 -->
 					
 						<div class="card">
 							<div class="card-header d-flex justify-content-between"">
@@ -55,19 +55,34 @@
 					    	    <div class="col-md cardInfo" >
 					    	      <div class="card-body">
 					    	        <div class="oneText">
-					    		        <span class="card-text" style="font-size: 14pt;">후기가 달렸습니다. 대리산책에서 확인해보세요.</span>
+					    		        <span class="card-text" style="font-size: 14pt;">후기가 달렸습니다. 펫시팅에서 확인해보세요.</span>
 					    	        </div>
 					    	      </div>
 					    	    </div>
 					    	  </div>
 					    </div>
-						
+					    
+					    <div class="card">
+							<div class="card-header d-flex justify-content-between"">
+								펫시팅
+							</div>	
+					    	  <div class="row g-0">
+					    	    <div class="col-md cardInfo" >
+					    	      <div class="card-body">
+					    	        <div class="oneText">
+					    		        <span class="card-text" style="font-size: 14pt;">후기가 달렸습니다. 펫시팅에서 확인해보세요.</span>
+					    	        </div>
+					    	      </div>
+					    	    </div>
+					    	  </div>
+					    </div>
+					    
 					</div><!-- 알림 목록 끝 -->
 				
 				</div><!-- 1행1열 끝 -->
 				
 				
-				<div class="col-md-6 container-mypage">
+				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">내가 결제한 예약</span></h3>
 					
 					<div><!-- 예약내역 시작 -->
@@ -102,6 +117,22 @@
 					    	    </div>
 					    	  </div>
 					    </div>
+					    
+					    <div class="card">
+							<div class="card-header d-flex justify-content-between">
+								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+							</div>	
+					    	  <div class="row g-0">
+					    	    <div class="col-md cardInfo" >
+					    	      <div class="card-body">
+					    	        <div class="oneText">
+					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+					    		        <span class="card-text" style="font-size: 14pt;">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
+					    	        </div>
+					    	      </div>
+					    	    </div>
+					    	  </div>
+					    </div>
 					
 					</div><!-- 예약 내역 끝 -->
 					
@@ -110,7 +141,7 @@
 			</div><!-- 1행 끝 -->
 			
 			<div class="row">
-				<div class="col-md-6 container-mypage">
+				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">나에게 들어온 예약/대리산책</span></h3>
 					<div><!-- 대리산책러 예약내역 시작 -->
 						<div class="card">
@@ -146,10 +177,26 @@
 					    	  </div>
 					    </div>
 					
+						<div class="card">
+							<div class="card-header d-flex justify-content-between"">
+								대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
+							</div>	
+					    	  <div class="row g-0">
+					    	    <div class="col-md cardInfo" >
+					    	      <div class="card-body">
+					    	        <div class="oneText">
+					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
+					    	        </div>
+					    	      </div>
+					    	    </div>
+					    	  </div>
+					    </div>
+					    
 					</div><!-- 대리산책러 예약내역 시작 -->
 				</div><!-- 2행1열 끝 -->
 				
-				<div class="col-md-6 container-mypage">
+				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">나에게 들어온 예약/펫시팅</span></h3>
 					<div><!-- 펫시터 예약내역 시작 -->
 						<div class="card">
@@ -183,6 +230,23 @@
 					    	    </div>
 					    	  </div>
 					    </div>
+					    
+					    <div class="card">
+							<div class="card-header d-flex justify-content-between">
+								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
+							</div>	
+					    	  <div class="row g-0">
+					    	    <div class="col-md cardInfo" >
+					    	      <div class="card-body">
+					    	        <div class="oneText">
+					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+					    		        <span class="card-text" style="font-size: 14pt;">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
+					    	        </div>
+					    	      </div>
+					    	    </div>
+					    	  </div>
+					    </div>
+					    
 					</div><!-- 펫시터 예약내역 끝 -->
 				</div><!-- 2행 2열 끝 -->
 			</div><!-- 2행 끝 -->

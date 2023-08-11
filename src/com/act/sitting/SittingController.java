@@ -1,11 +1,14 @@
 package com.act.sitting;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -16,19 +19,14 @@ public class SittingController
 
 	// 펫시팅(돌봄장소) 리스트업 페이지로 가기
 	@RequestMapping("/sittinglistpage.action")
-	public String sittingList(Model model, SittingDTO s)
+	public String sittingList(Model model)
 	{
 		String view = "";
 
 		model.addAttribute("list", sittingService.list());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
-		model.addAttribute("gradeList", sittingService.gradeList());
-		// model.addAttribute("tagList", sittingService.tagList(s));
-
-		// System.out.println("list: " + sittingService.list());
-		// System.out.println("tagList: " + sittingService.tagList());
-		// System.out.println("gradeList: " + sittingService.gradeList());
-
+		model.addAttribute("tagList", sittingService.tagList());
+		
 		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
 		return view;
 	}
@@ -60,14 +58,29 @@ public class SittingController
 		int stsCount = sittingService.sittingStsCount(dto);
 		int slCount = sittingService.sittingSlCount(dto);
 		
-		System.out.println("stsCount: " + stsCount + ", slCount: " + slCount);
 		if(stsCount!=0)			// 시험제출번호를 가지고 있다면
 		{
 			if(slCount!=0)		// 펫시팅면허번호를 가지고 있다면
-      {
+	        {
+				// 현재 운영중인 돌봄장소번호
+				int spSid = sittingService.sittingPlaceBasic(memSid).get(0).getSpSid();
+				
+				// 현재 운영중인 돌봄장소의 기본정보(태그, 사진, 휴무일 제외)
+				model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0));
+				
+				// 현재 운영중인 돌봄장소의 특이사항
+				model.addAttribute("tags", sittingService.sittingPlaceTags(spSid));
+				
+				// 나에게 달린 후기
+				model.addAttribute("reviews", sittingService.sittingReviews(memSid));
+				
+				// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
+				model.addAttribute("reviewers", sittingService.sittingReviewers());
+				
+				
+				
 				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
-        model.addAttribute("bookList", sittingService.booklist(memSid));
-      }
+	        }
 			else				// 시험은 보았지만, 공간등록을 하지 않은 경우
 				view = "/WEB-INF/ajax/MyPageSittingPlaceRegisterForm.jsp";
 		}
@@ -124,6 +137,37 @@ public class SittingController
 		String result = "";
 		result = "/WEB-INF/views/index/TestResultPage.jsp";
 		return result;
+	}
+	
+	// 펫시터 후기 모달
+	@RequestMapping("/sittingreview.action")
+	public String sittingReview()
+	{
+		String result = "";
+
+		result = "/WEB-INF/views/sitting/SittingReviewPage.jsp";
+
+		return result;
+	}
+	
+	// 펫시팅 리스트 검색필터 버튼
+	@RequestMapping("/sittingfilterlistform.action")
+	public String sittingFilterListForm(SittingDTO dto, Model model)
+	{
+		String view = "";
+		
+		System.out.println("extraAddr: " + dto.getExtraAddr());
+		System.out.println("datePicker: " + dto.getDatePicker());
+		System.out.println("spMaxPet:" + dto.getSpMaxPet());
+		System.out.println("여기까지 옴1");
+		System.out.println("isptSidValues : " + dto.getIsptSid());
+		System.out.println("여기까지 옴2");
+		model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
+		model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
+		
+		
+		view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp";
+		return view;
 	}
 
 

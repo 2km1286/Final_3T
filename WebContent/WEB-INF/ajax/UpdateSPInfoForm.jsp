@@ -11,35 +11,22 @@
 <title>돌봄장소수정폼</title>
 
 <style type="text/css">
-.place
-{
-	padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
-  	border-right: 2px solid black;
-}
-.carousel-control-prev, .carousel-control-next
-{
-    background-color: transparent; /* 배경색 투명으로 설정 */
-    border: none; /* 테두리 제거 */
-}
-.sittingtime { font-size: 13pt;}
-.mypageWalkMonDon {margin-left: 500px;}
-.firstInfo { font-size: 15pt; font-weight: bold; color: #2dd0fc;}
-div .card { width: 700px;}
+
 </style>
 
 </head>
 <body>
 
 <div class="row" id="sittingPlaceDiv">
-	<div class="col place">
+	<div class="col container-mypage" style="width: 780px; margin-left: 5%;">
 		<div class="row">	
 			<div class="col-md">	
-				<h2><span class="badge">핫도그님의 돌봄장소</span></h2>
+				<span class="badge">핫도그님의 돌봄장소 수정하기</span>
 			</div>
 		</div>
 			
-		<div class="card-body">
-		    <h3><span class="badge">돌봄장소 특이사항</span></h3>
+		<div class="infoOneNoline">
+		    <h4><span class="smallTitle">돌봄장소 특이사항</span></h4>
 		    <div class="checkBox">
 			  <input type="checkbox" id="homeCam">
 			  <label for="homeCam">홈캠 가능</label>
@@ -89,8 +76,9 @@ div .card { width: 700px;}
 			  <input type="checkbox" id="largeDog">
 			  <label for="largeDog">대형견 가능</label>
 			</div>
-			<br>
-		    <h3><span class="badge">최대 가능 견수</span></h3>
+			
+		<div class="infoOneNoline">	
+		    <h4><span class="smallTitle">최대 가능 견수</span></h4>
 		   	<select name="max-dog" id="max-dog" class="form-select form-select-lg mb-3" aria-label="Large select example"
 		   			style="width: 400px;">
 		    		<option value="1">1마리</option>
@@ -99,31 +87,40 @@ div .card { width: 700px;}
 		    		<option value="4">4마리</option>
 		    		<option value="5">5마리</option>
 		    </select>
+		</div>
 		    
-		    <h3><span class="badge">돌봉장소 사진</span></h3>
+		<div class="infoOneNoline">   
+		    <h4><span class="smallTitle">돌봉장소 사진</span></h4>
 		    <input type="file">
+		</div>
+		
 		    
-		    <br><br>
-		  	<h3><span class="badge">돌봄장소 이름</span></h3>
-		    <input type="text" id="" class="" style="width: 600px;">
+		<div class="infoOneNoline">
+		  	<h4><span class="smallTitle">돌봄장소 이름</span></h4>
+		    <input type="text" id="" class="" style="width: 80%;">
+		</div>    
 		    
-		    <br><br>
-		  	<h3><span class="badge">돌봄장소 소개</span></h3>
+		<div class="infoOneNoline">   
+		  	<h4><span class="smallTitle">돌봄장소 소개</span></h4>
 		    <textarea rows="5" cols="80"></textarea>
+		</div>
 			
-			<br><br>
-		  	<h3><span class="badge">돌봄장소 주소</span></h3><!-- 주소는 수정불가 -->
-		    <input type="text" id="" class="" style="width: 600px;" readonly="readonly">
-		    
-		    <h3><span class="badge">돌봄장소 우편번호</span></h3><!-- 가져와져있음 -->
-			<input type="text" id="" class="" style="width: 600px;" readonly="readonly">
+		<div class="infoOneNoline">    
+	        <h4><span class="smallTitle">주소</span></h4>
+		    <div class="input-container">
+	        	<input type="text"name="jmAddr1" id="jmAddr1">
+	        	<button type="button" id="checkZipcodeBtn">우편번호</button>
+	        </div>
+	        <input type="text" name="jmZipCode" id="jmZipCode">
+	    </div>
+	    
+	    <div class="infoOneNoline">      
+	        <h4><span class="smallTitle">상세주소</span></h4>
+	        <input type="text" name="jmAddr2" id="jmAddr2">
+	    </div>
 			
-			<br><br>
-		  	<h3><span class="badge">돌봄장소 상세주소</span></h3><!-- 가져와져있음 -->
-		    <input type="text" id="" class="" style="width: 600px;" readonly="readonly">
-			
-			<br><br>
-			<h3><span class="badge">돌봄장소 공개/비공개</span></h3>
+		<div class="infoOneNoline">
+			<h4><span class="smallTitle">돌봄장소 공개/비공개</span></h4>
 			<div class="form-check">
 			    <input class="form-check-input" type="radio" name="visibility" id="public" value="public">
 			    <label class="form-check-label" for="public">공개</label>
@@ -132,58 +129,341 @@ div .card { width: 700px;}
 			    <input class="form-check-input" type="radio" name="visibility" id="private" value="private">
 			    <label class="form-check-label" for="private">비공개</label>
 			</div>
-	
 		</div>
-	
+		
+	</div>
 	</div><!-- 1행 1열 끝 -->
 	
-	<div class="col">
-		<h3><span class="badge">휴일</span></h3>
-		<div>
-			달력인데 2달만 보임
-		</div>
-		<h3><span class="badge">예약 내역</span></h3><!-- 2달치 -->
-	   		<div>
-	   		
-	   			<div class="card">
-					<div class="card-header d-flex justify-content-between"">
-						펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-					</div>	
-			    	  <div class="row g-0">
-			    	    <div class="col-md cardInfo" >
-			    	      <div class="card-body">
-			    	        <div class="oneText">
-			    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-			    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-05 16:00</span>
-			    	        </div>
-			    	      </div>
-			    	    </div>
-			    	  </div>
-			    </div>
-			    
-			    <div class="card">
-					<div class="card-header d-flex justify-content-between"">
-						펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-					</div>	
-			    	  <div class="row g-0">
-			    	    <div class="col-md cardInfo" >
-			    	      <div class="card-body">
-			    	        <div class="oneText">
-			    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-			    		        <span class="card-text" style="font-size: 14pt;">2023-08-06 14:00 ~ 2023-08-06 22:00</span>
-			    	        </div>
-			    	      </div>
-			    	    </div>
-			    	  </div>
-			    </div>
-	   		
-	   		</div>
-	   	<button type="button" class="updatePlace">돌봄장소 수정완료</button><!-- 돌봄장소 등록완료 -->
-	    <br><br>		
+	<div class="col container-mypage" style="width: 780px;">
+		<h4><span class="smallTitle">휴일 설정</span></h4>
+		<!-- 캘린더 -->
+			<div class="container" style="padding: 0;">
+				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+			
+				<link rel="stylesheet" href="css/styleCal.css">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="content w-100">
+							<div class="calendar-container" style="padding: 0px;">
+								<div class="calendar">
+									<div class="year-header">
+										<span class="left-button fa fa-chevron-left" id="prev">
+										</span> <span class="year" id="label"></span> <span
+											class="right-button fa fa-chevron-right" id="next"> </span>
+									</div>
+									<table class="months-table w-100">
+										<tbody>
+											<tr class="months-row">
+												<td class="month">1월</td>
+												<td class="month">2월</td>
+												<td class="month">3월</td>
+												<td class="month">4월</td>
+												<td class="month">5월</td>
+												<td class="month">6월</td>
+												<td class="month">7월</td>
+												<td class="month">8월</td>
+												<td class="month">9월</td>
+												<td class="month">10월</td>
+												<td class="month">11월</td>
+												<td class="month">12월</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<table class="days-table w-100">
+										<td class="day">일</td>
+										<td class="day">월</td>
+										<td class="day">화</td>
+										<td class="day">수</td>
+										<td class="day">목</td>
+										<td class="day">금</td>
+										<td class="day">토</td>
+									</table>
+									<div class="frame">
+										<table class="dates-table w-100">
+											<tbody class="tbody">
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="events-container" style="background-color: #4caf50;"></div>
+
+						</div>
+					</div>
+				</div>
+				<script type="text/javascript" src="js/popperCal.js"></script>
+<!-- ======================================================================================================캘린더 스크립트 -->
+<script type="text/javascript">
+(function($) {
+
+	"use strict";
+
+	// Setup the calendar with the current date
+$(document).ready(function(){
+    var date = new Date();
+    var today = date.getDate();
+    // Set click handlers for DOM elements
+    $(".right-button").click({date: date}, next_year);
+    $(".left-button").click({date: date}, prev_year);
+    $(".month").click({date: date}, month_click);
+    $("#add-button").click({date: date}, new_event);
+    // Set current month as active
+    $(".months-row").children().eq(date.getMonth()).addClass("active-month");
+    init_calendar(date);
+    var events = check_events(today, date.getMonth()+1, date.getFullYear());
+    show_events(events, months[date.getMonth()], today);
+});
+
+// Initialize the calendar by appending the HTML dates
+function init_calendar(date) {
+    $(".tbody").empty();
+    $(".events-container").empty();
+    var calendar_days = $(".tbody");
+    var month = date.getMonth();
+    var year = date.getFullYear();
+    var day_count = days_in_month(month, year);
+    var row = $("<tr class='table-row'></tr>");
+    var today = date.getDate();
+    // Set date to 1 to find the first day of the month
+    date.setDate(1);
+    var first_day = date.getDay();
+    // 35+firstDay is the number of date elements to be added to the dates table
+    // 35 is from (7 days in a week) * (up to 5 rows of dates in a month)
+    for(var i=0; i<35+first_day; i++) {
+        // Since some of the elements will be blank, 
+        // need to calculate actual date from index
+        var day = i-first_day+1;
+        // If it is a sunday, make a new row
+        if(i%7===0) {
+            calendar_days.append(row);
+            row = $("<tr class='table-row'></tr>");
+        }
+        // if current index isn't a day in this month, make it blank
+        if(i < first_day || day > day_count) {
+            var curr_date = $("<td class='table-date nil'>"+"</td>");
+            row.append(curr_date);
+        }   
+        else {
+            var curr_date = $("<td class='table-date'>"+day+"</td>");
+            var events = check_events(day, month+1, year);
+            if(today===day && $(".active-date").length===0) {
+                curr_date.addClass("active-date");
+                show_events(events, months[month], day);
+            }
+            // If this date has any events, style it with .event-date
+            if(events.length!==0) {
+                curr_date.addClass("event-date");
+            }
+            // Set onClick handler for clicking a date
+            curr_date.click({events: events, month: months[month], day:day}, date_click);
+            row.append(curr_date);
+        }
+    }
+    // Append the last row and set the current year
+    calendar_days.append(row);
+    $(".year").text(year);
+}
+
+// Get the number of days in a given month/year
+function days_in_month(month, year) {
+    var monthStart = new Date(year, month, 1);
+    var monthEnd = new Date(year, month + 1, 1);
+    return (monthEnd - monthStart) / (1000 * 60 * 60 * 24);    
+}
+
+// Event handler for when a date is clicked
+function date_click(event) {
+    $(".events-container").show(250);
+    $("#dialog").hide(250);
+    $(".active-date").removeClass("active-date");
+    $(this).addClass("active-date");
+    show_events(event.data.events, event.data.month, event.data.day);
+};
+
+
+// Event handler for when a month is clicked
+function month_click(event) {
+    $(".events-container").show(250);
+    $("#dialog").hide(250);
+    var date = event.data.date;
+    $(".active-month").removeClass("active-month");
+    $(this).addClass("active-month");
+    var new_month = $(".month").index(this);
+    date.setMonth(new_month);
+    init_calendar(date);
+}
+
+// Event handler for when the year right-button is clicked
+function next_year(event) {
+    $("#dialog").hide(250);
+    var date = event.data.date;
+    var new_year = date.getFullYear()+1;
+    $("year").html(new_year);
+    date.setFullYear(new_year);
+    init_calendar(date);
+}
+
+// Event handler for when the year left-button is clicked
+function prev_year(event) {
+    $("#dialog").hide(250);
+    var date = event.data.date;
+    var new_year = date.getFullYear()-1;
+    $("year").html(new_year);
+    date.setFullYear(new_year);
+    init_calendar(date);
+}
+
+// Event handler for clicking the new event button
+function new_event(event) {
+    // if a date isn't selected then do nothing
+    if($(".active-date").length===0)
+        return;
+    // remove red error input on click
+    $("input").click(function(){
+        $(this).removeClass("error-input");
+    })
+    // empty inputs and hide events
+    $("#dialog input[type=text]").val('');
+    $("#dialog input[type=number]").val('');
+    $(".events-container").hide(250);
+    $("#dialog").show(250);
+    // Event handler for cancel button
+    $("#cancel-button").click(function() {
+        $("#name").removeClass("error-input");
+        $("#count").removeClass("error-input");
+        $("#dialog").hide(250);
+        $(".events-container").show(250);
+    });
+    // Event handler for ok button
+    $("#ok-button").unbind().click({date: event.data.date}, function() {
+        var date = event.data.date;
+        var name = $("#name").val().trim();
+        var count = parseInt($("#count").val().trim());
+        var day = parseInt($(".active-date").html());
+        // Basic form validation
+        if(name.length === 0) {
+            $("#name").addClass("error-input");
+        }
+        else if(isNaN(count)) {
+            $("#count").addClass("error-input");
+        }
+        else {
+            $("#dialog").hide(250);
+            console.log("new event");
+            new_event_json(name, count, date, day);
+            date.setDate(day);
+            init_calendar(date);
+        }
+    });
+}
+
+// Adds a json event to event_data
+function new_event_json(name, count, link, date, day) {
+    var event = {
+        "occasion": name,
+        "bookSid": number,
+        "link": link,
+        "year": date.getFullYear(),
+        "month": date.getMonth()+1,
+        "day": day
+    };
+    event_data["events"].push(event);
+}
+
+// Display all events of the selected date in card views
+function show_events(events, month, day) {
+    // Clear the dates container
+    $(".events-container").empty();
+    $(".events-container").show(250);
+    console.log(event_data["events"]);
+    // If there are no events for this date, notify the user
+    if(events.length===0) {
+        var event_card = $("<div class='event-card'></div>");
+        var event_name = $("<div class='event-name'>해당 날짜에 예약이 없습니다</div>");
+        $(event_card).css({ "border-left": "10px solid #FF1744" });
+        $(event_card).append(event_name);
+        $(".events-container").append(event_card);
+    }
+    else {
+    	// Go through and add each event as a card to the events container
+    	for(var i=0; i<events.length; i++) {
+    	    var event_card = $("<div class='event-card'></div>");
+    	    var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
+    	    var event_count = $("<div class='event-count'>"+events[i]["bookSid"]+"</div>");
+    	    var event_link = $("<div class='event-link'><a href='"+events[i]["link"]+"' target='_blank'>자세히보기</a></div>");
+    	    if(events[i]["cancelled"]===true) {
+    	        $(event_card).css({
+    	            "border-left": "10px solid #FF1744"
+    	        });
+    	        event_count = $("<div class='event-cancelled'>Cancelled</div>");
+    	    }
+    	    $(event_card).append(event_name).append(event_count).append(event_link);
+    	    $(".events-container").append(event_card);
+    	}
+    }
+}
+
+// Checks if a specific date has any events
+function check_events(day, month, year, bookSid, link) {
+    var events = [];
+    for(var i=0; i<event_data["events"].length; i++) {
+        var event = event_data["events"][i];
+        if(event["day"]===day &&
+            event["month"]===month &&
+            event["year"]===year) {
+                events.push(event);
+            }
+    }
+    return events;
+}
+
+// Given data for events in JSON format
+var event_data =
+{
+	"events":
+	[
+		<c:forEach items="${bookList}" var="book" varStatus="loop">
+		    {
+		        "occasion": " 예약번호 ",
+		        "bookSid": ${book.sbSid},
+		        "link" : "mainpage.action",
+		        "year": ${book.sbStartYear},
+		        "month": ${book.sbStartMonth},
+		        "day": ${book.sbStartDay},
+		        "cancelled": false
+		    }<c:if test="${not loop.last}">,</c:if>
+		</c:forEach>
+    ]
+};
+
+const months = [ 
+    "January", 
+    "February", 
+    "March", 
+    "April", 
+    "May", 
+    "June", 
+    "July", 
+    "August", 
+    "September", 
+    "October", 
+    "November", 
+    "December" 
+];
+
+})(jQuery);
+</script>
+<!-- ======================================================================================================캘린더 스크립트 -->
+			</div>
+			<!-- 캘린더 끝 -->
 		
-		<h3><span class="badge">운영 시간</span></h3>
+		<button type="button" class="detailBtn" style="margin-left: 80%;">돌봄장소 수정완료</button>
+	
+		
+		<h4><span class="smallTitle">운영 시간</span></h4>
 		<div class="form-group">
-		  <label for="open-time"><span class="badge sittingtime">시작 시간</span></label>
+		  <label for="open-time"><span class="">시작 시간</span></label>
 		  <select class="form-select" id="open-time">
 		    <option value="1">1:00</option>
 		    <option value="2">2:00</option>
@@ -213,7 +493,7 @@ div .card { width: 700px;}
 		</div>
 		
 		<div class="form-group">
-		  <label for="close-time"><span class="badge sittingtime">종료 시간</span></label>
+		  <label for="close-time"><span class="">종료 시간</span></label>
 		  <select class="form-select" id="close-time">
 		    <option value="1">1:00</option>
 		    <option value="2">2:00</option>
@@ -241,8 +521,8 @@ div .card { width: 700px;}
 		    <option value="24">24:00</option>
 		  </select>
 		</div>
-		 <button type="button" class="updatePlace">운영시간 수정완료</button><!-- 운영시간 등록완료 -->
-	
+		 <button type="button" class="detailBtn" style="margin-left: 80%;">운영시간 수정완료</button><!-- 운영시간 등록완료 -->
+		
 	</div>	
 	
 </div>
