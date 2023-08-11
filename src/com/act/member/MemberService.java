@@ -25,6 +25,28 @@ public class MemberService implements IMemberService
 
 	}
 	
+	// 아이디 비밀번호로 펫시팅 종료 카운트 조회
+	public String searchSittingcount(MemberDTO dto)
+	{
+		String result = "";
+
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		result = dao.searchSittingcount(dto);
+		return result;
+
+	}
+	
+	// 아이디 비밀번호로 대리산책 종료 카운트 조회
+	public String searchWalkcount(MemberDTO dto)
+	{
+		String result = "";
+
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		result = dao.searchWalkcount(dto);
+		return result;
+
+	}
+	
 	// 아이디 비밀번호로 memNickName 조회하기
 		public String searchMemNickName(MemberDTO dto)
 		{
@@ -98,7 +120,7 @@ public class MemberService implements IMemberService
   
 
 	@Transactional
-	public int join(HttpSession session, MemberDTO dto)
+	public int join(MemberDTO dto)
 	{
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		

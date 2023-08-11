@@ -12,4 +12,36 @@
 		CRYPTPACK.ENCRYPT(#{miPw}, #{miPw})
 	</select>
 	
+	<select id="sittingSearchEmerg" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS EMERGCOUNT
+		FROM SITTING_EMERG_RECEIVE SER
+		LEFT JOIN SITTING_EMERG_COMPLETE SEC
+		ON SER.SER_SID = SEC.SEC_SID
+		WHERE SEC.SEC_SID IS NULL
+	</select>
+	
+	<select id="walkSearchEmerg" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS WALK_EMERGCOUNT
+		FROM WALK_EMERG_RECEIVE WER
+		LEFT JOIN WALK_EMERG_COMPLETE WEC
+		ON WER.WER_SID = WEC.WEC_SID
+		WHERE WEC.WEC_SID IS NULL
+	</select>
+	
+	<select id="searchManagerName" resultType="java.lang.String">
+		SELECT MI_NAME AS NAME
+		FROM MANAGER_INFO
+		WHERE MI_SID = #{miSid}
+	</select>
+	
+	
+	<select id="sittingReportList" resultType="com.act.manager.ManagerDTO">
+		SELECT SRR.SRR_SID AS SRRSID,MEM.MEM_SID AS MEMSID,JM_NICKNAME AS JMNICK,SRR.SP_SID AS SPSID
+		,SRR.IR_SID AS IRSID,SRR.SRR_DATE AS SRRDATE
+		FROM SITTING_REPORT_RECEIVE SRR
+		LEFT JOIN MEMBER MEM
+		ON SRR.MEM_SID = MEM.MEM_SID
+		LEFT JOIN JOIN_MEMBER JM
+		ON MEM.MEM_SID = JM.MEM_SID;
+	</select>
 </mapper>

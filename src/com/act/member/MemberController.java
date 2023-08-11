@@ -26,10 +26,12 @@ public class MemberController
 
 	// 로그인(+ 회원가입버튼) 페이지로 가는 액션
 	@RequestMapping("/loginpage.action")
-	public String loginJoinPage()
+	public String loginJoinPage(HttpServletRequest request)
 	{
 		String result = "";
-
+		// 회원가입 폼에서 왔다면 flag를 받아야 하기 때문에..
+		String flag = request.getParameter("flag");
+		request.setAttribute("flag", flag);
 		result = "/WEB-INF/views/member/LoginPage.jsp";
 
 		return result;
@@ -75,45 +77,62 @@ public class MemberController
 		return view;
 	}
 
-	// 설명 써주세
+	// 회원가입 폼에서 회원가입 버튼 클릭
 	@RequestMapping("/join.action")
-	public String join(HttpSession session, MemberDTO dto)
+	public String join(MemberDTO dto)
 	{
 		String result = "";
-		int num = memberService.join(session, dto);
+		int num = memberService.join(dto);
 
 		if (num != 1)
 			result = "redirect:join.action";
 		else
-			result = "redirect:mainpage.action";
+			result = "redirect:loginpage.action?flag=0";
 
 		return result;
 	}
 
-	// 회원인지 아닌지 조회, 로그인 성공/실패
+	// 회원인지 아닌지 조회, 로그인 성공/실패 + 펫시팅과 대리산책 타임라인 종료 횟수 전송
 	@RequestMapping("/memberlogin.action")
 	public String loginCount(MemberDTO dto, HttpSession session)
 	{
+	    String url = "";
+	    String memNickName = memberService.searchMemNickName(dto);
+	    String memSid = memberService.searchMemsid(dto);
+	    String sittingCount = memberService.searchSittingcount(dto);
+	    String walkCount = memberService.searchWalkcount(dto);
+	    int dbValue;
 
-		String url = "";
+	    if (memSid.equals("0"))
+	    {
+	        url = "redirect:loginpage.action?error=1";
+	    }
+	    else
+	    {
+	        session.setAttribute("memNickName", memNickName);
+	        session.setAttribute("memSid", memSid);
 
-		String memNickName = memberService.searchMemNickName(dto);
-		String memSid = memberService.searchMemsid(dto);
-		
-		if (memSid.equals("0"))
+	        int sittingCountInt = Integer.parseInt(sittingCount);
+	        int walkCountInt = Integer.parseInt(walkCount);
 
-		{
-			url = "redirect:loginpage.action?error=1";
+	        if (sittingCountInt == 0 && walkCountInt == 0) 
+	        {
+	            dbValue = 0;
+	        } 
+	        else if (walkCountInt > sittingCountInt) 
+	        {
+	            dbValue = 1;
+	        } 
+	        else 
+	        {
+	            dbValue = 2;
+	        }
 
-		} else
-		{
-			
-			session.setAttribute("memNickName", memNickName);
-			session.setAttribute("memSid", memSid);
-			url = "redirect:mainpage.action";
-		}
+	        session.setAttribute("dbValue", dbValue);
+	        url = "redirect:mainpage.action";
+	    }
 
-		return url;
+	    return url;
 	}
 
 	// 로그아웃하고(session) 다시 메인페이지로 가기
@@ -133,7 +152,7 @@ public class MemberController
 		return view;
 	}
 
-	// 이름, 주민번호로 아이디 찾기
+	// 이름, 주민번호로 아이디 찾기 --- 아이디 찾기
 	@RequestMapping("/findidform.action")
 	public String findId(HttpServletRequest request)
 	{
@@ -153,7 +172,7 @@ public class MemberController
 			result = "아이디가 존재하지 않습니다.";
 		} else
 		{
-			result = "등록된 아이디는 [" + result + "] 입니다.";
+			result = "등록된 아이디는 <span style='color: blue; font-weight: bold;'>" + result + "</span> 입니다.";
 		}
 
 		request.setAttribute("result", result);
@@ -163,7 +182,7 @@ public class MemberController
 		return view;
 	}
 
-	// 비밀번호 재설정을 위해 아이디, 이름, 주민번호를 입력받는 폼
+	// 비밀번호 재설정을 위해 아이디, 이름, 주민번호로 본인인증 폼
 	@RequestMapping("/findpwpage.action")
 	public String pwRemakeForm()
 	{
@@ -171,32 +190,46 @@ public class MemberController
 		return view;
 	}
 
-	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사
-	@RequestMapping("/findpw.action")
-	public String findPw(MemberDTO dto, HttpSession session)
+	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사 ===  본인인증
+	@RequestMapping("/findpwform.action")
+	public String findPw(MemberDTO dto, HttpSession session,HttpServletRequest request)
 	{
 		String view = "";
-
+		
 		String result = "";
 
 		// "0" 또는 특정 memSid 를 반환
 		result = memberService.findPw(dto);
-
 		if (result.equals("0")) // 회원정보 없음
 		{
+			
 			// result에 0이 담긴채로 FindPwPage.jsp 을 요청, 이 때는 alert이 뜸
 			session.setAttribute("result", result);
-			view = "redirect:findpwpage.action";
-		} else // 회원정보 있음
+			view = "/WEB-INF/ajax/FindIdSsnForm.jsp";
+			
+			return view;
+		} 
+		else // 회원정보 있음
 		{
 			// memSid에 조회한 memSid을 담아 넘겨주며 비밀번호 재설정 페이지를 요청.
-			session.setAttribute("memSid", result);
-			view = "/WEB-INF/views/member/UpdatePwPage.jsp";
+			
+			session.setAttribute("result", result);
+			view = "/WEB-INF/ajax/FindIdSsnForm.jsp";
 		}
 
 		return view;
 	}
-
+	
+	
+	// 비밀번호 재설정 폼으로 가기
+	@RequestMapping("/updatepwpage.action")
+	public String updatepwpage()
+	{
+		String view = "/WEB-INF/views/member/UpdatePwPage.jsp";
+		return view;
+	}
+		
+		
 	// 비밀번호 재설정하기
 	@RequestMapping("/updatepw.action")
 	public String updatePw(MemberDTO dto, HttpSession session)
@@ -206,14 +239,20 @@ public class MemberController
 		int result = 0;
 
 		// 0 or 성공시 1
+		
+		String memSid = (String)session.getAttribute("result");
+		dto.setMemSid(memSid);
 		result = memberService.updatePw(dto);
-
+		
 		if (result > 0)
-		{
-			session.removeAttribute("memSid"); // null로 만들어주고
-			view = "redirect:mainpage.action";
-		}
+			view = "redirect:loginpage.action?flag=1"; // flag 가 1일때는 비밀번호가 변경되었다는 alert
+		else
+			view = "redirect:updatepwpage.action";
+		
+		
 		return view;
+		
+		
 	}
 
 	// 메뉴바를 통해 마이페이지로 가기, 디폴트 알림창
