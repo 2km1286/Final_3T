@@ -218,7 +218,7 @@ p {
 							</h6>
 							<br>
 							
-							<c:forEach var="tag" items="${tagList }">
+							<c:forEach var="tag" items="${filtertaglist }">
 									<c:if test="${dto.spSid == tag.spSid}">
 											<button class="btn radio-button" readonly
 											style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
