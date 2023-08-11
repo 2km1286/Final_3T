@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -229,31 +230,7 @@ p {
 		
 		
 		
-		$("#filter").click(function()
-		{	
-			alert($(".selectedtag").val());
-			
-			
-			dateSend = "extraAddr=" + $("#extraAddr").val()
-						+ "&datePicker=" + $("#datepicker").val()
-						+ "&spMaxPet=" + $("#spMaxPet").val();
-			
-			$.ajax(
-			{
-				type : "POST",
-				url : "sittingfilterlistform.action",
-				data : dateSend,
-				async : true,
-				success : function(data)
-				{
-					$("#cardContainer").html(data);
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-			});
-		});
+		
 		
 	});
 </script>
@@ -267,9 +244,9 @@ p {
 		<div class="container-fluid py-5 bg-light"  style="padding-left: 150px; padding-right: 150px;">
 
 			<!-- Selection Bar -->
+		<form class="form-filter" id="filterForm">
 			<div class="selection-bar mb-4" 
 				style="font-family: Jua; font-size: 13pt; padding-left: 30px; padding-right: 30px;">
-				
 				
 				<!-- 동 검색 구역 시작 -->
 				<input type="button" onclick="DaumPostcode()" value="지역 찾기">
@@ -372,7 +349,7 @@ p {
 				<!-- 동 검색 구역 끝 -->
 							 
 				<label for="datepicker">날짜 선택:</label> 
-				<input type="text" id="datepicker" class="custom-textbox datepick" readonly style="width: 115px;">			 		 
+				<input type="text" id="datepicker" name="datepicker" class="custom-textbox datepick" readonly style="width: 115px;">			 		 
 				 <script>
 					var fp = flatpickr(document.getElementById("datepicker"), {
 						"locale": "ko" 
@@ -383,7 +360,7 @@ p {
 				</script>
 				 
 				 
-				 <label for="dogs">견수:</label> <input type="number" id="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
+				 <label for="dogs">견수:</label> <input type="number" id="spMaxPet" name="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
 
 				<button class="button" id="filter">적용</button>
 				<button class="button" onclick="sittingTest()" style="float: right;">펫시터 지원하기</button>
@@ -400,10 +377,12 @@ p {
 			<!-- 검색 조건 태그 시작 -->
 			<div class="mb-4" style="font-family: Jua; font-size: 25pt;">
 				<!-- 버튼 모양의 복수 선택 라디오 버튼 -->
-				<c:forEach var="dto" items="${IndexTagList }" varStatus="status" begin="1">
-					<button class="btn radio-button" name="${ }"
+			
+				<c:forEach var="dto" items="${IndexTagList }">
+					<button  class="btn radio-button isptTag"  
 						style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
-						value="${dto.isptSid }">${dto.isptName }</button>
+					data-ispt-sid="${dto.isptSid }" value="${ dto.isptSid}">${dto.isptName }</button>
+					<input type="hidden" name="selectedTags" id="selectedTags" value="${dto.isptSid}"/>
 				</c:forEach>
 			</div>
 
@@ -411,10 +390,10 @@ p {
 				$(document).ready(function()
 				{
 					// 클릭한 버튼에 selected 클래스 추가 및 제거
-					$('.radio-button').click(function()
+					$('.isptTag').click(function()
 					{
-						$(this).toggleClass('selectedtag');
-						if ($(this).hasClass('selectedtag'))
+						$(this).toggleClass('selected');
+						if ($(this).hasClass('selected'))
 						{
 							$(this).css('background-color', '#367539'); // 선택된 스타일로 변경
 							// 여기서 데이터를 추가해주면..?
@@ -423,9 +402,57 @@ p {
 							$(this).css('background-color', '#4caf50'); // 원래 스타일로 변경
 						}
 					});
+					
+					// 필터 버튼 클릭 시
+					$("#filter").click(function()
+					{	
+						
+						var dataSend = "extraAddr=" + $("#extraAddr").val()
+									+ "&datePicker=" + $("#datepicker").val()
+									+ "&spMaxPet=" + $("#spMaxPet").val();
+						
+						
+						/* var dataSend = $("#filterForm").serialize(); */
+									
+						var selectedTags = $(".isptTag.selectedtag");
+						var isptSidValues = [];
+						selectedTags.each(function()
+						{
+							isptSidValues.push($(this).data('ispt-sid'));
+						});
+						
+						if(isptSidValues.length > 0 )
+						{
+							dataSend += "&isptSidValues=" + isptSidValues;
+						}
+									
+						
+
+						alert(dataSend);
+						alert(isptSidValues);
+						
+						$.ajax(
+						{
+							type : "POST",
+							url : "sittingfilterlistform.action",
+							data : dataSend,
+							async : true,
+							success : function(data)
+							{
+								$("#cardContainer").html(data);
+							},
+							error : function(e)
+							{
+								alert(e.responseText);
+							}
+						});
+					});
+					
+					
 				});
 			</script>
 			<!-- 검색 조건 태그 끝 -->
+		</form>
 			
 			<!-- 리스트 뿌리기 시작 -->
 			<h2>펫시터 공고글</h2>
