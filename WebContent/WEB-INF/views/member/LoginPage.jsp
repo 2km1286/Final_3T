@@ -60,6 +60,10 @@
 	                if (isAdminLogin) {
 	                    // 관리자 체크가 되어 있을 때
 	                    $(location).attr("href", "managerlogin.action?miId=" + jmId + "&miPw=" + jmPw);
+	                    /* window.location.href = "managermain.action?miId="; */
+	                	// this.action = "java002";
+		                    //$("#loginForm").submit();
+
 	                } else {
 	                    // 일반 로그인
 	                    $("#loginForm").submit();
