@@ -296,6 +296,7 @@ form input[name="jmZipCode"] {
 		<div class="container">
 			
 			<h1>회원가입</h1>
+
 		
 			<form class="form" action="join.action" method="post">
 				

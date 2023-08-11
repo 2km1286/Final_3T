@@ -6,41 +6,33 @@
 
 	<select id="list" resultType="com.act.sitting.SittingDTO">
 		SELECT JMNICKNAME, SPTITLE,
-		SPADDR1, SPADDR2, MEMSID, SPHSID, SPHSTART, SPHEND
-		, SRSTART, SREND,
-		SRWSID, STLESID, SPMAXPET, SPSID
+		SPADDR1, SPADDR2, EXTRAADDR, MEMSID, SPHSID, SPHSTART, SPHEND
+		, SRSTART, SREND,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
 		FROM SITTING_PLACE_LIST_VIEW
 	</select>
 
 	<select id="IndexTagList"
 		resultType="com.act.sitting.SittingDTO">
 		SELECT ISPT_SID AS ISPTSID, ISPT_NAME AS ISPTNAME
-		FROM
-		INDEX_SITTING_PLACE_TAG
+		FROM INDEX_SITTING_PLACE_TAG
 		ORDER BY ISPT_SID
 	</select>
 
-	<select id="gradeList" resultType="com.act.sitting.SittingDTO">
-		SELECT GRADE, PRICE
-		FROM
-		SITTING_GRADE_VIEW
+	<select id="tagList" resultType="com.act.sitting.SittingDTO"> 
+		SELECT ISPTSID, ISPTNAME, SPSID
+		FROM SITTING_PLACE_TAGS_VIEW   
 	</select>
 
-	<!-- <select id="tagList" resultType="com.act.sitting.SittingDTO"> SELECT 
-		MEMSID, JMNICKNAME, ISPTSID, ISPTNAME FROM SITTING_PLACE_TAGS_VIEW WHERE 
-		MEMSID=#{memSid} </select> -->
-
-
+	<!-- 펫시터 시험을 완료한 경우 -->
 	<select id="stsCount" resultType="java.lang.Integer">
-		SELECT NVL(COUNT(STS_SID), 0)
-		AS STSCOUNT
+		SELECT NVL(COUNT(STS_SID), 0) AS STSCOUNT
 		FROM STS_CONDITION_VIEW
 		WHERE MEM_SID = #{memSid}
 	</select>
 
+	<!-- 펫시터 시험도 보고 면허도 얻은 사람 -->
 	<select id="slCount" resultType="java.lang.Integer">
-		SELECT NVL(COUNT(SL_SID), 0) AS
-		SLCOUNT
+		SELECT NVL(COUNT(SL_SID), 0) AS SLCOUNT
 		FROM SITTING_LICENSE SL JOIN STS_CONDITION_VIEW SCV
 		ON SL.STS_SID = SCV.STS_SID
 		WHERE SCV.MEM_SID = #{memSid}
@@ -49,9 +41,65 @@
 	<select id="booklist" resultType="com.act.sitting.SittingDTO">
 		SELECT SBSID, SBSTARTYEAR,
 		SBSTARTMONTH, SBSTARTDAY, SBEND, SBPRICE, PMEMSID
-		FROM
-		SITTING_BOOK_VIEW
+		FROM SITTING_BOOK_VIEW
 		WHERE MEMSID = #{memSid}
+	</select>
+	
+	<select id="sittingPlaceBasic" resultType="com.act.sitting.SittingDTO">
+		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, IPSID, SPSID
+		FROM SITTING_PLACE_BASIC_VIEW
+		WHERE MEMSID = #{memSid}
+		ORDER BY SPCREATED DESC
+	</select>
+	
+	<select id="sittingPlaceTags" resultType="com.act.sitting.SittingDTO">
+		SELECT ISPTNAME
+		FROM SITTING_PLACE_TAGS_VIEW
+		WHERE SPSID = #{spSid}
+	</select>
+	
+	<select id="sittingReviews" resultType="com.act.sitting.SittingDTO">
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID
+		FROM SITTING_REVIEW_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
+	
+	<select id="sittingReviewers" resultType="com.act.sitting.SittingDTO">
+		SELECT JM_NICKNAME AS PJMNICKNAME, MEM_SID AS PMEMSID
+		FROM JOIN_MEMBER
+	</select>
+	
+
+	<select id="spfilterlist" resultType="com.act.sitting.SittingDTO">
+		SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, EXTRAADDR, MEMSID,
+		SPHSID, SPHSTART, SPHEND, SRSTART, SREND, SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
+		FROM SITTING_PLACE_LIST_VIEW
+		WHERE 1=1
+		<if test="#{extraAddr} != null">
+			AND EXTRAADDR = #{extraAddr}
+		</if>
+		<if test="#{datePicker} != null">
+			AND #{datePicker} NOT BETWEEN TO_CHAR(SRSTART, 'YYYY-MM-DD') 
+									  AND TO_CHAR(SREND, 'YYYY-MM-DD')
+		</if>
+		<if test="#{spMaxPet} != null">
+			AND SPMAXPET >= #{spMaxPet}
+		</if>
+	</select>
+	
+	<select id="spFilterTagList" resultType="com.act.sitting.SittingDTO">
+		SELECT SPSID, ISPTNAME, ISPTSID
+		FROM SITTING_PLACE_TAGS_VIEW 
+		WHERE SPSID IN (SELECT SPSID
+		                FROM SITTING_PLACE_TAGS_VIEW
+		                WHERE 1 =1 
+		                <if test="#{list} != null">
+		                 AND ISPTSID IN 
+			                <foreach collection="list" item="isptSid" open="(" separator="," close=")">
+			                	#{isptSid}
+			                </foreach>
+		                </if>
+		                GROUP BY SPSID)
 	</select>
 
 </mapper>

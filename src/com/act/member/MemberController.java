@@ -305,13 +305,12 @@ public class MemberController
 		return result;
 	}
 	
-	// 마이페이지 내 정보 및 반려견관리의 반려견 등록하는 폼으로 가기. AJAX로 처리.
-	@RequestMapping("/petinsertform.action")
-	public String petInsertForm()
+	// 마이페이지 내 정보 및 반려견관리의 반려견 등록하는 폼 모달.
+	@RequestMapping("/petinsertpage.action")
+	public String petInsertPage()
 	{
 		String result = "";
-		// AJAX
-		result = "/WEB-INF/ajax/PetInsertForm.jsp";
+		result = "/WEB-INF/views/member/PetInsertPage.jsp";
 		return result;
 	}
 	
