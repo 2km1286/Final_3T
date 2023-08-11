@@ -423,8 +423,7 @@ if (memSid == null) {
 	$(document).ready(function()
 	{
 
-		var dbValue =
-<%=session.getAttribute("dbValue")%>;
+		var dbValue = <%=session.getAttribute("dbValue")%>;
 
 		if (dbValue === 0)
 		{
