@@ -13,6 +13,20 @@ String cp = request.getContextPath();
 
 <title>마이페이지_펫시팅</title>
 
+<!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
 <!-- 돌봄장소 이미지 넘기는 스크립트 -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -108,9 +122,6 @@ String cp = request.getContextPath();
 			<!-- 돌봄장소 슬라이드 사진 끝 -->
 
 			<!-- 캘린더 -->
-			
-			
-			
 			
 			<!-- 캘린더 끝 -->
 

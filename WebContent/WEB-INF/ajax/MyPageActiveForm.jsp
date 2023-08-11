@@ -20,6 +20,7 @@ div.porfilCard{margin-left: 20%; width: 360px;}
 </head>
 <body>
 			<div class="row">
+
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">팔로잉 한 대리산책러</span></h3>
 					<div><!-- 팔로잉 한 대리산책러 시작 -->
@@ -39,8 +40,10 @@ div.porfilCard{margin-left: 20%; width: 360px;}
 				</div><!-- 1행1열 끝 -->
 				
 				
+
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">팔로잉 한 펫시터</span></h3>
+
 					
 					<div><!-- 팔로잉 한 펫시터 시작 -->
 				          
