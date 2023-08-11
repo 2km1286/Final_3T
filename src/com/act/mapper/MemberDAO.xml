@@ -10,17 +10,23 @@
 	</insert>
 
 	<select id="getMemSid" resultType="string">
-		SELECT DBMS_RANDOM.STRING('X', 15) AS MEM_SID
+		SELECT DBMS_RANDOM.STRING('X',
+		15) AS MEM_SID
 		FROM DUAL
 	</select>
 
 	<insert id="join">
-		INSERT INTO JOIN_MEMBER(JM_SID, MEM_SID, JM_ID, JM_PW, JM_NAME, JM_SSN,
-		JM_GENDER, JM_NICKNAME, JM_TEL, JM_ADDR1, JM_ADDR2, JM_ZIPCODE,
+		INSERT INTO JOIN_MEMBER(JM_SID, MEM_SID, JM_ID,
+		JM_PW, JM_NAME, JM_SSN,
+		JM_GENDER, JM_NICKNAME, JM_TEL, JM_ADDR1,
+		JM_ADDR2, JM_ZIPCODE,
 		JM_IMAGE)
-		VALUES(SEQ_JM.NEXTVAL, #{memSid}, #{jmId},CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw}), #{jmName},
-		#{jmSsn}, #{jmGender}
-		, #{jmNickName}, #{jmTel}, #{jmAddr1}, #{jmAddr2}, #{jmZipCode},
+		VALUES(SEQ_JM.NEXTVAL, #{memSid},
+		#{jmId},CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw}), #{jmName},
+		#{jmSsn},
+		#{jmGender}
+		, #{jmNickName}, #{jmTel}, #{jmAddr1}, #{jmAddr2},
+		#{jmZipCode},
 		#{jmImage})
 	</insert>
 
@@ -30,6 +36,29 @@
 		FROM JOIN_MEMBER
 		WHERE JM_ID= #{jmId} AND JM_PW =
 		CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw})
+	</select>
+
+	<select id="searchWalkcount" resultType="java.lang.String">
+		SELECT COUNT(WTLE.WTLE_SID) AS WTLESIDCOUNT
+		FROM JOIN_MEMBER JM
+		LEFT JOIN MEMBER M ON JM.MEM_SID = M.MEM_SID
+		LEFT JOIN WALK_CREATE_CART WCC ON M.MEM_SID = WCC.MEM_SID
+		LEFT JOIN WALK_BOOK WB ON WCC.WCC_SID = WB.WCC_SID
+		LEFT JOIN WALK_TIME_LINE WTL ON WB.WB_SID = WTL.WB_SID
+		LEFT JOIN WALK_TIME_LINE_END WTLE ON WTL.WTL_SID = WTLE.WTL_SID
+		WHERE JM_ID= #{jmId} AND JM_PW = CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw})
+	</select>
+
+	<select id="searchSittingcount" resultType="java.lang.String">
+		SELECT
+		COUNT(STLE.STLE_SID) AS STLESIDCOUNT
+		FROM JOIN_MEMBER JM
+		LEFT JOIN MEMBER M ON JM.MEM_SID = M.MEM_SID
+		LEFT JOIN SITTING_FOLLOWING_LIST SFL ON M.MEM_SID = SFL.MEM_SID
+		LEFT JOIN SITTING_PLACE_HUB SPH ON SFL.SPH_SID = SPH.SPH_SID
+		LEFT JOIN SITTING_TIME_LINE STL ON SPH.SPH_SID = STL.SB_SID
+		LEFT JOIN SITTING_TIME_LINE_END STLE ON STL.STL_SID = STLE.STL_SID
+		WHERE JM_ID= #{jmId} AND JM_PW = CRYPTPACK.ENCRYPT(#{jmPw}, #{jmPw})
 	</select>
 
 	<select id="searchMemNickName" resultType="java.lang.String">
@@ -49,7 +78,8 @@
 	<select id="findPw" resultType="java.lang.String">
 		SELECT NVL(MAX(MEM_SID), '0')
 		FROM JOIN_MEMBER
-		WHERE JM_ID = #{jmId} AND JM_SSN = #{jmSsn} AND JM_NAME = #{jmName}
+		WHERE JM_ID = #{jmId} AND JM_SSN = #{jmSsn} AND
+		JM_NAME = #{jmName}
 	</select>
 
 	<update id="updatePw">
@@ -60,23 +90,29 @@
 	</update>
 
 	<select id="searchId" resultType="java.lang.Integer">
-      SELECT COUNT(*) AS COUNT
-      FROM JOIN_MEMBER
-      WHERE JM_ID = #{jmId}
-   </select>
-   
-   <select id="searchNick" resultType="java.lang.Integer">
-      SELECT COUNT(*) AS COUNT
-      FROM JOIN_MEMBER
-      WHERE JM_NICKNAME = #{jmNickName}
-   </select>
-   
-   <select id="memberList" resultType="java.lang.Integer">
-   SELECT JM_ID AS USER_ID, JM_NAME AS USER_NAME,JM_GENDER AS USER_GENDER, JM_NICKNAME AS USER_NICKNAME
-	,JM_TEL AS USER_TEL, MEM_REGIST_DATE AS USER_REGIST
-	FROM JOIN_MEMBER JM
-	LEFT JOIN MEMBER MEM
-	ON JM.MEM_SID = MEM.MEM_SID
-</select>
-   
+		SELECT COUNT(*) AS COUNT
+		FROM
+		JOIN_MEMBER
+		WHERE JM_ID = #{jmId}
+	</select>
+
+	<select id="searchNick" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM
+		JOIN_MEMBER
+		WHERE JM_NICKNAME = #{jmNickName}
+	</select>
+
+	<select id="memberList" resultType="java.lang.Integer">
+		SELECT JM_ID AS USER_ID,
+		JM_NAME AS USER_NAME,JM_GENDER AS USER_GENDER,
+		JM_NICKNAME AS
+		USER_NICKNAME
+		,JM_TEL AS USER_TEL, MEM_REGIST_DATE AS USER_REGIST
+		FROM
+		JOIN_MEMBER JM
+		LEFT JOIN MEMBER MEM
+		ON JM.MEM_SID = MEM.MEM_SID
+	</select>
+
 </mapper>
