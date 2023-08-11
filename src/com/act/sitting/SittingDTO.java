@@ -14,102 +14,13 @@ public class SittingDTO
 	private String grade;
 	private int price;
 	
-	
-	private String extraAddr, spContent;
+	private String spContent;
 	private int ipSid;
 	
 	// SITTING_REVIEW_VIEW
 	private String srwTitle, srwContent, srwDate, pJmNickName;	//pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
 	private int srwRate;
 
-	public int getIsptSid1()
-	{
-		return isptSid1;
-	}
-	public void setIsptSid1(int isptSid1)
-	{
-		this.isptSid1 = isptSid1;
-	}
-	public int getIsptSid2()
-	{
-		return isptSid2;
-	}
-	public void setIsptSid2(int isptSid2)
-	{
-		this.isptSid2 = isptSid2;
-	}
-	public int getIsptSid3()
-	{
-		return isptSid3;
-	}
-	public void setIsptSid3(int isptSid3)
-	{
-		this.isptSid3 = isptSid3;
-	}
-	public int getIsptSid4()
-	{
-		return isptSid4;
-	}
-	public void setIsptSid4(int isptSid4)
-	{
-		this.isptSid4 = isptSid4;
-	}
-	public int getIsptSid5()
-	{
-		return isptSid5;
-	}
-	public void setIsptSid5(int isptSid5)
-	{
-		this.isptSid5 = isptSid5;
-	}
-	public int getIsptSid6()
-	{
-		return isptSid6;
-	}
-	public void setIsptSid6(int isptSid6)
-	{
-		this.isptSid6 = isptSid6;
-	}
-	public int getIsptSid7()
-	{
-		return isptSid7;
-	}
-	public void setIsptSid7(int isptSid7)
-	{
-		this.isptSid7 = isptSid7;
-	}
-	public int getIsptSid8()
-	{
-		return isptSid8;
-	}
-	public void setIsptSid8(int isptSid8)
-	{
-		this.isptSid8 = isptSid8;
-	}
-	public int getIsptSid9()
-	{
-		return isptSid9;
-	}
-	public void setIsptSid9(int isptSid9)
-	{
-		this.isptSid9 = isptSid9;
-	}
-	public int getIsptSid10()
-	{
-		return isptSid10;
-	}
-	public void setIsptSid10(int isptSid10)
-	{
-		this.isptSid10 = isptSid10;
-	}
-	public int getIsptSid11()
-	{
-		return isptSid11;
-	}
-	public void setIsptSid11(int isptSid11)
-	{
-		this.isptSid11 = isptSid11;
-	}
 	// INDEX_SITTING_PLACE_TAG
 	private int isptSid;
 	private int isptSid1, isptSid2,isptSid3, isptSid4,isptSid5,isptSid6,isptSid7,isptSid8,isptSid9,isptSid10,isptSid11;
@@ -119,288 +30,461 @@ public class SittingDTO
 	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pMemSid;	
 	private int sbSid, sbPrice;
 	
-	public String getpJmNickName()
+	// 펫시팅 리스트 검색조건 - 날짜
+	private String datePicker;
+
+	public String getJmNickName()
 	{
-		return pJmNickName;
+		return jmNickName;
 	}
-	public void setpJmNickName(String pJmNickName)
+
+	public void setJmNickName(String jmNickName)
 	{
-		this.pJmNickName = pJmNickName;
+		this.jmNickName = jmNickName;
 	}
-	public String getSrwTitle()
+
+	public String getSptitle()
 	{
-		return srwTitle;
+		return sptitle;
 	}
-	public void setSrwTitle(String srwTitle)
+
+	public void setSptitle(String sptitle)
 	{
-		this.srwTitle = srwTitle;
+		this.sptitle = sptitle;
 	}
-	public String getSrwContent()
+
+	public String getSpAddr1()
 	{
-		return srwContent;
+		return spAddr1;
 	}
-	public void setSrwContent(String srwContent)
+
+	public void setSpAddr1(String spAddr1)
 	{
-		this.srwContent = srwContent;
+		this.spAddr1 = spAddr1;
 	}
-	public String getSrwDate()
+
+	public String getSpAddr2()
 	{
-		return srwDate;
+		return spAddr2;
 	}
-	public void setSrwDate(String srwDate)
+
+	public void setSpAddr2(String spAddr2)
 	{
-		this.srwDate = srwDate;
+		this.spAddr2 = spAddr2;
 	}
-	public int getSrwRate()
+
+	public String getExtraAddr()
 	{
-		return srwRate;
+		return extraAddr;
 	}
-	public void setSrwRate(int srwRate)
+
+	public void setExtraAddr(String extraAddr)
 	{
-		this.srwRate = srwRate;
+		this.extraAddr = extraAddr;
+	}
+
+	public String getMemSid()
+	{
+		return memSid;
+	}
+
+	public void setMemSid(String memSid)
+	{
+		this.memSid = memSid;
+	}
+
+	public String getSphStart()
+	{
+		return sphStart;
+	}
+
+	public void setSphStart(String sphStart)
+	{
+		this.sphStart = sphStart;
+	}
+
+	public String getSphEnd()
+	{
+		return sphEnd;
+	}
+
+	public void setSphEnd(String sphEnd)
+	{
+		this.sphEnd = sphEnd;
+	}
+
+	public String getSrStart()
+	{
+		return srStart;
+	}
+
+	public void setSrStart(String srStart)
+	{
+		this.srStart = srStart;
+	}
+
+	public String getSrEnd()
+	{
+		return srEnd;
+	}
+
+	public void setSrEnd(String srEnd)
+	{
+		this.srEnd = srEnd;
+	}
+
+	public int getSphSid()
+	{
+		return sphSid;
+	}
+
+	public void setSphSid(int sphSid)
+	{
+		this.sphSid = sphSid;
+	}
+
+	public int getSrwSid()
+	{
+		return srwSid;
+	}
+
+	public void setSrwSid(int srwSid)
+	{
+		this.srwSid = srwSid;
+	}
+
+	public int getStleSid()
+	{
+		return stleSid;
+	}
+
+	public void setStleSid(int stleSid)
+	{
+		this.stleSid = stleSid;
+	}
+
+	public int getSpMaxPet()
+	{
+		return spMaxPet;
+	}
+
+	public void setSpMaxPet(int spMaxPet)
+	{
+		this.spMaxPet = spMaxPet;
+	}
+
+	public int getSpSid()
+	{
+		return spSid;
+	}
+
+	public void setSpSid(int spSid)
+	{
+		this.spSid = spSid;
+	}
+
+	public String getGrade()
+	{
+		return grade;
+	}
+
+	public void setGrade(String grade)
+	{
+		this.grade = grade;
+	}
+
+	public int getPrice()
+	{
+		return price;
+	}
+
+	public void setPrice(int price)
+	{
+		this.price = price;
 	}
 
 	public String getSpContent()
 	{
 		return spContent;
 	}
+
 	public void setSpContent(String spContent)
 	{
 		this.spContent = spContent;
 	}
+
 	public int getIpSid()
 	{
 		return ipSid;
 	}
+
 	public void setIpSid(int ipSid)
 	{
 		this.ipSid = ipSid;
-	// 펫시팅 리스트 검색조건 - 날짜
-	private String datePicker;
-	
-	
-	
-	
-	
-	
-	public String getDatePicker()
-	{
-		return datePicker;
 	}
-	public void setDatePicker(String datePicker)
+
+	public String getSrwTitle()
 	{
-		this.datePicker = datePicker;
+		return srwTitle;
 	}
-	public String getExtraAddr()
+
+	public void setSrwTitle(String srwTitle)
 	{
-		return extraAddr;
+		this.srwTitle = srwTitle;
 	}
-	public void setExtraAddr(String extraAddr)
+
+	public String getSrwContent()
 	{
-		this.extraAddr = extraAddr;
+		return srwContent;
 	}
-	
-	public String getSbStartYear()
+
+	public void setSrwContent(String srwContent)
 	{
-		return sbStartYear;
+		this.srwContent = srwContent;
 	}
-	public void setSbStartYear(String sbStartYear)
+
+	public String getSrwDate()
 	{
-		this.sbStartYear = sbStartYear;
+		return srwDate;
 	}
-	public String getSbStartMonth()
+
+	public void setSrwDate(String srwDate)
 	{
-		return sbStartMonth;
+		this.srwDate = srwDate;
 	}
-	public void setSbStartMonth(String sbStartMonth)
+
+	public String getpJmNickName()
 	{
-		this.sbStartMonth = sbStartMonth;
+		return pJmNickName;
 	}
-	public String getSbStartDay()
+
+	public void setpJmNickName(String pJmNickName)
 	{
-		return sbStartDay;
+		this.pJmNickName = pJmNickName;
 	}
-	public void setSbStartDay(String sbStartDay)
+
+	public int getSrwRate()
 	{
-		this.sbStartDay = sbStartDay;
+		return srwRate;
 	}
-	
-	public int getSbSid()
+
+	public void setSrwRate(int srwRate)
 	{
-		return sbSid;
+		this.srwRate = srwRate;
 	}
-	public void setSbSid(int sbSid)
-	{
-		this.sbSid = sbSid;
-	}
-	public int getSbPrice()
-	{
-		return sbPrice;
-	}
-	public void setSbPrice(int sbPrice)
-	{
-		this.sbPrice = sbPrice;
-	}
-	public String getSbEnd()
-	{
-		return sbEnd;
-	}
-	public void setSbEnd(String sbEnd)
-	{
-		this.sbEnd = sbEnd;
-	}
-	public String getGrade()
-	{
-		return grade;
-	}
-	public void setGrade(String grade)
-	{
-		this.grade = grade;
-	}
-	public int getPrice()
-	{
-		return price;
-	}
-	public void setPrice(int price)
-	{
-		this.price = price;
-	}
-	public String getJmNickName()
-	{
-		return jmNickName;
-	}
-	public void setJmNickName(String jmNickName)
-	{
-		this.jmNickName = jmNickName;
-	}
-	public String getSptitle()
-	{
-		return sptitle;
-	}
-	public void setSptitle(String sptitle)
-	{
-		this.sptitle = sptitle;
-	}
-	public String getSpAddr1()
-	{
-		return spAddr1;
-	}
-	public void setSpAddr1(String spAddr1)
-	{
-		this.spAddr1 = spAddr1;
-	}
-	public String getSpAddr2()
-	{
-		return spAddr2;
-	}
-	public void setSpAddr2(String spAddr2)
-	{
-		this.spAddr2 = spAddr2;
-	}
-	public String getMemSid()
-	{
-		return memSid;
-	}
-	public void setMemSid(String memSid)
-	{
-		this.memSid = memSid;
-	}
-	public String getSphStart()
-	{
-		return sphStart;
-	}
-	public void setSphStart(String sphStart)
-	{
-		this.sphStart = sphStart;
-	}
-	public String getSphEnd()
-	{
-		return sphEnd;
-	}
-	public void setSphEnd(String sphEnd)
-	{
-		this.sphEnd = sphEnd;
-	}
-	public String getSrStart()
-	{
-		return srStart;
-	}
-	public void setSrStart(String srStart)
-	{
-		this.srStart = srStart;
-	}
-	public String getSrEnd()
-	{
-		return srEnd;
-	}
-	public void setSrEnd(String srEnd)
-	{
-		this.srEnd = srEnd;
-	}
-	public int getSphSid()
-	{
-		return sphSid;
-	}
-	public void setSphSid(int sphSid)
-	{
-		this.sphSid = sphSid;
-	}
-	public int getSrwSid()
-	{
-		return srwSid;
-	}
-	public void setSrwSid(int srwSid)
-	{
-		this.srwSid = srwSid;
-	}
-	public int getStleSid()
-	{
-		return stleSid;
-	}
-	public void setStleSid(int stleSid)
-	{
-		this.stleSid = stleSid;
-	}
-	public int getSpMaxPet()
-	{
-		return spMaxPet;
-	}
-	public void setSpMaxPet(int spMaxPet)
-	{
-		this.spMaxPet = spMaxPet;
-	}
-	public int getSpSid()
-	{
-		return spSid;
-	}
-	public void setSpSid(int spSid)
-	{
-		this.spSid = spSid;
-	}
+
 	public int getIsptSid()
 	{
 		return isptSid;
 	}
+
 	public void setIsptSid(int isptSid)
 	{
 		this.isptSid = isptSid;
 	}
+
+	public int getIsptSid1()
+	{
+		return isptSid1;
+	}
+
+	public void setIsptSid1(int isptSid1)
+	{
+		this.isptSid1 = isptSid1;
+	}
+
+	public int getIsptSid2()
+	{
+		return isptSid2;
+	}
+
+	public void setIsptSid2(int isptSid2)
+	{
+		this.isptSid2 = isptSid2;
+	}
+
+	public int getIsptSid3()
+	{
+		return isptSid3;
+	}
+
+	public void setIsptSid3(int isptSid3)
+	{
+		this.isptSid3 = isptSid3;
+	}
+
+	public int getIsptSid4()
+	{
+		return isptSid4;
+	}
+
+	public void setIsptSid4(int isptSid4)
+	{
+		this.isptSid4 = isptSid4;
+	}
+
+	public int getIsptSid5()
+	{
+		return isptSid5;
+	}
+
+	public void setIsptSid5(int isptSid5)
+	{
+		this.isptSid5 = isptSid5;
+	}
+
+	public int getIsptSid6()
+	{
+		return isptSid6;
+	}
+
+	public void setIsptSid6(int isptSid6)
+	{
+		this.isptSid6 = isptSid6;
+	}
+
+	public int getIsptSid7()
+	{
+		return isptSid7;
+	}
+
+	public void setIsptSid7(int isptSid7)
+	{
+		this.isptSid7 = isptSid7;
+	}
+
+	public int getIsptSid8()
+	{
+		return isptSid8;
+	}
+
+	public void setIsptSid8(int isptSid8)
+	{
+		this.isptSid8 = isptSid8;
+	}
+
+	public int getIsptSid9()
+	{
+		return isptSid9;
+	}
+
+	public void setIsptSid9(int isptSid9)
+	{
+		this.isptSid9 = isptSid9;
+	}
+
+	public int getIsptSid10()
+	{
+		return isptSid10;
+	}
+
+	public void setIsptSid10(int isptSid10)
+	{
+		this.isptSid10 = isptSid10;
+	}
+
+	public int getIsptSid11()
+	{
+		return isptSid11;
+	}
+
+	public void setIsptSid11(int isptSid11)
+	{
+		this.isptSid11 = isptSid11;
+	}
+
 	public String getIsptName()
 	{
 		return isptName;
 	}
+
 	public void setIsptName(String isptName)
 	{
 		this.isptName = isptName;
 	}
+
+	public String getSbStartYear()
+	{
+		return sbStartYear;
+	}
+
+	public void setSbStartYear(String sbStartYear)
+	{
+		this.sbStartYear = sbStartYear;
+	}
+
+	public String getSbStartMonth()
+	{
+		return sbStartMonth;
+	}
+
+	public void setSbStartMonth(String sbStartMonth)
+	{
+		this.sbStartMonth = sbStartMonth;
+	}
+
+	public String getSbStartDay()
+	{
+		return sbStartDay;
+	}
+
+	public void setSbStartDay(String sbStartDay)
+	{
+		this.sbStartDay = sbStartDay;
+	}
+
+	public String getSbEnd()
+	{
+		return sbEnd;
+	}
+
+	public void setSbEnd(String sbEnd)
+	{
+		this.sbEnd = sbEnd;
+	}
+
 	public String getpMemSid()
 	{
 		return pMemSid;
 	}
+
 	public void setpMemSid(String pMemSid)
 	{
 		this.pMemSid = pMemSid;
 	}
+
+	public int getSbSid()
+	{
+		return sbSid;
+	}
+
+	public void setSbSid(int sbSid)
+	{
+		this.sbSid = sbSid;
+	}
+
+	public int getSbPrice()
+	{
+		return sbPrice;
+	}
+
+	public void setSbPrice(int sbPrice)
+	{
+		this.sbPrice = sbPrice;
+	}
+
+	public String getDatePicker()
+	{
+		return datePicker;
+	}
+
+	public void setDatePicker(String datePicker)
+	{
+		this.datePicker = datePicker;
+	}
+	
+	
+		
 	
 	
 	
