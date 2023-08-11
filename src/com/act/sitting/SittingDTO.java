@@ -1,6 +1,5 @@
 package com.act.sitting;
 
-import java.util.ArrayList;
 
 /*
 JM_NICKNAME, SP_TITLE, SP_ADDR1, SP_ADDR2, MEM_SID, SPH_SID, SHP_START, SHP_END, 
@@ -22,12 +21,57 @@ public class SittingDTO
 	private int price;
 	
 	// SITTING_BOOK_VIEW	// sbStart 가 나눠져있는건 달력js에서 사용하기 위함, pmemSid는 예약을 요청한 멤버시드	
-	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pmemSid;	
+	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pMemSid;	
 	private int sbSid, sbPrice;
 	
 	private String extraAddr, spContent;
 	private int ipSid;
 	
+	// SITTING_REVIEW_VIEW
+	private String srwTitle, srwContent, srwDate, pJmNickName;	//pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
+	private int srwRate;
+
+	
+	public String getpJmNickName()
+	{
+		return pJmNickName;
+	}
+	public void setpJmNickName(String pJmNickName)
+	{
+		this.pJmNickName = pJmNickName;
+	}
+	public String getSrwTitle()
+	{
+		return srwTitle;
+	}
+	public void setSrwTitle(String srwTitle)
+	{
+		this.srwTitle = srwTitle;
+	}
+	public String getSrwContent()
+	{
+		return srwContent;
+	}
+	public void setSrwContent(String srwContent)
+	{
+		this.srwContent = srwContent;
+	}
+	public String getSrwDate()
+	{
+		return srwDate;
+	}
+	public void setSrwDate(String srwDate)
+	{
+		this.srwDate = srwDate;
+	}
+	public int getSrwRate()
+	{
+		return srwRate;
+	}
+	public void setSrwRate(int srwRate)
+	{
+		this.srwRate = srwRate;
+	}
 
 	public String getSpContent()
 	{
@@ -78,14 +122,7 @@ public class SittingDTO
 	{
 		this.sbStartDay = sbStartDay;
 	}
-	public String getPmemSid()
-	{
-		return pmemSid;
-	}
-	public void setPmemSid(String pmemSid)
-	{
-		this.pmemSid = pmemSid;
-	}
+	
 	public int getSbSid()
 	{
 		return sbSid;
@@ -253,6 +290,14 @@ public class SittingDTO
 	public void setIsptName(String isptName)
 	{
 		this.isptName = isptName;
+	}
+	public String getpMemSid()
+	{
+		return pMemSid;
+	}
+	public void setpMemSid(String pMemSid)
+	{
+		this.pMemSid = pMemSid;
 	}
 	
 	

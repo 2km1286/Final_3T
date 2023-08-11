@@ -56,7 +56,7 @@
 	
 	<select id="sittingPlaceBasic" resultType="com.act.sitting.SittingDTO">
 		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, IPSID, SPSID
-		FROM SITTING_PLACE_BASIC
+		FROM SITTING_PLACE_BASIC_VIEW
 		WHERE MEMSID = #{memSid}
 		ORDER BY SPCREATED DESC
 	</select>
@@ -67,5 +67,15 @@
 		WHERE SPSID = #{spSid}
 	</select>
 	
-
+	<select id="sittingReviews" resultType="com.act.sitting.SittingDTO">
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID
+		FROM SITTING_REVIEW_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
+	
+	<select id="sittingReviewer" resultType="com.act.sitting.SittingDTO">
+		SELECT JM_NICKNAME AS PJMNICKNAME, MEM_SID AS PMEMSID
+		FROM JOIN_MEMBER
+	</select>
+	
 </mapper>

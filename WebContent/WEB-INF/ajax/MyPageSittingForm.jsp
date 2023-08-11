@@ -212,11 +212,11 @@ function init_calendar(date) {
         }
         // if current index isn't a day in this month, make it blank
         if(i < first_day || day > day_count) {
-            var curr_date = $("<td class='table-date nil'>"+"</td>");
+            var curr_date = $("<td class='table-date nil' disabled='disabled'>"+"</td>");
             row.append(curr_date);
         }   
         else {
-            var curr_date = $("<td class='table-date'>"+day+"</td>");
+            var curr_date = $("<td class='table-date' disabled='disabled'>"+day+"</td>");
             var events = check_events(day, month+1, year);
             if(today===day && $(".active-date").length===0) {
                 curr_date.addClass("active-date");
@@ -485,13 +485,22 @@ const months = [
 						      <th class="EndTh">별점</th>
 						      <th class="EndTh"></th>
 						    </tr>
+						    
+						    <c:forEach items="${reviews }" var="review">
 						    <tr>
-						      <td class="EndTd">폴폴이</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
+						      <td class="EndTd">
+						      <c:forEach items="${reviewer }" var="pmem">
+						      	<c:if test="${pmem.pMemSid eq review.pMemSid }">
+						      		${pmem.pJmNickName }
+						      	</c:if>	
+						      </c:forEach>
+						      </td>
+						      <td class="EndTd">${review.srwDate }</td>
+						      <td class="EndTd">${review.srwRate }</td>
 						      <td class="EndTd"><button type="button" class="detailBtn" onclick="openPopup()">자세히보기</button></td>
 						    </tr>
-						    <tr>
+						    </c:forEach>
+						    <!-- <tr>
 						      <td class="EndTd">폴폴이</td>
 						      <td class="EndTd">2023-07-29</td>
 						      <td class="EndTd">5</td>
@@ -508,7 +517,7 @@ const months = [
 						      <td class="EndTd">2023-07-29</td>
 						      <td class="EndTd">5</td>
 						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
-						    </tr>
+						    </tr> -->
 						</table>
 			   		
 			   		

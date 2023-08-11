@@ -125,7 +125,31 @@ public class SittingService implements ISittingService
 		
 		return result;
 	}
+
+	// 회원번호로 펫시터인 나에게 달린 후기 조회
+	@Override
+	public ArrayList<SittingDTO> sittingReviews(String memSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingReviews(memSid);
+		
+		return result;
+	}
 	
-	
+	// 나에게 달린 후기를 쓴 회원번호로 그 회원의 닉네임 조회
+	@Override
+	public ArrayList<SittingDTO> sittingReviewer()
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingReviewer();
+		
+		return result;
+	}
 
 }

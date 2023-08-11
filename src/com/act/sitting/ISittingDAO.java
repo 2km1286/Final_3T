@@ -25,4 +25,10 @@ public interface ISittingDAO
 	
 	// ※현재 사용하고 있는 돌봄장소※의 태그들 조회
 	public ArrayList<SittingDTO> sittingPlaceTags(int spSid);
+	
+	// 회원번호로 펫시터인 나에게 달린 후기 조회
+	public ArrayList<SittingDTO> sittingReviews(String memSid);
+	
+	// 나에게 달린 후기를 쓴 회원번호로 그 회원의 닉네임 조회를 위한 전체출력
+	public ArrayList<SittingDTO> sittingReviewer();
 }
