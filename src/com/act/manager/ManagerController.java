@@ -15,9 +15,10 @@ public class ManagerController
 
 	// 관리자 폼 페이지로 가는 액션
 	@RequestMapping("/managermain.action")
-	public String adminmain()
+	public String adminmain(HttpServletRequest request)
 	{
 		String result = "";
+		request.setAttribute("miName", request.getParameter("miName"));
 		result = "/WEB-INF/views/manager/ManagerPage.jsp";
 		return result;
 	}
@@ -36,9 +37,11 @@ public class ManagerController
 
 		} else
 		{
-
+			
 			session.setAttribute("miSid", result);
-			url = "redirect:managermain.action";
+			String miName = managerService.searchManagerName(result);
+			//System.out.println(miName);
+			url = "managermain.action?miName="+miName;
 		}
 
 		return url;
@@ -54,14 +57,34 @@ public class ManagerController
 		return result;
 	}
 
-	// 관리자 신고현안 및 비상관리. AJAX로 처리.
+	// 관리자 신고현안 및 비상관리 -AJAX로 처리.
 	@RequestMapping("/managerreportlist.action")
 	public String managerReportList(HttpServletRequest request)
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-
+		int sittingCount =0;
+		int walkCount = 0;
+		sittingCount = managerService.sittingSearchEmerg();
+		walkCount = managerService.walkSearchEmerg();
+		request.setAttribute("count", sittingCount + walkCount);
 		result = "/WEB-INF/ajax/manager/ManagerReportListForm.jsp";
+		
+		return result;
+	}
+	
+	// 펫시팅 신고내역조회
+	@RequestMapping("/sittingreportlist.action")
+	public String sittingReportList(ManagerDTO dto,HttpServletRequest request)
+	{
+		String result = "";
+		int sittingCount =0;
+		int walkCount = 0;
+		sittingCount = managerService.sittingSearchEmerg();
+		walkCount = managerService.walkSearchEmerg();
+		request.setAttribute("count", sittingCount + walkCount);
+		result = "/WEB-INF/ajax/manager/SittingReportList.jsp";
+		
 		return result;
 	}
 
@@ -87,7 +110,7 @@ public class ManagerController
 		return result;
 	}
 	
-	// 관리자 통계. AJAX로 처리.
+	// 사고처리 내역. AJAX로 처리.
 	@RequestMapping("/managercompleteacc.action")
 	public String managerCompleteAcc(HttpServletRequest request)
 	{
