@@ -9,12 +9,84 @@ String cp = request.getContextPath();
 <head>
 <meta charset="UTF-8">
 <title>관리자 현안</title>
-
-
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<style type="text/css">
+
+#emergency-report
+{
+   background-color: #FF0000; /* 붉은색 배경 */
+   color: #FFFFFF; /* 흰색 텍스트 */
+   font-size: 16px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* 그림자 효과 */
+   transition: background-color 0.3s ease; /* 색상 변경 시 부드러운 전환 */
+   cursor: pointer;
+   animation: vibration 3s infinite; /* 0.5초 간격으로 진동하는 애니메이션 반복 적용 있을 경우에만?? 가능?*/
+   
+  
+}
+#emergency-report:hover
+{
+	background-color: #FF3333; /* 더 진한 붉은색 배경 */
+  	transform: scale(1.05); /* 호버 시 약간 커지는 효과 */
+}
+
+/* 애니메이션 흔들기 */
+@keyframes vibration {
+  0% { transform: translateX(0) translateY(0); }
+  10% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  20% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
+  30% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  40% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
+  50% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  60% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
+  70% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  80% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
+  90% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+</style>
+<script type="text/javascript">
+
+	//페이지 로딩 시에 실행되는 코드
+	$(document).ready(function()
+	{
+		 var count = <%=request.getAttribute("count") %>
+		 if (count < 1) 
+		 {
+			 $("#emergency-report").css("animation", "none");
+		 }
+		 
+		 $("#pet-sitting-report").click(function()
+					{
+						$.ajax(
+						{
+							type:"POST"
+							, url:"sittingreportlist.action"
+							, async:true
+							, success:function(data)
+							{
+								$("#subContent").html(data);
+													
+							}
+							, error:function(e)
+							{
+								alert(e.responseText);
+							}
+							
+						});	
+					});
+	});
+</script>
 </head>
 <body>
-	<div style="margin-left: -10%; width: 120%;">
+	<div id="subContent">
+	<div style="margin-left: -10%; width: 120%;" id="subContent">
 		<div>
 			<h2 style="margin-top: 20px;">신고현안 및 비상관리</h2>
 			<hr />
@@ -27,45 +99,22 @@ String cp = request.getContextPath();
 			<table class="table table-bordered table-hover" id="tableComplete">
 				<thead>
 					<tr>
-						<th style="color: white;">접수날짜</th>
-						<th style="color: white;">펫시터 등급</th>
-						<th style="color: white;">펫시터 닉네임</th>
-						<th style="color: white;">펫시팅 글 이름</th>
+						<th style="color: white;">신고번호</th>
+						<th style="color: white;">회원번호</th>
+						<th style="color: white;">돌봄장소번호</th>
 						<th style="color: white;">신고사유</th>
-						<th style="color: white;">신고조치</th>
-						<th style="color: white;">신고처리한 관리자</th>
-						<th style="color: white;">처리날짜</th>
+						<th style="color: white;">상세사유</th>
+						<th style="color: white;">신고접수일</th>
+						<th style="color: white;">처리</th>
 					</tr>
 				</thead>
 				<tbody>
-					<%
-						// 임의의 데이터 생성
-					String[][] data = { { "2023-08-01", "Gold", "PetLover123", "Summer Fun", "불적절한 언어 사용", "경고", "Admin1", "2023-08-02" },
-							{ "2023-08-02", "Silver", "AnimalLover", "Loving Paws", "매너 불이행", "휴면 계정", "Admin2", "2023-08-03" },
-							{ "2023-08-03", "Bronze", "CaringPal", "Cozy Retreat", "사기행위 및 도주 시도", "강제 탈퇴", "Admin3", "2023-08-04" },
-							{ "2023-08-04", "Platinum", "PawsomeCare", "Playful Pets", "신고 무시 및 협박", "계정 정지", "Admin4", "2023-08-05" },
-							{ "2023-08-05", "Gold", "PetWatchdog", "Lovely Comps", "반려동물 유기 및 방치", "계정 삭제", "Admin5", "2023-08-06" } };
-
-					// 데이터 출력
-					for (String[] row : data)
-					{
-					%>
-					<tr>
-						<td><%=row[0]%></td>
-						<td><%=row[1]%></td>
-						<td><%=row[2]%></td>
-						<td><%=row[3]%></td>
-						<td><%=row[4]%></td>
-						<td><%=row[5]%></td>
-						<td><%=row[6]%></td>
-						<td><%=row[7]%></td>
-					</tr>
-					<%
-						}
-					%>
+						
+					
 				</tbody>
 			</table>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

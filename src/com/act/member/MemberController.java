@@ -190,7 +190,7 @@ public class MemberController
 		return view;
 	}
 
-	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사 === 비밀번호 찾기
+	// 입력받은 아이디, 이름, 주민번호에 해당하는 회원이 있는지 검사 ===  본인인증
 	@RequestMapping("/findpwform.action")
 	public String findPw(MemberDTO dto, HttpSession session,HttpServletRequest request)
 	{
@@ -221,13 +221,13 @@ public class MemberController
 	}
 	
 	
-	// 아이디찾는 폼으로 가기
-		@RequestMapping("/updatepwpage.action")
-		public String updatepwpage()
-		{
-			String view = "/WEB-INF/views/member/UpdatePwPage.jsp";
-			return view;
-		}
+	// 비밀번호 재설정 폼으로 가기
+	@RequestMapping("/updatepwpage.action")
+	public String updatepwpage()
+	{
+		String view = "/WEB-INF/views/member/UpdatePwPage.jsp";
+		return view;
+	}
 		
 		
 	// 비밀번호 재설정하기
@@ -239,14 +239,20 @@ public class MemberController
 		int result = 0;
 
 		// 0 or 성공시 1
+		
+		String memSid = (String)session.getAttribute("result");
+		dto.setMemSid(memSid);
 		result = memberService.updatePw(dto);
-
+		
 		if (result > 0)
-		{
-			session.removeAttribute("memSid"); // null로 만들어주고
-			view = "redirect:mainpage.action";
-		}
+			view = "redirect:loginpage.action?flag=1"; // flag 가 1일때는 비밀번호가 변경되었다는 alert
+		else
+			view = "redirect:updatepwpage.action";
+		
+		
 		return view;
+		
+		
 	}
 
 	// 메뉴바를 통해 마이페이지로 가기, 디폴트 알림창
