@@ -1,11 +1,14 @@
 package com.act.sitting;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -131,9 +134,11 @@ public class SittingController
 		System.out.println("extraAddr: " + dto.getExtraAddr());
 		System.out.println("datePicker: " + dto.getDatePicker());
 		System.out.println("spMaxPet:" + dto.getSpMaxPet());
-		
+		System.out.println("여기까지 옴1");
+		System.out.println("isptSidValues : " + dto.getIsptSid());
+		System.out.println("여기까지 옴2");
 		model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
-		model.addAttribute("tagList", sittingService.tagList());
+		model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
 		
 		
 		view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp";
