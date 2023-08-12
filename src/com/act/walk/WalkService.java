@@ -86,16 +86,27 @@ public class WalkService
 	}
 	
 	// 견주입장에서 본인이 오늘 결제한 대리산책의 시작일 ~ 종료일 
-	public ArrayList<WalkDTO> MemWalkStartEndNotice(String memSid)
+	public ArrayList<WalkDTO> memWalkBookToday(String memSid)
 	{
 		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
 		
 		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
-		dao.MemWalkStartEndNotice(memSid);
+		
+		result = dao.memWalkBookToday(memSid);
 		
 		return result;
 	}
 	
-	
+	// 대리산책러로서 오늘 들어온 예약의 시작일 ~ 종료일
+	public ArrayList<WalkDTO> walkBookToday(String memSid)
+	{
+		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
+		
+		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
+		
+		result = dao.walkBookToday(memSid);
+		
+		return result;
+	}
 	
 }

@@ -43,14 +43,10 @@ public interface ISittingDAO
 	public ArrayList<SittingDTO> sittingCompanionToday(String memSid);
 
 	// 견주입장에서 본인이 오늘 결제한 펫시팅의 시작일 ~ 종료일
-	public ArrayList<SittingDTO> sittingStartEndNotice(String memSid);
+	public ArrayList<SittingDTO> memSittingBookToday(String memSid);
 	
-	
-	
-	
-	
-	
-	
+	// 펫시터로서 오늘 들어온 예약의 시작일 ~ 종료일
+	public ArrayList<SittingDTO> sittingBookToday(String memSid);
 	
 	
 }

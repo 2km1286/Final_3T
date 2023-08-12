@@ -144,7 +144,7 @@
 		                                WHERE MEM.MEM_SID = #{memSid})
 	</select>
 	
-	<select id="sittingStartEndNotice" resultType="com.act.sitting.SittingDTO">
+	<select id="memSittingBookToday" resultType="com.act.sitting.SittingDTO">
 		SELECT TO_CHAR(SB.SB_START,'YYYY-MM-DD') AS SBSTART,  TO_CHAR(SB.SB_END, 'YYYY-MM-DD') AS SBEND, MEM.MEM_SID AS PMEMSID, SB.SB_SID AS SBSID
 		FROM SITTING_BOOK SB
 		    JOIN SITTING_CREATE_CART SCC
@@ -155,7 +155,22 @@
 		AND SCC.MEM_SID = #{memSid}
 	</select>
 
-
+	<select id="sittingBookToday" resultType="com.act.sitting.SittingDTO">
+		SELECT TO_CHAR(SB.SB_START,'YYYY-MM-DD') AS SBSTART,  TO_CHAR(SB.SB_END, 'YYYY-MM-DD') AS SBEND, MEM.MEM_SID AS MEMSID, SB.SB_SID AS SBSID
+		FROM SITTING_BOOK SB
+		    JOIN SITTING_PLACE_HUB SPH
+		    ON SB.SPH_SID = SPH.SPH_SID
+		        JOIN SITTING_LICENSE SL
+		        ON SPH.SL_SID = SL.SL_SID
+		            JOIN SITTING_TEST_SUBMIT STS
+		            ON SL.STS_SID = STS.STS_SID
+		                JOIN SITTING_TEST_RECEIVE STR
+		                ON STS.STR_SID = STR.STR_SID
+		                    JOIN MEMBER MEM
+		                    ON STR.MEM_SID = MEM.MEM_SID
+		WHERE SB.SB_DATE = SYSDATE
+		AND MEM.MEM_SID = #{memSid}
+	</select>
 
 
 

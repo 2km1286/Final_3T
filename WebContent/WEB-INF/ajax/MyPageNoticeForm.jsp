@@ -199,22 +199,23 @@
 				
 				</div><!-- 1행1열 끝 -->
 				
-				
+				<!-- 견주로서 오늘 결제한 예약 -->
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">내가 결제한 예약</span></h3>
 					
 					<div><!-- 예약내역 시작 -->
 					<c:choose>
-					<c:when test="${empty MemWalkStartEnd && empty MemSittingStartEnd}">
+					<c:when test="${empty memWalkBookToday && empty memSittingBookToday}">
 						<div class="noNotice"><h2><span>오늘 결제한 예약이 없습니다.</span></h2></div>
 					</c:when>
+					
 					<c:otherwise>
 						
-						<c:forEach items="${MemWalkStartEnd }" var="MemWalkStartEnd">
+						<c:forEach items="${memWalkBookToday }" var="memWalkBook">
 							<div class="card">
 								<div class="card-header d-flex justify-content-between">
 									대리산책
-									<button type="button" class="detailBtn" value="${MemWalkStartEnd.wbSid }">
+									<button type="button" class="detailBtn" value="${memWalkBook.wbSid }">
 									자세히보러가기
 									</button>
 								</div>	
@@ -224,7 +225,7 @@
 						    	        <div class="oneText">
 						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
 						    		        <span class="card-text" style="font-size: 14pt;">
-						    		        ${MemWalkStartEnd.wbStart } ~ ${MemWalkStartEnd.wbEnd }
+						    		        ${memWalkBook.wbStart } ~ ${memWalkBook.wbEnd }
 						    		        </span>
 						    	        </div>
 						    	      </div>
@@ -233,11 +234,11 @@
 						    </div>
 						</c:forEach>
 						
-						<c:forEach items="${MemSittingStartEnd }" var="MemSittingStartEnd">
+						<c:forEach items="${memSittingBookToday }" var="memSittingBook">
 							<div class="card">
 								<div class="card-header d-flex justify-content-between">
 									펫시팅
-									<button type="button" class="detailBtn" value="${MemSittingStartEnd.sbSid }">
+									<button type="button" class="detailBtn" value="${memSittingBook.sbSid }">
 									자세히보러가기
 									</button>
 								</div>	
@@ -247,7 +248,7 @@
 						    	        <div class="oneText">
 						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
 						    		        <span class="card-text" style="font-size: 14pt;">
-						    		        ${MemSittingStartEnd.sbStart } ~ ${MemSittingStartEnd.sbEnd }
+						    		        ${memSittingBook.sbStart } ~ ${memSittingBook.sbEnd }
 						    		        </span>
 						    	        </div>
 						    	      </div>
@@ -265,111 +266,78 @@
 			</div><!-- 1행 끝 -->
 			
 			<div class="row">
+				<!-- 대리산책러로서 오늘 들어온 예약 -->
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">나에게 들어온 예약/대리산책</span></h3>
 					<div><!-- 대리산책러 예약내역 시작 -->
-						<div class="card">
-							<div class="card-header d-flex justify-content-between"">
-								대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
+					<c:choose>
+					<c:when test="${empty walkBookToday }">
+						<div class="noNotice"><h2><span>오늘 들어온 예약이 없습니다.</span></h2></div>				
+					</c:when>
 					
+					<c:otherwise>
+						
+						<c:forEach items="${walkBookToday }" var="walkBook">
+							<div class="card">
+								<div class="card-header d-flex justify-content-between"">
+									대리산책 <button type="button" class="detailBtn" value="${walkBook.wbSid }">자세히보러가기</button>
+								</div>	
+						    	  <div class="row g-0">
+						    	    <div class="col-md cardInfo" >
+						    	      <div class="card-body">
+						    	        <div class="oneText">
+						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+						    		        <span class="card-text" style="font-size: 14pt;">
+						    		        ${walkBook.wbStart } ~ ${walkBook.wbEnd }
+						    		        </span>
+						    	        </div>
+						    	      </div>
+						    	    </div>
+						    	  </div>
+						    </div>
+						</c:forEach>
 					
-						<div class="card">
-							<div class="card-header d-flex justify-content-between"">
-								대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
-					
-						<div class="card">
-							<div class="card-header d-flex justify-content-between"">
-								대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
+					</c:otherwise>
+					</c:choose>
 					    
-					</div><!-- 대리산책러 예약내역 시작 -->
+					</div><!-- 대리산책러 예약내역 끝 -->
 				</div><!-- 2행1열 끝 -->
 				
+				<!-- 펫시터로서 오늘 들어온 예약 -->
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">나에게 들어온 예약/펫시팅</span></h3>
 					<div><!-- 펫시터 예약내역 시작 -->
-						<div class="card">
-							<div class="card-header d-flex justify-content-between">
-								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
+					<c:choose>
+					<c:when test="${empty sittingBookToday }" >
+						<div class="noNotice"><h2><span>오늘 들어온 예약이 없습니다.</span></h2></div>
+					</c:when>
+					
+					<c:otherwise>
 						
-						<div class="card">
-							<div class="card-header d-flex justify-content-between">
-								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
-					    
-					    <div class="card">
-							<div class="card-header d-flex justify-content-between">
-								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
+						<c:forEach items="${sittingBookToday }" var="sittingBook">
+						
+							<div class="card">
+								<div class="card-header d-flex justify-content-between">
+									펫시팅 <button type="button" class="detailBtn" value="${sittingBook.sbSid }">자세히보러가기</button>
+								</div>	
+						    	  <div class="row g-0">
+						    	    <div class="col-md cardInfo" >
+						    	      <div class="card-body">
+						    	        <div class="oneText">
+						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+						    		        <span class="card-text" style="font-size: 14pt;">
+						    		        ${sittingBook.sbSStart } ~ ${sittingBook.sbEnd }
+						    		        </span>
+						    	        </div>
+						    	      </div>
+						    	    </div>
+						    	  </div>
+						    </div>
+						    
+						</c:forEach>
+					
+					</c:otherwise>
+					</c:choose>
 					    
 					</div><!-- 펫시터 예약내역 끝 -->
 				</div><!-- 2행 2열 끝 -->

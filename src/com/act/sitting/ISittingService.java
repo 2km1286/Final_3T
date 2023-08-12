@@ -17,5 +17,6 @@ public interface ISittingService
 	public ArrayList<SittingDTO> memSittingCancelToday(String memSid);
 	public ArrayList<SittingDTO> sittingReviewToday(String memSid);
 	public ArrayList<SittingDTO> sittingCompanionToday(String memSid);
-	public ArrayList<SittingDTO> sittingStartEndNotice(String memSid);
+	public ArrayList<SittingDTO> memSittingBookToday(String memSid);
+	public ArrayList<SittingDTO> sittingBookToday(String memSid);
 }

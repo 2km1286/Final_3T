@@ -5,15 +5,15 @@ public class WalkDTO
 	private String memSid;
 	
 	private String wptitle, wpcontent, wpstart, wpend, wpaddr1, wpcreated;
-	private int wpsid, wpmaxpet, ipsid, wlsid;
+	private int wpsid, wpmaxpet, ipsid, wlsid;		// 여기 다 소문자인거 확인~!!!
 	
 	
 	// 범례 태그
 	private int iwptsid;     
-	private String iwptname;
+	private String iwptname;						// 여기 다 소문자인거 확인~!!!
 	
 	// 등급
-	private int iwisid, iwiprice, iwicount;
+	private int iwisid, iwiprice, iwicount;			// 여기 다 소문자인거 확인~!!!
 	private String iwigrade;
 	
 	// 예약시작일, 종료일, 접수완료번호, 예약을 요청한 견주의 memSid는 pMemSid

@@ -20,5 +20,8 @@ public interface IWalkDAO
 	public ArrayList<WalkDTO> walkCompanionToday(String memSid);
 	
 	// 견주입장에서 본인이 오늘 결제한 대리산책의 시작일 ~ 종료일
-	public ArrayList<WalkDTO> MemWalkStartEndNotice(String memSid);
+	public ArrayList<WalkDTO> memWalkBookToday(String memSid);
+	
+	// 대리산책러로서 오늘 들어온 예약의 시작일 ~ 종료일
+	public ArrayList<WalkDTO> walkBookToday(String memSid);
 }

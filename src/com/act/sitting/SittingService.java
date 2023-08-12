@@ -202,13 +202,26 @@ public class SittingService implements ISittingService
 	
 	// 견주입장에서 본인이 오늘 결제한 펫시팅의 시작일 ~ 종료일
 	@Override
-	public ArrayList<SittingDTO> sittingStartEndNotice(String memSid)
+	public ArrayList<SittingDTO> memSittingBookToday(String memSid)
 	{
 		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
 		
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
-		result = dao.sittingStartEndNotice(memSid);
+		result = dao.memSittingBookToday(memSid);
+		
+		return result;
+	}
+	
+	// 펫시터로서 오늘 들어온 예약의 시작일 ~ 종료일
+	@Override
+	public ArrayList<SittingDTO> sittingBookToday(String memSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingBookToday(memSid);
 		
 		return result;
 	}

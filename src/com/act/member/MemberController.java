@@ -295,10 +295,13 @@ public class MemberController
 		model.addAttribute("countProfilCompanion",memberService.profilCompanionNotice(memSid));
 		
 		// 오늘 견주입장에서 결제한 대리산책의 시작일~종료일
-		model.addAttribute("MemWalkStartEnd", walkService.MemWalkStartEndNotice(memSid));
+		model.addAttribute("memWalkBookToday", walkService.memWalkBookToday(memSid));
 		
 		// 오늘 견주입장에서 결제한 펫시팅의 시작일~종료일
-		model.addAttribute("MemSittingStartEnd", sittingService.sittingStartEndNotice(memSid));
+		model.addAttribute("memSittingBookToday", sittingService.memSittingBookToday(memSid));
+		
+		// 대리산책러로서 오늘 들어온 예약
+		model.addAttribute("walkBookToday", walkService.walkBookToday(memSid));
 		
 		result = "/WEB-INF/views/index/MyPage.jsp";
 		return result;
@@ -333,10 +336,13 @@ public class MemberController
 		model.addAttribute("countProfilCompanion",memberService.profilCompanionNotice(memSid));
 		
 		// 오늘 견주입장에서 결제한 대리산책의 시작일~종료일
-		model.addAttribute("MemWalkStartEnd", walkService.MemWalkStartEndNotice(memSid));
+		model.addAttribute("memWalkBookToday", walkService.memWalkBookToday(memSid));
 		
 		// 오늘 견주입장에서 결제한 펫시팅의 시작일~종료일
-		model.addAttribute("MemSittingStartEnd", sittingService.sittingStartEndNotice(memSid));
+		model.addAttribute("memSittingBookToday", sittingService.memSittingBookToday(memSid));
+		
+		// 대리산책러로서 오늘 들어온 예약
+		model.addAttribute("walkBookToday", walkService.walkBookToday(memSid));
 		
 		result = "/WEB-INF/ajax/MyPageNoticeForm.jsp";
 		return result;
