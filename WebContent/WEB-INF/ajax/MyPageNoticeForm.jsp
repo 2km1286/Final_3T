@@ -32,8 +32,6 @@
 </script>
 <style type="text/css">
 
-.noNotice {margin: 20px 0px 0px 150px;}
-
 </style>
 </head>
 <body>

@@ -24,4 +24,13 @@ public interface IWalkDAO
 	
 	// 대리산책러로서 오늘 들어온 예약의 시작일 ~ 종료일
 	public ArrayList<WalkDTO> walkBookToday(String memSid);
+	
+	// 대리산책러로서 들어온 예약의 시작일 ~ 종료일
+	public ArrayList<WalkDTO> walkBookMyPage(String memSid);
+	
+	
+	
+	
+	
+	
 }

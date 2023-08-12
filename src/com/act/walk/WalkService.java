@@ -109,4 +109,22 @@ public class WalkService
 		return result;
 	}
 	
+	// 대리산책러로서 들어온 예약의 시작일 ~ 종료일
+	public ArrayList<WalkDTO> walkBookMyPage(String memSid)
+	{
+		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
+		
+		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
+		
+		result = dao.walkBookMyPage(memSid);
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
 }

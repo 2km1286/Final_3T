@@ -101,7 +101,20 @@
 		AND MEM.MEM_SID = #{memSid}
 	</select>
 
-
+	<select id="walkBookMyPage" resultType="com.act.walk.WalkDTO">
+		SELECT TO_CHAR(WB.WB_START, 'YYYY-MM-DD') AS WBSTART, TO_CHAR(WB.WB_END, 'YYYY-MM-DD') AS WBEND, MEM.MEM_SID AS MEMSID, WB.WB_SID AS WBSID
+		FROM WALK_BOOK WB
+		    JOIN WALK_LICENSE WL
+		    ON WB.WL_SID = WL.WL_SID
+		        JOIN WALK_TEST_SUBMIT WTS
+		        ON WL.WTS_SID = WTS.WTS_SID
+		            JOIN WALK_TEST_RECEIVE WTR
+		            ON WTS.WTR_SID = WTR.WTR_SID
+		                JOIN MEMBER MEM
+		                ON WTR.MEM_SID = MEM.MEM_SID
+		WHERE MEM.MEM_SID = #{memSid}
+		ORDER BY WB.WB_DATE DESC
+	</select>
 
 
 

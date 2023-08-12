@@ -223,7 +223,7 @@ String cp = request.getContextPath();
 			
 			<!-- 1행 2열의 2행 시작 -->
 			<div class="col-md-6 container-mypage" style="max-width: 95%; overflow: auto; height: 550px;">
-				<h3><span class="badge">수익</span></h3>
+				<h3><span class="badge">수익 아직바인딩안함</span></h3>
 				<div><!-- 수익내역 시작 -->
 				
 					<div class="money" style="margin-left: 75%;">

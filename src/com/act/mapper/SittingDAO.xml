@@ -62,6 +62,7 @@
 		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID
 		FROM SITTING_REVIEW_VIEW
 		WHERE MEMSID = #{memSid}
+		ORDER BY SRWDATE DESC
 	</select>
 	
 	<select id="sittingReviewers" resultType="com.act.sitting.SittingDTO">

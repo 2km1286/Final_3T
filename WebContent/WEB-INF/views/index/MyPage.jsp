@@ -172,6 +172,8 @@
 /* 마이페이지 레이아웃 스타일 */
 @import url('https://fonts.googleapis.com/css?family=Jua:400');
 
+div.noNotice {margin: 110px 0px 0px 190px;}
+
 *{font-family: "Jua"}
 
 .mypageSidevar { font-size: 15pt;}
