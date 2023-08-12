@@ -21,9 +21,18 @@ public class WalkDTO
 	private int wbSid;
 	
 	// 후기
-	private int wrSid, wrRating;
-	private String wrTitle, wrContent, wrDate;
+	private int wrSid, wrRating;	// 여기 wrRating 확인~!! 펫시터는 srwRate임
+	private String wrTitle, wrContent, wrDate, pJmNickName;
 	
+	
+	public String getpJmNickName()
+	{
+		return pJmNickName;
+	}
+	public void setpJmNickName(String pJmNickName)
+	{
+		this.pJmNickName = pJmNickName;
+	}
 	public int getWrRating()
 	{
 		return wrRating;

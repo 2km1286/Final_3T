@@ -78,7 +78,6 @@ public class SittingController
 				model.addAttribute("reviewers", sittingService.sittingReviewers());
 				
 				
-				
 				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 	        }
 			else				// 시험은 보았지만, 공간등록을 하지 않은 경우

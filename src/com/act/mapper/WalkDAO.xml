@@ -116,7 +116,17 @@
 		ORDER BY WB.WB_DATE DESC
 	</select>
 
-
+	<select id="walkReviews" resultType="com.act.walk.WalkDTO">
+		SELECT WRSID, WRTITLE, WRCONTENT, WRRATING, WRDATE, MEMSID, PMEMSID, WBSID, WBSTART, WBEND
+		FROM WALK_REVIEW_VIEW
+		WHERE MEMSID = #{memSid}
+		ORDER BY WRDATE DESC
+	</select>
+	
+	<select id="walkReviewers" resultType="com.act.walk.WalkDTO">
+		SELECT JM_NICKNAME AS PJMNICKNAME, MEM_SID AS PMEMSID
+		FROM JOIN_MEMBER
+	</select>
 
 
 

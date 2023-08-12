@@ -121,9 +121,29 @@ public class WalkService
 		return result;
 	}
 	
+	// 대리산책러로서 나에게 달린 후기 조회
+	public ArrayList<WalkDTO> walkReviews(String memSid)
+	{
+		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
+		
+		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
+		
+		result = dao.walkReviews(memSid);
+		
+		return result;
+	}
 	
-	
-	
+	// 후기를 쓴 사람의 회원번호로 그 회원의 닉네임 조회를 위한 전체출력
+	public ArrayList<WalkDTO> walkReviewers()
+	{
+		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
+		
+		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
+		
+		result = dao.walkReviewers();
+		
+		return result;
+	}
 	
 	
 	

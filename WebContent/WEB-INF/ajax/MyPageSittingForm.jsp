@@ -173,49 +173,38 @@ String cp = request.getContextPath();
 			<div class="col-md-6 container-mypage" style="max-width: 95%; overflow: auto; height: 550px;">
 				<h3><span class="badge">후기</span></h3>
 				<div class=""><!-- 후기 시작 -->
+				<c:choose>
+				<c:when test="${empty reviews }">
+						<div class="noNotice"><h2><span>후기가 없습니다.</span></h2></div>
+				</c:when>
 				
-			   		<table class="EndTable" style="width: 680px;">
-						    <tr>
-						      <th class="EndTh">후기 작성자</th>
-						      <th class="EndTh">후기 작성일</th>
-						      <th class="EndTh">별점</th>
-						      <th class="EndTh"></th>
-						    </tr>
-						    
-						    <c:forEach items="${reviews }" var="review">
-						    <tr>
-						      <td class="EndTd">
-						      <c:forEach items="${reviewers }" var="reviewer">
-						      	<c:if test="${reviewer.pMemSid eq review.pMemSid }">
-						      		${reviewer.pJmNickName }
-						      	</c:if>	
-						      </c:forEach>
-						      </td>
-						      <td class="EndTd">${review.srwDate }</td>
-						      <td class="EndTd">${review.srwRate }</td>
-						      <td class="EndTd"><button type="button" class="detailBtn" onclick="openPopup()">자세히보기</button></td>
-						    </tr>
-						    </c:forEach>
-						    <!-- <tr>
-						      <td class="EndTd">폴폴이</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
-						      <td class="EndTd"><button type="button" class="detailBtn" onclick="openPopup()">자세히보기</button></td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">폴폴이</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
-						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">폴폴이</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
-						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
-						    </tr> -->
-						</table>
-			   		
+				<c:otherwise>
+				
+					<table class="EndTable" style="width: 680px;">
+					    <tr>
+					      <th class="EndTh">후기 작성자</th>
+					      <th class="EndTh">후기 작성일</th>
+					      <th class="EndTh">별점</th>
+					      <th class="EndTh"></th>
+					    </tr>
+					    <c:forEach items="${reviews }" var="review">
+					    <tr>
+					      <td class="EndTd">
+					      <c:forEach items="${reviewers }" var="reviewer">
+					      	<c:if test="${reviewer.pMemSid eq review.pMemSid }">
+					      		${reviewer.pJmNickName }
+					      	</c:if>	
+					      </c:forEach>
+					      </td>
+					      <td class="EndTd">${review.srwDate }</td>
+					      <td class="EndTd">${review.srwRate }</td>
+					      <td class="EndTd"><button type="button" class="detailBtn" onclick="openPopup()">자세히보기</button></td>
+					    </tr>
+					    </c:forEach>
+					</table>
+				
+				</c:otherwise>	
+				</c:choose>	
 			   		
 			   	</div><!-- 후기 끝 -->
 			</div>

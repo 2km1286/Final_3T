@@ -56,7 +56,7 @@
 					<div><!-- 예약내역 시작 -->
 					<c:choose>
 					<c:when test="${empty walkBookMyPage }">
-						<div class="noNotice"><h2><span>들어온 예약 내역이 없습니다.</span></h2></div>
+						<div class="noNotice"><h2><span>예약 내역이 없습니다.</span></h2></div>
 					</c:when>
 					
 					<c:otherwise>
@@ -94,7 +94,13 @@
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;"> 
 					<h3><span class="badge">후기</span></h3>
 					<div><!-- 나에게 달린 대리산책 후기 시작 -->
-						
+					<c:choose>
+					<c:when test="${empty walkReviews }">
+						<div class="noNotice"><h2><span>후기가 없습니다.</span></h2></div>
+					</c:when>
+					
+					<c:otherwise>
+					
 						<table class="EndTable" style="width: 700px;">
 						    <tr>
 						      <th class="EndTh">후기 작성자</th>
@@ -102,38 +108,32 @@
 						      <th class="EndTh">별점</th>
 						      <th class="EndTh"></th>
 						    </tr>
+							<c:forEach items="${walkReviews }" var="walkReviwe">	    
 						    <tr>
-						      <td class="EndTd">폴폴이</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
+						      <td class="EndTd">
+						      <c:forEach items="${walkReviewers }" var="walkReviewer">
+								<c:if test="${walkReviews.pMemSid eq walkReviewer.pMemSid }">
+								${walkReviewer.pJmNickName }								
+								</c:if>
+						      </c:forEach>
+						      </td>
+						      <td class="EndTd">${walkReviwe.wrDate }</td>
+						      <td class="EndTd">${walkReviwe.wrRating }</td>
 						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
 						    </tr>
-						    <tr>
-						      <td class="EndTd">폴폴이</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
-						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">폴폴이</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
-						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">폴폴이</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
-						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
-						    </tr>
+							</c:forEach>
 						</table>
 						
+					</c:otherwise>
+					
+					</c:choose>
+					
 					</div><!-- 나에게 달린 대리산책 후기 끝 -->	
 						
 				</div><!-- 2행1열 끝 -->
 				
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
-					<h3><span class="badge">수익내역</span></h3>
+					<h3><span class="badge">수익내역 아직바인딩안함</span></h3>
 					<div><!-- 수익내역 시작 -->
 						<div class="money" style="margin-left: 75%;">
 							<p id="totalEarningsValue" class="superscript">이번달 총 수익</p>

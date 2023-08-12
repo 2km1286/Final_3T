@@ -58,7 +58,14 @@ public class WalkController {
 		String result = "";
 		String memSid = (String)session.getAttribute("memSid");
 		
+		// 대리산책 예약 내역
 		model.addAttribute("walkBookMyPage", walkService.walkBookMyPage(memSid));
+		
+		// 대리산책 후기
+		model.addAttribute("walkReviews", walkService.walkReviews(memSid));
+		
+		// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
+		model.addAttribute("walkReviewers", walkService.walkReviewers());
 		
 		result = "/WEB-INF/ajax/MyPageWalkForm.jsp";
 		return result;
