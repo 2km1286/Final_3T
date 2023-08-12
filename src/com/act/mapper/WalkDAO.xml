@@ -18,6 +18,11 @@
        FROM WALK_POST
 	</select>
 	
+	<select id="grade" resultType="com.act.sitting.WalkDTO">
+
+
+	</select>
+	
 	<select id="IndexTagList" resultType="com.act.walk.WalkDTO">
 		SELECT IWPT_SID AS IWPTSID, IWPT_NAME AS IWPTNAME
 		FROM INDEX_WALK_POST_TAG
