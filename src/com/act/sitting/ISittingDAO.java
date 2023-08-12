@@ -33,4 +33,11 @@ public interface ISittingDAO
 	
 	// 오늘 펫시팅 예약 취소건수
 	public int sittingCancelNotice(String memSid);
+	
+	// 오늘 펫시팅 후기 달린 건수
+	public int sittingReviewNotice(String memSid);
+	
+	// 오늘 펫시팅 돌봄장소 반려당한 건수
+	public int sittingCompanionNotice(String memSid);
+	
 }

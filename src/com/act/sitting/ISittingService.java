@@ -15,4 +15,6 @@ public interface ISittingService
 	public ArrayList<SittingDTO> sittingFilterList(SittingDTO dto);
 	public ArrayList<SittingDTO> sittingFilterTagList(SittingDTO dto);
 	public int sittingCancelNotice(String memSid);
+	public int sittingReviewNotice(String memSid);
+	public int sittingCompanionNotice(String memSid);
 }

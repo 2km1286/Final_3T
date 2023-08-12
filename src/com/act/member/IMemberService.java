@@ -28,5 +28,5 @@ public interface IMemberService
 	
 	public String searchMemNickName(MemberDTO dto);
 	
-	
+	public int profilCompanionNotice(String memSid);
 }

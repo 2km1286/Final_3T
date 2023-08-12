@@ -43,10 +43,63 @@
 		                ON WFL.MEM_SID = MEM.MEM_SID
 		                    JOIN JOIN_MEMBER JM
 		                    ON MEM.MEM_SID = JM.MEM_SID
-		WHERE  WC.WCL_DATE = SYSDATE
+		WHERE WC.WCL_DATE = SYSDATE
 		AND MEM.MEM_SID = #{memSid}
 	</select>
 	
+	<select id="walkReviewNotice" resultType="java.lang.Integer">
+		SELECT COUNT(WR.WR_SID) AS WRCOUNT
+		FROM WALK_REVIEW WR
+		    JOIN WALK_TIME_LINE_END WTLE
+		    ON WR.WTLE_SID = WTLE.WTLE_SID
+		        JOIN WALK_TIME_LINE WTL
+		        ON WTLE.WTL_SID = WTL.WTL_SID
+		            JOIN WALK_BOOK WB
+		            ON WTL.WB_SID = WB.WB_SID
+		                JOIN WALK_LICENSE WL
+		                ON WB.WL_SID = WL.WL_SID
+		                    JOIN WALK_FOLLOWING_LIST WFL
+		                    ON WL.WL_SID = WFL.WL_SID
+		                        JOIN MEMBER MEM
+		                        ON WFL.MEM_SID = MEM.MEM_SID
+		                            JOIN JOIN_MEMBER JM
+		                            ON MEM.MEM_SID = JM.MEM_SID
+		WHERE WR.WR_DATE = SYSDATE
+		AND MEM.MEM_SID = #{memSid}
+	</select>
+
+	<select id="walkCompanionNotice" resultType="java.lang.Integer">
+		SELECT COUNT(WRC.WRC_SID) AS WRCCOUNT
+		FROM WALK_REPORT_COMPLETE WRC
+		    JOIN INDEX_MANAGER_ACTION IMA
+		    ON WRC.IMA_SID = IMA.IMA_SID
+		        JOIN WALK_REPORT_RECEIVE WRR
+		        ON WRC.WRR_SID = WRR.WRR_SID
+		WHERE IMA.IMA_SID = 4
+		AND WRC.WRC_DATE = SYSDATE
+		AND WRR.WP_SID = (  SELECT WP.WP_SID
+		                    FROM WALK_POST WP
+		                        JOIN WALK_LICENSE WL
+		                        ON WP.WL_SID = WL.WL_SID
+		                            JOIN WALK_FOLLOWING_LIST WFL
+		                            ON WL.WL_SID = WFL.WL_SID
+		                                JOIN MEMBER MEM
+		                                ON WFL.MEM_SID = MEM.MEM_SID
+		                                    JOIN JOIN_MEMBER JM
+		                                    ON MEM.MEM_SID = JM.MEM_SID
+		                                    WHERE MEM.MEM_SID = #{memSid})	
+	</select>
+
+
+
+
+
+
+
+
+
+
+
 
 
 </mapper>

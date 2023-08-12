@@ -24,7 +24,7 @@ public class MemberController
 	private WalkService walkService;
 	
 	@Autowired
-	private SittingService sittingCancelNotice;
+	private SittingService sittingService;
 
 	// 메인페이지로 가는 액션
 	@RequestMapping("/mainpage.action")
@@ -269,9 +269,32 @@ public class MemberController
 
 	// 메뉴바를 통해 마이페이지로 가기, 디폴트 알림창
 	@RequestMapping("/mypage.action")
-	public String myPage()
+	public String myPage(HttpSession session, Model model)
 	{
 		String result = "";
+		String memSid = (String)session.getAttribute("memSid");
+		
+		// 오늘 대리산책 예약 취소건수
+		model.addAttribute("countWalkCancel", walkService.walkCancelNotice(memSid));
+		
+		// 오늘 펫시팅 예약 취소건수
+		model.addAttribute("countSittingCancel", sittingService.sittingCancelNotice(memSid));
+		
+		// 오늘 대리산책 후기 달린 건수
+		model.addAttribute("countWalkReview", walkService.walkReviewNotice(memSid));
+		
+		// 오늘 펫시팅 후기 달린 건수
+		model.addAttribute("countSittingReview", sittingService.sittingReviewNotice(memSid));
+		
+		// 오늘 대리산책 공고글 반려당한 건수
+		model.addAttribute("countWalkCompanion", walkService.walkCompanionNotice(memSid));
+		
+		// 오늘 펫시팅 돌봄장소 반려당한 건수
+		model.addAttribute("countSittingCompanion", sittingService.sittingCompanionNotice(memSid));
+		
+		// 오늘 프로칠 반려당한 건수
+		model.addAttribute("countProfilCompanion",memberService.profilCompanionNotice(memSid));
+		
 		result = "/WEB-INF/views/index/MyPage.jsp";
 		return result;
 	}
@@ -284,26 +307,25 @@ public class MemberController
 		String memSid = (String)session.getAttribute("memSid");
 		
 		// 오늘 대리산책 예약 취소건수
-		int countWalkCancel = walkService.walkCancelNotice(memSid);
-		
-		if(countWalkCancel > 0 )
-		{
-			//  대리산책 예약 취소 알림을 띄울 횟수을 넘기기
-			model.addAttribute("countWalkCancel", countWalkCancel);
-		}
+		model.addAttribute("countWalkCancel", walkService.walkCancelNotice(memSid));
 		
 		// 오늘 펫시팅 예약 취소건수
-		int countSittingCancel = sittingCancelNotice.sittingCancelNotice(memSid);
+		model.addAttribute("countSittingCancel", sittingService.sittingCancelNotice(memSid));
 		
-		if(countSittingCancel > 0)
-		{
-			//  펫시팅 예약 취소 알림을 띄울 횟수을 넘기기
-			model.addAttribute("countSittingCancel", countSittingCancel);
-		}
+		// 오늘 대리산책 후기 달린 건수
+		model.addAttribute("countWalkReview", walkService.walkReviewNotice(memSid));
 		
+		// 오늘 펫시팅 후기 달린 건수
+		model.addAttribute("countSittingReview", sittingService.sittingReviewNotice(memSid));
 		
+		// 오늘 대리산책 공고글 반려당한 건수
+		model.addAttribute("countWalkCompanion", walkService.walkCompanionNotice(memSid));
 		
+		// 오늘 펫시팅 돌봄장소 반려당한 건수
+		model.addAttribute("countSittingCompanion", sittingService.sittingCompanionNotice(memSid));
 		
+		// 오늘 프로칠 반려당한 건수
+		model.addAttribute("countProfilCompanion",memberService.profilCompanionNotice(memSid));
 		
 		result = "/WEB-INF/ajax/MyPageNoticeForm.jsp";
 		return result;

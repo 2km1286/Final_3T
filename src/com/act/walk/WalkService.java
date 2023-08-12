@@ -59,4 +59,33 @@ public class WalkService
 		
 		return result;
 	}
+	
+	// 오늘 대리산책 후기 달린 건이 있는지 카운팅
+	public int walkReviewNotice(String memSid)
+	{
+		int result = 0;
+		
+		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
+		dao.walkReviewNotice(memSid);
+		
+		return result;
+	}
+	
+	// 오늘 대리산책 공고글 반려당한 건수
+	public int walkCompanionNotice(String memSid)
+	{
+		int result = 0;
+		
+		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
+		dao.walkCompanionNotice(memSid);
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
 }

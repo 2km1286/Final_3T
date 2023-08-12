@@ -44,5 +44,8 @@ public interface IMemberDAO
 	
 	// 멤버 리스트 전체 출력하기
 	public ArrayList<MemberDTO> memberList();
+	
+	// 오늘 프로필 반려당한 건수
+	public int profilCompanionNotice(String memSid);
 
 }

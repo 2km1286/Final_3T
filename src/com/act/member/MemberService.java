@@ -133,6 +133,19 @@ public class MemberService implements IMemberService
 
 		return result;
 	}
+
+	// 오늘 프로필 반려당한 건수
+	@Override
+	public int profilCompanionNotice(String memSid)
+	{
+		int result = 0;
+		
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		
+		result = dao.profilCompanionNotice(memSid);
+		
+		return result;
+	}
 	
 	
 	
