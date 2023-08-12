@@ -196,53 +196,59 @@
 					<h3><span class="badge">내가 결제한 예약</span></h3>
 					
 					<div><!-- 예약내역 시작 -->
-						<div class="card">
-							<div class="card-header d-flex justify-content-between"">
-								대리산책 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-04 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
-					
-						<div class="card">
-							<div class="card-header d-flex justify-content-between">
-								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
-					    
-					    <div class="card">
-							<div class="card-header d-flex justify-content-between">
-								펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-							</div>	
-					    	  <div class="row g-0">
-					    	    <div class="col-md cardInfo" >
-					    	      <div class="card-body">
-					    	        <div class="oneText">
-					    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-					    		        <span class="card-text" style="font-size: 14pt;">2023-08-08 14:00 ~ 2023-08-10 16:00</span>
-					    	        </div>
-					    	      </div>
-					    	    </div>
-					    	  </div>
-					    </div>
+					<c:choose>
+					<c:when test="${empty MemWalkStartEnd && empty MemSittingStartEnd}">
+						<div class="noNotice"><h2><span>오늘 들어온 알림이 없습니다.</span></h2></div>
+					</c:when>
+					<c:otherwise>
+						
+						<c:forEach items="${MemWalkStartEnd }" var="MemWalkStartEnd">
+							<div class="card">
+								<div class="card-header d-flex justify-content-between">
+									대리산책
+									<button type="button" class="detailBtn" value="${MemWalkStartEnd.wbSid }">
+									자세히보러가기
+									</button>
+								</div>	
+						    	  <div class="row g-0">
+						    	    <div class="col-md cardInfo" >
+						    	      <div class="card-body">
+						    	        <div class="oneText">
+						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+						    		        <span class="card-text" style="font-size: 14pt;">
+						    		        ${MemWalkStartEnd.wbStart } ~ ${MemWalkStartEnd.wbEnd }
+						    		        </span>
+						    	        </div>
+						    	      </div>
+						    	    </div>
+						    	  </div>
+						    </div>
+						</c:forEach>
+						
+						<c:forEach items="${MemSittingStartEnd }" var="MemSittingStartEnd">
+							<div class="card">
+								<div class="card-header d-flex justify-content-between">
+									펫시팅
+									<button type="button" class="detailBtn" value="${MemSittingStartEnd.sbSid }">
+									자세히보러가기
+									</button>
+								</div>	
+						    	  <div class="row g-0">
+						    	    <div class="col-md cardInfo" >
+						    	      <div class="card-body">
+						    	        <div class="oneText">
+						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
+						    		        <span class="card-text" style="font-size: 14pt;">
+						    		        ${MemSittingStartEnd.sbStart } ~ ${MemSittingStartEnd.sbEnd }
+						    		        </span>
+						    	        </div>
+						    	      </div>
+						    	    </div>
+						    	  </div>
+						    </div>
+						</c:forEach>
+					</c:otherwise>
+					</c:choose>
 					
 					</div><!-- 예약 내역 끝 -->
 					

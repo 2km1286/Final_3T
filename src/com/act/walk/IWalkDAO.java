@@ -17,4 +17,7 @@ public interface IWalkDAO
 	
 	// 오늘 대리산책 공고글 반려당한 건수
 	public int walkCompanionNotice(String memSid);
+	
+	// 견주입장에서 본인이 오늘 결제한 대리산책의 시작일 ~ 종료일
+	public ArrayList<WalkDTO> walkStartEndNotice(String memSid);
 }

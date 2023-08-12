@@ -1,5 +1,6 @@
 package com.act.sitting;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -195,6 +196,19 @@ public class SittingService implements ISittingService
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
 		result = dao.sittingCompanionNotice(memSid);
+		
+		return result;
+	}
+	
+	// 견주입장에서 본인이 오늘 결제한 펫시팅의 시작일 ~ 종료일
+	@Override
+	public ArrayList<SittingDTO> sittingStartEndNotice(String memSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingStartEndNotice(memSid);
 		
 		return result;
 	}

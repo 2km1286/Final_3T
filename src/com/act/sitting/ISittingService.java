@@ -17,4 +17,5 @@ public interface ISittingService
 	public int sittingCancelNotice(String memSid);
 	public int sittingReviewNotice(String memSid);
 	public int sittingCompanionNotice(String memSid);
+	public ArrayList<SittingDTO> sittingStartEndNotice(String memSid);
 }

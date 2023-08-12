@@ -39,5 +39,16 @@ public interface ISittingDAO
 	
 	// 오늘 펫시팅 돌봄장소 반려당한 건수
 	public int sittingCompanionNotice(String memSid);
+
+	// 견주입장에서 본인이 오늘 결제한 펫시팅의 시작일 ~ 종료일
+	public ArrayList<SittingDTO> sittingStartEndNotice(String memSid);
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

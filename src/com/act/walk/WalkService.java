@@ -82,9 +82,16 @@ public class WalkService
 		return result;
 	}
 	
-	
-	
-	
+	// 견주입장에서 본인이 오늘 결제한 대리산책의 시작일 ~ 종료일 
+	public ArrayList<WalkDTO> walkStartEndNotice(String memSid)
+	{
+		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
+		
+		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
+		dao.walkStartEndNotice(memSid);
+		
+		return result;
+	}
 	
 	
 	

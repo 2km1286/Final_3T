@@ -90,7 +90,16 @@
 		                                    WHERE MEM.MEM_SID = #{memSid})	
 	</select>
 
-
+	<select id="walkStartEndNotice" resultType="com.act.walk.WalkDTO">
+		SELECT TO_CHAR(WB.WB_START, 'YYYY-MM-DD') AS WBSTART, TO_CHAR(WB.WB_END, 'YYYY-MM-DD') AS WBEND, MEM.MEM_SID AS MEMSID, WB.WB_SID AS WBSID
+		FROM WALK_BOOK WB
+		    JOIN WALK_CREATE_CART WCC
+		    ON WB.WCC_SID = WCC.WCC_SID
+		        JOIN MEMBER MEM
+		        ON WCC.MEM_SID = MEM.MEM_SID
+		WHERE WB.WB_DATE = SYSDATE
+		AND WCC.MEM_SID = #{memSid}
+	</select>
 
 
 

@@ -324,8 +324,14 @@ public class MemberController
 		// 오늘 펫시팅 돌봄장소 반려당한 건수
 		model.addAttribute("countSittingCompanion", sittingService.sittingCompanionNotice(memSid));
 		
-		// 오늘 프로칠 반려당한 건수
+		// 오늘 프로필 반려당한 건수
 		model.addAttribute("countProfilCompanion",memberService.profilCompanionNotice(memSid));
+		
+		// 오늘 견주입장에서 결제한 대리산책의 시작일~종료일
+		model.addAttribute("MemWalkStartEnd", walkService.walkStartEndNotice(memSid));
+		
+		// 오늘 견주입장에서 결제한 펫시팅의 시작일~종료일
+		model.addAttribute("MemSittingStartEnd", sittingService.sittingStartEndNotice(memSid));
 		
 		result = "/WEB-INF/ajax/MyPageNoticeForm.jsp";
 		return result;

@@ -160,7 +160,16 @@
 				                                WHERE MEM.MEM_SID = #{memSid})
 	</select>
 	
-
+	<select id="sittingStartEndNotice" resultType="com.act.sitting.SittingDTO">
+		SELECT TO_CHAR(SB.SB_START,'YYYY-MM-DD') AS SBSTART,  TO_CHAR(SB.SB_END, 'YYYY-MM-DD') AS SBEND, MEM.MEM_SID AS MEMSID, SB.SB_SID AS SBSID
+		FROM SITTING_BOOK SB
+		    JOIN SITTING_CREATE_CART SCC
+		    ON SB.SCC_SID = SCC.SCC_SID
+		        JOIN MEMBER MEM
+		        ON SCC.MEM_SID = MEM.MEM_SID
+		WHERE SB.SB_DATE = SYSDATE
+		AND SCC.MEM_SID = #{memSid}
+	</select>
 
 
 
