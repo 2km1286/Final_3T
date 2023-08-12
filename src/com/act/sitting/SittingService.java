@@ -161,41 +161,41 @@ public class SittingService implements ISittingService
 		return result;
 	}
 	
-	// 오늘 펫시팅 예약 취소건수
+	// 견주로서 오늘 펫시팅 예약 취소된 내역
 	@Override
-	public int sittingCancelNotice(String memSid)
+	public ArrayList<SittingDTO> memSittingCancelToday(String memSid)
 	{
-		int result = 0;
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
 		
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
-		result = dao.sittingCancelNotice(memSid);
+		result = dao.memSittingCancelToday(memSid);
 		
 		return result;
 	}
 	
-	// 오늘 펫시팅 후기 달린 건수 
+	// 펫시터로서 오늘 달린 펫시팅 후기들
 	@Override
-	public int sittingReviewNotice(String memSid)
+	public ArrayList<SittingDTO> sittingReviewToday(String memSid)
 	{
-		int result = 0;
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
 		
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
-		result = dao.sittingReviewNotice(memSid);
+		result = dao.sittingReviewToday(memSid);
 		
 		return result;
 	}
 
-	// 오늘 펫시팅 후기 달린 건수 
+	// 펫시터로서 오늘 반려당한 펫시팅 돌봄장소
 	@Override
-	public int sittingCompanionNotice(String memSid)
+	public ArrayList<SittingDTO> sittingCompanionToday(String memSid)
 	{
-		int result = 0;
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
 		
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
-		result = dao.sittingCompanionNotice(memSid);
+		result = dao.sittingCompanionToday(memSid);
 		
 		return result;
 	}

@@ -2,6 +2,8 @@ package com.act.walk;
 
 public class WalkDTO
 {
+	private String memSid;
+	
 	private String wptitle, wpcontent, wpstart, wpend, wpaddr1, wpcreated;
 	private int wpsid, wpmaxpet, ipsid, wlsid;
 	
@@ -18,7 +20,91 @@ public class WalkDTO
 	private String wbStart, wbEnd, pMemSid;
 	private int wbSid;
 	
-
+	// 후기
+	private int wrSid, wrRating;
+	private String wrTitle, wrContent, wrDate;
+	
+	public int getWrRating()
+	{
+		return wrRating;
+	}
+	public void setWrRating(int wrRating)
+	{
+		this.wrRating = wrRating;
+	}
+	public String getWrDate()
+	{
+		return wrDate;
+	}
+	public void setWrDate(String wrDate)
+	{
+		this.wrDate = wrDate;
+	}
+	public int getIwisid()
+	{
+		return iwisid;
+	}
+	public void setIwisid(int iwisid)
+	{
+		this.iwisid = iwisid;
+	}
+	public int getIwiprice()
+	{
+		return iwiprice;
+	}
+	public void setIwiprice(int iwiprice)
+	{
+		this.iwiprice = iwiprice;
+	}
+	public int getIwicount()
+	{
+		return iwicount;
+	}
+	public void setIwicount(int iwicount)
+	{
+		this.iwicount = iwicount;
+	}
+	public String getIwigrade()
+	{
+		return iwigrade;
+	}
+	public void setIwigrade(String iwigrade)
+	{
+		this.iwigrade = iwigrade;
+	}
+	public String getMemSid()
+	{
+		return memSid;
+	}
+	public void setMemSid(String memSid)
+	{
+		this.memSid = memSid;
+	}
+	public int getWrSid()
+	{
+		return wrSid;
+	}
+	public void setWrSid(int wrSid)
+	{
+		this.wrSid = wrSid;
+	}
+	
+	public String getWrTitle()
+	{
+		return wrTitle;
+	}
+	public void setWrTitle(String wrTitle)
+	{
+		this.wrTitle = wrTitle;
+	}
+	public String getWrContent()
+	{
+		return wrContent;
+	}
+	public void setWrContent(String wrContent)
+	{
+		this.wrContent = wrContent;
+	}
 	public String getWbStart()
 	{
 		return wbStart;

@@ -1,6 +1,5 @@
 package com.act.member;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -274,26 +273,32 @@ public class MemberController
 		String result = "";
 		String memSid = (String)session.getAttribute("memSid");
 		
-		// 오늘 대리산책 예약 취소건수
-		model.addAttribute("countWalkCancel", walkService.walkCancelNotice(memSid));
+		// 견주로서 오늘 대리산책 취소당한 예약
+		model.addAttribute("memWalkCancelToday", walkService.memWalkCancelToday(memSid));
 		
-		// 오늘 펫시팅 예약 취소건수
-		model.addAttribute("countSittingCancel", sittingService.sittingCancelNotice(memSid));
+		// 견주로서 오늘 펫시팅 취소당한 예약
+		model.addAttribute("memSittingCancelToday", sittingService.memSittingCancelToday(memSid));
 		
-		// 오늘 대리산책 후기 달린 건수
-		model.addAttribute("countWalkReview", walkService.walkReviewNotice(memSid));
+		// 대리산책러로서 오늘 달린 대리산책 후기들
+		model.addAttribute("walkReviewToday", walkService.walkReviewToday(memSid));
 		
-		// 오늘 펫시팅 후기 달린 건수
-		model.addAttribute("countSittingReview", sittingService.sittingReviewNotice(memSid));
+		// 펫시터로서 오늘 달린 펫시팅 후기들
+		model.addAttribute("sittingReviewToday", sittingService.sittingReviewToday(memSid));
 		
-		// 오늘 대리산책 공고글 반려당한 건수
-		model.addAttribute("countWalkCompanion", walkService.walkCompanionNotice(memSid));
+		// 대리산책러로서 오늘 반려당한 대리산책 공고글
+		model.addAttribute("walkCompanionToday", walkService.walkCompanionToday(memSid));
 		
-		// 오늘 펫시팅 돌봄장소 반려당한 건수
-		model.addAttribute("countSittingCompanion", sittingService.sittingCompanionNotice(memSid));
+		// 펫시터로서 오늘 반려당한 펫시팅 돌봄장소
+		model.addAttribute("sittingCompanionToday", sittingService.sittingCompanionToday(memSid));
 		
-		// 오늘 프로칠 반려당한 건수
+		// 오늘 프로필 반려당했는지 알림
 		model.addAttribute("countProfilCompanion",memberService.profilCompanionNotice(memSid));
+		
+		// 오늘 견주입장에서 결제한 대리산책의 시작일~종료일
+		model.addAttribute("MemWalkStartEnd", walkService.MemWalkStartEndNotice(memSid));
+		
+		// 오늘 견주입장에서 결제한 펫시팅의 시작일~종료일
+		model.addAttribute("MemSittingStartEnd", sittingService.sittingStartEndNotice(memSid));
 		
 		result = "/WEB-INF/views/index/MyPage.jsp";
 		return result;
@@ -306,29 +311,29 @@ public class MemberController
 		String result = "";
 		String memSid = (String)session.getAttribute("memSid");
 		
-		// 오늘 대리산책 예약 취소건수
-		model.addAttribute("countWalkCancel", walkService.walkCancelNotice(memSid));
+		// 견주로서 오늘 대리산책 취소당한 예약
+		model.addAttribute("memWalkCancelToday", walkService.memWalkCancelToday(memSid));
 		
-		// 오늘 펫시팅 예약 취소건수
-		model.addAttribute("countSittingCancel", sittingService.sittingCancelNotice(memSid));
+		// 견주로서 오늘 펫시팅 취소당한 예약
+		model.addAttribute("memSittingCancelToday", sittingService.memSittingCancelToday(memSid));
 		
-		// 오늘 대리산책 후기 달린 건수
-		model.addAttribute("countWalkReview", walkService.walkReviewNotice(memSid));
+		// 대리산책러로서 오늘 달린 대리산책 후기들
+		model.addAttribute("walkReviewToday", walkService.walkReviewToday(memSid));
 		
-		// 오늘 펫시팅 후기 달린 건수
-		model.addAttribute("countSittingReview", sittingService.sittingReviewNotice(memSid));
+		// 펫시터로서 오늘 달린 펫시팅 후기들
+		model.addAttribute("sittingReviewToday", sittingService.sittingReviewToday(memSid));
 		
-		// 오늘 대리산책 공고글 반려당한 건수
-		model.addAttribute("countWalkCompanion", walkService.walkCompanionNotice(memSid));
+		// 대리산책러로서 오늘 반려당한 대리산책 공고글
+		model.addAttribute("walkCompanionToday", walkService.walkCompanionToday(memSid));
 		
-		// 오늘 펫시팅 돌봄장소 반려당한 건수
-		model.addAttribute("countSittingCompanion", sittingService.sittingCompanionNotice(memSid));
+		// 펫시터로서 오늘 반려당한 펫시팅 돌봄장소
+		model.addAttribute("sittingCompanionToday", sittingService.sittingCompanionToday(memSid));
 		
-		// 오늘 프로필 반려당한 건수
+		// 오늘 프로필 반려당했는지 알림
 		model.addAttribute("countProfilCompanion",memberService.profilCompanionNotice(memSid));
 		
 		// 오늘 견주입장에서 결제한 대리산책의 시작일~종료일
-		model.addAttribute("MemWalkStartEnd", walkService.walkStartEndNotice(memSid));
+		model.addAttribute("MemWalkStartEnd", walkService.MemWalkStartEndNotice(memSid));
 		
 		// 오늘 견주입장에서 결제한 펫시팅의 시작일~종료일
 		model.addAttribute("MemSittingStartEnd", sittingService.sittingStartEndNotice(memSid));

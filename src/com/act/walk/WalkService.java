@@ -49,46 +49,49 @@ public class WalkService
 		return grade;
 	}
 	 
-	// 오늘 대리산책 예약 취소된 건이 있는지 카운팅
-	public int walkCancelNotice(String memSid)
+	// 견주로서 오늘 대리산책 예약 취소된 내역
+	public ArrayList<WalkDTO> memWalkCancelToday(String memSid)
 	{
-		int result = 0;
+		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
 		
 		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
-		dao.walkCancelNotice(memSid);
+		
+		result = dao.memWalkCancelToday(memSid);
 		
 		return result;
 	}
 	
-	// 오늘 대리산책 후기 달린 건이 있는지 카운팅
-	public int walkReviewNotice(String memSid)
+	// 대리산책러로서 오늘 달린 대리산책 후기들
+	public ArrayList<WalkDTO> walkReviewToday(String memSid)
 	{
-		int result = 0;
+		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
 		
 		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
-		dao.walkReviewNotice(memSid);
+		
+		result = dao.walkReviewToday(memSid);
 		
 		return result;
 	}
 	
-	// 오늘 대리산책 공고글 반려당한 건수
-	public int walkCompanionNotice(String memSid)
+	// 대리산책러로서 오늘 반려당한 대리산책 공고글
+	public ArrayList<WalkDTO> walkCompanionToday(String memSid)
 	{
-		int result = 0;
+		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
 		
 		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
-		dao.walkCompanionNotice(memSid);
+		
+		result = dao.walkCompanionToday(memSid);
 		
 		return result;
 	}
 	
 	// 견주입장에서 본인이 오늘 결제한 대리산책의 시작일 ~ 종료일 
-	public ArrayList<WalkDTO> walkStartEndNotice(String memSid)
+	public ArrayList<WalkDTO> MemWalkStartEndNotice(String memSid)
 	{
 		ArrayList<WalkDTO> result = new ArrayList<WalkDTO>();
 		
 		IWalkDAO dao = sqlSession.getMapper(IWalkDAO.class);
-		dao.walkStartEndNotice(memSid);
+		dao.MemWalkStartEndNotice(memSid);
 		
 		return result;
 	}

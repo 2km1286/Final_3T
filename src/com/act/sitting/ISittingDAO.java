@@ -3,6 +3,8 @@ package com.act.sitting;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.act.walk.WalkDTO;
+
 public interface ISittingDAO
 {
 	public ArrayList<SittingDTO> list();
@@ -31,14 +33,14 @@ public interface ISittingDAO
 	
 	public ArrayList<SittingDTO> spFilterTagList(SittingDTO dto);
 	
-	// 오늘 펫시팅 예약 취소건수
-	public int sittingCancelNotice(String memSid);
+	// 견주로서 오늘 펫시팅 예약 취소된건
+	public ArrayList<SittingDTO> memSittingCancelToday(String memSid);
 	
-	// 오늘 펫시팅 후기 달린 건수
-	public int sittingReviewNotice(String memSid);
+	// 펫시터로서 오늘 달린 펫시팅 후기들
+	public ArrayList<SittingDTO> sittingReviewToday(String memSid);
 	
-	// 오늘 펫시팅 돌봄장소 반려당한 건수
-	public int sittingCompanionNotice(String memSid);
+	// 펫시터로서 오늘 반려당한 펫시팅 돌봄장소
+	public ArrayList<SittingDTO> sittingCompanionToday(String memSid);
 
 	// 견주입장에서 본인이 오늘 결제한 펫시팅의 시작일 ~ 종료일
 	public ArrayList<SittingDTO> sittingStartEndNotice(String memSid);
