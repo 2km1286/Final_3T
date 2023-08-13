@@ -15,4 +15,7 @@ public interface IManagerDAO
 	
 	public ArrayList<ManagerDTO> walkReportList();
 	public int updateWalkPublic(ManagerDTO dto);
+	
+	public int deleteSittingReport(ManagerDTO dto);
+	public int deleteWalkReport(ManagerDTO dto);
 }

@@ -73,12 +73,14 @@
 	</update>
 	
 	<!-- 펫시팅 반려 -->
-	<delete id="deleteSittingReport">
-	
+	<delete id="deleteSittingReport" parameterType="java.lang.Integer">
+	 	DELETE FROM SITTING_REPORT_RECEIVE
+    	WHERE SRR_SID = #{srrSid}
 	</delete>
 	
 	<!-- 대리산책 반려 -->
-	<delete id="deleteWalkReport">
-	
+	<delete id="deleteWalkReport" parameterType="java.lang.Integer">
+		DELETE FROM WALK_REPORT_RECEIVE
+    	WHERE WRR_SID = #{wrrSid}
 	</delete>
 </mapper>

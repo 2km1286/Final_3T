@@ -106,6 +106,25 @@ public class ManagerService implements IManagerService
 		
 	}
 	
+	// 펫시팅 반려(신고접수에 삭제)
+	public int deleteSittingReport(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.deleteSittingReport(dto);
+		return result;
+		
+	}
+	// 대리산책 반려(신고접수에 삭제)
+	public int deleteWalkReport(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.deleteWalkReport(dto);
+		return result;
+		
+	}
+	
 	
 	
 

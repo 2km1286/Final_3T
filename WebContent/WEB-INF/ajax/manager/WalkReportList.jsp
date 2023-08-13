@@ -83,6 +83,26 @@
 		
 		
 	}
+	
+	// 펫시팅 반려
+	function DeleteWalkReport(wrrSid) 
+	{
+    if (confirm("반려 처리하시겠습니까?")) {
+        $.ajax({
+            type: "POST",
+            url: "removewalkreport.action?wrrSid=" + wrrSid,
+            async: true,
+            success: function(data) 
+            {
+                window.location.href = "managermain.action?flag=1";
+            },
+            error: function(e) 
+            {
+                alert(e.responseText);
+            }
+        	});
+   	 	}
+	}
 </script>
 
 
@@ -125,8 +145,11 @@
 							<td>${list.wrrDate}</td>
 							<td id="actionBtn"><input class="report-button"
 								type="button" value="정지"> <input class="report-button"
-								type="button" value="반려"> <input class="report-button"
-								type="button" value="수정요청"> <!-- 분기처리 시작 --> <c:if
+								type="button" value="반려" onclick="DeleteWalkReport(${list.wrrSid})">
+								<input class="report-button"
+								type="button" value="수정요청"> 
+								<!-- 분기처리 시작 --> 
+								<c:if
 									test="${list.ipSid == '1'}">
 									<input class="report-button" type="button" value="블라인드하기"
 										onclick="updateWalkPublic(${list.ipSid},${list.wpSid})">

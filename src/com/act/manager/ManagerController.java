@@ -132,6 +132,28 @@ public class ManagerController
 		result= "mainpage.action";		// 모르겠음 사실 이건
 		return result;
 	}
+	// 펫시팅 신고내역 반려
+	@RequestMapping("/removesittingreport.action")
+	public String removesittingreport(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteSittingReport(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	// 대리산책 신고내역 반려
+	@RequestMapping("/removewalkreport.action")
+	public String removewalkreport(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteSittingReport(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	
+	
 
 	// 관리자 회원관리. AJAX로 처리.
 	@RequestMapping("/managermemberlist.action")
