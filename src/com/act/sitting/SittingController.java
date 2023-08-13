@@ -155,20 +155,16 @@ public class SittingController
 	}
 	
 	
-	  // 펫시팅 리스트 검색필터 버튼 (태그검색 미포함)
+	  // 펫시팅 리스트 검색필터 버튼 (태그검색 포함)
 	  
 	  @RequestMapping("/sittingfilterlistform.action") 
 	  public String sittingFilterListForm(SittingDTO dto, Model model) 
 	  { 
 		  String view = "";
 		  
-		  //String extraaddr = request.getParameter("extraAddr");
-		  //System.out.println("extraAddr : " +  extraaddr);
 		  System.out.println("extraAddr(dto) : " + dto.getExtraAddr() );
 		  System.out.println("isptSidList(dto) : " + dto.getIsptSidList());
-		  System.out.println("datePicker: " + dto.getDatePicker());
 		  System.out.println("spMaxPet:" + dto.getSpMaxPet());
-		  //System.out.println("isptSidList(request) : " + request.getParameter("isptSidList"));
 		  
 		  // 검색태그들을 담은 배열을 ,으로 쪼개서 String 타입의 배열에 담는다.
 		  String[] isptSidList = dto.getIsptSidList().split(",");
@@ -189,15 +185,10 @@ public class SittingController
 		  System.out.println(" isptSidListInteger:" + isptSidListInteger);
 		  
 		  model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
-		  //model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
+		  model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
 		  
 		  view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp"; 
 		  return view ;
-		  
-		  // 1. 하얀칸 -> 날짜/동/시간  -> 담고있는 정보 : 태그빼고 다
-		  // 2. 태그                     -> 태그들. 
-		  // 1. 2. 
-	  
 	  }
 	 
 	
