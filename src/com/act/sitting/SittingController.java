@@ -35,12 +35,24 @@ public class SittingController
 		return view;
 	}
 
-	// 펫시터 예약화면
+	// 펫시터 예약화면 데이터 바인딩
 	@RequestMapping("/sittingreservationpage.action")
-	public String getSittingReservationView()
+	public String getSittingReservationView(int spSid, Model model)
 	{
 		String result = "";
-
+		System.out.println("spSid : " + spSid);
+		
+		SittingDTO listBySpSid = sittingService.listBySpSid(spSid);
+		
+		ArrayList<SittingDTO> spListTags = sittingService.sittingPlaceTags(spSid);
+		ArrayList<SittingDTO> spRest = sittingService.spRest(spSid);
+		
+		System.out.println("listBySpSid_Content: " + listBySpSid.getSpContent());
+		System.out.println("spListTags: " + spListTags);
+		
+		model.addAttribute("listBySpSid", listBySpSid);
+		model.addAttribute("spListTags", spListTags);
+		model.addAttribute("spRest", spRest);
 		result = "/WEB-INF/views/sitting/SittingReservationPage.jsp";
 
 		return result;
