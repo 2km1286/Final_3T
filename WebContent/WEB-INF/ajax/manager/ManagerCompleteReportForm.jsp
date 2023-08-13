@@ -10,60 +10,118 @@ String cp = request.getContextPath();
 <meta charset="UTF-8">
 <title>관리자 처리완료 신고</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+<script type="text/javascript">
+
+	//페이지 로딩 시에 실행되는 코드
+	
+	$(document).ready(function()
+	{
+
+		var flag =<%=request.getAttribute("flag")%>
+			if (flag == 4)
+				PetSittingReportComplete();
+			if (flag == 5)
+				DogWalkReportComplete();
+			if (flag == 6)
+				ProfileReportComplete();
+		
+
+		function PetSittingReportComplete()
+		{
+			$.ajax(
+			{
+				type : "POST",
+				url : "sittingcompletelist.action",
+				async : true,
+				success : function(data)
+				{
+					$("#subContent").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
+			});
+		}
+		
+		function DogWalkReportComplete()
+		{
+			$.ajax(
+			{
+				type : "POST",
+				url : "walkreportlist.action",
+				async : true,
+				success : function(data)
+				{
+					$("#subContent").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
+			});
+		}
+		function ProfileReportComplete()
+		{
+			$.ajax(
+			{
+				type : "POST",
+				url : "profilereportlist.action",
+				async : true,
+				success : function(data)
+				{
+					$("#subContent").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
+			});
+		}
+		
+		
+
+	});
+</script>
 </head>
 <body>
-	<div style="margin-left: -10%; width: 120%;">
+	<div id="subContent">
+	<div style="margin-left: -10%; width: 120%;" id="subContent">
 		<div>
 			<h2 style="margin-top: 20px;">처리완료된 신고</h2>
 			<hr />
 			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
-			<button class="report-button" id="dog-walking-report">대리산책
-				신고</button>
+			<button class="report-button" id="dog-walking-report">대리산책 신고</button>
 			<button class="report-button" id="profile-report">프로필 신고</button>
 		</div>
 		<div id="completeTable" class="mt-4">
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover" id="tableComplete">
 				<thead>
 					<tr>
-						<th style="color: white;">접수날짜</th>
-						<th style="color: white;">펫시터 등급</th>
-						<th style="color: white;">펫시터 닉네임</th>
-						<th style="color: white;">펫시팅 글 이름</th>
+						<th style="color: white;">처리번호</th>
+						<th style="color: white;">신고번호</th>
 						<th style="color: white;">신고사유</th>
-						<th style="color: white;">신고조치</th>
-						<th style="color: white;">신고처리한 관리자</th>
-						<th style="color: white;">처리날짜</th>
+						<th style="color: white;">상세사유</th>
+						<th style="color: white;">처리내용</th>
+						<th style="color: white;">처리자(관리자)</th>
+						<th style="color: white;">처리일자</th>
 					</tr>
 				</thead>
 				<tbody>
-					<%
-						// 임의의 데이터 생성
-					String[][] data = { { "2023-08-01", "Gold", "PetLover123", "Summer Fun", "불적절한 언어 사용", "경고", "Admin1", "2023-08-02" },
-							{ "2023-08-02", "Silver", "AnimalLover", "Loving Paws", "매너 불이행", "휴면 계정", "Admin2", "2023-08-03" },
-							{ "2023-08-03", "Bronze", "CaringPal", "Cozy Retreat", "사기행위 및 도주 시도", "강제 탈퇴", "Admin3", "2023-08-04" },
-							{ "2023-08-04", "Platinum", "PawsomeCare", "Playful Pets", "신고 무시 및 협박", "계정 정지", "Admin4", "2023-08-05" },
-							{ "2023-08-05", "Gold", "PetWatchdog", "Lovely Comps", "반려동물 유기 및 방치", "계정 삭제", "Admin5", "2023-08-06" } };
-
-					// 데이터 출력
-					for (String[] row : data)
-					{
-					%>
-					<tr>
-						<td><%=row[0]%></td>
-						<td><%=row[1]%></td>
-						<td><%=row[2]%></td>
-						<td><%=row[3]%></td>
-						<td><%=row[4]%></td>
-						<td><%=row[5]%></td>
-						<td><%=row[6]%></td>
-						<td><%=row[7]%></td>
-					</tr>
-					<%
-						}
-					%>
+				
+						
+					
 				</tbody>
 			</table>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
