@@ -78,10 +78,12 @@
 		<if test="#{extraAddr} != null">
 			AND EXTRAADDR = #{extraAddr}
 		</if>
-		<!-- <if test="#{datePicker} != null">
+		<!-- 
+		<if test="#{datePicker} != null">
 			AND #{datePicker} NOT BETWEEN TO_CHAR(SRSTART, 'YYYY-MM-DD') 
 									  AND TO_CHAR(SREND, 'YYYY-MM-DD')
-		</if> -->
+		</if>
+		 -->
 		<if test="#{spMaxPet} != null">
 			AND SPMAXPET >= #{spMaxPet}
 		</if>
