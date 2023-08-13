@@ -46,13 +46,20 @@ public class SittingController
 		
 		ArrayList<SittingDTO> spListTags = sittingService.sittingPlaceTags(spSid);
 		ArrayList<SittingDTO> spRest = sittingService.spRest(spSid);
+		ArrayList<SittingDTO> reviews = sittingService.sittingReviewsBySpSid(spSid);
+		ArrayList<SittingDTO> reviewsPhoto = sittingService.sittingReviewsPhoto(spSid);
 		
 		System.out.println("listBySpSid_Content: " + listBySpSid.getSpContent());
 		System.out.println("spListTags: " + spListTags);
+		System.out.println("reviews : " + reviews);
+		System.out.println("reviewsPhoto : " + reviewsPhoto);
 		
 		model.addAttribute("listBySpSid", listBySpSid);
 		model.addAttribute("spListTags", spListTags);
 		model.addAttribute("spRest", spRest);
+		model.addAttribute("reviews", reviews);
+		model.addAttribute("reviewsPhoto", reviewsPhoto);
+		
 		result = "/WEB-INF/views/sitting/SittingReservationPage.jsp";
 
 		return result;
