@@ -20,4 +20,6 @@ public interface ISittingService
 	public ArrayList<SittingDTO> memSittingBookToday(String memSid);
 	public ArrayList<SittingDTO> sittingBookToday(String memSid);
 	public SittingDTO sittingReview(int srwSid);
+	public int sittingStsCount(SittingDTO dto);
+	public int sittingSlCount(SittingDTO dto);
 }

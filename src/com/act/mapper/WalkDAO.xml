@@ -18,10 +18,7 @@
        FROM WALK_POST
 	</select>
 	
-	<select id="grade" resultType="com.act.sitting.WalkDTO">
-
-
-	</select>
+	
 	
 	<select id="IndexTagList" resultType="com.act.walk.WalkDTO">
 		SELECT IWPT_SID AS IWPTSID, IWPT_NAME AS IWPTNAME
@@ -64,7 +61,7 @@
 		SELECT NVL(MAX(WP_SID),0) AS WPSID FROM WALK_POST
 	</select>
 	
-	<select id="questionList" resultType="com.act.member.QuestionDTO">
+	<select id="questionList" resultType="com.act.walk.QuestionDTO">
     	SELECT WTBSID, WTBQUESTION, WTBANSWER, WTBPOINT
     	FROM (
         SELECT WTB_SID AS WTBSID, WTB_QUESTION AS WTBQUESTION, WTB_ANSWER AS WTBANSWER, WTB_POINT AS WTBPOINT,

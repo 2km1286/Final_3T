@@ -22,4 +22,14 @@ public interface IWalkService
 
 	// 후기를 쓴 사람의 회원번호로 그 회원의 닉네임 조회를 위한 전체출력
 	public ArrayList<WalkDTO> walkReviewers();
+
+	public ArrayList<WalkDTO> memWalkBookToday(String memSid);
+
+	public ArrayList<WalkDTO> memWalkCancelToday(String memSid);
+
+	public ArrayList<WalkDTO> walkReviewToday(String memSid);
+
+	public ArrayList<WalkDTO> walkCompanionToday(String memSid);
+
+	public ArrayList<WalkDTO> walkBookToday(String memSid);
 }
