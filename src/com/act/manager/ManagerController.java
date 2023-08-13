@@ -45,6 +45,7 @@ public class ManagerController
 			session.setAttribute("miSid", result);
 			String miName = managerService.searchManagerName(result);
 			//System.out.println(miName);
+			
 			url = "managermain.action?miName="+miName;
 		}
 
@@ -57,6 +58,7 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
+		request.setAttribute("flag", request.getParameter("flag"));
 		result = "/WEB-INF/ajax/manager/ManagerCompleteReportForm.jsp";
 		return result;
 	}
@@ -94,6 +96,21 @@ public class ManagerController
 		
 		return result;
 	}
+	
+	// 펫시팅 신고처리완료조회 -AJAX 처리
+	@RequestMapping("/sittingcompletelist.action")
+	public String sittingcompletelist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		
+		ArrayList<ManagerDTO> sittingCompleteList = managerService.sittingCompleteList();
+		model.addAttribute("sittingCompleteList", sittingCompleteList);
+		result = "/WEB-INF/ajax/manager/SittingCompleteList.jsp";
+		System.out.println("여긴도착");
+		
+		return result;
+	}
+	
 	// 대리산책 신고내역조회 -AJAX 처리
 	@RequestMapping("/walkreportlist.action")
 	public String walkReportList(HttpServletRequest request,Model model)
@@ -107,6 +124,23 @@ public class ManagerController
 		ArrayList<ManagerDTO> walkReportList = managerService.walkReportList();
 		model.addAttribute("WalkReportList", walkReportList);
 		result = "/WEB-INF/ajax/manager/WalkReportList.jsp";
+		
+		return result;
+	}
+	
+	// 프로필 신고내역조회 -AJAX 처리
+	@RequestMapping("/profilereportlist.action")
+	public String profilereportlist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		int sittingCount =0;
+		int walkCount = 0;
+		sittingCount = managerService.sittingSearchEmerg();
+		walkCount = managerService.walkSearchEmerg();
+		request.setAttribute("count", sittingCount + walkCount);
+		ArrayList<ManagerDTO> profileReportList = managerService.profileReportList();
+		model.addAttribute("ProfileReportList", profileReportList);
+		result = "/WEB-INF/ajax/manager/ProfileReportList.jsp";
 		
 		return result;
 	}
@@ -153,6 +187,17 @@ public class ManagerController
 		return result;
 	}
 	
+	// 프로필 신고내역 반려
+	@RequestMapping("/removeprofilereport.action")
+	public String removeprofilereport(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteProfileReport(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	
 	
 
 	// 관리자 회원관리. AJAX로 처리.
@@ -161,7 +206,6 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-
 		result = "/WEB-INF/ajax/manager/ManagerMemberListForm.jsp";
 		return result;
 	}

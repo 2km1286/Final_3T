@@ -25,10 +25,20 @@ String cp = request.getContextPath();
 		 
 	});
 	
+	// 대리산책 신고내역 클릭시
 	$("#dog-walking-report").click(function()
 	{
 		DogWalkReport();
 	});
+	
+	// 프로필 신고내역 클릭시
+	$("#profile-report").click(function()
+	{
+		ProfileReport();
+	});
+	
+	
+	// 대리산책 신고내역 버튼 클릭시 호출
 	function DogWalkReport()
 	{
 		$.ajax(
@@ -48,11 +58,35 @@ String cp = request.getContextPath();
 
 		});
 	}
+	
+	// 프로필 신고내역 버튼 클릭시 호출
+	function ProfileReport()
+	{
+		$.ajax(
+		{
+			type : "POST",
+			url : "profilereportlist.action",
+			async : true,
+			success : function(data)
+			{
+				$("#subContent").html(data);
+
+			},
+			error : function(e)
+			{
+				alert(e.responseText);
+			}
+
+		});
+	}
+	
+	// 자세히
 	function showDetail(detail)
 	{
-		// 'detail' 매개변수를 사용하여 상세 내용을 표시하는 로직을 작성합니다.
-		alert(detail); // 간단히 경고창으로 표시하는 예시입니다.
+		alert(detail); 
 	}
+	
+	
 	// 블라인드 처리 했을때 분기 처리후 넘김 컨트롤러로
 	function updateSittingPublic(ipSid,spSid)
 	{
@@ -82,12 +116,31 @@ String cp = request.getContextPath();
 	}
 	
 	// 펫시팅 반려
-	function DeleteSittingReport(srrSid) 
+	function DeleteSittingReport(srrSid,imaSid) 
 	{
     if (confirm("반려 처리하시겠습니까?")) {
         $.ajax({
             type: "POST",
-            url: "removesittingreport.action?srrSid=" + srrSid,
+            url: "removesittingreport.action?srrSid=" + srrSid+"&miSid="+${miSid}+"&ima="+imaSid,
+            async: true,
+            success: function(data) 
+            {
+                window.location.href = "managermain.action?flag=1";
+            },
+            error: function(e) 
+            {
+                alert(e.responseText);
+            }
+        	});
+   	 	}
+	}
+	// 펫시팅 수정요청
+	function ChangeSittingReport(srrSid,imaSid) 
+	{
+    if (confirm("수정요청 하시겠습니까?")) {
+        $.ajax({
+            type: "POST",
+            url: "removesittingreport.action?srrSid=" + srrSid+"&miSid="+${miSid}+"&ima="+imaSid,
             async: true,
             success: function(data) 
             {
@@ -144,10 +197,11 @@ String cp = request.getContextPath();
 								onclick="showDetail('${list.srrDetail}')"></td>
 							<td>${list.srrDate}</td>
 							<td id="actionBtn"><input class="report-button"
-								type="button" value="정지"> <input class="report-button"
-								type="button" value="반려" onclick="DeleteSittingReport(${list.srrSid})"> 
+								type="button" value="정지" onclick="BannedSittingReport(${list.srrSid},5)"> 
 								<input class="report-button"
-								type="button" value="수정요청"> 
+								type="button" value="반려" onclick="DeleteSittingReport(${list.srrSid},4)"> 
+								<input class="report-button"
+								type="button" value="수정요청" onclick="ChangeSittingReport(${list.srrSid},3)"> 
 								<!-- 분기처리 시작 --> 
 								<c:if
 									test="${list.ipSid == '1'}">

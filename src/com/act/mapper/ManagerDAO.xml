@@ -58,6 +58,24 @@
     	FROM VIEW_REPORT_WALK
 	</select>
 	
+	<!-- 프로필 신고접수 -->
+	<select id="profileReportList" resultType="com.act.manager.ManagerDTO">
+		SELECT PRR_SID AS prrSid, REPORTED_JM_NICKNAME AS reportedJmNickName
+        ,REPORTER_JM_NICKNAME AS reporterJmNickName
+        ,PRR_DETAIL AS prrDetail, PRR_DATE AS prrDate
+		FROM VIEW_REPORT_PROFILE
+	</select>
+	
+	
+	<!-- 펫시터 신고처리완료 -->
+	<select id="sittingCompleteList" resultType="com.act.manager.ManagerDTO">
+		SELECT SRC_SID AS srcSid, SRR_SID AS srrSid, IMA_NAME AS imaName
+		,MI_NAME AS miName,SRC_DATE AS srcDate,IR_NAME AS irName,SRR_DETAIL AS srrDetail
+		FROM VIEW_SITTING_COMPLETE
+	</select>
+	
+	
+	
 	<!-- 펫시팅 블라인드에 따라 업데이트 시켜줌 -->
 	<update id="updateSittingPublic" parameterType="java.lang.Integer">
 		UPDATE SITTING_PLACE
@@ -73,14 +91,20 @@
 	</update>
 	
 	<!-- 펫시팅 반려 -->
-	<delete id="deleteSittingReport" parameterType="java.lang.Integer">
-	 	DELETE FROM SITTING_REPORT_RECEIVE
-    	WHERE SRR_SID = #{srrSid}
-	</delete>
+	<insert id="deleteSittingReport" parameterType="java.lang.Integer">
+    	INSERT INTO SITTING_REPORT_COMPLETE
+		VALUE(SEQ_SRC.NEXTVAL,${#srrSid),DEFAULT,${#miSid},${#imaSid})
+	</insert>
 	
 	<!-- 대리산책 반려 -->
-	<delete id="deleteWalkReport" parameterType="java.lang.Integer">
-		DELETE FROM WALK_REPORT_RECEIVE
-    	WHERE WRR_SID = #{wrrSid}
-	</delete>
+	<insert id="deleteWalkReport" parameterType="java.lang.Integer">
+		INSERT INTO WALK_REPORT_COMPLETE
+		VALUE(SEQ_WRC.NEXTVAL,${#wrrSid),DEFAULT,${#miSid},${#imaSid})
+	</insert>
+	
+	<!-- 프로필 반려 -->
+	<insert id="deleteProfileReport" parameterType="java.lang.Integer">
+		INSERT INTO PROFILE_REPORT_COMPLETE
+		VALUE(SEQ_PRC.NEXTVAL,${#prrSid),DEFAULT,${#miSid},${#imaSid})
+	</insert>
 </mapper>

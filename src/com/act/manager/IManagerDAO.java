@@ -18,4 +18,9 @@ public interface IManagerDAO
 	
 	public int deleteSittingReport(ManagerDTO dto);
 	public int deleteWalkReport(ManagerDTO dto);
+	
+	public ArrayList<ManagerDTO> profileReportList();
+	public int deleteProfileReport(ManagerDTO dto);
+	
+	public ArrayList<ManagerDTO> sittingCompleteList();
 }
