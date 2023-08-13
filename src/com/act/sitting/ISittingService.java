@@ -24,4 +24,6 @@ public interface ISittingService
 	public int sittingSlCount(SittingDTO dto);
 	public SittingDTO listBySpSid(int spSid);
 	public ArrayList<SittingDTO> spRest(int spSid);
+	public ArrayList<SittingDTO> sittingReviewsBySpSid(int spSid);
+	public ArrayList<SittingDTO> sittingReviewsPhoto(int spSid);
 }
