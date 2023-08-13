@@ -295,6 +295,29 @@ public class SittingService implements ISittingService
 		
 		return restList;
 	}
+	
+	
+	// 펫시팅 예약화면용 돌봄장소의 후기들(spSid를 가지고 조회)
+	@Override
+	public ArrayList<SittingDTO> sittingReviewsBySpSid(int spSid)
+	{
+		ArrayList<SittingDTO> reviews = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		reviews = dao.sittingReviewsBySpSid(spSid);
+		
+		return reviews;
+	}
+	
+	
+	// 펫시팅 돌봄장소의 후기의 사진들 조회(후기러의 닉네임 포함)
+	@Override
+	public ArrayList<SittingDTO> sittingReviewsPhoto(int spSid)
+	{
+		ArrayList<SittingDTO> reviewPhotos = new ArrayList<SittingDTO>();
+		
+		
+		return reviewPhotos;
+	}
 		
 		
 		
