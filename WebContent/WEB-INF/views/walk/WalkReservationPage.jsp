@@ -18,6 +18,9 @@ h2, h4, h5 {
 	font-family: "Jua";
 	font-size: 20pt;
 }
+
+*{font-family: "Jua";}
+
 </style>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">

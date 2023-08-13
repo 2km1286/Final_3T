@@ -23,10 +23,7 @@
   border-radius: 10px; /* 테두리의 둥근 정도 설정 */
 }
 
-h2, h3, h4, h5 {
-	font-family: "Jua";
-	font-size: 20pt;
-}
+*{font-family: "Jua";}
 
 .custom-card {
 	border: 2px solid #3498db; /* 테두리 색상 */
@@ -112,7 +109,7 @@ h2, h3, h4, h5 {
 }
 
 
-.upload-btn .btn {
+.imageUpload {
   color: white;
   background-color: #ffc0cb;
   border: none;
@@ -122,7 +119,7 @@ h2, h3, h4, h5 {
   transition: background-color 0.3s;
 }
 
-.upload-btn .btn:hover {
+.imageUpload .btn:hover {
   background-color: #2980b9;
 }
 
@@ -242,7 +239,7 @@ h2, h3, h4, h5 {
 						<div class="text-center">
 							<h5>깜돌이</h5>							
 							<h6 class="text-muted">소형견 / 7살 / 남자</h6>
-							<p class="card-text">
+							<p class="card-text" style="font-size: 1.3rem;">
      							 🐾 특이사항: 물을 무서워함
    							</p>
 					    </div><br><br>
@@ -253,7 +250,7 @@ h2, h3, h4, h5 {
 						<div class="text-center">
 							<h5>퍼피</h5>							
 							<h6 class="text-muted">소형견 / 7살 / 남자</h6>
-							<p class="card-text">
+							<p class="card-text" style="font-size: 1.3rem;">
      							 🐾 특이사항: 물을 무서워함
    							</p>
 					   </div>
@@ -352,27 +349,28 @@ h2, h3, h4, h5 {
 							<div class="col-md cardInfo">
 								<div class="card-body" style="overflow-y: auto; height: 800px;">
 									
-									<div class="text-center">
-										<h5>2023년 6월 8일</h5>
-									</div>
-									
 									<div style="margin-left: 220px;">
-										<label class="upload-btn"> <input type="file"
+										<!-- <label class="upload-btn"> <input type="file"
 											accept="image/*" style="display: none;" />
 											<button class="btn btn-success">
 												<i class="fas fa-camera"></i> 사진 추가
-											</button>
-										</label>
+											</button> -->
+											
+											<label for="imageUpload" class="form-label">
+												<i class="fas fa-camera"></i> 사진 추가
+											</label><br>
+											<input type="file" id="imageUpload" accept="image/*">
+										<!-- </label> -->
 									</div>
-
-
+									<br>
+									<hr>
 									<div class="container mt-5">
 										<div class="row">
 											<div class="col-1">
 												<div class="timeline-point"></div>
 											</div>
 											<div class="col-9">
-												<h6 class="text-muted">12시 40분</h6>
+												<h6 class="text-muted">2023년 6월 8일 12시 40분</h6>
 											</div>
 										</div>
 										<div class="text-center">
@@ -389,7 +387,7 @@ h2, h3, h4, h5 {
 												<div class="timeline-point"></div>
 											</div>
 											<div class="col-9">
-												<h6 class="text-muted">13시 40분</h6>
+												<h6 class="text-muted">2023년 6월 8일 13시 40분</h6>
 											</div>
 										</div>
 										<div class="text-center">
@@ -403,15 +401,15 @@ h2, h3, h4, h5 {
 												<div class="timeline-point"></div>
 											</div>
 											<div class="col-9">
-												<h6 class="text-muted">14시 40분</h6>
+												<h6 class="text-muted"> 2023년 6월 8일 14시 40분</h6>
 											</div>
 										</div>
 										<div class="text-center">
 											<img src="images/walktestpro.jpg" alt="" style="width: 400px; height:250px;">
 										</div>
 									</div>
-									
-
+									<br>
+									<hr>
 								<div class="center-button-container">
 									<button class="btn btn-success timeline-end-button" style="width: 450px;">
 	  								<i class="fas fa-stopwatch"></i> 타임라인 종료

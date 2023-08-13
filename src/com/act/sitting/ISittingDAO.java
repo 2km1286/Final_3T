@@ -17,6 +17,20 @@ public interface ISittingDAO
 	// 회원의 펫시터 면허번호 유무 확인
 	public int slCount(SittingDTO dto);
 
+	public ArrayList<SittingDTO> booklist(String memSid);
+	
+	// 펫시터 접수함 생성
+	public int addTestRevice(String memSid);
+	
+	// 접수번호 가져오기
+	public int receiveNum();
+	
+	// 펫시터 문제은행 가져오기
+	public ArrayList<SittingQuestionDTO> questionSittingList();
+	
+	// 펫시터 문제지 테이블 insert
+	public int addSittingQuestion(int strsid);
+  
 	// 회원번호로 예전~현재 돌봄장소 기본정보 조회
 	public ArrayList<SittingDTO> sittingPlaceBasic(String memSid);
 	
@@ -50,4 +64,5 @@ public interface ISittingDAO
 	
 	// SRWSID 로 후기 한 건 조회
 	public SittingDTO sittingReview(int srwSid);
+
 }

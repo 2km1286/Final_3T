@@ -130,22 +130,22 @@ public class SittingController
 	public String main()
 	{
 		String result = "";
-		result = "/WEB-INF/views/sitting/SittingTermsPage.jsp";
+		result = "/WEB-INF/views/index/TermsPage.jsp";
 		return result;
 	}
 	
-	// 펫시터 약관 동의하고 페이지로 감
+	// 펫시터 약관 동의하고 테스트 페이지로 감
 	@RequestMapping("/sittingteststart.action")
 	public String openSittingTestStart()
 	{
 		String result = "";
-		result = "/WEB-INF/views/sitting/SittingTestPage.jsp";
+		result = "/WEB-INF/views/index/TestPage.jsp";
 
 		return result;
 	}
 
-	
-	@RequestMapping("/sittingtestpass.action")
+	// 펫시터 테스트 페이지에서 합격하면 가는 페이지
+	@RequestMapping("/sittingresultform.action")
 	public String openSittingTestPass()
 	{
 		String result = "";

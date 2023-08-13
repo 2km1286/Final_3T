@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 @Controller
 public class SittingService implements ISittingService
@@ -141,6 +142,31 @@ public class SittingService implements ISittingService
 		result = dao.sittingPlaceTags(spSid);
 		
 		return result;
+	}
+	
+	// 펫시터 자격 테스트 과정
+	@Transactional
+	public ArrayList<SittingQuestionDTO> sittingTest(String memSid)
+	{
+		ArrayList<SittingQuestionDTO> question = new ArrayList<>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		// 약관동의시 접수함 insert
+		dao.addTestRevice(memSid);
+		
+		// 접수번호 가져오기
+		int strsid = dao.receiveNum();
+		
+		// 문제 은행에서 문제 가져오기
+		question = dao.questionSittingList();
+		
+		// 가져온 문제를 시험지 테이블에 넣기
+		dao.addSittingQuestion(strsid);
+		
+		// 사용자의 점수를 합산하여 합격 범례테이블에서 점수를 비교
+		
+		return question;
 	}
 
 	// 회원번호로 펫시터인 나에게 달린 후기 조회
