@@ -10,6 +10,14 @@
 		,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
 		FROM SITTING_PLACE_LIST_VIEW
 	</select>
+	
+	<select id="listBySpSid" resultType="com.act.sitting.SittingDTO">
+		SELECT JMNICKNAME, SPTITLE, SPCONTENT,
+		SPADDR1, SPADDR2, EXTRAADDR, MEMSID, SPHSID, SPHSTART, SPHEND
+		,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
+		FROM SITTING_PLACE_LIST_VIEW
+		WHERE SPSID = #{spSid}
+	</select>
 
 	<select id="IndexTagList"
 		resultType="com.act.sitting.SittingDTO">
@@ -51,6 +59,8 @@
 		WHERE MEMSID = #{memSid}
 		ORDER BY SPCREATED DESC
 	</select>
+	
+	
 	
 	<select id="sittingPlaceTags" resultType="com.act.sitting.SittingDTO">
 		SELECT ISPTNAME
@@ -210,6 +220,14 @@
 		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID
 		FROM SITTING_REVIEW_VIEW
 		WHERE SRWSID= #{srwSid}
+	</select>
+	
+	<select id="spRest" resultType="com.act.sitting.SittingDTO">
+		SELECT SPH.SP_SID AS SPSID , TO_CHAR(SR.SR_START, 'YYYY-MM-DD') AS SRSTART, TO_CHAR(SR.SR_END, 'YYYY-MM-DD') AS SREND
+		FROM SITTING_PLACE_HUB SPH JOIN SITTING_REST SR
+		                           ON SPH.SPH_SID = SR.SPH_SID
+		                           WHERE SPH.SP_SID=#{spSid}
+		                           ORDER BY SR.SR_START
 	</select>
 
 
