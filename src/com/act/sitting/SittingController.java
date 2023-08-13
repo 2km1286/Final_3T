@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SittingController
 {
 	@Autowired
-	private SittingService sittingService;
+	private ISittingService sittingService;
 
 	// 펫시팅(돌봄장소) 리스트업 페이지로 가기
 	@RequestMapping("/sittinglistpage.action")

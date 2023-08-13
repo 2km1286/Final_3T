@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.act.sitting.ISittingService;
 import com.act.sitting.SittingService;
+import com.act.walk.IWalkService;
 import com.act.walk.WalkService;
 
 @Controller
@@ -20,10 +22,10 @@ public class MemberController
 	private IMemberService memberService;
 	
 	@Autowired
-	private WalkService walkService;
+	private IWalkService walkService;
 	
 	@Autowired
-	private SittingService sittingService;
+	private ISittingService sittingService;
 
 	// 메인페이지로 가는 액션
 	@RequestMapping("/mainpage.action")
