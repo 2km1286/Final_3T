@@ -93,10 +93,21 @@ public class SittingController
 	
 	// 마이페이지 펫시팅의 돌봄장소 수정하기를 눌렀을 때, AJAX처리
 	@RequestMapping("/updatespinfoform.action")
-	public String updateSPInfoForm()
+	public String updateSPInfoForm(HttpSession session ,Model model)
 	{
 		String result = "";
-		// AJAX
+		String memSid = (String)session.getAttribute("memSid");
+		
+		// 현재 운영중인 돌봄장소번호
+		int spSid = sittingService.sittingPlaceBasic(memSid).get(0).getSpSid();
+		
+		// 현재 운영중인 돌봄장소의 기본정보(태그, 사진, 휴무일 제외)
+		model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0));
+		
+		// 현재 운영중인 돌봄장소의 특이사항
+		model.addAttribute("tags", sittingService.sittingPlaceTags(spSid));
+		
+		
 		result = "/WEB-INF/ajax/UpdateSPInfoForm.jsp";
 		return result;
 	}
