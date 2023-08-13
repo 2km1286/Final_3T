@@ -459,7 +459,7 @@ p {
 						<div class="row justify-content-between">
 					</c:if>
 
-					<div class="card" id="spPost" style="margin: 5px; width: 32%; margin-bottom: 50px;">
+					<div class="card sp" id="spPost" data-sp-sid="${dto.spSid }" style="margin: 5px; width: 32%; margin-bottom: 50px;">
 						
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
@@ -509,12 +509,10 @@ p {
 			{
 		
 				// 펫시팅 돌봄장소 클릭시 예약화면
-				$("#spPost").click(function()
-				{
-					$(location).attr("href", "sittingreservationpage.action?spSid=" + $("#spSid").val());
+				$(".card.sp").click(function() {
+				    var spSidValue = $(this).data("sp-sid");
+				    $(location).attr("href", "sittingreservationpage.action?spSid=" + spSidValue);
 				});
-				
-				
 				
 				
 				
