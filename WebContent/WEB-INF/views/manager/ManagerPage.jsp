@@ -5,6 +5,7 @@
 	String cp = request.getContextPath();
 %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -159,8 +160,15 @@ hr
   }
 </style>
 <script type="text/javascript">
-$(function()
+	$(function()
 		{
+			
+		var flag = <%=request.getAttribute("flag")%>
+		 	if (flag == 1 || flag == 2) 
+		 		managerReportList();
+			
+
+	    
 			// 처리완료된 신고
 			$("#completeReport").click(function()
 			{
@@ -185,43 +193,30 @@ $(function()
 			// 신고 현안 및 비상관리
 			$("#reportList").click(function()
 			{
-				$.ajax(
-				{
-					type:"POST"
-					, url:"managerreportlist.action"
-					, async:true
-					, success:function(data)
-					{
-						$("#mainContent").html(data);
-											
-					}
-					, error:function(e)
-					{
-						alert(e.responseText);
-					}
-					
-				});	
+				managerReportList();
 			});
 			
 			$("#memberList").click(function()
 					{
 						$.ajax(
-						{
-							type:"POST"
-							, url:"managermemberlist.action"
-							, async:true
-							, success:function(data)
-							{
-								$("#mainContent").html(data);
-													
-							}
-							, error:function(e)
-							{
-								alert(e.responseText);
-							}
-							
-						});	
+								{
+									type:"POST"
+									, url:"managermemberlist.action"
+									, async:true
+									, success:function(data)
+									{
+										$("#mainContent").html(data);
+															
+									}
+									, error:function(e)
+									{
+										alert(e.responseText);
+									}
+									
+								});	
 					});
+			
+			
 			$("#graph").click(function()
 					{
 						$.ajax(
@@ -263,8 +258,28 @@ $(function()
 			
 			$("#adminHome").click(function()
 			{
-				window.location.href = "managermain.action";
+				window.location.href = "managermain.action?flag="+1;
 			});
+			
+			
+			
+			
+			function managerReportList() 
+			{
+		        $.ajax({
+		            type: "POST",
+		            url: "managerreportlist.action?flag="+flag,
+		            async: true,
+		            success: function(data) {
+		                $("#mainContent").html(data);
+		            },
+		            error: function(e) {
+		                alert(e.responseText);
+		            }
+		        });
+		    }
+			
+			
 		});
 </script>
 

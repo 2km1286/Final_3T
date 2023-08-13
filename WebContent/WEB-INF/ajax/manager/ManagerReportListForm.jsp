@@ -35,6 +35,7 @@ String cp = request.getContextPath();
   	transform: scale(1.05); /* 호버 시 약간 커지는 효과 */
 }
 
+
 /* 애니메이션 흔들기 */
 @keyframes vibration {
   0% { transform: translateX(0) translateY(0); }
@@ -54,33 +55,69 @@ String cp = request.getContextPath();
 <script type="text/javascript">
 
 	//페이지 로딩 시에 실행되는 코드
+	
 	$(document).ready(function()
 	{
-		 var count = <%=request.getAttribute("count") %>
-		 if (count < 1) 
-		 {
-			 $("#emergency-report").css("animation", "none");
-		 }
-		 
-		 $("#pet-sitting-report").click(function()
-					{
-						$.ajax(
-						{
-							type:"POST"
-							, url:"sittingreportlist.action"
-							, async:true
-							, success:function(data)
-							{
-								$("#subContent").html(data);
-													
-							}
-							, error:function(e)
-							{
-								alert(e.responseText);
-							}
-							
-						});	
-					});
+		var count =<%=request.getAttribute("count")%>
+		if (count < 1)
+			{
+				$("#emergency-report").css("animation", "none");
+			}
+
+		var flag =<%=request.getAttribute("flag")%>
+			if (flag == 1)
+				PetSittingReport();
+			if (flag == 2)
+				DogWalkReport();
+
+		
+		
+		
+		$("#dog-walking-report").click(function()
+		{
+			DogWalkReport();
+		});
+
+		function PetSittingReport()
+		{
+			$.ajax(
+			{
+				type : "POST",
+				url : "sittingreportlist.action",
+				async : true,
+				success : function(data)
+				{
+					$("#subContent").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
+			});
+		}
+		
+		function DogWalkReport()
+		{
+			$.ajax(
+			{
+				type : "POST",
+				url : "walkreportlist.action",
+				async : true,
+				success : function(data)
+				{
+					$("#subContent").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
+			});
+		}
+
 	});
 </script>
 </head>
@@ -109,6 +146,7 @@ String cp = request.getContextPath();
 					</tr>
 				</thead>
 				<tbody>
+				
 						
 					
 				</tbody>
