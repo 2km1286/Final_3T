@@ -122,7 +122,7 @@ public class SittingService implements ISittingService
 		  
 		  for(SittingDTO s : filtertaglist)
 		  {
-			  System.out.println("내가 검색하는 태그 : " + s.getIsptName());
+			  System.out.println("내가 검색하는 태그들을 가지고 있는 돌봄장소의 모든 태그 : " + s.getIsptName());
 		  }
 		  
 		  
