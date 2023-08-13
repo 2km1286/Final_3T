@@ -1,5 +1,6 @@
 package com.act.sitting;
 
+import java.util.List;
 
 /*
 JM_NICKNAME, SP_TITLE, SP_ADDR1, SP_ADDR2, MEM_SID, SPH_SID, SHP_START, SHP_END, 
@@ -23,7 +24,6 @@ public class SittingDTO
 
 	// INDEX_SITTING_PLACE_TAG
 	private int isptSid;
-	private int isptSid1, isptSid2,isptSid3, isptSid4,isptSid5,isptSid6,isptSid7,isptSid8,isptSid9,isptSid10,isptSid11;
 	private String isptName;
 	
 	// SITTING_BOOK_VIEW	// sbStart 가 나눠져있는건 달력js에서 사용하기 위함, pmemSid는 예약을 요청한 멤버시드	
@@ -32,6 +32,32 @@ public class SittingDTO
 	
 	// 펫시팅 리스트 검색조건 - 날짜
 	private String datePicker;
+	
+	
+	private String isptSidList;
+	private List<Integer> isptSidListInteger;
+	
+	
+
+	public List<Integer> getIsptSidListInteger()
+	{
+		return isptSidListInteger;
+	}
+
+	public void setIsptSidListInteger(List<Integer> isptSidListInteger)
+	{
+		this.isptSidListInteger = isptSidListInteger;
+	}
+
+	public String getIsptSidList()
+	{
+		return isptSidList;
+	}
+
+	public void setIsptSidList(String isptSidList)
+	{
+		this.isptSidList = isptSidList;
+	}
 
 	public String getJmNickName()
 	{
@@ -281,116 +307,6 @@ public class SittingDTO
 	public void setIsptSid(int isptSid)
 	{
 		this.isptSid = isptSid;
-	}
-
-	public int getIsptSid1()
-	{
-		return isptSid1;
-	}
-
-	public void setIsptSid1(int isptSid1)
-	{
-		this.isptSid1 = isptSid1;
-	}
-
-	public int getIsptSid2()
-	{
-		return isptSid2;
-	}
-
-	public void setIsptSid2(int isptSid2)
-	{
-		this.isptSid2 = isptSid2;
-	}
-
-	public int getIsptSid3()
-	{
-		return isptSid3;
-	}
-
-	public void setIsptSid3(int isptSid3)
-	{
-		this.isptSid3 = isptSid3;
-	}
-
-	public int getIsptSid4()
-	{
-		return isptSid4;
-	}
-
-	public void setIsptSid4(int isptSid4)
-	{
-		this.isptSid4 = isptSid4;
-	}
-
-	public int getIsptSid5()
-	{
-		return isptSid5;
-	}
-
-	public void setIsptSid5(int isptSid5)
-	{
-		this.isptSid5 = isptSid5;
-	}
-
-	public int getIsptSid6()
-	{
-		return isptSid6;
-	}
-
-	public void setIsptSid6(int isptSid6)
-	{
-		this.isptSid6 = isptSid6;
-	}
-
-	public int getIsptSid7()
-	{
-		return isptSid7;
-	}
-
-	public void setIsptSid7(int isptSid7)
-	{
-		this.isptSid7 = isptSid7;
-	}
-
-	public int getIsptSid8()
-	{
-		return isptSid8;
-	}
-
-	public void setIsptSid8(int isptSid8)
-	{
-		this.isptSid8 = isptSid8;
-	}
-
-	public int getIsptSid9()
-	{
-		return isptSid9;
-	}
-
-	public void setIsptSid9(int isptSid9)
-	{
-		this.isptSid9 = isptSid9;
-	}
-
-	public int getIsptSid10()
-	{
-		return isptSid10;
-	}
-
-	public void setIsptSid10(int isptSid10)
-	{
-		this.isptSid10 = isptSid10;
-	}
-
-	public int getIsptSid11()
-	{
-		return isptSid11;
-	}
-
-	public void setIsptSid11(int isptSid11)
-	{
-		this.isptSid11 = isptSid11;
 	}
 
 	public String getIsptName()
