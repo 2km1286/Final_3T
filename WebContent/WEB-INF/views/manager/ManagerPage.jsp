@@ -4,6 +4,8 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,41 +115,6 @@ hr
     background-color: #0056b3;
 }
 
-#emergency-report
-{
-   background-color: #FF0000; /* 붉은색 배경 */
-   color: #FFFFFF; /* 흰색 텍스트 */
-   font-size: 16px;
-   padding: 10px 20px;
-   border: none;
-   border-radius: 5px;
-   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* 그림자 효과 */
-   transition: background-color 0.3s ease; /* 색상 변경 시 부드러운 전환 */
-   cursor: pointer;
-   animation: vibration 3s infinite; /* 0.5초 간격으로 진동하는 애니메이션 반복 적용 있을 경우에만?? 가능?*/
-   
-  
-}
-#emergency-report:hover
-{
-	background-color: #FF3333; /* 더 진한 붉은색 배경 */
-  	transform: scale(1.05); /* 호버 시 약간 커지는 효과 */
-}
-
-/* 애니메이션 흔들기 */
-@keyframes vibration {
-  0% { transform: translateX(0) translateY(0); }
-  10% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
-  20% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
-  30% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
-  40% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
-  50% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
-  60% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
-  70% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
-  80% { transform: translateX(2px) translateY(2px) rotate(-2deg); }
-  90% { transform: translateX(-2px) translateY(-2px) rotate(2deg); }
-  100% { transform: translateX(0) translateY(0); }
-}
 
 
 .card-buttons {
@@ -193,8 +160,15 @@ hr
   }
 </style>
 <script type="text/javascript">
-$(function()
+	$(function()
 		{
+			
+		var flag = <%=request.getAttribute("flag")%>
+		 	if (flag == 1 || flag == 2) 
+		 		managerReportList();
+			
+
+	    
 			// 처리완료된 신고
 			$("#completeReport").click(function()
 			{
@@ -219,43 +193,30 @@ $(function()
 			// 신고 현안 및 비상관리
 			$("#reportList").click(function()
 			{
-				$.ajax(
-				{
-					type:"POST"
-					, url:"managerreportlist.action"
-					, async:true
-					, success:function(data)
-					{
-						$("#mainContent").html(data);
-											
-					}
-					, error:function(e)
-					{
-						alert(e.responseText);
-					}
-					
-				});	
+				managerReportList();
 			});
 			
 			$("#memberList").click(function()
 					{
 						$.ajax(
-						{
-							type:"POST"
-							, url:"managermemberlist.action"
-							, async:true
-							, success:function(data)
-							{
-								$("#mainContent").html(data);
-													
-							}
-							, error:function(e)
-							{
-								alert(e.responseText);
-							}
-							
-						});	
+								{
+									type:"POST"
+									, url:"managermemberlist.action"
+									, async:true
+									, success:function(data)
+									{
+										$("#mainContent").html(data);
+															
+									}
+									, error:function(e)
+									{
+										alert(e.responseText);
+									}
+									
+								});	
 					});
+			
+			
 			$("#graph").click(function()
 					{
 						$.ajax(
@@ -294,6 +255,31 @@ $(function()
 							
 						});	
 					});
+			
+			$("#adminHome").click(function()
+			{
+				window.location.href = "managermain.action?flag="+1;
+			});
+			
+			
+			
+			
+			function managerReportList() 
+			{
+		        $.ajax({
+		            type: "POST",
+		            url: "managerreportlist.action?flag="+flag,
+		            async: true,
+		            success: function(data) {
+		                $("#mainContent").html(data);
+		            },
+		            error: function(e) {
+		                alert(e.responseText);
+		            }
+		        });
+		    }
+			
+			
 		});
 </script>
 
@@ -308,12 +294,12 @@ $(function()
         <!-- 사이드바 -->
         <div class="col-lg-3">
             <div id="sidebar-wrapper" style="background-color: #312A25;">
-            <h3 style="margin-left: 10px; color: white; margin-top: 20px;">
-            <img alt="adminImg" src="images/adminImg.png" width="50px;" style="margin: 5px;">
+            <h3 style="margin-left: 10px; color: white; margin-top: 20px; cursor: pointer;" id="adminHome">
+            <img alt="adminImg" src="images/adminImg.png" width="50px;" id="adminImg" style="margin: 5px;">
             	관리 페이지</h3>
             	
-            	<span style="font-size: small; color: blue; margin-left:100px; font-style: italic;">
-            	<span style="color:white;">접속된 관리자 : </span>김기민</span>
+            	<span style="font-size: small; color: gray; margin-left:100px; font-style: italic;">
+            	<span style="color:white;">접속된 관리자 : </span>&nbsp; 김기민</span>
                 <ul class="sidebar-nav" style="margin-left:0; margin-top: 50px;">
                     
                     <li id="reportList">
@@ -338,7 +324,10 @@ $(function()
 
         <!-- 메인 콘텐츠 -->
         <div class="col" id="mainContent" style="margin-left: -200px;">
-			<c:import url="/WEB-INF/ajax/manager/ManagerReportListForm.jsp"></c:import>
+        	<div style="text-align: center; margin-top:30%; margin-left: 50%;">
+			<img alt="adminMain" src="images/adminMain.png" width="400px;">
+			<h2 style="color: gray;">관리자 메뉴입니다</h2>
+			</div>
 		</div>
 	</div>
 </div>

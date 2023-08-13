@@ -12,4 +12,75 @@
 		CRYPTPACK.ENCRYPT(#{miPw}, #{miPw})
 	</select>
 	
+	<select id="sittingSearchEmerg" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS EMERGCOUNT
+		FROM SITTING_EMERG_RECEIVE SER
+		LEFT JOIN SITTING_EMERG_COMPLETE SEC
+		ON SER.SER_SID = SEC.SEC_SID
+		WHERE SEC.SEC_SID IS NULL
+	</select>
+	
+	<select id="walkSearchEmerg" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS WALK_EMERGCOUNT
+		FROM WALK_EMERG_RECEIVE WER
+		LEFT JOIN WALK_EMERG_COMPLETE WEC
+		ON WER.WER_SID = WEC.WEC_SID
+		WHERE WEC.WEC_SID IS NULL
+	</select>
+	
+	<select id="searchManagerName" resultType="java.lang.String">
+		SELECT MI_NAME AS NAME
+		FROM MANAGER_INFO
+		WHERE MI_SID = #{miSid}
+	</select>
+	
+	<!-- 펫시터 신고접수 -->
+	<select id="sittingReportList" resultType="com.act.manager.ManagerDTO">
+		SELECT SRR_SID AS srrSid
+			 ,JM_NICKNAME AS jmNickName
+			 ,IR_NAME AS irName
+			 ,SRR_DETAIL AS srrDetail
+			 ,SRR_DATE AS srrDate
+			 ,SP_SID AS spSid
+			 ,IP_SID AS ipSid
+    	FROM VIEW_REPORT_SITTING
+	</select>
+	
+	<!-- 대리산책 신고접수 -->
+	<select id="walkReportList" resultType="com.act.manager.ManagerDTO">
+		SELECT WRR_SID AS wrrSid
+			 ,JM_NICKNAME AS jmNickName
+			 ,IR_NAME AS irName
+			 ,WRR_DETAIL AS wrrDetail
+			 ,WRR_DATE AS wrrDate
+			 ,WP_SID AS wpSid
+			 ,IP_SID AS ipSid
+    	FROM VIEW_REPORT_WALK
+	</select>
+	
+	<!-- 펫시팅 블라인드에 따라 업데이트 시켜줌 -->
+	<update id="updateSittingPublic" parameterType="java.lang.Integer">
+		UPDATE SITTING_PLACE
+		SET IP_SID = #{ipSid}
+		WHERE SP_SID = #{spSid}
+	</update>
+	
+	<!-- 대리산책 블라인드에 따라 업데이트 시켜줌 -->
+	<update id="updateWalkPublic" parameterType="java.lang.Integer">
+		UPDATE WALK_POST
+		SET IP_SID = #{ipSid}
+		WHERE WP_SID = #{wpSid}
+	</update>
+	
+	<!-- 펫시팅 반려 -->
+	<delete id="deleteSittingReport" parameterType="java.lang.Integer">
+	 	DELETE FROM SITTING_REPORT_RECEIVE
+    	WHERE SRR_SID = #{srrSid}
+	</delete>
+	
+	<!-- 대리산책 반려 -->
+	<delete id="deleteWalkReport" parameterType="java.lang.Integer">
+		DELETE FROM WALK_REPORT_RECEIVE
+    	WHERE WRR_SID = #{wrrSid}
+	</delete>
 </mapper>

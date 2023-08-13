@@ -172,6 +172,8 @@
 /* 마이페이지 레이아웃 스타일 */
 @import url('https://fonts.googleapis.com/css?family=Jua:400');
 
+div.noNotice {margin: 110px 0px 0px 190px;}
+
 *{font-family: "Jua"}
 
 .mypageSidevar { font-size: 15pt;}
@@ -206,10 +208,19 @@ span.badge
 	 border-radius: 3px;
 	 font-size: 18px;
 }
+.detailBtn:hover
+{
+	 border: 1px solid #4caf50;
+	 background-color: #4caf50;
+	 padding: 5px 5px 5px 5px;
+	 color: white;
+	 border-radius: 3px;
+	 font-size: 18px;
+}
 
 /* 알림카드, 예약내역카드 */
 div.card { margin-left: 10%; margin-bottom: 20px; width: 80%; border: 1px solid black;}
-div.card-header {padding: 5px; font-size: 14pt; background-color: white; border-bottom: 1px solid black;}
+div.card-header {padding: 5px; font-size: 14pt; border-bottom: 1px solid black;}
 sapn.card-text {font-size: 14pt;}
 
 /* 돌봄공간 사진 버튼 */
@@ -236,22 +247,12 @@ div.reviewCard { margin-left: 25%; margin-bottom: 20px; width: 50%;}
 .EndTh, .EndTd { border: 1px solid #4caf50; text-align: center; padding: 8px; }
 .EndTh { background-color: #4caf50;}
 
-/* 탈퇴하기버튼 */
-#withdraw-button {
-    position: absolute;
-    right: 0;
-    font-size: 10pt;
-    width: 80px;
-    margin-right: 10px;
-    border: 0;
-    color: black;
-}
 /* 반려견카드  */
-div.petCard {width: 25%;}
+div.petCard {width: 350px; margin-left: 30%;}
 
 /* 반려견 추가 버튼 */
 #petInsertBtn {background-color: white; border: 0; font-size: 30pt; color: #4caf50;}
-
+#petInsertBtn:hover {background-color: white; border: 1px solid #4caf50; font-size: 30pt; color: #4caf50;}
 button.list-group-item { margin-bottom: 3px;}
 
 </style>

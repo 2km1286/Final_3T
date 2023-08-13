@@ -70,10 +70,10 @@
                        바쁜 일상 속에서 아이가 행복하게 미소 짓는 모습을 상상해보세요!
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn-1">
+                      <a href="sittinglistpage.action" class="btn-1">
                         펫시터 찾기
                       </a>
-                      <a href="" class="btn-2">
+                      <a href="sittingtest.action" class="btn-2">
                         펫시터 지원
                       </a>
                     </div>
@@ -104,10 +104,10 @@
                       행복한 산책 시간을 선물하고 싶은 당신을 위해 기다리고 있습니다!
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn-1">
+                      <a href="walklistpage.action" class="btn-1">
                         대리산책러 찾기
                       </a>
-                      <a href="" class="btn-2">
+                      <a href="walktest.action" class="btn-2">
                         대리산책러 지원
                       </a>
                     </div>

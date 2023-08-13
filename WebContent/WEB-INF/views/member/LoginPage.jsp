@@ -4,14 +4,13 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset='UTF-8'>
 <title>로그인</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
 
 	$(function()
@@ -20,7 +19,18 @@
 	        $("#message").fadeIn().delay(2000).fadeOut();	// 보였다 사라지기
 
 		  <% } %>
-		// 회원가입 폼 페이지로 가기
+		 
+		  // 회원가입하고 난 후 로그인으로 이동 시 판단
+		<% if ("0".equals((String)request.getAttribute("flag"))) { %>
+	        alert("회원 가입을 환영합니다!");	// 로그인 폼 요청 시 flag 확인에 따라 회원가입에서 온건지..
+		  <% } %>
+		  
+		  // 회원가입하고 난 후 로그인으로 이동 시 판단
+		<% if ("1".equals((String)request.getAttribute("flag"))) { %>
+	        alert("비밀번호가 변경되었습니다.");	// 로그인 폼 요청 시 flag 확인에 따라 회원가입에서 온건지..
+		  <% } %>
+		  
+		  
 		$("#join-button").click(function()
 		{
 			window.location.href = "joinpage.action";
@@ -49,7 +59,11 @@
 	                
 	                if (isAdminLogin) {
 	                    // 관리자 체크가 되어 있을 때
-	                    $(location).attr("href", "managerlogin.action?miId=" + jmId + "&miPw=" + jmPw);
+	                    $(location).attr("href", "managerlogin.action?miId=" + jmId + "&miPw=" + jmPw+"&flag="+1);
+	                    /* window.location.href = "managermain.action?miId="; */
+	                	// this.action = "java002";
+		                    //$("#loginForm").submit();
+
 	                } else {
 	                    // 일반 로그인
 	                    $("#loginForm").submit();
@@ -195,8 +209,15 @@ form button {
 }
 
 form button:hover {
-  background-color: #f5f7f9;
+  background-color: rgba(255, 255, 255, 0.4);
 }
+#join-button:hover
+{
+	 background-color: light;
+	 color:white;
+}
+
+
 </style>
 <!-- FONT jua -->
   <style>
@@ -285,7 +306,7 @@ margin-left: 20px;
         
         
         <button type="button" id="join-button">회원가입</button>
-        <button type="button" id="login-button">로그인</button><br>
+        <button type="button" id="login-button" style="background-color:#53e3a6; color: white;">로그인</button><br>
         
       </form>
       

@@ -11,52 +11,64 @@
 <title>돌봄장소수정폼</title>
 
 <style type="text/css">
-.place
-{
-	padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
-  	border-right: 2px solid black;
-}
-.carousel-control-prev, .carousel-control-next
-{
-    background-color: transparent; /* 배경색 투명으로 설정 */
-    border: none; /* 테두리 제거 */
-}
-.sittingtime { font-size: 13pt;}
-.mypageWalkMonDon {margin-left: 500px;}
-.firstInfo { font-size: 15pt; font-weight: bold; color: #2dd0fc;}
-div .card { width: 700px;}
+
 </style>
 
 </head>
 <body>
 
 <div class="row" id="sittingPlaceDiv">
-	<div class="col place">
+
+	<div class="col container-mypage" style="width: 780px; margin-left: 5%;">
 		<div class="row">	
 			<div class="col-md">	
-				<h2><span class="badge">핫도그님의 돌봄장소</span></h2>
+				<span class="badge">${info.jmNickName }님의 돌봄장소 수정하기</span>
 			</div>
 		</div>
 			
-		<div class="card-body">
-		    <h3><span class="badge">돌봄장소 특이사항</span></h3>
+		<div class="infoOneNoline">
+		    <h4><span class="smallTitle">돌봄장소 특이사항</span></h4>
+		    
+		    <div class="original" style="margin-bottom: 20px;">
+		    <span class="" style="font-size: 13pt; font-weight: bold;">기존에 선택된 돌봄장소 특이사항</span><br>
+		    <c:forEach items="${tags }" var="tag">
+					<button class="btn btn-warning">${tag.isptName}</button>
+			</c:forEach>
+			</div>1	홈캠 가능
+2	놀이 가능
+3	목욕 가능
+4	응급처치가능
+5	반려견있음
+6	꼼꼼한 타임라인 가능
+7	모발관리 가능
+8	비흡연자
+9	장애견 케어 가능
+10	노견 케어 가능
+11	대형견 가능
+			
+			<span class="" style="font-size: 13pt; font-weight: bold;">새로 선택할 돌봄장소 특이사항</span><br>
 		    <div class="checkBox">
-			  <input type="checkbox" id="homeCam">
+			  <input type="checkbox" id="homeCam" value="1">
 			  <label for="homeCam">홈캠 가능</label>
 			</div>
 			
 			<div  class="checkBox">
-			  <input type="checkbox" id="bathing">
+			  <input type="checkbox" id="play" value="2">
+			  <label for="emergencyTreatment">놀이가능</label>
+			</div>
+			
+			<div  class="checkBox">
+			  <input type="checkbox" id="bathing" value="3">
 			  <label for="bathing">목욕 가능</label>
 			</div>
 			
 			<div  class="checkBox">
-			  <input type="checkbox" id="emergencyTreatment">
+			  <input type="checkbox" id="emergencyTreatment" value="4">
 			  <label for="emergencyTreatment">응급처치 가능</label>
 			</div>
 			
 			<div class="checkBox">
-			  <input type="checkbox" id="petOwner">
+			  <input type="checkbox" id="petOwner" val>
 			  <label for="petOwner">반려견 있음</label>
 			</div>
 			
@@ -68,6 +80,11 @@ div .card { width: 700px;}
 			<div class="checkBox">
 			  <input type="checkbox" id="haircare">
 			  <label for="haircare">모발관리 가능</label>
+			</div>
+			
+			<div class="checkBox">
+			  <input type="checkbox" id="noSmoke">
+			  <label for="haircare">비흡연자</label>
 			</div>
 			
 			<div class="checkBox">
@@ -89,8 +106,17 @@ div .card { width: 700px;}
 			  <input type="checkbox" id="largeDog">
 			  <label for="largeDog">대형견 가능</label>
 			</div>
-			<br>
-		    <h3><span class="badge">최대 가능 견수</span></h3>
+		
+		</div>	
+		<div class="infoOneNoline">	
+		    <h4><span class="smallTitle">최대 가능 견수</span></h4>
+		    
+		    <div class="original" style="margin-bottom: 20px;">
+		    <span class="" style="font-size: 13pt; font-weight: bold;">기존에 선택된 최대 가능 견수</span><br>
+		    <button class="btn btn-warning">${info.spMaxPet }마리</button>
+			</div>
+			
+			<span class="" style="font-size: 13pt; font-weight: bold;">새로 선택할 최대 가능 견수</span><br>
 		   	<select name="max-dog" id="max-dog" class="form-select form-select-lg mb-3" aria-label="Large select example"
 		   			style="width: 400px;">
 		    		<option value="1">1마리</option>
@@ -99,31 +125,40 @@ div .card { width: 700px;}
 		    		<option value="4">4마리</option>
 		    		<option value="5">5마리</option>
 		    </select>
+		</div>
 		    
-		    <h3><span class="badge">돌봉장소 사진</span></h3>
+		<div class="infoOneNoline">   
+		    <h4><span class="smallTitle">돌봉장소 사진</span></h4>
 		    <input type="file">
+		</div>
+		
 		    
-		    <br><br>
-		  	<h3><span class="badge">돌봄장소 이름</span></h3>
-		    <input type="text" id="" class="" style="width: 600px;">
+		<div class="infoOneNoline">
+		  	<h4><span class="smallTitle">돌봄장소 이름</span></h4>
+		    <input type="text" id="" class="" style="width: 80%;">
+		</div>    
 		    
-		    <br><br>
-		  	<h3><span class="badge">돌봄장소 소개</span></h3>
+		<div class="infoOneNoline">   
+		  	<h4><span class="smallTitle">돌봄장소 소개</span></h4>
 		    <textarea rows="5" cols="80"></textarea>
+		</div>
 			
-			<br><br>
-		  	<h3><span class="badge">돌봄장소 주소</span></h3><!-- 주소는 수정불가 -->
-		    <input type="text" id="" class="" style="width: 600px;" readonly="readonly">
-		    
-		    <h3><span class="badge">돌봄장소 우편번호</span></h3><!-- 가져와져있음 -->
-			<input type="text" id="" class="" style="width: 600px;" readonly="readonly">
+		<div class="infoOneNoline">    
+	        <h4><span class="smallTitle">주소</span></h4>
+		    <div class="input-container">
+	        	<input type="text"name="jmAddr1" id="jmAddr1">
+	        	<button type="button" id="checkZipcodeBtn">우편번호</button>
+	        </div>
+	        <input type="text" name="jmZipCode" id="jmZipCode">
+	    </div>
+	    
+	    <div class="infoOneNoline">      
+	        <h4><span class="smallTitle">상세주소</span></h4>
+	        <input type="text" name="jmAddr2" id="jmAddr2">
+	    </div>
 			
-			<br><br>
-		  	<h3><span class="badge">돌봄장소 상세주소</span></h3><!-- 가져와져있음 -->
-		    <input type="text" id="" class="" style="width: 600px;" readonly="readonly">
-			
-			<br><br>
-			<h3><span class="badge">돌봄장소 공개/비공개</span></h3>
+		<div class="infoOneNoline">
+			<h4><span class="smallTitle">돌봄장소 공개/비공개</span></h4>
 			<div class="form-check">
 			    <input class="form-check-input" type="radio" name="visibility" id="public" value="public">
 			    <label class="form-check-label" for="public">공개</label>
@@ -132,58 +167,21 @@ div .card { width: 700px;}
 			    <input class="form-check-input" type="radio" name="visibility" id="private" value="private">
 			    <label class="form-check-label" for="private">비공개</label>
 			</div>
-	
 		</div>
-	
-	</div><!-- 1행 1열 끝 -->
-	
-	<div class="col">
-		<h3><span class="badge">휴일</span></h3>
-		<div>
-			달력인데 2달만 보임
-		</div>
-		<h3><span class="badge">예약 내역</span></h3><!-- 2달치 -->
-	   		<div>
-	   		
-	   			<div class="card">
-					<div class="card-header d-flex justify-content-between"">
-						펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-					</div>	
-			    	  <div class="row g-0">
-			    	    <div class="col-md cardInfo" >
-			    	      <div class="card-body">
-			    	        <div class="oneText">
-			    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-			    		        <span class="card-text" style="font-size: 14pt;">2023-08-04 14:00 ~ 2023-08-05 16:00</span>
-			    	        </div>
-			    	      </div>
-			    	    </div>
-			    	  </div>
-			    </div>
-			    
-			    <div class="card">
-					<div class="card-header d-flex justify-content-between"">
-						펫시팅 <button type="button" class="detailBtn">자세히보러가기</button>
-					</div>	
-			    	  <div class="row g-0">
-			    	    <div class="col-md cardInfo" >
-			    	      <div class="card-body">
-			    	        <div class="oneText">
-			    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
-			    		        <span class="card-text" style="font-size: 14pt;">2023-08-06 14:00 ~ 2023-08-06 22:00</span>
-			    	        </div>
-			    	      </div>
-			    	    </div>
-			    	  </div>
-			    </div>
-	   		
-	   		</div>
-	   	<button type="button" class="updatePlace">돌봄장소 수정완료</button><!-- 돌봄장소 등록완료 -->
-	    <br><br>		
 		
-		<h3><span class="badge">운영 시간</span></h3>
+	</div><!-- 1행 1열 끝 -->
+
+	
+	<div class="col container-mypage" style="width: 780px;">
+		<h4><span class="smallTitle">휴일 설정</span></h4>
+		
+		
+		<button type="button" class="detailBtn" style="margin-left: 80%;">돌봄장소 수정완료</button>
+	
+		
+		<h4><span class="smallTitle">운영 시간</span></h4>
 		<div class="form-group">
-		  <label for="open-time"><span class="badge sittingtime">시작 시간</span></label>
+		  <label for="open-time"><span class="">시작 시간</span></label>
 		  <select class="form-select" id="open-time">
 		    <option value="1">1:00</option>
 		    <option value="2">2:00</option>
@@ -213,7 +211,7 @@ div .card { width: 700px;}
 		</div>
 		
 		<div class="form-group">
-		  <label for="close-time"><span class="badge sittingtime">종료 시간</span></label>
+		  <label for="close-time"><span class="">종료 시간</span></label>
 		  <select class="form-select" id="close-time">
 		    <option value="1">1:00</option>
 		    <option value="2">2:00</option>
@@ -241,8 +239,8 @@ div .card { width: 700px;}
 		    <option value="24">24:00</option>
 		  </select>
 		</div>
-		 <button type="button" class="updatePlace">운영시간 수정완료</button><!-- 운영시간 등록완료 -->
-	
+		 <button type="button" class="detailBtn" style="margin-left: 80%;">운영시간 수정완료</button><!-- 운영시간 등록완료 -->
+		
 	</div>	
 	
 </div>

@@ -9,7 +9,9 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
@@ -99,9 +101,8 @@ public class WalkController {
 	    try {
             List<FileItem> items = fileUpload.parseRequest(request);
             for (FileItem item : items) {
-                if (item.isFormField()) {
-                    //System.out.printf("파라미터 명 : %s, 파라미터 값 :  %s \n", item.getFieldName(), item.getString("UTF-8"));
-                    
+              
+                if (item.isFormField()) {        
                     if(item.getFieldName().equals("wptitle"))
                     	dto.setWptitle(item.getString("UTF-8"));
                     else if(item.getFieldName().equals("wpcontent")) 
@@ -124,7 +125,7 @@ public class WalkController {
                     }
                     
                 } else {
-                    // System.out.printf("파라미터 명 : %s, 파일 명 : %s,  파일 크기 : %s bytes \n", item.getFieldName(), item.getName(), item.getSize());
+              
                     if (item.getSize() > 0) {
                         String separator = File.separator;
                         int index =  item.getName().lastIndexOf(separator);
@@ -189,9 +190,20 @@ public class WalkController {
 
 	// 마이페이지 대리산책. AJAX로 처리.
 	@RequestMapping("/mypagewalkform.action")
-	public String myPageWalk() {
+	public String myPageWalk(HttpSession session, Model model)
+	{
 		String result = "";
-		// AJAX이자 컴포넌트
+		String memSid = (String)session.getAttribute("memSid");
+		
+		// 대리산책 예약 내역
+		model.addAttribute("walkBookMyPage", walkService.walkBookMyPage(memSid));
+		
+		// 대리산책 후기
+		model.addAttribute("walkReviews", walkService.walkReviews(memSid));
+		
+		// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
+		model.addAttribute("walkReviewers", walkService.walkReviewers());
+		
 		result = "/WEB-INF/ajax/MyPageWalkForm.jsp";
 		return result;
 	}
@@ -210,15 +222,6 @@ public class WalkController {
 	@RequestMapping("/walkteststart.action") 
 	public String walkTestStart() {
 		String result = "";
-		
-		
-		/*
-		 * if(true) 
-		 * { // 펫시터라면 result = ""; 
-		 * 
-		 * } else // 대리산책러라면 result = "";
-		 */
-		
 		
 		return result;
 	}
