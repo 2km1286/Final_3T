@@ -1,5 +1,6 @@
 package com.act.sitting;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,7 +121,6 @@ public class SittingService implements ISittingService
 	  
 	  }
 	 
-
 	// ※현재 사용하고 있는 돌봄장소※의 태그들 조회
 	@Override
 	public ArrayList<SittingDTO> sittingPlaceTags(int spSid)
@@ -146,7 +146,7 @@ public class SittingService implements ISittingService
 		
 		return result;
 	}
-	
+
 	// 나에게 달린 후기를 쓴 회원번호로 그 회원의 닉네임 조회
 	@Override
 	public ArrayList<SittingDTO> sittingReviewers()
@@ -159,7 +159,91 @@ public class SittingService implements ISittingService
 		
 		return result;
 	}
-
 	
+	// 견주로서 오늘 펫시팅 예약 취소된 내역
+	@Override
+	public ArrayList<SittingDTO> memSittingCancelToday(String memSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.memSittingCancelToday(memSid);
+		
+		return result;
+	}
+	
+	// 펫시터로서 오늘 달린 펫시팅 후기들
+	@Override
+	public ArrayList<SittingDTO> sittingReviewToday(String memSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingReviewToday(memSid);
+		
+		return result;
+	}
+
+	// 펫시터로서 오늘 반려당한 펫시팅 돌봄장소
+	@Override
+	public ArrayList<SittingDTO> sittingCompanionToday(String memSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingCompanionToday(memSid);
+		
+		return result;
+	}
+	
+	// 견주입장에서 본인이 오늘 결제한 펫시팅의 시작일 ~ 종료일
+	@Override
+	public ArrayList<SittingDTO> memSittingBookToday(String memSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.memSittingBookToday(memSid);
+		
+		return result;
+	}
+	
+	// 펫시터로서 오늘 들어온 예약의 시작일 ~ 종료일
+	@Override
+	public ArrayList<SittingDTO> sittingBookToday(String memSid)
+	{
+		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingBookToday(memSid);
+		
+		return result;
+	}
+		
+	// SRWSID 로 후기 한 건 조회
+	@Override
+	public SittingDTO sittingReview(int srwSid)
+	{
+		SittingDTO result = new SittingDTO();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingReview(srwSid);
+		
+		return result;
+	}	
+		
+		
+		
+		
+		
+		
+		
+		
 	
 }

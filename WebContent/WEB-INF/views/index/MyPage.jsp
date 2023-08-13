@@ -172,6 +172,8 @@
 /* 마이페이지 레이아웃 스타일 */
 @import url('https://fonts.googleapis.com/css?family=Jua:400');
 
+div.noNotice {margin: 110px 0px 0px 190px;}
+
 *{font-family: "Jua"}
 
 .mypageSidevar { font-size: 15pt;}
@@ -250,7 +252,7 @@ div.petCard {width: 350px; margin-left: 30%;}
 
 /* 반려견 추가 버튼 */
 #petInsertBtn {background-color: white; border: 0; font-size: 30pt; color: #4caf50;}
-
+#petInsertBtn:hover {background-color: white; border: 1px solid #4caf50; font-size: 30pt; color: #4caf50;}
 button.list-group-item { margin-bottom: 3px;}
 
 </style>

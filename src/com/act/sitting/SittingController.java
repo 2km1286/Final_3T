@@ -2,6 +2,7 @@ package com.act.sitting;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +79,6 @@ public class SittingController
 				model.addAttribute("reviewers", sittingService.sittingReviewers());
 				
 				
-				
 				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 	        }
 			else				// 시험은 보았지만, 공간등록을 하지 않은 경우
@@ -93,10 +93,21 @@ public class SittingController
 	
 	// 마이페이지 펫시팅의 돌봄장소 수정하기를 눌렀을 때, AJAX처리
 	@RequestMapping("/updatespinfoform.action")
-	public String updateSPInfoForm()
+	public String updateSPInfoForm(HttpSession session ,Model model)
 	{
 		String result = "";
-		// AJAX
+		String memSid = (String)session.getAttribute("memSid");
+		
+		// 현재 운영중인 돌봄장소번호
+		int spSid = sittingService.sittingPlaceBasic(memSid).get(0).getSpSid();
+		
+		// 현재 운영중인 돌봄장소의 기본정보(태그, 사진, 휴무일 제외)
+		model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0));
+		
+		// 현재 운영중인 돌봄장소의 특이사항
+		model.addAttribute("tags", sittingService.sittingPlaceTags(spSid));
+		
+		
 		result = "/WEB-INF/ajax/UpdateSPInfoForm.jsp";
 		return result;
 	}
@@ -141,10 +152,18 @@ public class SittingController
 	
 	// 펫시터 후기 모달
 	@RequestMapping("/sittingreview.action")
-	public String sittingReview()
+	public String sittingReview(HttpServletRequest requset, Model model)
 	{
 		String result = "";
 
+		int srwSid = Integer.parseInt(requset.getParameter("srwSid"));
+		
+		// 해당 버튼에 해당하는 후기 조회
+		model.addAttribute("review", sittingService.sittingReview(srwSid));
+		
+		// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
+		model.addAttribute("reviewers", sittingService.sittingReviewers());
+		
 		result = "/WEB-INF/views/sitting/SittingReviewPage.jsp";
 
 		return result;

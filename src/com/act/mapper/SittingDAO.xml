@@ -62,6 +62,7 @@
 		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID
 		FROM SITTING_REVIEW_VIEW
 		WHERE MEMSID = #{memSid}
+		ORDER BY SRWDATE DESC
 	</select>
 	
 	<select id="sittingReviewers" resultType="com.act.sitting.SittingDTO">
@@ -101,5 +102,86 @@
 		                </if>
 		                GROUP BY SPSID)
 	</select>
+	
+	<select id="memSittingCancelToday" resultType="com.act.sitting.SittingDTO">
+		SELECT SB.SB_SID AS SBSID, SB.SB_START AS SBSTART, SB.SB_END AS SBEND
+		FROM SITTING_CANCEL SCL
+		     JOIN SITTING_BOOK SB
+		     ON SCL.SB_SID = SB.SB_SID
+		        JOIN SITTING_CREATE_CART SCC
+		        ON SB.SCC_SID = SCC.SCC_SID
+		            JOIN MEMBER MEM
+		            ON SCC.MEM_SID = MEM.MEM_SID
+		                JOIN JOIN_MEMBER JM
+		                ON MEM.MEM_SID = JM.MEM_SID
+		WHERE SCL.SCL_DATE = SYSDATE
+		AND JM.MEM_SID = #{memSid}
+	</select>
+	
+	<select id="sittingReviewToday" resultType="com.act.sitting.SittingDTO">
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, SBSID, SBSTART, SBEND
+		FROM SITTING_REVIEW_VIEW
+		WHERE SRWDATE = SYSDATE
+		AND MEMSID = #{memSid}
+	</select>
+
+	<select id="sittingCompanionToday" resultType="com.act.sitting.SittingDTO">
+		SELECT SRR.SP_SID AS SPSID
+		FROM SITTING_REPORT_COMPLETE SRC
+		    JOIN INDEX_MANAGER_ACTION IMA
+		    ON SRC.IMA_SID = IMA.IMA_SID
+		        JOIN SITTING_REPORT_RECEIVE SRR
+		        ON SRC.SRR_SID = SRR.SRR_SID
+		WHERE IMA.IMA_SID = 4
+		AND SRC.SRC_DATE = SYSDATE
+		AND SRR.SP_SID = ( SELECT SPH.SP_SID
+		                    FROM SITTING_PLACE_HUB SPH
+		                        JOIN SITTING_FOLLOWING_LIST SFL
+		                        ON SPH.SPH_SID = SFL.SPH_SID
+		                            JOIN MEMBER MEM
+		                            ON SFL.MEM_SID = MEM.MEM_SID
+		                                JOIN JOIN_MEMBER JM
+		                                ON MEM.MEM_SID = JM.MEM_SID
+		                                WHERE MEM.MEM_SID = #{memSid})
+	</select>
+	
+	<select id="memSittingBookToday" resultType="com.act.sitting.SittingDTO">
+		SELECT TO_CHAR(SB.SB_START,'YYYY-MM-DD') AS SBSTART,  TO_CHAR(SB.SB_END, 'YYYY-MM-DD') AS SBEND, MEM.MEM_SID AS PMEMSID, SB.SB_SID AS SBSID
+		FROM SITTING_BOOK SB
+		    JOIN SITTING_CREATE_CART SCC
+		    ON SB.SCC_SID = SCC.SCC_SID
+		        JOIN MEMBER MEM
+		        ON SCC.MEM_SID = MEM.MEM_SID
+		WHERE SB.SB_DATE = SYSDATE
+		AND SCC.MEM_SID = #{memSid}
+	</select>
+
+	<select id="sittingBookToday" resultType="com.act.sitting.SittingDTO">
+		SELECT TO_CHAR(SB.SB_START,'YYYY-MM-DD') AS SBSTART,  TO_CHAR(SB.SB_END, 'YYYY-MM-DD') AS SBEND, MEM.MEM_SID AS MEMSID, SB.SB_SID AS SBSID
+		FROM SITTING_BOOK SB
+		    JOIN SITTING_PLACE_HUB SPH
+		    ON SB.SPH_SID = SPH.SPH_SID
+		        JOIN SITTING_LICENSE SL
+		        ON SPH.SL_SID = SL.SL_SID
+		            JOIN SITTING_TEST_SUBMIT STS
+		            ON SL.STS_SID = STS.STS_SID
+		                JOIN SITTING_TEST_RECEIVE STR
+		                ON STS.STR_SID = STR.STR_SID
+		                    JOIN MEMBER MEM
+		                    ON STR.MEM_SID = MEM.MEM_SID
+		WHERE SB.SB_DATE = SYSDATE
+		AND MEM.MEM_SID = #{memSid}
+	</select>
+
+	<select id="sittingReview" resultType="com.act.sitting.SittingDTO">
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID
+		FROM SITTING_REVIEW_VIEW
+		WHERE SRWSID= #{srwSid}
+	</select>
+
+
+
+
+
 
 </mapper>

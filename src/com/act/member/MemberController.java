@@ -1,18 +1,29 @@
 package com.act.member;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.act.sitting.SittingService;
+import com.act.walk.WalkService;
 
 @Controller
 public class MemberController
 {
 	@Autowired
 	private IMemberService memberService;
-
+	
+	@Autowired
+	private WalkService walkService;
+	
+	@Autowired
+	private SittingService sittingService;
 
 	// 메인페이지로 가는 액션
 	@RequestMapping("/mainpage.action")
@@ -257,20 +268,82 @@ public class MemberController
 
 	// 메뉴바를 통해 마이페이지로 가기, 디폴트 알림창
 	@RequestMapping("/mypage.action")
-	public String myPage()
+	public String myPage(HttpSession session, Model model)
 	{
 		String result = "";
+		String memSid = (String)session.getAttribute("memSid");
+		
+		// 견주로서 오늘 대리산책 취소당한 예약
+		model.addAttribute("memWalkCancelToday", walkService.memWalkCancelToday(memSid));
+		
+		// 견주로서 오늘 펫시팅 취소당한 예약
+		model.addAttribute("memSittingCancelToday", sittingService.memSittingCancelToday(memSid));
+		
+		// 대리산책러로서 오늘 달린 대리산책 후기들
+		model.addAttribute("walkReviewToday", walkService.walkReviewToday(memSid));
+		
+		// 펫시터로서 오늘 달린 펫시팅 후기들
+		model.addAttribute("sittingReviewToday", sittingService.sittingReviewToday(memSid));
+		
+		// 대리산책러로서 오늘 반려당한 대리산책 공고글
+		model.addAttribute("walkCompanionToday", walkService.walkCompanionToday(memSid));
+		
+		// 펫시터로서 오늘 반려당한 펫시팅 돌봄장소
+		model.addAttribute("sittingCompanionToday", sittingService.sittingCompanionToday(memSid));
+		
+		// 오늘 프로필 반려당했는지 알림
+		model.addAttribute("countProfilCompanion",memberService.profilCompanionNotice(memSid));
+		
+		// 오늘 견주입장에서 결제한 대리산책의 시작일~종료일
+		model.addAttribute("memWalkBookToday", walkService.memWalkBookToday(memSid));
+		
+		// 오늘 견주입장에서 결제한 펫시팅의 시작일~종료일
+		model.addAttribute("memSittingBookToday", sittingService.memSittingBookToday(memSid));
+		
+		// 대리산책러로서 오늘 들어온 예약
+		model.addAttribute("walkBookToday", walkService.walkBookToday(memSid));
+		
 		result = "/WEB-INF/views/index/MyPage.jsp";
 		return result;
 	}
 	
 	// 마이페이지 알림창. AJAX로 처리.
-
 	@RequestMapping("/mypagenoticeform.action")
-	public String myPageNotice()
+	public String myPageNotice(HttpSession session, Model model)
 	{
 		String result = "";
-		// AJAX
+		String memSid = (String)session.getAttribute("memSid");
+		
+		// 견주로서 오늘 대리산책 취소당한 예약
+		model.addAttribute("memWalkCancelToday", walkService.memWalkCancelToday(memSid));
+		
+		// 견주로서 오늘 펫시팅 취소당한 예약
+		model.addAttribute("memSittingCancelToday", sittingService.memSittingCancelToday(memSid));
+		
+		// 대리산책러로서 오늘 달린 대리산책 후기들
+		model.addAttribute("walkReviewToday", walkService.walkReviewToday(memSid));
+		
+		// 펫시터로서 오늘 달린 펫시팅 후기들
+		model.addAttribute("sittingReviewToday", sittingService.sittingReviewToday(memSid));
+		
+		// 대리산책러로서 오늘 반려당한 대리산책 공고글
+		model.addAttribute("walkCompanionToday", walkService.walkCompanionToday(memSid));
+		
+		// 펫시터로서 오늘 반려당한 펫시팅 돌봄장소
+		model.addAttribute("sittingCompanionToday", sittingService.sittingCompanionToday(memSid));
+		
+		// 오늘 프로필 반려당했는지 알림
+		model.addAttribute("countProfilCompanion",memberService.profilCompanionNotice(memSid));
+		
+		// 오늘 견주입장에서 결제한 대리산책의 시작일~종료일
+		model.addAttribute("memWalkBookToday", walkService.memWalkBookToday(memSid));
+		
+		// 오늘 견주입장에서 결제한 펫시팅의 시작일~종료일
+		model.addAttribute("memSittingBookToday", sittingService.memSittingBookToday(memSid));
+		
+		// 대리산책러로서 오늘 들어온 예약
+		model.addAttribute("walkBookToday", walkService.walkBookToday(memSid));
+		
 		result = "/WEB-INF/ajax/MyPageNoticeForm.jsp";
 		return result;
 	}
