@@ -75,6 +75,24 @@
 		ORDER BY SRWDATE DESC
 	</select>
 	
+	<select id="sittingReviewsBySpSid" resultType="com.act.sitting.SittingDTO">
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, PJMNICKNAME
+		FROM SITTING_REVIEW_VIEW
+		WHERE SPSID = #{spSid}
+		ORDER BY SRWDATE DESC
+	</select>
+	
+	<select id="sittingReviewsPhoto" resultType="com.act.sitting.SittingDTO">
+		SELECT PJMNICKNAME, SRP_LINK, SRP_DATE
+		FROM SITTING_REVIEW_VIEW SRV JOIN SITTING_REVIEW_PHOTO SRP
+		                             ON SRV.SRWSID = SRP.SRW_SID
+		                             WHERE SPSID = #{spSid}
+		                             <!-- 나중에
+		                                  한 회원이 한 펫시터에 대해 여러번 예약하고 후기를 쓸 경우를 대비해서
+		                                  후기를 쓴 날짜를 통해서 여러 개 쓴 후기들이 분기되도록
+		                                  조건절을 구성해야 함. -->
+	</select>
+	
 	<select id="sittingReviewers" resultType="com.act.sitting.SittingDTO">
 		SELECT JM_NICKNAME AS PJMNICKNAME, MEM_SID AS PMEMSID
 		FROM JOIN_MEMBER
