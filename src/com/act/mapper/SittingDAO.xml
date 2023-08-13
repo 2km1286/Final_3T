@@ -101,7 +101,7 @@
 			                </foreach>
 		                </if>
 		                GROUP BY SPSID
-		                HAVING COUNT(DISTINCT ISPTSID) = 3)
+		                HAVING COUNT(DISTINCT ISPTSID) = #{isptSidListInteger.size()})
 	</select>
 
 </mapper>
