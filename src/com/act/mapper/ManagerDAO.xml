@@ -34,14 +34,51 @@
 		WHERE MI_SID = #{miSid}
 	</select>
 	
-	
+	<!-- 펫시터 신고접수 -->
 	<select id="sittingReportList" resultType="com.act.manager.ManagerDTO">
-		SELECT SRR.SRR_SID AS SRRSID,MEM.MEM_SID AS MEMSID,JM_NICKNAME AS JMNICK,SRR.SP_SID AS SPSID
-		,SRR.IR_SID AS IRSID,SRR.SRR_DATE AS SRRDATE
-		FROM SITTING_REPORT_RECEIVE SRR
-		LEFT JOIN MEMBER MEM
-		ON SRR.MEM_SID = MEM.MEM_SID
-		LEFT JOIN JOIN_MEMBER JM
-		ON MEM.MEM_SID = JM.MEM_SID;
+		SELECT SRR_SID AS srrSid
+			 ,JM_NICKNAME AS jmNickName
+			 ,IR_NAME AS irName
+			 ,SRR_DETAIL AS srrDetail
+			 ,SRR_DATE AS srrDate
+			 ,SP_SID AS spSid
+			 ,IP_SID AS ipSid
+    	FROM VIEW_REPORT_SITTING
 	</select>
+	
+	<!-- 대리산책 신고접수 -->
+	<select id="walkReportList" resultType="com.act.manager.ManagerDTO">
+		SELECT WRR_SID AS wrrSid
+			 ,JM_NICKNAME AS jmNickName
+			 ,IR_NAME AS irName
+			 ,WRR_DETAIL AS wrrDetail
+			 ,WRR_DATE AS wrrDate
+			 ,WP_SID AS wpSid
+			 ,IP_SID AS ipSid
+    	FROM VIEW_REPORT_WALK
+	</select>
+	
+	<!-- 펫시팅 블라인드에 따라 업데이트 시켜줌 -->
+	<update id="updateSittingPublic" parameterType="java.lang.Integer">
+		UPDATE SITTING_PLACE
+		SET IP_SID = #{ipSid}
+		WHERE SP_SID = #{spSid}
+	</update>
+	
+	<!-- 대리산책 블라인드에 따라 업데이트 시켜줌 -->
+	<update id="updateWalkPublic" parameterType="java.lang.Integer">
+		UPDATE WALK_POST
+		SET IP_SID = #{ipSid}
+		WHERE WP_SID = #{wpSid}
+	</update>
+	
+	<!-- 펫시팅 반려 -->
+	<delete id="deleteSittingReport">
+	
+	</delete>
+	
+	<!-- 대리산책 반려 -->
+	<delete id="deleteWalkReport">
+	
+	</delete>
 </mapper>

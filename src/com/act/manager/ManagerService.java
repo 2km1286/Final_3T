@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.act.manager.IManagerDAO;
 import com.act.manager.IManagerService;
+import com.act.member.MemberDTO;
 
 
 @Service
@@ -62,12 +63,45 @@ public class ManagerService implements IManagerService
 	}
 	
 	// 펫시팅 신고 현안 리스트
-	public ArrayList<ManagerDTO> sittingReportList(ManagerDTO dto)
+	public ArrayList<ManagerDTO> sittingReportList()
 	{
 		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
 		
 		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
-		result = dao.sittingReportList(dto);
+		result = dao.sittingReportList();
+		
+		return result;
+		
+	}
+	// 대리산책 신고 현안 리스트
+	public ArrayList<ManagerDTO> walkReportList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.walkReportList();
+		
+		return result;
+		
+	}
+	// 펫시팅 돌봄 장소 비활성화
+	public int updateSittingPublic(ManagerDTO dto)
+	{
+		int result = 0;
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.updateSittingPublic(dto);
+		
+		return result;
+		
+	}
+	// 대리산책 공고 비활성화
+	public int updateWalkPublic(ManagerDTO dto)
+	{
+		int result = 0;
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.updateWalkPublic(dto);
 		return result;
 		
 	}

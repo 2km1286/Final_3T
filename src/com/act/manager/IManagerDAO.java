@@ -10,7 +10,9 @@ public interface IManagerDAO
 	public int sittingSearchEmerg();
 	public int walkSearchEmerg();
 	public String searchManagerName(String str);
-	public ArrayList<ManagerDTO> sittingReportList(ManagerDTO dto);
+	public ArrayList<ManagerDTO> sittingReportList();
+	public int updateSittingPublic(ManagerDTO dto);
 	
-
+	public ArrayList<ManagerDTO> walkReportList();
+	public int updateWalkPublic(ManagerDTO dto);
 }
