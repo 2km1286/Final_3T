@@ -48,5 +48,6 @@ public interface ISittingDAO
 	// 펫시터로서 오늘 들어온 예약의 시작일 ~ 종료일
 	public ArrayList<SittingDTO> sittingBookToday(String memSid);
 	
-	
+	// SRWSID 로 후기 한 건 조회
+	public SittingDTO sittingReview(int srwSid);
 }

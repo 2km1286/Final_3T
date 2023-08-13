@@ -42,6 +42,11 @@
 			  <label for="emergencyTreatment">응급처치 가능</label>
 			</div>
 			
+			<div  class="checkBox">
+			  <input type="checkbox" id="noSmoke">
+			  <label for="emergencyTreatment">비흡연자</label>
+			</div>
+			
 			<div class="checkBox">
 			  <input type="checkbox" id="petOwner">
 			  <label for="petOwner">반려견 있음</label>

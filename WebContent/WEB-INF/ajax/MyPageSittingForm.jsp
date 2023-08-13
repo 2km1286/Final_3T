@@ -37,6 +37,8 @@ String cp = request.getContextPath();
 
 	$(function()
 	{
+		
+		
 		// 돌봄장소 변경하기를 누르면
 
 		// 돌봄장소 수정하기를 누르면
@@ -69,10 +71,9 @@ String cp = request.getContextPath();
 
 <script type="text/javascript">
 	
-	//자세히보기를 누르면
-	function openPopup()
+	function openPopup(url, name, specs)
 	{
-		window.open("sittingreview.action", "sittingReviewWindow", "width=600,height=600");
+	    window.open(url, name, specs);
 	}
 
 </script>
@@ -125,7 +126,7 @@ String cp = request.getContextPath();
 			
 			<!-- 캘린더 끝 -->
 
-			<div class="infoOne">
+			<div class="infoOne" style="margin-top: 20px;">
 				<h4><span class="smallTitle">돌봄장소 특이사항</span></h4>
 				<c:forEach items="${tags }" var="tag">
 					<button class="btn btn-warning">${tag.isptName}</button>
@@ -198,7 +199,8 @@ String cp = request.getContextPath();
 					      </td>
 					      <td class="EndTd">${review.srwDate }</td>
 					      <td class="EndTd">${review.srwRate }</td>
-					      <td class="EndTd"><button type="button" class="detailBtn" onclick="openPopup()">자세히보기</button></td>
+					      <td class="EndTd"><button type="button" class="detailBtn" 
+					      onclick="openPopup('sittingreview.action?srwSid=${review.srwSid}', 'sittingReviewWindow', 'width=600,height=600')">자세히보기</button></td>
 					    </tr>
 					    </c:forEach>
 					</table>

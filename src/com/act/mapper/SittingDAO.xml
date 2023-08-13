@@ -173,7 +173,11 @@
 		AND MEM.MEM_SID = #{memSid}
 	</select>
 
-
+	<select id="sittingReview" resultType="com.act.sitting.SittingDTO">
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID
+		FROM SITTING_REVIEW_VIEW
+		WHERE SRWSID= #{srwSid}
+	</select>
 
 
 

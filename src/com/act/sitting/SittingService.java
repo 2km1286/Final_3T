@@ -147,7 +147,7 @@ public class SittingService implements ISittingService
 		
 		return result;
 	}
-	
+
 	// 나에게 달린 후기를 쓴 회원번호로 그 회원의 닉네임 조회
 	@Override
 	public ArrayList<SittingDTO> sittingReviewers()
@@ -226,7 +226,18 @@ public class SittingService implements ISittingService
 		return result;
 	}
 		
+	// SRWSID 로 후기 한 건 조회
+	@Override
+	public SittingDTO sittingReview(int srwSid)
+	{
+		SittingDTO result = new SittingDTO();
 		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingReview(srwSid);
+		
+		return result;
+	}	
 		
 		
 		

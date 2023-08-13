@@ -2,6 +2,7 @@ package com.act.sitting;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,10 +141,18 @@ public class SittingController
 	
 	// 펫시터 후기 모달
 	@RequestMapping("/sittingreview.action")
-	public String sittingReview()
+	public String sittingReview(HttpServletRequest requset, Model model)
 	{
 		String result = "";
 
+		int srwSid = Integer.parseInt(requset.getParameter("srwSid"));
+		
+		// 해당 버튼에 해당하는 후기 조회
+		model.addAttribute("review", sittingService.sittingReview(srwSid));
+		
+		// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
+		model.addAttribute("reviewers", sittingService.sittingReviewers());
+		
 		result = "/WEB-INF/views/sitting/SittingReviewPage.jsp";
 
 		return result;
