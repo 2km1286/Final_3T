@@ -1,12 +1,16 @@
 package com.act.sitting;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -150,25 +154,92 @@ public class SittingController
 		return result;
 	}
 	
-	// 펫시팅 리스트 검색필터 버튼
-	@RequestMapping("/sittingfilterlistform.action")
-	public String sittingFilterListForm(SittingDTO dto, Model model)
-	{
-		String view = "";
-		
-		System.out.println("extraAddr: " + dto.getExtraAddr());
-		System.out.println("datePicker: " + dto.getDatePicker());
-		System.out.println("spMaxPet:" + dto.getSpMaxPet());
-		System.out.println("여기까지 옴1");
-		System.out.println("isptSidValues : " + dto.getIsptSid());
-		System.out.println("여기까지 옴2");
-		model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
-		model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
-		
-		
-		view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp";
-		return view;
-	}
-
+	
+	  // 펫시팅 리스트 검색필터 버튼 (태그검색 미포함)
+	  
+	  @RequestMapping("/sittingfilterlistform.action") 
+	  public String sittingFilterListForm(SittingDTO dto, Model model) 
+	  { 
+		  String view = "";
+		  
+		  //String extraaddr = request.getParameter("extraAddr");
+		  //System.out.println("extraAddr : " +  extraaddr);
+		  System.out.println("extraAddr(dto) : " + dto.getExtraAddr() );
+		  System.out.println("isptSidList(dto) : " + dto.getIsptSidList());
+		  System.out.println("datePicker: " + dto.getDatePicker());
+		  System.out.println("spMaxPet:" + dto.getSpMaxPet());
+		  //System.out.println("isptSidList(request) : " + request.getParameter("isptSidList"));
+		  
+		  // 검색태그들을 담은 배열을 ,으로 쪼개서 String 타입의 배열에 담는다.
+		  String[] isptSidList = dto.getIsptSidList().split(",");
+		  
+		  // String 타입의 배열을 Sid의 원래 데이터 타입인 Integer 타입의 배열로 바꾸기 위한 Integer 타입의 배열 선언
+		  List<Integer> isptSidListInteger = new ArrayList<>();
+		  
+		  // 하나씩 꺼내서 Integer로 형변환하여 담는다.
+		  for(String str : isptSidList)
+		  {
+			  int value = Integer.parseInt(str);
+			  isptSidListInteger.add(value);
+		  }
+		  
+		  
+		  dto.setIsptSidListInteger(isptSidListInteger);
+		  
+		  System.out.println(" isptSidListInteger:" + isptSidListInteger);
+		  
+		  model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
+		  //model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
+		  
+		  view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp"; 
+		  return view ;
+		  
+		  // 1. 하얀칸 -> 날짜/동/시간  -> 담고있는 정보 : 태그빼고 다
+		  // 2. 태그                     -> 태그들. 
+		  // 1. 2. 
+	  
+	  }
+	 
+	
+	
+	
+	// <<미완>>
+	// 펫시팅 리스트 검색필터 버튼 (태그검색 포함)
+	/*
+	 * @RequestMapping("/sittingfilterlistform.action") public String
+	 * sittingFilterListForm(
+	 * 
+	 * @RequestParam("extraAddr") String extraAddr,
+	 * 
+	 * @RequestParam("datePicker") String datepicker,
+	 * 
+	 * @RequestParam("spMaxPet") int spMaxPet,
+	 * 
+	 * @RequestParam(value = "isptSidList[]", required = false) List<Integer>
+	 * isptSidList, Model model) {
+	 * 
+	 * System.out.println("extraAddr: " + extraAddr);
+	 * System.out.println("datepicker: " + datepicker);
+	 * System.out.println("spMaxPet: " + spMaxPet);
+	 * System.out.println("isptSidList: " + isptSidList); String view = "";
+	 * 
+	 * System.out.println("extraAddr: " + dto.getExtraAddr());
+	 * System.out.println("datePicker: " + dto.getDatePicker());
+	 * System.out.println("spMaxPet:" + dto.getSpMaxPet());
+	 * System.out.println("isptSidList (request): " + list);
+	 * System.out.println("isptSidList (dto) : " + dto.getIsptSidList());
+	 * System.out.println("여기까지 옴1 이제 service간다");
+	 * 
+	 * //System.out.println("여기까지 옴2 이제 태그검색간다간다쑝간다");
+	 * 
+	 * System.out.println("진짜 되라고 이자식들아 extraAddr: " + extraAddr + "  datepicker: "
+	 * + datepicker + "  spMaxPet: " + spMaxPet + " isptSidList: " + isptSidList);
+	 * //model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
+	 * //model.addAttribute("filtertaglist",
+	 * sittingService.sittingFilterTagList(dto));
+	 * 
+	 * 
+	 * view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp"; return view; }
+	 */
 
 }
