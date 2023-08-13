@@ -53,5 +53,35 @@
 		SITTING_BOOK_VIEW
 		WHERE MEMSID = #{memSid}
 	</select>
+	
+	<insert id="addTestRevice">
+		INSERT INTO SITTING_TEST_RECEIVE(STR_SID, MEM_SID)
+		VALUES (SEQ_STR.NEXTVAL, #{memSid})
+	</insert>
+	
+	<select id="receiveNum" resultType="java.lang.Integer">
+		SELECT NVL(MAX(STR_SID), 0) 
+		FROM SITTING_TEST_RECEIVE
+	</select>
+	
+	<select id="questionSittingList" resultType="com.act.sitting.SittingQuestionDTO">
+    	SELECT STBSID, STBQUESTION, STBANSWER, STBPOINT
+   	 	FROM (
+        SELECT STB_SID AS STBSID, STB_QUESTION AS STBQUESTION, STB_ANSWER AS STBANSWER, STB_POINT AS STBPOINT,
+               ROW_NUMBER() OVER (ORDER BY DBMS_RANDOM.VALUE) AS rn
+        FROM SITTING_TEST_BANK
+    	)
+    	WHERE rn &lt; 10;
+	</select>
+	
+	<insert id="addSittingQuestion">
+		INSERT INTO SITTING_TEST_PAPER
+		(STR_SID, STB_SID1, STB_SID2, STB_SID3, STB_SID4, STB_SID5, STB_SID6, STB_SID7, STB_SID8, STB_SID9, STB_SID10)
+		VALUES
+		(#{strsid}, #{stbsid1}, #{stbsid2}, #{stbsid3}, #{stbsid4}, #{stbsid5},
+ 		#{stbsid6}, #{stbsid7}, #{stbsid8}, #{stbsid9}, #{stbsid10})
+	</insert>
+	
+	
 
 </mapper>
