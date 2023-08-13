@@ -33,7 +33,35 @@ public class SittingDTO
 	// 펫시팅 리스트 검색조건 - 날짜
 	private String datePicker;
 	
+	// 펫시팅 후기의 사진들
+	private String srpLink, srpDate;
 	
+	
+	public String getSrpLink()
+	{
+		return srpLink;
+	}
+
+	public void setSrpLink(String srpLink)
+	{
+		this.srpLink = srpLink;
+	}
+
+	public String getSrpDate()
+	{
+		return srpDate;
+	}
+
+	public void setSrpDate(String srpDate)
+	{
+		this.srpDate = srpDate;
+	}
+
+	public void setSbSid(int sbSid)
+	{
+		this.sbSid = sbSid;
+	}
+
 	private String isptSidList;
 	private List<Integer> isptSidListInteger;
 	
