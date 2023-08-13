@@ -29,9 +29,52 @@
         IWI_GRADE AS IWIGRADE
         FROM INDEX_WALK_INFO
 	</select>
+		
 	
-
+	<select id="getWalkerLicenseNumber" resultType="com.act.walk.WalkDTO" parameterType="java.lang.String">
+		SELECT NVL(MAX(WLSID), 0) AS WLSID        
+		FROM WALKER_LICENSE_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
 	
-
-
+	<insert id="insertPost">
+		INSERT INTO WALK_POST(WP_SID, WP_TITLE, WP_CONTENT, WP_START, WP_END,
+		WP_ADDR1, WP_MAX_PET, IP_SID, WL_SID, WP_EXTRAADDR)
+		VALUES(SEQ_WALK_POST.nextval, #{wptitle}, #{wpcontent}, TO_DATE(#{wpstart}, 'HH24:MI'), TO_DATE(#{wpend}, 'HH24:MI'),
+		 #{wpaddr1} , #{wpmaxpet}, 1, #{wlsid}, #{wpextraaddr})	
+	</insert>
+	
+	
+	<insert id="insertPostPhoto">
+		INSERT INTO WALK_POST_PHOTO(WPP_SID, WPP_PATH, WP_SID, WPP_NAME)
+		VALUES(SEQ_WPP.nextval, #{wpppath}, #{wpsid}, #{wppname})
+	</insert>
+	
+	<insert id="insertWalkPostTag">
+		INSERT INTO WALK_POST_TAG(WPT_SID, WP_SID, IWPT_SID)
+		VALUES(SEQ_WPT.NEXTVAL, #{wpsid}, #{iwptsid})
+	</insert>
+	
+	<select id="selectWpsid" resultType="java.lang.Integer">
+		SELECT NVL(MAX(WP_SID),0) AS WPSID FROM WALK_POST
+	</select>
+	
+	<select id="questionList" resultType="com.act.member.QuestionDTO">
+    	SELECT WTBSID, WTBQUESTION, WTBANSWER, WTBPOINT
+    	FROM (
+        SELECT WTB_SID AS WTBSID, WTB_QUESTION AS WTBQUESTION, WTB_ANSWER AS WTBANSWER, WTB_POINT AS WTBPOINT,
+               ROW_NUMBER() OVER (ORDER BY DBMS_RANDOM.VALUE) AS rn
+        FROM WALK_TEST_BANK
+    	)
+    	WHERE rn &lt; 10
+	</select>
+	
+	<insert id="addQuestion">
+		INSERT INTO WALK_TEST_PAPER
+		(WTR_SID, WTB_SID1, WTB_SID2, WTB_SID3, WTB_SID4, WTB_SID5, WTB_SID6, WTB_SID7, WTB_SID8, WTB_SID9, WTB_SID10)
+		VALUES
+		(#{wtrsid}, #{wtbsid1}, #{wtbsid2}, #{wtbsid3}, #{wtbsid4}, #{wtbsid5},
+		 #{wtbsid6}, #{wtbsid7}, #{wtbsid8}, #{wtbsid9}, #{wtbsid10})
+	</insert>
+	
 </mapper>

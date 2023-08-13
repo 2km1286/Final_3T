@@ -16,5 +16,16 @@ public interface ISittingDAO
 	public int slCount(SittingDTO dto);
 
 	public ArrayList<SittingDTO> booklist(String memSid);
-
+	
+	// 펫시터 접수함 생성
+	public int addTestRevice(String memSid);
+	
+	// 접수번호 가져오기
+	public int receiveNum();
+	
+	// 펫시터 문제은행 가져오기
+	public ArrayList<SittingQuestionDTO> questionSittingList();
+	
+	// 펫시터 문제지 테이블 insert
+	public int addSittingQuestion(int strsid);
 }

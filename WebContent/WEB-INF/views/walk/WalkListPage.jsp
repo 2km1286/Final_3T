@@ -2,10 +2,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <%
 	String memSid = (String) session.getAttribute("memSid"); // 최초 요청시 "0"
+	
+	if(memSid == null)
+	{
+		memSid = "0";
+		session.setAttribute("memSid", memSid);				//  null이라면 memSid를 0으로 해놓기
+	}
+	
+	String errorMesg = (String) session.getAttribute("errorMesg");
+	if (errorMesg != null && !errorMesg.isEmpty()) 
+	{
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -178,19 +189,33 @@ p {
 </style>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+	
+	
 	$().ready(function()
 	{
 
-		// 펫시팅 돌봄장소 클릭시 예약화면
+		// 대리산책 공고글 클릭시 예약화면
 		$("#cardContainer").click(function()
 		{
-			window.location.href = "walkreservation.action";
+			window.location.href = "walkreservationpage.action";
+			
 		});
+				
 	});
+
 </script>
+
+<script type="text/javascript">
+     alert('<%=errorMesg  %>');
+</script>
+
+<% 
+	session.removeAttribute("errorMesg"); // 메시지를 표시한 후 세션에서 삭제
+}
+%>
 
 </head>
 <body>
@@ -219,17 +244,23 @@ p {
 
 				<button class="button" onclick="walkTest()" style="float: right;">대리산책러
 					지원하기</button>
-				<button class="button" onclick="walkWrite()" style="float: right;">대리산책
+
+				<c:if test="${not empty errorMessage}">
+					<div class="alert alert-danger">${errorMessage}</div>
+				</c:if>
+
+
+				<button class="button post-btn" onclick="walkWrite()" style="float: right;">대리산책
 					공고글 작성</button>
 				<script>
 					function walkTest()
 					{
-						window.location.href = "walktest.action";
+						window.location.href = "walktermspage.action";
 					}
 
 					function walkWrite()
 					{
-
+						window.location.href = "walkpostpage.action";
 					}
 				</script>
 			</div>
