@@ -140,32 +140,62 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<img src="images/dogdog.png" alt="" class="rounded-circle" style="width: 200px; margin: 20px;">
 								</div>
 								<div class="text-center">
-									<h5>[프로 펫시터] 퍼피러버</h5>
-									<h6 class="text-muted">아이에게 편안한 환경을 제공합니다!</h6>
-									<p>4.2 ⭐ (991개의 후기) 45,000원 / 1박</p>
+									<h5>[${listBySpSid.grade }] ${listBySpSid.jmNickName } </h5>
+									<h6 class="text-muted">${listBySpSid.sptitle }</h6>
+									<p>4.2 ⭐ (991개의 후기) ${listBySpSid.price }원 / 1박</p>
 								</div>
 							</div>
 							<br>
 							<hr>
 							<div>
-								<h5 class="card-title text-center">퍼피러버 펫시터님을 소개합니다</h5><br>
+								<h5 class="card-title text-center">${listBySpSid.jmNickName } 펫시터님을 소개합니다</h5><br>
 								<h6 class="card-subtitle text-muted text-center">
-									반갑습니다~ 반려동물을 사랑하는 펫시터입니당 <br>귀하의 반려 동물에게 집처럼 편안한 경험을 제공합니다.<br>
-									여러분이 없을 때도 사랑받는 가족처럼 대해드립니다.
+									${listBySpSid.spContent }
 								</h6>
 							</div>
 							<hr>
 							<br>
 							<div>
 								<h5 class="card-title text-center">이용 가능 서비스</h5>
+								<c:forEach var="tag" items="${spListTags }">
+									<button class="btn btn-outline-warning"  style="margin-left: 30px;">${tag.isptName }</button>
+								</c:forEach>
+								<!-- 
 								<button class="btn btn-outline-warning" style="margin-left: 130px;">대형견 가능</button>
 								<button class="btn btn-outline-warning">노견 가능</button>
 								<button class="btn btn-outline-warning">홈캠 가능</button>
 								<button class="btn btn-outline-warning">모발관리 가능</button>
+								 -->									
 							</div>
 							<br>
 							<hr><br>
-
+							
+							<div>
+								<h5 class="card-title text-center">휴일</h5>
+								<br />
+								<c:choose>
+									<c:when test="${spRest != null }">
+									<c:forEach var="rest" items="${spRest }">
+										<div class="card-title text-center">
+											<c:choose>
+												<c:when test="${rest.srStart == rest.srEnd }">
+													<h6 class="card-subtitle text-muted">${rest.srStart }</h6>
+												</c:when>
+												<c:when test="${rest.srStart != rest.srEnd }">
+													<h6 class="card-subtitle text-muted">${rest.srStart } ~ ${rest.srEnd }</h6>
+												</c:when>
+											</c:choose>
+										</div>
+									</c:forEach>								
+									</c:when>
+									<c:otherwise>
+										<h6>2달 이내에 휴일이 없습니다.</h6>
+									</c:otherwise>
+								</c:choose>
+								
+							</div>
+							<br />
+							
 							<!-- 이용요금 -->
 							<div>
 								<h5 class="card-title text-center">이용 요금</h5>
