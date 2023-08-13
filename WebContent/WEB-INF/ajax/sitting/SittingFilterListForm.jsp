@@ -205,11 +205,8 @@ p {
 					<c:if test="${status.count % 3 == 1}">
 						<div class="row justify-content-between">
 					</c:if>
-
-					<div class="card" id="spPost"
-						style="margin: 5px; width: 32%; margin-bottom: 50px;">
-						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
-							style="width: 100%;">
+					<div class="card" id="spPost" style="margin: 5px; width: 32%; margin-bottom: 50px;">
+						<img src="images/sitterroom.jpg" alt="" class="card-img-top" style="width: 100%;">
 						<div class="card-body">
 							<h5 class="card-title">${dto.grade}
 								${dto.jmNickName}</h5>
@@ -218,13 +215,13 @@ p {
 							</h6>
 							<br>
 							
-							<c:forEach var="tag" items="${filtertaglist }">
-									<c:if test="${dto.spSid == tag.spSid}">
-											<button class="btn radio-button" readonly
-											style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
-											value="${tag.isptSid }">${tag.isptName }</button>
-									</c:if>
-							</c:forEach>
+							<!-- 모든 태그 리스트 -->
+							<%-- <c:forEach var="tag" items="${filtertaglist }">
+							<c:if test="${dto.spSid == tag.spSid}">
+							<button class="btn radio-button" readonly style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
+							value="${tag.isptSid }">${tag.isptName }</button>
+							</c:if>
+								</c:forEach> --%>
 							
 							<p>4.8 ⭐ (452개의 후기)
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -237,9 +234,9 @@ p {
 					<!-- end .card -->
 
 					<c:if test="${status.count % 3 == 0}">
-			</div>
-			<!-- end .row -->
-			</c:if>
+					</div>
+					<!-- end .row -->
+					</c:if>
 			</c:forEach>
 		</div>
 
