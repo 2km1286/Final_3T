@@ -48,6 +48,12 @@ public interface ISittingDAO
 	// 회원번호로 펫시터인 나에게 달린 후기 조회
 	public ArrayList<SittingDTO> sittingReviews(String memSid);
 	
+	// 돌봄장소번호로 펫시터의 후기 조회(후기러의 닉네임 포함)
+	public ArrayList<SittingDTO> sittingReviewsBySpSid(int spSid);
+	
+	// 돌봄장소번호로 펫시터의 후기 사진 조회(후기러의 닉네임 포함)
+	public ArrayList<SittingDTO> sittingReviewsPhoto(int spSid);
+	
 	// 나에게 달린 후기를 쓴 회원번호로 그 회원의 닉네임 조회를 위한 전체출력
 	public ArrayList<SittingDTO> sittingReviewers();
 	
