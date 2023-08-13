@@ -11,14 +11,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>펫시터 약관동의 페이지</title>
+<title>서비스 약관동의 페이지</title>
 
 <style>
 
-h1, h2, h4, h5 {
-	font-family: "Jua";
-	font-size: 20pt;
-}
+*{font-family: "Jua";}
 
 </style>
 
@@ -46,8 +43,9 @@ h1, h2, h4, h5 {
 </section>
 	
 	<div class="bg-light">
-    <div class="container mt-5" style="margin-bottom: 0px;">
-        <h1 class="text-center mb-4">펫시팅 서비스 약관 동의</h1>
+    <div class="container"> 
+    	<br>
+        <h1 class="text-center" >서비스 약관 동의</h1>
 
         <div class="card mb-4">
             <div class="card-header">
@@ -56,7 +54,7 @@ h1, h2, h4, h5 {
             
             <div class="card-body">
                 <ul>
-                    <li>안전 보장: 모든 펫시팅 활동은 반려동물의 안전을 최우선으로 생각해야 합니다.</li>
+                    <li>안전 보장: 모든 활동은 반려동물의 안전을 최우선으로 생각해야 합니다.</li>
                     <li>정시 출근: 약속된 시간에 정시에 도착하여 서비스를 제공해야 합니다.</li>
                     <li>반려동물 이해: 각 반려동물의 특성과 요구사항을 충분히 이해하고 대응해야 합니다.</li>
                     <li>긴급 상황 대응: 비상상황 발생 시 즉시 반려동물 주인과 연락하여 대응해야 합니다.</li>
@@ -103,7 +101,8 @@ h1, h2, h4, h5 {
                 2. 위 1항에서 정의되지 않은 이 약관상의 용어의 의미는 일반적인 거래관행에 의합니다.</textarea>
 				</div>
         </div>
-
+		<!-- </div> -->
+		
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="agreeCheck">
             <label class="form-check-label" for="agreeCheck">본 약관을 읽었으며 이에 동의합니다.</label>
@@ -111,7 +110,8 @@ h1, h2, h4, h5 {
 
         <button type="button" class="btn btn-success btn-block" id="agreeButton" disabled>동의하고 진행하기</button>
     </div>
-	</div>
+</div>
+	
 
 <section>
 	<c:import url="/WEB-INF/components/index/FooterForm.jsp">
