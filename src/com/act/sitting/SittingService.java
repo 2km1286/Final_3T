@@ -103,7 +103,6 @@ public class SittingService implements ISittingService
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		filterlist = dao.spfilterlist(dto);
 		
-		System.out.println("filterlist : " + filterlist);
 		
 		return filterlist;
 	}

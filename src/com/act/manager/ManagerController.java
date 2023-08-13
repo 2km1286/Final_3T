@@ -1,10 +1,13 @@
 package com.act.manager;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -19,6 +22,7 @@ public class ManagerController
 	{
 		String result = "";
 		request.setAttribute("miName", request.getParameter("miName"));
+		request.setAttribute("flag", request.getParameter("flag"));
 		result = "/WEB-INF/views/manager/ManagerPage.jsp";
 		return result;
 	}
@@ -68,14 +72,15 @@ public class ManagerController
 		sittingCount = managerService.sittingSearchEmerg();
 		walkCount = managerService.walkSearchEmerg();
 		request.setAttribute("count", sittingCount + walkCount);
+		request.setAttribute("flag", request.getParameter("flag"));
 		result = "/WEB-INF/ajax/manager/ManagerReportListForm.jsp";
 		
 		return result;
 	}
 	
-	// 펫시팅 신고내역조회
+	// 펫시팅 신고내역조회 -AJAX 처리
 	@RequestMapping("/sittingreportlist.action")
-	public String sittingReportList(ManagerDTO dto,HttpServletRequest request)
+	public String sittingReportList(HttpServletRequest request,Model model)
 	{
 		String result = "";
 		int sittingCount =0;
@@ -83,10 +88,72 @@ public class ManagerController
 		sittingCount = managerService.sittingSearchEmerg();
 		walkCount = managerService.walkSearchEmerg();
 		request.setAttribute("count", sittingCount + walkCount);
+		ArrayList<ManagerDTO> sittingReportList = managerService.sittingReportList();
+		model.addAttribute("sittingReportList", sittingReportList);
 		result = "/WEB-INF/ajax/manager/SittingReportList.jsp";
 		
 		return result;
 	}
+	// 대리산책 신고내역조회 -AJAX 처리
+	@RequestMapping("/walkreportlist.action")
+	public String walkReportList(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		int sittingCount =0;
+		int walkCount = 0;
+		sittingCount = managerService.sittingSearchEmerg();
+		walkCount = managerService.walkSearchEmerg();
+		request.setAttribute("count", sittingCount + walkCount);
+		ArrayList<ManagerDTO> walkReportList = managerService.walkReportList();
+		model.addAttribute("WalkReportList", walkReportList);
+		result = "/WEB-INF/ajax/manager/WalkReportList.jsp";
+		
+		return result;
+	}
+	
+
+	// 펫시팅 신고내역 블라인드 처리
+	@RequestMapping("/sittingprivate.action")
+	public String sittingprivate(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.updateSittingPublic(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	// 대리산책 신고내역 블라인드 처리
+	@RequestMapping("/walkprivate.action")
+	public String walkprivate(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.updateWalkPublic(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	// 펫시팅 신고내역 반려
+	@RequestMapping("/removesittingreport.action")
+	public String removesittingreport(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteSittingReport(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	// 대리산책 신고내역 반려
+	@RequestMapping("/removewalkreport.action")
+	public String removewalkreport(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteSittingReport(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	
+	
 
 	// 관리자 회원관리. AJAX로 처리.
 	@RequestMapping("/managermemberlist.action")

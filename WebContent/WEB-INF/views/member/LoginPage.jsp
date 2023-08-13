@@ -59,7 +59,7 @@
 	                
 	                if (isAdminLogin) {
 	                    // 관리자 체크가 되어 있을 때
-	                    $(location).attr("href", "managerlogin.action?miId=" + jmId + "&miPw=" + jmPw);
+	                    $(location).attr("href", "managerlogin.action?miId=" + jmId + "&miPw=" + jmPw+"&flag="+1);
 	                    /* window.location.href = "managermain.action?miId="; */
 	                	// this.action = "java002";
 		                    //$("#loginForm").submit();
