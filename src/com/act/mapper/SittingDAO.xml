@@ -7,7 +7,7 @@
 	<select id="list" resultType="com.act.sitting.SittingDTO">
 		SELECT JMNICKNAME, SPTITLE,
 		SPADDR1, SPADDR2, EXTRAADDR, MEMSID, SPHSID, SPHSTART, SPHEND
-		, SRSTART, SREND,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
+		,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
 		FROM SITTING_PLACE_LIST_VIEW
 	</select>
 
@@ -73,34 +73,38 @@
 
 	<select id="spfilterlist" resultType="com.act.sitting.SittingDTO">
 		SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, EXTRAADDR, MEMSID,
-		SPHSID, SPHSTART, SPHEND, SRSTART, SREND, SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
+		SPHSID, SPHSTART, SPHEND, SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
 		FROM SITTING_PLACE_LIST_VIEW
 		WHERE 1=1
 		<if test="#{extraAddr} != null">
 			AND EXTRAADDR = #{extraAddr}
 		</if>
+		<!-- 
 		<if test="#{datePicker} != null">
 			AND #{datePicker} NOT BETWEEN TO_CHAR(SRSTART, 'YYYY-MM-DD') 
 									  AND TO_CHAR(SREND, 'YYYY-MM-DD')
 		</if>
+		 -->
 		<if test="#{spMaxPet} != null">
 			AND SPMAXPET >= #{spMaxPet}
 		</if>
 	</select>
 	
+	<!-- 펫시팅 리스트 페이지 태그 검색시 그 태그를 가진 돌봄장소의 정보 조회 <<미완>> -->
 	<select id="spFilterTagList" resultType="com.act.sitting.SittingDTO">
 		SELECT SPSID, ISPTNAME, ISPTSID
 		FROM SITTING_PLACE_TAGS_VIEW 
 		WHERE SPSID IN (SELECT SPSID
 		                FROM SITTING_PLACE_TAGS_VIEW
-		                WHERE 1 =1 
-		                <if test="#{list} != null">
-		                 AND ISPTSID IN 
-			                <foreach collection="list" item="isptSid" open="(" separator="," close=")">
-			                	#{isptSid}
+		                WHERE 1=1 
+		                <if test="#{isptSidListInteger} != null">
+						AND ISPTSID IN		                	
+			                <foreach collection="isptSidListInteger" item="isptSid" open="(" separator="," close=")">
+			                	 #{isptSid} 
 			                </foreach>
 		                </if>
-		                GROUP BY SPSID)
+		                GROUP BY SPSID
+		                HAVING COUNT(DISTINCT ISPTSID) = #{isptSidListInteger.size()})
 	</select>
 	
 	<select id="memSittingCancelToday" resultType="com.act.sitting.SittingDTO">

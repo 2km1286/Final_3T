@@ -250,8 +250,8 @@ p {
 				
 				<!-- 동 검색 구역 시작 -->
 				<input type="button" onclick="DaumPostcode()" value="지역 찾기">
-				<input type="text" id="jmAddr1" name="jmAddr1" placeholder="주소" readonly="readonly">
-				<input type="text" id="extraAddr" name="extraAddr" placeholder="동" readonly="readonly">
+				<input type="text" onclick="DaumPostcode()" id="jmAddr1" name="jmAddr1" placeholder="주소" readonly="readonly">
+				<input type="text" onclick="DaumPostcode()" id="extraAddr" name="extraAddr" placeholder="동" readonly="readonly">
 				
 				
 				<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
@@ -349,7 +349,7 @@ p {
 				<!-- 동 검색 구역 끝 -->
 							 
 				<label for="datepicker">날짜 선택:</label> 
-				<input type="text" id="datepicker" name="datepicker" class="custom-textbox datepick" readonly style="width: 115px;">			 		 
+				<input type="text" id="datepicker" name="datepicker" class="custom-textbox" readonly style="width: 115px;">			 		 
 				 <script>
 					var fp = flatpickr(document.getElementById("datepicker"), {
 						"locale": "ko" 
@@ -379,14 +379,19 @@ p {
 				<!-- 버튼 모양의 복수 선택 라디오 버튼 -->
 			
 				<c:forEach var="dto" items="${IndexTagList }">
-					<button  class="btn radio-button isptTag"  
+					<button type="button"  class="btn radio-button isptTag" name="tagBtn"
 						style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px"
 					data-ispt-sid="${dto.isptSid }" value="${ dto.isptSid}">${dto.isptName }</button>
-					<input type="hidden" name="selectedTags" id="selectedTags" value="${dto.isptSid}"/>
 				</c:forEach>
+					<input type="hidden" name="isptSidList" id="isptSidList" value=""/>
 			</div>
 
-			<script>
+			
+		</form>
+		
+		
+		<script>
+			
 				$(document).ready(function()
 				{
 					// 클릭한 버튼에 selected 클래스 추가 및 제거
@@ -397,45 +402,51 @@ p {
 						{
 							$(this).css('background-color', '#367539'); // 선택된 스타일로 변경
 							// 여기서 데이터를 추가해주면..?
+									
 						} else
 						{
 							$(this).css('background-color', '#4caf50'); // 원래 스타일로 변경
 						}
 					});
 					
+					
+					
 					// 필터 버튼 클릭 시
 					$("#filter").click(function()
 					{	
+						// 사용자가 검색할 태그들의 isptSid 를 담을 배열
+						var selectedTags = [];
+						
+						// .selected 클래스가 붙은 버튼의 data를 배열에 담는다.
+		                $('.isptTag.selected').each(function() 
+		                {
+		                    selectedTags.push($(this).attr('data-ispt-sid'));
+		                });
+						
+						// 배열을 ,을 붙이며 하나의 String으로 만든다.
+			            $('#isptSidList').val(selectedTags.join(','));
+						
+						// 확인
+		                alert($("#isptSidList").val());
+						
+						
+						$("#filterForm").submit();
+						
 						
 						var dataSend = "extraAddr=" + $("#extraAddr").val()
 									+ "&datePicker=" + $("#datepicker").val()
-									+ "&spMaxPet=" + $("#spMaxPet").val();
+									+ "&spMaxPet=" + $("#spMaxPet").val()
+									+ "&isptSidList=" + $("#isptSidList").val();
 						
 						
-						/* var dataSend = $("#filterForm").serialize(); */
-									
-						var selectedTags = $(".isptTag.selectedtag");
-						var isptSidValues = [];
-						selectedTags.each(function()
-						{
-							isptSidValues.push($(this).data('ispt-sid'));
-						});
-						
-						if(isptSidValues.length > 0 )
-						{
-							dataSend += "&isptSidValues=" + isptSidValues;
-						}
-									
-						
-
 						alert(dataSend);
-						alert(isptSidValues);
 						
 						$.ajax(
 						{
 							type : "POST",
 							url : "sittingfilterlistform.action",
 							data : dataSend,
+							//contentType: "application/json",
 							async : true,
 							success : function(data)
 							{
@@ -446,13 +457,14 @@ p {
 								alert(e.responseText);
 							}
 						});
+						
+						return false;
 					});
 					
 					
 				});
 			</script>
 			<!-- 검색 조건 태그 끝 -->
-		</form>
 			
 			<!-- 리스트 뿌리기 시작 -->
 			<h2>펫시터 공고글</h2>

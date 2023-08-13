@@ -98,6 +98,7 @@ public class SittingService implements ISittingService
 	}
 	
 	// 펫시팅 리스트 검색조건 리스트  반환
+	@Override
 	public ArrayList<SittingDTO> sittingFilterList(SittingDTO dto)
 	{
 		ArrayList<SittingDTO> filterlist = new ArrayList<SittingDTO>();
@@ -108,14 +109,22 @@ public class SittingService implements ISittingService
 		return filterlist;
 	}
 	
-	  // 펫시팅 리스트 태그 검색조건 리스트 반환 public ArrayList<SittingDTO>
-	  public ArrayList<SittingDTO> sittingFilterTagList(SittingDTO dto) 
-	  { 
-		  ArrayList<SittingDTO> filtertaglist = new ArrayList<SittingDTO>(); 
-		  ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class); 
-		  filtertaglist =  dao.spFilterTagList(dto);
+	
+	
+	// << 미완>>
+	  // 펫시팅 리스트 태그 검색조건 리스트 반환
+	  @Override public ArrayList<SittingDTO> sittingFilterTagList(SittingDTO dto) 
+	  {
+		  ArrayList<SittingDTO> filtertaglist = new ArrayList<SittingDTO>();
+		  ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		  System.out.println("서비스단 dao 불러온다ㅜ제바류ㅠㅠㅠ"); 
+		  filtertaglist = dao.spFilterTagList(dto);
 		  
-		  System.out.println("filtertaglist : " + filtertaglist);
+		  for(SittingDTO s : filtertaglist)
+		  {
+			  System.out.println("내가 검색하는 태그들을 가지고 있는 돌봄장소의 모든 태그 : " + s.getIsptName());
+		  }
+		  
 		  
 		  return filtertaglist;
 	  
