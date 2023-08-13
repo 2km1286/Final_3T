@@ -30,8 +30,106 @@
         FROM INDEX_WALK_INFO
 	</select>
 	
-
+	<select id="memWalkCancelToday" resultType="com.act.walk.WalkDTO">
+		SELECT WB.WB_SID AS WBSID, WB.WB_START AS WBSTART, WB.WB_END AS WBEND
+		FROM WALK_CANCEL WCL
+		    JOIN WALK_BOOK WB
+		    ON WCL.WB_SID = WB.WB_SID
+		        JOIN WALK_CREATE_CART WCC
+		        ON WB.WCC_SID = WCC.WCC_SID
+		            JOIN MEMBER MEM
+		            ON WCC.MEM_SID = MEM.MEM_SID
+		                JOIN JOIN_MEMBER JM
+		                ON MEM.MEM_SID = JM.MEM_SID
+		WHERE WCL.WCL_DATE = SYSDATE
+		AND JM.MEM_SID = #{memSid}
+	</select>
 	
+	<select id="walkReviewToday" resultType="com.act.walk.WalkDTO">
+		SELECT WRSID, WRTITLE, WRCONTENT, WRRATING, WRDATE, MEMSID, PMEMSID, WBSID, WBSTART, WBEND
+		FROM WALK_REVIEW_VIEW
+		WHERE WRDATE = SYSDATE
+		AND MEMSID = #{memSid}
+	</select>
+
+	<select id="walkCompanionToday" resultType="com.act.walk.WalkDTO">
+		SELECT WRR.WP_SID AS WPSID
+		FROM WALK_REPORT_COMPLETE WRC
+		    JOIN INDEX_MANAGER_ACTION IMA
+		    ON WRC.IMA_SID = IMA.IMA_SID
+		        JOIN WALK_REPORT_RECEIVE WRR
+		        ON WRC.WRR_SID = WRR.WRR_SID
+		WHERE IMA.IMA_SID = 4
+		AND WRC.WRC_DATE = SYSDATE
+		AND WRR.WP_SID = (  SELECT WP.WP_SID
+		                    FROM WALK_POST WP
+		                        JOIN WALK_LICENSE WL
+		                        ON WP.WL_SID = WL.WL_SID
+		                            JOIN WALK_FOLLOWING_LIST WFL
+		                            ON WL.WL_SID = WFL.WL_SID
+		                                JOIN MEMBER MEM
+		                                ON WFL.MEM_SID = MEM.MEM_SID
+		                                    JOIN JOIN_MEMBER JM
+		                                    ON MEM.MEM_SID = JM.MEM_SID
+		                                    WHERE MEM.MEM_SID = #{memSid})	
+	</select>
+
+	<select id="memWalkBookToday" resultType="com.act.walk.WalkDTO">
+		SELECT TO_CHAR(WB.WB_START, 'YYYY-MM-DD') AS WBSTART, TO_CHAR(WB.WB_END, 'YYYY-MM-DD') AS WBEND
+			 , MEM.MEM_SID AS PMEMSID, WB.WB_SID AS WBSID
+		FROM WALK_BOOK WB
+		    JOIN WALK_CREATE_CART WCC
+		    ON WB.WCC_SID = WCC.WCC_SID
+		        JOIN MEMBER MEM
+		        ON WCC.MEM_SID = MEM.MEM_SID
+		WHERE WB.WB_DATE = SYSDATE
+		AND WCC.MEM_SID = #{memSid}
+	</select>
+
+	<select id="walkBookToday" resultType="com.act.walk.WalkDTO">
+		SELECT TO_CHAR(WB.WB_START, 'YYYY-MM-DD') AS WBSTART, TO_CHAR(WB.WB_END, 'YYYY-MM-DD') AS WBEND, MEM.MEM_SID AS MEMSID, WB.WB_SID AS WBSID
+		FROM WALK_BOOK WB
+		    JOIN WALK_LICENSE WL
+		    ON WB.WL_SID = WL.WL_SID
+		        JOIN WALK_TEST_SUBMIT WTS
+		        ON WL.WTS_SID = WTS.WTS_SID
+		            JOIN WALK_TEST_RECEIVE WTR
+		            ON WTS.WTR_SID = WTR.WTR_SID
+		                JOIN MEMBER MEM
+		                ON WTR.MEM_SID = MEM.MEM_SID
+		WHERE WB.WB_DATE = SYSDATE
+		AND MEM.MEM_SID = #{memSid}
+	</select>
+
+	<select id="walkBookMyPage" resultType="com.act.walk.WalkDTO">
+		SELECT TO_CHAR(WB.WB_START, 'YYYY-MM-DD') AS WBSTART, TO_CHAR(WB.WB_END, 'YYYY-MM-DD') AS WBEND, MEM.MEM_SID AS MEMSID, WB.WB_SID AS WBSID
+		FROM WALK_BOOK WB
+		    JOIN WALK_LICENSE WL
+		    ON WB.WL_SID = WL.WL_SID
+		        JOIN WALK_TEST_SUBMIT WTS
+		        ON WL.WTS_SID = WTS.WTS_SID
+		            JOIN WALK_TEST_RECEIVE WTR
+		            ON WTS.WTR_SID = WTR.WTR_SID
+		                JOIN MEMBER MEM
+		                ON WTR.MEM_SID = MEM.MEM_SID
+		WHERE MEM.MEM_SID = #{memSid}
+		ORDER BY WB.WB_DATE DESC
+	</select>
+
+	<select id="walkReviews" resultType="com.act.walk.WalkDTO">
+		SELECT WRSID, WRTITLE, WRCONTENT, WRRATING, WRDATE, MEMSID, PMEMSID, WBSID, WBSTART, WBEND
+		FROM WALK_REVIEW_VIEW
+		WHERE MEMSID = #{memSid}
+		ORDER BY WRDATE DESC
+	</select>
+	
+	<select id="walkReviewers" resultType="com.act.walk.WalkDTO">
+		SELECT JM_NICKNAME AS PJMNICKNAME, MEM_SID AS PMEMSID
+		FROM JOIN_MEMBER
+	</select>
+
+
+
 
 
 </mapper>

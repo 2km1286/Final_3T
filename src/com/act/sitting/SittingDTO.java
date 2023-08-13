@@ -26,9 +26,9 @@ public class SittingDTO
 	private int isptSid1, isptSid2,isptSid3, isptSid4,isptSid5,isptSid6,isptSid7,isptSid8,isptSid9,isptSid10,isptSid11;
 	private String isptName;
 	
-	// SITTING_BOOK_VIEW	// sbStart 가 나눠져있는건 달력js에서 사용하기 위함, pmemSid는 예약을 요청한 멤버시드	
-	private String sbStartYear, sbStartMonth, sbStartDay, sbEnd, pMemSid;	
-	private int sbSid, sbPrice;
+	// 예약시작일, 종료일, 접수완료번호, 예약을 요청한 견주의 memSid는 pmemSid	
+	private String sbStart, sbEnd, pMemSid;	
+	private int sbSid;
 	
 	// 펫시팅 리스트 검색조건 - 날짜
 	private String datePicker;
@@ -403,34 +403,15 @@ public class SittingDTO
 		this.isptName = isptName;
 	}
 
-	public String getSbStartYear()
+	
+	public String getSbStart()
 	{
-		return sbStartYear;
+		return sbStart;
 	}
 
-	public void setSbStartYear(String sbStartYear)
+	public void setSbStart(String sbStart)
 	{
-		this.sbStartYear = sbStartYear;
-	}
-
-	public String getSbStartMonth()
-	{
-		return sbStartMonth;
-	}
-
-	public void setSbStartMonth(String sbStartMonth)
-	{
-		this.sbStartMonth = sbStartMonth;
-	}
-
-	public String getSbStartDay()
-	{
-		return sbStartDay;
-	}
-
-	public void setSbStartDay(String sbStartDay)
-	{
-		this.sbStartDay = sbStartDay;
+		this.sbStart = sbStart;
 	}
 
 	public String getSbEnd()
@@ -456,21 +437,6 @@ public class SittingDTO
 	public int getSbSid()
 	{
 		return sbSid;
-	}
-
-	public void setSbSid(int sbSid)
-	{
-		this.sbSid = sbSid;
-	}
-
-	public int getSbPrice()
-	{
-		return sbPrice;
-	}
-
-	public void setSbPrice(int sbPrice)
-	{
-		this.sbPrice = sbPrice;
 	}
 
 	public String getDatePicker()

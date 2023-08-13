@@ -14,4 +14,10 @@ public interface ISittingService
 	public ArrayList<SittingDTO> tagList();
 	public ArrayList<SittingDTO> sittingFilterList(SittingDTO dto);
 	public ArrayList<SittingDTO> sittingFilterTagList(SittingDTO dto);
+	public ArrayList<SittingDTO> memSittingCancelToday(String memSid);
+	public ArrayList<SittingDTO> sittingReviewToday(String memSid);
+	public ArrayList<SittingDTO> sittingCompanionToday(String memSid);
+	public ArrayList<SittingDTO> memSittingBookToday(String memSid);
+	public ArrayList<SittingDTO> sittingBookToday(String memSid);
+	public SittingDTO sittingReview(int srwSid);
 }

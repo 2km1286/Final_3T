@@ -1,6 +1,7 @@
 package com.act.walk;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,9 +53,20 @@ public class WalkController {
 
 	// 마이페이지 대리산책. AJAX로 처리.
 	@RequestMapping("/mypagewalkform.action")
-	public String myPageWalk() {
+	public String myPageWalk(HttpSession session, Model model)
+	{
 		String result = "";
-		// AJAX이자 컴포넌트
+		String memSid = (String)session.getAttribute("memSid");
+		
+		// 대리산책 예약 내역
+		model.addAttribute("walkBookMyPage", walkService.walkBookMyPage(memSid));
+		
+		// 대리산책 후기
+		model.addAttribute("walkReviews", walkService.walkReviews(memSid));
+		
+		// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
+		model.addAttribute("walkReviewers", walkService.walkReviewers());
+		
 		result = "/WEB-INF/ajax/MyPageWalkForm.jsp";
 		return result;
 	}

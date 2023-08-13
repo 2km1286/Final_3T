@@ -9,6 +9,15 @@
 <head>
 <meta charset="UTF-8">
 <title>펫시팅후기</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script>
+    
+		
+	    
+</script>
+
 </head>
 <body>
 
@@ -19,13 +28,23 @@
 			style="width: 100px; height: 100px; border-radius: 50%;">
 	</div>
 	<div class="col-5">
-		<h5 class="card-title">⭐⭐⭐⭐⭐</h5><h5 class="card-title">baby</h5>
-		<h6 class="card-subtitle text-muted">2023년 6월 18일</h6>
+		<h5 class="card-title">별점 : 
+		<c:forEach begin="1" end="${review.srwRate}" varStatus="loop">
+		⭐
+		</c:forEach>
+		</h5>
+		<h5 class="card-title">
+		<c:forEach items="${reviewers}" var="reviewr">
+			<c:if test="${reviewr.pMemSid eq review.pMemSid}">
+			작성자 : ${reviewr.pJmNickName }
+			</c:if>
+		</c:forEach>
+		</h5>
+		<h5>제목 : ${review.srwTitle }</h5>
+		<h6 class="card-subtitle text-muted">작성일 : ${review.srwDate}</h6>
 		<br>
 		<h6 class="card-subtitle">
-		오늘 처음으로 이 산책 서비스를 이용해봤는데, 정말 만족스러웠어요!<br>
-		펫시터 분이 우리 강아지와 정말 잘 어울려서, 강아지도 즐거워하는 모습을 봤어요.<br> 
-		다음에도 또 이용하려고 합니다.</h6>
+		${review.srwContent }</h6>
 	</div>
 </div><br>
 

@@ -115,4 +115,24 @@
 		ON JM.MEM_SID = MEM.MEM_SID
 	</select>
 
+	<select id="profilCompanionNotice" resultType="java.lang.Integer">
+		SELECT COUNT(PRC.PRC_SID) AS PRCCOUNT
+		FROM PROFILE_REPORT_COMPLETE PRC
+		    JOIN INDEX_MANAGER_ACTION IMA
+		    ON PRC.IMA_SID = IMA.IMA_SID
+		        JOIN PROFILE_REPORT_RECEIVE PRR
+		        ON PRC.PRR_SID = PRR.PRR_SID
+		WHERE IMA.IMA_SID = 4
+		AND PRC.PRC_DATE = SYSDATE
+		AND PRR.REPORTED_MEM_SID = #{memSid}
+	</select>
+
+
+
+
+
+
+
+
+
 </mapper>
