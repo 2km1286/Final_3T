@@ -139,8 +139,8 @@ if (memSid == null) {
 	<!-- 기배 Modal 끝 -->
 
 	<!-- 기배 Modal 시작 ( 대리산책 타임라인 종료 횟수 > 펫시터 타임라인 종료 횟수 ) -->
-    <div class="modal fade" id="initialModal3" tabindex="-1" role="dialog"
-		aria-labelledby="initialModalLabel3" aria-hidden="true">
+    <div class="modal fade" id="initialModal2" tabindex="-1" role="dialog"
+		aria-labelledby="initialModalLabel2" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered"
 			role="document">
 			<div class="modal-content">
