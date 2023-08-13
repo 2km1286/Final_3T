@@ -274,7 +274,27 @@ public class SittingService implements ISittingService
 	}	
 		
 		
+	@Override
+	public SittingDTO listBySpSid(int spSid)
+	{
+		SittingDTO listBySpSid = new SittingDTO();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		listBySpSid = dao.listBySpSid(spSid);
 		
+		return listBySpSid;
+		
+	}
+	
+	// 돌봄장소의 휴일들
+	@Override
+	public ArrayList<SittingDTO> spRest(int spSid)
+	{
+		ArrayList<SittingDTO> restList = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		restList = dao.spRest(spSid);
+		
+		return restList;
+	}
 		
 		
 		
