@@ -88,6 +88,29 @@ h2 span {
      인기 펫시터 <span>TOP 3</span></h2>
      <hr>
       <div class="row">
+      <c:forEach items="${sittingFollowingRank}" var="followingRank" >
+      <c:forEach items="${sittingCount}" var="sittingCount">
+         <c:if test="${followingRank.memSid eq sittingCount.memSid }">
+         
+                   <div class="col-md-4">
+                       <div class="card">
+                           <div class="card-block">
+                               <span class="card-rank card-rank-1">??1위</span>
+                               <h4 class="card-title"> [${followingRank.grade}] ${followingRank.jmNickName}<br></h4>
+                               <h6 class="card-subtitle text-muted">
+                                   후기 ${sittingCount.srwCount}<br>
+                                   예약완료 횟수 ${sittingCount.stleCount}건
+                               </h6>
+                               <p class="card-text p-y-1" style="float: right;"><br>❤️ ${followingRank.followingCount}<br></p>
+                               <a href="#" class="card-link"><br>공고글 보기</a>
+                           </div>
+                       </div>
+                   </div>
+         </c:if>
+     </c:forEach>
+	</c:forEach>
+      
+      <!-- 
         <div class="col-md-4">
           <div class="card">
             <div class="card-block">
@@ -122,7 +145,7 @@ h2 span {
               <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
       <hr>
@@ -180,4 +203,3 @@ h2 span {
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
-

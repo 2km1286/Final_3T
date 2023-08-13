@@ -37,7 +37,51 @@ public class SittingDTO
 	private String isptSidList;
 	private List<Integer> isptSidListInteger;
 	
+	// 펫시터 팔로잉 리스트에서 팔로워 수 담을 변수
+	private int followingCount;
 	
+	// 펫시터 당(memSid) 달린 후기 수 조회
+	private int srwCount;
+	
+	// 펫시터 당 타임라인 완료 수 조회
+	private int stleCount;
+	
+	
+	
+	public int getStleCount()
+	{
+		return stleCount;
+	}
+
+	public void setStleCount(int stleCount)
+	{
+		this.stleCount = stleCount;
+	}
+
+	public int getSrwCount()
+	{
+		return srwCount;
+	}
+
+	public void setSrwCount(int srwCount)
+	{
+		this.srwCount = srwCount;
+	}
+
+	public int getFollowingCount()
+	{
+		return followingCount;
+	}
+
+	public void setFollowingCount(int followingCount)
+	{
+		this.followingCount = followingCount;
+	}
+
+	public void setSbSid(int sbSid)
+	{
+		this.sbSid = sbSid;
+	}
 
 	public List<Integer> getIsptSidListInteger()
 	{

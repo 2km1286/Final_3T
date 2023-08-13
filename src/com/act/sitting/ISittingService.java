@@ -22,4 +22,7 @@ public interface ISittingService
 	public SittingDTO sittingReview(int srwSid);
 	public int sittingStsCount(SittingDTO dto);
 	public int sittingSlCount(SittingDTO dto);
+	public ArrayList<SittingDTO> sittingFollowingRank();
+	public ArrayList<SittingDTO> sittingCount();
+	
 }
