@@ -37,18 +37,19 @@ public class SittingController
 
 	// 펫시터 예약화면 데이터 바인딩
 	@RequestMapping("/sittingreservationpage.action")
-	public String getSittingReservationView(int spSid, Model model)
+	public String getSittingReservationView(String memSid, Model model)
 	{
 		String result = "";
-		System.out.println("spSid : " + spSid);
 		
-		SittingDTO listBySpSid = sittingService.listBySpSid(spSid);
+		SittingDTO listBySpSid = sittingService.listPublicByMemSid(memSid);
 		
-		ArrayList<SittingDTO> spListTags = sittingService.sittingPlaceTags(spSid);
-		ArrayList<SittingDTO> spRest = sittingService.spRest(spSid);
-		ArrayList<SittingDTO> reviews = sittingService.sittingReviewsBySpSid(spSid);
-		ArrayList<SittingDTO> reviewsPhoto = sittingService.sittingReviewsPhoto(spSid);
+		ArrayList<SittingDTO> spListTags = sittingService.sittingPlaceTagsByMemSid(memSid);
+		ArrayList<SittingDTO> spRest = sittingService.spRest(memSid);
+		ArrayList<SittingDTO> reviews = sittingService.sittingReviews(memSid);
+		ArrayList<SittingDTO> reviewsPhoto = sittingService.sittingReviewsPhoto(memSid);
 		
+		
+		System.out.println("sitter memSid : " + memSid);
 		System.out.println("listBySpSid_Content: " + listBySpSid.getSpContent());
 		System.out.println("spListTags: " + spListTags);
 		System.out.println("reviews : " + reviews);
