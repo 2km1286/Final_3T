@@ -11,14 +11,7 @@
 		FROM SITTING_PLACE_LIST_VIEW
 	</select>
 	
-	<select id="listBySpSid" resultType="com.act.sitting.SittingDTO">
-		SELECT JMNICKNAME, SPTITLE, SPCONTENT,
-		SPADDR1, SPADDR2, EXTRAADDR, MEMSID, SPHSID, SPHSTART, SPHEND
-		,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
-		FROM SITTING_PLACE_LIST_VIEW
-		WHERE SPSID = #{spSid}
-	</select>
-
+	
 	<select id="IndexTagList"
 		resultType="com.act.sitting.SittingDTO">
 		SELECT ISPT_SID AS ISPTSID, ISPT_NAME AS ISPTNAME
@@ -60,33 +53,38 @@
 		ORDER BY SPCREATED DESC
 	</select>
 	
-	
-	
 	<select id="sittingPlaceTags" resultType="com.act.sitting.SittingDTO">
 		SELECT ISPTNAME
 		FROM SITTING_PLACE_TAGS_VIEW
 		WHERE SPSID = #{spSid}
 	</select>
 	
+	<select id="sittingPlaceTagsByMemSid" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, ISPTNAME, JMNICKNAME
+		FROM SITTING_PLACE_TAGS_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
+	
+	<select id="listPublicByMemSid" resultType="com.act.sitting.SittingDTO">
+		SELECT JMNICKNAME, SPTITLE, SPCONTENT,
+		SPADDR1, SPADDR2, EXTRAADDR, MEMSID, SPHSID, SPHSTART, SPHEND
+		,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
+		FROM SITTING_PLACE_LIST_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
+	
 	<select id="sittingReviews" resultType="com.act.sitting.SittingDTO">
-		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, JMNICKNAME
 		FROM SITTING_REVIEW_VIEW
 		WHERE MEMSID = #{memSid}
 		ORDER BY SRWDATE DESC
 	</select>
 	
-	<select id="sittingReviewsBySpSid" resultType="com.act.sitting.SittingDTO">
-		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, PJMNICKNAME
-		FROM SITTING_REVIEW_VIEW
-		WHERE SPSID = #{spSid}
-		ORDER BY SRWDATE DESC
-	</select>
 	
 	<select id="sittingReviewsPhoto" resultType="com.act.sitting.SittingDTO">
-		SELECT PJMNICKNAME, SRP_LINK, SRP_DATE
-		FROM SITTING_REVIEW_VIEW SRV JOIN SITTING_REVIEW_PHOTO SRP
-		                             ON SRV.SRWSID = SRP.SRW_SID
-		                             WHERE SPSID = #{spSid}
+		SELECT SPSID, PJMNICKNAME, SRPLINK, SRPDATE, PMEMSID, MEMSID
+		FROM SITTING_REVIEW_PHOTO_VIEW
+		WHERE MEMSID = #{memSid}
 		                             <!-- 나중에
 		                                  한 회원이 한 펫시터에 대해 여러번 예약하고 후기를 쓸 경우를 대비해서
 		                                  후기를 쓴 날짜를 통해서 여러 개 쓴 후기들이 분기되도록
@@ -241,11 +239,11 @@
 	</select>
 	
 	<select id="spRest" resultType="com.act.sitting.SittingDTO">
-		SELECT SPH.SP_SID AS SPSID , TO_CHAR(SR.SR_START, 'YYYY-MM-DD') AS SRSTART, TO_CHAR(SR.SR_END, 'YYYY-MM-DD') AS SREND
-		FROM SITTING_PLACE_HUB SPH JOIN SITTING_REST SR
-		                           ON SPH.SPH_SID = SR.SPH_SID
-		                           WHERE SPH.SP_SID=#{spSid}
-		                           ORDER BY SR.SR_START
+		SELECT MEMSID, TO_CHAR(SR.SR_START, 'YYYY-MM-DD') AS SRSTART, TO_CHAR(SR.SR_END, 'YYYY-MM-DD') AS SREND, SPLV.SPSID
+		FROM SITTING_PLACE_LIST_VIEW SPLV JOIN SITTING_REST SR
+		                                  ON SPLV.SPHSID = SR.SPH_SID
+		                                  WHERE MEMSID = #{memSid}
+		                                  ORDER BY SR.SR_START
 	</select>
 
 
