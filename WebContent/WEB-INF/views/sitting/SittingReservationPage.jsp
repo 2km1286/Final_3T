@@ -309,7 +309,9 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 							<div class="row">
 								<div class="col text-center" style="margin-right: 35px;">
 								<c:forEach items="${reviewsPhoto }" var="photo">
-									<img src="${photo.srpLink }" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									<c:if test="${photo.pMemSid = review.pMemSid }">
+										<img src="${photo.srpLink }" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+									</c:if>
 								</c:forEach>
 								</div>
 							</div>
