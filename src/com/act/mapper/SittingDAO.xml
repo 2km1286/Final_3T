@@ -270,6 +270,12 @@
 		                                  ORDER BY SR.SR_START
 	</select>
 	
+	<select id="petListByMemSid" resultType="com.act.sitting.SittingDTO">
+		SELECT PMEMSID, PETSID, PETNAME, PETIMAGE, PETBIRTH, PETGEN, PETSIZE, IPTSID, PETWEIGHT, PETSPECIALNOTE
+		FROM PET_VIEW              
+		WHERE PMEMSID = #{pMemSid}
+	</select>
+	
 
 
 </mapper>

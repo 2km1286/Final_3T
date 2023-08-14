@@ -67,6 +67,10 @@ public class SittingDTO {
 	private String sppLink;
 	
 
+	// 반려견 정보
+	private String petName, petImage, petBirth, petGen, petSize, petSpecialNote;  
+	private int petSid, iptSid, petWeight;
+
 
 
 	public int getSrwRateAvg() {
@@ -81,8 +85,99 @@ public class SittingDTO {
  {
 		return jmNickName;
 	}
+
 	
+	public String getPetName()
+	{
+		return petName;
+	}
+
+	public void setPetName(String petName)
+	{
+		this.petName = petName;
+	}
 	
+
+	public String getPetImage()
+	{
+		return petImage;
+	}
+
+	public void setPetImage(String petImage)
+	{
+		this.petImage = petImage;
+	}
+
+	public String getPetBirth()
+	{
+		return petBirth;
+	}
+
+	public void setPetBirth(String petBirth)
+	{
+		this.petBirth = petBirth;
+	}
+
+	public String getPetGen()
+	{
+		return petGen;
+	}
+
+	public void setPetGen(String petGen)
+	{
+		this.petGen = petGen;
+	}
+
+	public String getPetSize()
+	{
+		return petSize;
+	}
+
+	public void setPetSize(String petSize)
+	{
+		this.petSize = petSize;
+	}
+
+	public String getPetSpecialNote()
+	{
+		return petSpecialNote;
+	}
+
+	public void setPetSpecialNote(String petSpecialNote)
+	{
+		this.petSpecialNote = petSpecialNote;
+	}
+
+	public int getPetSid()
+	{
+		return petSid;
+	}
+
+	public void setPetSid(int petSid)
+	{
+		this.petSid = petSid;
+	}
+
+	public int getIptSid()
+	{
+		return iptSid;
+	}
+
+	public void setIptSid(int iptSid)
+	{
+		this.iptSid = iptSid;
+	}
+
+	public int getPetWeight()
+	{
+		return petWeight;
+	}
+
+	public void setPetWeight(int petWeight)
+	{
+		this.petWeight = petWeight;
+	}
+
 	public String getSppLink()
 	{
 		return sppLink;
@@ -94,6 +189,7 @@ public class SittingDTO {
 	}
 
 	public int getSrwRateAvg()
+
 
 	public String getIsptSidList()
 	{

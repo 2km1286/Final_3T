@@ -376,6 +376,16 @@ public class SittingService implements ISittingService
 		
 		return sittingSrwRates;
 	}
+	
+	@Override
+	public ArrayList<SittingDTO> petListByMemSid(String pMemSid)
+	{
+		ArrayList<SittingDTO> petList = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		petList = dao.petListByMemSid(pMemSid);
+		
+		return petList;
+	}
 		
 		
 	

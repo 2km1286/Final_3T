@@ -100,13 +100,7 @@ public interface ISittingDAO
 	
 	// 펫시터로서 오늘 수정요청당한 펫시팅 돌봄장소
 	
-	// 
-	
-	
-	
-	
-	
-	
-	
+	// 견주의 memSid로 자신이 등록한 반려견의 정보 가져오기
+	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
 	
 }
