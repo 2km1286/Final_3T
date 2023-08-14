@@ -37,8 +37,6 @@ public class SittingDTO {
 
 
 	
-	
-	
 	// 펫시팅 리스트 검색조건 - 날짜
 	private String datePicker;
 	
@@ -47,7 +45,6 @@ public class SittingDTO {
 	
 	// 태그검색 ajax 데이터전송 전 String 으로 묶어주는 변수
 	private String isptSidList;
-	
 
 	// 태그검색 선택된 태그들의 sid번호 담는 리스트
 	private List<Integer> isptSidListInteger;
@@ -62,7 +59,15 @@ public class SittingDTO {
 	private int stleCount;
 
 
+	// 나의 평균 별점
 	private int srwRateAvg;
+
+	
+	// 돌봄장소 이미지. spsid로 조회
+	private String sppLink;
+	
+
+
 
 	public int getSrwRateAvg() {
 		return srwRateAvg;
@@ -72,12 +77,24 @@ public class SittingDTO {
 		this.srwRateAvg = srwRateAvg;
 	}
 
-	public String getJmNickName() {
+	public String getJmNickName() 
+ {
+		return jmNickName;
+	}
+	
+	
+	public String getSppLink()
+	{
+		return sppLink;
+	}
 
-	
-	
-	
-	
+	public void setSppLink(String sppLink)
+	{
+		this.sppLink = sppLink;
+	}
+
+	public int getSrwRateAvg()
+
 	public String getIsptSidList()
 	{
 		return isptSidList;
@@ -87,11 +104,11 @@ public class SittingDTO {
 	{
 		this.isptSidList = isptSidList;
 	}
-	public String getJmNickName()
-	{
-
-		return jmNickName;
-	}
+	public String()
+  {
+    
+  }
+	
 
 	public void setJmNickName(String jmNickName) {
 		this.jmNickName = jmNickName;
@@ -296,7 +313,6 @@ public class SittingDTO {
 
 	public int getIsptSid()
 	{
-
 		return isptSid;
 	}
 
