@@ -20,7 +20,7 @@ public class SittingDTO
 	
 	// SITTING_REVIEW_VIEW
 	private String srwTitle, srwContent, srwDate, pJmNickName;	//pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
-	private int srwRate;
+	private int srwRate, srwRateAvg;
 
 	// INDEX_SITTING_PLACE_TAG
 	private int isptSid;
@@ -33,7 +33,13 @@ public class SittingDTO
 	// 펫시팅 리스트 검색조건 - 날짜
 	private String datePicker;
 	
+	// 펫시팅 후기의 사진들
+	private String srpLink, srpDate;
+	
+	// 태그검색 ajax 데이터전송 전 String 으로 묶어주는 변수
 	private String isptSidList;
+
+	// 태그검색 선택된 태그들의 sid번호 담는 리스트
 	private List<Integer> isptSidListInteger;
 	
 	// 펫시터 팔로잉 리스트에서 팔로워 수 담을 변수
@@ -47,6 +53,7 @@ public class SittingDTO
 
 	// 나의 평균 별점
 	private int srwRateAvg;
+
 	
 	// 돌봄장소 이미지. spsid로 조회
 	private String sppLink;
@@ -67,15 +74,16 @@ public class SittingDTO
 	}
 
 	public int getSrwRateAvg()
+
+	public String getIsptSidList()
 	{
-		return srwRateAvg;
+		return isptSidList;
 	}
 
-	public void setSrwRateAvg(int srwRateAvg)
+	public void setIsptSidList(String isptSidList)
 	{
-		this.srwRateAvg = srwRateAvg;
+		this.isptSidList = isptSidList;
 	}
-
 	public String getJmNickName()
 	{
 		return jmNickName;
@@ -316,6 +324,16 @@ public class SittingDTO
 		this.srwRate = srwRate;
 	}
 
+	public int getSrwRateAvg()
+	{
+		return srwRateAvg;
+	}
+
+	public void setSrwRateAvg(int srwRateAvg)
+	{
+		this.srwRateAvg = srwRateAvg;
+	}
+
 	public int getIsptSid()
 	{
 		return isptSid;
@@ -386,14 +404,24 @@ public class SittingDTO
 		this.datePicker = datePicker;
 	}
 
-	public String getIsptSidList()
+	public String getSrpLink()
 	{
-		return isptSidList;
+		return srpLink;
 	}
 
-	public void setIsptSidList(String isptSidList)
+	public void setSrpLink(String srpLink)
 	{
-		this.isptSidList = isptSidList;
+		this.srpLink = srpLink;
+	}
+
+	public String getSrpDate()
+	{
+		return srpDate;
+	}
+
+	public void setSrpDate(String srpDate)
+	{
+		this.srpDate = srpDate;
 	}
 
 	public List<Integer> getIsptSidListInteger()
@@ -435,11 +463,9 @@ public class SittingDTO
 	{
 		this.stleCount = stleCount;
 	}
-	
-	
 
 	
-		
+	
 	
 	
 	
