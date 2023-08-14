@@ -131,6 +131,12 @@
 		</if>
 	</select>
 	
+	<select id="searchNick" resultType="java.lang.String">
+		SELECT JM_NICKNAME AS JMNICKNAME
+		FROM JOIN_MEMBER
+		WHERE MEM_SID = #{memSid}
+	</select>
+	
 	<!-- 펫시팅 리스트 페이지 태그 검색시 그 태그를 가진 돌봄장소의 정보 조회 <<미완>> -->
 	<select id="spFilterTagList" resultType="com.act.sitting.SittingDTO">
 		SELECT SPSID, ISPTNAME, ISPTSID
@@ -173,14 +179,13 @@
 		FROM SITTING_TEST_RECEIVE
 	</select>
 	
-	<select id="questionSittingList" resultType="com.act.sitting.SittingQuestionDTO">
-    	SELECT STBSID, STBQUESTION, STBANSWER, STBPOINT
-   	 	FROM (
-        SELECT STB_SID AS STBSID, STB_QUESTION AS STBQUESTION, STB_ANSWER AS STBANSWER, STB_POINT AS STBPOINT,
-               ROW_NUMBER() OVER (ORDER BY DBMS_RANDOM.VALUE) AS rn
-        FROM SITTING_TEST_BANK
-    	)
-    	WHERE rn &lt; 10;
+	<select id="questionSittingList" resultType="com.act.sitting.SittingQuestionDTO">	
+    	SELECT STB_SID AS STBSID, STB_QUESTION AS STBQUESTION, STB_ANSWER AS STBANSWER, STB_POINT AS STBPOINT
+		FROM(SELECT * FROM SITTING_TEST_BANK ORDER BY DBMS_RANDOM.VALUE)
+		WHERE ROWNUM &lt;= 10
+		<!-- SELECT STB_SID AS STBSID, STB_QUESTION AS STBQUESTION, STB_ANSWER AS STBANSWER, STB_POINT AS STBPOINT
+		FROM(SELECT * FROM SITTING_TEST_BANK ORDER BY DBMS_RANDOM.VALUE)
+		WHERE ROWNUM BETWEEN 1 AND 10 -->
 	</select>
 	
 	<insert id="addSittingQuestion">
@@ -190,6 +195,12 @@
 		(#{strsid}, #{stbsid1}, #{stbsid2}, #{stbsid3}, #{stbsid4}, #{stbsid5},
  		#{stbsid6}, #{stbsid7}, #{stbsid8}, #{stbsid9}, #{stbsid10})
 	</insert>
+	
+	<select id="sittingPassScore" resultType="java.lang.Integer">
+		SELECT SPC_STANDARD AS SPCSTANDARD
+		FROM SITTING_PASS_CUT
+        ORDER BY SPC_SID DESC
+	</select>
 	
 
 	<select id="sittingReviewToday" resultType="com.act.sitting.SittingDTO">
