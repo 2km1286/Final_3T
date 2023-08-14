@@ -30,6 +30,7 @@ public class SittingController
 		model.addAttribute("list", sittingService.list());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
 		model.addAttribute("tagList", sittingService.tagList());
+		model.addAttribute("sittingSrwRates", sittingService.sittingSrwRates());
 		
 		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
 		return view;
@@ -41,25 +42,28 @@ public class SittingController
 	{
 		String result = "";
 		
-		SittingDTO listBySpSid = sittingService.listPublicByMemSid(memSid);
+		SittingDTO list = sittingService.listPublicByMemSid(memSid);
 		
 		ArrayList<SittingDTO> spListTags = sittingService.sittingPlaceTagsByMemSid(memSid);
 		ArrayList<SittingDTO> spRest = sittingService.spRest(memSid);
 		ArrayList<SittingDTO> reviews = sittingService.sittingReviews(memSid);
-		ArrayList<SittingDTO> reviewsPhoto = sittingService.sittingReviewsPhoto(memSid);
+		ArrayList<SittingDTO> reviewsPhoto = sittingService.sittingReviewsPhoto();
+		SittingDTO sittingSrwRate = sittingService.sittingSrwRate(memSid);
 		
 		
 		System.out.println("sitter memSid : " + memSid);
-		System.out.println("listBySpSid_Content: " + listBySpSid.getSpContent());
+		System.out.println("listBySpSid: " + list);
 		System.out.println("spListTags: " + spListTags);
 		System.out.println("reviews : " + reviews);
 		System.out.println("reviewsPhoto : " + reviewsPhoto);
+		System.out.println("sittingSrwRate : " + sittingSrwRate.getSrwCount() + " + swrRateAvg : " + sittingSrwRate.getSrwRateAvg());
 		
-		model.addAttribute("listBySpSid", listBySpSid);
+		model.addAttribute("list", list);
 		model.addAttribute("spListTags", spListTags);
 		model.addAttribute("spRest", spRest);
 		model.addAttribute("reviews", reviews);
 		model.addAttribute("reviewsPhoto", reviewsPhoto);
+		model.addAttribute("sittingSrwRate", sittingSrwRate);
 		
 		result = "/WEB-INF/views/sitting/SittingReservationPage.jsp";
 
