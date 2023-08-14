@@ -19,8 +19,10 @@ public class SittingDTO {
 	private int ipSid;
 
 	// SITTING_REVIEW_VIEW
-	private String srwTitle, srwContent, srwDate, pJmNickName; // pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
-	private int srwRate;
+
+	private String srwTitle, srwContent, srwDate, pJmNickName;	//pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
+	private int srwRate, srwRateAvg;
+
 
 	// INDEX_SITTING_PLACE_TAG
 	private int isptSid;
@@ -30,10 +32,24 @@ public class SittingDTO {
 	private String sbStart, sbEnd, pMemSid;
 	private int sbSid;
 
+
+
+
+
+	
+	
+	
 	// 펫시팅 리스트 검색조건 - 날짜
 	private String datePicker;
-
+	
+	// 펫시팅 후기의 사진들
+	private String srpLink, srpDate;
+	
+	// 태그검색 ajax 데이터전송 전 String 으로 묶어주는 변수
 	private String isptSidList;
+	
+
+	// 태그검색 선택된 태그들의 sid번호 담는 리스트
 	private List<Integer> isptSidListInteger;
 
 	// 펫시터 팔로잉 리스트에서 팔로워 수 담을 변수
@@ -44,6 +60,7 @@ public class SittingDTO {
 
 	// 펫시터 당 타임라인 완료 수 조회
 	private int stleCount;
+
 
 	private int srwRateAvg;
 
@@ -56,6 +73,23 @@ public class SittingDTO {
 	}
 
 	public String getJmNickName() {
+
+	
+	
+	
+	
+	public String getIsptSidList()
+	{
+		return isptSidList;
+	}
+
+	public void setIsptSidList(String isptSidList)
+	{
+		this.isptSidList = isptSidList;
+	}
+	public String getJmNickName()
+	{
+
 		return jmNickName;
 	}
 
@@ -247,7 +281,22 @@ public class SittingDTO {
 		this.srwRate = srwRate;
 	}
 
+
 	public int getIsptSid() {
+
+	public int getSrwRateAvg()
+	{
+		return srwRateAvg;
+	}
+
+	public void setSrwRateAvg(int srwRateAvg)
+	{
+		this.srwRateAvg = srwRateAvg;
+	}
+
+	public int getIsptSid()
+	{
+
 		return isptSid;
 	}
 
@@ -303,12 +352,33 @@ public class SittingDTO {
 		this.datePicker = datePicker;
 	}
 
+
 	public String getIsptSidList() {
 		return isptSidList;
 	}
 
 	public void setIsptSidList(String isptSidList) {
 		this.isptSidList = isptSidList;
+
+	public String getSrpLink()
+	{
+		return srpLink;
+	}
+
+	public void setSrpLink(String srpLink)
+	{
+		this.srpLink = srpLink;
+	}
+
+	public String getSrpDate()
+	{
+		return srpDate;
+	}
+
+	public void setSrpDate(String srpDate)
+	{
+		this.srpDate = srpDate;
+
 	}
 
 	public List<Integer> getIsptSidListInteger() {
@@ -342,5 +412,6 @@ public class SittingDTO {
 	public void setStleCount(int stleCount) {
 		this.stleCount = stleCount;
 	}
+
 
 }

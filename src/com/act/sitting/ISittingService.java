@@ -27,6 +27,12 @@ public interface ISittingService
 
 
 	public ArrayList<SittingDTO> sittingFollowingRank();
+	public SittingDTO listPublicByMemSid(String memSid);
+	public ArrayList<SittingDTO> spRest(String memSid);
+	public ArrayList<SittingDTO> sittingReviewsPhoto();
+	public ArrayList<SittingDTO> sittingPlaceTagsByMemSid(String memSid);
+	public SittingDTO sittingSrwRate(String memSid);
+	public ArrayList<SittingDTO> sittingSrwRates();
 	
 }
 

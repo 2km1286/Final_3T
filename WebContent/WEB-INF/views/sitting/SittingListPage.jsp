@@ -218,23 +218,6 @@ p {
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript">
-	$().ready(function()
-	{
-
-		// 펫시팅 돌봄장소 클릭시 예약화면
-		$("#spPost").click(function()
-		{
-			window.location.href = "sittingreservationpage.action";
-		});
-		
-		
-		
-		
-		
-	});
-</script>
-
 
 </head>
 <body>
@@ -469,14 +452,18 @@ p {
 			<!-- 리스트 뿌리기 시작 -->
 			<h2>펫시터 공고글</h2>
 			<hr>
-
 			<div id="cardContainer">
+			
 				<c:forEach var="dto" items="${list}" varStatus="status">
 					<c:if test="${status.count % 3 == 1}">
 						<div class="row justify-content-between">
 					</c:if>
 
-					<div class="card sp" id="spPost" style="margin: 5px; width: 32%; margin-bottom: 50px;">
+
+
+					<div class="card sp" id="spPost" data-mem-sid="${dto.memSid }" style="margin: 5px; width: 32%; margin-bottom: 50px;">
+						
+
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
@@ -488,7 +475,7 @@ p {
 								<br /> ${dto.sptitle}
 							</h6>
 							<br>
-							
+							<input type="hidden" id="spSid" name="spSid" value="${dto.spSid }"/>
 							<c:forEach var="tag" items="${tagList }">
 									<c:if test="${dto.spSid == tag.spSid}">
 											<button class="btn radio-button" readonly
@@ -497,8 +484,11 @@ p {
 									</c:if>
 							</c:forEach>
 							
-							
-							<p>4.8 ⭐ (452개의 후기)
+							<c:forEach items="${sittingSrwRates }" var="srw">
+								<c:if test="${dto.memSid == srw.memSid }">
+									<p>${srw.srwRateAvg } ⭐ (${srw.srwCount }개의 후기)
+								</c:if>
+							</c:forEach>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -510,27 +500,33 @@ p {
 					<!-- end .card -->
 
 					<c:if test="${status.count % 3 == 0}">
+					</div>
+					<!-- end .row -->
+					</c:if>
+				</c:forEach>
 			</div>
-			<!-- end .row -->
-			</c:if>
-			</c:forEach>
-		</div>
+		
 		</div>
 		<!-- 리스트 뿌리기 끝 -->
+
+		
+		
 		<script type="text/javascript">
-         $().ready(function()
-         {
-      
-            // 펫시팅 돌봄장소 클릭시 예약화면
-            $(".card.sp").click(function() {
-                var memSidValue = $(this).data("mem-sid");
-                $(location).attr("href", "sittingreservationpage.action?memSid=" + memSidValue);
-            });
-            
-            
-            
-         });
-        </script> 
+			$().ready(function()
+			{
+		
+				// 펫시팅 돌봄장소 클릭시 예약화면
+				$(".card.sp").click(function() {
+				    var memSidValue = $(this).data("mem-sid");
+				    $(location).attr("href", "sittingreservationpage.action?memSid=" + memSidValue);
+				});
+				
+				
+				
+			});
+		</script>
+		
+
 
 		<script>
 			// 무한 스크롤 함수
