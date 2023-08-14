@@ -33,32 +33,23 @@ public class SittingDTO
 	// 펫시팅 리스트 검색조건 - 날짜
 	private String datePicker;
 	
-	
 	private String isptSidList;
 	private List<Integer> isptSidListInteger;
 	
+	// 펫시터 팔로잉 리스트에서 팔로워 수 담을 변수
+	private int followingCount;
 	
+	// 펫시터 당(memSid) 달린 후기 수 조회
+	private int srwCount;
+	
+	// 펫시터 당 타임라인 완료 수 조회
+	private int stleCount;
 
-	public List<Integer> getIsptSidListInteger()
-	{
-		return isptSidListInteger;
-	}
-
-	public void setIsptSidListInteger(List<Integer> isptSidListInteger)
-	{
-		this.isptSidListInteger = isptSidListInteger;
-	}
-
-	public String getIsptSidList()
-	{
-		return isptSidList;
-	}
-
-	public void setIsptSidList(String isptSidList)
-	{
-		this.isptSidList = isptSidList;
-	}
-
+	
+	
+	
+	
+	
 	public String getJmNickName()
 	{
 		return jmNickName;
@@ -319,7 +310,6 @@ public class SittingDTO
 		this.isptName = isptName;
 	}
 
-	
 	public String getSbStart()
 	{
 		return sbStart;
@@ -355,6 +345,11 @@ public class SittingDTO
 		return sbSid;
 	}
 
+	public void setSbSid(int sbSid)
+	{
+		this.sbSid = sbSid;
+	}
+
 	public String getDatePicker()
 	{
 		return datePicker;
@@ -364,7 +359,59 @@ public class SittingDTO
 	{
 		this.datePicker = datePicker;
 	}
+
+	public String getIsptSidList()
+	{
+		return isptSidList;
+	}
+
+	public void setIsptSidList(String isptSidList)
+	{
+		this.isptSidList = isptSidList;
+	}
+
+	public List<Integer> getIsptSidListInteger()
+	{
+		return isptSidListInteger;
+	}
+
+	public void setIsptSidListInteger(List<Integer> isptSidListInteger)
+	{
+		this.isptSidListInteger = isptSidListInteger;
+	}
+
+	public int getFollowingCount()
+	{
+		return followingCount;
+	}
+
+	public void setFollowingCount(int followingCount)
+	{
+		this.followingCount = followingCount;
+	}
+
+	public int getSrwCount()
+	{
+		return srwCount;
+	}
+
+	public void setSrwCount(int srwCount)
+	{
+		this.srwCount = srwCount;
+	}
+
+	public int getStleCount()
+	{
+		return stleCount;
+	}
+
+	public void setStleCount(int stleCount)
+	{
+		this.stleCount = stleCount;
+	}
 	
+	
+
 	
 		
 	

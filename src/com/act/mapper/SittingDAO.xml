@@ -54,7 +54,7 @@
 	
 	<select id="sittingPlaceTags" resultType="com.act.sitting.SittingDTO">
 		SELECT ISPTNAME
-		FROM SITTING_PLACE_TAGS_VIEW
+		FROM SITTING_PLACE_BASIC_TAGS_VIEW
 		WHERE SPSID = #{spSid}
 	</select>
 	
@@ -212,6 +212,13 @@
 		WHERE SRWSID= #{srwSid}
 	</select>
 
-
+	<select id="sittingFollowingRank" resultType="com.act.sitting.SittingDTO">
+		<![CDATA[
+			SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATE, STLECOUNT
+			FROM SITTING_FOLLOWINGCOUNT_VIEW
+			WHERE ROWNUM <= 3
+		]]>
+	</select>
+	
 
 </mapper>

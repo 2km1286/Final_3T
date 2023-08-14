@@ -88,41 +88,33 @@ h2 span {
      인기 펫시터 <span>TOP 3</span></h2>
      <hr>
       <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-            <span class="card-rank card-rank-1">1위</span>
-              <h4 class="card-title">[마스터 펫시터] 케어왕기배씨<br></h4>
-              <h6 class="card-subtitle text-muted">후기 2,128개<br>예약완료 횟수 3,012건 </h6>
-              <p class="card-text p-y-1" style="float: right;"><br>❤️ 5,102<br></p>
-              <a href="#" class="card-link"><br>프로필 이동</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-            <span class="card-rank card-rank-2">2위</span>
-              <h4 class="card-title">[마스터 펫시터] 멍뭉스토리기민 <br></h4>
-              <h6 class="card-subtitle text-muted">후기 2,001개<br>예약완료 횟수 2,812건 </h6>
-              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,021<br></p>
-              <a href="#" class="card-link"><br>프로필 이동</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-block">
-            <span class="card-rank card-rank-3">3위</span>
-              <h4 class="card-title">[마스터 펫시터] 코딩왕별희<br></h4>
-              <h6 class="card-subtitle text-muted">후기 1,928개<br>예약완료 횟수 2,421건 </h6>
-              <p class="card-text p-y-1" style="float: right;"><br>❤️ 2,888<br></p>
-              <a href="#" class="card-link"><br>프로필 이동</a>
-            </div>
-          </div>
-        </div>
+      
+	     <c:forEach items="${sittingFollowingRank}" var="followingRank" varStatus="loop">
+	      
+				<div class="col-md-4">
+				    <div class="card">
+				        <div class="card-block">
+				            <span class="card-rank card-rank-1">${loop.index + 1}위</span>
+				            <h4 class="card-title"> [${followingRank.grade}] ${followingRank.jmNickName}<br></h4>
+								<h6 class="card-subtitle text-muted">
+								    후기 ${followingRank.srwCount}<br>
+								예약완료 횟수 ${followingRank.stleCount}건
+								</h6>
+								<p class="card-text p-y-1" style="float: right;"><br>❤️ ${followingRank.followingCount}<br></p>
+							<c:choose>
+							<c:when test="${followingRank.spSid == null}">
+								<a href="#" class="card-link" onclick="alert('공개중인 돌봄장소가 없습니다.')"><br>돌봄장소 보기</a>
+							</c:when>
+							
+							<c:otherwise>	
+				            	<a href="<%=cp %>/sittingreservationpage.action?smemsid=${followingRank.memSid}" class="card-link"><br>돌봄장소 보기</a>
+				            </c:otherwise>
+				            </c:choose>
+				        </div>
+				    </div>
+				</div>
+				
+		</c:forEach>
 
       </div>
       <hr>
@@ -180,4 +172,3 @@ h2 span {
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
-
