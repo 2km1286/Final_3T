@@ -93,6 +93,8 @@ public interface ISittingDAO
 	public ArrayList<SittingDTO> sittingFollowingRank();
 	
 	
+	// 견주의 memSid로 자신이 등록한 반려견의 정보 가져오기
+	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
 	
 	
 	

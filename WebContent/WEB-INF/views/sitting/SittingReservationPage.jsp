@@ -126,10 +126,8 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 
 	<section>
 		<!-- 맨 위에 사진과 캘린더 -->
-		<div class="image-container">
-			<div class="image-half" style="background-image: url('images/sittingroom.png');" ></div>
-			<div id="calendar">
-			</div>
+		<div class="image-container align-items-center">
+			<div class="image-half" style="background-image: url('images/sittingroom.png'); width: 100%;" ></div>
 		</div>
 			
 		<div class="d-flex justify-content-center align-items-center" style="height: 100vh; overflow: hidden;">
@@ -322,7 +320,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<div class="col text-center" style="margin-right: 35px;">
 									<c:forEach items="${reviewsPhoto }" var="photo">
 										<c:if test="${photo.srwSid == review.srwSid }">
-											<img src="${photo.srpLink }" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+											<img src="${photo.srpLink }" alt="" class="card-img-top" style="width: 20%;">
 										</c:if>
 									</c:forEach>
 									</div>
@@ -390,35 +388,55 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">반려견 선택</small></span><br>
+										
 										<div class="row">
-											<div class="col d-flex align-items-center justify-content-center"><!-- 마이너스 버튼  -->
+										
+											<!-- 
+											<div class="col d-flex align-items-center justify-content-center">마이너스 버튼 
 												<button class="btn btn-warning">
 													<i class="fas fa-minus"></i>
 												</button>
 											</div>
+											 -->
+											
+											<c:forEach items="${petList}" var="pet">
 											<div class="col">
-												<!-- <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 190px;"><br> -->
-												<img src="images/cute.png" alt="" class="card-img-top" style="width: 150px; height: 150px; border-radius: 50%;">
-												<br>
-												<div class="text-center">
-													<span class="card-text">&nbsp;&nbsp;까미</span>
+												<img src="${pet.petImage}" alt="" class="card-img-top clickable-image" style="width: 40%; border-radius: 50%;" data-pet-sid="${pet.petSid}">
+											<br>
+											<div class="text-center">
+												<span class="card-text">&nbsp;&nbsp;${pet.petName}</span>
 												</div>
 											</div>
-											<div class="col">
-												<!-- <img src="images/walktestpro.jpg" alt="" class="card-img-top" style="width: 190px;"><br> -->
-												<img src="images/dogdog.png" alt="" class="card-img-top" style="width: 150px; height: 150px; border-radius: 50%;">
-												<br>
-												<div class="text-center">
-													<span class="card-text">&nbsp;&nbsp;깜돌이</span>
-												</div>
-											</div>
-											<div class="col d-flex align-items-center justify-content-center"><!-- 플러스버튼  -->
+											</c:forEach>
+											
+											<script>
+												$(function()
+												{
+													$(".clickable-image").click(function()
+													{
+														$(this).toggleClass('selected');
+														if ($(this).hasClass('selected'))
+														{
+															$(this).css('border', 'solid 5px #45a049'); // 선택된 스타일로 변경
+																	
+														} else
+														{
+															$(this).css('border', 'none'); // 원래 스타일로 변경
+														}
+													});
+												});
+											</script>
+																						
+											
+											<!-- 
+											<div class="col d-flex align-items-center justify-content-center">플러스버튼 
 												<button class="btn btn-warning">
 													<i class="fas fa-plus"></i>
 												</button>
 											</div>
-										</div>
-									</div>
+											 -->
+										</div><!-- .row end -->
+									</div><!-- .oneText end -->
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">최종금액</small></span><br><br>
@@ -482,18 +500,6 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
-<script>
-	    flatpickr("#datepicker", {
-	      dateFormat: 'Y-m-d',
-	      position: "below",
-	      defaultDate: "today",
-	      theme: "airbnb",
-		  locale: "ko" 
-	    });
-	    
-	    flatpickr("#calendar", {
-            inline: true
-        });
-</script>
+
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </html>
