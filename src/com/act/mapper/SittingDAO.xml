@@ -81,15 +81,20 @@
 	</select>
 	
 	
-	<select id="sittingReviewsPhoto" resultType="com.act.sitting.SittingDTO">
+	 <select id="sittingReviewsPhoto" resultType="com.act.sitting.SittingDTO">
 		SELECT SPSID, PJMNICKNAME, SRPLINK, SRPDATE, PMEMSID, SRWSID 
 		FROM SITTING_REVIEW_PHOTO_VIEW
 	</select>
 
-	<select id="sittingPopup" resultType="com.act.sitting.SittingDTO">
+	<select id="sittingSrwRate" resultType="com.act.sitting.SittingDTO">
 		SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATEAVG, STLECOUNT
 		FROM SITTING_FOLLOWINGCOUNT_VIEW
 		WHERE MEMSID = #{memSid}
+	</select>
+	
+	<select id="sittingSrwRates" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATEAVG, STLECOUNT
+		FROM SITTING_FOLLOWINGCOUNT_VIEW
 	</select>
 	
 	<select id="sittingReviewers" resultType="com.act.sitting.SittingDTO">
