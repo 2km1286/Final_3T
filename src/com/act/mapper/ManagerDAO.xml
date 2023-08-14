@@ -133,11 +133,31 @@
 	</select>
 	
 	<!-- 대리산책 사고처리 내역 -->
-	<!-- <select id="walkCompleteList" resultType="com.act.manager.ManagerDTO">
+	<select id="walkAccList" resultType="com.act.manager.ManagerDTO">
 		SELECT WAC.WAC_SID AS wacSid,WAC.WB_SID AS wbSid,WAC.WAC_DATE AS wacDate,MI.MI_NAME AS miName
 		FROM WALK_ACC_COMPLETE WAC
 		LEFT JOIN MANAGER_INFO MI
 		ON WAC.MI_SID = MI.MI_SID
-	</select> -->
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 이용현황 수  -->
+	<select id="memberCount" resultType="com.act.manager.ManagerDTO">
+		SELECT
+    	(SELECT COUNT(*) FROM JOIN_MEMBER) AS totalCount,
+    	(SELECT COUNT(*) FROM SITTING_LICENSE) AS sitterCount,
+    	(SELECT COUNT(*) FROM WALK_LICENSE) AS walkerCount,
+    	((SELECT COUNT(*) FROM JOIN_MEMBER) - 
+     	(SELECT COUNT(*) FROM SITTING_LICENSE) - 
+     	(SELECT COUNT(*) FROM WALK_LICENSE)) AS basicCount
+		FROM DUAL
+	</select>
 	
 </mapper>

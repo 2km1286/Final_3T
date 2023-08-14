@@ -201,25 +201,7 @@ table.table-hover>tbody>tr:hover {
 			});
 		});
 
-		$("#graph").click(function()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "managerchartform.action",
-				async : true,
-				success : function(data)
-				{
-					$("#mainContent").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-		});
+		
 		$("#completeAcc").click(function()
 		{
 			$.ajax(
@@ -293,12 +275,11 @@ table.table-hover>tbody>tr:hover {
 
 						<li id="reportList"><span style="margin-left: 10px;">신고현안
 								및 비상관리</span></li>
-						<li id="graph"><span style="margin-left: 10px;">통계</span></li>
 						<li id="completeReport"><span style="margin-left: 10px;">처리완료된
 								신고</span></li>
 						<li id="completeAcc"><span style="margin-left: 10px;">사고처리
 								내역</span></li>
-						<li id="memberList"><span style="margin-left: 10px;">회원관리</span>
+						<li id="memberList"><span style="margin-left: 10px;">회원관리 및 통계</span>
 						</li>
 					</ul>
 				</div>
