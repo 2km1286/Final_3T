@@ -1,110 +1,111 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="./images/logo_transparent.png"/>
-<meta charset="UTF-8"> 
-<title>마이페이지_대리산책_일반회원</title>
+<link rel="icon" href="./images/logo_transparent.png" />
+<meta charset="UTF-8">
+
+<title>마이페이지_대리산책 지원하도록</title>
+
+<!-- 돌봄장소 이미지 넘기는 스크립트 -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2IqcO3"
+	crossorigin="anonymous"></script>
+
 
 <style type="text/css">
-
-.noticeAll, .noticePet, .noticeWalk, .noticeSeating
-{
-	padding: 20px 20px 20px 20px;
+.place {
+	padding: 20px; /* 테두리와 요소들 사이의 간격 조정 */
+	border-right: 2px solid black;
 }
-.noticeCard { margin-bottom: 20px;}
-.superscript { font-size: 1.0em; vertical-align: super;}
-#totalEarningsLabel { display: inline; }
-#totalEarningsValue { display: inline; }
-.mypageWalkMonDon {width: 200px; margin-left: 560px;}
-.walkCard {width: 350px;}
+
+.carousel-control-prev, .carousel-control-next {
+	background-color: transparent; /* 배경색 투명으로 설정 */
+	border: none; /* 테두리 제거 */
+}
+
+.sittingtime {
+	font-size: 13pt;
+}
+
+.mypageWalkMonDon {
+	margin-left: 500px;
+}
+
+.firstInfo {
+	font-size: 15pt;
+	font-weight: bold;
+	color: #2dd0fc;
+}
+
+.container-mypage {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 100px; /* 뷰포트 높이를 기준으로 컨테이너의 높이 설정 */
+	margin: 0 auto;
+}
+
+.card {
+	max-width: 300px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#sittingPlaceDiv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 300px;
+	margin: 0;
+}
+
+.card-title {
+	font-size: 18pt;
+	transition: color 0.3s ease-in-out;
+}
+
+.card-title:hover {
+	color: #4caf50;
+}
+
+.test {
+            cursor: pointer;
+}
 </style>
-
-<script type="text/javascript">
-	$(function()
-	{
-		// 돌봄장소 변경하기를 누르면
-
-		// 돌봄장소 수정하기를 누르면
-		$("#registerPost").click(function()
-		{
-			
-			
-			$.ajax(
-			{
-				type : "POST",
-				url : "updatespinfoform.action",
-				async : true,
-				success : function(data)
-				{
-					$("#sittingPlaceDiv").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-
-		});
-
-		
-
-	});
-</script>
-
 </head>
 <body>
-			<div class="row" style="border-bottom: 2px solid black;">
-				<div class="col-md-6 noticeAll" style="border-right: 2px solid black;">
-					
-					<h3><span class="badge">대리산책러가 되어보세요</span></h3>
-					<div><!-- 내가 올린 대리산책 공고글 시작 -->
-		               <button type="button" class="detailBtn">대리산책러 지원하러 가기</button>
-					</div><!-- 내가 올린 대리산책 공고글 끝-->
-					
-				</div><!-- 1행1열 끝 -->
-				
-				
-				<div class="col-md-6 noticePet">
-					<h3><span class="badge">당일예약내역</span></h3>
-					<div><!-- 당일예약내역 시작 -->
-						<div class="card">
-							<div class="card-body">
-								내역이 없습니다.
-							</div>
-					    </div>
-						
-					</div><!-- 당일예약내역 끝 -->
-				</div><!-- 1행2열 끝 -->
-				
-			</div><!-- 1행 끝 -->
-			
-			<div class="row">
-				<div class="col-md-6 noticeWalk" style="border-right: 2px solid black;"> 
-					<h3><span class="badge">나에게 달린 대리산책 후기</span></h3>
-					<div><!-- 나에게 달린 대리산책 후기 시작 -->
-						<p>내역이 없습니다.</p>
-						
-					</div><!-- 나에게 달린 대리산책 후기 끝 -->	
-						
-				</div><!-- 2행1열 끝 -->
-				
-				<div class="col-md-6 noticeSeating">
-					<h3><span class="badge">수익내역</span></h3>
-					<div><!-- 수익내역 시작 -->
-						<p>대리산책러가 되어서 수익활동을 해보세요</p>
-					</div><!-- 수익내역 끝 -->
-					
-				</div><!-- 2행2열 끝 -->		
-			</div><!-- 2행 끝 -->
+	<div class="row" id="walkDiv"
+		style="display: flex; justify-content: center; align-items: center; min-height: 300px; margin: 0;">
+		<div class="col-md-4 container-mypage">
+			<div class="card-title">
+			<div class="test" onclick="sittingTest()">대리산책 지원하러 가기</div>
+			</div>
+		</div>
+	</div>
+
+<script>
+			function sittingTest()
+			{
+				window.location.href = "walktest.action";
+			}
+</script>
+
+
+
+
 </body>
 </html>
 

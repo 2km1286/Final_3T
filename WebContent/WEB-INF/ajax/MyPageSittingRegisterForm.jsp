@@ -27,8 +27,7 @@ String cp = request.getContextPath();
 		// 돌봄장소 수정하기를 누르면
 		$("#updateSPInfo").click(function()
 		{
-			
-			
+
 			$.ajax(
 			{
 				type : "POST",
@@ -47,8 +46,6 @@ String cp = request.getContextPath();
 			});
 
 		});
-
-		
 
 	});
 </script>
@@ -78,17 +75,65 @@ String cp = request.getContextPath();
 	color: #2dd0fc;
 }
 
+.container-mypage {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 100px; /* 뷰포트 높이를 기준으로 컨테이너의 높이 설정 */
+	margin: 0 auto;
+}
+
+.card {
+	max-width: 300px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#sittingPlaceDiv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 300px;
+	margin: 0;
+}
+
+.card-title {
+	font-size: 18pt;
+	transition: color 0.3s ease-in-out;
+}
+
+.card-title:hover {
+	color: #4caf50;
+}
+
+.test {
+            cursor: pointer;
+}
 </style>
 </head>
 <body>
-	<div class="row" id="sittingPlaceDiv">
-		<div class="card">
+	<div class="row" id="sittingPlaceDiv"
+		style="display: flex; justify-content: center; align-items: center; min-height: 300px; margin: 0;">
+		<div class="col-md-4 container-mypage">
 			<div class="card-title">
-				펫시터 지원하러 가기
+			<div class="test" onclick="sittingTest()">펫시터 지원하러 가기</div>
 			</div>
 		</div>
 	</div>
-	<!-- 1행 끝 -->
+
+<script>
+			function sittingTest()
+			{
+				window.location.href = "sittingtest.action";
+			}
+</script>
+
+
 
 
 </body>
