@@ -459,6 +459,7 @@ p {
 						<div class="row justify-content-between">
 					</c:if>
 
+
 					<div class="card sp" id="spPost" data-mem-sid="${dto.memSid }" style="margin: 5px; width: 32%; margin-bottom: 50px;">
 						
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
@@ -522,6 +523,21 @@ p {
 			});
 		</script>
 		
+
+		<script type="text/javascript">
+         $().ready(function()
+         {
+      
+            // 펫시팅 돌봄장소 클릭시 예약화면
+            $(".card.sp").click(function() {
+                var memSidValue = $(this).data("mem-sid");
+                $(location).attr("href", "sittingreservationpage.action?memSid=" + memSidValue);
+            });
+            
+            
+            
+         });
+      	</script>
 
 		<script>
 			// 무한 스크롤 함수

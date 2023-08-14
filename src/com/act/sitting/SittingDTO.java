@@ -50,9 +50,31 @@ public class SittingDTO
 	
 	// 펫시터 당 타임라인 완료 수 조회
 	private int stleCount;
+
+	// 나의 평균 별점
+	private int srwRateAvg;
+
+	
+	// 돌봄장소 이미지. spsid로 조회
+	private String sppLink;
 	
 	
 	
+	
+	
+	
+	public String getSppLink()
+	{
+		return sppLink;
+	}
+
+	public void setSppLink(String sppLink)
+	{
+		this.sppLink = sppLink;
+	}
+
+	public int getSrwRateAvg()
+
 	public String getIsptSidList()
 	{
 		return isptSidList;
