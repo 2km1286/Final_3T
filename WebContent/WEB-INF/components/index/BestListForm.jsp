@@ -101,7 +101,15 @@ h2 span {
 								예약완료 횟수 ${followingRank.stleCount}건
 								</h6>
 								<p class="card-text p-y-1" style="float: right;"><br>❤️ ${followingRank.followingCount}<br></p>
-				            <a href="#" class="card-link"><br>공고글 보기</a>
+							<c:choose>
+							<c:when test="${followingRank.spSid == null}">
+								<a href="#" class="card-link" onclick="alert('공개중인 돌봄장소가 없습니다.')"><br>돌봄장소 보기</a>
+							</c:when>
+							
+							<c:otherwise>	
+				            	<a href="<%=cp %>/sittingreservationpage.action?smemsid=${followingRank.memSid}" class="card-link"><br>돌봄장소 보기</a>
+				            </c:otherwise>
+				            </c:choose>
 				        </div>
 				    </div>
 				</div>
