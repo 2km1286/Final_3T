@@ -20,7 +20,7 @@ public class SittingDTO
 	
 	// SITTING_REVIEW_VIEW
 	private String srwTitle, srwContent, srwDate, pJmNickName;	//pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
-	private int srwRate;
+	private int srwRate, srwRateAvg, srwCount;
 
 	// INDEX_SITTING_PLACE_TAG
 	private int isptSid;
@@ -30,9 +30,15 @@ public class SittingDTO
 	private String sbStart, sbEnd, pMemSid;	
 	private int sbSid;
 	
+	
+	
 	// 펫시팅 리스트 검색조건 - 날짜
 	private String datePicker;
 	
+	// 펫시팅 후기의 사진들
+	private String srpLink, srpDate;
+	
+
 	private String isptSidList;
 	private List<Integer> isptSidListInteger;
 	
@@ -50,6 +56,71 @@ public class SittingDTO
 	
 	
 	
+	
+	public int getSrwRateAvg()
+	{
+		return srwRateAvg;
+	}
+
+	public void setSrwRateAvg(int srwRateAvg)
+	{
+		this.srwRateAvg = srwRateAvg;
+	}
+
+	public int getSrwCount()
+	{
+		return srwCount;
+	}
+
+	public void setSrwCount(int srwCount)
+	{
+		this.srwCount = srwCount;
+	}
+
+	public String getSrpLink()
+	{
+		return srpLink;
+	}
+
+	public void setSrpLink(String srpLink)
+	{
+		this.srpLink = srpLink;
+	}
+
+	public String getSrpDate()
+	{
+		return srpDate;
+	}
+
+	public void setSrpDate(String srpDate)
+	{
+		this.srpDate = srpDate;
+	}
+
+	public void setSbSid(int sbSid)
+	{
+		this.sbSid = sbSid;
+	}
+	public List<Integer> getIsptSidListInteger()
+	{
+		return isptSidListInteger;
+	}
+
+	public void setIsptSidListInteger(List<Integer> isptSidListInteger)
+	{
+		this.isptSidListInteger = isptSidListInteger;
+	}
+
+	public String getIsptSidList()
+	{
+		return isptSidList;
+	}
+
+	public void setIsptSidList(String isptSidList)
+	{
+		this.isptSidList = isptSidList;
+	}
+
 	public String getJmNickName()
 	{
 		return jmNickName;
