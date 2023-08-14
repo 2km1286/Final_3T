@@ -65,11 +65,14 @@ public interface ISittingDAO
 	// SRWSID 로 후기 한 건 조회
 	public SittingDTO sittingReview(int srwSid);
 	
+	
+	
+	
+
+	
+	
 	// 펫시터 팔로잉 탑 3 SPH_SID와 팔로잉 수, 회원번호, 등급, 닉네임, 펫시터식별번호, 돌봄장소번호, 후기 수, 별점, 타임라인 종료 수 조회
 	public ArrayList<SittingDTO> sittingFollowingRank();
-	
-	
-	
 	
 	
 	

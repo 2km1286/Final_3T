@@ -54,7 +54,7 @@
 	
 	<select id="sittingPlaceTags" resultType="com.act.sitting.SittingDTO">
 		SELECT ISPTNAME
-		FROM SITTING_PLACE_TAGS_VIEW
+		FROM SITTING_PLACE_BASIC_TAGS_VIEW
 		WHERE SPSID = #{spSid}
 	</select>
 	
