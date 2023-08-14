@@ -275,43 +275,42 @@ public class SittingService implements ISittingService
 		
 		
 	@Override
-	public SittingDTO listBySpSid(int spSid)
+	public SittingDTO listPublicByMemSid(String memSid)
 	{
-		SittingDTO listBySpSid = new SittingDTO();
+		SittingDTO listPublicByMemSid = new SittingDTO();
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		listBySpSid = dao.listBySpSid(spSid);
+		listPublicByMemSid = dao.listPublicByMemSid(memSid);
 		
-		return listBySpSid;
+		return listPublicByMemSid;
 		
 	}
 	
 	// 돌봄장소의 휴일들
 	@Override
-	public ArrayList<SittingDTO> spRest(int spSid)
+	public ArrayList<SittingDTO> spRest(String memSid)
 	{
 		ArrayList<SittingDTO> restList = new ArrayList<SittingDTO>();
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		restList = dao.spRest(spSid);
+		restList = dao.spRest(memSid);
 		
 		return restList;
 	}
 	
 	
-	// 펫시팅 예약화면용 돌봄장소의 후기들(spSid를 가지고 조회)
-	@Override
-	public ArrayList<SittingDTO> sittingReviewsBySpSid(int spSid)
-	{
-		ArrayList<SittingDTO> reviews = new ArrayList<SittingDTO>();
-		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		reviews = dao.sittingReviewsBySpSid(spSid);
-		
-		return reviews;
-	}
-	
+	/*
+	 * // 펫시팅 예약화면용 돌봄장소의 후기들(spSid를 가지고 조회)
+	 * 
+	 * @Override public ArrayList<SittingDTO> sittingReviewsBySpSid(int spSid) {
+	 * ArrayList<SittingDTO> reviews = new ArrayList<SittingDTO>(); ISittingDAO dao
+	 * = sqlSession.getMapper(ISittingDAO.class); reviews =
+	 * dao.sittingReviewsBySpSid(spSid);
+	 * 
+	 * return reviews; }
+	 */
 	
 	// 펫시팅 돌봄장소의 후기의 사진들 조회(후기러의 닉네임 포함)
 	@Override
-	public ArrayList<SittingDTO> sittingReviewsPhoto(int spSid)
+	public ArrayList<SittingDTO> sittingReviewsPhoto(String memSid)
 	{
 		ArrayList<SittingDTO> reviewPhotos = new ArrayList<SittingDTO>();
 		
@@ -319,6 +318,15 @@ public class SittingService implements ISittingService
 		return reviewPhotos;
 	}
 		
+	
+	@Override
+	public ArrayList<SittingDTO> sittingPlaceTagsByMemSid(String memSid)
+	{
+		ArrayList<SittingDTO> tagList = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		tagList = dao.sittingPlaceTagsByMemSid(memSid);
+		return tagList;
+	}
 		
 		
 		

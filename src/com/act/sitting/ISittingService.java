@@ -22,8 +22,11 @@ public interface ISittingService
 	public SittingDTO sittingReview(int srwSid);
 	public int sittingStsCount(SittingDTO dto);
 	public int sittingSlCount(SittingDTO dto);
-	public SittingDTO listBySpSid(int spSid);
-	public ArrayList<SittingDTO> spRest(int spSid);
-	public ArrayList<SittingDTO> sittingReviewsBySpSid(int spSid);
-	public ArrayList<SittingDTO> sittingReviewsPhoto(int spSid);
+	
+	public SittingDTO listPublicByMemSid(String memSid);
+	
+	public ArrayList<SittingDTO> spRest(String memSid);
+	public ArrayList<SittingDTO> sittingReviewsPhoto(String memSid);
+	public ArrayList<SittingDTO> sittingPlaceTagsByMemSid(String memSid);
+	
 }
