@@ -266,6 +266,34 @@ public class ManagerController
 		result = "/WEB-INF/ajax/manager/SittingAccList.jsp";
 		return result;
 	}
+	
+	// 대리산책 사고처리완료조회 
+	@RequestMapping("/walkacclist.action")
+	public String walkacclist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		ArrayList<ManagerDTO> walkAccList = managerService.walkAccList();
+		model.addAttribute("walkAccList", walkAccList);
+		
+		result = "/WEB-INF/ajax/manager/WalkAccList.jsp";
+		return result;
+	}
+	
+	
+	
+	
+	// 통계를 위한 회원 분포 수
+	@RequestMapping("/membercount.action")
+	public String memberCount(HttpServletRequest request)
+	{
+		String result = "";
+		ManagerDTO memberCount = managerService.memberCount();
+		
+		request.setAttribute("result", memberCount);
+		result= "managerchartform.action";
+		return result;
+		
+	}
 		
 
 }

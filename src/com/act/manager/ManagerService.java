@@ -181,17 +181,42 @@ public class ManagerService implements IManagerService
 	
 	
 	// 펫시팅 사고처리 내역
-		public ArrayList<ManagerDTO> sittingAccList()
-		{
-			ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
-			
-			IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
-			result = dao.sittingAccList();
-			
-			return result;
-			
-		}
+	public ArrayList<ManagerDTO> sittingAccList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.sittingAccList();
+		
+		return result;
+		
+	}
+	// 대리산책 사고처리 내역
+	public ArrayList<ManagerDTO> walkAccList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.walkAccList();
+		
+		return result;
+		
+	}
 	
+	
+	
+	
+	// 통계를 위한 멤버 분포 수
+	public ManagerDTO memberCount()
+	{
+		ManagerDTO result = new ManagerDTO();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberCount();
+		
+		return result;
+	}
+
 	
 
 	

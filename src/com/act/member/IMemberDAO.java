@@ -47,5 +47,7 @@ public interface IMemberDAO
 	
 	// 오늘 프로필 반려당한 건수
 	public int profilCompanionNotice(String memSid);
+	
+	// 오늘 프로필 수정요청 당한 건수
 
 }
