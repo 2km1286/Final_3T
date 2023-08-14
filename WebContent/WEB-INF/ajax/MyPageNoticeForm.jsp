@@ -141,7 +141,7 @@
 							    	      <div class="card-body">
 							    	        <div class="oneText">
 							    		        <span class="card-text" style="font-size: 14pt;">
-							    		        대리산책 공고글에 신고가 접수되어 반려조치됐습니다. 수정이 필요합니다. 
+							    		        대리산책 공고글에 신고가 접수되어 반려조치됐습니다. 
 							    		        </span>
 							    	        </div>
 							    	      </div>
@@ -161,7 +161,7 @@
 							    	      <div class="card-body">
 							    	        <div class="oneText">
 							    		        <span class="card-text" style="font-size: 14pt;">
-							    		        돌봄장소에 신고가 접수되어 반려조치됐습니다. 수정이 필요합니다. 
+							    		        돌봄장소에 신고가 접수되어 반려조치됐습니다. 
 							    		        </span>
 							    	        </div>
 							    	      </div>
@@ -181,7 +181,7 @@
 							    	      <div class="card-body">
 							    	        <div class="oneText">
 							    		        <span class="card-text" style="font-size: 14pt;">
-							    		        프로필에 신고가 접수되어 반려조치됐습니다. 수정이 필요합니다.
+							    		        프로필에 신고가 접수되어 반려조치됐습니다. 
 							    		      	</span>
 							    	        </div>
 							    	      </div>

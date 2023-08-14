@@ -45,6 +45,7 @@ public class ManagerController
 			session.setAttribute("miSid", result);
 			String miName = managerService.searchManagerName(result);
 			//System.out.println(miName);
+			
 			url = "managermain.action?miName="+miName;
 		}
 
@@ -57,6 +58,7 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
+		request.setAttribute("flag", request.getParameter("flag"));
 		result = "/WEB-INF/ajax/manager/ManagerCompleteReportForm.jsp";
 		return result;
 	}
@@ -94,6 +96,43 @@ public class ManagerController
 		
 		return result;
 	}
+	
+	// 펫시팅 신고처리완료조회 -AJAX 처리
+	@RequestMapping("/sittingcompletelist.action")
+	public String sittingcompletelist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		
+		ArrayList<ManagerDTO> sittingCompleteList = managerService.sittingCompleteList();
+		model.addAttribute("sittingCompleteList", sittingCompleteList);
+		result = "/WEB-INF/ajax/manager/SittingCompleteList.jsp";
+		
+		return result;
+	}
+	// 대리산책 신고처리완료조회 -AJAX 처리
+	@RequestMapping("/walkcompletelist.action")
+	public String walkcompletelist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		
+		ArrayList<ManagerDTO> walkCompleteList = managerService.walkCompleteList();
+		model.addAttribute("walkCompleteList", walkCompleteList);
+		result = "/WEB-INF/ajax/manager/WalkCompleteList.jsp";
+		
+		return result;
+	}
+	// 프로필 신고처리완료조회 -AJAX 처리
+	@RequestMapping("/profilecompletelist.action")
+	public String profilecompletelist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		
+		ArrayList<ManagerDTO> profileCompleteList = managerService.profileCompleteList();
+		model.addAttribute("profileCompleteList", profileCompleteList);
+		result = "/WEB-INF/ajax/manager/ProfileCompleteList.jsp";
+		return result;
+	}
+	
 	// 대리산책 신고내역조회 -AJAX 처리
 	@RequestMapping("/walkreportlist.action")
 	public String walkReportList(HttpServletRequest request,Model model)
@@ -107,6 +146,23 @@ public class ManagerController
 		ArrayList<ManagerDTO> walkReportList = managerService.walkReportList();
 		model.addAttribute("WalkReportList", walkReportList);
 		result = "/WEB-INF/ajax/manager/WalkReportList.jsp";
+		
+		return result;
+	}
+	
+	// 프로필 신고내역조회 -AJAX 처리
+	@RequestMapping("/profilereportlist.action")
+	public String profilereportlist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		int sittingCount =0;
+		int walkCount = 0;
+		sittingCount = managerService.sittingSearchEmerg();
+		walkCount = managerService.walkSearchEmerg();
+		request.setAttribute("count", sittingCount + walkCount);
+		ArrayList<ManagerDTO> profileReportList = managerService.profileReportList();
+		model.addAttribute("ProfileReportList", profileReportList);
+		result = "/WEB-INF/ajax/manager/ProfileReportList.jsp";
 		
 		return result;
 	}
@@ -148,7 +204,18 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-		int i = managerService.deleteSittingReport(dto);
+		int i = managerService.deleteWalkReport(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	
+	// 프로필 신고내역 반려
+	@RequestMapping("/removeprofilereport.action")
+	public String removeprofilereport(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteProfileReport(dto);
 		result= "mainpage.action";		// 모르겠음 사실 이건
 		return result;
 	}
@@ -161,7 +228,6 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-
 		result = "/WEB-INF/ajax/manager/ManagerMemberListForm.jsp";
 		return result;
 	}
@@ -183,9 +249,51 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-		
+		request.setAttribute("flag", request.getParameter("flag"));
 		result = "/WEB-INF/ajax/manager/ManagerCompleteAccForm.jsp";
 		return result;
 	}
+	
+	
+	
+	// 펫시팅 사고처리완료조회 
+	@RequestMapping("/sittingacclist.action")
+	public String sittingacclist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		ArrayList<ManagerDTO> sittingAccList = managerService.sittingAccList();
+		model.addAttribute("sittingAccList", sittingAccList);
+		result = "/WEB-INF/ajax/manager/SittingAccList.jsp";
+		return result;
+	}
+	
+	// 대리산책 사고처리완료조회 
+	@RequestMapping("/walkacclist.action")
+	public String walkacclist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		ArrayList<ManagerDTO> walkAccList = managerService.walkAccList();
+		model.addAttribute("walkAccList", walkAccList);
+		
+		result = "/WEB-INF/ajax/manager/WalkAccList.jsp";
+		return result;
+	}
+	
+	
+	
+	
+	// 통계를 위한 회원 분포 수
+	@RequestMapping("/membercount.action")
+	public String memberCount(HttpServletRequest request)
+	{
+		String result = "";
+		ManagerDTO memberCount = managerService.memberCount();
+		
+		request.setAttribute("result", memberCount);
+		result= "managerchartform.action";
+		return result;
+		
+	}
+		
 
 }

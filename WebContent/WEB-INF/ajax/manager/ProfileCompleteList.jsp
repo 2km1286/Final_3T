@@ -2,35 +2,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>managerCompleteAcc</title>
+<title>SittingCompleteList</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery.min.js"></script>
 
 <script type="text/javascript">
-
-	//페이지 로딩 시에 실행되는 코드
-	
 	$(document).ready(function()
 	{
 
-		var flag =<%=request.getAttribute("flag")%>
-			if (flag == '7')
-				PetSittingAccComplete();
-			
-			
-		
+		// 대리산책 신고내역 클릭시
+		$("#pet-sitting-report").click(function()
+		{
+			PetSittingComplete();
+		});
 
-		function PetSittingAccComplete()
+		// 프로필 신고내역 클릭시
+		$("#dog-walking-report").click(function()
+		{
+			DogWalkComplete();
+		});
+
+		// 펫시팅 신고내역 버튼 클릭시 호출
+		function PetSittingComplete()
 		{
 			$.ajax(
 			{
 				type : "POST",
-				url : "sittingacclist.action",
+				url : "sittingcompletelist.action",
 				async : true,
 				success : function(data)
 				{
@@ -44,13 +49,14 @@
 
 			});
 		}
-		
-		function DogWalkAccComplete()
+
+		// 대리산책 신고내역 버튼 클릭시 호출
+		function DogWalkComplete()
 		{
 			$.ajax(
 			{
 				type : "POST",
-				url : "walkreportlist.action",
+				url : "walkcompletelist.action",
 				async : true,
 				success : function(data)
 				{
@@ -64,40 +70,52 @@
 
 			});
 		}
-		
-		
-		
 
+		// 자세히
+		function showDetail(detail)
+		{
+			alert(detail);
+		}
 	});
 </script>
 </head>
 <body>
-	<div id="subContent">
 	<div style="margin-left: -10%; width: 120%;" id="subContent">
 		<div>
-			<h2 style="margin-top: 20px;">사고처리 내역</h2>
+			<h2 style="margin-top: 20px;">처리완료된 신고</h2>
 			<hr />
 			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
 			<button class="report-button" id="dog-walking-report">대리산책 신고</button>
+			<button class="report-button" id="profile-report"
+			style="background-color: gray;">프로필 신고</button>
 		</div>
 		<div id="completeTable" class="mt-4">
 			<table class="table table-bordered table-hover" id="tableComplete">
 				<thead>
 					<tr>
 						<th style="color: white;">처리번호</th>
-						<th style="color: white;">예약번호</th>
+						<th style="color: white;">신고번호</th>
+						<th style="color: white;">신고사유</th>
+						<th style="color: white;">처리내용</th>
 						<th style="color: white;">처리자(관리자)</th>
 						<th style="color: white;">처리일자</th>
 					</tr>
 				</thead>
 				<tbody>
-				
-						
-					
+					<c:forEach var="list" items="${profileCompleteList }">
+						<tr>
+							<td>${list.prcSid}</td>
+							<td>${list.prrSid}</td>
+							<td><input class="report-button" type="button" value="확인하기"
+								onclick="showDetail('${list.prrDetail}')"></td>
+							<td>${list.imaName}</td>
+							<td>${list.miName}</td>
+							<td>${list.prcDate}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-	</div>
 	</div>
 </body>
 </html>

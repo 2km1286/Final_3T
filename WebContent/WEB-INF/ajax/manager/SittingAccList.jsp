@@ -8,67 +8,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>managerCompleteAcc</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
 <script type="text/javascript">
 
-	//페이지 로딩 시에 실행되는 코드
+
+//페이지 로딩 시에 실행되는 코드
+
+$(document).ready(function()
+{
 	
-	$(document).ready(function()
+
+	// 대리산책 신고내역 클릭시
+	$("#dog-walking-acc").click(function()
 	{
-
-		var flag =<%=request.getAttribute("flag")%>
-			if (flag == '7')
-				PetSittingAccComplete();
-			
-			
-		
-
-		function PetSittingAccComplete()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "sittingacclist.action",
-				async : true,
-				success : function(data)
-				{
-					$("#subContent").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-		}
-		
-		function DogWalkAccComplete()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "walkreportlist.action",
-				async : true,
-				success : function(data)
-				{
-					$("#subContent").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-		}
-		
-		
-		
-
+		DogWalkAccList();
 	});
+
+
+	// 대리산책 신고내역 버튼 클릭시 호출
+	function DogWalkAccList()
+	{
+		$.ajax(
+		{
+			type : "POST",
+			url : "walkacclist.action",
+			async : true,
+			success : function(data)
+			{
+				$("#subContent").html(data);
+
+			},
+			error : function(e)
+			{
+				alert(e.responseText);
+			}
+
+		});
+	}
+
+
+});
+	
 </script>
 </head>
 <body>
@@ -77,8 +58,9 @@
 		<div>
 			<h2 style="margin-top: 20px;">사고처리 내역</h2>
 			<hr />
-			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
-			<button class="report-button" id="dog-walking-report">대리산책 신고</button>
+			<button class="report-button" id="pet-sitting-acc"
+			style="background-color: gray;">펫시팅 신고</button>
+			<button class="report-button" id="dog-walking-acc">대리산책 신고</button>
 		</div>
 		<div id="completeTable" class="mt-4">
 			<table class="table table-bordered table-hover" id="tableComplete">
@@ -91,9 +73,14 @@
 					</tr>
 				</thead>
 				<tbody>
-				
-						
-					
+					<c:forEach var="list" items="${sittingAccList }">
+						<tr>
+							<td>${list.sacSid}</td>
+							<td>${list.sbSid}</td>
+							<td>${list.miName}</td>
+							<td>${list.sacDate}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

@@ -10,6 +10,16 @@
 		,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
 		FROM SITTING_PLACE_LIST_VIEW
 	</select>
+	
+
+	<select id="sittingPopup" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATEAVG, STLECOUNT
+		FROM SITTING_FOLLOWINGCOUNT_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
+
+
+	
 
 	<select id="IndexTagList"
 		resultType="com.act.sitting.SittingDTO">
@@ -54,15 +64,46 @@
 	
 	<select id="sittingPlaceTags" resultType="com.act.sitting.SittingDTO">
 		SELECT ISPTNAME
-		FROM SITTING_PLACE_TAGS_VIEW
+		FROM SITTING_PLACE_BASIC_TAGS_VIEW
 		WHERE SPSID = #{spSid}
 	</select>
 	
+	<select id="sittingPlaceTagsByMemSid" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, ISPTNAME, JMNICKNAME
+		FROM SITTING_PLACE_TAGS_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
+	
+	<select id="listPublicByMemSid" resultType="com.act.sitting.SittingDTO">
+		SELECT JMNICKNAME, SPTITLE, SPCONTENT,
+		SPADDR1, SPADDR2, EXTRAADDR, MEMSID, SPHSID, SPHSTART, SPHEND
+		,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
+		FROM SITTING_PLACE_LIST_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
+	
 	<select id="sittingReviews" resultType="com.act.sitting.SittingDTO">
-		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, JMNICKNAME
 		FROM SITTING_REVIEW_VIEW
 		WHERE MEMSID = #{memSid}
 		ORDER BY SRWDATE DESC
+	</select>
+	
+	
+	 <select id="sittingReviewsPhoto" resultType="com.act.sitting.SittingDTO">
+		SELECT SPSID, PJMNICKNAME, SRPLINK, SRPDATE, PMEMSID, SRWSID 
+		FROM SITTING_REVIEW_PHOTO_VIEW
+	</select>
+
+	<select id="sittingSrwRate" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATEAVG, STLECOUNT
+		FROM SITTING_FOLLOWINGCOUNT_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
+	
+	<select id="sittingSrwRates" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATEAVG, STLECOUNT
+		FROM SITTING_FOLLOWINGCOUNT_VIEW
 	</select>
 	
 	<select id="sittingReviewers" resultType="com.act.sitting.SittingDTO">
@@ -223,6 +264,29 @@
 		WHERE SRWSID= #{srwSid}
 	</select>
 
+	<select id="sittingFollowingRank" resultType="com.act.sitting.SittingDTO">
+		<![CDATA[
+			SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATEAVG, STLECOUNT
+			FROM SITTING_FOLLOWINGCOUNT_VIEW
+			WHERE ROWNUM <= 3
+		]]>
+	</select>
+	
+	
+	<select id="spRest" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, TO_CHAR(SR.SR_START, 'YYYY-MM-DD') AS SRSTART, TO_CHAR(SR.SR_END, 'YYYY-MM-DD') AS SREND, SPLV.SPSID
+		FROM SITTING_PLACE_LIST_VIEW SPLV JOIN SITTING_REST SR
+		                                  ON SPLV.SPHSID = SR.SPH_SID
+		                                  WHERE MEMSID = #{memSid}
+		                                  ORDER BY SR.SR_START
+	</select>
+	
+	<select id="petListByMemSid" resultType="com.act.sitting.SittingDTO">
+		SELECT PMEMSID, PETSID, PETNAME, PETIMAGE, PETBIRTH, PETGEN, PETSIZE, IPTSID, PETWEIGHT, PETSPECIALNOTE
+		FROM PET_VIEW              
+		WHERE PMEMSID = #{pMemSid}
+	</select>
+	
 
 
 </mapper>

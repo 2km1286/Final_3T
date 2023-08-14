@@ -58,6 +58,37 @@
     	FROM VIEW_REPORT_WALK
 	</select>
 	
+	<!-- 프로필 신고접수 -->
+	<select id="profileReportList" resultType="com.act.manager.ManagerDTO">
+		SELECT PRR_SID AS prrSid, REPORTED_JM_NICKNAME AS reportedJmNickName
+        ,REPORTER_JM_NICKNAME AS reporterJmNickName
+        ,PRR_DETAIL AS prrDetail, PRR_DATE AS prrDate
+		FROM VIEW_REPORT_PROFILE
+	</select>
+	
+	
+	<!-- 펫시터 신고처리완료 -->
+	<select id="sittingCompleteList" resultType="com.act.manager.ManagerDTO">
+		SELECT SRC_SID AS srcSid, SRR_SID AS srrSid, IMA_NAME AS imaName
+		,MI_NAME AS miName,SRC_DATE AS srcDate,IR_NAME AS irName,SRR_DETAIL AS srrDetail
+		FROM VIEW_SITTING_COMPLETE
+	</select>
+	
+	<!-- 대리산책 신고처리완료 -->
+	<select id="walkCompleteList" resultType="com.act.manager.ManagerDTO">
+		SELECT WRC_SID AS wrcSid, WRR_SID AS wrrSid, IMA_NAME AS imaName,MI_NAME AS miName
+		,WRC_DATE AS wrcDate,IR_NAME AS irName,WRR_DETAIL AS wrrDetail
+		FROM VIEW_WALK_COMPLETE
+	</select>
+	
+	<!-- 프로필 신고처리완료 -->
+	<select id="profileCompleteList" resultType="com.act.manager.ManagerDTO">
+		SELECT PRC_SID AS prcSid, PRR_SID AS prrSid, IMA_NAME AS imaName,MI_NAME AS miName
+		,PRC_DATE AS prcDate, PRR_DETAIL AS prrDetail
+		FROM VIEW_PROFILE_COMPLETE
+	</select>
+	
+	
 	<!-- 펫시팅 블라인드에 따라 업데이트 시켜줌 -->
 	<update id="updateSittingPublic" parameterType="java.lang.Integer">
 		UPDATE SITTING_PLACE
@@ -73,14 +104,60 @@
 	</update>
 	
 	<!-- 펫시팅 반려 -->
-	<delete id="deleteSittingReport" parameterType="java.lang.Integer">
-	 	DELETE FROM SITTING_REPORT_RECEIVE
-    	WHERE SRR_SID = #{srrSid}
-	</delete>
+	<insert id="deleteSittingReport">
+    	INSERT INTO SITTING_REPORT_COMPLETE
+		VALUES(SEQ_SRC.NEXTVAL,#{srrSid},DEFAULT,#{miSid},#{imaSid})
+	</insert>
 	
 	<!-- 대리산책 반려 -->
-	<delete id="deleteWalkReport" parameterType="java.lang.Integer">
-		DELETE FROM WALK_REPORT_RECEIVE
-    	WHERE WRR_SID = #{wrrSid}
-	</delete>
+	<insert id="deleteWalkReport">
+		INSERT INTO WALK_REPORT_COMPLETE
+		VALUES(SEQ_WRC.NEXTVAL,#{wrrSid},DEFAULT,#{miSid},#{imaSid})
+	</insert>
+	
+	<!-- 프로필 반려 -->
+	<insert id="deleteProfileReport">
+		INSERT INTO PROFILE_REPORT_COMPLETE(PRC_SID,PRR_SID,MI_SID,IMA_SID)
+		VALUES(SEQ_PRC.NEXTVAL,#{prrSid},#{miSid},#{imaSid})
+	</insert>
+	
+	
+	
+	
+	<!-- 펫시팅 사고처리 내역 -->
+	<select id="sittingAccList" resultType="com.act.manager.ManagerDTO">
+		SELECT SAC.SAC_SID AS sacSid,SAC.SB_SID AS sbSid,SAC.SAC_DATE AS sacDate,MI.MI_NAME AS miName
+		FROM SITTING_ACC_COMPLETE SAC
+		LEFT JOIN MANAGER_INFO MI
+		ON SAC.MI_SID = MI.MI_SID
+	</select>
+	
+	<!-- 대리산책 사고처리 내역 -->
+	<select id="walkAccList" resultType="com.act.manager.ManagerDTO">
+		SELECT WAC.WAC_SID AS wacSid,WAC.WB_SID AS wbSid,WAC.WAC_DATE AS wacDate,MI.MI_NAME AS miName
+		FROM WALK_ACC_COMPLETE WAC
+		LEFT JOIN MANAGER_INFO MI
+		ON WAC.MI_SID = MI.MI_SID
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 이용현황 수  -->
+	<select id="memberCount" resultType="com.act.manager.ManagerDTO">
+		SELECT
+    	(SELECT COUNT(*) FROM JOIN_MEMBER) AS totalCount,
+    	(SELECT COUNT(*) FROM SITTING_LICENSE) AS sitterCount,
+    	(SELECT COUNT(*) FROM WALK_LICENSE) AS walkerCount,
+    	((SELECT COUNT(*) FROM JOIN_MEMBER) - 
+     	(SELECT COUNT(*) FROM SITTING_LICENSE) - 
+     	(SELECT COUNT(*) FROM WALK_LICENSE)) AS basicCount
+		FROM DUAL
+	</select>
+	
 </mapper>

@@ -8,67 +8,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>managerCompleteAcc</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
 <script type="text/javascript">
-
-	//페이지 로딩 시에 실행되는 코드
+//페이지 로딩 시에 실행되는 코드
+$(document).ready(function()
+{
 	
-	$(document).ready(function()
+
+	// 펫시팅 신고내역 클릭시
+	$("#pet-sitting-acc").click(function()
 	{
-
-		var flag =<%=request.getAttribute("flag")%>
-			if (flag == '7')
-				PetSittingAccComplete();
-			
-			
-		
-
-		function PetSittingAccComplete()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "sittingacclist.action",
-				async : true,
-				success : function(data)
-				{
-					$("#subContent").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-		}
-		
-		function DogWalkAccComplete()
-		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "walkreportlist.action",
-				async : true,
-				success : function(data)
-				{
-					$("#subContent").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
-		}
-		
-		
-		
-
+		SittingAccList();
 	});
+
+	
+
+	// 대리산책 신고내역 버튼 클릭시 호출
+	function SittingAccList()
+	{
+		$.ajax(
+		{
+			type : "POST",
+			url : "sittingacclist.action",
+			async : true,
+			success : function(data)
+			{
+				$("#subContent").html(data);
+
+			},
+			error : function(e)
+			{
+				alert(e.responseText);
+			}
+
+		});
+	}
+
+});
+
 </script>
 </head>
 <body>
@@ -77,8 +55,9 @@
 		<div>
 			<h2 style="margin-top: 20px;">사고처리 내역</h2>
 			<hr />
-			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
-			<button class="report-button" id="dog-walking-report">대리산책 신고</button>
+			<button class="report-button" id="pet-sitting-acc">펫시팅 신고</button>
+			<button class="report-button" id="dog-walking-acc" 
+			style="background-color: gray;">대리산책 신고</button>
 		</div>
 		<div id="completeTable" class="mt-4">
 			<table class="table table-bordered table-hover" id="tableComplete">
@@ -91,9 +70,14 @@
 					</tr>
 				</thead>
 				<tbody>
-				
-						
-					
+					<c:forEach var="list" items="${walkAccList }">
+						<tr>
+							<td>${list.wacSid}</td>
+							<td>${list.wbSid}</td>
+							<td>${list.miName}</td>
+							<td>${list.wacDate}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

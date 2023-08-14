@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,17 +32,46 @@ public class SittingController
 		model.addAttribute("list", sittingService.list());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
 		model.addAttribute("tagList", sittingService.tagList());
+		model.addAttribute("sittingSrwRates", sittingService.sittingSrwRates());
 		
 		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
 		return view;
 	}
 
-	// 펫시터 예약화면
+	// 펫시터 예약화면 데이터 바인딩
 	@RequestMapping("/sittingreservationpage.action")
-	public String getSittingReservationView()
+	public String getSittingReservationView(String memSid, HttpSession session, Model model)
 	{
 		String result = "";
-
+		
+		SittingDTO list = sittingService.listPublicByMemSid(memSid);
+		String pMemSid = (String)session.getAttribute("memSid");
+		
+		ArrayList<SittingDTO> spListTags = sittingService.sittingPlaceTagsByMemSid(memSid);
+		ArrayList<SittingDTO> spRest = sittingService.spRest(memSid);
+		ArrayList<SittingDTO> reviews = sittingService.sittingReviews(memSid);
+		ArrayList<SittingDTO> reviewsPhoto = sittingService.sittingReviewsPhoto();
+		SittingDTO sittingSrwRate = sittingService.sittingSrwRate(memSid);
+		ArrayList<SittingDTO> petList = sittingService.petListByMemSid(pMemSid);
+		
+		
+		System.out.println("sitter memSid : " + memSid);
+		System.out.println("listBySpSid: " + list);
+		System.out.println("spListTags: " + spListTags);
+		System.out.println("reviews : " + reviews);
+		System.out.println("reviewsPhoto : " + reviewsPhoto);
+		System.out.println("sittingSrwRate : " + sittingSrwRate.getSrwCount() + " + swrRateAvg : " + sittingSrwRate.getSrwRateAvg());
+		System.out.println("pMemSid : " + pMemSid);
+		System.out.println("petList : " + petList);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("spListTags", spListTags);
+		model.addAttribute("spRest", spRest);
+		model.addAttribute("reviews", reviews);
+		model.addAttribute("reviewsPhoto", reviewsPhoto);
+		model.addAttribute("sittingSrwRate", sittingSrwRate);
+		model.addAttribute("petList", petList);
+		
 		result = "/WEB-INF/views/sitting/SittingReservationPage.jsp";
 
 		return result;
