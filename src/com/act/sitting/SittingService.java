@@ -271,7 +271,22 @@ public class SittingService implements ISittingService
 		result = dao.sittingReview(srwSid);
 		
 		return result;
+	}
+
+	@Override
+	public SittingDTO sittingPopup(String memSid) 
+	{
+		SittingDTO result = new SittingDTO();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.sittingPopup(memSid);
+		
+		return result;
+		
 	}	
+	
+	
 		
 		
 		
