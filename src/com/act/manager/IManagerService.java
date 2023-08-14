@@ -23,7 +23,16 @@ public interface IManagerService
 	public ArrayList<ManagerDTO> profileReportList();
 	public int deleteProfileReport(ManagerDTO dto);
 	
+	// 신고완료 내역
 	public ArrayList<ManagerDTO> sittingCompleteList();
+	public ArrayList<ManagerDTO> walkCompleteList();
+	public ArrayList<ManagerDTO> profileCompleteList();
+	
+	
+	
+	// 사고처리 내역
+	public ArrayList<ManagerDTO> sittingAccList();
+
 
 	
 	

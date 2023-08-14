@@ -74,7 +74,7 @@ public class ManagerService implements IManagerService
 		
 	}
 	
-	// 펫시팅 신고 현안 리스트
+	// 펫시팅 신고완료 리스트
 	public ArrayList<ManagerDTO> sittingCompleteList()
 	{
 		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
@@ -92,6 +92,28 @@ public class ManagerService implements IManagerService
 		
 		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
 		result = dao.walkReportList();
+		
+		return result;
+		
+	}
+	// 대리산책 신고완료 리스트
+	public ArrayList<ManagerDTO> walkCompleteList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.walkCompleteList();
+		
+		return result;
+		
+	}
+	// 프로필 신고완료 리스트
+	public ArrayList<ManagerDTO> profileCompleteList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.profileCompleteList();
 		
 		return result;
 		
@@ -157,8 +179,18 @@ public class ManagerService implements IManagerService
 	
 	
 	
-
 	
+	// 펫시팅 사고처리 내역
+		public ArrayList<ManagerDTO> sittingAccList()
+		{
+			ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+			
+			IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+			result = dao.sittingAccList();
+			
+			return result;
+			
+		}
 	
 	
 

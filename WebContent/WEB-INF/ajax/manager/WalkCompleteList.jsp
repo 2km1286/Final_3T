@@ -18,24 +18,24 @@ String cp = request.getContextPath();
 	{
 
 		// 대리산책 신고내역 클릭시
-		$("#dog-walking-complete").click(function()
+		$("#pet-sitting-report").click(function()
 		{
-			DogWalkComplete();
+			PetSittingComplete();
 		});
 
 		// 프로필 신고내역 클릭시
-		$("#profile-complete").click(function()
+		$("#profile-report").click(function()
 		{
 			ProfileComplete();
 		});
 
-		// 대리산책 신고내역 버튼 클릭시 호출
-		function DogWalkComplete()
+		// 펫시팅 신고내역 버튼 클릭시 호출
+		function PetSittingComplete()
 		{
 			$.ajax(
 			{
 				type : "POST",
-				url : "walkcompletelist.action",
+				url : "sittingcompletelist.action",
 				async : true,
 				success : function(data)
 				{
@@ -76,25 +76,18 @@ String cp = request.getContextPath();
 		{
 			alert(detail);
 		}
-		//자세히
-		function showDetail(detail)
-		{
-			alert(detail);
-		}
 	});
 </script>
-
 </head>
 <body>
 	<div style="margin-left: -10%; width: 120%;" id="subContent">
 		<div>
 			<h2 style="margin-top: 20px;">처리완료된 신고</h2>
 			<hr />
-			<button class="report-button" id="pet-sitting-complete"
-				style="background-color: gray;">펫시팅 신고</button>
-			<button class="report-button" id="dog-walking-complete">대리산책
-				신고</button>
-			<button class="report-button" id="profile-complete">프로필 신고</button>
+			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
+			<button class="report-button" id="dog-walking-report"
+				style="background-color: gray;">대리산책 신고</button>
+			<button class="report-button" id="profile-report">프로필 신고</button>
 		</div>
 		<div id="completeTable" class="mt-4">
 			<table class="table table-bordered table-hover" id="tableComplete">
@@ -110,16 +103,16 @@ String cp = request.getContextPath();
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="list" items="${sittingCompleteList }">
+					<c:forEach var="list" items="${walkCompleteList }">
 						<tr>
-							<td>${list.srcSid}</td>
-							<td>${list.srrSid}</td>
+							<td>${list.wrcSid}</td>
+							<td>${list.wrrSid}</td>
 							<td>${list.irName}</td>
 							<td><input class="report-button" type="button" value="확인하기"
-								onclick="showDetail('${list.srrDetail}')"></td>
+								onclick="showDetail('${list.wrrDetail}')"></td>
 							<td>${list.imaName}</td>
 							<td>${list.miName}</td>
-							<td>${list.srcDate}</td>
+							<td>${list.wrcDate}</td>
 						</tr>
 					</c:forEach>
 

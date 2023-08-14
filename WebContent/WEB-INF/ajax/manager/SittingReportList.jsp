@@ -121,7 +121,7 @@ String cp = request.getContextPath();
     if (confirm("반려 처리하시겠습니까?")) {
         $.ajax({
             type: "POST",
-            url: "removesittingreport.action?srrSid=" + srrSid+"&miSid="+${miSid}+"&ima="+imaSid,
+            url: "removesittingreport.action?srrSid="+srrSid+"&miSid="+${miSid}+"&imaSid="+imaSid,
             async: true,
             success: function(data) 
             {

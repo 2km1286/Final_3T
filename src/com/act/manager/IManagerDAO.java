@@ -22,5 +22,13 @@ public interface IManagerDAO
 	public ArrayList<ManagerDTO> profileReportList();
 	public int deleteProfileReport(ManagerDTO dto);
 	
+	// 완료된 신고
 	public ArrayList<ManagerDTO> sittingCompleteList();
+	public ArrayList<ManagerDTO> walkCompleteList();
+	public ArrayList<ManagerDTO> profileCompleteList();
+	
+	
+	
+	// 사고처리 내역
+	public ArrayList<ManagerDTO> sittingAccList();
 }

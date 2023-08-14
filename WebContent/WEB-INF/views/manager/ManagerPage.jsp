@@ -225,7 +225,7 @@ table.table-hover>tbody>tr:hover {
 			$.ajax(
 			{
 				type : "POST",
-				url : "managercompleteacc.action",
+				url : "managercompleteacc.action?flag=7",
 				async : true,
 				success : function(data)
 				{

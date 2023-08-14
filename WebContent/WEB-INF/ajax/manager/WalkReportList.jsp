@@ -114,12 +114,12 @@
 	}
 	
 	// 대리산책 반려
-	function DeleteWalkReport(wrrSid) 
+	function DeleteWalkReport(wrrSid,imaSid) 
 	{
     if (confirm("반려 처리하시겠습니까?")) {
         $.ajax({
             type: "POST",
-            url: "removewalkreport.action?wrrSid=" + wrrSid,
+            url: "removewalkreport.action?wrrSid="+ wrrSid+"&miSid="+${miSid}+"&imaSid="+imaSid,
             async: true,
             success: function(data) 
             {
@@ -173,10 +173,11 @@
 								onclick="showDetail('${list.wrrDetail}')"></td>
 							<td>${list.wrrDate}</td>
 							<td id="actionBtn"><input class="report-button"
-								type="button" value="정지"> <input class="report-button"
-								type="button" value="반려" onclick="DeleteWalkReport(${list.wrrSid})">
+								type="button" value="정지" onclick="BannedWalkReport(${list.wrrSid},5)"> 
 								<input class="report-button"
-								type="button" value="수정요청"> 
+								type="button" value="반려" onclick="DeleteWalkReport(${list.wrrSid},4)"> 
+								<input class="report-button"
+								type="button" value="수정요청" onclick="ChangeWalkReport(${list.wrrSid},3)"> 
 								<!-- 분기처리 시작 --> 
 								<c:if
 									test="${list.ipSid == '1'}">

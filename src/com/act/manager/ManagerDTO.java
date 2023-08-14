@@ -11,15 +11,74 @@ public class ManagerDTO
 	
 	private int srrSid,spSid,irSid,memSid,ipSid;
 	private int wrrSid,wpSid;
-	private int prrSid;
-	private String reportedJmNickName,reporterJmNickName,prrDetail,prrDate;
-	private int srcSid;
+	private int prrSid,prcSid;
+	private String reportedJmNickName,reporterJmNickName,prrDetail,prrDate,prcDate;
+	private int srcSid,wrcSid;
 	private String imaName,srcDate;
+	private String sacSid,sbSid,sacDate;
 	
 	private String jmNickName,srrDate,irName,srrDetail;
-	private String wrrDetail,wrrDate;
+	private String wrrDetail,wrrDate,wrcDate;
 	
 	
+	
+	
+	public String getSacSid()
+	{
+		return sacSid;
+	}
+	public void setSacSid(String sacSid)
+	{
+		this.sacSid = sacSid;
+	}
+	public String getSbSid()
+	{
+		return sbSid;
+	}
+	public void setSbSid(String sbSid)
+	{
+		this.sbSid = sbSid;
+	}
+	public String getSacDate()
+	{
+		return sacDate;
+	}
+	public void setSacDate(String sacDate)
+	{
+		this.sacDate = sacDate;
+	}
+	public int getPrcSid()
+	{
+		return prcSid;
+	}
+	public void setPrcSid(int prcSid)
+	{
+		this.prcSid = prcSid;
+	}
+	public String getPrcDate()
+	{
+		return prcDate;
+	}
+	public void setPrcDate(String prcDate)
+	{
+		this.prcDate = prcDate;
+	}
+	public int getWrcSid()
+	{
+		return wrcSid;
+	}
+	public void setWrcSid(int wrcSid)
+	{
+		this.wrcSid = wrcSid;
+	}
+	public String getWrcDate()
+	{
+		return wrcDate;
+	}
+	public void setWrcDate(String wrcDate)
+	{
+		this.wrcDate = wrcDate;
+	}
 	public int getSrcSid()
 	{
 		return srcSid;

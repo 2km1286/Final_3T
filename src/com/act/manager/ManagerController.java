@@ -106,8 +106,30 @@ public class ManagerController
 		ArrayList<ManagerDTO> sittingCompleteList = managerService.sittingCompleteList();
 		model.addAttribute("sittingCompleteList", sittingCompleteList);
 		result = "/WEB-INF/ajax/manager/SittingCompleteList.jsp";
-		System.out.println("여긴도착");
 		
+		return result;
+	}
+	// 대리산책 신고처리완료조회 -AJAX 처리
+	@RequestMapping("/walkcompletelist.action")
+	public String walkcompletelist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		
+		ArrayList<ManagerDTO> walkCompleteList = managerService.walkCompleteList();
+		model.addAttribute("walkCompleteList", walkCompleteList);
+		result = "/WEB-INF/ajax/manager/WalkCompleteList.jsp";
+		
+		return result;
+	}
+	// 프로필 신고처리완료조회 -AJAX 처리
+	@RequestMapping("/profilecompletelist.action")
+	public String profilecompletelist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		
+		ArrayList<ManagerDTO> profileCompleteList = managerService.profileCompleteList();
+		model.addAttribute("profileCompleteList", profileCompleteList);
+		result = "/WEB-INF/ajax/manager/ProfileCompleteList.jsp";
 		return result;
 	}
 	
@@ -182,7 +204,7 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-		int i = managerService.deleteSittingReport(dto);
+		int i = managerService.deleteWalkReport(dto);
 		result= "mainpage.action";		// 모르겠음 사실 이건
 		return result;
 	}
@@ -227,9 +249,23 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
-		
+		request.setAttribute("flag", request.getParameter("flag"));
 		result = "/WEB-INF/ajax/manager/ManagerCompleteAccForm.jsp";
 		return result;
 	}
+	
+	
+	
+	// 펫시팅 사고처리완료조회 
+	@RequestMapping("/sittingacclist.action")
+	public String sittingacclist(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		ArrayList<ManagerDTO> sittingAccList = managerService.sittingAccList();
+		model.addAttribute("sittingAccList", sittingAccList);
+		result = "/WEB-INF/ajax/manager/SittingAccList.jsp";
+		return result;
+	}
+		
 
 }

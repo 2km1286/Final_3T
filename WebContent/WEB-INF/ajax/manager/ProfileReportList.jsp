@@ -114,12 +114,12 @@
 	}
 	
 	// 프로필 반려
-	function DeleteProfileReport(prrSid) 
+	function DeleteProfileReport(prrSid,imaSid) 
 	{
     if (confirm("반려 처리하시겠습니까?")) {
         $.ajax({
             type: "POST",
-            url: "removeprofilereport.action?prrSid="+ prrSid,
+            url: "removeprofilereport.action?prrSid="+ prrSid+"&miSid="+${miSid}+"&imaSid="+imaSid,
             async: true,
             success: function(data) 
             {
@@ -170,8 +170,9 @@
 							<td><input class="report-button" type="button" value="확인하기"
 								onclick="showDetail('${list.prrDetail}')"></td>
 							<td>${list.prrDate}</td>
-							<td id="actionBtn"><input class="report-button" type="button" value="정지"> 
-								<input class="report-button"type="button" value="반려" onclick="DeleteProfileReport(${list.prrSid})">
+							<td id="actionBtn"><input class="report-button" type="button" value="정지"
+								onclick="BannedProfileReport(${list.prrSid},5)"> 
+								<input class="report-button"type="button" value="반려" onclick="DeleteProfileReport(${list.prrSid},4)">
 									<input class="report-button" type="button" value="프로필임의변경"
 										onclick="updateProPublic(${list.ipSid},${list.prrSid})">
 							</td>
