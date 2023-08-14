@@ -218,23 +218,6 @@ p {
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript">
-	$().ready(function()
-	{
-
-		// 펫시팅 돌봄장소 클릭시 예약화면
-		$("#spPost").click(function()
-		{
-			window.location.href = "sittingreservationpage.action";
-		});
-		
-		
-		
-		
-		
-	});
-</script>
-
 
 </head>
 <body>
@@ -476,7 +459,7 @@ p {
 						<div class="row justify-content-between">
 					</c:if>
 
-					<div class="card" id="spPost" style="margin: 5px; width: 32%; margin-bottom: 50px;">
+					<div class="card sp" id="spPost" style="margin: 5px; width: 32%; margin-bottom: 50px;">
 						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
 							style="width: 100%;">
 						<div class="card-body">
@@ -517,6 +500,21 @@ p {
 		</div>
 		</div>
 		<!-- 리스트 뿌리기 끝 -->
+
+		<script type="text/javascript">
+         $().ready(function()
+         {
+      
+            // 펫시팅 돌봄장소 클릭시 예약화면
+            $(".card.sp").click(function() {
+                var memSidValue = $(this).data("mem-sid");
+                $(location).attr("href", "sittingreservationpage.action?memSid=" + memSidValue);
+            });
+            
+            
+            
+         });
+      	</script>
 
 		<script>
 			// 무한 스크롤 함수
