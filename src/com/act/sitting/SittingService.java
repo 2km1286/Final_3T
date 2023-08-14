@@ -310,12 +310,12 @@ public class SittingService implements ISittingService
 	
 	// 펫시팅 돌봄장소의 후기의 사진들 조회(후기러의 닉네임 포함)
 	@Override
-	public ArrayList<SittingDTO> sittingReviewsPhoto(String memSid)
+	public ArrayList<SittingDTO> sittingReviewsPhoto()
 	{
-		ArrayList<SittingDTO> reviewPhotos = new ArrayList<SittingDTO>();
-		
-		
-		return reviewPhotos;
+		ArrayList<SittingDTO> reviewsPhoto = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		reviewsPhoto = dao.sittingReviewsPhoto();
+		return reviewsPhoto;
 	}
 		
 	
@@ -327,8 +327,26 @@ public class SittingService implements ISittingService
 		tagList = dao.sittingPlaceTagsByMemSid(memSid);
 		return tagList;
 	}
+	
+	@Override
+	public SittingDTO sittingSrwRate(String memSid)
+	{
+		SittingDTO sittingSrwRate = new SittingDTO();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		sittingSrwRate = dao.sittingSrwRate(memSid);
+		return sittingSrwRate;
+	}
+	
+	
+	@Override
+	public ArrayList<SittingDTO> sittingSrwRates()
+	{
+		ArrayList<SittingDTO> sittingSrwRates = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		sittingSrwRates = dao.sittingSrwRates();
 		
-		
+		return sittingSrwRates;
+	}
 		
 		
 	
