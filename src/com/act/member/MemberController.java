@@ -123,7 +123,7 @@ public class MemberController
 	    String spTitle = sittingService.sittingPlaceBasic(memSid).get(0).getSptitle();
 	    int followingCount = sittingService.sittingPopup(memSid).getFollowingCount();
 	    int srwCount = sittingService.sittingPopup(memSid).getSrwCount();
-	    int srwRate = sittingService.sittingPopup(memSid).getSrwRate();
+	    int srwRateAvg = sittingService.sittingPopup(memSid).getSrwRateAvg();
 	    int stleCount = sittingService.sittingPopup(memSid).getStleCount();
 	    
 	    
@@ -142,7 +142,7 @@ public class MemberController
 	        session.setAttribute("spTitle", spTitle);
 	        session.setAttribute("followCount", followingCount);
 	        session.setAttribute("reviewCount", srwCount);
-	        session.setAttribute("reviewRate", srwRate);
+	        session.setAttribute("reviewRate", srwRateAvg);
 	        session.setAttribute("endCount", stleCount);
 	        
 
