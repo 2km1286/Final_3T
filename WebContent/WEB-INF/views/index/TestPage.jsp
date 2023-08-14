@@ -48,19 +48,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
-<script type="text/javascript">
-	
-	$().ready(function()
-	{
-		$(".test-btn").click(function()
-		{
-			window.location.href="sittingresultform.action";
-		});	
-	});
-	
-	
-</script>
-
 </head>
 <body>
 	
@@ -73,151 +60,35 @@
 			<div class="container quiz-container" style="width: 950px;">
 				<br>
 				<h1 class="text-center mb-4">펫시터 시험 문제</h1>
-				<div class="card">
+				
+			<form id="quizForm" action="submitQuiz.action" method="post">
+				<c:forEach var="dto" items="${questionSittingList}" varStatus="status">
+					<div class="card question-container">
+						<input type="hidden" class="user-answer" name="userAnswer${status.index}" value="">
+						<br> 
+						<div class="question text-center">
+							<h3>문제 ${status.index + 1}</h3>
+							<h4>${dto.stbquestion}</h4>
+						</div>
+						<div class="btn-group">
+							<button type="button" class="btn btn-success answer-btn" onclick="setAnswer(${status.index}, 'O')">O</button>
+							<button type="button" class="btn btn-danger answer-btn" onclick="setAnswer(${status.index}, 'X')">X</button>
+						</div>
+					</div>
 					<br>
-					<div class="question text-center">
-						<h3>문제 1.</h3>
-						<h4>강아지는 항상 사람이 좋아하는 냄새를 좋아한다.</h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="container quiz-container" style="width: 950px;;">
-				<div class="card">
 					<br>
-					<div class="question text-center">
-						<h3>문제 2.</h3>
-						<h4>강아지는 젖니가 나올 때 아플 수 있다. </h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="container quiz-container" style="width: 950px;;">
-				<div class="card">
-					<br>
-					<div class="question text-center">
-						<h3>문제 3.</h3>
-						<h4>강아지에게 초콜릿을 먹이는 것은 안전하다.</h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="container quiz-container" style="width: 950px;;">
-				<div class="card">
-					<br>
-					<div class="question text-center">
-						<h3>문제 4.</h3>
-						<h4>강아지는 더위를 잘 견디지 못한다.</h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="container quiz-container" style="width: 950px;">
-				<div class="card">
-					<br>
-					<div class="question text-center">
-						<h3>문제 5.</h3>
-						<h4>강아지는 매일 산책이 필요하다.</h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="container quiz-container" style="width: 950px;">
-				<div class="card">
-					<br>
-					<div class="question text-center">
-						<h3>문제 6.</h3>
-						<h4>강아지는 항상 사람의 감정을 이해한다. </h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="container quiz-container" style="width: 950px;">
-				<div class="card">
-					<br>
-					<div class="question text-center">
-						<h3>문제 7.</h3>
-						<h4>강아지는 온순한 품종이라면 아무리 크더라도 어린 아이와 안전하게 지낼 수 있다.</h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="container quiz-container" style="width: 950px;">
-				<div class="card">
-					<br>
-					<div class="question text-center">
-						<h3>문제 8.</h3>
-						<h4>강아지의 코가 뜨거워도 반드시 아픈 것은 아니다.</h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="container quiz-container" style="width: 950px;">
-				<div class="card">
-					<br>
-					<div class="question text-center">
-						<h3>문제 9.</h3>
-						<h4>강아지는 온순한 품종이라면 아무리 크더라도 어린 아이와 안전하게 지낼 수 있다.</h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="container quiz-container" style="width: 950px;">
-				<div class="card">
-					<br>
-					<div class="question text-center">
-						<h3>문제 10.</h3>
-						<h4>강아지는 모든 종류의 채소를 먹을 수 있다.</h4>
-					</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-success answer-btn">O</button>
-						<button type="button" class="btn btn-danger answer-btn">X</button>
-					</div>
-				</div>
-			</div>
-			<br>
-			<br>
+				</c:forEach>
 
-		<div class="button-container">
-			<button type="button" class="btn btn-success test-btn" style="width: 130px; font-size: 1.2rem;">제출하기</button>
-		</div>
-		<br><br>
+				<input type="hidden" id="answers" name="answers">
+				<div class="button-container">
+					<button type="button" class="btn btn-success test-btn"
+						style="width: 130px; font-size: 1.2rem;" onclick="submitQuiz();">제출하기</button>
+				</div>
+				<br>
+				<br>
+
+			</form>
+		</div>	
 	</div>
 		
 		<section>
@@ -225,9 +96,28 @@
 		</c:import>
 	</section>
 	
+	<script>
+		
 	
-   
-	
+	function setAnswer(index, answer) 
+	{
+		document.querySelectorAll('.user-answer')[index].value = answer;
+	}
+
+	function submitQuiz() 
+	{
+		var answers = [];
+		document.querySelectorAll('.user-answer').forEach(function(input) 
+		{
+			answers.push(input.value);
+		});
+		
+		document.getElementById('answers').value = answers.join(',');
+		document.getElementById('quizForm').submit(); 	/* 폼 서브밋  */
+	}
+		
+		
+	</script>
 	
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

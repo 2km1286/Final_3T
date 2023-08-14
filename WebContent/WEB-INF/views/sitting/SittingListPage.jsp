@@ -363,7 +363,7 @@ p {
 				 <label for="dogs">견수:</label> <input type="number" id="spMaxPet" name="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
 
 				<button class="button" id="filter">적용</button>
-				<button class="button" onclick="sittingTest()" style="float: right;">펫시터 지원하기</button>
+				<button class="button" onclick="sittingTest()" style="float: right;" type="button">펫시터 지원하기</button>
 				<script>
 					function sittingTest()
 					{
