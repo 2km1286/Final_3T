@@ -207,7 +207,7 @@ if (memSid == null) {
 			role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-title" id="initialModalLabel">기민님의 펫시팅</h2>
+					<h2 class="modal-title" id="initialModalLabel"><%=session.getAttribute("jmNickName") %>님의 펫시팅</h2>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -229,7 +229,7 @@ if (memSid == null) {
 												<img src="images/sitterroom.jpg" class="d-block w-100"
 													alt="...">
 												<h3  class="modal-title">
-													<br>[프로 펫시터] 기민님의 돌봄장소<hr>
+													<br>[<%=session.getAttribute("grade") %>] <%=session.getAttribute("spTitle") %><hr>
 												</h3>
 											</div>
 														
@@ -239,10 +239,9 @@ if (memSid == null) {
 								<div style="float: left;">
 									<div class="moneyReview" style="margin-left: 15px;">
 										<div class="modal-title" id="my-content">
-										이번달 총 수익 3,820,000 원
-									    <br>이번달 예약완료 횟수 82건 
-									    <br>❤️ 3,021
-										<br>4.8 ⭐ (402개의 후기)
+									    이번달 예약완료 횟수 <%=session.getAttribute("endCount") %>건 
+									    <br>찜한 사람 ❤️ <%=session.getAttribute("followCount") %>명
+										<br>별점 <%=session.getAttribute("reviewRate") %> ⭐ (<%=session.getAttribute("reviewCount") %>개의 후기)
 										<br><br>
 										</div>
 
