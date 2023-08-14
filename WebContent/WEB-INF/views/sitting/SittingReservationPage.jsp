@@ -29,6 +29,14 @@ h2, h4, h5 {
 integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2IqcO3" crossorigin="anonymous"></script>
 
 
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
+
+
+
 <script type="text/javascript">
 	$().ready(function()
 	{
@@ -119,8 +127,9 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 	<section>
 		<!-- 맨 위에 사진과 캘린더 -->
 		<div class="image-container">
-			<div class="image-half" style="background-image: url('images/sittingroom.png');"></div>
-			<div id="calendar"></div>
+			<div class="image-half" style="background-image: url('images/sittingroom.png');" ></div>
+			<div id="calendar">
+			</div>
 		</div>
 			
 		<div class="d-flex justify-content-center align-items-center" style="height: 100vh; overflow: hidden;">
@@ -140,17 +149,17 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<img src="images/dogdog.png" alt="" class="rounded-circle" style="width: 200px; margin: 20px;">
 								</div>
 								<div class="text-center">
-									<h5>[${listBySpSid.grade }] ${listBySpSid.jmNickName } </h5>
+									<h5>[${list.grade }] ${list.jmNickName } </h5>
 									<h6 class="text-muted">${listBySpSid.sptitle }</h6>
-									<p>4.2 ⭐ (991개의 후기) ${listBySpSid.price }원 / 1박</p>
+									<p>${sittingSrwRate.srwRateAvg } ⭐ (${sittingSrwRate.srwCount }개의 후기) ${list.price }원 / 1박</p>
 								</div>
 							</div>
 							<br>
 							<hr>
 							<div>
-								<h5 class="card-title text-center">${listBySpSid.jmNickName } 펫시터님을 소개합니다</h5><br>
+								<h5 class="card-title text-center">${list.jmNickName } 펫시터님을 소개합니다</h5><br>
 								<h6 class="card-subtitle text-muted text-center">
-									${listBySpSid.spContent }
+									${list.spContent }
 								</h6>
 							</div>
 							<hr>
@@ -271,7 +280,10 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 
 							<!-- 후기 -->
 							<div>
-								<h5 class="card-title text-center">고객 후기 991개&nbsp;&nbsp;⭐⭐⭐⭐⭐</h5>
+									<h5 class="card-title text-center">고객 후기 ⭐${sittingSrwRate.srwRateAvg } (${sittingSrwRate.srwCount }개)&nbsp;&nbsp;
+									
+									
+									</h5>
 								<br><br>
 
 								<!-- 후기 사진 -->								
@@ -290,41 +302,40 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 								</div> -->
 
 							<c:forEach items="${reviews }" var="review">
-							<div>
-							<div class="row">
-								<div class="col-3">
-									<img src="images/cute.png" alt="" class="card-img-top"
-										style="width: 100px; height: 100px; border-radius: 50%;">
+								<div>
+								<div class="row">
+									<div class="col-3">
+										<img src="images/cute.png" alt="" class="card-img-top"
+											style="width: 100px; height: 100px; border-radius: 50%;">
+									</div>
+									<div class="col-5">
+										<h5 class="card-title">${review.pJmNickName } 
+										&nbsp;&nbsp;&nbsp;&nbsp;⭐⭐⭐⭐⭐ </h5>
+										<h5 class="card-title">${review.srwTitle }</h5>
+										<h6 class="card-subtitle text-muted">${review.srwDate }</h6>
+										<br>
+										<h6 class="card-subtitle">${review.srwContent }</h6>
+									</div>
+								</div><br>
+								
+								<div class="row">
+									<div class="col text-center" style="margin-right: 35px;">
+									<c:forEach items="${reviewsPhoto }" var="photo">
+										<c:if test="${photo.srwSid == review.srwSid }">
+											<img src="${photo.srpLink }" alt="" class="card-img-top" style="width: 100px; height: 100px;">
+										</c:if>
+									</c:forEach>
+									</div>
 								</div>
-								<div class="col-5">
-									<h5 class="card-title">${review.pJmNickName } 
-									&nbsp;&nbsp;&nbsp;&nbsp;⭐⭐⭐⭐⭐ </h5>
-									<h5 class="card-title">${review.srwTitle }</h5>
-									<h6 class="card-subtitle text-muted">${review.srwDate }</h6>
-									<br>
-									<h6 class="card-subtitle">${review.srwContent }</h6>
 								</div>
-							</div><br>
-							
-							<div class="row">
-								<div class="col text-center" style="margin-right: 35px;">
-								<c:forEach items="${reviewsPhoto }" var="photo">
-									<c:if test="${photo.pMemSid = review.pMemSid }">
-										<img src="${photo.srpLink }" alt="" class="card-img-top" style="width: 100px; height: 100px;">
-									</c:if>
-								</c:forEach>
-								</div>
-							</div>
-							</div>
 							<br><hr>
 							</c:forEach>
 							
-
+					</div>
 					</div>
 				</div>
-
 				<!-- 여기에는 견주의 정보입력칸  -->
-				<div class="col-md-5">
+				<!-- <div class="col-md-5"> -->
 					<div class="card" style="height: 945px; width: 38rem;">
 						<div class="card-header d-flex justify-content-between">
 							예약정보 입력</div>
@@ -333,23 +344,31 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 								<div class="card-body">
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">지역</small></span><br>
-										<span class="nick card-text">서울시 마포구 월드컵북로</span>
+										<span class="nick card-text">${list.spAddr1 }</span>
 									</div>
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">만남
-												장소</small></span><br> <span class="card-text">멍멍동 멍멍아파트 단지 앞 왈왈 공원 입구</span>
+												장소</small></span><br> <span class="card-text">예약 후 상세주소를 알려드려요.</span>
 									</div>
 									<hr>
 									<div class="oneText row">
 										<div class="col">
 											<span class="card-text"><small class="text-muted">체크인 날짜</small></span><br>
-											<label for="datepicker"></label><input type="text" id="datepicker" class="custom-textbox" readonly>
+											<label for="datepicker"></label><input type="text" id="datepicker1" name="datepicker" class="custom-textbox" readonly style="width: 115px;">
 										</div>
 										<div class="col">
 											<span class="card-text"><small class="text-muted">체크아웃 날짜</small></span><br>
-											<label for="datepicker"></label><input type="text" id="datepicker" class="custom-textbox" readonly>
+											<label for="datepicker"></label><input type="text" id="datepicker2" name="datepicker" class="custom-textbox" readonly style="width: 115px;">
 										</div>
+										<script>
+											var fp = flatpickr(document.getElementById("datepicker1"), {
+												"locale": "ko" 
+											});
+											var fp = flatpickr(document.getElementById("datepicker2"), {
+												"locale": "ko" 
+											});
+										</script>
 									</div>
 									<hr>
 									<div class="oneText row">
@@ -366,7 +385,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">최대 반려견 수</small></span><br> 
-										<span class="card-text">2</span>
+										<span class="card-text">${list.spMaxPet }</span>
 									</div>
 									<hr>
 									<div class="oneText">
@@ -408,7 +427,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 												<span class="card-text">기본금액</span>
 											</div>
 											<div class="col">
-												<span class="card-text">&nbsp; + 45,000원</span>
+												<span class="card-text">&nbsp; + ${list.price }</span>
 											</div>
 										</div>
 										<!-- .row -->
@@ -417,7 +436,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 												<span class="card-text"> + 1마리 추가</span>
 											</div>
 											<div class="col">
-												<span class="card-text">&nbsp; + 22,500원</span>
+												<span class="card-text">&nbsp; + ${(list.price)/2 }</span>
 											</div>
 										</div>
 									</div>
@@ -438,7 +457,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 								<!-- close .card-body -->
 							</div>
 						</div>
-					</div>
+					<!-- </div> -->
 					<br>
 
 				</div>
@@ -468,7 +487,8 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 	      dateFormat: 'Y-m-d',
 	      position: "below",
 	      defaultDate: "today",
-	      theme: "airbnb"
+	      theme: "airbnb",
+		  locale: "ko" 
 	    });
 	    
 	    flatpickr("#calendar", {
