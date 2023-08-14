@@ -33,11 +33,8 @@ public class MemberController
 	{
 		String result = "";
 		
-		// 펫시터 팔로잉 탑 3의 SPH_SID와 팔로잉 수, 회원번호, 등급, 닉네임, 펫시터식별번호, 돌봄장소번호
+		// 펫시터 팔로잉 탑 3의 SPH_SID와 팔로잉 수, 회원번호, 등급, 닉네임, 펫시터식별번호, 돌봄장소번호, 후기 수, 별점, 타임라인종료 수
 		model.addAttribute("sittingFollowingRank", sittingService.sittingFollowingRank());
-		
-		// 후기 수, 별점, 타임라인 종료 수 조회
-		model.addAttribute("sittingCount", sittingService.sittingCount());
 		
 		result = "/WEB-INF/views/index/MainPage.jsp";
 

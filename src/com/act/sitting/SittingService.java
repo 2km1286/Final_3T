@@ -273,7 +273,7 @@ public class SittingService implements ISittingService
 		return result;
 	}
 
-	// 펫시터 팔로잉 탑 3 SPH_SID와 팔로잉 수, 회원번호, 등급, 닉네임, 펫시터식별번호, 돌봄장소번호
+		// 펫시터 팔로잉 탑 3 SPH_SID와 팔로잉 수, 회원번호, 등급, 닉네임, 펫시터식별번호, 돌봄장소번호, 후기 수, 별점, 타임라인 종료 수 조회
 	@Override
 	public ArrayList<SittingDTO> sittingFollowingRank()
 	{
@@ -286,17 +286,6 @@ public class SittingService implements ISittingService
 		return result;
 	}
 
-	// 후기 수, 별점, 타임라인 종료 수 조회
-	public ArrayList<SittingDTO> sittingCount()
-	{
-		ArrayList<SittingDTO> result = new ArrayList<SittingDTO>();
-		
-		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		
-		result = dao.sittingCount();
-		
-		return result;
-	}
 		
 	
 		
