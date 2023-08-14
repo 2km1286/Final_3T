@@ -12,7 +12,6 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <script type="text/javascript">
 
-<script type="text/javascript">
 
 //페이지 로딩 시에 실행되는 코드
 
@@ -23,22 +22,17 @@ $(document).ready(function()
 	// 대리산책 신고내역 클릭시
 	$("#dog-walking-acc").click(function()
 	{
-		DogWalkComplete();
+		DogWalkAccList();
 	});
 
-	// 프로필 신고내역 클릭시
-	$("#profile-complete-acc").click(function()
-	{
-		ProfileComplete();
-	});
 
 	// 대리산책 신고내역 버튼 클릭시 호출
-	function DogWalkComplete()
+	function DogWalkAccList()
 	{
 		$.ajax(
 		{
 			type : "POST",
-			url : "walkcompletelist.action",
+			url : "walkacclist.action",
 			async : true,
 			success : function(data)
 			{
@@ -53,31 +47,9 @@ $(document).ready(function()
 		});
 	}
 
-	// 프로필 신고내역 버튼 클릭시 호출
-	function ProfileComplete()
-	{
-		$.ajax(
-		{
-			type : "POST",
-			url : "profilecompletelist.action",
-			async : true,
-			success : function(data)
-			{
-				$("#subContent").html(data);
-
-			},
-			error : function(e)
-			{
-				alert(e.responseText);
-			}
-
-		});
-	}
 
 });
 	
-	
-
 </script>
 </head>
 <body>
@@ -89,7 +61,6 @@ $(document).ready(function()
 			<button class="report-button" id="pet-sitting-acc"
 			style="background-color: gray;">펫시팅 신고</button>
 			<button class="report-button" id="dog-walking-acc">대리산책 신고</button>
-			<button class="report-button" id="profile-complete-acc">프로필 신고</button>
 		</div>
 		<div id="completeTable" class="mt-4">
 			<table class="table table-bordered table-hover" id="tableComplete">

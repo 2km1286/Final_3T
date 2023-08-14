@@ -31,4 +31,10 @@ public interface IManagerDAO
 	
 	// 사고처리 내역
 	public ArrayList<ManagerDTO> sittingAccList();
+	public ArrayList<ManagerDTO> walkAccList();
+	
+	
+	
+	// 통계를 위한 멤버 분포 수
+	public ManagerDTO memberCount();
 }

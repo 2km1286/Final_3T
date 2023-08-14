@@ -21,8 +21,44 @@ public class ManagerDTO
 	private String wrrDetail,wrrDate,wrcDate;
 	
 	
+	private int totalCount,sitterCount,walkerCount,basicCount;
 	
 	
+	
+	
+	
+	public int getTotalCount()
+	{
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount)
+	{
+		this.totalCount = totalCount;
+	}
+	public int getSitterCount()
+	{
+		return sitterCount;
+	}
+	public void setSitterCount(int sitterCount)
+	{
+		this.sitterCount = sitterCount;
+	}
+	public int getWalkerCount()
+	{
+		return walkerCount;
+	}
+	public void setWalkerCount(int walkerCount)
+	{
+		this.walkerCount = walkerCount;
+	}
+	public int getBasicCount()
+	{
+		return basicCount;
+	}
+	public void setBasicCount(int basicCount)
+	{
+		this.basicCount = basicCount;
+	}
 	public String getSacSid()
 	{
 		return sacSid;
