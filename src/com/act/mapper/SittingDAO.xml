@@ -10,6 +10,12 @@
 		,SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
 		FROM SITTING_PLACE_LIST_VIEW
 	</select>
+	
+	<select id="sittingPopup" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATE, STLECOUNT
+		FROM SITTING_FOLLOWINGCOUNT_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
 
 	<select id="IndexTagList"
 		resultType="com.act.sitting.SittingDTO">
