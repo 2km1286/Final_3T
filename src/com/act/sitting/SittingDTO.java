@@ -9,6 +9,7 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 
 public class SittingDTO
 {
+
    // SITTING_PLACE_LIST_VIEW
    private String jmNickName, sptitle, spAddr1, spAddr2, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
    private int sphSid, srwSid, stleSid, spMaxPet, spSid;
@@ -413,14 +414,5 @@ public class SittingDTO
    
 
    
-      
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
 }

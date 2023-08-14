@@ -34,17 +34,7 @@
 		    <c:forEach items="${tags }" var="tag">
 					<button class="btn btn-warning">${tag.isptName}</button>
 			</c:forEach>
-			</div>1	홈캠 가능
-2	놀이 가능
-3	목욕 가능
-4	응급처치가능
-5	반려견있음
-6	꼼꼼한 타임라인 가능
-7	모발관리 가능
-8	비흡연자
-9	장애견 케어 가능
-10	노견 케어 가능
-11	대형견 가능
+			</div>
 			
 			<span class="" style="font-size: 13pt; font-weight: bold;">새로 선택할 돌봄장소 특이사항</span><br>
 		    <div class="checkBox">
@@ -68,37 +58,37 @@
 			</div>
 			
 			<div class="checkBox">
-			  <input type="checkbox" id="petOwner" val>
+			  <input type="checkbox" id="petOwner" value="5">
 			  <label for="petOwner">반려견 있음</label>
 			</div>
 			
 			<div class="checkBox">
-			  <input type="checkbox" id="detailedTimeline">
+			  <input type="checkbox" id="detailedTimeline" value="6">
 			  <label for="detailedTimeline">꼼꼼한 타임라인</label>
 			</div>
 			
 			<div class="checkBox">
-			  <input type="checkbox" id="haircare">
+			  <input type="checkbox" id="haircare" value="7">
 			  <label for="haircare">모발관리 가능</label>
 			</div>
 			
 			<div class="checkBox">
-			  <input type="checkbox" id="noSmoke">
+			  <input type="checkbox" id="noSmoke" value="8">
 			  <label for="haircare">비흡연자</label>
 			</div>
 			
 			<div class="checkBox">
-			  <input type="checkbox" id="disabledCare">
+			  <input type="checkbox" id="disabledCare" value="9">
 			  <label for="disabledCare">장애견 케어 가능</label>
 			</div>
 			
 			<div class="checkBox">
-			  <input type="checkbox" id="seniorDog">
+			  <input type="checkbox" id="seniorDog" value="10">
 			  <label for="seniorDog">노견 가능</label>
 			</div>
 			
 			<div class="checkBox">
-			  <input type="checkbox" id="smallMediumDog">
+			  <input type="checkbox" id="smallMediumDog" value="11">
 			  <label for="smallMediumDog">소/중형견 가능</label>
 			</div>
 			
@@ -135,18 +125,18 @@
 		    
 		<div class="infoOneNoline">
 		  	<h4><span class="smallTitle">돌봄장소 이름</span></h4>
-		    <input type="text" id="" class="" style="width: 80%;">
+		    <input type="text" id="" class="" value="${info.sptitle }" style="width: 80%;">
 		</div>    
 		    
 		<div class="infoOneNoline">   
 		  	<h4><span class="smallTitle">돌봄장소 소개</span></h4>
-		    <textarea rows="5" cols="80"></textarea>
+		    <textarea rows="5" cols="80">${info.spContent }</textarea>
 		</div>
 			
 		<div class="infoOneNoline">    
 	        <h4><span class="smallTitle">주소</span></h4>
 		    <div class="input-container">
-	        	<input type="text"name="jmAddr1" id="jmAddr1">
+	        	<input type="text"name="jmAddr1" id="jmAddr1" value="${info.spAddr1 }" readonly="readonly">
 	        	<button type="button" id="checkZipcodeBtn">우편번호</button>
 	        </div>
 	        <input type="text" name="jmZipCode" id="jmZipCode">
@@ -154,11 +144,22 @@
 	    
 	    <div class="infoOneNoline">      
 	        <h4><span class="smallTitle">상세주소</span></h4>
-	        <input type="text" name="jmAddr2" id="jmAddr2">
+	        <input type="text" name="jmAddr2" id="jmAddr2" value="${info.spAddr2 }" readonly="readonly">
 	    </div>
 			
 		<div class="infoOneNoline">
 			<h4><span class="smallTitle">돌봄장소 공개/비공개</span></h4>
+			<div class="original" style="margin-bottom: 20px;">
+		    <span class="" style="font-size: 13pt; font-weight: bold;">기존 설정</span><br>
+		    <button class="btn btn-warning">
+				<c:choose>
+					<c:when test="${info.ipSid eq 1}">공개</c:when>
+					<c:otherwise>비공개</c:otherwise>
+				</c:choose>
+			</button>
+			</div>
+			
+			<span class="" style="font-size: 13pt; font-weight: bold;">새 설정</span><br>
 			<div class="form-check">
 			    <input class="form-check-input" type="radio" name="visibility" id="public" value="public">
 			    <label class="form-check-label" for="public">공개</label>

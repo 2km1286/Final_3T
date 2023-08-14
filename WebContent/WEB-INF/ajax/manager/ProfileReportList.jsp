@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>대리산책신고내역</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
@@ -27,17 +27,17 @@
 	
 	// 펫시터 신고내역 클릭시
 	$("#pet-sitting-report").click(function()
-			{
-				PetSittingReport();
-			});
-			
-	// 프로필 신고내역 클릭시
-	$("#profile-report").click(function()
 	{
-		ProfileReport();
+		PetSittingReport();
+	});
+			
+	// 대리산책 신고내역 클릭시
+	$("#dog-walking-report").click(function()
+	{
+		DogWalkReport()();
 	});
 	
-	
+	// 펫시팅 신고내역
 	function PetSittingReport()
 	{
 		$.ajax(
@@ -58,13 +58,13 @@
 		});
 	}
 	
-	// 프로필 신고내역 버튼 클릭시
-	function ProfileReport()
+	// 대리산책 신고내역
+	function DogWalkReport()
 	{
 		$.ajax(
 		{
 			type : "POST",
-			url : "profilereportlist.action",
+			url : "walkreportlist.action",
 			async : true,
 			success : function(data)
 			{
@@ -77,7 +77,7 @@
 			}
 
 		});
-	} 
+	}
 	function showDetail(detail)
 	{
 		// 'detail' 매개변수를 사용하여 상세 내용을 표시하는 로직을 작성합니다.
@@ -113,17 +113,17 @@
 		
 	}
 	
-	// 대리산책 반려
-	function DeleteWalkReport(wrrSid,imaSid) 
+	// 프로필 반려
+	function DeleteProfileReport(prrSid,imaSid) 
 	{
     if (confirm("반려 처리하시겠습니까?")) {
         $.ajax({
             type: "POST",
-            url: "removewalkreport.action?wrrSid="+ wrrSid+"&miSid="+${miSid}+"&imaSid="+imaSid,
+            url: "removeprofilereport.action?prrSid="+ prrSid+"&miSid="+${miSid}+"&imaSid="+imaSid,
             async: true,
             success: function(data) 
             {
-                window.location.href = "managermain.action?flag=2";
+                window.location.href = "managermain.action?flag=3";
             },
             error: function(e) 
             {
@@ -143,10 +143,10 @@
 			<h2 style="margin-top: 20px;">신고현안 및 비상관리</h2>
 			<hr />
 			<button class="report-button" id="pet-sitting-report">펫시팅 신고</button>
-			<button class="report-button" id="dog-walking-report"
-			style="background-color: gray;">대리산책
+			<button class="report-button" id="dog-walking-report">대리산책
 				신고</button>
-			<button class="report-button" id="profile-report">프로필 신고</button>
+			<button class="report-button" id="profile-report"
+			style="background-color: gray;">프로필 신고</button>
 			<button class="report-button" id="emergency-report">비상 상황</button>
 		</div>
 		<div id="completeTable" class="mt-4">
@@ -155,39 +155,27 @@
 					<tr>
 						<th style="color: white;">신고번호</th>
 						<th style="color: white;">신고자(닉네임)</th>
-						<th style="color: white;">신고공간번호</th>
+						<th style="color: white;">신고대상(닉네임)</th>
 						<th style="color: white;">신고사유</th>
-						<th style="color: white;">상세사유</th>
 						<th style="color: white;">신고접수일</th>
 						<th style="color: white;">처리</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="list" items="${WalkReportList }">
+					<c:forEach var="list" items="${ProfileReportList }">
 						<tr>
-							<td>${list.wrrSid}</td>
-							<td>${list.jmNickName}</td>
-							<td>${list.wpSid}</td>
-							<td>${list.irName}</td>
+							<td>${list.prrSid}</td>
+							<td>${list.reporterJmNickName}</td>
+							<td>${list.reportedJmNickName}</td>
 							<td><input class="report-button" type="button" value="확인하기"
-								onclick="showDetail('${list.wrrDetail}')"></td>
-							<td>${list.wrrDate}</td>
-							<td id="actionBtn"><input class="report-button"
-								type="button" value="정지" onclick="BannedWalkReport(${list.wrrSid},5)"> 
-								<input class="report-button"
-								type="button" value="반려" onclick="DeleteWalkReport(${list.wrrSid},4)"> 
-								<input class="report-button"
-								type="button" value="수정요청" onclick="ChangeWalkReport(${list.wrrSid},3)"> 
-								<!-- 분기처리 시작 --> 
-								<c:if
-									test="${list.ipSid == '1'}">
-									<input class="report-button" type="button" value="블라인드하기"
-										onclick="updateWalkPublic(${list.ipSid},${list.wpSid})">
-								</c:if> <c:if test="${list.ipSid == '2'}">
-									<input class="report-button" type="button" value="블라인드해제"
-										style="background-color: gray;"
-										onclick="updateWalkPublic(${list.ipSid},${list.wpSid})">
-								</c:if></td>
+								onclick="showDetail('${list.prrDetail}')"></td>
+							<td>${list.prrDate}</td>
+							<td id="actionBtn"><input class="report-button" type="button" value="정지"
+								onclick="BannedProfileReport(${list.prrSid},5)"> 
+								<input class="report-button"type="button" value="반려" onclick="DeleteProfileReport(${list.prrSid},4)">
+									<input class="report-button" type="button" value="프로필임의변경"
+										onclick="updateProPublic(${list.ipSid},${list.prrSid})">
+							</td>
 						</tr>
 					</c:forEach>
 
