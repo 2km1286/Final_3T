@@ -45,11 +45,21 @@ public class SittingDTO
 	// 펫시터 당 타임라인 완료 수 조회
 	private int stleCount;
 
+	private int srwRateAvg;
 	
 	
 	
 	
-	
+	public int getSrwRateAvg()
+	{
+		return srwRateAvg;
+	}
+
+	public void setSrwRateAvg(int srwRateAvg)
+	{
+		this.srwRateAvg = srwRateAvg;
+	}
+
 	public String getJmNickName()
 	{
 		return jmNickName;
