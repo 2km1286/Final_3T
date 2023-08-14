@@ -82,13 +82,14 @@
 	
 	
 	<select id="sittingReviewsPhoto" resultType="com.act.sitting.SittingDTO">
-		SELECT SPSID, PJMNICKNAME, SRPLINK, SRPDATE, PMEMSID, MEMSID
+		SELECT SPSID, PJMNICKNAME, SRPLINK, SRPDATE, PMEMSID, SRWSID 
 		FROM SITTING_REVIEW_PHOTO_VIEW
+	</select>
+
+	<select id="sittingPopup" resultType="com.act.sitting.SittingDTO">
+		SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATEAVG, STLECOUNT
+		FROM SITTING_FOLLOWINGCOUNT_VIEW
 		WHERE MEMSID = #{memSid}
-		                             <!-- 나중에
-		                                  한 회원이 한 펫시터에 대해 여러번 예약하고 후기를 쓸 경우를 대비해서
-		                                  후기를 쓴 날짜를 통해서 여러 개 쓴 후기들이 분기되도록
-		                                  조건절을 구성해야 함. -->
 	</select>
 	
 	<select id="sittingReviewers" resultType="com.act.sitting.SittingDTO">
@@ -245,7 +246,7 @@
 		                                  WHERE MEMSID = #{memSid}
 		                                  ORDER BY SR.SR_START
 	</select>
-
+	
 
 
 </mapper>
