@@ -12,11 +12,30 @@ public interface IManagerService
 	public int updateSittingPublic(ManagerDTO dto);
 	
 	public ArrayList<ManagerDTO> walkReportList();
+	
 	public int updateWalkPublic(ManagerDTO dto);
 	
 	
 	public int deleteSittingReport(ManagerDTO dto);
 	public int deleteWalkReport(ManagerDTO dto);
+	
+	
+	public ArrayList<ManagerDTO> profileReportList();
+	public int deleteProfileReport(ManagerDTO dto);
+	
+	// 신고완료 내역
+	public ArrayList<ManagerDTO> sittingCompleteList();
+	public ArrayList<ManagerDTO> walkCompleteList();
+	public ArrayList<ManagerDTO> profileCompleteList();
+	
+	
+	
+	// 사고처리 내역
+	public ArrayList<ManagerDTO> sittingAccList();
+
+
+	
+	
 
 
 }

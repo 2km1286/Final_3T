@@ -69,14 +69,9 @@ String cp = request.getContextPath();
 				PetSittingReport();
 			if (flag == 2)
 				DogWalkReport();
-
+			if (flag == 3)
+				ProfileReport();
 		
-		
-		
-		$("#dog-walking-report").click(function()
-		{
-			DogWalkReport();
-		});
 
 		function PetSittingReport()
 		{
@@ -117,6 +112,27 @@ String cp = request.getContextPath();
 
 			});
 		}
+		function ProfileReport()
+		{
+			$.ajax(
+			{
+				type : "POST",
+				url : "profilereportlist.action",
+				async : true,
+				success : function(data)
+				{
+					$("#subContent").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
+			});
+		}
+		
+		
 
 	});
 </script>

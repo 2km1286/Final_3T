@@ -73,6 +73,18 @@ public class ManagerService implements IManagerService
 		return result;
 		
 	}
+	
+	// 펫시팅 신고완료 리스트
+	public ArrayList<ManagerDTO> sittingCompleteList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.sittingCompleteList();
+		
+		return result;
+		
+	}
 	// 대리산책 신고 현안 리스트
 	public ArrayList<ManagerDTO> walkReportList()
 	{
@@ -80,6 +92,40 @@ public class ManagerService implements IManagerService
 		
 		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
 		result = dao.walkReportList();
+		
+		return result;
+		
+	}
+	// 대리산책 신고완료 리스트
+	public ArrayList<ManagerDTO> walkCompleteList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.walkCompleteList();
+		
+		return result;
+		
+	}
+	// 프로필 신고완료 리스트
+	public ArrayList<ManagerDTO> profileCompleteList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.profileCompleteList();
+		
+		return result;
+		
+	}
+	
+	// 프로필 신고내역
+	public ArrayList<ManagerDTO> profileReportList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.profileReportList();
 		
 		return result;
 		
@@ -113,7 +159,6 @@ public class ManagerService implements IManagerService
 		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
 		result = dao.deleteSittingReport(dto);
 		return result;
-		
 	}
 	// 대리산책 반려(신고접수에 삭제)
 	public int deleteWalkReport(ManagerDTO dto)
@@ -122,9 +167,30 @@ public class ManagerService implements IManagerService
 		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
 		result = dao.deleteWalkReport(dto);
 		return result;
-		
+	}
+	// 프로필 반려(신고접수에 삭제)
+	public int deleteProfileReport(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.deleteProfileReport(dto);
+		return result;
 	}
 	
+	
+	
+	
+	// 펫시팅 사고처리 내역
+		public ArrayList<ManagerDTO> sittingAccList()
+		{
+			ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+			
+			IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+			result = dao.sittingAccList();
+			
+			return result;
+			
+		}
 	
 	
 
