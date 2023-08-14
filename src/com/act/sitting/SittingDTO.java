@@ -30,8 +30,6 @@ public class SittingDTO
 	private String sbStart, sbEnd, pMemSid;	
 	private int sbSid;
 	
-	
-	
 	// 펫시팅 리스트 검색조건 - 날짜
 	private String datePicker;
 	
@@ -40,7 +38,6 @@ public class SittingDTO
 	
 	// 태그검색 ajax 데이터전송 전 String 으로 묶어주는 변수
 	private String isptSidList;
-	
 
 	// 태그검색 선택된 태그들의 sid번호 담는 리스트
 	private List<Integer> isptSidListInteger;
@@ -56,25 +53,9 @@ public class SittingDTO
 	
 	
 	
-	
 	public String getIsptSidList()
 	{
 		return isptSidList;
-	}
-
-	private int srwRateAvg;
-	
-	
-	
-	
-	public int getSrwRateAvg()
-	{
-		return srwRateAvg;
-	}
-
-	public void setSrwRateAvg(int srwRateAvg)
-	{
-		this.srwRateAvg = srwRateAvg;
 	}
 
 	public void setIsptSidList(String isptSidList)
