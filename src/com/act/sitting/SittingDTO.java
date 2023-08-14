@@ -20,7 +20,7 @@ public class SittingDTO
 	
 	// SITTING_REVIEW_VIEW
 	private String srwTitle, srwContent, srwDate, pJmNickName;	//pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
-	private int srwRate, srwRateAvg, srwCount;
+	private int srwRate, srwRateAvg;
 
 	// INDEX_SITTING_PLACE_TAG
 	private int isptSid;
@@ -38,8 +38,11 @@ public class SittingDTO
 	// 펫시팅 후기의 사진들
 	private String srpLink, srpDate;
 	
-
+	// 태그검색 ajax 데이터전송 전 String 으로 묶어주는 변수
 	private String isptSidList;
+	
+
+	// 태그검색 선택된 태그들의 sid번호 담는 리스트
 	private List<Integer> isptSidListInteger;
 	
 	// 펫시터 팔로잉 리스트에서 팔로워 수 담을 변수
@@ -50,67 +53,10 @@ public class SittingDTO
 	
 	// 펫시터 당 타임라인 완료 수 조회
 	private int stleCount;
-
 	
 	
 	
 	
-	
-	
-	public int getSrwRateAvg()
-	{
-		return srwRateAvg;
-	}
-
-	public void setSrwRateAvg(int srwRateAvg)
-	{
-		this.srwRateAvg = srwRateAvg;
-	}
-
-	public int getSrwCount()
-	{
-		return srwCount;
-	}
-
-	public void setSrwCount(int srwCount)
-	{
-		this.srwCount = srwCount;
-	}
-
-	public String getSrpLink()
-	{
-		return srpLink;
-	}
-
-	public void setSrpLink(String srpLink)
-	{
-		this.srpLink = srpLink;
-	}
-
-	public String getSrpDate()
-	{
-		return srpDate;
-	}
-
-	public void setSrpDate(String srpDate)
-	{
-		this.srpDate = srpDate;
-	}
-
-	public void setSbSid(int sbSid)
-	{
-		this.sbSid = sbSid;
-	}
-	public List<Integer> getIsptSidListInteger()
-	{
-		return isptSidListInteger;
-	}
-
-	public void setIsptSidListInteger(List<Integer> isptSidListInteger)
-	{
-		this.isptSidListInteger = isptSidListInteger;
-	}
-
 	public String getIsptSidList()
 	{
 		return isptSidList;
@@ -120,7 +66,6 @@ public class SittingDTO
 	{
 		this.isptSidList = isptSidList;
 	}
-
 	public String getJmNickName()
 	{
 		return jmNickName;
@@ -361,6 +306,16 @@ public class SittingDTO
 		this.srwRate = srwRate;
 	}
 
+	public int getSrwRateAvg()
+	{
+		return srwRateAvg;
+	}
+
+	public void setSrwRateAvg(int srwRateAvg)
+	{
+		this.srwRateAvg = srwRateAvg;
+	}
+
 	public int getIsptSid()
 	{
 		return isptSid;
@@ -431,14 +386,24 @@ public class SittingDTO
 		this.datePicker = datePicker;
 	}
 
-	public String getIsptSidList()
+	public String getSrpLink()
 	{
-		return isptSidList;
+		return srpLink;
 	}
 
-	public void setIsptSidList(String isptSidList)
+	public void setSrpLink(String srpLink)
 	{
-		this.isptSidList = isptSidList;
+		this.srpLink = srpLink;
+	}
+
+	public String getSrpDate()
+	{
+		return srpDate;
+	}
+
+	public void setSrpDate(String srpDate)
+	{
+		this.srpDate = srpDate;
 	}
 
 	public List<Integer> getIsptSidListInteger()
@@ -480,11 +445,9 @@ public class SittingDTO
 	{
 		this.stleCount = stleCount;
 	}
-	
-	
 
 	
-		
+	
 	
 	
 	
