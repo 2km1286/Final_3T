@@ -77,7 +77,6 @@ public class ManagerController
 		request.setAttribute("count", sittingCount + walkCount);
 		request.setAttribute("flag", request.getParameter("flag"));
 		result = "/WEB-INF/ajax/manager/ManagerReportListForm.jsp";
-		
 		return result;
 	}
 	
@@ -333,6 +332,38 @@ public class ManagerController
 		result= "mainpage.action";		// 모르겠음 사실 이건
 		return result;
 	}
+	
+	
+	
+	// 멤버 전체 내역조회 
+	@RequestMapping("/memberalllist.action")
+	public String memberAllList(Model model)
+	{
+		String result = "";
+		ArrayList<ManagerDTO> memberAllList = managerService.memberAllList();
+		model.addAttribute("memberAllList", memberAllList);
+		
+		result = "/WEB-INF/ajax/manager/MemberAllList.jsp";
+		return result;
+	}
+
+
+
+
+	// 멤버 닉네임 검색 조회
+	@RequestMapping("/membernicklist.action")
+	public String memberNicklist(ManagerDTO dto,Model model)
+	{
+		String result = "";
+		ManagerDTO memberNickNameList = managerService.memberNickNameList(dto);
+		model.addAttribute("memberNickNameList", memberNickNameList);
+		
+		result = "/WEB-INF/ajax/manager/MemberNickList.jsp";
+		return result;
+	}
+
+	
+	
 	
 	
 	// 통계를 위한 회원 분포 수

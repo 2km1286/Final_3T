@@ -175,8 +175,8 @@ String cp = request.getContextPath();
 				<thead>
 					<tr>
 						<th style="color: white;">신고번호</th>
-						<th style="color: white;">회원번호</th>
-						<th style="color: white;">돌봄장소번호</th>
+						<th style="color: white;">신고자(닉네임)</th>
+						<th style="color: white;">신고공간번호</th>
 						<th style="color: white;">신고사유</th>
 						<th style="color: white;">상세사유</th>
 						<th style="color: white;">신고접수일</th>

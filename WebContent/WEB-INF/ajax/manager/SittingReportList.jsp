@@ -12,36 +12,35 @@ String cp = request.getContextPath();
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
-
 <script type="text/javascript">
 //페이지 로딩 시에 실행되는 코드
 	$(document).ready(function()
 	{
 		 var count = <%=request.getAttribute("count")%>
 		 if (count < 1) 
-	 {
-		 $("#emergency-report").css("animation", "none");
-	 }
+		 	{
+		 		$("#emergency-report").css("animation", "none");
+	 		}
 		 
-	});
 	
-	// 대리산책 신고내역 클릭시
-	$("#dog-walking-report").click(function()
-	{
-		DogWalkReport();
-	});
 	
-	// 프로필 신고내역 클릭시
-	$("#profile-report").click(function()
-	{
-		ProfileReport();
-	});
-	
-	// 비상상황 신고내역 클릭시
-	$("#emergency-report").click(function()
-	{
-		EmergReport();
-	});
+		// 대리산책 신고내역 클릭시
+		$("#dog-walking-report").click(function()
+		{
+			DogWalkReport();
+		});
+		
+		// 프로필 신고내역 클릭시
+		$("#profile-report").click(function()
+		{
+			ProfileReport();
+		});
+		
+		// 비상상황 신고내역 클릭시
+		$("#emergency-report").click(function()
+		{
+			EmergReport();
+		});
 	
 	
 	// 대리산책 신고내역 버튼 클릭시 호출
@@ -182,7 +181,7 @@ String cp = request.getContextPath();
    	 	}
 	}
 
-	
+	});
 	
 </script>
 
@@ -239,7 +238,8 @@ String cp = request.getContextPath();
 									<input class="report-button" type="button" value="블라인드해제"
 										style="background-color: gray;"
 										onclick="updateSittingPublic(${list.ipSid},${list.spSid})">
-								</c:if></td>
+								</c:if>
+							</td>
 						</tr>
 					</c:forEach>
 

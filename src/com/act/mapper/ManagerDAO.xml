@@ -178,8 +178,6 @@
 	
 	
 	
-	
-	
 	<!-- 이용현황 수  -->
 	<select id="memberCount" resultType="com.act.manager.ManagerDTO">
 		SELECT
@@ -191,5 +189,28 @@
      	(SELECT COUNT(*) FROM WALK_LICENSE)) AS basicCount
 		FROM DUAL
 	</select>
+	
+	
+	
+	<!-- 전체리스트 출력  -->
+	<select id="memberAllList" resultType="com.act.manager.ManagerDTO">
+		SELECT JM.MEM_SID AS memSid,JM.JM_ID AS jmId,JM.JM_NAME AS jmName,JM.JM_NICKNAME AS jmNickName
+		,JM.JM_GENDER AS jmGender,JM.JM_TEL AS jmTel,MEM.MEM_REGIST_DATE AS memRegitstDate
+		FROM JOIN_MEMBER JM
+		LEFT JOIN MEMBER MEM
+		ON JM.MEM_SID = MEM.MEM_SID
+	</select>
+	
+	<!-- 닉네임으로 검색 출력 -->
+	<select id="memberNickNameList" resultType="com.act.manager.ManagerDTO">
+		SELECT JM.MEM_SID AS memSid,JM.JM_ID AS jmId,JM.JM_NAME AS jmName,JM.JM_NICKNAME AS jmNickName
+		,JM.JM_GENDER AS jmGender,JM.JM_TEL AS jmTel,MEM.MEM_REGIST_DATE AS memRegitstDate
+		FROM JOIN_MEMBER JM
+		LEFT JOIN MEMBER MEM
+		ON JM.MEM_SID = MEM.MEM_SID
+		WHERE JM.JM_NICKNAME = #{jmNickName}
+	</select>
+	
+	
 	
 </mapper>

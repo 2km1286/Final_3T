@@ -276,6 +276,30 @@ public class ManagerService implements IManagerService
 	}
 	
 	
+	// 멤버전체 출력
+	public ArrayList<ManagerDTO> memberAllList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberAllList();
+		
+		return result;
+		
+	}
+	
+	// 멤버 닉네임 검색 출력
+	public ManagerDTO memberNickNameList(ManagerDTO dto)
+	{
+		ManagerDTO result = new ManagerDTO();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberNickNameList(dto);
+		
+		return result;
+		
+	}
+	
 	
 	// 통계를 위한 멤버 분포 수
 	public ManagerDTO memberCount()

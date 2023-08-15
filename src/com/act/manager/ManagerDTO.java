@@ -9,7 +9,7 @@ public class ManagerDTO
 	
 	private int imaSid;
 	
-	private int srrSid,spSid,irSid,memSid,ipSid;
+	private int srrSid,spSid,irSid,ipSid;
 	private int wrrSid,wpSid;
 	private int prrSid,prcSid;
 	private String reportedJmNickName,reporterJmNickName,prrDetail,prrDate,prcDate;
@@ -27,9 +27,58 @@ public class ManagerDTO
 	private int serSid,secSid,werSid,wbSid,wecSid;
 	private String serDate,secDate,werDate,wecDate; 
 	
+	private String jmId,jmName,jmGender,jmTel,memRegitstDate,memSid;
 	
 	
 	
+	public String getMemSid()
+	{
+		return memSid;
+	}
+	public void setMemSid(String memSid)
+	{
+		this.memSid = memSid;
+	}
+	public String getMemRegitstDate()
+	{
+		return memRegitstDate;
+	}
+	public void setMemRegitstDate(String memRegitstDate)
+	{
+		this.memRegitstDate = memRegitstDate;
+	}
+	public String getJmId()
+	{
+		return jmId;
+	}
+	public void setJmId(String jmId)
+	{
+		this.jmId = jmId;
+	}
+	public String getJmName()
+	{
+		return jmName;
+	}
+	public void setJmName(String jmName)
+	{
+		this.jmName = jmName;
+	}
+	public String getJmGender()
+	{
+		return jmGender;
+	}
+	public void setJmGender(String jmGender)
+	{
+		this.jmGender = jmGender;
+	}
+	public String getJmTel()
+	{
+		return jmTel;
+	}
+	public void setJmTel(String jmTel)
+	{
+		this.jmTel = jmTel;
+	}
 	public int getWerSid()
 	{
 		return werSid;
@@ -352,14 +401,6 @@ public class ManagerDTO
 	public void setIrSid(int irSid)
 	{
 		this.irSid = irSid;
-	}
-	public int getMemSid()
-	{
-		return memSid;
-	}
-	public void setMemSid(int memSid)
-	{
-		this.memSid = memSid;
 	}
 	public String getJmNickName()
 	{

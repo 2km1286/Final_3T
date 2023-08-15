@@ -47,6 +47,14 @@ public interface IManagerDAO
 	public int deleteSittingEmerg(ManagerDTO dto);
 	
 	
+	// 멤버 전체 출력
+	public ArrayList<ManagerDTO> memberAllList();
+	
+	
+	// 멤버 닉네임 검색 출력
+	public ManagerDTO memberNickNameList(ManagerDTO dto);
+	
+	
 	// 통계를 위한 멤버 분포 수
 	public ManagerDTO memberCount();
 }
