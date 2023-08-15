@@ -115,7 +115,7 @@ String cp = request.getContextPath();
 				<div class="cal-md">
 					
 					
-					<span class="smallTitle" style="font-size: 15pt;">펫시팅 영업시간 설정</span>
+					<span class="smallTitle" style="font-size: 15pt;">운영시간 설정</span>
 					<div class="oneText row">
 						<div class="col">
 							<label for="timeSelect">시작 시간</label>
