@@ -19,8 +19,6 @@
 	</select>
 
 
-	
-
 	<select id="IndexTagList"
 		resultType="com.act.sitting.SittingDTO">
 		SELECT ISPT_SID AS ISPTSID, ISPT_NAME AS ISPTNAME
@@ -83,7 +81,7 @@
 	</select>
 	
 	<select id="sittingReviews" resultType="com.act.sitting.SittingDTO">
-		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, JMNICKNAME
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, PJMNICKNAME
 		FROM SITTING_REVIEW_VIEW
 		WHERE MEMSID = #{memSid}
 		ORDER BY SRWDATE DESC
@@ -287,6 +285,15 @@
 		WHERE PMEMSID = #{pMemSid}
 	</select>
 	
+	
+	<insert id="sittingCreateCart">
+		INSERT INTO SITTING_CREATE_CART(SCC_SID, MEM_SID)
+		VALUES(SEQ_SCC.NEXTVAL, #{pMemSid});
+	</insert>
 
+	<insert id="sittingCart">
+		INSERT INTO SITTING_CART(SC_SID, SCC_SID, PET_SID)
+		VALUES(SEQ_SC.NEXTVAL, #{sccSid}, #{petSid});
+	</insert>
 
 </mapper>
