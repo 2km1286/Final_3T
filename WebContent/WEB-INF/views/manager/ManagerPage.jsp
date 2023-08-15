@@ -151,7 +151,7 @@ table.table-hover>tbody>tr:hover {
 	{
 
 		var flag =<%=request.getAttribute("flag")%>
-		if (flag == 1 || flag == 2 || flag ==3)
+		if (flag == 1 || flag == 2 || flag ==3 || flag==4)
 			managerReportList();
 
 		// 처리완료된 신고

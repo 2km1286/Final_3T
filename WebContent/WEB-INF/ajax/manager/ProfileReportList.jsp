@@ -36,6 +36,11 @@
 	{
 		DogWalkReport()();
 	});
+	// 비상상황 신고내역 클릭시
+	$("#emergency-report").click(function()
+	{
+		EmergReport();
+	});
 	
 	// 펫시팅 신고내역
 	function PetSittingReport()
@@ -65,6 +70,26 @@
 		{
 			type : "POST",
 			url : "walkreportlist.action",
+			async : true,
+			success : function(data)
+			{
+				$("#subContent").html(data);
+
+			},
+			error : function(e)
+			{
+				alert(e.responseText);
+			}
+
+		});
+	}
+	// 비상상황  버튼 클릭시 호출
+	function EmergReport()
+	{
+		$.ajax(
+		{
+			type : "POST",
+			url : "emerglist.action",
 			async : true,
 			success : function(data)
 			{
