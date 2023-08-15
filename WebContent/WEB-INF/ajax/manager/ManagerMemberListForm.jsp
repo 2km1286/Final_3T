@@ -85,7 +85,7 @@ input[type="button"]:hover {
 }
 </style>
 <script type="text/javascript">
-$(function()
+	$(function()
 		{
 			
 			// "통계 확인하기" 버튼 클릭 시 모달 창 열기
@@ -108,6 +108,48 @@ $(function()
     					alert(e.responseText);
     				}
     			});
+			});
+			
+			
+		 	// 검색 버튼 클릭 시 // 공백도 제거
+		    $("#searchMemberBtn").click(function() 
+		    {
+		    	var userNickName = $("#userNick").val().trim("");
+		    	if (userNickName =="")
+				{
+		    		$.ajax(
+    	   			{
+    	   				type : "GET",
+    	   				url : "memberalllist.action",
+    	   				async : true,
+    	   				success : function(data)
+    	   				{
+    						$("#tableMemberList").html(data);
+    	   				},
+    	   				error : function(e)
+    	   				{
+    	   					alert(e.responseText);
+    	   				}
+    	   			}); 
+				}
+		    	else
+		    	{
+		    		$.ajax(
+    	   			{
+    	   				type : "GET",
+    	   				url : "membernicklist.action?jmNickName="+ userNickName,
+    	   				async : true,
+    	   				success : function(data)
+    	   				{
+    						$("#tableMemberList").html(data);
+    	   				},
+    	   				error : function(e)
+    	   				{
+    	   					alert(e.responseText);
+    	   				}
+    	   			}); 
+		    	}
+		     	
 			});
 			
 			
@@ -142,11 +184,11 @@ $(function()
 		    {
 		        $("#myModal").css("display", "none");
 		    });
-		});
+});
 </script>
 </head>
 <body>
-
+<div style="margin-bottom: 30px;">
 	<div style="margin-left: -10%; width: 120%;">
 		<div>
 			<h2 style="margin-top: 20px;">회원관리</h2>
@@ -165,8 +207,8 @@ $(function()
 					<tr>
 						<th style="color: white;">회원ID</th>
 						<th style="color: white;">회원명</th>
-						<th style="color: white;">성별</th>
 						<th style="color: white;">닉네임</th>
+						<th style="color: white;">성별</th>
 						<th style="color: white;">전화번호</th>
 						<th style="color: white;">가입일자</th>
 					</tr>
@@ -181,6 +223,7 @@ $(function()
 				</div>
 			</div>
 		</div>
+		</div>
 		<div id="myModal" class="modal">
 			<div class="modal-content">
 				<span class="close">&times;</span>
@@ -189,7 +232,6 @@ $(function()
 				<canvas id="memberChartModal" style="width: 100%; max-width: 600px"></canvas>
 			</div>
 		</div>
-
 	</div>
 </body>
 </html>

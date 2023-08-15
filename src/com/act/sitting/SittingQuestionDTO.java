@@ -22,11 +22,32 @@ public class SittingQuestionDTO
 	private int strsid, stbsid1, stbsid2, stbsid3, stbsid4, stbsid5, stbsid6, stbsid7, stbsid8, stbsid9, stbsid10;
 	private ArrayList<String> answer;
 	
+	// 합격여부를 나타냄
+	private boolean ispassed; 
+	
 	// 합격컷 범례
 	private int spcsid, spcstandard;
 	private String spcdate;
 	
+	// 제출번호
+	private int stssid;
 	
+	public int getStssid()
+	{
+		return stssid;
+	}
+	public void setStssid(int stssid)
+	{
+		this.stssid = stssid;
+	}
+	public boolean isIspassed()
+	{
+		return ispassed;
+	}
+	public void setIspassed(boolean ispassed)
+	{
+		this.ispassed = ispassed;
+	}
 	public int getTotalScore()
 	{
 		return totalScore;
