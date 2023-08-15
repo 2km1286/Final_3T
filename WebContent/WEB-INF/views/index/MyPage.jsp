@@ -32,6 +32,31 @@
 
 	$(function()
 	{
+		var flag =<%=request.getParameter("flag")%>
+		if( flag == "1" )	/* 돌봄장소 등록 성공 또는 실패를 하고 돌아왔을 때 */
+			goPetSitting();	// 펫시팅으로 바로 이동
+
+		function goPetSitting()
+		{
+			$.ajax(
+			{
+				type:"POST"
+				, url:"mypagesittingform.action"
+				, async:true
+				, success:function(data)
+				{
+					$("#myPageMain").html(data);
+										
+				}
+				, error:function(e)
+				{
+					alert(e.responseText);
+				}
+				
+			});
+		}	
+			
+			
 		// 알림창
 		$("#myPageNotice").click(function()
 		{
@@ -260,6 +285,7 @@ button.list-group-item { margin-bottom: 3px;}
 
 </head>
 <body>
+
 	<c:import url="/WEB-INF/components/index/HeaderForm.jsp">
 	</c:import>
 	<div class="">

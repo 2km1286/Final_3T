@@ -131,7 +131,8 @@ public class SittingController
 				}
 				else	// 펫시팅면허번호를 가지고 있지만, 돌봄장소는 없는 경우
 				{
-					model.addAttribute("key", 1);
+					int key = 1;
+					model.addAttribute("key", key);
 					model.addAttribute("tags", sittingService.IndexTagList());
 					
 					// 돌봄장소 등록하기
@@ -177,7 +178,7 @@ public class SittingController
 	{
 		String result = "";
 		
-		// 1. submit해서 받아온 값들을 sittingDTO에 모두 담고 SITTING_PLACE 에 sittingDTO 를 인서트. 돌봄장소 등록 spSid가 생김
+		// 1. submit해서 받아온 값들을 sittingDTO에 모두 담기
 		SittingDTO dto = new SittingDTO();
 		String fileName = "";
 		String filePath = "";
@@ -245,9 +246,10 @@ public class SittingController
             e.printStackTrace();
         }
 	    
+	    // submit해서 받아온 값 외에 돌봄장소 등록에 필요한 값들을 추가적으로 dto에 set
 	    String memSid = (String)session.getAttribute("memSid");
 	    dto.setMemSid(memSid);
-	    dto.setSppPath("C:\\attaches");
+	    dto.setSppPath("C:\\attaches");					// 사진을 저장한 폴더경로
 	    dto.setSlSid(sittingService.slSid(memSid));
 	    
 	    // spSid 제외하고 인서트에 필요한 모든 값을 dto에 담았음
@@ -256,13 +258,14 @@ public class SittingController
 	   // + " / " + dto.getSpAddr2() + " / " + dto.getSpZipCode() + " / " + dto.getSpMaxPet() + " / " 
 	   // + " / " + dto.getIpSid() + " / " + dto.getExtraAddr() );
 	    
-	    
+	    // sitting_place 에 인서트, sitting_place_hub에 인서트, 이미지인서트, 특이사항인서트
 	    boolean success = sittingService.insertPlcae(dto);
 		
-	    if (success) 
-	    	result = "redirect:mypagesittingform.action";
-	    else
-	    	result = "redirect:mypagesittingform.action";
+	    // insert 성공/실패 후에는 flag에 1을 담아서 마이페이지를 리다이렉트
+	    // 이 flag는 마이페이지에서 펫시팅으로 바로 AJAX처리를 하기 위한 변수
+	    // 성공/실패를 분기하지 않고 보내는 이유는 펫시팅에 진입할 때 분기해주기 때문이다
+	    
+    	result = "redirect:mypage.action?flag=1" ;
 	    	
 		return result;
 	}

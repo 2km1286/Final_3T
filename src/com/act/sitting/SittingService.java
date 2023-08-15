@@ -499,9 +499,9 @@ public class SittingService implements ISittingService
 		try
 		{
 			
-			System.out.println( "컨트롤러에서 넘어왔나? :" + dto.getSpSid() + " / " + dto.getSptitle() + " / " + dto.getSpContent() + " / " +   dto.getSpAddr1()
-		    + " / " + dto.getSpAddr2() + " / " + dto.getSpZipCode() + " / " + dto.getSpMaxPet() + " / " 
-		    + " / " + dto.getIpSid() + " / " + dto.getExtraAddr() );
+			//System.out.println( "컨트롤러에서 넘어왔나? :" + dto.getSpSid() + " / " + dto.getSptitle() + " / " + dto.getSpContent() + " / " +   dto.getSpAddr1()
+		    //+ " / " + dto.getSpAddr2() + " / " + dto.getSpZipCode() + " / " + dto.getSpMaxPet() + " / " 
+		    //+ " / " + dto.getIpSid() + " / " + dto.getExtraAddr() );
 			
 			
 			String sppName = dto.getSppName();
@@ -541,7 +541,7 @@ public class SittingService implements ISittingService
 		
 	}
 		
-		
+	// memSid로 펫시터 면허번호 조회	
 	public int slSid(String memSid)
 	{
 		int result= 0;
