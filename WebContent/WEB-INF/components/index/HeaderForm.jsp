@@ -166,8 +166,11 @@ li {
                               </div>
                            </div>
                         </div>
-                           <div>
-                           </div>
+                            <div class="col-md-6 container-mypage">
+						        <!-- 이곳에 준비중인 서비스입니다. 내용 추가 -->
+						        <h3><span class="badge">팔로잉 한 대리산책러</span></h3>
+						        <h3><span class="badge">준비중인 서비스입니다</span></h3>
+						    </div>
                      </div>
                   </div>
                </div>
