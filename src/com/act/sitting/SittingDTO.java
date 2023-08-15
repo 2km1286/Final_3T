@@ -10,7 +10,8 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 public class SittingDTO {
 
 	// SITTING_PLACE_LIST_VIEW
-	private String jmNickName, sptitle, spAddr1, spAddr2, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
+	private String jmNickName, sptitle, spZipCode, spAddr1, spAddr2, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
+	
 	private int sphSid, srwSid, stleSid, spMaxPet, spSid;
 	private String grade;
 	private int price;
@@ -70,6 +71,15 @@ public class SittingDTO {
 	// 반려견 정보
 	private String petName, petImage, petBirth, petGen, petSize, petSpecialNote;  
 	private int petSid, iptSid, petWeight;
+	
+	public String getSpZipCode()
+	{
+		return spZipCode;
+	}
+	public void setSpZipCode(String spZipCode)
+	{
+		this.spZipCode = spZipCode;
+	}
 	public String getJmNickName()
 	{
 		return jmNickName;
