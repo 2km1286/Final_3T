@@ -18,10 +18,10 @@ public interface IMemberDAO
 	
 	
 	// 아이디 비밀번호로 펫시터 타임라인 종료 횟수 찾기
-	public String searchSittingcount(MemberDTO dto);
+	public int searchSittingcount(String memSid);
 	
 	// 아이디 비밀번호로 대리산책 타임라인 종료 횟수 찾기
-	public String searchWalkcount(MemberDTO dto);
+	public int searchWalkcount(String memSid);
 	
 	
 	// 아이디와 비밀번호로 jm_nickname 찾기
