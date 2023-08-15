@@ -37,8 +37,6 @@ public interface ISittingService
 	public ArrayList<SittingDTO> sittingSrwRates();
 	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
 	
-	public SittingDTO sittingCreateCart(SittingDTO dto);
-	public SittingDTO sittingCart(SittingDTO s);
 	
 }
 
