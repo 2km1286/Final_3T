@@ -1,13 +1,20 @@
 package com.act.sitting;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.act.walk.WalkDTO;
 
 
 @Controller
@@ -89,37 +98,51 @@ public class SittingController
 		
 		dto.setMemSid(memSid);
 		
+		int stsCount = sittingService.sittingStsCount(dto); // 시험제출번호
+		int slCount = sittingService.sittingSlCount(dto); // 펫시팅면허번호
 		
-		// AJAX
-		int stsCount = sittingService.sittingStsCount(dto);
-		int slCount = sittingService.sittingSlCount(dto);
+		
+		//System.out.println(stsCount);
+		//System.out.println(slCount);
 		
 		if(stsCount!=0)			// 시험제출번호를 가지고 있다면
 		{
 			if(slCount!=0)		// 펫시팅면허번호를 가지고 있다면
 	        {
-				// 현재 운영중인 돌봄장소번호
-				int spSid = sittingService.sittingPlaceBasic(memSid).get(0).getSpSid();
+				if( sittingService.spCount(dto) != 0)	// 펫시팅면허번호를 가지고 있고, 돌봄장소를 가지고 있는 경우
+				{
+					// 현재 운영중인 돌봄장소번호
+					int spSid = sittingService.sittingPlaceBasic(memSid).get(0).getSpSid();
+					
+					// 현재 운영중인 돌봄장소의 기본정보(태그, 사진, 휴무일 제외)
+					model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0));
+					
+					// 현재 운영중인 돌봄장소의 특이사항
+					model.addAttribute("tags", sittingService.sittingPlaceTags(spSid));
+					
+					// 나에게 달린 후기
+					model.addAttribute("reviews", sittingService.sittingReviews(memSid));
+					
+					// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
+					model.addAttribute("reviewers", sittingService.sittingReviewers());
+					
+					
+					view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
+				}
+				else	// 펫시팅면허번호를 가지고 있지만, 돌봄장소는 없는 경우
+				{
+					model.addAttribute("key", 1);
+					model.addAttribute("tags", sittingService.IndexTagList());
+					
+					// 돌봄장소 등록하기
+					view = "/WEB-INF/ajax/MyPageSittingPlaceInsertForm.jsp";
+				}
 				
-				// 현재 운영중인 돌봄장소의 기본정보(태그, 사진, 휴무일 제외)
-				model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0));
-				
-				// 현재 운영중인 돌봄장소의 특이사항
-				model.addAttribute("tags", sittingService.sittingPlaceTags(spSid));
-				
-				// 나에게 달린 후기
-				model.addAttribute("reviews", sittingService.sittingReviews(memSid));
-				
-				// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
-				model.addAttribute("reviewers", sittingService.sittingReviewers());
-				
-				
-				view = "/WEB-INF/ajax/MyPageSittingForm.jsp";
 	        }
-			else				// 시험은 보았지만, 공간등록을 하지 않은 경우
-				view = "/WEB-INF/ajax/MyPageSittingPlaceRegisterForm.jsp";
+			else				// 시험제출번호를 가지고 있지만 , 면허번호가 없는 경우 (임시로 메인으로 보내버림)
+				view = "redirect:mainpage.action";
 		}
-		else					// 시험을 보지 않은 회원인 경우
+		else					// 시험을 보지 않은 회원인 경우	 (보내지는 페이지 수정 필요)
 			view = "/WEB-INF/ajax/MyPageSittingRegisterForm.jsp";
 	
 		return view;
@@ -149,11 +172,98 @@ public class SittingController
 
 	
 	// 마이페이지에서 펫시팅의 돌봄장소 등록하기를 눌렀을 때
-	@RequestMapping("/registerspinfoform.action")
-	public String registerSpInfoForm()
+	@RequestMapping(value="/insertPlace.action", method = RequestMethod.POST)
+	public String placeInsert(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException, ServletException
 	{
 		String result = "";
-		result = "/WEB-INF/ajax/MyPageSittingForm.jsp";
+		
+		// 1. submit해서 받아온 값들을 sittingDTO에 모두 담고 SITTING_PLACE 에 sittingDTO 를 인서트. 돌봄장소 등록 spSid가 생김
+		SittingDTO dto = new SittingDTO();
+		String fileName = "";
+		String filePath = "";
+		
+		response.setContentType("text/html; charset=UTF-8");
+		//PrintWriter out = response.getWriter();
+		
+		File attachesDir = new File("C:\\attaches");
+		
+		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
+	    fileItemFactory.setRepository(attachesDir);
+	    fileItemFactory.setSizeThreshold(1024 * 1024);
+	    ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
+	    
+	    try {
+            List<FileItem> items = fileUpload.parseRequest(request);
+            for (FileItem item : items) {
+              
+                if (item.isFormField()) {        
+                    if(item.getFieldName().equals("sptitle"))
+                    	dto.setSptitle(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("spContent")) 
+                    	dto.setSpContent(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("spMaxPet"))
+                    	dto.setSpMaxPet(Integer.parseInt(item.getString("UTF-8")));
+                    else if(item.getFieldName().equals("spAddr1"))
+                    	dto.setSpAddr1(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("spAddr2"))
+                    	dto.setSpAddr2(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("extraAddr"))
+                    	dto.setExtraAddr(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("spZipCode"))
+                    	dto.setSpZipCode(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("sphStart"))
+                    	dto.setSphStart(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("sphEnd"))
+                    	dto.setSphEnd(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("selectedTags"))
+                    {
+                    	String selectedTagsString = item.getString("UTF-8");
+                    	List<String> selectedTags = Arrays.asList(selectedTagsString.split(","));	
+                    	dto.setSelectedTags(selectedTags);
+                    }
+                    else if(item.getFieldName().equals("ipSid"))
+                    	dto.setIpSid(Integer.parseInt(item.getString("UTF-8")));
+                    
+                } else {
+              
+                    if (item.getSize() > 0) {
+                        String separator = File.separator;
+                        int index =  item.getName().lastIndexOf(separator);
+                        fileName = item.getName().substring(index  + 1);
+                        filePath = "C:\\attaches" + separator + fileName;
+                        File uploadFile = new File(filePath);
+                        item.write(uploadFile);
+                        
+                        if(item.getFieldName().equals("file"))
+                        	dto.setSppName(item.getName()); // 파일 이름 설정
+                       
+                    }
+                }
+            }
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+	    
+	    String memSid = (String)session.getAttribute("memSid");
+	    dto.setMemSid(memSid);
+	    dto.setSppPath("C:\\attaches");
+	    dto.setSlSid(sittingService.slSid(memSid));
+	    
+	    // spSid 제외하고 인서트에 필요한 모든 값을 dto에 담았음
+	    
+	    //System.out.println(dto.getSpSid() + " / " + dto.getSptitle() + " / " + dto.getSpContent() + " / " +   dto.getSpAddr1()
+	   // + " / " + dto.getSpAddr2() + " / " + dto.getSpZipCode() + " / " + dto.getSpMaxPet() + " / " 
+	   // + " / " + dto.getIpSid() + " / " + dto.getExtraAddr() );
+	    
+	    
+	    boolean success = sittingService.insertPlcae(dto);
+		
+	    if (success) 
+	    	result = "redirect:mypagesittingform.action";
+	    else
+	    	result = "redirect:mypagesittingform.action";
+	    	
 		return result;
 	}
 	

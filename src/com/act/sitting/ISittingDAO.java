@@ -109,4 +109,33 @@ public interface ISittingDAO
 	// 견주의 memSid로 자신이 등록한 반려견의 정보 가져오기
 	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
 	
+	// 등록한 돌봄장소가 있는지 카운트
+	public int spCount(SittingDTO dto);
+	
+	// 펫시터 면허번호 가져오기
+	public int slSid(String memSid);
+	
+	// 돌봄장소 등록
+	public int insertPlcae(SittingDTO dto);
+	
+	// 돌봄장소 제일 최신 spSid 가져오기
+	public int spSidMax();
+		
+	// 돌봄장소 사진 등록
+	public int insertPlacePhoto(SittingDTO dto);
+	
+	// 돌봄장소 태그 등록
+	public int insertPlaceTag(SittingDTO dto);
+	
+	// 돌봄장소 영업시간 등록(SITTING_PLACE_HUB)
+	public int insertPlaceHub(SittingDTO dto);
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

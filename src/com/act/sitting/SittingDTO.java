@@ -10,7 +10,7 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 public class SittingDTO {
 
    // SITTING_PLACE_LIST_VIEW
-   private String jmNickName, sptitle, spAddr1, spAddr2, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
+   private String jmNickName, sptitle, spAddr1, spAddr2, spZipCode, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
    private int sphSid, srwSid, stleSid, spMaxPet, spSid;
    private String grade;
    private int price;
@@ -64,7 +64,71 @@ public class SittingDTO {
    private int petSid, iptSid, petWeight;
    
    
-   public String getJmNickName()
+   // 이미지 파일
+   private String sppName;
+   private String sppPath;
+   
+   // 특이사항
+   private List<String> selectedTags;      // 사용자가 선택한 어필태그
+   private String selectedTagsString; // hidden field에서 사용할 문자열
+   
+   // 면허번호
+   private int slSid;
+   
+   
+   
+   
+   
+   
+	public int getSlSid()
+	{
+		return slSid;
+	}
+	public void setSlSid(int slSid)
+	{
+		this.slSid = slSid;
+	}
+	public String getSppName()
+	{
+		return sppName;
+	}
+	public void setSppName(String sppName)
+	{
+		this.sppName = sppName;
+	}
+	public String getSppPath()
+	{
+		return sppPath;
+	}
+	public void setSppPath(String sppPath)
+	{
+		this.sppPath = sppPath;
+	}
+	public List<String> getSelectedTags()
+	{
+		return selectedTags;
+	}
+	public void setSelectedTags(List<String> selectedTags)
+	{
+		this.selectedTags = selectedTags;
+	}
+	public String getSelectedTagsString()
+	{
+		return selectedTagsString;
+	}
+	public void setSelectedTagsString(String selectedTagsString)
+	{
+		this.selectedTagsString = selectedTagsString;
+	}
+	public String getSpZipCode()
+	{
+		return spZipCode;
+	}
+	public void setSpZipCode(String spZipCode)
+	{
+		this.spZipCode = spZipCode;
+	}
+	public String getJmNickName()
    {
       return jmNickName;
    }
