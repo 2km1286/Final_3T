@@ -118,13 +118,7 @@ public class MemberController
 	    String memSid = memberService.searchMemsid(dto);
 	    String sittingCount = memberService.searchSittingcount(dto);
 	    String walkCount = memberService.searchWalkcount(dto);
-	    String jmNickName = sittingService.sittingPopup(memSid).getJmNickName();
-	    String grade = sittingService.sittingPopup(memSid).getGrade();
-	    String spTitle = sittingService.sittingPlaceBasic(memSid).get(0).getSptitle();
-	    int followingCount = sittingService.sittingPopup(memSid).getFollowingCount();
-	    int srwCount = sittingService.sittingPopup(memSid).getSrwCount();
-	    int srwRateAvg = sittingService.sittingPopup(memSid).getSrwRateAvg();
-	    int stleCount = sittingService.sittingPopup(memSid).getStleCount();
+	    
 	    
 	    
 	    int dbValue;
@@ -135,15 +129,7 @@ public class MemberController
 	    }
 	    else
 	    {
-	        session.setAttribute("memNickName", memNickName);
-	        session.setAttribute("memSid", memSid);
-	        session.setAttribute("jmNickName", jmNickName);
-	        session.setAttribute("grade", grade);
-	        session.setAttribute("spTitle", spTitle);
-	        session.setAttribute("followCount", followingCount);
-	        session.setAttribute("reviewCount", srwCount);
-	        session.setAttribute("reviewRate", srwRateAvg);
-	        session.setAttribute("endCount", stleCount);
+	    	
 	        
 
 	        int sittingCountInt = Integer.parseInt(sittingCount);
@@ -159,6 +145,24 @@ public class MemberController
 	        } 
 	        else 
 	        {
+	        	String jmNickName = sittingService.sittingPopup(memSid).getJmNickName();
+			    String grade = sittingService.sittingPopup(memSid).getGrade();
+			    String spTitle = sittingService.sittingPlaceBasic(memSid).get(0).getSptitle();
+			    int followingCount = sittingService.sittingPopup(memSid).getFollowingCount();
+			    int srwCount = sittingService.sittingPopup(memSid).getSrwCount();
+			    int srwRateAvg = sittingService.sittingPopup(memSid).getSrwRateAvg();
+			    int stleCount = sittingService.sittingPopup(memSid).getStleCount();
+			    
+		        session.setAttribute("memNickName", memNickName);
+		        session.setAttribute("memSid", memSid);
+		        session.setAttribute("jmNickName", jmNickName);
+		        session.setAttribute("grade", grade);
+		        session.setAttribute("spTitle", spTitle);
+		        session.setAttribute("followCount", followingCount);
+		        session.setAttribute("reviewCount", srwCount);
+		        session.setAttribute("reviewRate", srwRateAvg);
+		        session.setAttribute("endCount", stleCount);
+		        
 	            dbValue = 2;
 	        }
 
