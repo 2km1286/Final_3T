@@ -97,6 +97,24 @@
 	</section>
 	
 	<script>
+	
+			$(document).ready(function()
+				{
+					// 클릭한 버튼에 selected 클래스 추가 및 제거
+					$('.answer-btn').click(function()
+					{
+						$(this).toggleClass('selected');
+						if ($(this).hasClass('selected'))
+						{
+							$(this).css('background-color', '#367539'); // 선택된 스타일로 변경
+							// 여기서 데이터를 추가해주면..?
+									
+						} else
+						{
+							$(this).css('background-color', '#4caf50'); // 원래 스타일로 변경
+						}
+					});
+				});
 		
 	
 	function setAnswer(index, answer) 
@@ -118,6 +136,8 @@
 		
 		
 	</script>
+	
+			
 	
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
