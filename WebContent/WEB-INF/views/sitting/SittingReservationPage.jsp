@@ -513,13 +513,6 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										
 										<div class="row">
 										
-											<!-- 
-											<div class="col d-flex align-items-center justify-content-center">마이너스 버튼 
-												<button class="btn btn-warning">
-													<i class="fas fa-minus"></i>
-												</button>
-											</div>
-											 -->
 											
 											<c:forEach items="${petList}" var="pet">
 											<div class="col">
@@ -532,39 +525,6 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 											</div>
 											</c:forEach>
 											
-											<script>
-												$(function()
-												{
-													$(".pets").click(function()
-													{
-														$(this).toggleClass('selected');
-														if ($(this).hasClass('selected'))
-														{
-															alert("누름~");
-															$(this).css('border', 'solid 5px #45a049'); // 선택된 스타일로 변경
-																	
-														} else
-														{
-															alert("해제~");
-															$(this).css('border', 'none'); // 원래 스타일로 변경
-														}
-													});
-													
-													
-													
-												});
-												
-												
-											</script>
-																						
-											
-											<!-- 
-											<div class="col d-flex align-items-center justify-content-center">플러스버튼 
-												<button class="btn btn-warning">
-													<i class="fas fa-plus"></i>
-												</button>
-											</div>
-											 -->
 										</div><!-- .row end -->
 									</div><!-- .oneText end -->
 									<hr>
@@ -572,10 +532,10 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<span class="card-text"><small class="text-muted">최종금액</small></span><br><br>
 										<div class="row">
 											<div class="col">
-												<span class="card-text">기본금액</span>
+												<span class="card-text">기본금액(1박&1마리)</span>
 											</div>
 											<div class="col">
-												<span class="card-text">&nbsp; + ${list.price }</span>
+												<span class="card-text" id="price">&nbsp; + ${list.price }</span>
 											</div>
 										</div>
 										<!-- .row -->
@@ -584,15 +544,20 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 												<span class="card-text"> + 1마리 추가</span>
 											</div>
 											<div class="col">
-												<span class="card-text">&nbsp; + ${(list.price)/2 }</span>
+												<span class="card-text">&nbsp; + 최종 금액의 50%</span>
 											</div>
 										</div>
 									</div>
 									<!-- .oneText -->
 									<hr>
-									<div class="oneText" style="text-align: right;">
-										<span class="card-text" id="totalPrice">(ajax 처리될 최종금액)</span>
-									</div>
+									<div class="row">
+											<div class="col">
+												<span class="card-text">최종 결제금액</span>
+											</div>
+											<div class="col">
+												<span class="card-text" id="totalPrice" style="font-weight: bold; color: red;">&nbsp; = </span>
+											</div>
+										</div>
 									<br>
 									<!-- <div
 										class="col d-flex align-items-center justify-content-center">
@@ -612,33 +577,66 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									
 										$(function()
 										{
-											/*
-											$.post("gettotalprice.action", {positionId: $("#positionId").val()}, function(data)
-											{
-												$("#minBasicPay").html(data);
-											});
-											*/
+											// 초기 가격 설정
+									        var basePrice = ${list.price};
+									        var additionalPrice = ${list.price / 2};
+									        var selectedPets = 0;
+									        var daysBetweenDates = 0;
+									        
+									        // 최종금액 초기 업데이트
+									        $("#totalPrice").html(basePrice);
+									        
+									    	 // 최종 금액 업데이트 함수
+									        function updateTotalPrice() {
+									            var totalPrice = basePrice + ((daysBetweenDates-1) * basePrice);
+									            
+									            if (selectedPets === 2) {
+									                totalPrice += totalPrice/2;
+									            }
+									            
+									            $("#totalPrice").html(totalPrice);
+									        }
+									     	
+									        $(".pets").click(function() {
+									            $(this).toggleClass('selected');
+									            if ($(this).hasClass('selected')) {
+									                $(this).css('border', 'solid 5px #ff9800');
+									                selectedPets += 1;
+									                updateTotalPrice();
+									            } else {
+									                $(this).css('border', 'none');
+									                selectedPets -= 1;
+									                updateTotalPrice();
+									            }
+									            // 반려견 선택이 변경될 때마다 최종 금액 업데이트
+									        });
+									        
 											
-											
-											$.ajax(
-													{
-														type : "POST",
-														url : "gettotalprice.action",
-														data : dataSend,
-														//contentType: "application/json",
-														async : true,
-														success : function(data)
-														{
-															$("#totalPrice").html(data);
-														},
-														error : function(e)
-														{
-															alert(e.responseText);
-														}
-													});
-											
-											$("#payRequest").click(function()
-											{
+									    	 // 체크인, 체크아웃 날짜 변경 시 최종 금액 업데이트
+									        fp1.config.onChange.push(function(selectedDates) {
+									            if (selectedDates[0]) {
+									                var checkinDate = selectedDates[0];
+									                var checkoutDate = fp2.selectedDates[0];
+
+									                // 체크인과 체크아웃 날짜 사이의 일 수 계산
+									                daysBetweenDates = Math.floor((checkoutDate - checkinDate) / (24 * 60 * 60 * 1000));
+									                updateTotalPrice();
+									            }
+									        });
+									        
+									        fp2.config.onChange.push(function(selectedDates) {
+									            if (selectedDates[0]) {
+									                var checkinDate = fp1.selectedDates[0];
+									                var checkoutDate = selectedDates[0];
+
+									                // 체크인과 체크아웃 날짜 사이의 일 수 계산
+									                daysBetweenDates = Math.floor((checkoutDate - checkinDate) / (24 * 60 * 60 * 1000));
+									                updateTotalPrice();
+									            }
+									        });
+									        
+									        // 결제 요청 번호 클릭 
+									        $("#payRequest").click(function() {
 												var selectedPets = [];
 												
 								                $('.pets.selected').each(function() 
@@ -652,7 +650,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 												
 												$("#reservationForm").submit();
 											});
-											
+									    
 											    
 										});
 										
@@ -661,8 +659,8 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										    }
 										
 									</script>
-					<br>
-</div>
+							<br>
+						</div>
 				</div>
 			</div>
 	</section>
