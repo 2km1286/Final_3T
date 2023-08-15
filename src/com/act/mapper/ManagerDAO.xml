@@ -38,6 +38,7 @@
 			 ,SP_SID AS spSid
 			 ,IP_SID AS ipSid
     	FROM VIEW_REPORT_SITTING
+        ORDER BY srrDate DESC
 	</select>
 	
 	<!-- 대리산책 신고접수 -->
@@ -50,6 +51,7 @@
 			 ,WP_SID AS wpSid
 			 ,IP_SID AS ipSid
     	FROM VIEW_REPORT_WALK
+    	ORDER BY wrrDate DESC
 	</select>
 	
 	<!-- 프로필 신고접수 -->
@@ -58,6 +60,7 @@
         ,REPORTER_JM_NICKNAME AS reporterJmNickName
         ,PRR_DETAIL AS prrDetail, PRR_DATE AS prrDate
 		FROM VIEW_REPORT_PROFILE
+		ORDER BY prrDate DESC
 	</select>
 	
 	
@@ -66,6 +69,7 @@
 		SELECT SRC_SID AS srcSid, SRR_SID AS srrSid, IMA_NAME AS imaName
 		,MI_NAME AS miName,SRC_DATE AS srcDate,IR_NAME AS irName,SRR_DETAIL AS srrDetail
 		FROM VIEW_SITTING_COMPLETE
+		ORDER BY srcDate DESC
 	</select>
 	
 	<!-- 대리산책 신고처리완료 -->
@@ -73,6 +77,7 @@
 		SELECT WRC_SID AS wrcSid, WRR_SID AS wrrSid, IMA_NAME AS imaName,MI_NAME AS miName
 		,WRC_DATE AS wrcDate,IR_NAME AS irName,WRR_DETAIL AS wrrDetail
 		FROM VIEW_WALK_COMPLETE
+		ORDER BY wrcDate DESC
 	</select>
 	
 	<!-- 프로필 신고처리완료 -->
@@ -80,6 +85,7 @@
 		SELECT PRC_SID AS prcSid, PRR_SID AS prrSid, IMA_NAME AS imaName,MI_NAME AS miName
 		,PRC_DATE AS prcDate, PRR_DETAIL AS prrDetail
 		FROM VIEW_PROFILE_COMPLETE
+		ORDER BY prcDate DESC
 	</select>
 	
 	
@@ -139,6 +145,7 @@
 	<select id="sittingEmergList" resultType="com.act.manager.ManagerDTO">
 		SELECT SER_SID AS serSid,SB_SID AS sbSid, SER_DATE AS serDate
 		FROM VIEW_SITTING_EMERG_RECEIVE
+		ORDER BY serDate DESC
 	</select>
 	
 	<!-- 펫시팅 비상완료내역 -->
@@ -147,12 +154,14 @@
 		FROM sitting_emerg_complete SEC
 		LEFT JOIN MANAGER_INFO MI
 		ON SEC.MI_SID = MI.MI_SID
+		ORDER BY secDate DESC
 	</select>
 	
 	<!-- 대리산책 비상내역 -->
 	<select id="walkEmergList" resultType="com.act.manager.ManagerDTO">
 		SELECT WER_SID AS werSid, WB_SID AS wbSid, WER_CREATED AS werDate
 		FROM VIEW_WALK_EMERG_RECEIVE
+		ORDER BY werDate DESC
 	</select>
 	
 	<!-- 대리산책 비상완료내역 -->
@@ -161,6 +170,7 @@
 		FROM WALK_EMERG_COMPLETE WEC
 		LEFT JOIN MANAGER_INFO MI
 		ON WEC.MI_SID = MI.MI_SID
+		ORDER BY wecDate DESC
 	</select>
 	
 	
@@ -199,6 +209,7 @@
 		FROM JOIN_MEMBER JM
 		LEFT JOIN MEMBER MEM
 		ON JM.MEM_SID = MEM.MEM_SID
+		ORDER BY memRegitstDate DESC
 	</select>
 	
 	<!-- 닉네임으로 검색 출력 -->
@@ -211,6 +222,35 @@
 		WHERE JM.JM_NICKNAME = #{jmNickName}
 	</select>
 	
+	
+	<!-- 멤버 정지 -->
+	<insert id="memberBanned">
+		INSERT INTO MEMBER_BANNED
+		VALUES(SEQ_MB.NEXTVAL,#{ibSid},DEFAULT,
+		(SELECT MEMSID FROM SITTING_PLACE_LIST_VIEW
+      	WHERE SPSID = #{spSid}))
+	</insert>
+	
+	<!-- <insert id="memberBannedWalk">
+		INSERT INTO MEMBER_BANNED
+		VALUES(SEQ_MB.NEXTVAL,#{ibSid},DEFAULT,
+		(SELECT MEMSID FROM SITTING_PLACE_LIST_VIEW
+      	WHERE WPSID = #{wpSid}))
+	</insert> -->
+	
+	<insert id="memberBannedProfile">
+		INSERT INTO MEMBER_BANNED
+		VALUES(SEQ_MB.NEXTVAL,#{ibSid},DEFAULT,
+		(SELECT REPORTED_MEM_SID
+		FROM PROFILE_REPORT_RECEIVE
+		WHERE PRR_SID =#{prrSid}))
+	</insert> 
+	
+	<select id="openWithSrrId" resultType="java.lang.String">
+		SELECT MEMSID
+      	FROM SITTING_PLACE_LIST_VIEW
+      	WHERE SPSID = #{srrSid}
+	</select>
 	
 	
 </mapper>
