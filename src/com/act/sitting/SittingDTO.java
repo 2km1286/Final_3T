@@ -10,8 +10,10 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 public class SittingDTO {
 
    // SITTING_PLACE_LIST_VIEW
+
    private String jmNickName, sptitle, spZipCode, spAddr1, spAddr2, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
    
+
    private int sphSid, srwSid, stleSid, spMaxPet, spSid;
    private String grade;
    private int price;
@@ -22,7 +24,9 @@ public class SittingDTO {
    // SITTING_REVIEW_VIEW
 
    private String srwTitle, srwContent, srwDate, pJmNickName;   //pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
-   private int srwRate;
+
+   private int srwRate, srwRateAvg;
+
 
 
    // INDEX_SITTING_PLACE_TAG
@@ -34,10 +38,6 @@ public class SittingDTO {
    private int sbSid;
 
 
-
-
-
-   
    // 펫시팅 리스트 검색조건 - 날짜
    private String datePicker;
    
@@ -64,6 +64,7 @@ public class SittingDTO {
    private int srwRateAvg;
 
    
+
    // 돌봄장소 이미지. spsid로 조회
    private String sppLink;
    
@@ -72,6 +73,7 @@ public class SittingDTO {
    private String petName, petImage, petBirth, petGen, petSize, petSpecialNote;  
    private int petSid, iptSid, petWeight;
    
+
    public String getSpZipCode()
    {
       return spZipCode;
@@ -80,6 +82,7 @@ public class SittingDTO {
    {
       this.spZipCode = spZipCode;
    }
+
    public String getJmNickName()
    {
       return jmNickName;
@@ -272,6 +275,16 @@ public class SittingDTO {
    {
       this.srwRate = srwRate;
    }
+
+   public int getSrwRateAvg()
+   {
+      return srwRateAvg;
+   }
+   public void setSrwRateAvg(int srwRateAvg)
+   {
+      this.srwRateAvg = srwRateAvg;
+   }
+
    public int getIsptSid()
    {
       return isptSid;
@@ -384,6 +397,7 @@ public class SittingDTO {
    {
       this.stleCount = stleCount;
    }
+
    public int getSrwRateAvg()
    {
       return srwRateAvg;
@@ -392,6 +406,7 @@ public class SittingDTO {
    {
       this.srwRateAvg = srwRateAvg;
    }
+
    public String getSppLink()
    {
       return sppLink;
@@ -473,7 +488,5 @@ public class SittingDTO {
       this.petWeight = petWeight;
    }
 
-
-
-
 }
+

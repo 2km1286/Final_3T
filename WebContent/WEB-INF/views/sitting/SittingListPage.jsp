@@ -218,6 +218,17 @@ p {
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
+	
+	<script>
+    	window.onload = function() 
+    	{
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('alertMessage') && urlParams.get('alertMessage') === 'alreadyQualified') 
+        {
+            alert('이미 펫시터 자격을 가지고 있습니다.');
+        }
+    }
+</script>
 
 </head>
 <body>
