@@ -111,6 +111,9 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
     left: 100%; /* 왼쪽에서 50% 위치에 배치 */
     transform: translate(-50%, -50%); /* 좌표를 정확하게 중앙으로 이동 */
 }
+#reserveComplete {
+	visibility: hidden;
+}
 
 </style>
 
@@ -338,7 +341,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 				</div>
 				<!-- 여기에는 견주의 정보입력칸  -->
 				<div class="col-md-5">
-				<form action="sittingpayrequest.action" id="reservationForm">
+				<form action="sittingbooking.action" id="reservationForm">
 					<div class="card" style="height: 945px; width: 38rem;">
 						<div class="card-header d-flex justify-content-between">
 							예약정보 입력</div>
@@ -564,7 +567,9 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<button class="btn btn-warning">예약요청</button>
 									</div> -->
 									<div class="col d-flex align-items-center justify-content-center">
-    									<button type="button" class="btn btn-warning custom-button" id="payRequest">결제하기</button>
+    									<button type="button" class="btn btn-warning custom-button" id="requestPay" >결제하기</button>
+    									<!-- <button type="button" class="btn btn-pay btn-warning custom-button"  id="payBtn" data-toggle="modal" data-target="#payModal">결제하기</button> -->
+    									<button type="button" class="btn btn-warning custom-button" id="reserveComplete">예약완료</button>
 									</div>
 									
 								</div>
@@ -572,6 +577,16 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 							</div>
 						</div>
 						</form>
+						
+						<script type="text/javascript">
+						// 결제 요청 버튼 클릭
+				     	
+					     	$("#requestPay").click(function()
+							{
+								$("#payModal").modal("show");
+							});
+					        
+						</script>
 						
 						<script type="text/javascript">
 									
@@ -635,8 +650,11 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									            }
 									        });
 									        
-									        // 결제 요청 번호 클릭 
-									        $("#payRequest").click(function() {
+									        
+									     	
+									        
+									        // 예약완료 버튼 클릭 
+									        $("#reserveComplete").click(function() {
 												var selectedPets = [];
 												
 								                $('.pets.selected').each(function() 
@@ -650,7 +668,9 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 												
 												$("#reservationForm").submit();
 											});
-									    
+									    	
+									        
+									        
 											    
 										});
 										
@@ -671,6 +691,59 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 			<i class="fas fa-exclamation-triangle"></i>게시글 신고
 		</button>
 	</div>
+	
+	<!-- 모달 페이지 -->
+	
+	<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title" id="payModalLabel">결제 정보</h5>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <div class="modal-body">
+	                <form action="sittingpaying.action" id="payingForm">
+	                    <div class="form-group">
+	                        <label for="cardNumber">카드 번호</label>
+	                        <input type="text" class="form-control" id="cardNumber" placeholder="1234-5678-1234-5678">
+	                    </div>
+	                    <div class="form-row">
+	                        <div class="form-group col-md-6">
+	                            <label for="expirationDate">만료일</label>
+	                            <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY">
+	                        </div>
+	                        <div class="form-group col-md-6">
+	                            <label for="cvv">CVV</label>
+	                            <input type="text" class="form-control" id="cvv" placeholder="123">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="name">카드 소유자명</label>
+	                        <input type="text" class="form-control" id="name" placeholder="홍길동">
+	                    </div>
+	                </form>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+	                <button type="button" class="btn btn-primary" id="submitPayResult">결제 완료</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+	
+	
+	<script>
+	/* $(function()
+	{
+		$("#reserveComplete").click(function()
+		{
+			$("#payingForm").submit();
+		});
+	}); */
+	</script>
 	
 	<section>
 		<div>
