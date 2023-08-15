@@ -34,6 +34,17 @@ public interface IManagerService
 	public ArrayList<ManagerDTO> sittingAccList();
 	public ArrayList<ManagerDTO> walkAccList();
 	
+	// 비상내역
+	public ArrayList<ManagerDTO> sittingEmergList();
+	public ArrayList<ManagerDTO> walkEmergList();
+	
+	// 비상완료내역
+	public ArrayList<ManagerDTO> sittingEmergComplete();
+	public ArrayList<ManagerDTO> walkEmergComplete();
+	
+	// 비상내역 처리
+	public int deleteSittingEmerg(ManagerDTO dto);
+	public int deleteWalkEmerg(ManagerDTO dto);
 	
 	
 	// 통계를 위한 멤버 분포 수

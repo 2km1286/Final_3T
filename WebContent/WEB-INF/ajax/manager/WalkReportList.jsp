@@ -36,6 +36,11 @@
 	{
 		ProfileReport();
 	});
+	// 비상상황 신고내역 클릭시
+	$("#emergency-report").click(function()
+	{
+		EmergReport();
+	});
 	
 	
 	function PetSittingReport()
@@ -77,7 +82,27 @@
 			}
 
 		});
-	} 
+	}
+	// 비상상황  버튼 클릭시 호출
+	function EmergReport()
+	{
+		$.ajax(
+		{
+			type : "POST",
+			url : "emerglist.action",
+			async : true,
+			success : function(data)
+			{
+				$("#subContent").html(data);
+
+			},
+			error : function(e)
+			{
+				alert(e.responseText);
+			}
+
+		});
+	}
 	function showDetail(detail)
 	{
 		// 'detail' 매개변수를 사용하여 상세 내용을 표시하는 로직을 작성합니다.

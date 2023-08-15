@@ -71,6 +71,8 @@ String cp = request.getContextPath();
 				DogWalkReport();
 			if (flag == 3)
 				ProfileReport();
+			if (flag == 4)
+				EmergReport();
 		
 
 		function PetSittingReport()
@@ -118,6 +120,26 @@ String cp = request.getContextPath();
 			{
 				type : "POST",
 				url : "profilereportlist.action",
+				async : true,
+				success : function(data)
+				{
+					$("#subContent").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
+			});
+		}
+		// 비상상황  버튼 클릭시 호출
+		function EmergReport()
+		{
+			$.ajax(
+			{
+				type : "POST",
+				url : "emerglist.action",
 				async : true,
 				success : function(data)
 				{

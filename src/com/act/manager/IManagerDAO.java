@@ -16,6 +16,7 @@ public interface IManagerDAO
 	public ArrayList<ManagerDTO> walkReportList();
 	public int updateWalkPublic(ManagerDTO dto);
 	
+	// 반려
 	public int deleteSittingReport(ManagerDTO dto);
 	public int deleteWalkReport(ManagerDTO dto);
 	
@@ -33,6 +34,17 @@ public interface IManagerDAO
 	public ArrayList<ManagerDTO> sittingAccList();
 	public ArrayList<ManagerDTO> walkAccList();
 	
+	// 비상내역
+	public ArrayList<ManagerDTO> sittingEmergList();
+	public ArrayList<ManagerDTO> walkEmergList();
+	
+	// 비상완료내역
+	public ArrayList<ManagerDTO> sittingEmergComplete();
+	public ArrayList<ManagerDTO> walkEmergComplete();
+	
+	// 비상내역 처리
+	public int deleteWalkEmerg(ManagerDTO dto);
+	public int deleteSittingEmerg(ManagerDTO dto);
 	
 	
 	// 통계를 위한 멤버 분포 수

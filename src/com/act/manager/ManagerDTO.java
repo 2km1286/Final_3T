@@ -24,9 +24,84 @@ public class ManagerDTO
 	private int totalCount,sitterCount,walkerCount,basicCount;
 	
 	
+	private int serSid,secSid,werSid,wbSid,wecSid;
+	private String serDate,secDate,werDate,wecDate; 
 	
 	
 	
+	
+	public int getWerSid()
+	{
+		return werSid;
+	}
+	public void setWerSid(int werSid)
+	{
+		this.werSid = werSid;
+	}
+	public int getWbSid()
+	{
+		return wbSid;
+	}
+	public void setWbSid(int wbSid)
+	{
+		this.wbSid = wbSid;
+	}
+	public int getWecSid()
+	{
+		return wecSid;
+	}
+	public void setWecSid(int wecSid)
+	{
+		this.wecSid = wecSid;
+	}
+	public String getWerDate()
+	{
+		return werDate;
+	}
+	public void setWerDate(String werDate)
+	{
+		this.werDate = werDate;
+	}
+	public String getWecDate()
+	{
+		return wecDate;
+	}
+	public void setWecDate(String wecDate)
+	{
+		this.wecDate = wecDate;
+	}
+	public int getSerSid()
+	{
+		return serSid;
+	}
+	public void setSerSid(int serSid)
+	{
+		this.serSid = serSid;
+	}
+	public int getSecSid()
+	{
+		return secSid;
+	}
+	public void setSecSid(int secSid)
+	{
+		this.secSid = secSid;
+	}
+	public String getSerDate()
+	{
+		return serDate;
+	}
+	public void setSerDate(String serDate)
+	{
+		this.serDate = serDate;
+	}
+	public String getSecDate()
+	{
+		return secDate;
+	}
+	public void setSecDate(String secDate)
+	{
+		this.secDate = secDate;
+	}
 	public int getTotalCount()
 	{
 		return totalCount;

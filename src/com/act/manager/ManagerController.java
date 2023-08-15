@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -280,6 +281,58 @@ public class ManagerController
 	}
 	
 	
+	// 펫시팅 비상내역조회 
+	@RequestMapping("/emerglist.action")
+	public String sittingEmergList(HttpServletRequest request,Model model)
+	{
+		String result = "";
+		int sittingCount =0;
+		int walkCount = 0;
+		sittingCount = managerService.sittingSearchEmerg();
+		walkCount = managerService.walkSearchEmerg();
+		request.setAttribute("count", sittingCount + walkCount);
+		
+		ArrayList<ManagerDTO> sittingEmergList = managerService.sittingEmergList();
+		model.addAttribute("sittingEmergList", sittingEmergList);
+		
+		ArrayList<ManagerDTO> sittingEmergComplete = managerService.sittingEmergComplete();
+		model.addAttribute("sittingEmergComplete", sittingEmergComplete);
+		
+		ArrayList<ManagerDTO> walkEmergList = managerService.walkEmergList();
+		model.addAttribute("walkEmergList", walkEmergList);
+		
+		
+		ArrayList<ManagerDTO> walkEmergComplete = managerService.walkEmergComplete();
+		model.addAttribute("walkEmergComplete", walkEmergComplete);
+		
+		result = "/WEB-INF/ajax/manager/ManagerEmerg.jsp";
+		return result;
+	}
+	
+
+	
+	
+	
+	// 펫시팅 비상내역 처리
+	@RequestMapping("/deletesittingemerg.action")
+	public String deleteSittingEmerg(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteSittingEmerg(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	// 대리산책 비상내역 처리
+	@RequestMapping("/deletewalkemerg.action")
+	public String deleteWalkEmerg(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteWalkEmerg(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
 	
 	
 	// 통계를 위한 회원 분포 수
