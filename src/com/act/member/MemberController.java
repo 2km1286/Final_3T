@@ -116,10 +116,11 @@ public class MemberController
 	    String url = "";
 	    String memNickName = memberService.searchMemNickName(dto);
 	    String memSid = memberService.searchMemsid(dto);
-	    String sittingCount = memberService.searchSittingcount(dto);
-	    String walkCount = memberService.searchWalkcount(dto);
 	    
+        session.setAttribute("memSid", memSid);
+        session.setAttribute("memNickName", memNickName);
 	    
+
 	    
 	    int dbValue;
 
@@ -130,10 +131,10 @@ public class MemberController
 	    else
 	    {
 	    	
-	        
+	    	
+		    int sittingCountInt = memberService.searchSittingcount(memSid);
+		    int walkCountInt = memberService.searchWalkcount(memSid);
 
-	        int sittingCountInt = Integer.parseInt(sittingCount);
-	        int walkCountInt = Integer.parseInt(walkCount);
 
 	        if (sittingCountInt == 0 && walkCountInt == 0) 
 	        {
@@ -153,8 +154,7 @@ public class MemberController
 			    int srwRateAvg = sittingService.sittingPopup(memSid).getSrwRateAvg();
 			    int stleCount = sittingService.sittingPopup(memSid).getStleCount();
 			    
-		        session.setAttribute("memNickName", memNickName);
-		        session.setAttribute("memSid", memSid);
+
 		        session.setAttribute("jmNickName", jmNickName);
 		        session.setAttribute("grade", grade);
 		        session.setAttribute("spTitle", spTitle);
