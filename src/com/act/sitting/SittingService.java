@@ -472,7 +472,16 @@ public class SittingService implements ISittingService
 		
 		return petList;
 	}
+	
+	@Transactional
+	public SittingDTO sittingFromCreateCartToBook(SittingDTO dto)
+	{
+		SittingDTO s = new SittingDTO();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
+		return s;
+	}
+	
 		
 	
 }
