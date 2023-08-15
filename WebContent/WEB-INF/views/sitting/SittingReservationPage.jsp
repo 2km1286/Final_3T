@@ -5,7 +5,7 @@
 String cp = request.getContextPath();
 %>
 <%
-	String memSid = (String)session.getAttribute("memSid"); // 최초 요청시 "0"
+	String MemSid = (String)session.getAttribute("memSid"); // 최초 요청시 "0"
 %>
 <!DOCTYPE html>
 <html>
@@ -50,18 +50,15 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 		{
 			alert("게시글 신고가 접수되었습니다.");
 		});
-		
-		/* $("#reportReservation").click(function()
+		/* 
+		$("#reportReservation").click(function()
 		{
-			window.location.href = "walk-pay.action";
-		}); */
-	
+			window.location.href = "sittingpay.action";
+		}); 
+	 	*/
 	});
 	
-    function openPopup() {
-      window.open("pay.action", "paymentWindow", "width=600,height=600");
-    }
-    
+  
     
 </script>
 
@@ -179,29 +176,36 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 							
 							<div>
 								<h5 class="card-title text-center">휴일</h5>
-								<br />
 								<c:choose>
 									<c:when test="${spRest != null }">
-									<c:forEach var="rest" items="${spRest }">
-										<div class="card-title text-center">
-											<c:choose>
-												<c:when test="${rest.srStart == rest.srEnd }">
-													<h6 class="card-subtitle text-muted">${rest.srStart }</h6>
-												</c:when>
-												<c:when test="${rest.srStart != rest.srEnd }">
-													<h6 class="card-subtitle text-muted">${rest.srStart } ~ ${rest.srEnd }</h6>
-												</c:when>
-											</c:choose>
-										</div>
-									</c:forEach>								
+										<c:forEach var="rest" items="${spRest }">
+											<div class="card-title text-center">
+												<c:choose>
+													<c:when test="${rest.srStart == rest.srEnd }">
+														<li><span class="card-subtitle text-muted">${rest.srStart }</span></li>
+													</c:when>
+													<c:when test="${rest.srStart != rest.srEnd }">
+														<li><span class="card-subtitle text-muted">${rest.srStart } ~ ${rest.srEnd }</span></li>
+													</c:when>
+												</c:choose>
+											</div>
+										</c:forEach>								
 									</c:when>
 									<c:otherwise>
 										<h6>2달 이내에 휴일이 없습니다.</h6>
 									</c:otherwise>
 								</c:choose>
-								
 							</div>
 							<br />
+							
+							<div>
+								<h5  class="card-title text-center">영업시간</h5>
+								<div class="card-title text-center">
+									<li><span class="card-subtitle text-muted">체크인 가능 시간 : ${list.sphStart } 이후</span></li>
+									<li><span class="card-subtitle text-muted">체크아웃 시간 : 영업시간 2시간 전 </span></li>
+								</div>
+							</div>
+							<hr><br>
 							
 							<!-- 이용요금 -->
 							<div>
@@ -231,7 +235,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<h6 class="card-subtitle text-muted">55,000원 (24시간 기준)</h6>
 									</div>
 								</div>
-								<br>
+								<hr /><br>
 								<h5 class="card-title text-center">반려견 추가비</h5><br>
 								<div class="row">
 									<div class="col">
@@ -257,7 +261,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<h6 class="card-subtitle text-muted">1마리 추가시 27,500원</h6>
 									</div>
 								</div><br>
-								
+								<!-- 이용요금 끝 -->
 									
 							<div class="alert alert-warning alert-dismissible fade show"
 								role="alert">
@@ -307,7 +311,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 											style="width: 100px; height: 100px; border-radius: 50%;">
 									</div>
 									<div class="col-5">
-										<h5 class="card-title">${review.pJmNickName } 
+										<h5 class="card-title">[${review.pJmNickName }]
 										&nbsp;&nbsp;&nbsp;&nbsp;⭐⭐⭐⭐⭐ </h5>
 										<h5 class="card-title">${review.srwTitle }</h5>
 										<h6 class="card-subtitle text-muted">${review.srwDate }</h6>
@@ -333,7 +337,8 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 					</div>
 				</div>
 				<!-- 여기에는 견주의 정보입력칸  -->
-				<!-- <div class="col-md-5"> -->
+				<div class="col-md-5">
+				<form action="sittingpayrequest.action" id="reservationForm">
 					<div class="card" style="height: 945px; width: 38rem;">
 						<div class="card-header d-flex justify-content-between">
 							예약정보 입력</div>
@@ -343,6 +348,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">지역</small></span><br>
 										<span class="nick card-text">${list.spAddr1 }</span>
+										<span class="nick card-text">${list.extraAddr }</span>
 									</div>
 									<hr>
 									<div class="oneText">
@@ -350,24 +356,138 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 												장소</small></span><br> <span class="card-text">예약 후 상세주소를 알려드려요.</span>
 									</div>
 									<hr>
-									<div class="oneText row">
-										<div class="col">
-											<span class="card-text"><small class="text-muted">체크인 날짜</small></span><br>
-											<label for="datepicker"></label><input type="text" id="datepicker1" name="datepicker" class="custom-textbox" readonly style="width: 115px;">
-										</div>
-										<div class="col">
-											<span class="card-text"><small class="text-muted">체크아웃 날짜</small></span><br>
-											<label for="datepicker"></label><input type="text" id="datepicker2" name="datepicker" class="custom-textbox" readonly style="width: 115px;">
-										</div>
-										<script>
-											var fp = flatpickr(document.getElementById("datepicker1"), {
-												"locale": "ko" 
-											});
-											var fp = flatpickr(document.getElementById("datepicker2"), {
-												"locale": "ko" 
-											});
-										</script>
-									</div>
+								<div class="oneText row">
+								    <div class="col">
+								        <span class="card-text"><small class="text-muted">체크인 날짜</small></span><br>
+								        <label for="datepicker"></label><input type="text" id="datepicker1" name="datepicker1" 
+								        class="custom-textbox" readonly style="width: 115px;">
+								    </div>
+								    <div class="col">
+								        <span class="card-text"><small class="text-muted">체크아웃 날짜</small></span><br>
+								        <label for="datepicker"></label><input type="text" id="datepicker2" name="datepicker2" 
+								        class="custom-textbox" readonly style="width: 115px;">
+								    </div>
+								    <br />
+								    <div id="message" class="message"></div>
+								    <c:choose>
+								    
+								        <c:when test="${spRest != null }">
+								            <c:forEach var="rest" items="${spRest}">
+								                <div class="card-title text-center">
+								                    <input type="hidden" class="srStart" value="${rest.srStart}" />
+								                    <input type="hidden" class="srEnd" value="${rest.srEnd}" />
+								                </div>
+								            </c:forEach>
+								            
+								            <script>
+								                var srStartElements = document.querySelectorAll('.srStart');
+								                var srEndElements = document.querySelectorAll('.srEnd');
+								                
+								                var fp1DisabledDates = [];
+								                var fp2DisabledDates = [];
+								
+								                for (var i = 0; i < srStartElements.length; i++) {
+								                    var startDate = new Date(srStartElements[i].value);
+								                    var endDate = new Date(srEndElements[i].value);
+								                    
+								                    while (startDate <= endDate) {
+								                        fp1DisabledDates.push(startDate.toISOString().split('T')[0]);
+								                        fp2DisabledDates.push(new Date(startDate.getTime() + 86400000).toISOString().split('T')[0]);
+								                        startDate.setDate(startDate.getDate() + 1);
+								                    }
+								                }
+								                
+								                var today = new Date();
+								                var twoMonthsLater = new Date(today.getFullYear(), today.getMonth() + 2, today.getDate());
+								                
+								                var fp1 = flatpickr(document.getElementById("datepicker1"), {
+								                    "locale": "ko",
+								                    "disable": fp1DisabledDates,
+								                    "minDate": today,
+								                    "maxDate": twoMonthsLater,
+								                    
+								                    "onChange": function(selectedDates, dateStr, instance) {
+								                        fp2.set("minDate", selectedDates[0]);
+								                        
+								                    }
+								                });
+												
+								                var inDate = new Date(fp1.selectedDates[0]);
+								                
+								                var fp2 = flatpickr(document.getElementById("datepicker2"), {
+								                    "locale": "ko",
+								                    "disable": fp2DisabledDates,
+								                    "minDate": new Date(today.getTime() + 86400000),
+								                    "maxDate": new Date(inDate.getTime() + (3 * 86400000)),
+								                    "onDayCreate": function(dObj, dStr, fp, dayElem) {
+								                        if (fp1DisabledDates.includes(dStr)) {
+								                            dayElem.classList.add("disabled-date");
+								                        }
+								                    },
+								                    "onChange": function(selectedDates, dateStr, instance) {
+								                        if (selectedDates[0]) {
+								                            var checkinDate = fp1.selectedDates[0];
+								                            var checkoutDate = selectedDates[0];
+								                            var minCheckoutDate = new Date(checkinDate.getTime() + (3 * 86400000)); // 3 days
+								                            // Check if there are any disabled dates between checkinDate and checkoutDate
+												            var hasDisabledDates = false;
+												            for (var d = new Date(checkinDate.getTime() + 86400000); d < checkoutDate; d.setDate(d.getDate() + 1)) {
+												                var disabledDate = d.toISOString().split('T')[0];
+												                if (fp2DisabledDates.includes(disabledDate)) {
+												                    hasDisabledDates = true;
+												                    break;
+												                }
+												            }
+								                            
+								                            
+												            if (hasDisabledDates || checkoutDate < checkinDate) {
+												                fp2.clear();
+												                showMessage("체크아웃 날짜는 선택 불가합니다.");
+												            } else {
+												                hideMessage();
+												            }
+								                            
+								                        }
+								                    }
+								                });
+								                
+								                function showMessage(message) {
+								                    var messageElem = document.getElementById("message");
+								                    messageElem.innerText = message;
+								                    messageElem.style.display = "block";
+								                }
+
+								                function hideMessage() {
+								                    var messageElem = document.getElementById("message");
+								                    messageElem.style.display = "none";
+								                }
+								
+								                fp2.config.disable.push(
+								                    function(date) {
+								                        return fp1DisabledDates.includes(date.toISOString().split('T')[0]);
+								                    }
+								                );
+								            </script>
+								            <style>
+								                .disabled-date {
+								                    pointer-events: none;
+								                    opacity: 0.5;
+								                }
+								            </style>
+								        </c:when>
+								        <c:otherwise>
+								            <h6>2달 이내에 휴일이 없습니다.</h6>
+								        </c:otherwise>
+								    </c:choose>
+								</div>
+								
+								
+								</div>
+
+
+
+									<!-- 여기다가 당일예약, 기간예약인지에 따라서 체크인,체크아웃 시간 안내해 줄 수 있을듯? -->
+									<!-- 
 									<hr>
 									<div class="oneText row">
 										<div class="col">
@@ -377,9 +497,11 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<div class="col">
 											<span class="card-text"><small class="text-muted">종료 시간</small></span><br> 
 											<label for="time"></label> <input type="time" id="time" class="custom-textbox">
-											<span id="addResult"></span> <!-- 사용자가 시간을 추가한다면 ajax로 그 시간만큼 보여줘야함 -->
+											<span id="addResult"></span> 사용자가 시간을 추가한다면 ajax로 그 시간만큼 보여줘야함
 										</div>
 									</div>
+									 -->
+									
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">최대 반려견 수</small></span><br> 
@@ -401,10 +523,11 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 											
 											<c:forEach items="${petList}" var="pet">
 											<div class="col">
-												<img src="${pet.petImage}" alt="" class="card-img-top clickable-image" style="width: 40%; border-radius: 50%;" data-pet-sid="${pet.petSid}">
+												<img src="${pet.petImage}" alt="" class="card-img-top pets" style="width: 40%; border-radius: 50%;" data-pet-sid="${pet.petSid}">
 											<br>
-											<div class="text-center">
+												<div class="text-center">
 												<span class="card-text">&nbsp;&nbsp;${pet.petName}</span>
+												<input type="hidden" id="selectedPets" name="selectedPets" value="" />
 												</div>
 											</div>
 											</c:forEach>
@@ -412,19 +535,26 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 											<script>
 												$(function()
 												{
-													$(".clickable-image").click(function()
+													$(".pets").click(function()
 													{
 														$(this).toggleClass('selected');
 														if ($(this).hasClass('selected'))
 														{
+															alert("누름~");
 															$(this).css('border', 'solid 5px #45a049'); // 선택된 스타일로 변경
 																	
 														} else
 														{
+															alert("해제~");
 															$(this).css('border', 'none'); // 원래 스타일로 변경
 														}
 													});
+													
+													
+													
 												});
+												
+												
 											</script>
 																						
 											
@@ -461,7 +591,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<!-- .oneText -->
 									<hr>
 									<div class="oneText" style="text-align: right;">
-										<span class="card-text">67,500원(ajax 처리될 최종금액)</span>
+										<span class="card-text" id="totalPrice">(ajax 처리될 최종금액)</span>
 									</div>
 									<br>
 									<!-- <div
@@ -469,18 +599,72 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<button class="btn btn-warning">예약요청</button>
 									</div> -->
 									<div class="col d-flex align-items-center justify-content-center">
-    									<button class="btn btn-warning custom-button" id="reportReservation" onclick="openPopup()">예약요청</button>
+    									<button type="button" class="btn btn-warning custom-button" id="payRequest">결제하기</button>
 									</div>
+									
 								</div>
 								<!-- close .card-body -->
 							</div>
 						</div>
-					<!-- </div> -->
+						</form>
+						
+						<script type="text/javascript">
+									
+										$(function()
+										{
+											/*
+											$.post("gettotalprice.action", {positionId: $("#positionId").val()}, function(data)
+											{
+												$("#minBasicPay").html(data);
+											});
+											*/
+											
+											
+											$.ajax(
+													{
+														type : "POST",
+														url : "gettotalprice.action",
+														data : dataSend,
+														//contentType: "application/json",
+														async : true,
+														success : function(data)
+														{
+															$("#totalPrice").html(data);
+														},
+														error : function(e)
+														{
+															alert(e.responseText);
+														}
+													});
+											
+											$("#payRequest").click(function()
+											{
+												var selectedPets = [];
+												
+								                $('.pets.selected').each(function() 
+								                {
+								                	selectedPets.push($(this).attr('data-pet-sid'));
+								                });
+												
+									            $('#selectedPets').val(selectedPets.join(','));
+												
+								                alert($("#selectedPets").val());
+												
+												$("#reservationForm").submit();
+											});
+											
+											    
+										});
+										
+											  function openPopup() {
+										      window.open("sittingpayrequest.action", "paymentWindow", "width=600,height=600");
+										    }
+										
+									</script>
 					<br>
-
+</div>
 				</div>
 			</div>
-		</div>
 	</section>
 	<!-- 게시글 신고버튼  -->
 	<div class="d-flex align-items-center justify-content-end">
