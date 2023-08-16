@@ -12,7 +12,48 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
+<!-- 스타일과 모달 창 표시를 위한 스크립트 -->
+<style>
+    /* 모달 스타일 */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+    
+    .modal-content {
+        background-color: white;
+        width: 300px;
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        border-radius: 10px; /* 모달 창 둥글게 */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* 그림자 추가 */
+    }
 
+    /* 닫기 버튼 스타일 */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
 <script type="text/javascript">
 //페이지 로딩 시에 실행되는 코드
 	$(document).ready(function()
@@ -109,34 +150,7 @@
 		alert(detail); // 간단히 경고창으로 표시하는 예시입니다.
 	}
 	// 블라인드 처리 했을때 분기 처리후 넘김 컨트롤러로
-	function updateWalkPublic(ipSid,wpSid)
-	{
-		if (ipSid =='1')
-			var ipSid2 = parseInt(ipSid)+1;
-		else
-			var ipSid2 = parseInt(ipSid)-1;
-		
-		$.ajax(
-		{
-			type:"POST"
-			, url:"walkprivate.action?ipSid="+ipSid2+"&wpSid="+wpSid
-			, async:true
-			, success:function(data)
-			{
-				
-				window.location.href = "managermain.action?flag="+'2';
-				//window.location.href = "sittingreportlist.action";
-									
-			}
-			, error:function(e)
-			{
-				alert(e.responseText);
-			}
-			
-		});	
-		
-		
-	}
+	
 	
 	// 프로필 반려
 	function DeleteProfileReport(prrSid,imaSid) 
@@ -145,6 +159,51 @@
         $.ajax({
             type: "POST",
             url: "removeprofilereport.action?prrSid="+ prrSid+"&miSid="+${miSid}+"&imaSid="+imaSid,
+            async: true,
+            success: function(data) 
+            {
+                window.location.href = "managermain.action?flag=3";
+            },
+            error: function(e) 
+            {
+                alert(e.responseText);
+            }
+        	});
+   	 	}
+	}
+	
+	// 정지 모달창
+    function openSuspensionModal(prrSid) {
+        var modal = document.getElementById("suspensionModal");
+        modal.style.display = "block"; // 모달 표시
+        
+        var confirmButton = document.getElementById("suspensionConfirm");
+        confirmButton.onclick = function () 
+        {
+            var selectedValue = document.querySelector('input[name="suspensionOption"]:checked');
+            if (selectedValue) {
+                selectedValue = selectedValue.value;
+                modal.style.display = "none"; // 모달 숨김
+                DeleteSittingReport(prrSid, selectedValue,5);
+            }
+        };
+    }
+    function closeSuspensionPopup() {
+        var popup = document.getElementById("suspensionModal");
+        popup.style.display = "none";
+    }
+ 	// 모달 닫기 버튼
+    $(".close").on("click", function() {
+        $("#suspensionModal").css("display", "none");
+    });
+ 	// 정지
+	function DeleteSittingReport(prrSid,ibSid,imaSid) 
+	{
+ 		
+    	if (confirm("정지 처리하시겠습니까?")) {
+        $.ajax({
+            type: "POST",
+            url: "memberbannedprofile.action?prrSid="+prrSid+"&miSid="+${miSid}+"&imaSid="+imaSid+"&ibSid="+ibSid,
             async: true,
             success: function(data) 
             {
@@ -196,7 +255,7 @@
 								onclick="showDetail('${list.prrDetail}')"></td>
 							<td>${list.prrDate}</td>
 							<td id="actionBtn"><input class="report-button" type="button" value="정지"
-								onclick="BannedProfileReport(${list.prrSid},5)"> 
+								onclick="openSuspensionModal(${list.prrSid})"> 
 								<input class="report-button"type="button" value="반려" onclick="DeleteProfileReport(${list.prrSid},4)">
 									<input class="report-button" type="button" value="프로필임의변경"
 										onclick="updateProPublic(${list.ipSid},${list.prrSid})">
@@ -206,6 +265,18 @@
 
 				</tbody>
 			</table>
+			<!-- 모달 창 -->
+			<div id="suspensionModal" class="modal">
+			    <div class="modal-content">
+			    	<span class="close" style="float: right; position: absolute;  
+			    	top: 10px; right: 10px; font-size: 20px; font-weight: bold;">&times;</span>
+			        <label><input type="radio" name="suspensionOption" value="1"> 3일 정지</label><br>
+			        <label><input type="radio" name="suspensionOption" value="2"> 5일 정지</label><br>
+			        <label><input type="radio" name="suspensionOption" value="3"> 7일 정지</label><br>
+			        <label><input type="radio" name="suspensionOption" value="4"> 영구정지</label><br><br>
+			        <button id="suspensionConfirm">확인</button>
+			    </div>
+			</div>
 		</div>
 	</div>
 </body>

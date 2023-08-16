@@ -17,13 +17,14 @@
 		FROM SITTING_FOLLOWINGCOUNT_VIEW
 		WHERE MEMSID = #{memSid}
 	</select>
+
 	
 	<select id="mySfollow" resultType="com.act.sitting.SittingDTO">
 		SELECT SPH_SID AS SPHSID
 		FROM SITTING_FOLLOWING_LIST
 		WHERE MEM_SID = #{memSid}
 	</select>
-	
+
 
 	<select id="IndexTagList"
 		resultType="com.act.sitting.SittingDTO">
@@ -60,7 +61,10 @@
 	</select>
 	
 	<select id="sittingPlaceBasic" resultType="com.act.sitting.SittingDTO">
-		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, IPSID, SPSID
+
+		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, SPZIPCODE, IPSID, SPSID
+		, TO_CHAR(SPHSTART, 'HH24:MI') AS SPHSTART, TO_CHAR(SPHEND, 'HH24:MI') AS SPHEND
+
 		FROM SITTING_PLACE_BASIC_VIEW
 		WHERE MEMSID = #{memSid}
 		ORDER BY SPCREATED DESC
@@ -87,7 +91,7 @@
 	</select>
 	
 	<select id="sittingReviews" resultType="com.act.sitting.SittingDTO">
-		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, JMNICKNAME
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, PJMNICKNAME
 		FROM SITTING_REVIEW_VIEW
 		WHERE MEMSID = #{memSid}
 		ORDER BY SRWDATE DESC
@@ -309,5 +313,63 @@
 	</select>
 	
 
+	<select id="spCount" resultType="java.lang.Integer">
+		SELECT COUNT(SPSID)
+		FROM SITTING_PLACE_BASIC_VIEW
+		WHERE MEMSID = #{memSid}
+	</select>
+
+	<select id="slSid" resultType="java.lang.Integer">
+		SELECT SL.SL_SID AS SLSID
+		FROM SITTING_LICENSE SL
+		        JOIN SITTING_TEST_SUBMIT STS
+		        ON SL.STS_SID = STS.STS_SID
+		            JOIN SITTING_TEST_RECEIVE STR
+		            ON STS.STR_SID = STR.STR_SID
+		                JOIN MEMBER MEM
+		                ON STR.MEM_SID = MEM.MEM_SID
+		WHERE MEM.MEM_SID = #{memSid}
+	</select>
+
+	<insert id="insertPlcae" >
+		INSERT INTO SITTING_PLACE(SP_SID, SP_TITLE, SP_CONTENT, SP_ADDR1, SP_ADDR2, SP_ZIPCODE, SP_CREATED, SP_MAX_PET, IP_SID, SP_EXTRAADDR) 
+		VALUES(SEQ_SP.NEXTVAL, #{sptitle}, #{spContent}, #{spAddr1}, #{spAddr2}, #{spZipCode}, SYSDATE, #{spMaxPet}, #{ipSid}, #{extraAddr})
+	</insert>
+
+	<select id="spSidMax" resultType="java.lang.Integer">
+		SELECT NVL(MAX(SP_SID),0) AS SPSID
+		FROM SITTING_PLACE
+	</select>
+
+	<insert id="insertPlaceHub">
+		INSERT INTO SITTING_PLACE_HUB(SPH_SID, SL_SID, SP_SID, SPH_START, SPH_END)
+		VALUES(SEQ_SPH.NEXTVAL, #{slSid}, #{spSid}, TO_DATE(#{sphStart}, 'HH24:MI'), TO_DATE(#{sphEnd}, 'HH24:MI'))
+	</insert>
+
+	<insert id="insertPlacePhoto">
+		INSERT INTO SITTING_PLACE_PHOTO(SPP_SID, SPP_PATH, SP_SID, SPP_NAME)
+		VALUES(SEQ_SPP.NEXTVAL, #{sppPath}, #{spSid}, #{sppName})
+	</insert>
+
+	<insert id="insertPlaceTag">
+		INSERT INTO SITTING_PLACE_TAG(SPT_SID, SP_SID, ISPT_SID)
+		VALUES(SEQ_SPT.NEXTVAL, #{spSid}, #{isptSid})
+	</insert>
+
+
+
+
+
+	
+	<insert id="sittingCreateCart">
+		INSERT INTO SITTING_CREATE_CART(SCC_SID, MEM_SID)
+		VALUES(SEQ_SCC.NEXTVAL, #{pMemSid});
+	</insert>
+
+
+	<insert id="sittingCart">
+		INSERT INTO SITTING_CART(SC_SID, SCC_SID, PET_SID)
+		VALUES(SEQ_SC.NEXTVAL, #{sccSid}, #{petSid});
+	</insert>
 
 </mapper>

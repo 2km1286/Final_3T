@@ -54,7 +54,15 @@ public interface IManagerDAO
 	// 멤버 닉네임 검색 출력
 	public ManagerDTO memberNickNameList(ManagerDTO dto);
 	
+	// 멤버 정지
+	public int memberBanned(ManagerDTO dto);
+	public int memberBannedProfile(ManagerDTO dto);
+	
 	
 	// 통계를 위한 멤버 분포 수
 	public ManagerDTO memberCount();
+	
+	// ssrSid 로 memSid 찾기 ==> 신고내역에서 바로 예약으로
+	public String openWithSrrId(ManagerDTO dto);
+	
 }

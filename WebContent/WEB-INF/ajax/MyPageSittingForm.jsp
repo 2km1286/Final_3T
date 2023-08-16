@@ -125,38 +125,51 @@ String cp = request.getContextPath();
 			<!-- 캘린더 -->
 			
 			<!-- 캘린더 끝 -->
-
-			<div class="infoOne" style="margin-top: 20px;">
-				<h4><span class="smallTitle">돌봄장소 특이사항</span></h4>
-				<c:forEach items="${tags }" var="tag">
-					<button class="btn btn-warning">${tag.isptName}</button>
-				</c:forEach>
+			
+			<div class="infoOne" style="margin-top: 10px;">
+				<h4><span class="smallTitle">운영시간</span></h4>
+				<span class="smallText">${info.sphStart } ~ ${info.sphEnd }</span>
 			</div>
 			
 			<div class="infoOne">
-				<h4><span class="smallTitle">최대 가능 견수</span></h4>
-				<button class="btn btn-warning">${info.spMaxPet }마리</button>
-			</div>
-			
-			<div class="infoOne">
-				<h4><span class="smallTitle">돌봄장소 이름</span></h4>
+				<h4><span class="smallTitle">제목</span></h4>
 				<span class="smallText">${info.sptitle }</span>
 			</div>
 			
 			<div class="infoOne">
-				<h4><span class="smallTitle">돌봄장소 소개</span></h4>
+				<h4><span class="smallTitle">돌봄장소 소개글</span></h4>
 				<span class="smallText">${info.spContent }</span>
 			</div>
 			
 			<div class="infoOne">
-				<h4><span class="smallTitle">돌봄장소 주소</span></h4> <!-- (우편번호까지 붙여나오기) -->
-				<span class="smallText">${info.spAddr1 }</span><br>
-				<span class="smallText">${info.spAddr2 }</span>
+				<h4><span class="smallTitle">최대 반려견 수</span></h4>
+				<span class="smallText">${info.spMaxPet }마리</span>
+			</div>
+			
+			<div class="infoOne">
+				<h4><span class="smallTitle">돌봄장소 주소</span></h4>
+				<label for="spZipCode">우편번호</label><br>
+				<button class="btn" id="spZipCode" name="spZipCode" style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px;">
+				${info.spZipCode }</button><br>
+				<label for="spAddr1">주소</label><br>
+				<button class="btn" id="spAddr1" name="spAddr1" style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px;">
+				${info.spAddr1 }</button><br>
+				<label for="spAddr2">상세주소</label><br>
+				<button class="btn" id="spAddr2" name="spAddr2" style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px;">
+				${info.spAddr2 }</button><br>
+			</div>
+			
+			<div class="infoOne" style="margin-top: 20px;">
+				<h4><span class="smallTitle">돌봄장소 특이사항</span></h4>
+				<c:forEach items="${tags }" var="tag">
+					<button class="btn" style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px;">
+					${tag.isptName}</button>
+				</c:forEach>
 			</div>
 			
 			<div class="infoOne">
 				<h4><span class="smallTitle">돌봄장소 공개/비공개</span></h4>
-				<button class="btn btn-warning">
+				<button class="btn" style="margin: 5px; background-color: #4caf50; color: white; padding: 10px 20px;">
 				<c:choose>
 					<c:when test="${info.ipSid eq 1}">공개</c:when>
 					<c:otherwise>비공개</c:otherwise>
