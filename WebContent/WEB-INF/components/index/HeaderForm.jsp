@@ -153,9 +153,8 @@ li {
 
 
 
-					     <c:forEach items="${mySfollow }" var="dto">
-					     <c:forEach items="${mySfollowList }" var="list">
-					     <c:if test="${dto.sphSid == list.sphSid}">
+					     <c:forEach items="${mySfollow }" var="list">
+
                               <div class="card sittingCard">
                                  <img src="images/sitterroom.jpg" alt="" class="card-img-top"
                                     style="width: 100%;">
@@ -167,9 +166,7 @@ li {
                                     <p>${list.spAddr1 }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${list.price }
                                        / 1박</p>
                                  </div>
-                              </div>
-                              </c:if>
-                              </c:forEach>
+                              </div>    
                          </c:forEach>
                               
                               

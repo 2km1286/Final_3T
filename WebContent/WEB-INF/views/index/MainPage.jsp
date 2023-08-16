@@ -67,6 +67,7 @@ if (memSid == null) {
 </head>
 <body>
 
+
 	<section>
 		<div>
 			<c:import url="/WEB-INF/components/index/HeaderForm.jsp"></c:import>
