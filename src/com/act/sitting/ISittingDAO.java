@@ -158,6 +158,15 @@ public interface ISittingDAO
 	
 	
 
+	
+	// 펫시터 예약반려견 카드 조회
+	public ArrayList<ReservationInfoDTO> petInfoList(String memSid);
 
 	
+	// 예약번호 확인
+	public int getReservationNumber(String memSid);
+	
+	public String reservationMemsid(int sbsid);
+	
+	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid);
 }

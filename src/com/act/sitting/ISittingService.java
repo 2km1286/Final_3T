@@ -51,5 +51,10 @@ public interface ISittingService
 	
 	public int sittingFromCreateCartToBook(SittingDTO dto);
 
+	public ArrayList<ReservationInfoDTO> getInfo(String memSid);
+	public int getReservationNum(String memSid);
+	public String getReservationMem(int sbsid);
+	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid);
+
 }
 

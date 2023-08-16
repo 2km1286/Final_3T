@@ -203,9 +203,6 @@
     	SELECT STB_SID AS STBSID, STB_QUESTION AS STBQUESTION, STB_ANSWER AS STBANSWER, STB_POINT AS STBPOINT
 		FROM(SELECT * FROM SITTING_TEST_BANK ORDER BY DBMS_RANDOM.VALUE)
 		WHERE ROWNUM &lt;= 10
-		<!-- SELECT STB_SID AS STBSID, STB_QUESTION AS STBQUESTION, STB_ANSWER AS STBANSWER, STB_POINT AS STBPOINT
-		FROM(SELECT * FROM SITTING_TEST_BANK ORDER BY DBMS_RANDOM.VALUE)
-		WHERE ROWNUM BETWEEN 1 AND 10 -->
 	</select>
 	
 	<insert id="addSittingQuestion">
@@ -312,6 +309,30 @@
 		WHERE PMEMSID = #{pMemSid}
 	</select>
 	
+	<select id="getReservationNumber" resultType="java.lang.Integer">
+		SELECT DISTINCT NVL(MAX(SBSID), 0) AS SBSID
+		FROM RESERVATION_INFO
+		WHERE MEMSID = #{memsid}
+		ORDER BY SBSID DESC
+	</select>
+	
+	<select id="petInfoList" resultType="com.act.sitting.ReservationInfoDTO">
+		SELECT PETIMAGE, PETNAME, PETGEN, PETBIRTH, PETWEIGHT, PETSPECIAL
+        FROM RESERVATION_INFO
+        WHERE MEMSID = #{memsid}
+	</select>
+	
+	<select id="reservationMemsid" resultType="java.lang.String">
+		SELECT DISTINCT MEMSID
+		FROM RESERVATION_INFO
+		WHERE SBSID = #{sbsid}
+	</select>
+	
+	<select id="getMatchingHistory" resultType="com.act.sitting.ReservationInfoDTO">
+		SELECT DISTINCT SPADDR1, SBSTART, SBEND, SPHSTART, SPHEND, MAXPET
+		FROM RESERVATION_INFO
+		WHERE MEMSID = #{memsid} AND SBSID = #{sbsid};
+	</select>
 
 	<select id="spCount" resultType="java.lang.Integer">
 		SELECT COUNT(SPSID)
