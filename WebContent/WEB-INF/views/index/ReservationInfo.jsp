@@ -219,7 +219,7 @@
 
 	<section>
 	<div class="container-mypage">
-			<div class="card text-center" style="width: 1930px; margin-left: 20px; margin-right: 20px;">
+			<div class="card text-center" style="margin: 0 auto; max-width: 100%;">
 				<div class="card-body">
 					<h2 class="card-title">예약 정보 확인</h2>
 					<h3 class="card-subtitle mb-2 text-muted">예약번호<c:out value="${num}"/></h3>
@@ -237,7 +237,7 @@
 							<h4>산책할 반려견</h4>
 						</div>
 						<hr>
-						<div class="text-center">
+						<div class="text-center"><!--images/dogdog.png  -->
 							<img src="images/dogdog.png" alt="" class="rounded-circle" style="width: 230px; margin: 20px;">
 						</div>
 						<div class="text-center">
@@ -263,9 +263,9 @@
 							<img src="images/dogwalker.jpg" alt="" class="rounded-circle" style="width: 230px; height:230px; margin: 5px;">
 						</div><br>
 						<div class="text-center">
-							<h5>[마스터 산책러] 멍멍박사</h5>
-							<h6 class="text-muted">시간 약속을 잘 지키는 성실한 집사입니다!</h6>
-							<p>4.2 ⭐ (991개의 후기) 15,000원</p>
+							<h5>[<c:out value="${grade}"/>] <c:out value="${nick}"/></h5>
+							<h6 class="text-muted">${dto.spcontent}</h6>
+							<h6><c:out value="${rate}"/> ⭐ ${dto.sbprice}원 </h6>
 						</div>
 					</div><br>
 					
@@ -274,8 +274,8 @@
 							<h4>매칭 조건 정보</h4>
 						</div>
 						<hr>
-						<c:forEach var="dto" items="${dto}">
 						<div class="card-body" style="overflow-y: auto;">
+						
 							<div class="oneText">
 								<span class="card-text"><small class="text-muted">지역</small></span><br>
 								<span class="nick card-text">${dto.spaddr1}</span>
@@ -297,52 +297,31 @@
 								<div class="col">
 									<span class="card-text"><small class="text-muted">체크아웃 날짜</small></span><br> <span class="card-text">${dto.sbend}</span>
 								</div>
-							</div><hr>
+							</div>
 							<hr>							
-							<!-- <div class="oneText row">
-								<div class="col">
-									<span class="card-text"><small class="text-muted">시작 시간</small></span><br> <span class="card-text">12:00</span>
-								</div>
-								<div class="col">
-									<span class="card-text"><small class="text-muted">종료 시간</small></span><br> <span class="card-text">2:00</span>
-								</div> 
-							</div> -->
-							<hr>
 							<div class="oneText">
-								<span class="card-text"><small class="text-muted">최종금액</small></span><br>
+								<div class="row">
+								<span class="card-text"><small class="text-muted">&nbsp;&nbsp;&nbsp;최종금액</small></span><br>
 								<br>
-								<div class="row">
 									<div class="col">
-										<span class="card-text">기본금액</span>
+										<span class="card-text"></span>
 									</div>
 									<div class="col">
-										<span class="card-text"> + 15,000원</span>
-									</div>
-								</div>
-								<!-- .row -->
-								<div class="row">
-									<div class="col">
-										<span class="card-text"> + 1시간 추가</span>
-									</div>
-									<div class="col">
-										<span class="card-text"> + 15,000원</span>
+										<span class="card-text">${dto.sbprice}원</span>
 									</div>
 								</div>
+							
 							</div>
-							<!-- .oneText -->
-							<hr>
-							<div class="oneText" style="text-align: right; margin-right: 195px;">
-								<span class="card-text">30,000원</span>
-							</div>
+							
 
 
+					
 						</div>
-						</c:forEach>
 						</div>
 				
 				</div>
 				<div class="col-md-4">
-					<div class="card" style="height: 935px; width: 40rem;">
+					<div class="card" style="height: 935px; width: 36rem;">
 						<br><div class="text-center">
 								<h4>타임라인</h4>
 							</div>
@@ -482,8 +461,32 @@
 			</c:import>
 		</div>
 	</section>
-	
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+	<script>
+		// 현재 날짜 및 시간 가져오기
+		var currentDate = new Date();
+
+		// ${dto.sbend} 값을 Date 객체로 변환
+		var dateTimeStr = "${dto.sbend}"; 
+
+		var dateParts = dateTimeStr.split(' ')[0].split('-');
+		var timeParts = dateTimeStr.split(' ')[1].split(':');
+
+		var targetDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2],
+				timeParts[0], timeParts[1], timeParts[2]);
+
+		// 현재 날짜 및 시간과 ${dto.sbend} 비교
+		if (currentDate >= targetDate)
+		{
+			document.querySelector(".timeline-end-button").disabled = false;
+		} else
+		{
+			document.querySelector(".timeline-end-button").disabled = true;
+		}
+	</script>
+
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
 
