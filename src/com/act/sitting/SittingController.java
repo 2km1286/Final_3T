@@ -173,7 +173,6 @@ public class SittingController
 		if(count > 0)	
 			result = "redirect:sittinglistpage.action?alertMessage=alreadyQualified";
 		else
-		
 			result = "/WEB-INF/views/index/TermsPage.jsp";
 		
 		return result;
@@ -213,6 +212,51 @@ public class SittingController
 	    
 	    String view = "/WEB-INF/views/index/TestResultPage.jsp";
 	    return view;
+	}
+	
+	@RequestMapping("/pay.action")
+	public String proceedPayment()
+	{
+		String result = "";
+		
+		result = "/WEB-INF/views/index/ReservationPaymentPage.jsp";
+		return result;
+	
+	}
+	
+	
+	// 예약정보 확인 -> 견주일때, 펫시터일때 
+	@RequestMapping("/reservationInfo.action")
+	public String getReservation(HttpSession session, Model model)
+	{
+		String result = "";
+		
+		String memSid = (String)session.getAttribute("memSid");
+		
+		int num = sittingService.getReservationNum(memSid);
+		String memSid2 = sittingService.getReservationMem(num);
+		//sittingService.getMatchingHistory(memSid, num);
+		
+		
+		/*
+		 * // 견주라는 것 if(memSid == memSid2) {
+		 */
+		model.addAttribute("num", num);
+		model.addAttribute("petList", sittingService.getInfo(memSid));
+		//model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
+		
+		
+		/*
+		 } else {
+		  
+		 }
+		 */
+		
+		
+		
+		result = "/WEB-INF/views/index/ReservationInfo.jsp";
+		
+		return result;
 	}
 	
 	
