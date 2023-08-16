@@ -13,6 +13,9 @@ public interface ISittingDAO
 	// 펫시팅 돌봄장소의 범례태그들 조회
 	public ArrayList<SittingDTO> IndexTagList();
 	
+	// 회원이 찜한 목록들 조회
+	public ArrayList<SittingDTO> mySfollow(String memSid);
+	
 	// 해당 돌봄장소의 태그들 확인
 	public ArrayList<SittingDTO> tagList();
 
