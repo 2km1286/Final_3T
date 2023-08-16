@@ -151,6 +151,7 @@ h2, h4, h5 {
 							<hr>
 							<div>
 								<h5 class="card-title text-center">${list.jmNickName } 펫시터님을 소개합니다</h5><br>
+								<input type="hidden" id="sphSid1" name="sphSid1" value="${list.sphSid }"/>
 								<h6 class="card-subtitle text-muted text-center">
 									${list.spContent }
 								</h6>
@@ -440,7 +441,7 @@ h2, h4, h5 {
 								                            
 												            if (hasDisabledDates || checkoutDate < checkinDate) {
 												                fp2.clear();
-												                showMessage("체크아웃 날짜는 선택 불가합니다.");
+												                showMessage("해당 날짜는 선택 불가합니다.");
 												            } else {
 												                hideMessage();
 												            }
@@ -551,9 +552,12 @@ h2, h4, h5 {
 									<div class="row">
 											<div class="col">
 												<span class="card-text">최종 결제금액</span>
+												<input type="hidden" id="sphSid" name="sphSid" value=""/>
 											</div>
 											<div class="col">
-												<span class="card-text" id="totalPrice" style="font-weight: bold; color: red;">&nbsp; = </span>
+												<!-- <input type="text" class="card-text" id="totalPrice" name="totalPrice" style="font-weight: bold; color: red;" value=""/> -->
+												<span class="card-text" id="totalPrice" style="font-weight: bold; color: red;" >&nbsp; = </span>
+												<input type="hidden" id="pricee" name="pricee" value=""/> 
 											</div>
 										</div>
 									<br>
@@ -578,7 +582,13 @@ h2, h4, h5 {
 				     	
 					     	$("#requestPay").click(function()
 							{
-								$("#payModal").modal("show");
+					     		
+					     		var totalPriceValue = $("#totalPrice").text(); // totalPrice 태그의 내용을 가져옴
+					     	    $("#payModalLabel").text("결제 요청 - 금액: " + totalPriceValue + "원"); // 모달의 제목을 업데이트
+					     	    $("#modalTotalPrice").text(totalPriceValue); // 모달 내용에 금액 업데이트
+					     	    $("#payModal").modal("show"); // 모달 띄우기
+					     		
+								//$("#payModal").modal("show");
 							});
 					        
 						</script>
@@ -592,19 +602,22 @@ h2, h4, h5 {
 									        var additionalPrice = ${list.price / 2};
 									        var selectedPets = 0;
 									        var daysBetweenDates = 0;
+									        var totalPrice = 0;
 									        
 									        // 최종금액 초기 업데이트
 									        $("#totalPrice").html(basePrice);
 									        
 									    	 // 최종 금액 업데이트 함수
 									        function updateTotalPrice() {
-									            var totalPrice = basePrice + ((daysBetweenDates-1) * basePrice);
+									            totalPrice = basePrice + ((daysBetweenDates-1) * basePrice);
 									            
 									            if (selectedPets === 2) {
 									                totalPrice += totalPrice/2;
 									            }
 									            
 									            $("#totalPrice").html(totalPrice);
+									            
+									            //$("#totalPrice").attr("value", totalPrice);
 									        }
 									     	
 									        $(".pets").click(function() {
@@ -658,8 +671,12 @@ h2, h4, h5 {
 								                });
 												
 									            $('#selectedPets').val(selectedPets.join(','));
-												
+									            $('#pricee').val(totalPrice);
+									            
+									            $("#sphSid").val($("#sphSid1").val());
+									            
 								                alert($("#selectedPets").val());
+								                alert($("#pricee").val());
 												
 												$("#reservationForm").submit();
 											});
@@ -670,7 +687,7 @@ h2, h4, h5 {
 										});
 										
 											  function openPopup() {
-										      window.open("sittingpayrequest.action", "paymentWindow", "width=600,height=600");
+										      window.open("sittingpay.action", "paymentWindow", "width=600,height=600");
 										    }
 										
 									</script>
@@ -699,7 +716,7 @@ h2, h4, h5 {
 	                </button>
 	            </div>
 	            <div class="modal-body">
-	                <form action="sittingpaying.action" id="payingForm">
+	                <!-- <form action="sittingpay.action" id="payingForm"> -->
 	                    <div class="form-group">
 	                        <label for="cardNumber">카드 번호</label>
 	                        <input type="text" class="form-control" id="cardNumber" placeholder="1234-5678-1234-5678">
@@ -718,7 +735,7 @@ h2, h4, h5 {
 	                        <label for="name">카드 소유자명</label>
 	                        <input type="text" class="form-control" id="name" placeholder="홍길동">
 	                    </div>
-	                </form>
+	                <!-- </form> -->
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
@@ -731,13 +748,18 @@ h2, h4, h5 {
 	
 	
 	<script>
-	/* $(function()
+	$(function()
 	{
-		$("#reserveComplete").click(function()
+		$("#submitPayResult").click(function()
 		{
-			$("#payingForm").submit();
+			var flag = $("#cvv").val();
+			//$("#payingForm").submit();
+			$("#payModal").modal("hide");
+			$("#requestPay").css("visibility", "hidden");
+			$("#reserveComplete").css("visibility", "visible");
 		});
-	}); */
+		
+	});
 	</script>
 	
 	<section>

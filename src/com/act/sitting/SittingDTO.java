@@ -81,8 +81,28 @@ public class SittingDTO {
    
    // 펫시팅 장바구닝 생성 및 담기
    private int sccSid, scSid;
+
+   private String pricee;
    
-   public String getDatepicker1()
+   private int totalPrice;
+   
+   public int getTotalPrice()
+    {
+      return totalPrice;
+    }
+    public void setTotalPrice(int totalPrice)
+    {
+      this.totalPrice = totalPrice;
+    }
+    public String getPricee()
+    {
+      return pricee;
+    }
+    public void setPricee(String pricee)
+    {
+      this.pricee = pricee;
+    }
+    public String getDatepicker1()
    {
        return datepicker1;
    }

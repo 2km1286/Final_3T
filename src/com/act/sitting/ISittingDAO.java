@@ -136,10 +136,16 @@ public interface ISittingDAO
 	
 
 	// 펫시팅 장바구니 생성
-	public SittingDTO sittingCreateCart(SittingDTO dto);
+	public int sittingCreateCart(SittingDTO dto);
+	
+	// 장바구니 생성의 sid 얻기
+	public int sccSidMax(SittingDTO dto);
 	
 	// 펫시팅 장바구니 담기
-	public SittingDTO sittingCart(SittingDTO dto);
+	public int sittingCart(SittingDTO dto);
+	
+	// 펫시팅 예약 테이블 
+	public int sittingBook(SittingDTO dto);
 
 	// 펫시터 시험접수결과
 	public int addTestResult(SittingQuestionDTO dto);
@@ -149,6 +155,8 @@ public interface ISittingDAO
 	
 	// 펫시터 면허발급
 	public int createPetSitterLicense(int stssid);
+	
+	
 
 
 	
