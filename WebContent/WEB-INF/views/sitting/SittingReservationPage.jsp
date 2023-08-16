@@ -29,6 +29,7 @@ h2, h4, h5 {
 <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 
 
 
@@ -38,13 +39,84 @@ h2, h4, h5 {
 		
 		$("#reportButton").click(function()
 		{
-			alert("프로필 신고가 접수되었습니다.");
+			
+			$("#reportModal").modal("show");
+			
+			
 		});
 		
-		$("#reportPost").click(function()
+		$("#submitReport").click(function()
 		{
-			alert("게시글 신고가 접수되었습니다.");
+			var reportText = $("#reportText").val();
+			var memSid = $("#memSid").val();
+			$('#reportModal').modal("hide");
+			profileReportReceive(reportText,memSid);
+			
 		});
+		
+		
+		// 게시물 신고 버튼
+		$("#sittingReportBtn").click(function()
+		{
+			
+			$("#sittingReportModal").modal("show");
+		});
+		
+		$("#submitSittingReport").click(function()
+		{
+			var sittingReportText = $("#sittingReportText").val();
+			var memSid = $("#memSid").val();
+			var spSid = $("#spSid").val();
+			var irSid = $("#selectedIrSid").val();
+			$("#sittingReportBtn").modal("hide");
+			sittingReportReceive(sittingReportText,memSid,spSid,irSid);
+		});
+		
+		
+		
+	
+		function profileReportReceive(prrDetail,memSid)
+		{
+			$.ajax(
+	         {
+	            type : "POST",
+	            url : "profilereportreceive.action?memSid="+memSid+"&prrDetail="+prrDetail+"&pMemSid="+"${memSid}",
+	            async : true,
+	            success : function(data)
+	            {
+	            	alert("신고완료");
+	            	/* window.location.href = "sittingreservationpage.action?memSid="+memSid; */
+	            },
+	            error : function(e)
+	            {
+	               alert(e.responseText);
+	            }
+
+	         });
+
+		}
+		
+		function sittingReportReceive(srrDetail, memSid, spSid, irSid)
+		{
+			$.ajax(
+	         {
+	            type : "POST",
+	            url : "sittingreportreceive.action?memSid="+memSid+"&srrDetail="+srrDetail+"&irSid=" + irSid + "&spSid=" + spSid,
+	            async : true,
+	            success : function(data)
+	            {
+	            	alert("신고완료");
+	            	/* window.location.href = "sittingreservationpage.action?memSid="+memSid; */
+	            },
+	            error : function(e)
+	            {
+	               alert(e.responseText);
+	            }
+	
+	         });
+		}
+		
+		
 		/* 
 		$("#reportReservation").click(function()
 		{
@@ -111,7 +183,12 @@ h2, h4, h5 {
 }
 
 </style>
-
+<script type="text/javascript">
+function sittingReportReceive(memSid)
+{
+	alert(memSid);
+}
+</script>
 </head>
 <body>
 	<section>
@@ -142,6 +219,8 @@ h2, h4, h5 {
 									<img src="images/dogdog.png" alt="" class="rounded-circle" style="width: 200px; margin: 20px;">
 								</div>
 								<div class="text-center">
+									<input type="hidden" id="spSid" name="spSid" value="${list.spSid }">
+									<input type="hidden" id="memSid" name="memSid" value="${list.memSid }">
 									<h5>[${list.grade }] ${list.jmNickName } </h5>
 									<h6 class="text-muted">${listBySpSid.sptitle }</h6>
 									<p>${sittingSrwRate.srwRateAvg } ⭐ (${sittingSrwRate.srwCount }개의 후기) ${list.price }원 / 1박</p>
@@ -336,9 +415,9 @@ h2, h4, h5 {
 					</div>
 				</div>
 				<!-- 여기에는 견주의 정보입력칸  -->
-				<div class="col-md-5">
+				<div class="col-md-5" style="height: 100vh; overflow: auto;" >
 				<form action="sittingbooking.action" id="reservationForm">
-					<div class="card" style="height: 945px; width: 38rem;">
+					<div class="card" style="height: 945px; width: 38rem; " >
 						<div class="card-header d-flex justify-content-between">
 							예약정보 입력</div>
 						<div class="row g-0">
@@ -502,7 +581,7 @@ h2, h4, h5 {
 									 -->
 									
 									<hr>
-									<div class="oneText">
+									<div class="oneText" style="text-align: center;">
 										<span class="card-text"><small class="text-muted">최대 반려견 수</small></span><br> 
 										<span class="card-text">${list.spMaxPet }</span>
 									</div>
@@ -515,9 +594,9 @@ h2, h4, h5 {
 											
 											<c:forEach items="${petList}" var="pet">
 											<div class="col">
-												<img src="${pet.petImage}" alt="" class="card-img-top pets" style="width: 40%; border-radius: 50%;" data-pet-sid="${pet.petSid}">
+												<div class="text-left">
+												<img src="${pet.petImage}" alt="" class="card-img-top pets" style="width: 20%; height: 65%; border-radius: 50%;" data-pet-sid="${pet.petSid}">
 											<br>
-												<div class="text-center">
 												<span class="card-text">&nbsp;&nbsp;${pet.petName}</span>
 												<input type="hidden" id="selectedPets" name="selectedPets" value="" />
 												</div>
@@ -529,7 +608,7 @@ h2, h4, h5 {
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">최종금액</small></span><br><br>
-										<div class="row">
+										<div class="row" style="margin-left: 50px;">
 											<div class="col">
 												<span class="card-text">기본금액(1박&1마리)</span>
 											</div>
@@ -538,7 +617,7 @@ h2, h4, h5 {
 											</div>
 										</div>
 										<!-- .row -->
-										<div class="row">
+										<div class="row" style="margin-left: 50px;">
 											<div class="col">
 												<span class="card-text"> + 1마리 추가</span>
 											</div>
@@ -698,13 +777,13 @@ h2, h4, h5 {
 	</section>
 	<!-- 게시글 신고버튼  -->
 	<div class="d-flex align-items-center justify-content-end">
-		<button type="button" class="btn btn-outline-danger" id="reportPost"
+		<button type="button" class="btn btn-outline-danger" id="sittingReportBtn"
 			style="margin-right: 320px;">
 			<i class="fas fa-exclamation-triangle"></i>게시글 신고
 		</button>
 	</div>
 	
-	<!-- 모달 페이지 -->
+	<!-- 결제 모달 페이지 -->
 	
 	<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
@@ -744,7 +823,75 @@ h2, h4, h5 {
 	        </div>
 	    </div>
 	</div>
-	
+	<!-- 프로필 신고 모달 페이지 -->
+		<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="reportModalLabel">신고 사유 작성</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+				<div class="modal-body">
+					<div id="reportReason">
+						<textarea class="form-control" id="reportText" rows="3"
+						placeholder="여기에 사유를 작성해주세요."></textarea>
+					</div>
+					
+				</div>
+
+				<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">닫기</button>
+						<button type="button" class="btn btn-primary" id="submitReport">작성 완료</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 돌봄공간 신고 모달 페이지 -->
+		<div class="modal fade" id="sittingReportModal" tabindex="-1" role="dialog" aria-labelledby="sittingReportModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div id="irSelect">
+							<c:forEach items="${irList}" var="ir">
+						        <label>
+						            <input type="radio" name="selectedIrSid" value="${ir.irSid}">
+						            ${ir.irName}
+						        </label>
+						        <br>
+						    </c:forEach>
+						</div>
+						<textarea class="form-control" id="reviewText" rows="3"
+							placeholder="여기에 상세사유를 작성해주세요."></textarea>
+					</div>
+				
+					<div class="modal-header">
+						<h5 class="modal-title" id="sittingReportModalLabel">신고 사유 작성</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+				<div class="modal-body">
+					<div id="sittingReportReason">
+						<textarea class="form-control" id="sittingReportText" rows="3"
+						placeholder="여기에 사유를 작성해주세요."></textarea>
+					</div>
+					
+				</div>
+
+				<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">닫기</button>
+						<button type="button" class="btn btn-primary" id="submitSittingReport">작성 완료</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	
 	
 	<script>
@@ -759,7 +906,10 @@ h2, h4, h5 {
 			$("#reserveComplete").css("visibility", "visible");
 		});
 		
+		
+		
 	});
+	
 	</script>
 	
 	<section>

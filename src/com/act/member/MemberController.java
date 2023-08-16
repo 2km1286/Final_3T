@@ -122,7 +122,7 @@ public class MemberController
         session.setAttribute("memSid", memSid);
         session.setAttribute("memNickName", memNickName);
         
-        System.out.println("도착");
+        
     	model.addAttribute("mySfollow", sittingService.mySfollow(memSid));
     	
     	ArrayList<SittingDTO> arr =  sittingService.mySfollow(memSid);

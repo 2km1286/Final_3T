@@ -184,4 +184,14 @@ public interface ISittingDAO
 	public String reservationMemsid(int sbsid);
 	
 	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid);
+	
+	
+	// 펫시팅 프로필 신고
+	public int profileReportReceive(SittingDTO dto);
+	
+	// 펫시팅 돌봄공간 신고사유
+	public ArrayList<SittingDTO> indexReport();
+	
+	// 펫시팅 돌봄공간 신고
+	public int placeReportReceive(SittingDTO dto);
 }
