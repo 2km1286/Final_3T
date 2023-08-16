@@ -136,10 +136,16 @@ public interface ISittingDAO
 	
 
 	// 펫시팅 장바구니 생성
-	public SittingDTO sittingCreateCart(SittingDTO dto);
+	public int sittingCreateCart(SittingDTO dto);
+	
+	// 장바구니 생성의 sid 얻기
+	public int sccSidMax(SittingDTO dto);
 	
 	// 펫시팅 장바구니 담기
-	public SittingDTO sittingCart(SittingDTO dto);
+	public int sittingCart(SittingDTO dto);
+	
+	// 펫시팅 예약 테이블 
+	public int sittingBook(SittingDTO dto);
 
 	// 펫시터 시험접수결과
 	public int addTestResult(SittingQuestionDTO dto);
@@ -149,7 +155,33 @@ public interface ISittingDAO
 	
 	// 펫시터 면허발급
 	public int createPetSitterLicense(int stssid);
+	
+	
+
+
+	// 돌봄장소 업데이트
+	public int updatePlace(SittingDTO dto);
+	
+	// 돌봄장소 사진 삭제
+	public int deletePlacePhoto(SittingDTO dto);
+	
+	// 돌봄장소 태그 삭제
+	public int deletePlaceTag(SittingDTO dto);
+	
+	// 돌봄장소 영업시간 업데이트
+	public int updatePlaceHub(SittingDTO dto);
+	
+
+	
+	// 펫시터 예약반려견 카드 조회
+	public ArrayList<ReservationInfoDTO> petInfoList(String memSid);
 
 
 	
+	// 예약번호 확인
+	public int getReservationNumber(String memSid);
+	
+	public String reservationMemsid(int sbsid);
+	
+	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid);
 }

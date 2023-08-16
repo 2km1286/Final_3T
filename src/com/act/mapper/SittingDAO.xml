@@ -73,7 +73,7 @@
 	<select id="sittingPlaceBasic" resultType="com.act.sitting.SittingDTO">
 
 		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, SPZIPCODE, IPSID, SPSID
-		, TO_CHAR(SPHSTART, 'HH24:MI') AS SPHSTART, TO_CHAR(SPHEND, 'HH24:MI') AS SPHEND
+		, TO_CHAR(SPHSTART, 'HH24:MI') AS SPHSTART, TO_CHAR(SPHEND, 'HH24:MI') AS SPHEND, SPHSID
 
 		FROM SITTING_PLACE_BASIC_VIEW
 		WHERE MEMSID = #{memSid}
@@ -213,9 +213,6 @@
     	SELECT STB_SID AS STBSID, STB_QUESTION AS STBQUESTION, STB_ANSWER AS STBANSWER, STB_POINT AS STBPOINT
 		FROM(SELECT * FROM SITTING_TEST_BANK ORDER BY DBMS_RANDOM.VALUE)
 		WHERE ROWNUM &lt;= 10
-		<!-- SELECT STB_SID AS STBSID, STB_QUESTION AS STBQUESTION, STB_ANSWER AS STBANSWER, STB_POINT AS STBPOINT
-		FROM(SELECT * FROM SITTING_TEST_BANK ORDER BY DBMS_RANDOM.VALUE)
-		WHERE ROWNUM BETWEEN 1 AND 10 -->
 	</select>
 	
 	<insert id="addSittingQuestion">
@@ -322,6 +319,30 @@
 		WHERE PMEMSID = #{pMemSid}
 	</select>
 	
+	<select id="getReservationNumber" resultType="java.lang.Integer">
+		SELECT DISTINCT NVL(MAX(SBSID), 0) AS SBSID
+		FROM RESERVATION_INFO
+		WHERE MEMSID = #{memsid}
+		ORDER BY SBSID DESC
+	</select>
+	
+	<select id="petInfoList" resultType="com.act.sitting.ReservationInfoDTO">
+		SELECT PETIMAGE, PETNAME, PETGEN, PETBIRTH, PETWEIGHT, PETSPECIAL
+        FROM RESERVATION_INFO
+        WHERE MEMSID = #{memsid}
+	</select>
+	
+	<select id="reservationMemsid" resultType="java.lang.String">
+		SELECT DISTINCT MEMSID
+		FROM RESERVATION_INFO
+		WHERE SBSID = #{sbsid}
+	</select>
+	
+	<select id="getMatchingHistory" resultType="com.act.sitting.ReservationInfoDTO">
+		SELECT DISTINCT SPADDR1, SBSTART, SBEND, SPHSTART, SPHEND, MAXPET
+		FROM RESERVATION_INFO
+		WHERE MEMSID = #{memsid} AND SBSID = #{sbsid};
+	</select>
 
 	<select id="spCount" resultType="java.lang.Integer">
 		SELECT COUNT(SPSID)
@@ -366,20 +387,66 @@
 		VALUES(SEQ_SPT.NEXTVAL, #{spSid}, #{isptSid})
 	</insert>
 
-
-
-
-
 	
 	<insert id="sittingCreateCart">
 		INSERT INTO SITTING_CREATE_CART(SCC_SID, MEM_SID)
-		VALUES(SEQ_SCC.NEXTVAL, #{pMemSid});
+		VALUES(SEQ_SCC.NEXTVAL, #{pMemSid})
 	</insert>
-
-
+		 
+	<select id="sccSidMax" resultType="java.lang.Integer">
+		SELECT NVL(MAX(SCC_SID),0) AS SCCSID
+		FROM SITTING_CREATE_CART
+		WHERE MEM_SID = #{pMemSid}
+	</select>
+		
 	<insert id="sittingCart">
 		INSERT INTO SITTING_CART(SC_SID, SCC_SID, PET_SID)
-		VALUES(SEQ_SC.NEXTVAL, #{sccSid}, #{petSid});
+		VALUES(SEQ_SC.NEXTVAL, #{sccSid}, #{petSid})
 	</insert>
+	
+	<insert id="sittingBook">
+		INSERT INTO SITTING_BOOK(SB_SID, SPH_SID, SB_START, SB_END, SB_DATE, SB_PRICE, SCC_SID)
+		VALUES(SEQ_SB.NEXTVAL, #{sphSid},TO_DATE(#{sbStart}, 'YYYY-MM-DD') ,TO_DATE(#{sbEnd}, 'YYYY-MM-DD'), SYSDATE, #{price}, #{sccSid})
+	</insert>
+	
+	<update id="updatePlace">
+		UPDATE SITTING_PLACE
+		SET SP_TITLE = #{sptitle}, SP_CONTENT = #{spContent}
+		  , SP_MAX_PET = #{spMaxPet}, IP_SID = #{ipSid}
+		WHERE SP_SID = #{spSid}
+	</update>
+	
+	<update id="updatePlaceHub">
+		UPDATE SITTING_PLACE_HUB
+		SET SPH_START = TO_DATE(#{sphStart}, 'HH24:MI'), SPH_END = TO_DATE(#{sphEnd}, 'HH24:MI')
+		WHERE SPH_SID = #{sphSid} 
+	</update>
+	
+	<delete id="deletePlacePhoto">
+		DELETE
+		FROM SITTING_PLACE_PHOTO
+		WHERE SP_SID = #{spSid}
+	</delete>
+	
+	<delete id="deletePlaceTag">
+		DELETE
+		FROM SITTING_PLACE_TAG
+		WHERE SP_SID = #{spSid}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </mapper>

@@ -42,18 +42,16 @@ String cp = request.getContextPath();
 		// 돌봄장소 변경하기를 누르면
 
 		// 돌봄장소 수정하기를 누르면
-		$("#updateSPInfo").click(function()
+		$("#updateSP").click(function()
 		{
-			
-			
 			$.ajax(
 			{
 				type : "POST",
-				url : "updatespinfoform.action",
+				url : "updatesittingplac.action",
 				async : true,
 				success : function(data)
 				{
-					$("#sittingPlaceDiv").html(data);
+					$("#myPageMain").html(data);
 
 				},
 				error : function(e)
@@ -89,7 +87,7 @@ String cp = request.getContextPath();
 					<span class="badge">${info.jmNickName }님의 돌봄장소</span>
 				</div>
 				<div class="col-md-6">
-					<button type="button" class="detailBtn" id="updateSPInfo" style="margin-right: 10px;" >돌봄장소 수정하기</button>
+					<button type="button" class="detailBtn" id="updateSP" style="margin-right: 10px;" >돌봄장소 수정하기</button>
 					<button type="button" class="detailBtn">돌봄장소 변경하기</button>
 				</div>
 			</div>

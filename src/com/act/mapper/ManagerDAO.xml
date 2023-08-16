@@ -252,5 +252,10 @@
       	WHERE SPSID = #{srrSid}
 	</select>
 	
+	<insert id="memberBannedForce">
+		INSERT INTO MEMBER_BANNED
+		VALUES(SEQ_MB.NEXTVAL,#{ibSid},DEFAULT,#{memSid})
+	</insert> 
+	
 	
 </mapper>
