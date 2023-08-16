@@ -29,6 +29,17 @@ public class SittingService implements ISittingService
 
 		return list;
 	}
+	
+	// 내가 찜한 펫시터들 목록 보기
+	public ArrayList<SittingDTO> mySfollow(String memSid)
+	{
+		ArrayList<SittingDTO> list = new ArrayList<SittingDTO>();
+
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		list = dao.mySfollow(memSid);
+
+		return list;
+	}
 
 	// 펫시터 돌봄장소 범례태그 리스트 가져오기
 	public ArrayList<SittingDTO> IndexTagList()
