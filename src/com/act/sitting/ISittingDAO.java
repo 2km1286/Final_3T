@@ -109,6 +109,13 @@ public interface ISittingDAO
 	// 견주의 memSid로 자신이 등록한 반려견의 정보 가져오기
 	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
 	
+
+	// 펫시팅 장바구니 생성
+	public SittingDTO sittingCreateCart(SittingDTO dto);
+	
+	// 펫시팅 장바구니 담기
+	public SittingDTO sittingCart(SittingDTO dto);
+
 	// 펫시터 시험접수결과
 	public int addTestResult(SittingQuestionDTO dto);
 	
@@ -117,6 +124,6 @@ public interface ISittingDAO
 	
 	// 펫시터 면허발급
 	public int createPetSitterLicense(int stssid);
-	
+
 	
 }
