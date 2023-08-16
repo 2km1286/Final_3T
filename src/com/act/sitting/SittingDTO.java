@@ -10,10 +10,7 @@ SR_START, SR_END, SRW_SID, SRW_SID, STLE_SID, SP_MAX_PET, SP_SID
 public class SittingDTO {
 
    // SITTING_PLACE_LIST_VIEW
-
-   private String jmNickName, sptitle, spZipCode, spAddr1, spAddr2, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
-   
-
+   private String jmNickName, sptitle, spAddr1, spAddr2, spZipCode, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
    private int sphSid, srwSid, stleSid, spMaxPet, spSid;
    private String grade;
    private int price;
@@ -24,9 +21,7 @@ public class SittingDTO {
    // SITTING_REVIEW_VIEW
 
    private String srwTitle, srwContent, srwDate, pJmNickName;   //pjmNickName 는 후기를 쓴 사람의 닉네임을 담을 변수
-
    private int srwRate, srwRateAvg;
-
 
 
    // INDEX_SITTING_PLACE_TAG
@@ -60,11 +55,6 @@ public class SittingDTO {
    private int stleCount;
 
 
-   // 나의 평균 별점
-   private int srwRateAvg;
-
-   
-
    // 돌봄장소 이미지. spsid로 조회
    private String sppLink;
    
@@ -73,17 +63,70 @@ public class SittingDTO {
    private String petName, petImage, petBirth, petGen, petSize, petSpecialNote;  
    private int petSid, iptSid, petWeight;
    
+   
+   // 이미지 파일
+   private String sppName;
+   private String sppPath;
+   
+   // 특이사항
+   private List<String> selectedTags;      // 사용자가 선택한 어필태그
+   private String selectedTagsString; // hidden field에서 사용할 문자열
+   
+   // 면허번호
+   private int slSid;
+   
+   
 
-   public String getSpZipCode()
-   {
-      return spZipCode;
-   }
-   public void setSpZipCode(String spZipCode)
-   {
-      this.spZipCode = spZipCode;
-   }
+	public int getSlSid()
+	{
+		return slSid;
+	}
+	public void setSlSid(int slSid)
+	{
+		this.slSid = slSid;
+	}
+	public String getSppName()
+	{
+		return sppName;
+	}
+	public void setSppName(String sppName)
+	{
+		this.sppName = sppName;
+	}
+	public String getSppPath()
+	{
+		return sppPath;
+	}
+	public void setSppPath(String sppPath)
+	{
+		this.sppPath = sppPath;
+	}
+	public List<String> getSelectedTags()
+	{
+		return selectedTags;
+	}
+	public void setSelectedTags(List<String> selectedTags)
+	{
+		this.selectedTags = selectedTags;
+	}
+	public String getSelectedTagsString()
+	{
+		return selectedTagsString;
+	}
+	public void setSelectedTagsString(String selectedTagsString)
+	{
+		this.selectedTagsString = selectedTagsString;
+	}
+	public String getSpZipCode()
+	{
+		return spZipCode;
+	}
+	public void setSpZipCode(String spZipCode)
+	{
+		this.spZipCode = spZipCode;
+	}
+	public String getJmNickName()
 
-   public String getJmNickName()
    {
       return jmNickName;
    }
@@ -275,7 +318,6 @@ public class SittingDTO {
    {
       this.srwRate = srwRate;
    }
-
    public int getSrwRateAvg()
    {
       return srwRateAvg;
@@ -284,7 +326,6 @@ public class SittingDTO {
    {
       this.srwRateAvg = srwRateAvg;
    }
-
    public int getIsptSid()
    {
       return isptSid;
@@ -397,16 +438,6 @@ public class SittingDTO {
    {
       this.stleCount = stleCount;
    }
-
-   public int getSrwRateAvg()
-   {
-      return srwRateAvg;
-   }
-   public void setSrwRateAvg(int srwRateAvg)
-   {
-      this.srwRateAvg = srwRateAvg;
-   }
-
    public String getSppLink()
    {
       return sppLink;
@@ -488,5 +519,6 @@ public class SittingDTO {
       this.petWeight = petWeight;
    }
 
-}
 
+
+}

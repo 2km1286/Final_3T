@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.act.walk.IWalkDAO;
+import com.act.walk.WalkDTO;
+
 @Controller
 public class SittingService implements ISittingService
 {
@@ -26,6 +29,17 @@ public class SittingService implements ISittingService
 		list = dao.list();
 		
 		
+
+		return list;
+	}
+	
+	// 내가 찜한 펫시터들 목록 보기
+	public ArrayList<SittingDTO> mySfollow(String memSid)
+	{
+		ArrayList<SittingDTO> list = new ArrayList<SittingDTO>();
+
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		list = dao.mySfollow(memSid);
 
 		return list;
 	}
@@ -516,7 +530,101 @@ public class SittingService implements ISittingService
 		
 		return petList;
 	}
+
+
+	// 등록한 돌봄장소가 있는지 카운트
+	@Override
+	public int spCount(SittingDTO dto)
+	{
+		int result= 0;
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.spCount(dto);
+    return result;
+	}
+
+	
+	@Transactional
+	public SittingDTO sittingFromCreateCartToBook(SittingDTO dto)
+	{
+		SittingDTO s = new SittingDTO();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		return s;
+	}
+		
+	
+
+	// 돌봄장소 등록
+	@Transactional
+	public boolean insertPlcae(SittingDTO dto)
+	{
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		try
+		{
+			
+			//System.out.println( "컨트롤러에서 넘어왔나? :" + dto.getSpSid() + " / " + dto.getSptitle() + " / " + dto.getSpContent() + " / " +   dto.getSpAddr1()
+		    //+ " / " + dto.getSpAddr2() + " / " + dto.getSpZipCode() + " / " + dto.getSpMaxPet() + " / " 
+		    //+ " / " + dto.getIpSid() + " / " + dto.getExtraAddr() );
+			
+			
+			String sppName = dto.getSppName();
+			String sppPath = dto.getSppPath();
+			
+			
+			// 1. spSid를 제외한 모든 값을 담은 sittingDTO를 SITTING_PLACE 에 인서트. 돌봄장소 등록 spSid가 생김
+			dao.insertPlcae(dto);
+			
+			// 2. 새로 생긴 spSid 를 조회, sittingDTO 에 set하기
+		   	dto.setSpSid( dao.spSidMax());
+		   	
+			// 3. SITTING_PLACE_HUB 에 sittingDTO 를 인서트
+			dao.insertPlaceHub(dto);
+		   	
+			// 4. SITTING_PLACE_PHOTO 에 sittingDTO 를 인서트
+			dto.setSppPath(sppPath);
+		    dto.setSppName(sppName);
+		    dao.insertPlacePhoto(dto);
+			
+			// 5. SITTING_PLACE_TAG 에 sittingDTO 를 인서트
+		    List<String> selectedTags = dto.getSelectedTags();
+		    for (String tagId : selectedTags) 
+		    {
+		    	dto.setIsptSid(Integer.parseInt(tagId));
+		    	dao.insertPlaceTag(dto);
+		    }
+
+		    return true;
+			
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 		
 		
+	}
+		
+	// memSid로 펫시터 면허번호 조회	
+	public int slSid(String memSid)
+	{
+		int result= 0;
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		result = dao.slSid(memSid);
+		
+		return result;
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 }

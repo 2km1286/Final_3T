@@ -301,6 +301,23 @@ public class ManagerService implements IManagerService
 	}
 	
 	
+	// 멤버 정지 펫시팅
+	public int memberBanned(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberBanned(dto);
+		return result;
+	}
+	// 멤버 정지
+	public int memberBannedProfile(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberBannedProfile(dto);
+		return result;
+	}
+	
 	// 통계를 위한 멤버 분포 수
 	public ManagerDTO memberCount()
 	{
@@ -312,7 +329,13 @@ public class ManagerService implements IManagerService
 		return result;
 	}
 
-	
+	public String openWithSrrId(ManagerDTO dto)
+	{
+		String result = "";
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.openWithSrrId(dto);
+		return result;
+	}
 
 	
 

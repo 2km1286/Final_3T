@@ -13,6 +13,9 @@ public interface ISittingDAO
 	// 펫시팅 돌봄장소의 범례태그들 조회
 	public ArrayList<SittingDTO> IndexTagList();
 	
+	// 회원이 찜한 목록들 조회
+	public ArrayList<SittingDTO> mySfollow(String memSid);
+	
 	// 해당 돌봄장소의 태그들 확인
 	public ArrayList<SittingDTO> tagList();
 
@@ -109,6 +112,35 @@ public interface ISittingDAO
 	// 견주의 memSid로 자신이 등록한 반려견의 정보 가져오기
 	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
 	
+
+	// 등록한 돌봄장소가 있는지 카운트
+	public int spCount(SittingDTO dto);
+	
+	// 펫시터 면허번호 가져오기
+	public int slSid(String memSid);
+	
+	// 돌봄장소 등록
+	public int insertPlcae(SittingDTO dto);
+	
+	// 돌봄장소 제일 최신 spSid 가져오기
+	public int spSidMax();
+		
+	// 돌봄장소 사진 등록
+	public int insertPlacePhoto(SittingDTO dto);
+	
+	// 돌봄장소 태그 등록
+	public int insertPlaceTag(SittingDTO dto);
+	
+	// 돌봄장소 영업시간 등록(SITTING_PLACE_HUB)
+	public int insertPlaceHub(SittingDTO dto);
+	
+
+	// 펫시팅 장바구니 생성
+	public SittingDTO sittingCreateCart(SittingDTO dto);
+	
+	// 펫시팅 장바구니 담기
+	public SittingDTO sittingCart(SittingDTO dto);
+
 	// 펫시터 시험접수결과
 	public int addTestResult(SittingQuestionDTO dto);
 	
@@ -117,9 +149,11 @@ public interface ISittingDAO
 	
 	// 펫시터 면허발급
 	public int createPetSitterLicense(int stssid);
+
 	
 	// 펫시터 예약반려견 카드 조회
 	public ArrayList<ReservationInfoDTO> petInfoList(String memSid);
+
 	
 	// 예약번호 확인
 	public int getReservationNumber(String memSid);

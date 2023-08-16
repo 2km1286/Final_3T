@@ -29,8 +29,19 @@ public class ManagerDTO
 	
 	private String jmId,jmName,jmGender,jmTel,memRegitstDate,memSid;
 	
+	private int ibSid;
 	
 	
+	
+	
+	public int getIbSid()
+	{
+		return ibSid;
+	}
+	public void setIbSid(int ibSid)
+	{
+		this.ibSid = ibSid;
+	}
 	public String getMemSid()
 	{
 		return memSid;

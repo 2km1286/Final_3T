@@ -112,7 +112,7 @@ if (memSid == null) {
 										class="card-img-top hover-shadow"
 										alt="Los Angeles Skyscrapers" />
 									<div class="card-body">
-										<a href="sittingtest.action"><h3 class="card-title">대리산책러 지원해보기</h3></a>
+										<a href="walktest.action"><h3 class="card-title">대리산책러 지원해보기</h3></a>
 										<p class="card-text">대리산책러가 되어서 다양한 강아지들과 산책해보세요! 귀여운
 											강아지들과 친구가 될 수 있어요.</p>
 									</div>
@@ -123,7 +123,7 @@ if (memSid == null) {
 									<img src="./images/welcome-petsitter.png"
 										class="card-img-top hover-shadow" alt="Palm Springs Road" />
 									<div class="card-body">
-										<a href="walktest.action"><h3 class="card-title">펫시터 지원해보기</h3></a>
+										<a href="sittingtest.action"><h3 class="card-title">펫시터 지원해보기</h3></a>
 										<p class="card-text">
 											펫시터가 되어서 다양한 강아지들을 돌봐주세요! <br /> 귀여운 강아지들과 친구가 될 수 있어요.
 										</p>

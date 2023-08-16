@@ -157,6 +157,51 @@
         	});
    	 	}
 	}
+	
+	// 정지 모달창
+    function openSuspensionModal(wrrSid,wpSid) {
+        var modal = document.getElementById("suspensionModal");
+        modal.style.display = "block"; // 모달 표시
+        
+        var confirmButton = document.getElementById("suspensionConfirm");
+        confirmButton.onclick = function () 
+        {
+            var selectedValue = document.querySelector('input[name="suspensionOption"]:checked');
+            if (selectedValue) {
+                selectedValue = selectedValue.value;
+                modal.style.display = "none"; // 모달 숨김
+                DeleteSittingReport(srrSid, selectedValue,5,spSid);
+            }
+        };
+    }
+    function closeSuspensionPopup() {
+        var popup = document.getElementById("suspensionModal");
+        popup.style.display = "none";
+    }
+ // 모달 닫기 버튼
+    $(".close").on("click", function() {
+        $("#suspensionModal").css("display", "none");
+    });
+ 	// 정지
+	function DeleteSittingReport(srrSid,ibSid,imaSid,spSid) 
+	{
+ 		
+    	if (confirm("정지 처리하시겠습니까?")) {
+        $.ajax({
+            type: "POST",
+            url: "memberbanned.action?wrrSid="+wrrSid+"&miSid="+${miSid}+"&imaSid="+imaSid+"&ibSid="+ibSid+"&wpSid="+wpSid,
+            async: true,
+            success: function(data) 
+            {
+                window.location.href = "managermain.action?flag=1";
+            },
+            error: function(e) 
+            {
+                alert(e.responseText);
+            }
+        	});
+   	 	}
+	}
 </script>
 
 
@@ -198,7 +243,7 @@
 								onclick="showDetail('${list.wrrDetail}')"></td>
 							<td>${list.wrrDate}</td>
 							<td id="actionBtn"><input class="report-button"
-								type="button" value="정지" onclick="BannedWalkReport(${list.wrrSid},5)"> 
+								type="button" value="정지"onclick="openSuspensionModal(${list.wrrSid},${list.wpSid})"> 
 								<input class="report-button"
 								type="button" value="반려" onclick="DeleteWalkReport(${list.wrrSid},4)"> 
 								<input class="report-button"
@@ -218,6 +263,18 @@
 
 				</tbody>
 			</table>
+			<!-- 모달 창 -->
+			<div id="suspensionModal" class="modal">
+			    <div class="modal-content">
+			    	<span class="close" style="float: right; position: absolute;  
+			    	top: 10px; right: 10px; font-size: 20px; font-weight: bold;">&times;</span>
+			        <label><input type="radio" name="suspensionOption" value="1"> 3일 정지</label><br>
+			        <label><input type="radio" name="suspensionOption" value="2"> 5일 정지</label><br>
+			        <label><input type="radio" name="suspensionOption" value="3"> 7일 정지</label><br>
+			        <label><input type="radio" name="suspensionOption" value="4"> 영구정지</label><br><br>
+			        <button id="suspensionConfirm">확인</button>
+			    </div>
+			</div>
 		</div>
 	</div>
 </body>

@@ -5,7 +5,7 @@
 String cp = request.getContextPath();
 %>
 <%
-	String memSid = (String)session.getAttribute("memSid"); // 최초 요청시 "0"
+	String MemSid = (String)session.getAttribute("memSid"); // 최초 요청시 "0"
 %>
 <!DOCTYPE html>
 <html>
@@ -24,11 +24,6 @@ h2, h4, h5 {
 <link rel="icon" href="./images/logo_transparent.png"/>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2IqcO3" crossorigin="anonymous"></script>
-
-
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
@@ -50,18 +45,15 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 		{
 			alert("게시글 신고가 접수되었습니다.");
 		});
-		
-		/* $("#reportReservation").click(function()
+		/* 
+		$("#reportReservation").click(function()
 		{
-			window.location.href = "walk-pay.action";
-		}); */
-	
+			window.location.href = "sittingpay.action";
+		}); 
+	 	*/
 	});
 	
-    function openPopup() {
-      window.open("pay.action", "paymentWindow", "width=600,height=600");
-    }
-    
+  
     
 </script>
 
@@ -113,6 +105,9 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
     top: 100%; /* 상단에서 50% 위치에 배치 */
     left: 100%; /* 왼쪽에서 50% 위치에 배치 */
     transform: translate(-50%, -50%); /* 좌표를 정확하게 중앙으로 이동 */
+}
+#reserveComplete {
+	visibility: hidden;
 }
 
 </style>
@@ -179,29 +174,36 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 							
 							<div>
 								<h5 class="card-title text-center">휴일</h5>
-								<br />
 								<c:choose>
 									<c:when test="${spRest != null }">
-									<c:forEach var="rest" items="${spRest }">
-										<div class="card-title text-center">
-											<c:choose>
-												<c:when test="${rest.srStart == rest.srEnd }">
-													<h6 class="card-subtitle text-muted">${rest.srStart }</h6>
-												</c:when>
-												<c:when test="${rest.srStart != rest.srEnd }">
-													<h6 class="card-subtitle text-muted">${rest.srStart } ~ ${rest.srEnd }</h6>
-												</c:when>
-											</c:choose>
-										</div>
-									</c:forEach>								
+										<c:forEach var="rest" items="${spRest }">
+											<div class="card-title text-center">
+												<c:choose>
+													<c:when test="${rest.srStart == rest.srEnd }">
+														<li><span class="card-subtitle text-muted">${rest.srStart }</span></li>
+													</c:when>
+													<c:when test="${rest.srStart != rest.srEnd }">
+														<li><span class="card-subtitle text-muted">${rest.srStart } ~ ${rest.srEnd }</span></li>
+													</c:when>
+												</c:choose>
+											</div>
+										</c:forEach>								
 									</c:when>
 									<c:otherwise>
 										<h6>2달 이내에 휴일이 없습니다.</h6>
 									</c:otherwise>
 								</c:choose>
-								
 							</div>
 							<br />
+							
+							<div>
+								<h5  class="card-title text-center">영업시간</h5>
+								<div class="card-title text-center">
+									<li><span class="card-subtitle text-muted">체크인 가능 시간 : ${list.sphStart } 이후</span></li>
+									<li><span class="card-subtitle text-muted">체크아웃 시간 : 영업시간 2시간 전 </span></li>
+								</div>
+							</div>
+							<hr><br>
 							
 							<!-- 이용요금 -->
 							<div>
@@ -231,7 +233,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<h6 class="card-subtitle text-muted">55,000원 (24시간 기준)</h6>
 									</div>
 								</div>
-								<br>
+								<hr /><br>
 								<h5 class="card-title text-center">반려견 추가비</h5><br>
 								<div class="row">
 									<div class="col">
@@ -257,7 +259,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<h6 class="card-subtitle text-muted">1마리 추가시 27,500원</h6>
 									</div>
 								</div><br>
-								
+								<!-- 이용요금 끝 -->
 									
 							<div class="alert alert-warning alert-dismissible fade show"
 								role="alert">
@@ -307,7 +309,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 											style="width: 100px; height: 100px; border-radius: 50%;">
 									</div>
 									<div class="col-5">
-										<h5 class="card-title">${review.pJmNickName } 
+										<h5 class="card-title">[${review.pJmNickName }]
 										&nbsp;&nbsp;&nbsp;&nbsp;⭐⭐⭐⭐⭐ </h5>
 										<h5 class="card-title">${review.srwTitle }</h5>
 										<h6 class="card-subtitle text-muted">${review.srwDate }</h6>
@@ -333,7 +335,8 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 					</div>
 				</div>
 				<!-- 여기에는 견주의 정보입력칸  -->
-				<!-- <div class="col-md-5"> -->
+				<div class="col-md-5">
+				<form action="sittingbooking.action" id="reservationForm">
 					<div class="card" style="height: 945px; width: 38rem;">
 						<div class="card-header d-flex justify-content-between">
 							예약정보 입력</div>
@@ -343,6 +346,7 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">지역</small></span><br>
 										<span class="nick card-text">${list.spAddr1 }</span>
+										<span class="nick card-text">${list.extraAddr }</span>
 									</div>
 									<hr>
 									<div class="oneText">
@@ -350,24 +354,138 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 												장소</small></span><br> <span class="card-text">예약 후 상세주소를 알려드려요.</span>
 									</div>
 									<hr>
-									<div class="oneText row">
-										<div class="col">
-											<span class="card-text"><small class="text-muted">체크인 날짜</small></span><br>
-											<label for="datepicker"></label><input type="text" id="datepicker1" name="datepicker" class="custom-textbox" readonly style="width: 115px;">
-										</div>
-										<div class="col">
-											<span class="card-text"><small class="text-muted">체크아웃 날짜</small></span><br>
-											<label for="datepicker"></label><input type="text" id="datepicker2" name="datepicker" class="custom-textbox" readonly style="width: 115px;">
-										</div>
-										<script>
-											var fp = flatpickr(document.getElementById("datepicker1"), {
-												"locale": "ko" 
-											});
-											var fp = flatpickr(document.getElementById("datepicker2"), {
-												"locale": "ko" 
-											});
-										</script>
-									</div>
+								<div class="oneText row">
+								    <div class="col">
+								        <span class="card-text"><small class="text-muted">체크인 날짜</small></span><br>
+								        <label for="datepicker"></label><input type="text" id="datepicker1" name="datepicker1" 
+								        class="custom-textbox" readonly style="width: 115px;">
+								    </div>
+								    <div class="col">
+								        <span class="card-text"><small class="text-muted">체크아웃 날짜</small></span><br>
+								        <label for="datepicker"></label><input type="text" id="datepicker2" name="datepicker2" 
+								        class="custom-textbox" readonly style="width: 115px;">
+								    </div>
+								    <br />
+								    <div id="message" class="message"></div>
+								    <c:choose>
+								    
+								        <c:when test="${spRest != null }">
+								            <c:forEach var="rest" items="${spRest}">
+								                <div class="card-title text-center">
+								                    <input type="hidden" class="srStart" value="${rest.srStart}" />
+								                    <input type="hidden" class="srEnd" value="${rest.srEnd}" />
+								                </div>
+								            </c:forEach>
+								            
+								            <script>
+								                var srStartElements = document.querySelectorAll('.srStart');
+								                var srEndElements = document.querySelectorAll('.srEnd');
+								                
+								                var fp1DisabledDates = [];
+								                var fp2DisabledDates = [];
+								
+								                for (var i = 0; i < srStartElements.length; i++) {
+								                    var startDate = new Date(srStartElements[i].value);
+								                    var endDate = new Date(srEndElements[i].value);
+								                    
+								                    while (startDate <= endDate) {
+								                        fp1DisabledDates.push(startDate.toISOString().split('T')[0]);
+								                        fp2DisabledDates.push(new Date(startDate.getTime() + 86400000).toISOString().split('T')[0]);
+								                        startDate.setDate(startDate.getDate() + 1);
+								                    }
+								                }
+								                
+								                var today = new Date();
+								                var twoMonthsLater = new Date(today.getFullYear(), today.getMonth() + 2, today.getDate());
+								                
+								                var fp1 = flatpickr(document.getElementById("datepicker1"), {
+								                    "locale": "ko",
+								                    "disable": fp1DisabledDates,
+								                    "minDate": today,
+								                    "maxDate": twoMonthsLater,
+								                    
+								                    "onChange": function(selectedDates, dateStr, instance) {
+								                        fp2.set("minDate", selectedDates[0]);
+								                        
+								                    }
+								                });
+												
+								                var inDate = new Date(fp1.selectedDates[0]);
+								                
+								                var fp2 = flatpickr(document.getElementById("datepicker2"), {
+								                    "locale": "ko",
+								                    "disable": fp2DisabledDates,
+								                    "minDate": new Date(today.getTime() + 86400000),
+								                    "maxDate": new Date(inDate.getTime() + (3 * 86400000)),
+								                    "onDayCreate": function(dObj, dStr, fp, dayElem) {
+								                        if (fp1DisabledDates.includes(dStr)) {
+								                            dayElem.classList.add("disabled-date");
+								                        }
+								                    },
+								                    "onChange": function(selectedDates, dateStr, instance) {
+								                        if (selectedDates[0]) {
+								                            var checkinDate = fp1.selectedDates[0];
+								                            var checkoutDate = selectedDates[0];
+								                            var minCheckoutDate = new Date(checkinDate.getTime() + (3 * 86400000)); // 3 days
+								                            // Check if there are any disabled dates between checkinDate and checkoutDate
+												            var hasDisabledDates = false;
+												            for (var d = new Date(checkinDate.getTime() + 86400000); d < checkoutDate; d.setDate(d.getDate() + 1)) {
+												                var disabledDate = d.toISOString().split('T')[0];
+												                if (fp2DisabledDates.includes(disabledDate)) {
+												                    hasDisabledDates = true;
+												                    break;
+												                }
+												            }
+								                            
+								                            
+												            if (hasDisabledDates || checkoutDate < checkinDate) {
+												                fp2.clear();
+												                showMessage("체크아웃 날짜는 선택 불가합니다.");
+												            } else {
+												                hideMessage();
+												            }
+								                            
+								                        }
+								                    }
+								                });
+								                
+								                function showMessage(message) {
+								                    var messageElem = document.getElementById("message");
+								                    messageElem.innerText = message;
+								                    messageElem.style.display = "block";
+								                }
+
+								                function hideMessage() {
+								                    var messageElem = document.getElementById("message");
+								                    messageElem.style.display = "none";
+								                }
+								
+								                fp2.config.disable.push(
+								                    function(date) {
+								                        return fp1DisabledDates.includes(date.toISOString().split('T')[0]);
+								                    }
+								                );
+								            </script>
+								            <style>
+								                .disabled-date {
+								                    pointer-events: none;
+								                    opacity: 0.5;
+								                }
+								            </style>
+								        </c:when>
+								        <c:otherwise>
+								            <h6>2달 이내에 휴일이 없습니다.</h6>
+								        </c:otherwise>
+								    </c:choose>
+								</div>
+								
+								
+								</div>
+
+
+
+									<!-- 여기다가 당일예약, 기간예약인지에 따라서 체크인,체크아웃 시간 안내해 줄 수 있을듯? -->
+									<!-- 
 									<hr>
 									<div class="oneText row">
 										<div class="col">
@@ -377,9 +495,11 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<div class="col">
 											<span class="card-text"><small class="text-muted">종료 시간</small></span><br> 
 											<label for="time"></label> <input type="time" id="time" class="custom-textbox">
-											<span id="addResult"></span> <!-- 사용자가 시간을 추가한다면 ajax로 그 시간만큼 보여줘야함 -->
+											<span id="addResult"></span> 사용자가 시간을 추가한다면 ajax로 그 시간만큼 보여줘야함
 										</div>
 									</div>
+									 -->
+									
 									<hr>
 									<div class="oneText">
 										<span class="card-text"><small class="text-muted">최대 반려견 수</small></span><br> 
@@ -391,50 +511,18 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										
 										<div class="row">
 										
-											<!-- 
-											<div class="col d-flex align-items-center justify-content-center">마이너스 버튼 
-												<button class="btn btn-warning">
-													<i class="fas fa-minus"></i>
-												</button>
-											</div>
-											 -->
 											
 											<c:forEach items="${petList}" var="pet">
 											<div class="col">
-												<img src="${pet.petImage}" alt="" class="card-img-top clickable-image" style="width: 40%; border-radius: 50%;" data-pet-sid="${pet.petSid}">
+												<img src="${pet.petImage}" alt="" class="card-img-top pets" style="width: 40%; border-radius: 50%;" data-pet-sid="${pet.petSid}">
 											<br>
-											<div class="text-center">
+												<div class="text-center">
 												<span class="card-text">&nbsp;&nbsp;${pet.petName}</span>
+												<input type="hidden" id="selectedPets" name="selectedPets" value="" />
 												</div>
 											</div>
 											</c:forEach>
 											
-											<script>
-												$(function()
-												{
-													$(".clickable-image").click(function()
-													{
-														$(this).toggleClass('selected');
-														if ($(this).hasClass('selected'))
-														{
-															$(this).css('border', 'solid 5px #45a049'); // 선택된 스타일로 변경
-																	
-														} else
-														{
-															$(this).css('border', 'none'); // 원래 스타일로 변경
-														}
-													});
-												});
-											</script>
-																						
-											
-											<!-- 
-											<div class="col d-flex align-items-center justify-content-center">플러스버튼 
-												<button class="btn btn-warning">
-													<i class="fas fa-plus"></i>
-												</button>
-											</div>
-											 -->
 										</div><!-- .row end -->
 									</div><!-- .oneText end -->
 									<hr>
@@ -442,10 +530,10 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 										<span class="card-text"><small class="text-muted">최종금액</small></span><br><br>
 										<div class="row">
 											<div class="col">
-												<span class="card-text">기본금액</span>
+												<span class="card-text">기본금액(1박&1마리)</span>
 											</div>
 											<div class="col">
-												<span class="card-text">&nbsp; + ${list.price }</span>
+												<span class="card-text" id="price">&nbsp; + ${list.price }</span>
 											</div>
 										</div>
 										<!-- .row -->
@@ -454,33 +542,142 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 												<span class="card-text"> + 1마리 추가</span>
 											</div>
 											<div class="col">
-												<span class="card-text">&nbsp; + ${(list.price)/2 }</span>
+												<span class="card-text">&nbsp; + 최종 금액의 50%</span>
 											</div>
 										</div>
 									</div>
 									<!-- .oneText -->
 									<hr>
-									<div class="oneText" style="text-align: right;">
-										<span class="card-text">67,500원(ajax 처리될 최종금액)</span>
-									</div>
+									<div class="row">
+											<div class="col">
+												<span class="card-text">최종 결제금액</span>
+											</div>
+											<div class="col">
+												<span class="card-text" id="totalPrice" style="font-weight: bold; color: red;">&nbsp; = </span>
+											</div>
+										</div>
 									<br>
 									<!-- <div
 										class="col d-flex align-items-center justify-content-center">
 										<button class="btn btn-warning">예약요청</button>
 									</div> -->
 									<div class="col d-flex align-items-center justify-content-center">
-    									<button class="btn btn-warning custom-button" id="reportReservation" onclick="openPopup()">예약요청</button>
+    									<button type="button" class="btn btn-warning custom-button" id="requestPay" >결제하기</button>
+    									<!-- <button type="button" class="btn btn-pay btn-warning custom-button"  id="payBtn" data-toggle="modal" data-target="#payModal">결제하기</button> -->
+    									<button type="button" class="btn btn-warning custom-button" id="reserveComplete">예약완료</button>
 									</div>
+									
 								</div>
 								<!-- close .card-body -->
 							</div>
 						</div>
-					<!-- </div> -->
-					<br>
+						</form>
+						
+						<script type="text/javascript">
+						// 결제 요청 버튼 클릭
+				     	
+					     	$("#requestPay").click(function()
+							{
+								$("#payModal").modal("show");
+							});
+					        
+						</script>
+						
+						<script type="text/javascript">
+									
+										$(function()
+										{
+											// 초기 가격 설정
+									        var basePrice = ${list.price};
+									        var additionalPrice = ${list.price / 2};
+									        var selectedPets = 0;
+									        var daysBetweenDates = 0;
+									        
+									        // 최종금액 초기 업데이트
+									        $("#totalPrice").html(basePrice);
+									        
+									    	 // 최종 금액 업데이트 함수
+									        function updateTotalPrice() {
+									            var totalPrice = basePrice + ((daysBetweenDates-1) * basePrice);
+									            
+									            if (selectedPets === 2) {
+									                totalPrice += totalPrice/2;
+									            }
+									            
+									            $("#totalPrice").html(totalPrice);
+									        }
+									     	
+									        $(".pets").click(function() {
+									            $(this).toggleClass('selected');
+									            if ($(this).hasClass('selected')) {
+									                $(this).css('border', 'solid 5px #ff9800');
+									                selectedPets += 1;
+									                updateTotalPrice();
+									            } else {
+									                $(this).css('border', 'none');
+									                selectedPets -= 1;
+									                updateTotalPrice();
+									            }
+									            // 반려견 선택이 변경될 때마다 최종 금액 업데이트
+									        });
+									        
+											
+									    	 // 체크인, 체크아웃 날짜 변경 시 최종 금액 업데이트
+									        fp1.config.onChange.push(function(selectedDates) {
+									            if (selectedDates[0]) {
+									                var checkinDate = selectedDates[0];
+									                var checkoutDate = fp2.selectedDates[0];
 
+									                // 체크인과 체크아웃 날짜 사이의 일 수 계산
+									                daysBetweenDates = Math.floor((checkoutDate - checkinDate) / (24 * 60 * 60 * 1000));
+									                updateTotalPrice();
+									            }
+									        });
+									        
+									        fp2.config.onChange.push(function(selectedDates) {
+									            if (selectedDates[0]) {
+									                var checkinDate = fp1.selectedDates[0];
+									                var checkoutDate = selectedDates[0];
+
+									                // 체크인과 체크아웃 날짜 사이의 일 수 계산
+									                daysBetweenDates = Math.floor((checkoutDate - checkinDate) / (24 * 60 * 60 * 1000));
+									                updateTotalPrice();
+									            }
+									        });
+									        
+									        
+									     	
+									        
+									        // 예약완료 버튼 클릭 
+									        $("#reserveComplete").click(function() {
+												var selectedPets = [];
+												
+								                $('.pets.selected').each(function() 
+								                {
+								                	selectedPets.push($(this).attr('data-pet-sid'));
+								                });
+												
+									            $('#selectedPets').val(selectedPets.join(','));
+												
+								                alert($("#selectedPets").val());
+												
+												$("#reservationForm").submit();
+											});
+									    	
+									        
+									        
+											    
+										});
+										
+											  function openPopup() {
+										      window.open("sittingpayrequest.action", "paymentWindow", "width=600,height=600");
+										    }
+										
+									</script>
+							<br>
+						</div>
 				</div>
 			</div>
-		</div>
 	</section>
 	<!-- 게시글 신고버튼  -->
 	<div class="d-flex align-items-center justify-content-end">
@@ -490,6 +687,59 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 		</button>
 	</div>
 	
+	<!-- 모달 페이지 -->
+	
+	<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title" id="payModalLabel">결제 정보</h5>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <div class="modal-body">
+	                <form action="sittingpaying.action" id="payingForm">
+	                    <div class="form-group">
+	                        <label for="cardNumber">카드 번호</label>
+	                        <input type="text" class="form-control" id="cardNumber" placeholder="1234-5678-1234-5678">
+	                    </div>
+	                    <div class="form-row">
+	                        <div class="form-group col-md-6">
+	                            <label for="expirationDate">만료일</label>
+	                            <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY">
+	                        </div>
+	                        <div class="form-group col-md-6">
+	                            <label for="cvv">CVV</label>
+	                            <input type="text" class="form-control" id="cvv" placeholder="123">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="name">카드 소유자명</label>
+	                        <input type="text" class="form-control" id="name" placeholder="홍길동">
+	                    </div>
+	                </form>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+	                <button type="button" class="btn btn-primary" id="submitPayResult">결제 완료</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+	
+	
+	<script>
+	/* $(function()
+	{
+		$("#reserveComplete").click(function()
+		{
+			$("#payingForm").submit();
+		});
+	}); */
+	</script>
+	
 	<section>
 		<div>
 			<c:import url="/WEB-INF/components/index/FooterForm.jsp">
@@ -497,9 +747,10 @@ integrity="sha384-a5z8pA2+zN2T0LdZ6AO3bBq4wuvhs1YLC3E/p6hcaV9w1dt7E/PxI2fYve2Iqc
 		</div>
 	</section>
 
-
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 </html>

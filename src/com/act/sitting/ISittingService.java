@@ -24,6 +24,7 @@ public interface ISittingService
 	public SittingDTO sittingReview(int srwSid);
 	public int sittingStsCount(SittingDTO dto);
 	public int sittingSlCount(SittingDTO dto);
+	public ArrayList<SittingDTO> mySfollow(String memSid);
 
 	public SittingDTO sittingPopup(String memSid);
 
@@ -36,10 +37,22 @@ public interface ISittingService
 	public SittingDTO sittingSrwRate(String memSid);
 	public ArrayList<SittingDTO> sittingSrwRates();
 	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
+
+	public int spCount(SittingDTO dto);
+	
+	
+	// 돌봄장소 등록
+	public boolean insertPlcae(SittingDTO dto);
+	
+	public int slSid(String memSid);
+	
+
 	public int sittingtestQualification(SittingDTO dto);
+
 	public ArrayList<ReservationInfoDTO> getInfo(String memSid);
 	public int getReservationNum(String memSid);
 	public String getReservationMem(int sbsid);
 	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid);
+
 }
 
