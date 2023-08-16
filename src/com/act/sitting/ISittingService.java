@@ -48,6 +48,8 @@ public interface ISittingService
 	
 
 	public int sittingtestQualification(SittingDTO dto);
+	
+	public int sittingFromCreateCartToBook(SittingDTO dto);
 
 }
 
