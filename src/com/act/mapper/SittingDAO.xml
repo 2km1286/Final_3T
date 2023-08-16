@@ -356,20 +356,26 @@
 		VALUES(SEQ_SPT.NEXTVAL, #{spSid}, #{isptSid})
 	</insert>
 
-
-
-
-
 	
 	<insert id="sittingCreateCart">
 		INSERT INTO SITTING_CREATE_CART(SCC_SID, MEM_SID)
-		VALUES(SEQ_SCC.NEXTVAL, #{pMemSid});
+		VALUES(SEQ_SCC.NEXTVAL, #{pMemSid})
 	</insert>
-
-
+		 
+	<select id="sccSidMax" resultType="java.lang.Integer">
+		SELECT NVL(MAX(SCC_SID),0) AS SCCSID
+		FROM SITTING_CREATE_CART
+		WHERE MEM_SID = #{pMemSid}
+	</select>
+		
 	<insert id="sittingCart">
 		INSERT INTO SITTING_CART(SC_SID, SCC_SID, PET_SID)
-		VALUES(SEQ_SC.NEXTVAL, #{sccSid}, #{petSid});
+		VALUES(SEQ_SC.NEXTVAL, #{sccSid}, #{petSid})
+	</insert>
+	
+	<insert id="sittingBook">
+		INSERT INTO SITTING_BOOK(SB_SID, SPH_SID, SB_START, SB_END, SB_DATE, SB_PRICE, SCC_SID)
+		VALUES(SEQ_SB.NEXTVAL, #{sphSid},TO_DATE(#{sbStart}, 'YYYY-MM-DD') ,TO_DATE(#{sbEnd}, 'YYYY-MM-DD'), SYSDATE, #{price}, #{sccSid})
 	</insert>
 
 </mapper>
