@@ -33,9 +33,12 @@
 	$(function()
 	{
 		var flag =<%=request.getParameter("flag")%>
-		if( flag == "1" )	/* 돌봄장소 등록 성공 또는 실패를 하고 돌아왔을 때 */
+		if( flag == "1" || flag == "2" )	/* 돌봄장소 등록 성공 또는 실패를 하고 돌아왔을 때 or  돌봄장소 수정 성공*/
 			goPetSitting();	// 펫시팅으로 바로 이동
-
+		
+		if( flag == "3")	/* 돌봄장소 수정 실패 */	
+			alert("돌봄장소 수정에 실패했습니다.");
+			
 		function goPetSitting()
 		{
 			$.ajax(
