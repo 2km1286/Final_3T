@@ -26,23 +26,24 @@ public class MemberService implements IMemberService
 	}
 	
 	// 아이디 비밀번호로 펫시팅 종료 카운트 조회
-	public String searchSittingcount(MemberDTO dto)
+	public int searchSittingcount(String memSid)
 	{
-		String result = "";
+		int result = 0;
 
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		result = dao.searchSittingcount(dto);
+		result = dao.searchSittingcount(memSid);
+		
 		return result;
 
 	}
 	
 	// 아이디 비밀번호로 대리산책 종료 카운트 조회
-	public String searchWalkcount(MemberDTO dto)
+	public int searchWalkcount(String memSid)
 	{
-		String result = "";
+		int result = 0;
 
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
-		result = dao.searchWalkcount(dto);
+		result = dao.searchWalkcount(memSid);
 		return result;
 
 	}
