@@ -159,46 +159,30 @@ String cp = request.getContextPath();
 	
 	
 	// 펫시팅 반려
-	function DeleteSittingReport(srrSid,imaSid) 
+	function ReturnSittingReport(srrSid,imaSid) 
 	{
-    if (confirm("반려 처리하시겠습니까?")) {
-        $.ajax({
-            type: "POST",
-            url: "removesittingreport.action?srrSid="+srrSid+"&miSid="+${miSid}+"&imaSid="+imaSid,
-            async: true,
-            success: function(data) 
-            {
-                window.location.href = "managermain.action?flag=1";
-            },
-            error: function(e) 
-            {
-                alert(e.responseText);
-            }
-        	});
-   	 	}
+		if (imaSid == '3')
+			var question = "수정요청 하시겠습니까?";
+		else
+			var question = "반려 처리하시겠습니까?";
+    	if (confirm(question)) {
+	        $.ajax({
+	            type: "POST",
+	            url: "removesittingreport.action?srrSid="+srrSid+"&miSid="+${miSid}+"&imaSid="+imaSid,
+	            async: true,
+	            success: function(data) 
+	            {
+	                window.location.href = "managermain.action?flag=1";
+	            },
+	            error: function(e) 
+	            {
+	                alert(e.responseText);
+	            }
+	        	});
+	   	 	}
 	}
 	
-	// 펫시팅 수정요청
-	function ChangeSittingReport(srrSid,imaSid) 
-	{
-    if (confirm("수정요청 하시겠습니까?")) {
-        $.ajax({
-            type: "POST",
-            url: "removesittingreport.action?srrSid=" + srrSid+"&miSid="+${miSid}+"&ima="+imaSid,
-            async: true,
-            success: function(data) 
-            {
-                window.location.href = "managermain.action?flag=1";
-            },
-            error: function(e) 
-            {
-                alert(e.responseText);
-            }
-        	});
-   	 	}
-	}
 	
-
 
 	// 블라인드 처리 했을때 분기 처리후 넘김 컨트롤러로
 	function updateSittingPublic(ipSid,spSid)
@@ -320,9 +304,9 @@ String cp = request.getContextPath();
 							<td id="actionBtn"><input class="report-button"
 								type="button" value="정지" onclick="openSuspensionModal(${list.srrSid},${list.spSid})"> 
 								<input class="report-button"
-								type="button" value="반려" onclick="DeleteSittingReport(${list.srrSid},4)"> 
+								type="button" value="반려" onclick="ReturnSittingReport(${list.srrSid},4)"> 
 								<input class="report-button"
-								type="button" value="수정요청" onclick="ChangeSittingReport(${list.srrSid},3)"> 
+								type="button" value="수정요청" onclick="ReturnSittingReport(${list.srrSid},3)"> 
 								<!-- 분기처리 시작 --> 
 								<c:if
 									test="${list.ipSid == '1'}">

@@ -87,6 +87,9 @@ input[type="button"]:hover {
 <script type="text/javascript">
 	$(function()
 		{
+			var flag =<%=request.getAttribute("flag")%>
+			if (flag == '5')
+				searchMember();
 			
 			// "통계 확인하기" 버튼 클릭 시 모달 창 열기
 		    $("#showStatsBtn").click(function() 
@@ -114,7 +117,12 @@ input[type="button"]:hover {
 		 	// 검색 버튼 클릭 시 // 공백도 제거
 		    $("#searchMemberBtn").click(function() 
 		    {
-		    	var userNickName = $("#userNick").val().trim("");
+		    	searchMember();
+			});
+		 	
+		 	function searchMember()
+			{
+		 		var userNickName = $("#userNick").val().trim("");
 		    	if (userNickName =="")
 				{
 		    		$.ajax(
@@ -149,8 +157,7 @@ input[type="button"]:hover {
     	   				}
     	   			}); 
 		    	}
-		     	
-			});
+			}
 			
 			
 		    function createChart(data)
@@ -184,6 +191,8 @@ input[type="button"]:hover {
 		    {
 		        $("#myModal").css("display", "none");
 		    });
+		    
+		    
 });
 </script>
 </head>

@@ -81,28 +81,28 @@ public class SittingDTO {
    
    // 펫시팅 장바구닝 생성 및 담기
    private int sccSid, scSid;
-   
+
    private String pricee;
    
    private int totalPrice;
    
    public int getTotalPrice()
-{
-	return totalPrice;
-}
-public void setTotalPrice(int totalPrice)
-{
-	this.totalPrice = totalPrice;
-}
-public String getPricee()
-{
-	return pricee;
-}
-public void setPricee(String pricee)
-{
-	this.pricee = pricee;
-}
-public String getDatepicker1()
+    {
+      return totalPrice;
+    }
+    public void setTotalPrice(int totalPrice)
+    {
+      this.totalPrice = totalPrice;
+    }
+    public String getPricee()
+    {
+      return pricee;
+    }
+    public void setPricee(String pricee)
+    {
+      this.pricee = pricee;
+    }
+    public String getDatepicker1()
    {
        return datepicker1;
    }
@@ -151,55 +151,55 @@ public String getDatepicker1()
        this.selectedPetsSid = selectedPetsSid;
    }
 
-	public int getSlSid()
-	{
-		return slSid;
-	}
-	public void setSlSid(int slSid)
-	{
-		this.slSid = slSid;
-	}
-	public String getSppName()
-	{
-		return sppName;
-	}
-	public void setSppName(String sppName)
-	{
-		this.sppName = sppName;
-	}
-	public String getSppPath()
-	{
-		return sppPath;
-	}
-	public void setSppPath(String sppPath)
-	{
-		this.sppPath = sppPath;
-	}
-	public List<String> getSelectedTags()
-	{
-		return selectedTags;
-	}
-	public void setSelectedTags(List<String> selectedTags)
-	{
-		this.selectedTags = selectedTags;
-	}
-	public String getSelectedTagsString()
-	{
-		return selectedTagsString;
-	}
-	public void setSelectedTagsString(String selectedTagsString)
-	{
-		this.selectedTagsString = selectedTagsString;
-	}
-	public String getSpZipCode()
-	{
-		return spZipCode;
-	}
-	public void setSpZipCode(String spZipCode)
-	{
-		this.spZipCode = spZipCode;
-	}
-	public String getJmNickName()
+   public int getSlSid()
+   {
+      return slSid;
+   }
+   public void setSlSid(int slSid)
+   {
+      this.slSid = slSid;
+   }
+   public String getSppName()
+   {
+      return sppName;
+   }
+   public void setSppName(String sppName)
+   {
+      this.sppName = sppName;
+   }
+   public String getSppPath()
+   {
+      return sppPath;
+   }
+   public void setSppPath(String sppPath)
+   {
+      this.sppPath = sppPath;
+   }
+   public List<String> getSelectedTags()
+   {
+      return selectedTags;
+   }
+   public void setSelectedTags(List<String> selectedTags)
+   {
+      this.selectedTags = selectedTags;
+   }
+   public String getSelectedTagsString()
+   {
+      return selectedTagsString;
+   }
+   public void setSelectedTagsString(String selectedTagsString)
+   {
+      this.selectedTagsString = selectedTagsString;
+   }
+   public String getSpZipCode()
+   {
+      return spZipCode;
+   }
+   public void setSpZipCode(String spZipCode)
+   {
+      this.spZipCode = spZipCode;
+   }
+   public String getJmNickName()
 
    {
       return jmNickName;

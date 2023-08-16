@@ -153,6 +153,8 @@ table.table-hover>tbody>tr:hover {
 		var flag =<%=request.getAttribute("flag")%>
 		if (flag == 1 || flag == 2 || flag ==3 || flag==4)
 			managerReportList();
+		if (flag == 5)
+			managerMembertList();
 
 		// 처리완료된 신고
 		$("#completeReport").click(function()
@@ -183,22 +185,7 @@ table.table-hover>tbody>tr:hover {
 
 		$("#memberList").click(function()
 		{
-			$.ajax(
-			{
-				type : "POST",
-				url : "managermemberlist.action",
-				async : true,
-				success : function(data)
-				{
-					$("#mainContent").html(data);
-
-				},
-				error : function(e)
-				{
-					alert(e.responseText);
-				}
-
-			});
+			managerMembertList();
 		});
 
 		
@@ -242,6 +229,25 @@ table.table-hover>tbody>tr:hover {
 				{
 					alert(e.responseText);
 				}
+			});
+		}
+		function managerMembertList()
+		{
+			$.ajax(
+			{
+				type : "POST",
+				url : "managermemberlist.action?flag=5",
+				async : true,
+				success : function(data)
+				{
+					$("#mainContent").html(data);
+
+				},
+				error : function(e)
+				{
+					alert(e.responseText);
+				}
+
 			});
 		}
 

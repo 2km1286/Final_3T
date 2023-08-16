@@ -309,12 +309,20 @@ public class ManagerService implements IManagerService
 		result = dao.memberBanned(dto);
 		return result;
 	}
-	// 멤버 정지
+	// 멤버 정지 프로필
 	public int memberBannedProfile(ManagerDTO dto)
 	{
 		int result = 0;
 		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
 		result = dao.memberBannedProfile(dto);
+		return result;
+	}
+	// 멤버 정지 강제적
+	public int memberBannedForce(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberBannedForce(dto);
 		return result;
 	}
 	
