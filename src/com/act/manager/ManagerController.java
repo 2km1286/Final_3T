@@ -229,6 +229,7 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
+		request.setAttribute("flag", request.getParameter("flag"));
 		result = "/WEB-INF/ajax/manager/ManagerMemberListForm.jsp";
 		return result;
 	}
@@ -364,26 +365,42 @@ public class ManagerController
 	}
 
 	
-	// 멤버 정지
+	// 멤버 정지 펫시팅
 	@RequestMapping("/memberbanned.action")
 	public String memberBanned(ManagerDTO dto)
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
+		dto.setIpSid(2);
+		int k = managerService.updateSittingPublic(dto);
 		int i = managerService.deleteSittingReport(dto);
 		int j = managerService.memberBanned(dto);
 		result= "mainpage.action";		// 모르겠음 사실 이건
 		return result;
 	}
 	
-	// 멤버 정지
+	// 멤버 정지 프로필
 	@RequestMapping("/memberbannedprofile.action")
 	public String memberBannedProfile(ManagerDTO dto)
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
+		dto.setIpSid(2);
+		int k = managerService.updateSittingPublic(dto);
 		int i = managerService.deleteProfileReport(dto);
 		int j = managerService.memberBannedProfile(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
+	
+	// 멤버 정지 강제
+	@RequestMapping("/memberbannedforce.action")
+	public String memberBannedForce(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		
+		int j = managerService.memberBannedForce(dto);
 		result= "mainpage.action";		// 모르겠음 사실 이건
 		return result;
 	}
@@ -414,7 +431,8 @@ public class ManagerController
 		result = "redirect:sittingreservationpage.action?memSid="+memSid;
 		return result;
 	}
-	// ssr 을 통해 예약페이지 접근
+	
+	// 정지내역 조회
 	
 	
 	
