@@ -36,7 +36,8 @@ public interface ISittingService
 	public SittingDTO sittingSrwRate(String memSid);
 	public ArrayList<SittingDTO> sittingSrwRates();
 	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
-	
-	
+
+	public int sittingtestQualification(SittingDTO dto);
+
 }
 

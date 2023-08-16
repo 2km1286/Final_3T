@@ -9,7 +9,7 @@ public class ManagerDTO
 	
 	private int imaSid;
 	
-	private int srrSid,spSid,irSid,memSid,ipSid;
+	private int srrSid,spSid,irSid,ipSid;
 	private int wrrSid,wpSid;
 	private int prrSid,prcSid;
 	private String reportedJmNickName,reporterJmNickName,prrDetail,prrDate,prcDate;
@@ -24,9 +24,144 @@ public class ManagerDTO
 	private int totalCount,sitterCount,walkerCount,basicCount;
 	
 	
+	private int serSid,secSid,werSid,wbSid,wecSid;
+	private String serDate,secDate,werDate,wecDate; 
+	
+	private String jmId,jmName,jmGender,jmTel,memRegitstDate,memSid;
+	
+	private int ibSid;
 	
 	
 	
+	
+	public int getIbSid()
+	{
+		return ibSid;
+	}
+	public void setIbSid(int ibSid)
+	{
+		this.ibSid = ibSid;
+	}
+	public String getMemSid()
+	{
+		return memSid;
+	}
+	public void setMemSid(String memSid)
+	{
+		this.memSid = memSid;
+	}
+	public String getMemRegitstDate()
+	{
+		return memRegitstDate;
+	}
+	public void setMemRegitstDate(String memRegitstDate)
+	{
+		this.memRegitstDate = memRegitstDate;
+	}
+	public String getJmId()
+	{
+		return jmId;
+	}
+	public void setJmId(String jmId)
+	{
+		this.jmId = jmId;
+	}
+	public String getJmName()
+	{
+		return jmName;
+	}
+	public void setJmName(String jmName)
+	{
+		this.jmName = jmName;
+	}
+	public String getJmGender()
+	{
+		return jmGender;
+	}
+	public void setJmGender(String jmGender)
+	{
+		this.jmGender = jmGender;
+	}
+	public String getJmTel()
+	{
+		return jmTel;
+	}
+	public void setJmTel(String jmTel)
+	{
+		this.jmTel = jmTel;
+	}
+	public int getWerSid()
+	{
+		return werSid;
+	}
+	public void setWerSid(int werSid)
+	{
+		this.werSid = werSid;
+	}
+	public int getWbSid()
+	{
+		return wbSid;
+	}
+	public void setWbSid(int wbSid)
+	{
+		this.wbSid = wbSid;
+	}
+	public int getWecSid()
+	{
+		return wecSid;
+	}
+	public void setWecSid(int wecSid)
+	{
+		this.wecSid = wecSid;
+	}
+	public String getWerDate()
+	{
+		return werDate;
+	}
+	public void setWerDate(String werDate)
+	{
+		this.werDate = werDate;
+	}
+	public String getWecDate()
+	{
+		return wecDate;
+	}
+	public void setWecDate(String wecDate)
+	{
+		this.wecDate = wecDate;
+	}
+	public int getSerSid()
+	{
+		return serSid;
+	}
+	public void setSerSid(int serSid)
+	{
+		this.serSid = serSid;
+	}
+	public int getSecSid()
+	{
+		return secSid;
+	}
+	public void setSecSid(int secSid)
+	{
+		this.secSid = secSid;
+	}
+	public String getSerDate()
+	{
+		return serDate;
+	}
+	public void setSerDate(String serDate)
+	{
+		this.serDate = serDate;
+	}
+	public String getSecDate()
+	{
+		return secDate;
+	}
+	public void setSecDate(String secDate)
+	{
+		this.secDate = secDate;
+	}
 	public int getTotalCount()
 	{
 		return totalCount;
@@ -277,14 +412,6 @@ public class ManagerDTO
 	public void setIrSid(int irSid)
 	{
 		this.irSid = irSid;
-	}
-	public int getMemSid()
-	{
-		return memSid;
-	}
-	public void setMemSid(int memSid)
-	{
-		this.memSid = memSid;
 	}
 	public String getJmNickName()
 	{

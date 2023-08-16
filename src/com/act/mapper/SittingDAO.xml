@@ -172,8 +172,20 @@
 		VALUES (SEQ_STR.NEXTVAL, #{memSid})
 	</insert>
 	
+	<!-- 펫시터 면허발급 -->
+	<insert id="createPetSitterLicense">
+		INSERT INTO SITTING_LICENSE(SL_SID, STS_SID) 
+		VALUES(SEQ_SL.NEXTVAL, #{stssid})
+	</insert>	
+	
+	<!-- 펫시터 시험 제출번호 조회 -->
+	<select id="submitNum" resultType="java.lang.Integer">
+		SELECT NVL(MAX(STS_SID), 0) AS STSSID 
+		FROM SITTING_TEST_SUBMIT
+	</select>
+	
 	<select id="receiveNum" resultType="java.lang.Integer">
-		SELECT NVL(MAX(STR_SID), 0) 
+		SELECT NVL(MAX(STR_SID), 0) AS STRSID
 		FROM SITTING_TEST_RECEIVE
 	</select>
 	
@@ -199,6 +211,11 @@
 		FROM SITTING_PASS_CUT
         ORDER BY SPC_SID DESC
 	</select>
+	
+	<insert id="addTestResult">
+		INSERT INTO SITTING_TEST_SUBMIT(STS_SID, STR_SID, TOTAL_SCORE)
+		VALUES(SEQ_STS.NEXTVAL, #{strsid}, #{totalScore})
+	</insert>
 	
 
 	<select id="sittingReviewToday" resultType="com.act.sitting.SittingDTO">

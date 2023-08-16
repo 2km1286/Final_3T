@@ -203,8 +203,120 @@ public class ManagerService implements IManagerService
 		
 	}
 	
+	// 펫시팅 비상내역
+	public ArrayList<ManagerDTO> sittingEmergList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.sittingEmergList();
+		
+		return result;
+		
+	}
+	
+	// 펫시팅 비상완료내역
+	public ArrayList<ManagerDTO> sittingEmergComplete()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.sittingEmergComplete();
+		
+		return result;
+		
+	}
 	
 	
+	
+	
+	// 대리산책 비상내역
+	public ArrayList<ManagerDTO> walkEmergList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.walkEmergList();
+		
+		return result;
+		
+	}
+	
+	// 대리산책 비상완료내역
+	public ArrayList<ManagerDTO> walkEmergComplete()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.walkEmergComplete();
+		
+		return result;
+		
+	}
+	
+	
+	
+	// 펫시팅 비상접수 처리(신고접수에 삭제)
+	public int deleteSittingEmerg(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.deleteSittingEmerg(dto);
+		return result;
+	}
+	
+	
+	// 대리산책 비상접수 처리(신고접수에 삭제)
+	public int deleteWalkEmerg(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.deleteWalkEmerg(dto);
+		return result;
+	}
+	
+	
+	// 멤버전체 출력
+	public ArrayList<ManagerDTO> memberAllList()
+	{
+		ArrayList<ManagerDTO> result = new ArrayList<ManagerDTO>();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberAllList();
+		
+		return result;
+		
+	}
+	
+	// 멤버 닉네임 검색 출력
+	public ManagerDTO memberNickNameList(ManagerDTO dto)
+	{
+		ManagerDTO result = new ManagerDTO();
+		
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberNickNameList(dto);
+		
+		return result;
+		
+	}
+	
+	
+	// 멤버 정지 펫시팅
+	public int memberBanned(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberBanned(dto);
+		return result;
+	}
+	// 멤버 정지
+	public int memberBannedProfile(ManagerDTO dto)
+	{
+		int result = 0;
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.memberBannedProfile(dto);
+		return result;
+	}
 	
 	// 통계를 위한 멤버 분포 수
 	public ManagerDTO memberCount()
@@ -217,7 +329,13 @@ public class ManagerService implements IManagerService
 		return result;
 	}
 
-	
+	public String openWithSrrId(ManagerDTO dto)
+	{
+		String result = "";
+		IManagerDAO dao = sqlSession.getMapper(IManagerDAO.class);
+		result = dao.openWithSrrId(dto);
+		return result;
+	}
 
 	
 

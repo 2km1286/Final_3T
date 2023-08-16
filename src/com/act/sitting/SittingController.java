@@ -11,6 +11,7 @@ import javax.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -212,12 +213,24 @@ public class SittingController
 		return result;
 	}
 	
+	
 	// 펫시팅 리스트에서 펫시터 지원하기 눌렀을때
 	@RequestMapping("/sittingtest.action")
-	public String main()
+	public String main(HttpSession session)
 	{
 		String result = "";
-		result = "/WEB-INF/views/index/TermsPage.jsp";
+		
+		String memSid = (String)session.getAttribute("memSid");
+		SittingDTO dto = new SittingDTO();
+		dto.setMemSid(memSid);
+		int count = sittingService.sittingtestQualification(dto);
+		
+		if(count > 0)	
+			result = "redirect:sittinglistpage.action?alertMessage=alreadyQualified";
+		else
+		
+			result = "/WEB-INF/views/index/TermsPage.jsp";
+		
 		return result;
 	}
 	
@@ -227,7 +240,7 @@ public class SittingController
 	{
 		String result = "";
 		
-		// 서비스 -> 접수테이블 insert
+		// 약관동의 후 제출하기를 누르면 접수테이블 insert
 		String memSid = (String)session.getAttribute("memSid");
 		
 		model.addAttribute("questionSittingList", sittingService.sittingTest(memSid));
@@ -238,58 +251,25 @@ public class SittingController
 	
 	// 펫시터 시험을 보고 제출하기를 눌렀을 때
 	@RequestMapping(value = "/submitQuiz.action", method = RequestMethod.POST)
-	public String submitQuiz(HttpServletRequest request, Model model, HttpSession session) 
+	public String submitQuiz(@ModelAttribute SittingQuestionDTO dto, HttpServletRequest request, Model model, HttpSession session) 
 	{
-		String answers = request.getParameter("answers");
-		String[] userAnswers = answers.split(",");
-
-		String memSid = (String) session.getAttribute("memSid");
-		SittingQuestionDTO result = sittingService.gradeQuiz(userAnswers, memSid);
-
-		boolean passed = result.getTotalScore() >= result.getSpcstandard();
-		model.addAttribute("passed", passed);
-		model.addAttribute("nickName", result.getJmnickname());
-		model.addAttribute("totalScore", result.getTotalScore());
-
-		String view = "/WEB-INF/views/index/TestResultPage.jsp";
-		return view;
-	}
-	
-	
-	/*
-	@RequestMapping(value = "/submitQuiz", method = RequestMethod.POST)
-	public String submitQuiz(@RequestParam("answers") String answers, HttpSession session) 
-	{
+	    String answers = request.getParameter("answers");
 	    String[] userAnswers = answers.split(",");
-	    String memSid = (String) session.getAttribute("memSid"); // 사용자 ID를 세션에서 가져옵니다.
 	    
-	    List<SittingQuestionDTO> questions = sittingService.getSittingQuestions(memSid); // 사용자의 시험 문제를 가져옵니다.
+	    String memSid = (String) session.getAttribute("memSid");	// 세션
 	    
-	    int totalScore = 0;
-	    for (int i = 0; i < questions.size(); i++) 
-	    {
-	        if (questions.get(i).getStbanswer().equals(userAnswers[i])) 
-	        {
-	            totalScore += questions.get(i).getStbpoint();
-	        }
-	    }
+	    SittingQuestionDTO result = sittingService.gradeQuiz(userAnswers, memSid);	    
 	    
-	    boolean result = totalScore >= ; // 합격 기준 점수와 비교
-
-	    return result ? "/sittingresultform.action" : "failPage"; // 채점 결과에 따른 리다이렉트
+	    boolean passed = result.getTotalScore() >= result.getSpcstandard();
+	    
+	    model.addAttribute("passed", passed);
+	    model.addAttribute("nickName", result.getJmnickname());
+	    model.addAttribute("totalScore", result.getTotalScore());
+	    
+	    String view = "/WEB-INF/views/index/TestResultPage.jsp";
+	    return view;
 	}
-	*/
 	
-	/*
-	// 펫시터 테스트 페이지에서 합격하면 가는 페이지
-	@RequestMapping("/sittingresultform.action")
-	public String openSittingTestPass()
-	{
-		String result = "";
-		result = "/WEB-INF/views/index/TestResultPage.jsp";
-		return result;
-	}
-	*/
 	
 	// 펫시터 후기 모달
 	@RequestMapping("/sittingreview.action")
