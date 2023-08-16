@@ -17,8 +17,12 @@
 		FROM SITTING_FOLLOWINGCOUNT_VIEW
 		WHERE MEMSID = #{memSid}
 	</select>
-
-
+	
+	<select id="mySfollow" resultType="com.act.sitting.SittingDTO">
+		SELECT SPH_SID AS SPHSID
+		FROM SITTING_FOLLOWING_LIST
+		WHERE MEM_SID = #{memSid}
+	</select>
 	
 
 	<select id="IndexTagList"
