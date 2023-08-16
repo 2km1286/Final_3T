@@ -13,7 +13,7 @@ public class SittingDTO {
    private String jmNickName, sptitle, spAddr1, spAddr2, spZipCode, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
    private int sphSid, srwSid, stleSid, spMaxPet, spSid;
    private String grade;
-   private int price;
+   private int price,pricee;
 
    private String spContent;
    private int ipSid;
@@ -82,7 +82,17 @@ public class SittingDTO {
    // 펫시팅 장바구닝 생성 및 담기
    private int sccSid, scSid;
    
-   public String getDatepicker1()
+   
+   
+   public int getPricee()
+{
+	return pricee;
+}
+public void setPricee(int pricee)
+{
+	this.pricee = pricee;
+}
+public String getDatepicker1()
    {
        return datepicker1;
    }
