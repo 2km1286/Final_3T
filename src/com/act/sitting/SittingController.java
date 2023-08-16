@@ -77,7 +77,7 @@ public class SittingController
 		return result;
 	}
 	
-	
+	/*
 	@RequestMapping("/sittingbooking.action")
 	public String sittingBooking(SittingDTO dto, HttpSession session)
 	{
@@ -87,11 +87,11 @@ public class SittingController
 		String datePicker1 = dto.getDatepicker1();
 		String datePicker2 = dto.getDatepicker2();
 		String selectedPets = dto.getSelectedPets();
-		String pricee = dto.getPricee();
-		int price = Integer.parseInt(pricee);
+		int pricee = dto.getPrice();
+		//int price = Integer.parseInt(pricee);
 		
-		dto.setPrice(price);
-		dto.setpMemSid(pMemSid);
+		dto.setPrice(pricee);			
+		dto.setpMemSid(pMemSid);		 
 		dto.setSbStart(datePicker1);
 		dto.setSbEnd(datePicker2);
 		
@@ -109,11 +109,13 @@ public class SittingController
 		dto.setSelectedPetsSid(selectedPetsSid);
 		
 		int count = 0;
+		
+		
 		count = sittingService.sittingFromCreateCartToBook(dto);
 		view = "/WEB-INF/views/index/ReservationInfo.jsp";
 		return view;
 	}
-	
+	*/
 	
 	
 	
@@ -483,23 +485,60 @@ public class SittingController
 	
 	// 예약정보 확인 -> 견주일때, 펫시터일때 
 	@RequestMapping("/reservationInfo.action")
-	public String getReservation(HttpSession session, Model model)
+	public String getReservation(HttpSession session, Model model, HttpServletRequest request)
 	{
 		String result = "";
 		
 		String memSid = (String)session.getAttribute("memSid");
+		System.out.println(memSid);
+		
+		/*
+		 * System.out.println(dto.getSbSid()); System.out.println(dto.getDatepicker1()); -- 이값만 들어옴
+		 * System.out.println(dto.getDatepicker2()); -- 이값만 들어옴
+		 * System.out.println(dto.getPetGen()); System.out.println(dto.getPetImage());
+		 * System.out.println(dto.getGrade()); System.out.println(dto.getJmNickName());
+		 */
+		
+		//int reservationNum = sittingService.sittingFromCreateCartToBook(dto);
+		//System.out.println(reservationNum);
 		
 		int num = sittingService.getReservationNum(memSid);
-		String memSid2 = sittingService.getReservationMem(num);
+		//System.out.println(num);
+		//String memSid2 = sittingService.getReservationMem(num);
+		//System.out.println(memSid2);
+		System.out.println(sittingService.getInfo(memSid, num));
 		//sittingService.getMatchingHistory(memSid, num);
-		
 		
 		/*
 		 * // 견주라는 것 if(memSid == memSid2) {
 		 */
+		ReservationInfoDTO dto2 = sittingService.getMatchingHistory(memSid, num);
+		
 		model.addAttribute("num", num);
-		model.addAttribute("petList", sittingService.getInfo(memSid));
-		//model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
+		System.out.println(num);
+		model.addAttribute("petList", sittingService.getInfo(memSid, num));
+		System.out.println("어디까지");
+		model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
+		System.out.println("오낭");
+		
+		System.out.println(dto2.getMaxpet());
+		System.out.println(dto2.getSphstart());
+		System.out.println(dto2.getSphend());
+		
+		
+		
+		String nick = request.getParameter("nick");
+		String grade = request.getParameter("grade");
+		//String spSid = request.getParameter("spSid");
+		String rate = request.getParameter("rate");
+		String count = request.getParameter("count");
+		String price = request.getParameter("price");
+		
+		model.addAttribute("nick", nick);
+		model.addAttribute("grade", grade);
+		model.addAttribute("rate", rate);
+		model.addAttribute("count", count);
+		model.addAttribute("price", price);
 		
 		
 		/*

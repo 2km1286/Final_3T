@@ -81,8 +81,7 @@ public class SittingDTO {
    
    // 펫시팅 장바구닝 생성 및 담기
    private int sccSid, scSid;
-
-  
+   
    public String getDatepicker1()
    {
        return datepicker1;
@@ -131,78 +130,6 @@ public class SittingDTO {
    {
        this.selectedPetsSid = selectedPetsSid;
    }
-
-
-
-   private String pricee;
-   
-   private int totalPrice;
-   
-   public int getTotalPrice()
-    {
-      return totalPrice;
-    }
-    public void setTotalPrice(int totalPrice)
-    {
-      this.totalPrice = totalPrice;
-    }
-    public String getPricee()
-    {
-      return pricee;
-    }
-    public void setPricee(String pricee)
-    {
-      this.pricee = pricee;
-    }
-    public String getDatepicker1()
-   {
-       return datepicker1;
-   }
-   public void setDatepicker1(String datepicker1)
-   {
-       this.datepicker1 = datepicker1;
-   }
-   public String getDatepicker2()
-   {
-       return datepicker2;
-   }
-   public void setDatepicker2(String datepicker2)
-   {
-       this.datepicker2 = datepicker2;
-   }
-   public int getSccSid()
-   {
-       return sccSid;
-   }
-   public void setSccSid(int sccSid)
-   {
-       this.sccSid = sccSid;
-   }
-   public int getScSid()
-   {
-       return scSid;
-   }
-   public void setScSid(int scSid)
-   {
-       this.scSid = scSid;
-   }
-   public String getSelectedPets()
-   {
-       return selectedPets;
-   }
-   public void setSelectedPets(String selectedPets)
-   {
-       this.selectedPets = selectedPets;
-   }
-   public List<Integer> getSelectedPetsSid()
-   {
-       return selectedPetsSid;
-   }
-   public void setSelectedPetsSid(List<Integer> selectedPetsSid)
-   {
-       this.selectedPetsSid = selectedPetsSid;
-   }
-
 
    public int getSlSid()
    {
@@ -649,3 +576,4 @@ public class SittingDTO {
 
 
 }
+

@@ -6,8 +6,17 @@ public class ReservationInfoDTO
 	private String petname, petimage, petgen, petspecial;
 	private String memsid;	
 	private int sbsid, sccsid, scsid, iptsid, slsid, spsid, maxpet, ipsid;
-	private String sbstart, sbend, sbdate, sphstart, sphend, sptitle, spcontent, spaddr1, spaddr2, spzipcode, spcreated, extraaddr;
+	private String sbstart, sbend, sbdate, sphstart, sphend, sptitle, spcontent, spaddr1, spaddr2, spzipcode, spcreated, extraaddr, sbprice;
 	
+	
+	public String getSbprice()
+	{
+		return sbprice;
+	}
+	public void setSbprice(String sbprice)
+	{
+		this.sbprice = sbprice;
+	}
 	public int getPetsid()
 	{
 		return petsid;
