@@ -17,6 +17,8 @@ public class SittingService implements ISittingService
 {
 	@Autowired
 	private SqlSession sqlSession;
+	
+	ArrayList<SittingQuestionDTO> questions = new ArrayList<>();
 
 	// 펫시터의 정보를 리스트로 가져오기
 	public ArrayList<SittingDTO> list()
@@ -147,113 +149,112 @@ public class SittingService implements ISittingService
 		return result;
 	}
 	
+	// 펫시터 자격 여부
+	public int sittingtestQualification(SittingDTO dto)
+	{
+		int result = 0;
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		result = dao.slCount(dto);
+		return result;
+	}
+	
+	
 	// 펫시터 자격 테스트 과정
 	@Transactional
 	public ArrayList<SittingQuestionDTO> sittingTest(String memSid)
 	{
-		ArrayList<SittingQuestionDTO> question = new ArrayList<>();
 		
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
 		// 약관동의시 접수함 insert
-		dao.addTestRevice(memSid);
-		System.out.println(memSid);
+		dao.addTestRevice(memSid);				// 접수함 테이블에 접수번호, 멤버번호가 있음
 		
 		// 접수번호 가져오기
-		int strsid = dao.receiveNum();
-		System.out.println(strsid);
+		int strsid = dao.receiveNum();			// 위에 있는 접수번호를 가져옴
+		System.out.println("1 : " + strsid);
 		
 		// 문제 은행에서 문제 가져오기
-		question = dao.questionSittingList();
-		
+		questions = dao.questionSittingList();  // 랜덤으로 문제 10개를 가져옴
 		
 		SittingQuestionDTO dto = new SittingQuestionDTO();
 		
-		// 가져온 문제를 시험지 테이블에 넣기
-		dto.setMemSid(memSid);
-		dto.setStrsid(strsid);
+		// 가져온 문제를 시험지 테이블에 넣기	// petsitting-test-paper
+		dto.setMemSid(memSid);					// dto에 해당 세션의 회원번호와
+		dto.setStrsid(strsid);					// 접수번호 
 		
-		dto.setStbsid1(question.get(0).getStbsid());  
-		dto.setStbsid2(question.get(1).getStbsid());	
-		dto.setStbsid3(question.get(2).getStbsid());
-		dto.setStbsid4(question.get(3).getStbsid());
-		dto.setStbsid5(question.get(4).getStbsid());
-		dto.setStbsid6(question.get(5).getStbsid());
-		dto.setStbsid7(question.get(6).getStbsid());
-		dto.setStbsid8(question.get(7).getStbsid());
-		dto.setStbsid9(question.get(8).getStbsid());
-		dto.setStbsid10(question.get(9).getStbsid());
+		dto.setStbsid1(questions.get(0).getStbsid());  
+		dto.setStbsid2(questions.get(1).getStbsid());	
+		dto.setStbsid3(questions.get(2).getStbsid());
+		dto.setStbsid4(questions.get(3).getStbsid());
+		dto.setStbsid5(questions.get(4).getStbsid());
+		dto.setStbsid6(questions.get(5).getStbsid());
+		dto.setStbsid7(questions.get(6).getStbsid());
+		dto.setStbsid8(questions.get(7).getStbsid());
+		dto.setStbsid9(questions.get(8).getStbsid());
+		dto.setStbsid10(questions.get(9).getStbsid());
 			
 		dao.addSittingQuestion(dto);
 		
-		/* 테스트
-		System.out.println(question.get(0).getStbsid() + "문제1");
-		System.out.println(question.get(1).getStbsid() + "문제2");
-		System.out.println(question.get(2).getStbsid() + "문제3");
-		System.out.println(question.get(3).getStbsid() + "문제4");
-		System.out.println(question.get(4).getStbsid() + "문제5");
-		System.out.println(question.get(5).getStbsid() + "문제6");
-		System.out.println(question.get(6).getStbsid() + "문제7");
-		System.out.println(question.get(7).getStbsid() + "문제8");
-		System.out.println(question.get(8).getStbsid() + "문제9");
-		System.out.println(question.get(9).getStbsid() + "문제10");
-		*/
-		
 		ArrayList<String> list = new ArrayList<>();
-		list.add(question.get(0).getStbanswer());
-		list.add(question.get(1).getStbanswer());
-		list.add(question.get(2).getStbanswer());
-		list.add(question.get(3).getStbanswer());
-		list.add(question.get(4).getStbanswer());
-		list.add(question.get(5).getStbanswer());
-		list.add(question.get(6).getStbanswer());
-		list.add(question.get(7).getStbanswer());
-		list.add(question.get(8).getStbanswer());
-		list.add(question.get(9).getStbanswer());
-		
-		/* 테스트
-		System.out.println("result : " + question.get(0).getStbanswer() + "1");
-		System.out.println("result : " + question.get(1).getStbanswer() + "2");
-		System.out.println("result : " + question.get(2).getStbanswer() + "3");
-		System.out.println("result : " +question.get(3).getStbanswer() + "4");
-		System.out.println("result : " +question.get(4).getStbanswer() + "5");
-		System.out.println("result : " +question.get(5).getStbanswer() + "6");
-		System.out.println("result : " +question.get(6).getStbanswer() + "7");
-		System.out.println("result : " +question.get(7).getStbanswer() + "8");
-		System.out.println("result : " +question.get(8).getStbanswer() + "9");
-		System.out.println("result : " +question.get(9).getStbanswer() + "10");
-		*/
-		
+		list.add(questions.get(0).getStbanswer());
+		list.add(questions.get(1).getStbanswer());
+		list.add(questions.get(2).getStbanswer());
+		list.add(questions.get(3).getStbanswer());
+		list.add(questions.get(4).getStbanswer());
+		list.add(questions.get(5).getStbanswer());
+		list.add(questions.get(6).getStbanswer());
+		list.add(questions.get(7).getStbanswer());
+		list.add(questions.get(8).getStbanswer());
+		list.add(questions.get(9).getStbanswer());
+		 
 		dto.setAnswer(list);
-		return question;
+		
+		return questions;	
+		
 	}
 	
 	
-	// 사용자의 제출한 점수에 합격 불합격 처리
+	// 사용자의 제출한 점수, 문제은행의 번호를 가져옴
+	@Transactional
 	public SittingQuestionDTO gradeQuiz(String[] userAnswers, String memSid) 
-	{
+	{	
 		SittingQuestionDTO result = new SittingQuestionDTO();
-		
+
 	    ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-	    
-	    ArrayList<SittingQuestionDTO> question = sittingTest(memSid);
+	  
 	    result.setJmnickname(dao.searchNick(memSid));
 	    
 	    int passScore = dao.sittingPassScore();
 	    int totalScore = 0;
 	    
-	    for (int i = 0; i < question.size(); i++) 
+	    for (int i = 0; i < questions.size(); i++) 
 	    {
-	    	System.out.println(question.get(i).getStbanswer().equals(userAnswers[i]) + "GGGGG");
-	      if (question.get(i).getStbanswer().equals(userAnswers[i])) 
-	        totalScore += question.get(i).getStbpoint();
+	      if (questions.get(i).getStbanswer().equals(userAnswers[i])) 
+	        totalScore += questions.get(i).getStbpoint();
 	     }
 	    
 	    result.setTotalScore(totalScore); // 총 점수 
 	    result.setSpcstandard(passScore); // 합격 점수
 	    
-	 	//return totalScore >= passScore; // 채점 결과 반환
+	    //------------------------------------------
+	    int strsid = dao.receiveNum(); 
 	    
+	    result.setStrsid(strsid);
+	    result.setTotalScore(totalScore);
+	    
+	    System.out.println("접수번호 결과는 :" + strsid);	// 접수번호 조회
+	    dao.addTestResult(result);
+	    System.out.println(strsid + "찾을 수없다는건가요");
+	    int stssid = dao.submitNum();
+	    System.out.println(stssid);
+	    
+	    if(totalScore >= passScore)
+	    {
+	    	result.setIspassed(true);
+	    	// 펫시터 면허발급 -> 제출번호 insert
+	    	dao.createPetSitterLicense(stssid);	
+	    }
+	    //------------------------------------------
 	    return result;
 	 }
 	
@@ -476,6 +477,7 @@ public class SittingService implements ISittingService
 		return petList;
 	}
 
+
 	// 등록한 돌봄장소가 있는지 카운트
 	@Override
 	public int spCount(SittingDTO dto)
@@ -485,9 +487,20 @@ public class SittingService implements ISittingService
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
 		result = dao.spCount(dto);
-		
-		return result;
+    return result;
 	}
+
+	
+	@Transactional
+	public SittingDTO sittingFromCreateCartToBook(SittingDTO dto)
+	{
+		SittingDTO s = new SittingDTO();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		return s;
+	}
+		
+	
 
 	// 돌봄장소 등록
 	@Transactional

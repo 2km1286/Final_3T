@@ -18,6 +18,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,16 +64,6 @@ public class SittingController
 		SittingDTO sittingSrwRate = sittingService.sittingSrwRate(memSid);
 		ArrayList<SittingDTO> petList = sittingService.petListByMemSid(pMemSid);
 		
-		
-		System.out.println("sitter memSid : " + memSid);
-		System.out.println("listBySpSid: " + list);
-		System.out.println("spListTags: " + spListTags);
-		System.out.println("reviews : " + reviews);
-		System.out.println("reviewsPhoto : " + reviewsPhoto);
-		System.out.println("sittingSrwRate : " + sittingSrwRate.getSrwCount() + " + swrRateAvg : " + sittingSrwRate.getSrwRateAvg());
-		System.out.println("pMemSid : " + pMemSid);
-		System.out.println("petList : " + petList);
-		
 		model.addAttribute("list", list);
 		model.addAttribute("spListTags", spListTags);
 		model.addAttribute("spRest", spRest);
@@ -85,6 +76,71 @@ public class SittingController
 
 		return result;
 	}
+	
+	// 예약하기(예약요청) 버튼을 누를 시 -> 결제페이지로 이동 
+	// 예약페이지에서 선택한 데이터들을 받아와야 함. 
+	@RequestMapping("/sittingpayrequest.action")
+	public String sittingPayRequest(SittingDTO dto, HttpSession session, Model model)
+	{
+		String view = "";
+		
+		String pMemSid = (String)session.getAttribute("memSid");	// 견주의 회원번호
+		String datePicker1 = dto.getDatepicker1();
+		String datePicker2 = dto.getDatepicker2();
+		String selectedPets = dto.getSelectedPets();
+		
+		String[] selectedPetString = dto.getSelectedPets().split(",");
+		  
+		List<Integer> selectedPetsSid = new ArrayList<>();
+		  
+		for(String str : selectedPetString)
+		{
+			int value = Integer.parseInt(str);
+			selectedPetsSid.add(value);
+		}
+		
+		dto.setSelectedPetsSid(selectedPetsSid);
+		
+		System.out.println("견주 : " + pMemSid);
+		System.out.println("체크인날짜: " + datePicker1);
+		System.out.println("체크아웃날짜: " + datePicker2);
+		System.out.println("선택된반려견스트링: " + selectedPets);
+		System.out.println("선택된반려견인티져: " + selectedPetsSid);
+		
+		model.addAttribute("pMemSid", pMemSid);
+		model.addAttribute("datePicker1", datePicker1);
+		model.addAttribute("datePicker2", datePicker2);
+		//model.addAttribute("selectedPetsSid", selectedPetsSid);
+		
+		
+		view = "/WEB-INF/views/index/ReservationPaymentPage.jsp";
+		return view;
+	}
+	
+	/*
+	@RequestMapping("/sittingpaying.action")
+	public String sittingPaying(SittingDTO dto, HttpSession session)
+	{
+		String view = "";
+		System.out.println("왔나?");
+		
+		String pMemSid = (String)session.getAttribute("memSid");	// 견주의 회원번호
+		String datePicker1 = dto.getDatepicker1();
+		String datePicker2 = dto.getDatepicker2();
+		//List<Integer> selectedPetsSid = dto.getSelectedPetsSid();
+		
+		
+		System.out.println("2견주 : " + pMemSid);
+		System.out.println("2체크인날짜: " + datePicker1);
+		System.out.println("2체크아웃날짜: " + datePicker2);
+		//System.out.println("2선택된반려견인티져: " + selectedPetsSid);
+		
+		
+		view = "/WEB-INF/views/index/ReservationInfo.jsp";
+		return view;
+	}
+	*/
+	
 	
 	
 	// 마이페이지 펫시팅. AJAX로 처리. 들어온 예약 확인하기
@@ -270,12 +326,24 @@ public class SittingController
 		return result;
 	}
 	
+	
 	// 펫시팅 리스트에서 펫시터 지원하기 눌렀을때
 	@RequestMapping("/sittingtest.action")
-	public String main()
+	public String main(HttpSession session)
 	{
 		String result = "";
-		result = "/WEB-INF/views/index/TermsPage.jsp";
+		
+		String memSid = (String)session.getAttribute("memSid");
+		SittingDTO dto = new SittingDTO();
+		dto.setMemSid(memSid);
+		int count = sittingService.sittingtestQualification(dto);
+		
+		if(count > 0)	
+			result = "redirect:sittinglistpage.action?alertMessage=alreadyQualified";
+		else
+		
+			result = "/WEB-INF/views/index/TermsPage.jsp";
+		
 		return result;
 	}
 	
@@ -285,7 +353,7 @@ public class SittingController
 	{
 		String result = "";
 		
-		// 서비스 -> 접수테이블 insert
+		// 약관동의 후 제출하기를 누르면 접수테이블 insert
 		String memSid = (String)session.getAttribute("memSid");
 		
 		model.addAttribute("questionSittingList", sittingService.sittingTest(memSid));
@@ -296,58 +364,25 @@ public class SittingController
 	
 	// 펫시터 시험을 보고 제출하기를 눌렀을 때
 	@RequestMapping(value = "/submitQuiz.action", method = RequestMethod.POST)
-	public String submitQuiz(HttpServletRequest request, Model model, HttpSession session) 
+	public String submitQuiz(@ModelAttribute SittingQuestionDTO dto, HttpServletRequest request, Model model, HttpSession session) 
 	{
-		String answers = request.getParameter("answers");
-		String[] userAnswers = answers.split(",");
-
-		String memSid = (String) session.getAttribute("memSid");
-		SittingQuestionDTO result = sittingService.gradeQuiz(userAnswers, memSid);
-
-		boolean passed = result.getTotalScore() >= result.getSpcstandard();
-		model.addAttribute("passed", passed);
-		model.addAttribute("nickName", result.getJmnickname());
-		model.addAttribute("totalScore", result.getTotalScore());
-
-		String view = "/WEB-INF/views/index/TestResultPage.jsp";
-		return view;
-	}
-	
-	
-	/*
-	@RequestMapping(value = "/submitQuiz", method = RequestMethod.POST)
-	public String submitQuiz(@RequestParam("answers") String answers, HttpSession session) 
-	{
+	    String answers = request.getParameter("answers");
 	    String[] userAnswers = answers.split(",");
-	    String memSid = (String) session.getAttribute("memSid"); // 사용자 ID를 세션에서 가져옵니다.
 	    
-	    List<SittingQuestionDTO> questions = sittingService.getSittingQuestions(memSid); // 사용자의 시험 문제를 가져옵니다.
+	    String memSid = (String) session.getAttribute("memSid");	// 세션
 	    
-	    int totalScore = 0;
-	    for (int i = 0; i < questions.size(); i++) 
-	    {
-	        if (questions.get(i).getStbanswer().equals(userAnswers[i])) 
-	        {
-	            totalScore += questions.get(i).getStbpoint();
-	        }
-	    }
+	    SittingQuestionDTO result = sittingService.gradeQuiz(userAnswers, memSid);	    
 	    
-	    boolean result = totalScore >= ; // 합격 기준 점수와 비교
-
-	    return result ? "/sittingresultform.action" : "failPage"; // 채점 결과에 따른 리다이렉트
+	    boolean passed = result.getTotalScore() >= result.getSpcstandard();
+	    
+	    model.addAttribute("passed", passed);
+	    model.addAttribute("nickName", result.getJmnickname());
+	    model.addAttribute("totalScore", result.getTotalScore());
+	    
+	    String view = "/WEB-INF/views/index/TestResultPage.jsp";
+	    return view;
 	}
-	*/
 	
-	/*
-	// 펫시터 테스트 페이지에서 합격하면 가는 페이지
-	@RequestMapping("/sittingresultform.action")
-	public String openSittingTestPass()
-	{
-		String result = "";
-		result = "/WEB-INF/views/index/TestResultPage.jsp";
-		return result;
-	}
-	*/
 	
 	// 펫시터 후기 모달
 	@RequestMapping("/sittingreview.action")
@@ -376,10 +411,6 @@ public class SittingController
 	  { 
 		  String view = "";
 		  
-		  System.out.println("extraAddr(dto) : " + dto.getExtraAddr() );
-		  System.out.println("isptSidList(dto) : " + dto.getIsptSidList());
-		  System.out.println("spMaxPet:" + dto.getSpMaxPet());
-		  
 		  // 검색태그들을 담은 배열을 ,으로 쪼개서 String 타입의 배열에 담는다.
 		  String[] isptSidList = dto.getIsptSidList().split(",");
 		  
@@ -395,8 +426,6 @@ public class SittingController
 		  
 		  
 		  dto.setIsptSidListInteger(isptSidListInteger);
-		  
-		  System.out.println(" isptSidListInteger:" + isptSidListInteger);
 		  
 		  model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
 		  model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));

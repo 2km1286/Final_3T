@@ -50,6 +50,8 @@
       background-color: #0056b3;
     }
   </style>
+  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -61,7 +63,7 @@
             <h5>결제 정보 입력</h5>
           </div>
           <div class="payment-details">
-            <form>
+            <form action="sittingpaying.action" id="payingForm">
               <div class="form-group">
                 <label for="cardNumber">카드 번호</label>
                 <input type="text" class="form-control" id="cardNumber" placeholder="1234-5678-1234-5678">
@@ -80,13 +82,24 @@
                 <label for="name">카드 소유자명</label>
                 <input type="text" class="form-control" id="name" placeholder="홍길동">
               </div>
-              <button type="submit" class="btn btn-pay btn-block">결제하기</button>
+              <button type="button" class="btn btn-pay btn-block" id="payBtn">결제하기</button>
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
+  <script>
+
+	$(function()
+	{
+		$("#payBtn").click(function()
+		{
+			$("#payingForm").submit();
+		});
+	});
+</script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

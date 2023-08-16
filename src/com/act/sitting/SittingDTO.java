@@ -76,10 +76,7 @@ public class SittingDTO {
    private int slSid;
    
    
-   
-   
-   
-   
+
 	public int getSlSid()
 	{
 		return slSid;
@@ -129,6 +126,7 @@ public class SittingDTO {
 		this.spZipCode = spZipCode;
 	}
 	public String getJmNickName()
+
    {
       return jmNickName;
    }
@@ -520,8 +518,6 @@ public class SittingDTO {
    {
       this.petWeight = petWeight;
    }
-
-
 
 
 

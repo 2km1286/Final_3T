@@ -19,8 +19,6 @@
 	</select>
 
 
-	
-
 	<select id="IndexTagList"
 		resultType="com.act.sitting.SittingDTO">
 		SELECT ISPT_SID AS ISPTSID, ISPT_NAME AS ISPTNAME
@@ -56,8 +54,10 @@
 	</select>
 	
 	<select id="sittingPlaceBasic" resultType="com.act.sitting.SittingDTO">
+
 		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, SPZIPCODE, IPSID, SPSID
 		, TO_CHAR(SPHSTART, 'HH24:MI') AS SPHSTART, TO_CHAR(SPHEND, 'HH24:MI') AS SPHEND
+
 		FROM SITTING_PLACE_BASIC_VIEW
 		WHERE MEMSID = #{memSid}
 		ORDER BY SPCREATED DESC
@@ -84,7 +84,7 @@
 	</select>
 	
 	<select id="sittingReviews" resultType="com.act.sitting.SittingDTO">
-		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, JMNICKNAME
+		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, PJMNICKNAME
 		FROM SITTING_REVIEW_VIEW
 		WHERE MEMSID = #{memSid}
 		ORDER BY SRWDATE DESC
@@ -175,8 +175,20 @@
 		VALUES (SEQ_STR.NEXTVAL, #{memSid})
 	</insert>
 	
+	<!-- 펫시터 면허발급 -->
+	<insert id="createPetSitterLicense">
+		INSERT INTO SITTING_LICENSE(SL_SID, STS_SID) 
+		VALUES(SEQ_SL.NEXTVAL, #{stssid})
+	</insert>	
+	
+	<!-- 펫시터 시험 제출번호 조회 -->
+	<select id="submitNum" resultType="java.lang.Integer">
+		SELECT NVL(MAX(STS_SID), 0) AS STSSID 
+		FROM SITTING_TEST_SUBMIT
+	</select>
+	
 	<select id="receiveNum" resultType="java.lang.Integer">
-		SELECT NVL(MAX(STR_SID), 0) 
+		SELECT NVL(MAX(STR_SID), 0) AS STRSID
 		FROM SITTING_TEST_RECEIVE
 	</select>
 	
@@ -202,6 +214,11 @@
 		FROM SITTING_PASS_CUT
         ORDER BY SPC_SID DESC
 	</select>
+	
+	<insert id="addTestResult">
+		INSERT INTO SITTING_TEST_SUBMIT(STS_SID, STR_SID, TOTAL_SCORE)
+		VALUES(SEQ_STS.NEXTVAL, #{strsid}, #{totalScore})
+	</insert>
 	
 
 	<select id="sittingReviewToday" resultType="com.act.sitting.SittingDTO">
@@ -288,6 +305,7 @@
 		WHERE PMEMSID = #{pMemSid}
 	</select>
 	
+
 	<select id="spCount" resultType="java.lang.Integer">
 		SELECT COUNT(SPSID)
 		FROM SITTING_PLACE_BASIC_VIEW
@@ -335,5 +353,16 @@
 
 
 
+	
+	<insert id="sittingCreateCart">
+		INSERT INTO SITTING_CREATE_CART(SCC_SID, MEM_SID)
+		VALUES(SEQ_SCC.NEXTVAL, #{pMemSid});
+	</insert>
+
+
+	<insert id="sittingCart">
+		INSERT INTO SITTING_CART(SC_SID, SCC_SID, PET_SID)
+		VALUES(SEQ_SC.NEXTVAL, #{sccSid}, #{petSid});
+	</insert>
 
 </mapper>
