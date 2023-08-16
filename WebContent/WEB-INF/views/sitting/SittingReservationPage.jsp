@@ -337,7 +337,7 @@ h2, h4, h5 {
 				</div>
 				<!-- 여기에는 견주의 정보입력칸  -->
 				<div class="col-md-5">
-				<form action="sittingbooking.action" id="reservationForm">
+				<form action="reservationInfo.action" id="reservationForm">
 					<div class="card" style="height: 945px; width: 38rem;">
 						<div class="card-header d-flex justify-content-between">
 							예약정보 입력</div>
@@ -378,6 +378,11 @@ h2, h4, h5 {
 								                </div>
 								            </c:forEach>
 								            
+								            <%-- <div class="card-title text-center">
+								            	 <input type="hidden" name="grade" value="${list.grade }" />
+								            	 <input type="hidden" name="nick" value="${list.jmNickName }" />
+								            	 <input type="hidden" name="spSid" value="${listBySpSid.sptitle}"/>
+								            </div> --%>
 								            <script>
 								                var srStartElements = document.querySelectorAll('.srStart');
 								                var srEndElements = document.querySelectorAll('.srEnd');
@@ -481,6 +486,15 @@ h2, h4, h5 {
 								</div>
 								
 								
+								</div>
+								
+								<div class="card-title text-center">
+								      <input type="hidden" name="grade" value="${list.grade }" />
+								      <input type="hidden" name="nick" value="${list.jmNickName }" />
+								      <input type="hidden" name="spSid" value="${listBySpSid.sptitle}"/>
+								      <input type="hidden" name="rate" value="${sittingSrwRate.srwRateAvg }"/>
+								      <input type="hidden" name="count" value="${sittingSrwRate.srwCount }"/>
+								      <input type="hidden" name="price" value="${list.price }"/>
 								</div>
 
 
