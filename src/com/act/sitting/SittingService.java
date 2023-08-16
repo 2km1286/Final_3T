@@ -501,14 +501,42 @@ public class SittingService implements ISittingService
     return result;
 	}
 
-	
+	// 장바구니 생성, 담기, 예약완료 테이블 3개 INSERT
 	@Transactional
-	public SittingDTO sittingFromCreateCartToBook(SittingDTO dto)
+	public int sittingFromCreateCartToBook(SittingDTO dto)
 	{
-		SittingDTO s = new SittingDTO();
+		int result = 0;
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
-		return s;
+		int createCart = 0;
+		int cart = 0;
+		int book = 0;
+		
+		
+		// 1. 장바구니 생성 테이블
+		createCart = dao.sittingCreateCart(dto);
+		
+		// 2. 견주가 만든 최신 SCC_SID 가져오기
+		dto.setSccSid(dao.sccSidMax(dto));
+		
+		// 3. 펫 반복문으로 넣어야 함.
+		for (int sid : dto.getSelectedPetsSid())
+		{
+			dto.setPetSid(sid);
+			dao.sittingCart(dto);
+		}
+		System.out.println("sbStart : " + dto.getSbStart());
+		System.out.println("sbEnd : " + dto.getSbEnd());
+		// 4. 예약테이블 insert
+		result = book = dao.sittingBook(dto);
+		
+		
+		System.out.println("createCart : " + createCart);
+		System.out.println("cart : " + cart);
+		System.out.println("book : " + book);
+		
+		
+		return result;
 	}
 		
 	
