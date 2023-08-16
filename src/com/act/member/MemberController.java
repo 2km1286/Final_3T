@@ -119,6 +119,9 @@ public class MemberController
 	    
         session.setAttribute("memSid", memSid);
         session.setAttribute("memNickName", memNickName);
+        
+        model.addAttribute("mySfollow", sittingService.mySfollow(memSid));
+        model.addAttribute("mySfollowList",sittingService.list());
 	    
 
 	    
