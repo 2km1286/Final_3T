@@ -327,12 +327,12 @@ public class SittingController
 	    // sitting_place 에 인서트, sitting_place_hub에 인서트, 이미지인서트, 특이사항인서트
 	    boolean success = sittingService.insertPlcae(dto);
 		
-	    // insert 성공/실패 후에는 flag에 1을 담아서 마이페이지를 리다이렉트
-	    // 이 flag는 마이페이지에서 펫시팅으로 바로 AJAX처리를 하기 위한 변수
-	    // 성공/실패를 분기하지 않고 보내는 이유는 펫시팅에 진입할 때 분기해주기 때문이다
-	    
-    	result = "redirect:mypage.action?flag=1" ;
-	    	
+	    // insert 성공시엔 flag 에 0, 실패 후에는 flag에 1을 담아서 마이페이지를 리다이렉트
+	   if(success)
+		   result = "redirect:mypage.action?flag=0" ;
+	   else
+		   result = "redirect:mypage.action?flag=1" ;
+	   
 		return result;
 	}
 	
