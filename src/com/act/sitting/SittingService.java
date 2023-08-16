@@ -246,18 +246,15 @@ public class SittingService implements ISittingService
 	    
 	    result.setTotalScore(totalScore); // 총 점수 
 	    result.setSpcstandard(passScore); // 합격 점수
-	    
-	    //------------------------------------------
+	   
 	    int strsid = dao.receiveNum(); 
 	    
 	    result.setStrsid(strsid);
 	    result.setTotalScore(totalScore);
 	    
-	    System.out.println("접수번호 결과는 :" + strsid);	// 접수번호 조회
 	    dao.addTestResult(result);
-	    System.out.println(strsid + "찾을 수없다는건가요");
+	  
 	    int stssid = dao.submitNum();
-	    System.out.println(stssid);
 	    
 	    if(totalScore >= passScore)
 	    {
@@ -265,10 +262,56 @@ public class SittingService implements ISittingService
 	    	// 펫시터 면허발급 -> 제출번호 insert
 	    	dao.createPetSitterLicense(stssid);	
 	    }
-	    //------------------------------------------
+	 
 	    return result;
 	 }
 	
+	
+	// 예약정보 조회 
+	@Override
+	public ArrayList<ReservationInfoDTO> getInfo(String memSid)
+	{
+		ArrayList<ReservationInfoDTO> result = new ArrayList<>();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		result = dao.petInfoList(memSid);
+		
+		
+		return result;
+	}
+	
+	// 예약번호 조회
+	@Override
+	public int getReservationNum(String memSid)
+	{
+		int result = 0;
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		result = dao.getReservationNumber(memSid);
+		return result;
+	}
+	
+	// 견주인지 펫시터인지 확인하기위한 memsid 조회
+	@Override
+	public String getReservationMem(int sbsid)
+	{
+		String result = "";
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		result = dao.reservationMemsid(sbsid);
+		
+		return result;
+	}
+	
+	@Override
+	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid)
+	{
+		ReservationInfoDTO result = new ReservationInfoDTO();
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		result = dao.getMatchingHistory(memsid, sbsid);
+		
+		return result;
+	}
 
 	// 회원번호로 펫시터인 나에게 달린 후기 조회
 	@Override
@@ -501,14 +544,42 @@ public class SittingService implements ISittingService
     return result;
 	}
 
-	
+	// 장바구니 생성, 담기, 예약완료 테이블 3개 INSERT
 	@Transactional
-	public SittingDTO sittingFromCreateCartToBook(SittingDTO dto)
+	public int sittingFromCreateCartToBook(SittingDTO dto)
 	{
-		SittingDTO s = new SittingDTO();
+		int result = 0;
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
-		return s;
+		int createCart = 0;
+		int cart = 0;
+		int book = 0;
+		
+		
+		// 1. 장바구니 생성 테이블
+		createCart = dao.sittingCreateCart(dto);
+		
+		// 2. 견주가 만든 최신 SCC_SID 가져오기
+		dto.setSccSid(dao.sccSidMax(dto));
+		
+		// 3. 펫 반복문으로 넣어야 함.
+		for (int sid : dto.getSelectedPetsSid())
+		{
+			dto.setPetSid(sid);
+			dao.sittingCart(dto);
+		}
+		System.out.println("sbStart : " + dto.getSbStart());
+		System.out.println("sbEnd : " + dto.getSbEnd());
+		// 4. 예약테이블 insert
+		result = book = dao.sittingBook(dto);
+		
+		
+		System.out.println("createCart : " + createCart);
+		System.out.println("cart : " + cart);
+		System.out.println("book : " + book);
+		
+		
+		return result;
 	}
 		
 	

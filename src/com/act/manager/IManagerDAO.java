@@ -57,6 +57,7 @@ public interface IManagerDAO
 	// 멤버 정지
 	public int memberBanned(ManagerDTO dto);
 	public int memberBannedProfile(ManagerDTO dto);
+	public int memberBannedForce(ManagerDTO dto);
 	
 	
 	// 통계를 위한 멤버 분포 수

@@ -77,10 +77,9 @@ public class SittingController
 		return result;
 	}
 	
-	// 예약하기(예약요청) 버튼을 누를 시 -> 결제페이지로 이동 
-	// 예약페이지에서 선택한 데이터들을 받아와야 함. 
-	@RequestMapping("/sittingpayrequest.action")
-	public String sittingPayRequest(SittingDTO dto, HttpSession session, Model model)
+	
+	@RequestMapping("/sittingbooking.action")
+	public String sittingBooking(SittingDTO dto, HttpSession session)
 	{
 		String view = "";
 		
@@ -88,6 +87,14 @@ public class SittingController
 		String datePicker1 = dto.getDatepicker1();
 		String datePicker2 = dto.getDatepicker2();
 		String selectedPets = dto.getSelectedPets();
+		String pricee = dto.getPricee();
+		int price = Integer.parseInt(pricee);
+		
+		dto.setPrice(price);
+		dto.setpMemSid(pMemSid);
+		dto.setSbStart(datePicker1);
+		dto.setSbEnd(datePicker2);
+		
 		
 		String[] selectedPetString = dto.getSelectedPets().split(",");
 		  
@@ -101,45 +108,12 @@ public class SittingController
 		
 		dto.setSelectedPetsSid(selectedPetsSid);
 		
-		System.out.println("견주 : " + pMemSid);
-		System.out.println("체크인날짜: " + datePicker1);
-		System.out.println("체크아웃날짜: " + datePicker2);
-		System.out.println("선택된반려견스트링: " + selectedPets);
-		System.out.println("선택된반려견인티져: " + selectedPetsSid);
-		
-		model.addAttribute("pMemSid", pMemSid);
-		model.addAttribute("datePicker1", datePicker1);
-		model.addAttribute("datePicker2", datePicker2);
-		//model.addAttribute("selectedPetsSid", selectedPetsSid);
-		
-		
-		view = "/WEB-INF/views/index/ReservationPaymentPage.jsp";
-		return view;
-	}
-	
-	/*
-	@RequestMapping("/sittingpaying.action")
-	public String sittingPaying(SittingDTO dto, HttpSession session)
-	{
-		String view = "";
-		System.out.println("왔나?");
-		
-		String pMemSid = (String)session.getAttribute("memSid");	// 견주의 회원번호
-		String datePicker1 = dto.getDatepicker1();
-		String datePicker2 = dto.getDatepicker2();
-		//List<Integer> selectedPetsSid = dto.getSelectedPetsSid();
-		
-		
-		System.out.println("2견주 : " + pMemSid);
-		System.out.println("2체크인날짜: " + datePicker1);
-		System.out.println("2체크아웃날짜: " + datePicker2);
-		//System.out.println("2선택된반려견인티져: " + selectedPetsSid);
-		
-		
+		int count = 0;
+		count = sittingService.sittingFromCreateCartToBook(dto);
 		view = "/WEB-INF/views/index/ReservationInfo.jsp";
 		return view;
 	}
-	*/
+	
 	
 	
 	
@@ -455,7 +429,6 @@ public class SittingController
 		if(count > 0)	
 			result = "redirect:sittinglistpage.action?alertMessage=alreadyQualified";
 		else
-		
 			result = "/WEB-INF/views/index/TermsPage.jsp";
 		
 		return result;
@@ -495,6 +468,51 @@ public class SittingController
 	    
 	    String view = "/WEB-INF/views/index/TestResultPage.jsp";
 	    return view;
+	}
+	
+	@RequestMapping("/pay.action")
+	public String proceedPayment()
+	{
+		String result = "";
+		
+		result = "/WEB-INF/views/index/ReservationPaymentPage.jsp";
+		return result;
+	
+	}
+	
+	
+	// 예약정보 확인 -> 견주일때, 펫시터일때 
+	@RequestMapping("/reservationInfo.action")
+	public String getReservation(HttpSession session, Model model)
+	{
+		String result = "";
+		
+		String memSid = (String)session.getAttribute("memSid");
+		
+		int num = sittingService.getReservationNum(memSid);
+		String memSid2 = sittingService.getReservationMem(num);
+		//sittingService.getMatchingHistory(memSid, num);
+		
+		
+		/*
+		 * // 견주라는 것 if(memSid == memSid2) {
+		 */
+		model.addAttribute("num", num);
+		model.addAttribute("petList", sittingService.getInfo(memSid));
+		//model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
+		
+		
+		/*
+		 } else {
+		  
+		 }
+		 */
+		
+		
+		
+		result = "/WEB-INF/views/index/ReservationInfo.jsp";
+		
+		return result;
 	}
 	
 	

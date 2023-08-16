@@ -50,7 +50,9 @@
       background-color: #0056b3;
     }
   </style>
+
   <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 
 </head>
 
@@ -82,7 +84,9 @@
                 <label for="name">카드 소유자명</label>
                 <input type="text" class="form-control" id="name" placeholder="홍길동">
               </div>
+
               <button type="button" class="btn btn-pay btn-block" id="payBtn">결제하기</button>
+
             </form>
           </div>
         </div>
