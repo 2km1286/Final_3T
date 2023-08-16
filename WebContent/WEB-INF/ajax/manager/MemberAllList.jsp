@@ -87,7 +87,6 @@ input[type="button"]:hover {
 
 </head>
 <body>
-
 		
 		<div id="tableMemberList" class="mt-4">
 			<table class="table table-bordered table-hover">
@@ -103,7 +102,7 @@ input[type="button"]:hover {
 				</thead>
 				<tbody>
 					<c:forEach var="list" items="${memberAllList }">
-						<tr>
+						<tr onclick="openSuspensionModal2('${list.memSid}')">
 							<td>${list.jmId}</td>
 							<td>${list.jmName}</td>
 							<td>${list.jmNickName}</td>
@@ -114,9 +113,74 @@ input[type="button"]:hover {
 					</c:forEach>
 				</tbody>
 			</table>
-			
+			<!-- 모달 창 -->
+			<div id="suspensionModal" class="modal">
+			    <div class="modal-content">
+			    	<span class="close" style="float: right; position: absolute;  
+			    	top: 10px; right: 10px; font-size: 20px; font-weight: bold;">&times;</span>
+			        <label><input type="radio" name="suspensionOption" value="1"> 3일 정지</label><br>
+			        <label><input type="radio" name="suspensionOption" value="2"> 5일 정지</label><br>
+			        <label><input type="radio" name="suspensionOption" value="3"> 7일 정지</label><br>
+			        <label><input type="radio" name="suspensionOption" value="4"> 영구정지</label><br><br>
+			        <button id="suspensionConfirm">확인</button>
+			    </div>
+			</div>
 		</div>
 		
 
 </body>
+<script type="text/javascript">
+	function openSuspensionModal2(memSid) 
+	{	
+	    var modal = document.getElementById("suspensionModal");
+	    modal.style.display = "block"; // 모달 표시
+	    
+	    var confirmButton = document.getElementById("suspensionConfirm");
+	    confirmButton.onclick = function () {
+	        var selectedValue = document.querySelector('input[name="suspensionOption"]:checked');
+	        if (selectedValue) 
+	        {
+	            selectedValue = selectedValue.value;
+	            modal.style.display = "none"; // 모달 숨김
+	            
+	            // 회원 ID와 정지 일수를 서버로 전송
+	            DeleteMemberForce(memSid, selectedValue);
+	        }
+	    };
+	}
+	function closeSuspensionPopup() {
+	    var popup = document.getElementById("suspensionModal");
+	    popup.style.display = "none";
+	}
+	// 모달 닫기 버튼
+	$(".close").on("click", function()
+	{
+	    $("#suspensionModal").css("display", "none");
+	});
+
+	// 정지
+	function DeleteMemberForce(memSid,ibSid) 
+	{
+			
+		if (confirm("정지 처리하시겠습니까?")) 
+		{
+	    $.ajax({
+	        type: "POST",
+	        url: "memberbannedforce.action?memSid="+memSid+"&ibSid="+ibSid
+	 		,async: true,
+	        success: function(data) 
+	        {
+	            window.location.href = "managermain.action?flag=5";
+	        },
+	        error: function(e) 
+	        {
+	            alert(e.responseText);
+	        }
+	    	});
+		}
+	}
+	
+	
+
+</script>
 </html>
