@@ -219,16 +219,20 @@
 
 	<section>
 	<div class="container-mypage">
-			<div class="card text-center" style="width: 1980px; margin-left: 20px; margin-right: 20px;">
+			<div class="card text-center" style="width: 1930px; margin-left: 20px; margin-right: 20px;">
 				<div class="card-body">
 					<h2 class="card-title">예약 정보 확인</h2>
-					<h3 class="card-subtitle mb-2 text-muted">예약번호 20230608178</h3>
+					<h3 class="card-subtitle mb-2 text-muted">예약번호<c:out value="${num}"/></h3>
 				</div>
 			</div><br>
+			
 			<div class="container-fluid py-5bg-light">
 			<div class="row">
 				<div class="col-md-4">
+				<%-- <c:choose>	<%-- 만약 예약건수가 있다면 
+					<c:when test="${passed}"> --%>
 					<div class="card" style="height: 935px;">
+					<c:forEach var="dto" items="${petList}">
 					<br><div class="text-center">
 							<h4>산책할 반려견</h4>
 						</div>
@@ -237,31 +241,22 @@
 							<img src="images/dogdog.png" alt="" class="rounded-circle" style="width: 230px; margin: 20px;">
 						</div>
 						<div class="text-center">
-							<h5>깜돌이</h5>							
-							<h6 class="text-muted">소형견 / 7살 / 남자</h6>
+							<h5>${dto.petname}</h5>							
+							<h6 class="text-muted">${dto.petgen} / ${dto.petweight} / ${dto.petbirth}</h6>
 							<p class="card-text" style="font-size: 1.3rem;">
-     							 🐾 특이사항: 물을 무서워함
+     							 🐾 특이사항: ${dto.petspecial}
    							</p>
-					    </div><br><br>
-						
-						<div class="text-center">
-							<img src="images/cute.png" alt="" class="rounded-circle" style="width: 230px; margin: 20px;">
-						</div>
-						<div class="text-center">
-							<h5>퍼피</h5>							
-							<h6 class="text-muted">소형견 / 7살 / 남자</h6>
-							<p class="card-text" style="font-size: 1.3rem;">
-     							 🐾 특이사항: 물을 무서워함
-   							</p>
-					   </div>
-				
+					    </div>
+					 </c:forEach>
 					 </div>
+					 
+					 
 					</div>
 				
 				<div class="col-md-4">
 					<div class="card">
 					<br><div class="text-center">
-							<h4>대리산책러 정보</h4>
+							<h4>펫시터 정보</h4>
 						</div>
 						<hr>
 						<div class="text-center">
@@ -279,30 +274,40 @@
 							<h4>매칭 조건 정보</h4>
 						</div>
 						<hr>
+						<c:forEach var="dto" items="${dto}">
 						<div class="card-body" style="overflow-y: auto;">
 							<div class="oneText">
 								<span class="card-text"><small class="text-muted">지역</small></span><br>
-								<span class="nick card-text">서울시 마포구 월드컵북로</span>
+								<span class="nick card-text">${dto.spaddr1}</span>
+								<hr><br>
+								
+								<span class="card-text"><small class="text-muted">최대 반려견 수</small></span><br>
+								<span class="nick card-text">${dto.maxpet}</span>
 								<hr><br>
 								
 								<span class="card-text"><small class="text-muted">만남장소</small></span><br> 
-								<span class="card-text">멍멍동 멍멍아파트 단지 앞 왈왈 공원 입구</span>
+								<span class="card-text">${dto.spaddr1}</span>
 								<hr>
 							</div>
 							
-							<div class="oneText">
-								<span class="card-text"><small class="text-muted">날짜</small></span><br>
-								<span class="card-text">2023-06-08</span>
-							</div>
-							<hr>							
 							<div class="oneText row">
+								<div class="col">
+									<span class="card-text"><small class="text-muted">체크인 날짜</small></span><br> <span class="card-text">${dto.sbstart}</span>
+								</div>
+								<div class="col">
+									<span class="card-text"><small class="text-muted">체크아웃 날짜</small></span><br> <span class="card-text">${dto.sbend}</span>
+								</div>
+							</div><hr>
+							<hr>							
+							<!-- <div class="oneText row">
 								<div class="col">
 									<span class="card-text"><small class="text-muted">시작 시간</small></span><br> <span class="card-text">12:00</span>
 								</div>
 								<div class="col">
 									<span class="card-text"><small class="text-muted">종료 시간</small></span><br> <span class="card-text">2:00</span>
-								</div>
-							</div><hr>
+								</div> 
+							</div> -->
+							<hr>
 							<div class="oneText">
 								<span class="card-text"><small class="text-muted">최종금액</small></span><br>
 								<br>
@@ -332,6 +337,7 @@
 
 
 						</div>
+						</c:forEach>
 						</div>
 				
 				</div>

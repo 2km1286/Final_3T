@@ -37,5 +37,9 @@ public interface ISittingService
 	public ArrayList<SittingDTO> sittingSrwRates();
 	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
 	public int sittingtestQualification(SittingDTO dto);
+	public ArrayList<ReservationInfoDTO> getInfo(String memSid);
+	public int getReservationNum(String memSid);
+	public String getReservationMem(int sbsid);
+	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid);
 }
 

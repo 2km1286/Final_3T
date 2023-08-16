@@ -50,6 +50,21 @@
       background-color: #0056b3;
     }
   </style>
+  
+  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+  <script type="text/javascript">
+
+	$().ready(function()
+	{
+		$(".btn-block").click(function()
+		{
+			window.location.href="reservationInfo.action";
+		});
+	});
+	
+</script>
+  
+  
 </head>
 
 <body>
@@ -80,7 +95,7 @@
                 <label for="name">카드 소유자명</label>
                 <input type="text" class="form-control" id="name" placeholder="홍길동">
               </div>
-              <button type="submit" class="btn btn-pay btn-block">결제하기</button>
+              <button type="button" class="btn btn-pay btn-block" id="" onclick="reservationInfo()">결제하기</button>
             </form>
           </div>
         </div>
