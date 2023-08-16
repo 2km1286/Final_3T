@@ -158,9 +158,24 @@ public interface ISittingDAO
 	
 	
 
+
+	// 돌봄장소 업데이트
+	public int updatePlace(SittingDTO dto);
+	
+	// 돌봄장소 사진 삭제
+	public int deletePlacePhoto(SittingDTO dto);
+	
+	// 돌봄장소 태그 삭제
+	public int deletePlaceTag(SittingDTO dto);
+	
+	// 돌봄장소 영업시간 업데이트
+	public int updatePlaceHub(SittingDTO dto);
+	
+
 	
 	// 펫시터 예약반려견 카드 조회
 	public ArrayList<ReservationInfoDTO> petInfoList(String memSid);
+
 
 	
 	// 예약번호 확인

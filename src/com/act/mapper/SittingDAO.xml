@@ -63,7 +63,7 @@
 	<select id="sittingPlaceBasic" resultType="com.act.sitting.SittingDTO">
 
 		SELECT JMNICKNAME, SPMAXPET, SPTITLE, SPCONTENT, SPADDR1, SPADDR2, EXTRAADDR, SPZIPCODE, IPSID, SPSID
-		, TO_CHAR(SPHSTART, 'HH24:MI') AS SPHSTART, TO_CHAR(SPHEND, 'HH24:MI') AS SPHEND
+		, TO_CHAR(SPHSTART, 'HH24:MI') AS SPHSTART, TO_CHAR(SPHEND, 'HH24:MI') AS SPHEND, SPHSID
 
 		FROM SITTING_PLACE_BASIC_VIEW
 		WHERE MEMSID = #{memSid}
@@ -398,5 +398,45 @@
 		INSERT INTO SITTING_BOOK(SB_SID, SPH_SID, SB_START, SB_END, SB_DATE, SB_PRICE, SCC_SID)
 		VALUES(SEQ_SB.NEXTVAL, #{sphSid},TO_DATE(#{sbStart}, 'YYYY-MM-DD') ,TO_DATE(#{sbEnd}, 'YYYY-MM-DD'), SYSDATE, #{price}, #{sccSid})
 	</insert>
+	
+	<update id="updatePlace">
+		UPDATE SITTING_PLACE
+		SET SP_TITLE = #{sptitle}, SP_CONTENT = #{spContent}
+		  , SP_MAX_PET = #{spMaxPet}, IP_SID = #{ipSid}
+		WHERE SP_SID = #{spSid}
+	</update>
+	
+	<update id="updatePlaceHub">
+		UPDATE SITTING_PLACE_HUB
+		SET SPH_START = TO_DATE(#{sphStart}, 'HH24:MI'), SPH_END = TO_DATE(#{sphEnd}, 'HH24:MI')
+		WHERE SPH_SID = #{sphSid} 
+	</update>
+	
+	<delete id="deletePlacePhoto">
+		DELETE
+		FROM SITTING_PLACE_PHOTO
+		WHERE SP_SID = #{spSid}
+	</delete>
+	
+	<delete id="deletePlaceTag">
+		DELETE
+		FROM SITTING_PLACE_TAG
+		WHERE SP_SID = #{spSid}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </mapper>

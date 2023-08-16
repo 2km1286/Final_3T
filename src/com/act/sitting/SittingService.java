@@ -649,7 +649,59 @@ public class SittingService implements ISittingService
 		
 	}
 	
-	
+	// 돌봄장소 업데이트
+	@Transactional
+	public boolean updatePlace(SittingDTO dto)
+	{
+		
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		
+		try
+		{
+			
+			//System.out.println( "컨트롤러에서 넘어왔나? :" + dto.getSpSid() + " / " + dto.getSpSid() + " / " + dto.getSptitle() 
+			// + " / " + dto.getSpContent() + " / " +   dto.getSpAddr1() + " / " + dto.getSpAddr2() + " / " + dto.getSpZipCode() 
+			// + " / " + dto.getSpMaxPet() + " / " + " / " + dto.getIpSid() + " / " + dto.getExtraAddr() );
+			
+			String sppName = dto.getSppName();
+			String sppPath = dto.getSppPath();
+			
+			
+			// 1. 모든 값을 담은 sittingDTO로 SITTING_PLACE 를 업데이트
+			dao.updatePlace(dto);
+			
+			// 2. 모든 값을 담은 sittingDTO로 SITTING_PLACE_HUB 를 업데이트
+			dao.updatePlaceHub(dto);
+		   	
+			// 3. 모든 값을 담은 sittingDTO로 SITTING_PLACE_PHOTO 에 행을 삭제
+			dao.deletePlacePhoto(dto);
+			
+			// 4. 모든 값을 담은 sittingDTO로 SITTING_PLACE_PHOTO 에 인서트
+			dto.setSppPath(sppPath);
+		    dto.setSppName(sppName);
+		    dao.insertPlacePhoto(dto);
+			
+			// 5. 모든 값을 담은 sittingDTO로 SITTING_PLACE_TAG 에 행을 삭제
+		    dao.deletePlaceTag(dto);
+		    
+		    // 6. 모든 값을 담은 sittingDTO로 SITTING_PLACE_TAG 에 인서트
+		    List<String> selectedTags = dto.getSelectedTags();
+		    for (String tagId : selectedTags) 
+		    {
+		    	dto.setIsptSid(Integer.parseInt(tagId));
+		    	dao.insertPlaceTag(dto);
+		    }
+
+		    return true;
+			
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+		
+		
+	}
 	
 	
 	

@@ -33,9 +33,32 @@
 	$(function()
 	{
 		var flag =<%=request.getParameter("flag")%>
-		if( flag == "1" )	/* 돌봄장소 등록 성공 또는 실패를 하고 돌아왔을 때 */
-			goPetSitting();	// 펫시팅으로 바로 이동
-
+		
+		if( flag == "0" )	/* 돌봄장소 등록 성공 */
+		{	
+			alert("돌봄장소가 등록되었습니다.");
+			goPetSitting();	
+		}
+		
+		if( flag == "1")	/*  돌봄장소 등록 실패 */
+		{
+			alert("돌봄장소 등록에 실패했습니다.");
+			goPetSitting();
+		}
+		
+		if( flag == "2")	/* 돌봄장소 수정 성공 */
+		{
+			alert("돌봄장소가 수정되었습니다.");
+			goPetSitting();
+		}
+			
+		if( flag == "3")	/* 돌봄장소 수정 실패 */	
+		{
+			alert("돌봄장소 수정에 실패했습니다.");
+			goPetSitting();
+		}
+		
+		/* 펫시팅 페이지 ajax */
 		function goPetSitting()
 		{
 			$.ajax(

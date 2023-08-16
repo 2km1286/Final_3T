@@ -40,15 +40,17 @@ public interface ISittingService
 
 	public int spCount(SittingDTO dto);
 	
-	
 	// 돌봄장소 등록
 	public boolean insertPlcae(SittingDTO dto);
 	
 	public int slSid(String memSid);
 	
-
 	public int sittingtestQualification(SittingDTO dto);
 	
+
+	// 돌봄장소 업데이트
+	public boolean updatePlace(SittingDTO dto);
+
 	public int sittingFromCreateCartToBook(SittingDTO dto);
 
 	public ArrayList<ReservationInfoDTO> getInfo(String memSid);
@@ -56,5 +58,6 @@ public interface ISittingService
 	public String getReservationMem(int sbsid);
 	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid);
 
-}
+
+}	
 
