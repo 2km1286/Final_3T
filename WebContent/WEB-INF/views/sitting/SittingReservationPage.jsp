@@ -336,8 +336,8 @@ h2, h4, h5 {
 					</div>
 				</div>
 				<!-- 여기에는 견주의 정보입력칸  -->
-				<div class="col-md-5">
-				<form action="reservationInfo.action" id="reservationForm">
+				<div class="col-md-5" style="overflow: auto; height: 90vh;">
+				<form action="sittingbooking.action" id="reservationForm">
 					<div class="card" style="height: 945px; width: 38rem;">
 						<div class="card-header d-flex justify-content-between">
 							예약정보 입력</div>
@@ -491,7 +491,7 @@ h2, h4, h5 {
 								<div class="card-title text-center">
 								      <input type="hidden" name="grade" value="${list.grade }" />
 								      <input type="hidden" name="nick" value="${list.jmNickName }" />
-								      <input type="hidden" name="spSid" value="${listBySpSid.sptitle}"/>
+								      <input type="hidden" name="sptitle" value="${listBySpSid.sptitle}"/>
 								      <input type="hidden" name="rate" value="${sittingSrwRate.srwRateAvg }"/>
 								      <input type="hidden" name="count" value="${sittingSrwRate.srwCount }"/>
 								      <input type="hidden" name="price" value="${list.price }"/>

@@ -4,7 +4,27 @@ public class MemberDTO {
 	private int jmSid, jmGender, stleSidCount, wtleSidCount;
 	// 시팅 카운트 // 산책 카운트
 	private String memSid, memRegistDate, jmId, jmPw, jmName, jmSsn, jmNickName, jmTel, jmAddr1, jmAddr2, jmZipCode,
-			jmImage, randStr;
+			jmImage, randStr,jmExtraAddr;
+
+	public String getJmImage()
+	{
+		return jmImage;
+	}
+
+	public void setJmImage(String jmImage)
+	{
+		this.jmImage = jmImage;
+	}
+
+	public String getJmExtraAddr()
+	{
+		return jmExtraAddr;
+	}
+
+	public void setJmExtraAddr(String jmExtraAddr)
+	{
+		this.jmExtraAddr = jmExtraAddr;
+	}
 
 	public int getStleSidCount() {
 		return stleSidCount;
@@ -134,11 +154,5 @@ public class MemberDTO {
 		this.jmZipCode = jmZipCode;
 	}
 
-	public String getjmImage() {
-		return jmImage;
-	}
-
-	public void setjmImage(String jmImage) {
-		this.jmImage = jmImage;
-	}
+	
 }

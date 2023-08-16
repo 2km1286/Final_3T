@@ -393,7 +393,7 @@ form input[name="jmZipCode"] {
 					<input type="text" id="jmAddr2" name="jmAddr2" placeholder="상세주소">
 				</div>
 				</div>
-				<input type="hidden" id="extraAddress" placeholder="참고항목">
+				<input type="hidden" id="extraAddr" name="jmExtraAddr" placeholder="참고항목">
 
 				<div id="layer"
 					style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
@@ -463,12 +463,12 @@ form input[name="jmZipCode"] {
 											}
 											// 조합된 참고항목을 해당 필드에 넣는다.
 											document
-													.getElementById("extraAddress").value = extraAddr;
+													.getElementById("extraAddr").value = extraAddr;
 
 										} else
 										{
 											document
-													.getElementById("extraAddress").value = '';
+													.getElementById("extraAddr").value = '';
 										}
 
 										// 우편번호와 주소 정보를 해당 필드에 넣는다.
