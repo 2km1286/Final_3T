@@ -206,10 +206,11 @@ public class SittingController
 	}
 	
 	
-	// 마이페이지 펫시팅의 돌봄장소 수정하기를 눌렀을 때, AJAX처리
-	@RequestMapping("/updatespinfoform.action")
-	public String updateSPInfoForm(HttpSession session ,Model model)
+	// 마이페이지 펫시팅의 돌봄장소 수정하기위해 오는 수정 페이지
+	@RequestMapping("/updatesittingplac.action")
+	public String updateSP(HttpSession session,Model model)
 	{
+		
 		String result = "";
 		String memSid = (String)session.getAttribute("memSid");
 		
@@ -220,10 +221,19 @@ public class SittingController
 		model.addAttribute("info", sittingService.sittingPlaceBasic(memSid).get(0));
 		
 		// 현재 운영중인 돌봄장소의 특이사항
-		model.addAttribute("tags", sittingService.sittingPlaceTags(spSid));
+		model.addAttribute("myTags", sittingService.sittingPlaceTags(spSid));
+		
+		// 돌봄장소의 특이사항 리스트
+		model.addAttribute("tagList", sittingService.IndexTagList());
+		
+		// 나에게 달린 후기
+		model.addAttribute("reviews", sittingService.sittingReviews(memSid));
+		
+		// 후기를 쓴 사람의 닉네임을 조회하기위한 전체 출력
+		model.addAttribute("reviewers", sittingService.sittingReviewers());
 		
 		
-		result = "/WEB-INF/ajax/UpdateSPInfoForm.jsp";
+		result = "/WEB-INF/ajax/UpdateSittingPlaceForm.jsp";
 		return result;
 	}
 
@@ -317,11 +327,115 @@ public class SittingController
 	    // sitting_place 에 인서트, sitting_place_hub에 인서트, 이미지인서트, 특이사항인서트
 	    boolean success = sittingService.insertPlcae(dto);
 		
-	    // insert 성공/실패 후에는 flag에 1을 담아서 마이페이지를 리다이렉트
-	    // 이 flag는 마이페이지에서 펫시팅으로 바로 AJAX처리를 하기 위한 변수
-	    // 성공/실패를 분기하지 않고 보내는 이유는 펫시팅에 진입할 때 분기해주기 때문이다
+	    // insert 성공시엔 flag 에 0, 실패 후에는 flag에 1을 담아서 마이페이지를 리다이렉트
+	   if(success)
+		   result = "redirect:mypage.action?flag=0" ;
+	   else
+		   result = "redirect:mypage.action?flag=1" ;
+	   
+		return result;
+	}
+	
+	
+	// 돌봄장소 수정하기를 눌렀을 때 
+	@RequestMapping(value="/updatePlace.action", method = RequestMethod.POST)
+	public String placeUpdate(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException, ServletException
+	{
+		String result = "";
+		
+		// 1. submit해서 받아온 값들을 sittingDTO에 모두 담기
+		SittingDTO dto = new SittingDTO();
+		String fileName = "";
+		String filePath = "";
+		
+		response.setContentType("text/html; charset=UTF-8");
+		//PrintWriter out = response.getWriter();
+		
+		File attachesDir = new File("C:\\attaches");
+		
+		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
+	    fileItemFactory.setRepository(attachesDir);
+	    fileItemFactory.setSizeThreshold(1024 * 1024);
+	    ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
 	    
-    	result = "redirect:mypage.action?flag=1" ;
+	    try {
+            List<FileItem> items = fileUpload.parseRequest(request);
+            for (FileItem item : items) {
+              
+                if (item.isFormField()) {        
+                    if(item.getFieldName().equals("sptitle"))
+                    	dto.setSptitle(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("spContent")) 
+                    	dto.setSpContent(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("spMaxPet"))
+                    	dto.setSpMaxPet(Integer.parseInt(item.getString("UTF-8")));
+                    else if(item.getFieldName().equals("spAddr1"))
+                    	dto.setSpAddr1(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("spAddr2"))
+                    	dto.setSpAddr2(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("extraAddr"))
+                    	dto.setExtraAddr(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("spZipCode"))
+                    	dto.setSpZipCode(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("sphStart"))
+                    	dto.setSphStart(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("sphEnd"))
+                    	dto.setSphEnd(item.getString("UTF-8"));
+                    else if(item.getFieldName().equals("selectedTags"))
+                    {
+                    	String selectedTagsString = item.getString("UTF-8");
+                    	List<String> selectedTags = Arrays.asList(selectedTagsString.split(","));	
+                    	dto.setSelectedTags(selectedTags);
+                    }
+                    else if(item.getFieldName().equals("ipSid"))
+                    	dto.setIpSid(Integer.parseInt(item.getString("UTF-8")));
+                    else if(item.getFieldName().equals("spSid"))
+                    	dto.setSpSid(Integer.parseInt(item.getString("UTF-8")));
+                    else if(item.getFieldName().equals("sphSid"))
+                    	dto.setSphSid(Integer.parseInt(item.getString("UTF-8")));
+                    
+                } else {
+              
+                    if (item.getSize() > 0) {
+                        String separator = File.separator;
+                        int index =  item.getName().lastIndexOf(separator);
+                        fileName = item.getName().substring(index  + 1);
+                        filePath = "C:\\attaches" + separator + fileName;
+                        File uploadFile = new File(filePath);
+                        item.write(uploadFile);
+                        
+                        if(item.getFieldName().equals("file"))
+                        	dto.setSppName(item.getName()); // 파일 이름 설정
+                       
+                    }
+                }
+            }
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+	    
+	    // submit해서 받아온 값 외에 돌봄장소 등록에 필요한 값들을 추가적으로 dto에 set
+	    String memSid = (String)session.getAttribute("memSid");
+	    dto.setMemSid(memSid);
+	    dto.setSppPath("C:\\attaches");					// 사진을 저장한 폴더경로
+	    dto.setSlSid(sittingService.slSid(memSid));
+	    
+	    // spSid 제외하고 업데이트에 필요한 모든 값을 dto에 담았음
+	    
+	    //System.out.println(dto.getSpSid() + " / " + dto.getSpSid() + " / " + dto.getSptitle() + " / " + dto.getSpContent() + " / " +   dto.getSpAddr1()
+	    //+ " / " + dto.getSpAddr2() + " / " + dto.getSpZipCode() + " / " + dto.getSpMaxPet() + " / " 
+	    //+ " / " + dto.getIpSid() + " / " + dto.getExtraAddr() );
+	    
+	    // sitting_place 업데이트, sitting_place_hub  업데이트, 이미지 딜리트 후 인서트, 특이사항 딜리트 후 인서트
+	    boolean success = sittingService.updatePlace(dto);
+		
+	    // update 성공/실패 후에는 flag에 2를 담아서 마이페이지를 리다이렉트
+	    // 이 flag는 마이페이지에서 업데이트 alert을 띄워주기 위함이다.
+	    if (success)
+	    	result = "redirect:mypage.action?flag=2";
+	    else
+	    	result = "redirect:mypage.action?flag=3";
 	    	
 		return result;
 	}

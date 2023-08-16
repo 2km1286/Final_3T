@@ -40,14 +40,15 @@ public interface ISittingService
 
 	public int spCount(SittingDTO dto);
 	
-	
 	// 돌봄장소 등록
 	public boolean insertPlcae(SittingDTO dto);
 	
 	public int slSid(String memSid);
 	
-
 	public int sittingtestQualification(SittingDTO dto);
+	
+	// 돌봄장소 업데이트
+	public boolean updatePlace(SittingDTO dto);
 
-}
+}	
 
