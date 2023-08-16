@@ -194,6 +194,7 @@ public class ManagerController
 	{
 		String result = "";
 		// AJAX이자 컴포넌트
+		
 		int i = managerService.deleteSittingReport(dto);
 		result= "mainpage.action";		// 모르겠음 사실 이건
 		return result;
@@ -363,7 +364,29 @@ public class ManagerController
 	}
 
 	
+	// 멤버 정지
+	@RequestMapping("/memberbanned.action")
+	public String memberBanned(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteSittingReport(dto);
+		int j = managerService.memberBanned(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
 	
+	// 멤버 정지
+	@RequestMapping("/memberbannedprofile.action")
+	public String memberBannedProfile(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		int i = managerService.deleteProfileReport(dto);
+		int j = managerService.memberBannedProfile(dto);
+		result= "mainpage.action";		// 모르겠음 사실 이건
+		return result;
+	}
 	
 	
 	// 통계를 위한 회원 분포 수
@@ -378,6 +401,24 @@ public class ManagerController
 		return result;
 		
 	}
+	
+	
+	// ssrSid 을 통해 memSId 검색
+	@RequestMapping("/openwithsrrid.action")
+	public String openWithSrrdId(ManagerDTO dto)
+	{
+		String result = "";
+		// AJAX이자 컴포넌트
+		String memSid = managerService.openWithSrrId(dto);
+		System.out.print(memSid);
+		result = "redirect:sittingreservationpage.action?memSid="+memSid;
+		return result;
+	}
+	// ssr 을 통해 예약페이지 접근
+	
+	
+	
+	
 		
 
 }
