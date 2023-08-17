@@ -67,6 +67,9 @@ public interface ISittingService
 	
 	// 펫시팅 돌봄공간 신고
 	public int placeReportReceive(SittingDTO dto);
+	
+	// 예약날짜
+	public ArrayList<SittingDTO> sbDates(String memSid);
 
 }	
 

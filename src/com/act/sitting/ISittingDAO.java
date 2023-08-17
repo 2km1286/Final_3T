@@ -196,4 +196,7 @@ public interface ISittingDAO
 	// 펫시팅 돌봄공간 신고
 	public int placeReportReceive(SittingDTO dto);
 	public ReservationInfoDTO getMatchingHistory(ReservationInfoDTO dto);
+	
+	// 예약날짜
+	public ArrayList<SittingDTO> sbDates(String memSid);
 }

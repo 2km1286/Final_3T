@@ -495,16 +495,19 @@ p {
 									</c:if>
 							</c:forEach>
 							
-							<c:forEach items="${sittingSrwRates }" var="srw">
-								<c:if test="${dto.memSid == srw.memSid }">
-									<c:if test="${srs.srwRateAvg =! 0 }">
-										<p>0.0 ⭐ (0개의 후기)
-									</c:if>
-									<c:if test="${srw.srwRateAvg != 0 }">
-										<p>${srw.srwRateAvg } ⭐ (${srw.srwCount }개의 후기)
-									</c:if>
-								</c:if>
-							</c:forEach>
+							<c:choose>
+								<c:when test="${sittingSrwRates == null }">
+									<<p>0.0 ⭐ (0개의 후기) </p>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${sittingSrwRates }" var="srw">
+										<c:if test="${dto.memSid == srw.memSid }">
+											<p>${srw.srwRateAvg } ⭐ (${srw.srwCount }개의 후기)
+										</c:if>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+								
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
