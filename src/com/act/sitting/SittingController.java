@@ -652,7 +652,7 @@ public class SittingController
 	  public String sittingFilterListForm(SittingDTO dto, Model model) 
 	  { 
 		  String view = "";
-		  
+		  /*
 		  // 검색태그들을 담은 배열을 ,으로 쪼개서 String 타입의 배열에 담는다.
 		  String[] isptSidList = dto.getIsptSidList().split(",");
 		  
@@ -668,9 +668,9 @@ public class SittingController
 		  
 		  
 		  dto.setIsptSidListInteger(isptSidListInteger);
-		  
+		  */
 		  model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
-		  model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
+		  //model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
 		  
 		  view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp"; 
 		  return view ;
