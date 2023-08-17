@@ -223,7 +223,14 @@ function sittingReportReceive(memSid)
 									<input type="hidden" id="memSid" name="memSid" value="${list.memSid }">
 									<h5>[${list.grade }] ${list.jmNickName } </h5>
 									<h6 class="text-muted">${listBySpSid.sptitle }</h6>
-									<p>${sittingSrwRate.srwRateAvg } ⭐ (${sittingSrwRate.srwCount }개의 후기) ${list.price }원 / 1박</p>
+									<c:choose>
+										<c:when test="${sittingSrwRate.srwRateAvg == null }">
+											<p>0.0 ⭐ (0개의 후기) ${list.price }원 / 1박</p>
+										</c:when>
+										<c:otherwise>
+											<p>${sittingSrwRate.srwRateAvg } ⭐ (${sittingSrwRate.srwCount }개의 후기) ${list.price }원 / 1박</p>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 							<br>
@@ -273,6 +280,13 @@ function sittingReportReceive(memSid)
 										<h6>2달 이내에 휴일이 없습니다.</h6>
 									</c:otherwise>
 								</c:choose>
+								
+								<c:forEach items="${sbList }" var="sb">
+									<input type="hidden" class="sbStart" id="sbStart" name="sbStart" value="${sb.sbStart }"/>
+									<input type="hidden" class="sbEnd" id="sbEnd" name="sbEnd" value="${sb.sbEnd }"/>
+								</c:forEach>
+								
+								
 							</div>
 							<br />
 							
@@ -459,21 +473,33 @@ function sittingReportReceive(memSid)
 								                </div>
 								            </c:forEach>
 								            
-								            <%-- <div class="card-title text-center">
-								            	 <input type="hidden" name="grade" value="${list.grade }" />
-								            	 <input type="hidden" name="nick" value="${list.jmNickName }" />
-								            	 <input type="hidden" name="spSid" value="${listBySpSid.sptitle}"/>
-								            </div> --%>
 								            <script>
 								                var srStartElements = document.querySelectorAll('.srStart');
 								                var srEndElements = document.querySelectorAll('.srEnd');
 								                
+								                var sbStartElements = document.querySelectorAll('.sbStart');
+								                var sbEndElements = document.querySelectorAll('.sbEnd');
+								                
 								                var fp1DisabledDates = [];
 								                var fp2DisabledDates = [];
-								
+												
+								                
+								                // 펫시터의 휴일 날짜를 disable 배열에 담기
 								                for (var i = 0; i < srStartElements.length; i++) {
 								                    var startDate = new Date(srStartElements[i].value);
 								                    var endDate = new Date(srEndElements[i].value);
+								                    
+								                    while (startDate <= endDate) {
+								                        fp1DisabledDates.push(startDate.toISOString().split('T')[0]);
+								                        fp2DisabledDates.push(new Date(startDate.getTime() + 86400000).toISOString().split('T')[0]);
+								                        startDate.setDate(startDate.getDate() + 1);
+								                    }
+								                }
+								                
+								                // 펫시터의 예약완료 날짜를 disable 배열에 담기
+								                for (var i = 0; i < sbStartElements.length; i++) {
+								                    var startDate = new Date(sbStartElements[i].value);
+								                    var endDate = new Date(sbEndElements[i].value);
 								                    
 								                    while (startDate <= endDate) {
 								                        fp1DisabledDates.push(startDate.toISOString().split('T')[0]);
