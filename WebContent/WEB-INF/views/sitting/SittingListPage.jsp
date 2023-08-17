@@ -497,7 +497,12 @@ p {
 							
 							<c:forEach items="${sittingSrwRates }" var="srw">
 								<c:if test="${dto.memSid == srw.memSid }">
-									<p>${srw.srwRateAvg } ⭐ (${srw.srwCount }개의 후기)
+									<c:if test="${srs.srwRateAvg =! 0 }">
+										<p>0.0 ⭐ (0개의 후기)
+									</c:if>
+									<c:if test="${srw.srwRateAvg != 0 }">
+										<p>${srw.srwRateAvg } ⭐ (${srw.srwCount }개의 후기)
+									</c:if>
 								</c:if>
 							</c:forEach>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
