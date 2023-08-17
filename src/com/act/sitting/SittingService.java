@@ -747,6 +747,17 @@ public class SittingService implements ISittingService
 		return result;
 	}
 	
+	// 예약날짜
+	public ArrayList<SittingDTO> sbDates(String memSid)
+	{
+		ArrayList<SittingDTO> sbList = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		sbList = dao.sbDates(memSid);
+		
+		return sbList;
+		
+	}
+	
 	
 	
 }
