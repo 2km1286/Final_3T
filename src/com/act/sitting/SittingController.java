@@ -63,6 +63,7 @@ public class SittingController
 		ArrayList<SittingDTO> reviewsPhoto = sittingService.sittingReviewsPhoto();
 		SittingDTO sittingSrwRate = sittingService.sittingSrwRate(memSid);
 		ArrayList<SittingDTO> petList = sittingService.petListByMemSid(pMemSid);
+		ArrayList<SittingDTO> sbList = sittingService.sbDates(memSid);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("spListTags", spListTags);
@@ -71,6 +72,7 @@ public class SittingController
 		model.addAttribute("reviewsPhoto", reviewsPhoto);
 		model.addAttribute("sittingSrwRate", sittingSrwRate);
 		model.addAttribute("petList", petList);
+		model.addAttribute("sbList", sbList);
 			
 		result = "/WEB-INF/views/sitting/SittingReservationPage.jsp";
 		

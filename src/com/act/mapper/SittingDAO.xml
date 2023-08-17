@@ -326,6 +326,14 @@
 		                                  ORDER BY SR.SR_START
 	</select>
 	
+	<select id="sbDates" resultType="com.act.sitting.SittingDTO">
+	SELECT MEMSID, TO_CHAR(SB_START, 'YYYY-MM-DD') AS SBSTART, TO_CHAR(SB_END, 'YYYY-MM-DD') AS SBEND
+	FROM SITTING_PLACE_LIST_VIEW SPLV JOIN SITTING_BOOK SB
+	                                  ON SPLV.SPHSID = SB.SPH_SID
+	                                  WHERE MEMSID = #{memSid}
+	</select>
+	
+	
 	<select id="petListByMemSid" resultType="com.act.sitting.SittingDTO">
 		SELECT PMEMSID, PETSID, PETNAME, PETIMAGE, PETBIRTH, PETGEN, PETSIZE, IPTSID, PETWEIGHT, PETSPECIALNOTE
 		FROM PET_VIEW              

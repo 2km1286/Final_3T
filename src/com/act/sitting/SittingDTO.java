@@ -81,39 +81,37 @@ public class SittingDTO {
    
    // 펫시팅 장바구닝 생성 및 담기
    private int sccSid, scSid;
-
-  private String srrDetail,prrDetail;
+   
+   private String srrDetail,prrDetail;
   
    private int irSid;
    private String irName;
-
-
+   
 
    public int getIrSid() {
-	return irSid;
+   return irSid;
 }
 public void setIrSid(int irSid) {
-	this.irSid = irSid;
+   this.irSid = irSid;
 }
 public String getIrName() {
-	return irName;
+   return irName;
 }
 public void setIrName(String irName) {
-	this.irName = irName;
+   this.irName = irName;
 }
 public String getPrrDetail() {
-	return prrDetail;
+   return prrDetail;
 }
 public void setPrrDetail(String prrDetail) {
-	this.prrDetail = prrDetail;
+   this.prrDetail = prrDetail;
 }
 public String getSrrDetail() {
-	return srrDetail;
+   return srrDetail;
 }
 public void setSrrDetail(String srrDetail) {
-	this.srrDetail = srrDetail;
+   this.srrDetail = srrDetail;
 }
-private String pricee;
    
    private int totalPrice;
    
@@ -125,14 +123,7 @@ private String pricee;
     {
       this.totalPrice = totalPrice;
     }
-    public String getPricee()
-    {
-      return pricee;
-    }
-    public void setPricee(String pricee)
-    {
-      this.pricee = pricee;
-    }
+   
     public String getDatepicker1()
    {
        return datepicker1;
@@ -612,7 +603,15 @@ private String pricee;
    {
       return iptSid;
    }
-   public void setIptSid(int iptSid)
+   public int getPricee()
+{
+   return pricee;
+}
+public void setPricee(int pricee)
+{
+   this.pricee = pricee;
+}
+public void setIptSid(int iptSid)
    {
       this.iptSid = iptSid;
    }
@@ -628,4 +627,3 @@ private String pricee;
 
 
 }
-
