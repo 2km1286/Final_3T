@@ -457,6 +457,11 @@ function sittingReportReceive(memSid)
 								                </div>
 								            </c:forEach>
 								            
+								            <%-- <div class="card-title text-center">
+								            	 <input type="hidden" name="grade" value="${list.grade }" />
+								            	 <input type="hidden" name="nick" value="${list.jmNickName }" />
+								            	 <input type="hidden" name="spSid" value="${listBySpSid.sptitle}"/>
+								            </div> --%>
 								            <script>
 								                var srStartElements = document.querySelectorAll('.srStart');
 								                var srEndElements = document.querySelectorAll('.srEnd');
@@ -560,6 +565,15 @@ function sittingReportReceive(memSid)
 								</div>
 								
 								
+								</div>
+								
+								<div class="card-title text-center">
+								      <input type="hidden" name="grade" value="${list.grade }" />
+								      <input type="hidden" name="nick" value="${list.jmNickName }" />
+								      <input type="hidden" name="spSid" value="${listBySpSid.sptitle}"/>
+								      <input type="hidden" name="rate" value="${sittingSrwRate.srwRateAvg }"/>
+								      <input type="hidden" name="count" value="${sittingSrwRate.srwCount }"/>
+								      <input type="hidden" name="price" value="${list.price }"/>
 								</div>
 
 

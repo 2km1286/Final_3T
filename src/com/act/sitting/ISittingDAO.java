@@ -3,6 +3,8 @@ package com.act.sitting;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.act.walk.WalkDTO;
 
 public interface ISittingDAO
@@ -174,7 +176,7 @@ public interface ISittingDAO
 
 	
 	// 펫시터 예약반려견 카드 조회
-	public ArrayList<ReservationInfoDTO> petInfoList(String memSid);
+	public ArrayList<ReservationInfoDTO> petInfoList(ReservationInfoDTO dto);
 
 
 	
@@ -183,7 +185,6 @@ public interface ISittingDAO
 	
 	public String reservationMemsid(int sbsid);
 	
-	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid);
 	
 	
 	// 펫시팅 프로필 신고
@@ -194,4 +195,5 @@ public interface ISittingDAO
 	
 	// 펫시팅 돌봄공간 신고
 	public int placeReportReceive(SittingDTO dto);
+	public ReservationInfoDTO getMatchingHistory(ReservationInfoDTO dto);
 }

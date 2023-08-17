@@ -269,13 +269,16 @@ public class SittingService implements ISittingService
 	
 	// 예약정보 조회 
 	@Override
-	public ArrayList<ReservationInfoDTO> getInfo(String memSid)
+	public ArrayList<ReservationInfoDTO> getInfo(String memsid, int sbsid)
 	{
 		ArrayList<ReservationInfoDTO> result = new ArrayList<>();
+		ReservationInfoDTO dto = new ReservationInfoDTO();
+		
+		dto.setMemsid(memsid);
+		dto.setSbsid(sbsid);
 		
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		result = dao.petInfoList(memSid);
-		
+		result = dao.petInfoList(dto);
 		
 		return result;
 	}
@@ -306,9 +309,15 @@ public class SittingService implements ISittingService
 	public ReservationInfoDTO getMatchingHistory(String memsid, int sbsid)
 	{
 		ReservationInfoDTO result = new ReservationInfoDTO();
-		
+		System.out.println(result);
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		result = dao.getMatchingHistory(memsid, sbsid);
+		
+		result.setMemsid(memsid);
+		System.out.println(result.getMemsid());
+		result.setSbsid(sbsid);
+		System.out.println(result.getSbsid());
+		
+		result = dao.getMatchingHistory(result);
 		
 		return result;
 	}
