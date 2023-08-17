@@ -408,8 +408,9 @@ p {
 					// 필터 버튼 클릭 시
 					$("#filter").click(function()
 					{	
+						/*
 						// 사용자가 검색할 태그들의 isptSid 를 담을 배열
-						var selectedTags = [];
+						//var selectedTags = [];
 						
 						// .selected 클래스가 붙은 버튼의 data를 배열에 담는다.
 		                $('.isptTag.selected').each(function() 
@@ -422,18 +423,18 @@ p {
 						
 						// 확인
 		                alert($("#isptSidList").val());
-						
+						*/
 						
 						$("#filterForm").submit();
 						
 						
 						var dataSend = "extraAddr=" + $("#extraAddr").val()
-									+ "&datePicker=" + $("#datepicker").val()
-									+ "&spMaxPet=" + $("#spMaxPet").val()
-									+ "&isptSidList=" + $("#isptSidList").val();
+									//+ "&datePicker=" + $("#datepicker").val()
+									+ "&spMaxPet=" + $("#spMaxPet").val();
+									//+ "&isptSidList=" + $("#isptSidList").val();
 						
 						
-						alert(dataSend);
+						//alert(dataSend);
 						
 						$.ajax(
 						{
