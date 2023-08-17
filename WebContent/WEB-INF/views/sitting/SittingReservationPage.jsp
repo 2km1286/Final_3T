@@ -796,8 +796,8 @@ function sittingReportReceive(memSid)
 									            
 									            $("#sphSid").val($("#sphSid1").val());
 									            
-								                alert($("#selectedPets").val());
-								                alert($("#pricee").val());
+								                //alert($("#selectedPets").val());
+								                //alert($("#pricee").val());
 												
 												$("#reservationForm").submit();
 											});
