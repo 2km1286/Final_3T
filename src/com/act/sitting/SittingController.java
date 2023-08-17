@@ -674,6 +674,39 @@ public class SittingController
 		  return view ;
 	  }
 	 
+	// 펫시팅 프로필 신고
+	@RequestMapping("/profilereportreceive.action")
+	public String profileReportReceive(Model model,SittingDTO dto)
+	{
+		String result = "";
+		
+		model.addAttribute("profileReportReceive", sittingService.profileReportReceive(dto));
+		result = "redirect:sittinglistpage.action";
+		return result;
+	}
+	
+	// 펫시팅 돌봄공간 신고사유 리스트
+	
+	public String indexReport(Model model)
+	{
+		String result = "";
+		ArrayList<SittingDTO> irList = new ArrayList<SittingDTO>();
+		irList = sittingService.indexReport();
+		
+		model.addAttribute("irList", irList);
+		
+		return result;
+	}
+	
+	// 펫시팅 돌봄공간 신고
+	@RequestMapping("/sittingreportreceive.action")
+	public String placeResportReceive()
+	{
+		String result = "";
+		
+		result = "redirect:sittinglistpage.action";
+		return result;
+	}
 	
 	
 	

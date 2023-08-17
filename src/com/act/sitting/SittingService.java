@@ -718,6 +718,34 @@ public class SittingService implements ISittingService
 	}
 	
 	
+	// 펫시터 프로필 신고
+	public int profileReportReceive(SittingDTO dto)
+	{
+		int result = 0;
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		result = dao.profileReportReceive(dto);
+		return result;
+	}
+	
+	// 펫시터 돌봄공간 신고사유
+	public ArrayList<SittingDTO> indexReport()
+	{
+		ArrayList<SittingDTO> irList = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		irList = dao.indexReport();
+		
+		return irList;
+	}
+	
+	// 펫시터 돌봄공간 신고
+	public int placeReportReceive(SittingDTO dto)
+	{
+		int result = 0;
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		result = dao.placeReportReceive(dto);
+		
+		return result;
+	}
 	
 	
 	

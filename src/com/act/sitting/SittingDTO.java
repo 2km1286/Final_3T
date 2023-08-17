@@ -81,18 +81,59 @@ public class SittingDTO {
    
    // 펫시팅 장바구닝 생성 및 담기
    private int sccSid, scSid;
-   
-   
-   
-   public int getPricee()
-{
-	return pricee;
+
+  private String srrDetail,prrDetail;
+  
+   private int irSid;
+   private String irName;
+
+
+
+   public int getIrSid() {
+	return irSid;
 }
-public void setPricee(int pricee)
-{
-	this.pricee = pricee;
+public void setIrSid(int irSid) {
+	this.irSid = irSid;
 }
-public String getDatepicker1()
+public String getIrName() {
+	return irName;
+}
+public void setIrName(String irName) {
+	this.irName = irName;
+}
+public String getPrrDetail() {
+	return prrDetail;
+}
+public void setPrrDetail(String prrDetail) {
+	this.prrDetail = prrDetail;
+}
+public String getSrrDetail() {
+	return srrDetail;
+}
+public void setSrrDetail(String srrDetail) {
+	this.srrDetail = srrDetail;
+}
+private String pricee;
+   
+   private int totalPrice;
+   
+   public int getTotalPrice()
+    {
+      return totalPrice;
+    }
+    public void setTotalPrice(int totalPrice)
+    {
+      this.totalPrice = totalPrice;
+    }
+    public String getPricee()
+    {
+      return pricee;
+    }
+    public void setPricee(String pricee)
+    {
+      this.pricee = pricee;
+    }
+    public String getDatepicker1()
    {
        return datepicker1;
    }
@@ -140,6 +181,7 @@ public String getDatepicker1()
    {
        this.selectedPetsSid = selectedPetsSid;
    }
+
 
    public int getSlSid()
    {

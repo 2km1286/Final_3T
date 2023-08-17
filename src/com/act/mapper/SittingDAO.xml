@@ -20,9 +20,19 @@
 
 	
 	<select id="mySfollow" resultType="com.act.sitting.SittingDTO">
-		SELECT SPH_SID AS SPHSID
-		FROM SITTING_FOLLOWING_LIST
-		WHERE MEM_SID = #{memSid}
+		SELECT DISTINCT
+	    SFL.MEM_SID,
+	    SFV.MEMSID,
+	    SPLV.GRADE AS grade,
+	    SFV.SPHSID,
+	    SPLV.SPADDR1,
+	    SPLV.SPTITLE,
+	    SPLV.SPCONTENT,
+	    SPLV.PRICE
+		FROM SITTING_FOLLOWINGCOUNT_VIEW SFV
+		LEFT JOIN SITTING_FOLLOWING_LIST SFL ON SFL.SPH_SID = SFV.SPHSID
+		LEFT JOIN SITTING_PLACE_LIST_VIEW SPLV ON SFV.SPHSID = SPLV.SPHSID
+		WHERE SFL.MEM_SID = #{memSid}
 	</select>
 
 
@@ -426,13 +436,20 @@
 	
 	
 	
+	<insert id="profileReportReceive">
+		INSERT INTO PROFILE_REPORT_RECEIVE
+		VALUES(SEQ_PRR.NEXTVAL,#{memSid},#{pMemSid},DEFAULT,#{prrDetail})
+	</insert>
 	
+	<select id="indexReport" resultType="com.act.sitting.SittingDTO">
+		SELECT IR_SID AS IRSID, IR_NAME AS IRNAME
+		FROM INDEX_REPORT
+	</select>
 	
-	
-	
-	
-	
-	
+	<insert id="placeReportReceive">
+		INSERT INTO SITTING_REPORT_RECEIVE
+		VALUES(SEQ_SRR.NEXTVAL, #{memSid}, #{spSid}, #{irSid}, DEFAULT, #{srrDetail})
+	</insert>
 	
 	
 	

@@ -2,6 +2,7 @@ package com.act.member;
 
 import java.util.ArrayList;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.act.sitting.ISittingService;
+import com.act.sitting.SittingDTO;
 import com.act.sitting.SittingService;
 import com.act.walk.IWalkService;
 import com.act.walk.WalkService;
@@ -120,9 +122,15 @@ public class MemberController
         session.setAttribute("memSid", memSid);
         session.setAttribute("memNickName", memNickName);
         
-        model.addAttribute("mySfollow", sittingService.mySfollow(memSid));
-        model.addAttribute("mySfollowList",sittingService.list());
-	    
+        
+    	model.addAttribute("mySfollow", sittingService.mySfollow(memSid));
+    	
+    	ArrayList<SittingDTO> arr =  sittingService.mySfollow(memSid);
+    	for (SittingDTO sittingDTO : arr)
+		{
+    		System.out.println(sittingDTO.getGrade());
+		}
+        
 
 	    
 	    int dbValue;
@@ -133,6 +141,8 @@ public class MemberController
 	    }
 	    else
 	    {
+	    
+	  
 	    	
 	    	
 		    int sittingCountInt = memberService.searchSittingcount(memSid);
