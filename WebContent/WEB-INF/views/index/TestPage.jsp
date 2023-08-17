@@ -98,23 +98,27 @@
 	
 	<script>
 	
-			$(document).ready(function()
-				{
-					// 클릭한 버튼에 selected 클래스 추가 및 제거
-					$('.answer-btn').click(function()
-					{
-						$(this).toggleClass('selected');
-						if ($(this).hasClass('selected'))
-						{
-							$(this).css('background-color', '#367539'); // 선택된 스타일로 변경
-							// 여기서 데이터를 추가해주면..?
-									
-						} else
-						{
-							$(this).css('background-color', '#4caf50'); // 원래 스타일로 변경
-						}
-					});
-				});
+	$(document).ready(function() {
+	    $('.answer-btn').click(function() {
+	        $(this).toggleClass('selected');
+
+	        // 선택된 버튼이 btn-success인지 확인
+	        if ($(this).hasClass('btn-success') && $(this).hasClass('selected')) {
+	            $(this).css('background-color', '#006400'); 
+	        } 
+	        // 선택된 버튼이 btn-danger인지 확인
+	        else if ($(this).hasClass('btn-danger') && $(this).hasClass('selected')) {
+	            $(this).css('background-color', '#8B0000'); 
+	        } else {
+	            // 원래의 스타일로 복구
+	            if($(this).hasClass('btn-success')) {
+	                $(this).css('background-color', '#4caf50');
+	            } else if($(this).hasClass('btn-danger')) {
+	                $(this).css('background-color', '#f44336');
+	            }
+	        }
+	    });
+	});
 		
 	
 	function setAnswer(index, answer) 
