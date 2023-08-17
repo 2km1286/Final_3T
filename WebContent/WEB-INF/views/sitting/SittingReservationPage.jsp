@@ -415,9 +415,11 @@ function sittingReportReceive(memSid)
 					</div>
 				</div>
 				<!-- 여기에는 견주의 정보입력칸  -->
-				<div class="col-md-5" style="height: 100vh; overflow: auto;" >
+
+				<div class="col-md-5" style="overflow: auto; height: 90vh;">
 				<form action="sittingbooking.action" id="reservationForm">
-					<div class="card" style="height: 945px; width: 38rem; " >
+					<div class="card" style="height: 945px; width: 38rem;">
+
 						<div class="card-header d-flex justify-content-between">
 							예약정보 입력</div>
 						<div class="row g-0">
@@ -570,7 +572,7 @@ function sittingReportReceive(memSid)
 								<div class="card-title text-center">
 								      <input type="hidden" name="grade" value="${list.grade }" />
 								      <input type="hidden" name="nick" value="${list.jmNickName }" />
-								      <input type="hidden" name="spSid" value="${listBySpSid.sptitle}"/>
+								      <input type="hidden" name="sptitle" value="${listBySpSid.sptitle}"/>
 								      <input type="hidden" name="rate" value="${sittingSrwRate.srwRateAvg }"/>
 								      <input type="hidden" name="count" value="${sittingSrwRate.srwCount }"/>
 								      <input type="hidden" name="price" value="${list.price }"/>

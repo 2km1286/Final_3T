@@ -57,6 +57,10 @@
 			alert("돌봄장소 수정에 실패했습니다.");
 			goPetSitting();
 		}
+		if( flag == "4")	/* 돌봄장소 수정 실패 */	
+		{
+			goPetSitting();
+		}
 		
 		/* 펫시팅 페이지 ajax */
 		function goPetSitting()

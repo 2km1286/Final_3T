@@ -13,7 +13,7 @@ public class SittingDTO {
    private String jmNickName, sptitle, spAddr1, spAddr2, spZipCode, extraAddr, memSid, sphStart, sphEnd, srStart, srEnd;
    private int sphSid, srwSid, stleSid, spMaxPet, spSid;
    private String grade;
-   private int price;
+   private int price,pricee;
 
    private String spContent;
    private int ipSid;
@@ -86,7 +86,6 @@ public class SittingDTO {
   
    private int irSid;
    private String irName;
-   
 
 
 

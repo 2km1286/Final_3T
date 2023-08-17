@@ -565,6 +565,7 @@ public class SittingService implements ISittingService
 		int book = 0;
 		
 		
+		
 		// 1. 장바구니 생성 테이블
 		createCart = dao.sittingCreateCart(dto);
 		
@@ -580,7 +581,7 @@ public class SittingService implements ISittingService
 		System.out.println("sbStart : " + dto.getSbStart());
 		System.out.println("sbEnd : " + dto.getSbEnd());
 		// 4. 예약테이블 insert
-		result = book = dao.sittingBook(dto);
+		result = dao.sittingBook(dto);
 		
 		
 		System.out.println("createCart : " + createCart);
@@ -622,9 +623,11 @@ public class SittingService implements ISittingService
 			dao.insertPlaceHub(dto);
 		   	
 			// 4. SITTING_PLACE_PHOTO 에 sittingDTO 를 인서트
+			/*
 			dto.setSppPath(sppPath);
 		    dto.setSppName(sppName);
 		    dao.insertPlacePhoto(dto);
+		    */
 			
 			// 5. SITTING_PLACE_TAG 에 sittingDTO 를 인서트
 		    List<String> selectedTags = dto.getSelectedTags();
@@ -686,9 +689,11 @@ public class SittingService implements ISittingService
 			dao.deletePlacePhoto(dto);
 			
 			// 4. 모든 값을 담은 sittingDTO로 SITTING_PLACE_PHOTO 에 인서트
+			/*
 			dto.setSppPath(sppPath);
 		    dto.setSppName(sppName);
 		    dao.insertPlacePhoto(dto);
+		    */
 			
 			// 5. 모든 값을 담은 sittingDTO로 SITTING_PLACE_TAG 에 행을 삭제
 		    dao.deletePlaceTag(dto);

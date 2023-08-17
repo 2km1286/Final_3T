@@ -71,15 +71,15 @@ public class SittingController
 		model.addAttribute("reviewsPhoto", reviewsPhoto);
 		model.addAttribute("sittingSrwRate", sittingSrwRate);
 		model.addAttribute("petList", petList);
-		
+			
 		result = "/WEB-INF/views/sitting/SittingReservationPage.jsp";
-
+		
 		return result;
 	}
 	
-	/*
+	
 	@RequestMapping("/sittingbooking.action")
-	public String sittingBooking(SittingDTO dto, HttpSession session)
+	public String sittingBooking(SittingDTO dto, HttpSession session,Model model,HttpServletRequest request)
 	{
 		String view = "";
 		
@@ -87,8 +87,14 @@ public class SittingController
 		String datePicker1 = dto.getDatepicker1();
 		String datePicker2 = dto.getDatepicker2();
 		String selectedPets = dto.getSelectedPets();
-		int pricee = dto.getPrice();
+		int pricee = dto.getPricee();
 		//int price = Integer.parseInt(pricee);
+		
+		System.out.println(pMemSid);
+		System.out.println(datePicker1);
+		System.out.println(datePicker2);
+		System.out.println(selectedPets);
+		System.out.println(pricee);
 		
 		dto.setPrice(pricee);			
 		dto.setpMemSid(pMemSid);		 
@@ -96,7 +102,7 @@ public class SittingController
 		dto.setSbEnd(datePicker2);
 		
 		
-		String[] selectedPetString = dto.getSelectedPets().split(",");
+		String[] selectedPetString = selectedPets.split(",");
 		  
 		List<Integer> selectedPetsSid = new ArrayList<>();
 		  
@@ -108,14 +114,76 @@ public class SittingController
 		
 		dto.setSelectedPetsSid(selectedPetsSid);
 		
-		int count = 0;
+		int count2 = 0;
 		
 		
-		count = sittingService.sittingFromCreateCartToBook(dto);
+		count2 = sittingService.sittingFromCreateCartToBook(dto);
+		System.out.println(count2);
+		
+		String memSid = (String)session.getAttribute("memSid");
+		System.out.println(memSid);
+		
+		/*
+		 * System.out.println(dto.getSbSid()); System.out.println(dto.getDatepicker1());
+		 * -- 이값만 들어옴 System.out.println(dto.getDatepicker2()); -- 이값만 들어옴
+		 * System.out.println(dto.getPetGen()); System.out.println(dto.getPetImage());
+		 * System.out.println(dto.getGrade()); System.out.println(dto.getJmNickName());
+		 */
+		
+		int reservationNum = sittingService.sittingFromCreateCartToBook(dto);
+		System.out.println(reservationNum);
+		
+		
+		
+		int num = sittingService.getReservationNum(memSid);
+		//System.out.println(num);
+		//String memSid2 = sittingService.getReservationMem(num);
+		//System.out.println(memSid2);
+		System.out.println(sittingService.getInfo(memSid, num));
+		//sittingService.getMatchingHistory(memSid, num);
+		
+		/*
+		 * // 견주라는 것 if(memSid == memSid2) {
+		 */
+		ReservationInfoDTO dto2 = sittingService.getMatchingHistory(memSid, num);
+		
+		model.addAttribute("num", num);
+		System.out.println(num);
+		model.addAttribute("petList", sittingService.getInfo(memSid, num));
+		model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
+		
+		System.out.println(dto2.getMaxpet());
+		System.out.println(dto2.getSphstart());
+		System.out.println(dto2.getSphend());
+		
+		
+		
+		String nick = request.getParameter("nick");
+		String grade = request.getParameter("grade");
+		//String spSid = request.getParameter("spSid");
+		String rate = request.getParameter("rate");
+		String count = request.getParameter("count");
+		String price = request.getParameter("price");
+		
+		model.addAttribute("nick", nick);
+		model.addAttribute("grade", grade);
+		model.addAttribute("rate", rate);
+		model.addAttribute("count", count);
+		model.addAttribute("price", price);
+		
+		
+		/*
+		 } else {
+		  
+		 }
+		 */
+		
+		
+		
 		view = "/WEB-INF/views/index/ReservationInfo.jsp";
 		return view;
 	}
-	*/
+	
 	
 	
 	
@@ -228,7 +296,8 @@ public class SittingController
 		response.setContentType("text/html; charset=UTF-8");
 		//PrintWriter out = response.getWriter();
 		
-		File attachesDir = new File("C:\\attaches");
+		
+		File attachesDir = new File("./WebContent/images/");
 		
 		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 	    fileItemFactory.setRepository(attachesDir);
@@ -273,7 +342,7 @@ public class SittingController
                         String separator = File.separator;
                         int index =  item.getName().lastIndexOf(separator);
                         fileName = item.getName().substring(index  + 1);
-                        filePath = "C:\\attaches" + separator + fileName;
+                        filePath = "./WebContent/images/" + separator + fileName;
                         File uploadFile = new File(filePath);
                         item.write(uploadFile);
                         
@@ -291,7 +360,7 @@ public class SittingController
 	    // submit해서 받아온 값 외에 돌봄장소 등록에 필요한 값들을 추가적으로 dto에 set
 	    String memSid = (String)session.getAttribute("memSid");
 	    dto.setMemSid(memSid);
-	    dto.setSppPath("C:\\attaches");					// 사진을 저장한 폴더경로
+	    dto.setSppPath("./WebContent/images/");					// 사진을 저장한 폴더경로
 	    dto.setSlSid(sittingService.slSid(memSid));
 	    
 	    // spSid 제외하고 인서트에 필요한 모든 값을 dto에 담았음
@@ -327,7 +396,7 @@ public class SittingController
 		response.setContentType("text/html; charset=UTF-8");
 		//PrintWriter out = response.getWriter();
 		
-		File attachesDir = new File("C:\\attaches");
+		File attachesDir = new File("./WebContent/images/");
 		
 		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 	    fileItemFactory.setRepository(attachesDir);
@@ -376,7 +445,7 @@ public class SittingController
                         String separator = File.separator;
                         int index =  item.getName().lastIndexOf(separator);
                         fileName = item.getName().substring(index  + 1);
-                        filePath = "C:\\attaches" + separator + fileName;
+                        filePath = "./WebContent/images/" + separator + fileName;
                         File uploadFile = new File(filePath);
                         item.write(uploadFile);
                         
@@ -394,7 +463,7 @@ public class SittingController
 	    // submit해서 받아온 값 외에 돌봄장소 등록에 필요한 값들을 추가적으로 dto에 set
 	    String memSid = (String)session.getAttribute("memSid");
 	    dto.setMemSid(memSid);
-	    dto.setSppPath("C:\\attaches");					// 사진을 저장한 폴더경로
+	    dto.setSppPath("./WebContent/images/");					// 사진을 저장한 폴더경로
 	    dto.setSlSid(sittingService.slSid(memSid));
 	    
 	    // spSid 제외하고 업데이트에 필요한 모든 값을 dto에 담았음
@@ -485,7 +554,7 @@ public class SittingController
 	
 	// 예약정보 확인 -> 견주일때, 펫시터일때 
 	@RequestMapping("/reservationInfo.action")
-	public String getReservation(HttpSession session, Model model, HttpServletRequest request)
+	public String getReservation(HttpSession session, Model model, HttpServletRequest request,SittingDTO dto)
 	{
 		String result = "";
 		
@@ -493,14 +562,16 @@ public class SittingController
 		System.out.println(memSid);
 		
 		/*
-		 * System.out.println(dto.getSbSid()); System.out.println(dto.getDatepicker1()); -- 이값만 들어옴
-		 * System.out.println(dto.getDatepicker2()); -- 이값만 들어옴
+		 * System.out.println(dto.getSbSid()); System.out.println(dto.getDatepicker1());
+		 * -- 이값만 들어옴 System.out.println(dto.getDatepicker2()); -- 이값만 들어옴
 		 * System.out.println(dto.getPetGen()); System.out.println(dto.getPetImage());
 		 * System.out.println(dto.getGrade()); System.out.println(dto.getJmNickName());
 		 */
 		
-		//int reservationNum = sittingService.sittingFromCreateCartToBook(dto);
-		//System.out.println(reservationNum);
+		int reservationNum = sittingService.sittingFromCreateCartToBook(dto);
+		System.out.println(reservationNum);
+		
+		
 		
 		int num = sittingService.getReservationNum(memSid);
 		//System.out.println(num);
@@ -517,9 +588,7 @@ public class SittingController
 		model.addAttribute("num", num);
 		System.out.println(num);
 		model.addAttribute("petList", sittingService.getInfo(memSid, num));
-		System.out.println("어디까지");
 		model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
-		System.out.println("오낭");
 		
 		System.out.println(dto2.getMaxpet());
 		System.out.println(dto2.getSphstart());

@@ -107,7 +107,7 @@ h2 span {
 							</c:when>
 							
 							<c:otherwise>	
-				            	<a href="<%=cp %>/sittingreservationpage.action?smemsid=${followingRank.memSid}" class="card-link"><br>돌봄장소 보기</a>
+				            	<a href="sittingreservationpage.action?memSid=${followingRank.memSid}" class="card-link"><br>돌봄장소 보기</a>
 				            </c:otherwise>
 				            </c:choose>
 				        </div>

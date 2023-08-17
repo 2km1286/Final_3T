@@ -19,8 +19,7 @@
 <!-- Google Fonts Roboto -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
-<!-- MDB -->
-<link rel="stylesheet" href="css/mdb.min.css" />
+<link rel="stylesheet" href="css/bootstrap.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
 <style>
@@ -34,11 +33,21 @@
 	
 	$().click(function()
 	{
-		$(".place-btn").click(function()
-		{
-			window.location.href="registerspinfoform.action";
-		});
+		
+		
+		
 	});
+	
+	function goMainPage()
+	{
+		window.location.href="mainpage.action";
+	}
+	
+	function goMyPage()
+	{
+		window.location.href="mypage.action?flag=4";
+
+	}
 	
 </script>
 
@@ -81,7 +90,14 @@
 					<br>
 					
 					<div class="d-flex justify-content-center" style="margin-top: -10px;">
-						<button type="button" class="btn btn-success place-btn">돌봄장소 등록하러가기</button>
+					<c:choose>
+					<c:when test="${passed}">
+						<button type="button" class="btn btn-success place-btn" id="placebtn" onclick="goMyPage()">돌봄장소 등록하러가기</button>
+						</c:when>
+						<c:otherwise>
+						<button type="button" class="btn btn-success place-btn" id="goMainPage" onclick="goMainPage()">메인으로 가기</button>
+						</c:otherwise>
+						</c:choose>
 					</div>
 										
 					<br>
@@ -98,5 +114,4 @@
 	</section>
 
 </body>
-<script type="text/javascript" src="js/mdb.min.js"></script>
 </html>
