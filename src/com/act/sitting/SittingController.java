@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.act.walk.WalkDTO;
 
@@ -81,9 +82,9 @@ public class SittingController
 	
 	
 	@RequestMapping("/sittingbooking.action")
-	public String sittingBooking(SittingDTO dto, HttpSession session,Model model,HttpServletRequest request)
+	public ModelAndView sittingBooking(SittingDTO dto, HttpSession session,Model model,HttpServletRequest request)
 	{
-		String view = "";
+		//String view = "";
 		
 		String pMemSid = (String)session.getAttribute("memSid");	// 견주의 회원번호
 		String datePicker1 = dto.getDatepicker1();
@@ -120,7 +121,7 @@ public class SittingController
 		
 		
 		count2 = sittingService.sittingFromCreateCartToBook(dto);
-		System.out.println(count2);
+		System.out.println("count2 : " + count2);
 		
 		String memSid = (String)session.getAttribute("memSid");
 		System.out.println(memSid);
@@ -132,8 +133,8 @@ public class SittingController
 		 * System.out.println(dto.getGrade()); System.out.println(dto.getJmNickName());
 		 */
 		
-		int reservationNum = sittingService.sittingFromCreateCartToBook(dto);
-		System.out.println(reservationNum);
+		//int reservationNum = sittingService.sittingFromCreateCartToBook(dto);
+		//System.out.println(reservationNum);
 		
 		
 		
@@ -149,10 +150,15 @@ public class SittingController
 		 */
 		ReservationInfoDTO dto2 = sittingService.getMatchingHistory(memSid, num);
 		
-		model.addAttribute("num", num);
+		ModelAndView mv = new ModelAndView();
+		
+		//model.addAttribute("num", num);
+		mv.addObject("num", num);
 		System.out.println(num);
-		model.addAttribute("petList", sittingService.getInfo(memSid, num));
-		model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
+		//model.addAttribute("petList", sittingService.getInfo(memSid, num));
+		mv.addObject("memSid", sittingService.getInfo(memSid, num));
+		//model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
+		mv.addObject("dto", sittingService.getMatchingHistory(memSid, num));
 		
 		System.out.println(dto2.getMaxpet());
 		System.out.println(dto2.getSphstart());
@@ -167,12 +173,17 @@ public class SittingController
 		String count = request.getParameter("count");
 		String price = request.getParameter("price");
 		
-		model.addAttribute("nick", nick);
-		model.addAttribute("grade", grade);
-		model.addAttribute("rate", rate);
-		model.addAttribute("count", count);
-		model.addAttribute("price", price);
 		
+		//model.addAttribute("nick", nick);
+		//model.addAttribute("grade", grade);
+		//model.addAttribute("rate", rate);
+		//model.addAttribute("count", count);
+		//model.addAttribute("price", price);
+		mv.addObject("nick", nick);
+		mv.addObject("grade", grade);
+		mv.addObject("rate", rate);
+		mv.addObject("count", count);
+		mv.addObject("price", price);
 		
 		/*
 		 } else {
@@ -180,12 +191,21 @@ public class SittingController
 		 }
 		 */
 		
-		
-		
-		view = "/WEB-INF/views/index/ReservationInfo.jsp";
-		return view;
+	
+		//view = "redirect:booksuccess.action";
+		mv.setViewName("redirect:booksuccess.action");
+		return mv;
 	}
 	
+	
+	
+	@RequestMapping("/booksuccess.action")
+	public String bookSuccess() 
+	{
+		String result = "/WEB-INF/views/index/ReservationInfo.jsp";
+		
+		return result;
+	}
 	
 	
 	
