@@ -564,7 +564,7 @@ public class SittingService implements ISittingService
 		int cart = 0;
 		int book = 0;
 		
-		
+		System.out.println("sittingService시작-----------------------------------------------------------");
 		
 		// 1. 장바구니 생성 테이블
 		createCart = dao.sittingCreateCart(dto);
@@ -575,8 +575,9 @@ public class SittingService implements ISittingService
 		// 3. 펫 반복문으로 넣어야 함.
 		for (int sid : dto.getSelectedPetsSid())
 		{
+			System.out.println("몇 번 도니?");
 			dto.setPetSid(sid);
-			dao.sittingCart(dto);
+			cart = dao.sittingCart(dto);
 		}
 		System.out.println("sbStart : " + dto.getSbStart());
 		System.out.println("sbEnd : " + dto.getSbEnd());
@@ -586,8 +587,8 @@ public class SittingService implements ISittingService
 		
 		System.out.println("createCart : " + createCart);
 		System.out.println("cart : " + cart);
-		System.out.println("book : " + book);
-		
+		System.out.println("book : " + result);
+		System.out.println("3개테이블 인서트 완료------------------------------------------------------");
 		
 		return result;
 	}

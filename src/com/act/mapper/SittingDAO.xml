@@ -342,26 +342,26 @@
 	
 	<select id="getReservationNumber" resultType="java.lang.Integer">
 		SELECT DISTINCT NVL(MAX(SBSID), 0) AS SBSID
-		FROM RESERVATION_INFO
+		FROM RESERVATION_INFO_VIEW
 		WHERE MEMSID = #{memsid}
 		ORDER BY SBSID DESC
 	</select>
 	
 	<select id="petInfoList" resultType="com.act.sitting.ReservationInfoDTO">
 		SELECT PETIMAGE, PETNAME, PETGEN, PETBIRTH, PETWEIGHT, PETSPECIAL, MEMSID
-		FROM RESERVATION_INFO
+		FROM RESERVATION_INFO_VIEW
 		WHERE MEMSID = #{memsid} AND SBSID = #{sbsid}
 	</select>
 	
 	<select id="reservationMemsid" resultType="java.lang.String">
 		SELECT DISTINCT MEMSID
-		FROM RESERVATION_INFO
+		FROM RESERVATION_INFO_VIEW
 		WHERE SBSID = #{sbsid}
 	</select>
 	
 	<select id="getMatchingHistory" resultType="com.act.sitting.ReservationInfoDTO">
 		SELECT DISTINCT SPADDR1, SBSTART, SBEND, SPHSTART, SPHEND, MAXPET, SPTITLE, SPCONTENT, SBPRICE
-		FROM RESERVATION_INFO
+		FROM RESERVATION_INFO_VIEW
 		WHERE MEMSID = #{memsid} AND SBSID = #{sbsid}
 	</select>
 
