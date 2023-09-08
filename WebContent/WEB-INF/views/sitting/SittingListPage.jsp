@@ -480,12 +480,11 @@ p {
 							style="width: 100%;">
 						<div class="card-body">
 							<h5 class="card-title">
-								${dto.grade}
+								[${dto.grade}] ${dto.jmNickName}</h5>
+							<h6 class="card-subtitle text-muted">${dto.spAddr1} ${dto.extraAddr }</h6>
+							<br /> 
+							<h4>${dto.sptitle}</h4>
 							
-								${dto.jmNickName}</h5>
-							<h6 class="card-subtitle text-muted">${dto.spAddr1}
-								<br /> ${dto.sptitle}
-							</h6>
 							<br>
 							<input type="hidden" id="spSid" name="spSid" value="${dto.spSid }"/>
 							<c:forEach var="tag" items="${tagList }">
