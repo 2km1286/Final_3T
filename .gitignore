@@ -68,5 +68,5 @@ local.properties
 # Log file
 *.log
 
-
-# End of https://www.toptal.com/developers/gitignore/api/windows,java,eclipse
+### dispatcher servlet ###
+dispatcher-servlet.xml
