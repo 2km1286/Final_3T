@@ -84,20 +84,19 @@ public class SittingController
 	@RequestMapping("/sittingbooking.action")
 	public ModelAndView sittingBooking(SittingDTO dto, HttpSession session,Model model,HttpServletRequest request)
 	{
-		//String view = "";
+		ModelAndView mv = new ModelAndView();
 		
 		String pMemSid = (String)session.getAttribute("memSid");	// 견주의 회원번호
 		String datePicker1 = dto.getDatepicker1();
 		String datePicker2 = dto.getDatepicker2();
 		String selectedPets = dto.getSelectedPets();
 		int pricee = dto.getPricee();
-		//int price = Integer.parseInt(pricee);
 		
-		System.out.println(pMemSid);
-		System.out.println(datePicker1);
-		System.out.println(datePicker2);
-		System.out.println(selectedPets);
-		System.out.println(pricee);
+		//System.out.println(pMemSid);
+		//System.out.println(datePicker1);
+		//System.out.println(datePicker2);
+		//System.out.println(selectedPets);
+		//System.out.println(pricee);
 		
 		dto.setPrice(pricee);			
 		dto.setpMemSid(pMemSid);		 
@@ -117,68 +116,52 @@ public class SittingController
 		
 		dto.setSelectedPetsSid(selectedPetsSid);
 		
-		int count2 = 0;
-		
-		
-		count2 = sittingService.sittingFromCreateCartToBook(dto);
-		System.out.println("count2 : " + count2);
 		
 		String memSid = (String)session.getAttribute("memSid");
-		System.out.println(memSid);
 		
-		/*
-		 * System.out.println(dto.getSbSid()); System.out.println(dto.getDatepicker1());
-		 * -- 이값만 들어옴 System.out.println(dto.getDatepicker2()); -- 이값만 들어옴
-		 * System.out.println(dto.getPetGen()); System.out.println(dto.getPetImage());
-		 * System.out.println(dto.getGrade()); System.out.println(dto.getJmNickName());
-		 */
+		String nick = request.getParameter("nick");
+		String grade = request.getParameter("grade");
+		String rate = request.getParameter("rate");
+		String count = request.getParameter("count");
+
+		mv.addObject("nick", nick);
+		mv.addObject("grade", grade);
+		mv.addObject("rate", rate);
+		mv.addObject("count", count);
 		
-		//int reservationNum = sittingService.sittingFromCreateCartToBook(dto);
-		//System.out.println(reservationNum);
+		mv.setViewName("redirect:booksuccess.action");
+		return mv;
+	}
+	
+	
+	
+	@RequestMapping("/booksuccess.action")
+	public ModelAndView bookSuccess(HttpServletRequest request, Model model, HttpSession session) 
+	{
+		ModelAndView mv = new ModelAndView();
 		
-		
-		
+		String memSid = (String)session.getAttribute("memSid");
+
 		int num = sittingService.getReservationNum(memSid);
-		//System.out.println(num);
-		//String memSid2 = sittingService.getReservationMem(num);
-		//System.out.println(memSid2);
 		System.out.println(sittingService.getInfo(memSid, num));
-		//sittingService.getMatchingHistory(memSid, num);
 		
 		/*
 		 * // 견주라는 것 if(memSid == memSid2) {
 		 */
-		ReservationInfoDTO dto2 = sittingService.getMatchingHistory(memSid, num);
 		
-		ModelAndView mv = new ModelAndView();
 		
-		//model.addAttribute("num", num);
 		mv.addObject("num", num);
 		System.out.println(num);
-		//model.addAttribute("petList", sittingService.getInfo(memSid, num));
-		mv.addObject("memSid", sittingService.getInfo(memSid, num));
-		//model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
+		mv.addObject("petList", sittingService.getInfo(memSid, num));
 		mv.addObject("dto", sittingService.getMatchingHistory(memSid, num));
-		
-		System.out.println(dto2.getMaxpet());
-		System.out.println(dto2.getSphstart());
-		System.out.println(dto2.getSphend());
-		
-		
 		
 		String nick = request.getParameter("nick");
 		String grade = request.getParameter("grade");
-		//String spSid = request.getParameter("spSid");
 		String rate = request.getParameter("rate");
 		String count = request.getParameter("count");
 		String price = request.getParameter("price");
 		
 		
-		//model.addAttribute("nick", nick);
-		//model.addAttribute("grade", grade);
-		//model.addAttribute("rate", rate);
-		//model.addAttribute("count", count);
-		//model.addAttribute("price", price);
 		mv.addObject("nick", nick);
 		mv.addObject("grade", grade);
 		mv.addObject("rate", rate);
@@ -191,20 +174,8 @@ public class SittingController
 		 }
 		 */
 		
-	
-		//view = "redirect:booksuccess.action";
-		mv.setViewName("redirect:booksuccess.action");
+		mv.setViewName("/WEB-INF/views/index/ReservationInfo.jsp");
 		return mv;
-	}
-	
-	
-	
-	@RequestMapping("/booksuccess.action")
-	public String bookSuccess() 
-	{
-		String result = "/WEB-INF/views/index/ReservationInfo.jsp";
-		
-		return result;
 	}
 	
 	
