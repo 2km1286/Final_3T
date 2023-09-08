@@ -493,7 +493,9 @@ public class MemberController
 		// 수정쿼리문실행
 		memberService.updateInfo(dto);
 		
-		result = "redirect:mypage.action?flag=5";
+		// 로그아웃 하고 메인페이지로
+		session.removeAttribute("memSid");
+		result = "redirect:mainpage.action?flag=5";
 		return result;
 	}
 }
