@@ -1,10 +1,10 @@
 package com.act.member;
 
 public class MemberDTO {
-	private int jmSid, jmGender, stleSidCount, wtleSidCount;
+	private int jmSid, stleSidCount, wtleSidCount;
 	// 시팅 카운트 // 산책 카운트
 	private String memSid, memRegistDate, jmId, jmPw, jmName, jmSsn, jmNickName, jmTel, jmAddr1, jmAddr2, jmZipCode,
-			jmImage, randStr,jmExtraAddr;
+			jmImage, randStr,jmExtraAddr, jmGender;
 
 	public String getJmImage()
 	{
@@ -58,11 +58,11 @@ public class MemberDTO {
 		this.jmSid = jmSid;
 	}
 
-	public int getJmGender() {
+	public String getJmGender() {
 		return jmGender;
 	}
 
-	public void setJmGender(int jmGender) {
+	public void setJmGender(String jmGender) {
 		this.jmGender = jmGender;
 	}
 

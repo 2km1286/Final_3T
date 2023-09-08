@@ -13,6 +13,51 @@
 <title>마이페이지_내 정보 및 반려견관리</title>
 
 <script type="text/javascript">
+
+	$(function()
+	{
+		//alert("확인");
+		//alert($("#extraAddr").val());
+		
+		// 성별 셀렉트 표시하기		
+		var hiddenGender =  $("#hiddenGender").val();
+		
+ 		if(hiddenGender == "남자")
+ 			$("#jmGender").val("남자").prop("selected", true);
+ 		else
+ 			$("#jmGender").val("여자").prop("selected", true);
+ 		
+ 		// 주민등록번호 앞, 뒤나누기
+ 		var hiddenSsn = $("#hiddenSsn").val();
+ 		
+ 		var ssn1 =  hiddenSsn.substring(0, 6);
+ 		
+ 		var ssn2 = hiddenSsn.substring(7);
+
+ 		$("#jmSsn1").val(ssn1);
+ 		
+ 		$("#jmSsn2").val(ssn2);	
+ 		
+ 		// 전화번호 3단위로 나누기
+ 		var hiddenTel = $("#hiddenTel").val();
+ 		
+ 		var tel1 = hiddenTel.substring(0, 3);
+ 		
+ 		var tel2 = hiddenTel.substring(4, 8);
+ 	
+ 		var tel3 = hiddenTel.substring(9);
+ 		
+ 		$("#jmTel1").val(tel1);
+ 		$("#jmTel2").val(tel2);
+ 		$("#jmTel3").val(tel3);
+ 		
+	});
+	
+	
+</script>
+
+
+<script type="text/javascript">
 	
 	function openPopup()
 	{	
@@ -37,7 +82,7 @@
 				<div class="col-md-6 container-mypage" style="overflow: auto; height: 1000px;">
 				<h3><span class="badge">내 정보 관리</span></h3>
 				
-				<form class="form" id="infoForm" action="" method="post">
+				<form class="form" id="infoForm" action="updateinfo.action" method="post">
 				
 					<div class="input-container">
 					<label for="jmName" class="smallTitle">프로필 사진 </label><br>
@@ -47,58 +92,49 @@
 					
 					<div class="select-container ">
 						<label for="jmGender" class="smallTitle">성별 선택</label><br>
-						<select name="jmGen" id="jmGen">
+						<select name="jmGender" id="jmGender">
 							<option value="-1">--성별 선택--</option>
-							<option value="남">남성</option>
-						    <option value="여">여성</option>
+							<option value="남자">남성</option>
+						    <option value="여자">여성</option>
 					    </select>
+					    <input type="hidden" id="hiddenGender" value="${dto.jmGender }">
 					</div>
 					
 					<div class="input-container ">
 					<label for="jmName" class="smallTitle">이름 </label><br>
 					<input type="text" placeholder="이름" name="jmName" 
 						id="jmName" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"
+						value="${dto.jmName }"
 						>
 					</div>
 					
 					<div class="input-container ">
-					<label for="jmSsn" class="smallTitle">주민등록번호</label><br>
+					<label for="jmSsn" class="smallTitle">주민등록번호(변경불가)</label><br>
 						<input type="text" placeholder="주민번호 앞자리" name="jmSsn1"
 							id="jmSsn1" style="width: 40%;"maxlength="6" onkeyup="numberCheck(this)" 
-							onkeydown="numberCheck(this)">&nbsp;-&nbsp;
+							onkeydown="numberCheck(this)" readonly="readonly">&nbsp;-&nbsp;
 							<input type="password" placeholder="주민번호 뒷자리" name="jmSsn2"
 							id="jmSsn2" style="width: 40%;"maxlength="7" 
 							 onkeyup="numberCheck(this)" 
-							onkeydown="numberCheck(this)">
+							onkeydown="numberCheck(this)" readonly="readonly">
+						<input type="hidden" id="hiddenSsn" value="${dto.jmSsn }">
 					</div>
 					
 					<div class="input-container ">
-					 <label for="jmId" class="smallTitle">아이디 </label><br>
+					 <label for="jmId" class="smallTitle">아이디(변경불가)</label><br>
 						<input type="text" placeholder="아이디" name="jmId"
-							id="jmId" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)">
-						<button type="button" id="checkUserIdBtn" value="0">중복확인</button>
-					</div>
-					
-					<div class="input-container">
-					<label for="password" class="smallTitle">패스워드</label><br> 
-						<input type="password" placeholder="비밀번호" name="jmPw"
-							id="jmPw" style="width: 50%;">
-					</div>
-	
-					<div class="input-container">
-					<label for="password" class="smallTitle">패스워드 확인</label><br> 
-						<input type="password" placeholder="비밀번호 재입력"
-							name="userPwCheck" id="userPwCheck" style="width: 50%;">
-						<!-- 비밀번호 재확인시 위의 입력값과 다르다면 다시 설정하도록 -->
-						
+							id="jmId" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"
+							readonly="readonly" value="${dto.jmId}">
+						<!--<button type="button" id="checkUserIdBtn" value="0">중복확인</button> -->
 					</div>
 					
 					<div class="input-container ">
 					<label for="jmNickName" class="smallTitle">닉네임</label><br>
 						<input type="text" placeholder="닉네임"
 							name="jmNickName" id="jmNickName" onkeyup="characterCheck(this)"
-							onkeydown="characterCheck(this)">
+							onkeydown="characterCheck(this)" value="${dto.jmNickName }">
 						<button type="button" id="checkUserNickBtn" value="0">중복확인</button>
+						<input type="hidden" id="hiddenNickName" value="${dto.jmNickName }">
 					</div>
 	
 					<div class="input-container ">
@@ -113,27 +149,29 @@
 							id="jmTel3" style="width: 10%;" maxlength="4"
 							onkeyup="numberCheck(this)" onkeydown="numberCheck(this)">
 						<button type="button" id="telCheck">인증번호</button>
+						<input type="hidden" id="hiddenTel" value="${dto.jmTel }">
 					</div>
 					
 					<div class="input-container">
 					<label for="jmZipCode" class="smallTitle">우편번호</label><br>
 						<input type="text" id="jmZipCode" name="jmZipCode"
-							placeholder="우편번호" onclick="execDaumPostcode()" style="cursor: pointer;" readonly="readonly">
+							placeholder="우편번호" onclick="execDaumPostcode()" style="cursor: pointer;" readonly="readonly"
+							value="${dto.jmZipCode }">
 						<button type="button" onclick="execDaumPostcode()"
 							style="font-size: 95%; " >우편번호 찾기</button>
 					</div>
 					<div class="input-container">
 						<label for="jmAddr1" class="smallTitle">주소</label><br>
 						<input type="text" id="jmAddr1" name="jmAddr1" placeholder="도로명 주소"
-						onclick="execDaumPostcode()" readonly="readonly" style="cursor: pointer;"><br>
+						onclick="execDaumPostcode()" readonly="readonly" style="cursor: pointer;" value="${dto.jmAddr1 }"><br>
 					</div>
 					<div class="input-container">
 						<label for="jmAddr2" class="smallTitle">상세주소</label><br>
-						<input type="text" id="jmAddr2" name="jmAddr2" placeholder="상세주소">
+						<input type="text" id="jmAddr2" name="jmAddr2" placeholder="상세주소" value="${dto.jmAddr2 }">
 					</div>
 					
-					<input type="hidden" id="extraAddr" name="jmExtraAddr" placeholder="참고항목">
-	
+					<input type="hidden" id="extraAddr" name="jmExtraAddr" placeholder="참고항목" value="${dto.jmExtraAddr}">
+					
 					<div id="layer"
 						style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
 						<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
@@ -201,13 +239,12 @@
 													extraAddr = extraAddr;
 												}
 												// 조합된 참고항목을 해당 필드에 넣는다.
-												document
-														.getElementById("extraAddr").value = extraAddr;
+												document.getElementById("extraAddr").value = extraAddr;
 	
 											} else
 											{
-												document
-														.getElementById("extraAddr").value = '';
+												extraAddr += data.bname;
+												document.getElementById("extraAddr").value = extraAddr;
 											}
 	
 											// 우편번호와 주소 정보를 해당 필드에 넣는다.
@@ -259,6 +296,7 @@
 					
 					<div style="text-align: right; margin-top: 20px;">
 					<button type="button" id="reset-button">초기화하기</button>
+					<button type="button" id="updatePw-button">비밀번호재설정하기</button>
 					<button type="button" id="update-button" style="background-color:#53e3a6; color: white;">회원정보 수정</button>
 					</div>	
 					
@@ -337,44 +375,61 @@
 	
 				$("#checkUserNickBtn").click(function()
 				{
-					if ($("#jmNickName").val() != "")
+					
+					//alert("테스트");
+					//alert($("#jmNickName").val());
+					//alert($("#hiddenNickName").val());
+					
+					// 기존 닉네임에서 변경이 없을 경우
+					if ( $("#jmNickName").val() == $("#hiddenNickName").val())
 					{
-						var params = "jmNickName=" + $("#jmNickName").val();
-	
-						$.ajax(
+						$("#checkUserNickBtn").html("기존닉네임사용").val("1");
+						$("#checkUserNickBtn").css("background-color", "#007bff");
+						$("#checkUserNickBtn").css("color", "white"); // 텍스트 색상 변경
+					}
+					else // 기존 닉네임을 변경했을 경우
+					{
+						if ($("#jmNickName").val() != "")
 						{
-	
-							type : "POST",
-							url : "searchnickform.action",
-							data : params,
-							datayType : "json",
-							success : function(jsonObj)
+							var params = "jmNickName=" + $("#jmNickName").val();
+		
+							$.ajax(
 							{
-								if (jsonObj == 0)
+		
+								type : "POST",
+								url : "searchnickform.action",
+								data : params,
+								datayType : "json",
+								success : function(jsonObj)
 								{
-									$("#checkUserNickBtn").html("사용가능").val("1");
-									$("#checkUserNickBtn").css("background-color", "#007bff");
-									$("#checkUserNickBtn").css("color", "white"); // 텍스트 색상 변경
-								} else
+									if (jsonObj == 0)
+									{
+										$("#checkUserNickBtn").html("사용가능").val("1");
+										$("#checkUserNickBtn").css("background-color", "#007bff");
+										$("#checkUserNickBtn").css("color", "white"); // 텍스트 색상 변경
+									} else
+									{
+										$("#checkUserNickBtn").html("사용불가").val("0");
+										$("#checkUserNickBtn").css("background-color", "red");
+										$("#checkUserNickBtn").css("color", "white"); 
+									}
+		
+								},
+								error : function(e)
 								{
-									$("#checkUserNickBtn").html("사용불가").val("0");
-									$("#checkUserNickBtn").css("background-color", "red");
-									$("#checkUserNickBtn").css("color", "white"); 
+									alert(e.responseText);
 								}
-	
-							},
-							error : function(e)
-							{
-								alert(e.responseText);
-							}
-	
-						});
-	
-					} else
-					{
-						$("#checkUserNickBtn").html("입력없음").val("0");
-						$("#checkUserNickBtn").css("background-color", "red");
-						$("#checkUserNickBtn").css("color", "white");
+		
+							});
+		
+						} else
+						{
+							$("#checkUserNickBtn").html("입력없음").val("0");
+							$("#checkUserNickBtn").css("background-color", "red");
+							$("#checkUserNickBtn").css("color", "white");
+						}
+						
+						
 					}
 	
 				});
@@ -389,7 +444,7 @@
 									|| $("#jmName").val() == ""
 									|| $("#jmSsn1").val() == ""
 									|| $("#jmSsn2").val() == ""
-									|| $("#jmGen").val() == ""
+									|| $("#jmGender").val() == ""
 									|| $("#jmNickName").val() == ""
 									|| $("#jmTel1").val() == ""
 									|| $("#jmTel2").val() == ""
@@ -401,7 +456,7 @@
 								alert("필수 항목들을 모두 입력해 주세요");
 								return;
 							}
-							if ($("#checkUserIdBtn").val() != "1" || $("#checkUserNickBtn").val() != "1")
+							if ( $("#checkUserNickBtn").val() != "1")
 								{
 									alert("중복확인은 필수입니다");
 									return;
@@ -420,6 +475,12 @@
 				{
 					$("#infoForm")[0].reset();
 	
+				});
+				
+				// 비밀번호 재설정하기 
+				$("#updatePw-button").click(function()
+				{
+					window.location.href = "findpwpage.action";
 				});
 	
 			});
