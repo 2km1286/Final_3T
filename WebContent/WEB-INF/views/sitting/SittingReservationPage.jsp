@@ -639,18 +639,30 @@ function sittingReportReceive(memSid)
 										<span class="card-text"><small class="text-muted">반려견 선택</small></span><br>
 										
 										<div class="row">
-										
+											<c:choose>
+												<c:when test="${empty petList }">
+													<div class="col">
+														<input type="hidden" id="petOrNot" value="0"/>
+														<button id="registerPet">
+															<span class="card-text">반려견 등록하러 가기</span>
+														</button>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<input type="hidden" id="petOrNot" value="1"/>
+													<c:forEach items="${petList}" var="pet">
+													<div class="col">
+														<div class="text-left">
+														<img src="${pet.petImage}" alt="" class="card-img-top pets" style="width: 20%; height: 65%; border-radius: 50%;" data-pet-sid="${pet.petSid}">
+													<br>
+														<span class="card-text">&nbsp;&nbsp;${pet.petName}</span>
+														<input type="hidden" id="selectedPets" name="selectedPets" value="" />
+														</div>
+													</div>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
 											
-											<c:forEach items="${petList}" var="pet">
-											<div class="col">
-												<div class="text-left">
-												<img src="${pet.petImage}" alt="" class="card-img-top pets" style="width: 20%; height: 65%; border-radius: 50%;" data-pet-sid="${pet.petSid}">
-											<br>
-												<span class="card-text">&nbsp;&nbsp;${pet.petName}</span>
-												<input type="hidden" id="selectedPets" name="selectedPets" value="" />
-												</div>
-											</div>
-											</c:forEach>
 											
 										</div><!-- .row end -->
 									</div><!-- .oneText end -->
@@ -706,15 +718,21 @@ function sittingReportReceive(memSid)
 						</form>
 						
 						<script>
-						// 결제 요청 버튼 클릭
-				     	
+						
+							// 반려견 등록 하러가기 버튼 클릭
+							$("#registerPet").click(function()
+							{
+								
+							});
+				     		
+							// 결제 요청 버튼 클릭
 					     	$("#requestPay").click(function()
 							{
-					     	// 로그인이 되어 있지 않은 경우
+					     		// 로그인이 되어 있지 않은 경우
 				                if (${memSid eq '0'}) 
 				                {
 				                    // 확인 대화 상자를 표시하고 사용자의 선택 결과를 받아옵니다.
-				                    var confirmed = confirm("로그인 후 이용 가능합니다! 로그인 페이지로 이동하시겠습니까?");
+				                    var confirmed = confirm("로그인 후 이용 가능합니다! \n로그인 페이지로 이동하시겠습니까?");
 				                    if (confirmed) {
 				                        // 사용자가 "확인"을 선택한 경우 로그인 페이지로 이동
 				                        window.location.href = "loginpage.action";
@@ -723,8 +741,38 @@ function sittingReportReceive(memSid)
 				                       return false;
 				                    }
 				                }
+					     		
+				                
+					     		if($("#petOrNot").val() == "0")
+				                {
+				                	// 확인 대화 상자를 표시하고 사용자의 선택 결과를 받아옵니다.
+				                    var confirmed = confirm("반려견 등록 후 이용 가능합니다! \n반려견 등록 페이지로 이동하시겠습니까?");
+				                    if (confirmed) {
+				                        // 사용자가 "확인"을 선택한 경우 반려견 등록 페이지로 이동
+				                        window.location.href = "petinsertpage.action";
+				                    } else {
+				                        // 사용자가 "취소"를 선택한 경우 현재 페이지에 머무름
+				                       return false;
+				                    }
+				                }
 				                else
 				                {
+				                	
+				                	// 조건 충족 여부
+				                	if($("#datepicker1").val() == "" || $("#datepicker2").val() == "")
+				                	{
+				                		alert("날짜를 선택해 주세요");
+										return;
+				                	}
+				                	/*
+				                	if($("#selectedPets".val() == ""))
+				                	{
+				                		alert("반려견을 선택해 주세요");
+				                		return;
+				                	}
+				                	*/
+				                	
+				                	
 				                	var totalPriceValue = $("#totalPrice").text(); // totalPrice 태그의 내용을 가져옴
 						     	    $("#payModalLabel").text("결제 요청 - 금액: " + totalPriceValue + "원"); // 모달의 제목을 업데이트
 						     	    $("#modalTotalPrice").text(totalPriceValue); // 모달 내용에 금액 업데이트
@@ -739,102 +787,102 @@ function sittingReportReceive(memSid)
 						
 						<script type="text/javascript">
 									
-										$(function()
-										{
-											// 초기 가격 설정
-									        var basePrice = ${list.price};
-									        var additionalPrice = ${list.price / 2};
-									        var selectedPets = 0;
-									        var daysBetweenDates = 0;
-									        var totalPrice = 0;
-									        
-									        // 최종금액 초기 업데이트
-									        $("#totalPrice").html(basePrice);
-									        
-									    	 // 최종 금액 업데이트 함수
-									        function updateTotalPrice() {
-									            totalPrice = basePrice + ((daysBetweenDates-1) * basePrice);
-									            
-									            if (selectedPets === 2) {
-									                totalPrice += totalPrice/2;
-									            }
-									            
-									            $("#totalPrice").html(totalPrice);
-									            
-									            //$("#totalPrice").attr("value", totalPrice);
-									        }
-									     	
-									        $(".pets").click(function() {
-									            $(this).toggleClass('selected');
-									            if ($(this).hasClass('selected')) {
-									                $(this).css('border', 'solid 5px #ff9800');
-									                selectedPets += 1;
-									                updateTotalPrice();
-									            } else {
-									                $(this).css('border', 'none');
-									                selectedPets -= 1;
-									                updateTotalPrice();
-									            }
-									            // 반려견 선택이 변경될 때마다 최종 금액 업데이트
-									        });
-									        
-											
-									    	 // 체크인, 체크아웃 날짜 변경 시 최종 금액 업데이트
-									        fp1.config.onChange.push(function(selectedDates) {
-									            if (selectedDates[0]) {
-									                var checkinDate = selectedDates[0];
-									                var checkoutDate = fp2.selectedDates[0];
+							$(function()
+							{
+								// 초기 가격 설정
+						        var basePrice = ${list.price};
+						        var additionalPrice = ${list.price / 2};
+						        var selectedPets = 0;
+						        var daysBetweenDates = 0;
+						        var totalPrice = 0;
+						        
+						        // 최종금액 초기 업데이트
+						        $("#totalPrice").html(basePrice);
+						        
+						    	 // 최종 금액 업데이트 함수
+						        function updateTotalPrice() {
+						            totalPrice = basePrice + ((daysBetweenDates-1) * basePrice);
+						            
+						            if (selectedPets === 2) {
+						                totalPrice += totalPrice/2;
+						            }
+						            
+						            $("#totalPrice").html(totalPrice);
+						            
+						            //$("#totalPrice").attr("value", totalPrice);
+						        }
+						     	
+						        $(".pets").click(function() {
+						            $(this).toggleClass('selected');
+						            if ($(this).hasClass('selected')) {
+						                $(this).css('border', 'solid 5px #ff9800');
+						                selectedPets += 1;
+						                updateTotalPrice();
+						            } else {
+						                $(this).css('border', 'none');
+						                selectedPets -= 1;
+						                updateTotalPrice();
+						            }
+						            // 반려견 선택이 변경될 때마다 최종 금액 업데이트
+						        });
+						        
+								
+						    	 // 체크인, 체크아웃 날짜 변경 시 최종 금액 업데이트
+						        fp1.config.onChange.push(function(selectedDates) {
+						            if (selectedDates[0]) {
+						                var checkinDate = selectedDates[0];
+						                var checkoutDate = fp2.selectedDates[0];
 
-									                // 체크인과 체크아웃 날짜 사이의 일 수 계산
-									                daysBetweenDates = Math.floor((checkoutDate - checkinDate) / (24 * 60 * 60 * 1000));
-									                updateTotalPrice();
-									            }
-									        });
-									        
-									        fp2.config.onChange.push(function(selectedDates) {
-									            if (selectedDates[0]) {
-									                var checkinDate = fp1.selectedDates[0];
-									                var checkoutDate = selectedDates[0];
+						                // 체크인과 체크아웃 날짜 사이의 일 수 계산
+						                daysBetweenDates = Math.floor((checkoutDate - checkinDate) / (24 * 60 * 60 * 1000));
+						                updateTotalPrice();
+						            }
+						        });
+						        
+						        fp2.config.onChange.push(function(selectedDates) {
+						            if (selectedDates[0]) {
+						                var checkinDate = fp1.selectedDates[0];
+						                var checkoutDate = selectedDates[0];
 
-									                // 체크인과 체크아웃 날짜 사이의 일 수 계산
-									                daysBetweenDates = Math.floor((checkoutDate - checkinDate) / (24 * 60 * 60 * 1000));
-									                updateTotalPrice();
-									            }
-									        });
-									        
-									        
-									     	
-									        
-									        // 예약완료 버튼 클릭 
-									        $("#reserveComplete").click(function() {
-												var selectedPets = [];
-												
-								                $('.pets.selected').each(function() 
-								                {
-								                	selectedPets.push($(this).attr('data-pet-sid'));
-								                });
-												
-									            $('#selectedPets').val(selectedPets.join(','));
-									            $('#pricee').val(totalPrice);
-									            
-									            $("#sphSid").val($("#sphSid1").val());
-									            
-								                //alert($("#selectedPets").val());
-								                //alert($("#pricee").val());
-												
-												$("#reservationForm").submit();
-											});
-									    	
-									        
-									        
-											    
-										});
-										
-											  function openPopup() {
-										      window.open("sittingpay.action", "paymentWindow", "width=600,height=600");
-										    }
-										
-									</script>
+						                // 체크인과 체크아웃 날짜 사이의 일 수 계산
+						                daysBetweenDates = Math.floor((checkoutDate - checkinDate) / (24 * 60 * 60 * 1000));
+						                updateTotalPrice();
+						            }
+						        });
+						        
+						        
+						     	
+						        
+						        // 예약완료 버튼 클릭 
+						        $("#reserveComplete").click(function() {
+									var selectedPets = [];
+									
+					                $('.pets.selected').each(function() 
+					                {
+					                	selectedPets.push($(this).attr('data-pet-sid'));
+					                });
+									
+						            $('#selectedPets').val(selectedPets.join(','));
+						            $('#pricee').val(totalPrice);
+						            
+						            $("#sphSid").val($("#sphSid1").val());
+						            
+					                //alert($("#selectedPets").val());
+					                //alert($("#pricee").val());
+									
+									$("#reservationForm").submit();
+								});
+						    	
+						        
+						        
+								    
+							});
+							
+								  function openPopup() {
+							      window.open("sittingpay.action", "paymentWindow", "width=600,height=600");
+							    }
+							
+						</script>
 							<br>
 						</div>
 				</div>
@@ -888,6 +936,7 @@ function sittingReportReceive(memSid)
 	        </div>
 	    </div>
 	</div>
+	
 	<!-- 프로필 신고 모달 페이지 -->
 		<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -915,6 +964,11 @@ function sittingReportReceive(memSid)
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
+		
 		
 		<!-- 돌봄공간 신고 모달 페이지 -->
 		<div class="modal fade" id="sittingReportModal" tabindex="-1" role="dialog" aria-labelledby="sittingReportModalLabel" aria-hidden="true">
