@@ -374,10 +374,17 @@ function sittingReportReceive(memSid)
 
 							<!-- 후기 -->
 							<div>
-									<h5 class="card-title text-center">고객 후기 ⭐${sittingSrwRate.srwRateAvg } (${sittingSrwRate.srwCount }개)&nbsp;&nbsp;
+								<c:choose>
+									<c:when test="${sittingSrwRate.srwRateAvg == null }">
+										<h5 class="card-title text-center">고객 후기 
+										<br />0.0 ⭐ (0개의 후기)</h5>
+									</c:when>
+									<c:otherwise>
+										<h5 class="card-title text-center">고객 후기 
+										<br />⭐${sittingSrwRate.srwRateAvg } (${sittingSrwRate.srwCount }개)</h5>
+									</c:otherwise>
+								</c:choose>
 									
-									
-									</h5>
 								<br><br>
 
 								<!-- 후기 사진 -->								
