@@ -116,30 +116,14 @@ public class SittingController
 		
 		dto.setSelectedPetsSid(selectedPetsSid);
 		
-		int count2 = 0;
-		
-		
-		count2 = sittingService.sittingFromCreateCartToBook(dto);
 		
 		String memSid = (String)session.getAttribute("memSid");
-		//System.out.println(memSid);
 		
 		String nick = request.getParameter("nick");
 		String grade = request.getParameter("grade");
 		String rate = request.getParameter("rate");
 		String count = request.getParameter("count");
-		
-		System.out.println("1nick: " + nick);
-		System.out.println("1grade: " + grade);
-		System.out.println("1rate: " + rate);
-		System.out.println("1count: " + count);
-		
-		
-		//model.addAttribute("nick", nick);
-		//model.addAttribute("grade", grade);
-		//model.addAttribute("rate", rate);
-		//model.addAttribute("count", count);
-		//model.addAttribute("price", price);
+
 		mv.addObject("nick", nick);
 		mv.addObject("grade", grade);
 		mv.addObject("rate", rate);
@@ -159,45 +143,25 @@ public class SittingController
 		String memSid = (String)session.getAttribute("memSid");
 
 		int num = sittingService.getReservationNum(memSid);
-		//System.out.println(sittingService.getInfo(memSid, num));
+		System.out.println(sittingService.getInfo(memSid, num));
 		
 		/*
 		 * // 견주라는 것 if(memSid == memSid2) {
 		 */
 		
 		
-		//model.addAttribute("num", num);
 		mv.addObject("num", num);
 		System.out.println(num);
-		//model.addAttribute("petList", sittingService.getInfo(memSid, num));
 		mv.addObject("petList", sittingService.getInfo(memSid, num));
-		//model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
 		mv.addObject("dto", sittingService.getMatchingHistory(memSid, num));
-		
-		//System.out.println(dto2.getMaxpet());
-		//System.out.println(dto2.getSphstart());
-		//System.out.println(dto2.getSphend());
-		
-		
 		
 		String nick = request.getParameter("nick");
 		String grade = request.getParameter("grade");
-		//String spSid = request.getParameter("spSid");
 		String rate = request.getParameter("rate");
 		String count = request.getParameter("count");
 		String price = request.getParameter("price");
 		
 		
-		System.out.println("2nick: " + nick);
-		System.out.println("2grade: " + grade);
-		System.out.println("2rate: " + rate);
-		System.out.println("2count: " + count);
-		
-		//model.addAttribute("nick", nick);
-		//model.addAttribute("grade", grade);
-		//model.addAttribute("rate", rate);
-		//model.addAttribute("count", count);
-		//model.addAttribute("price", price);
 		mv.addObject("nick", nick);
 		mv.addObject("grade", grade);
 		mv.addObject("rate", rate);
