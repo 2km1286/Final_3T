@@ -705,18 +705,34 @@ function sittingReportReceive(memSid)
 						</div>
 						</form>
 						
-						<script type="text/javascript">
+						<script>
 						// 결제 요청 버튼 클릭
 				     	
 					     	$("#requestPay").click(function()
 							{
+					     	// 로그인이 되어 있지 않은 경우
+				                if (${memSid eq '0'}) 
+				                {
+				                    // 확인 대화 상자를 표시하고 사용자의 선택 결과를 받아옵니다.
+				                    var confirmed = confirm("로그인 후 이용 가능합니다! 로그인 페이지로 이동하시겠습니까?");
+				                    if (confirmed) {
+				                        // 사용자가 "확인"을 선택한 경우 로그인 페이지로 이동
+				                        window.location.href = "loginpage.action";
+				                    } else {
+				                        // 사용자가 "취소"를 선택한 경우 메인 페이지로 이동
+				                       return false;
+				                    }
+				                }
+				                else
+				                {
+				                	var totalPriceValue = $("#totalPrice").text(); // totalPrice 태그의 내용을 가져옴
+						     	    $("#payModalLabel").text("결제 요청 - 금액: " + totalPriceValue + "원"); // 모달의 제목을 업데이트
+						     	    $("#modalTotalPrice").text(totalPriceValue); // 모달 내용에 금액 업데이트
+						     	    $("#payModal").modal("show"); // 모달 띄우기
+						     		
+									//$("#payModal").modal("show");
+				                }
 					     		
-					     		var totalPriceValue = $("#totalPrice").text(); // totalPrice 태그의 내용을 가져옴
-					     	    $("#payModalLabel").text("결제 요청 - 금액: " + totalPriceValue + "원"); // 모달의 제목을 업데이트
-					     	    $("#modalTotalPrice").text(totalPriceValue); // 모달 내용에 금액 업데이트
-					     	    $("#payModal").modal("show"); // 모달 띄우기
-					     		
-								//$("#payModal").modal("show");
 							});
 					        
 						</script>
@@ -942,7 +958,7 @@ function sittingReportReceive(memSid)
 			</div>
 		</div>
 	
-	
+	 
 	<script>
 	$(function()
 	{
