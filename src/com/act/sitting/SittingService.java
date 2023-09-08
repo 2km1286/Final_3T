@@ -579,15 +579,15 @@ public class SittingService implements ISittingService
 			dto.setPetSid(sid);
 			cart = dao.sittingCart(dto);
 		}
-		System.out.println("sbStart : " + dto.getSbStart());
-		System.out.println("sbEnd : " + dto.getSbEnd());
+		//System.out.println("sbStart : " + dto.getSbStart());
+		//	System.out.println("sbEnd : " + dto.getSbEnd());
 		// 4. 예약테이블 insert
 		result = dao.sittingBook(dto);
 		
 		
-		System.out.println("createCart : " + createCart);
-		System.out.println("cart : " + cart);
-		System.out.println("book : " + result);
+		//System.out.println("createCart : " + createCart);
+		//System.out.println("cart : " + cart);
+		//System.out.println("book : " + result);
 		System.out.println("3개테이블 인서트 완료------------------------------------------------------");
 		
 		return result;

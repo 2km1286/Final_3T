@@ -480,12 +480,11 @@ p {
 							style="width: 100%;">
 						<div class="card-body">
 							<h5 class="card-title">
-								${dto.grade}
+								[${dto.grade}] ${dto.jmNickName}</h5>
+							<h6 class="card-subtitle text-muted">${dto.spAddr1} ${dto.extraAddr }</h6>
+							<br /> 
+							<h4>${dto.sptitle}</h4>
 							
-								${dto.jmNickName}</h5>
-							<h6 class="card-subtitle text-muted">${dto.spAddr1}
-								<br /> ${dto.sptitle}
-							</h6>
 							<br>
 							<input type="hidden" id="spSid" name="spSid" value="${dto.spSid }"/>
 							<c:forEach var="tag" items="${tagList }">
@@ -497,17 +496,24 @@ p {
 							</c:forEach>
 							
 							<c:choose>
-								<c:when test="${sittingSrwRates == null }">
-									<<p>0.0 ⭐ (0개의 후기) </p>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="${sittingSrwRates }" var="srw">
-										<c:if test="${dto.memSid == srw.memSid }">
-											<p>${srw.srwRateAvg } ⭐ (${srw.srwCount }개의 후기)
-										</c:if>
-									</c:forEach>
-								</c:otherwise>
+							    <c:when test="${not empty sittingSrwRates}">
+							        <c:forEach var="srw" items="${sittingSrwRates}">
+							            <c:choose>
+							                <c:when test="${empty srw.memSid}">
+							                    <p>0.0 ⭐ (0개의 후기) </p>
+							                </c:when>
+							                <c:otherwise>
+							                    <p>${srw.srwRateAvg} ⭐ (${srw.srwCount}개의 후기)</p>
+							                </c:otherwise>
+							            </c:choose>
+							        </c:forEach>
+							    </c:when>
+							    <c:otherwise>
+							        <p>0.0 ⭐ (0개의 후기) </p>
+							    </c:otherwise>
 							</c:choose>
+
+							
 								
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
