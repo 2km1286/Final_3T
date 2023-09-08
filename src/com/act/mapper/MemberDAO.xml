@@ -124,9 +124,19 @@
 		AND PRR.REPORTED_MEM_SID = #{memSid}
 	</select>
 
-
-
-
+	<select id="searchInfo" resultType="com.act.member.MemberDTO">
+		SELECT JM_GENDER AS JMGENDER, JM_NAME AS JMNAME, JM_SSN AS JMSSN, JM_ID AS JMID, JM_PW AS JMPW, JM_NICKNAME AS JMNICKNAME
+     		 , JM_TEL AS JMTEL, JM_ZIPCODE AS JMZIPCODE, JM_ADDR1 AS JMADDR1, JM_ADDR2 AS JMADDR2, JM_EXTRAADDR AS JMEXTRAADDR
+		FROM JOIN_MEMBER
+		WHERE MEM_SID = #{memSid}
+	</select>
+	
+	<update id="updateInfo">
+		UPDATE JOIN_MEMBER
+		SET JM_IMAGE = #{jmImage}, JM_GENDER = #{jmGender}, JM_NAME = #{jmName}, JM_NICKNAME = #{jmNickName}, JM_TEL = #{jmTel}
+		    , JM_ZIPCODE = #{jmZipCode}, JM_ADDR1 = #{jmAddr1}, JM_ADDR2 = #{jmAddr2}, JM_EXTRAADDR = #{jmExtraAddr}
+		WHERE MEM_SID = #{memSid}
+	</update>
 
 
 

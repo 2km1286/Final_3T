@@ -309,8 +309,8 @@ form input[name="jmZipCode"] {
 					<label for="jmGender">성별 선택</label> 
 					<select name="jmGen" id="jmGen">
 						<option value="-1">--성별 선택--</option>
-						<option value="남">남성</option>
-					    <option value="여">여성</option>
+						<option value="남자">남성</option>
+					    <option value="여자">여성</option>
 				    </select>
 				</div>
 				<div class="input-container">
@@ -467,8 +467,8 @@ form input[name="jmZipCode"] {
 
 										} else
 										{
-											document
-													.getElementById("extraAddr").value = '';
+											extraAddr += data.bname;
+											document.getElementById("extraAddr").value = extraAddr;
 										}
 
 										// 우편번호와 주소 정보를 해당 필드에 넣는다.
