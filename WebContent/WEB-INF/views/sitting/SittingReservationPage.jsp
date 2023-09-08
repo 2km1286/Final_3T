@@ -896,8 +896,11 @@ function sittingReportReceive(memSid)
 		</button>
 	</div>
 	
-	<!-- 결제 모달 페이지 -->
+	<div class="modal fade" id="petModal" tabindex="-1" role="dialog" aria-labelledby="petModalLabel" aria-hidden="true">
+		<p>반려견등록모달모달</p>
+	</div>
 	
+	<!-- 결제 모달 페이지 -->
 	<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
 	        <div class="modal-content">
@@ -1025,7 +1028,10 @@ function sittingReportReceive(memSid)
 			$("#reserveComplete").css("visibility", "visible");
 		});
 		
-		
+		$("#registerPet").click(function()
+		{
+			$("#petModal").modal("show");
+		});
 		
 	});
 	
