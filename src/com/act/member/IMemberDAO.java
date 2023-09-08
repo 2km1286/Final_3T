@@ -49,5 +49,10 @@ public interface IMemberDAO
 	public int profilCompanionNotice(String memSid);
 	
 	// 오늘 프로필 수정요청 당한 건수
+	
+	// 로그인한 회원의 정보 가져오기
+	public MemberDTO searchInfo(String memSid);
 
+	// 회원정보수정
+	public int updateInfo(MemberDTO dto);
 }

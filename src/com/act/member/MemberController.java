@@ -390,9 +390,13 @@ public class MemberController
 
 	// 마이페이지 내 정보 및 반려견 관리. AJAX로 처리.
 	@RequestMapping("/mypageinfoform.action")
-	public String myPageInfo()
+	public String myPageInfo(HttpSession session, Model model)
 	{
 		String result = "";
+		String memSid = (String)session.getAttribute("memSid");
+		
+		model.addAttribute("dto", memberService.searchInfo(memSid));
+		
 		// AJAX
 		result = "/WEB-INF/ajax/MyPageInfoForm.jsp";
 		return result;
@@ -477,5 +481,20 @@ public class MemberController
 		return result;
 	}
 
+	// 로그인한 회원 정보 수정,업데이트
+	@RequestMapping("/updateinfo.action")
+	public String updateInf(MemberDTO dto, HttpSession session)
+	{
+		String result = "";
+		
+		String memSid = (String)session.getAttribute("memSid");
+		dto.setMemSid(memSid);
+	
+		// 수정쿼리문실행
+		memberService.updateInfo(dto);
+		
+		result = "redirect:mypage.action?flag=5";
+		return result;
+	}
 }
 

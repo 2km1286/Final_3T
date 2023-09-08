@@ -147,6 +147,34 @@ public class MemberService implements IMemberService
 		
 		return result;
 	}
+
+	
+	// 로그인한 회원 정보 가져오기
+	@Override
+	public MemberDTO searchInfo(String memSid)
+	{
+		MemberDTO result = new MemberDTO();
+		
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		
+		result = dao.searchInfo(memSid);
+		
+		return result;		
+	}
+
+	// 회원정보 수정
+	@Override
+	public int updateInfo(MemberDTO dto)
+	{
+		int result = 0;
+		
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		
+		result = dao.updateInfo(dto);
+		
+		return result;
+	}
+	
 	
 	
 	
