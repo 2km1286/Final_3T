@@ -59,10 +59,22 @@ if (memSid == null) {
 <!-- responsive style -->
 <link href="css/responsive.css" rel="stylesheet" />
 
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function()
+	{
+		var flag =<%=request.getParameter("flag")%>
+
+		if( flag == "5" )	// 내 정보 수정하고 왔을때
+		{
+			alert("회원정보가 수정되었습니다. 다시 로그인해주세요!");
+		}
+	});
 
 
+</script>
 
 </head>
 <body>
