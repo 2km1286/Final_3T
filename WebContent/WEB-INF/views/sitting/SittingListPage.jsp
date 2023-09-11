@@ -495,31 +495,29 @@ p {
 									</c:if>
 							</c:forEach>
 							
-							<c:choose>
-							    <c:when test="${not empty sittingSrwRates}">
-							        <c:forEach var="srw" items="${sittingSrwRates}">
-							            <c:choose>
-							                <c:when test="${empty srw.memSid}">
-							                    <p>0.0 ⭐ (0개의 후기) </p>
-							                </c:when>
-							                <c:otherwise>
-							                    <p>${srw.srwRateAvg} ⭐ (${srw.srwCount}개의 후기)</p>
-							                </c:otherwise>
-							            </c:choose>
-							        </c:forEach>
-							    </c:when>
-							    <c:otherwise>
-							        <p>0.0 ⭐ (0개의 후기) </p>
-							    </c:otherwise>
-							</c:choose>
-
-							
+							<div class="row">
+								<div class="col">
+									<c:choose>
+									    <c:when test="${not empty sittingSrwRates}">
+									        <c:forEach var="srw" items="${sittingSrwRates}">
+									            <c:choose>
+									                <c:when test="${srw.memSid == dto.memSid}">
+									                	<p>${srw.srwRateAvg} ⭐ (${srw.srwCount}개의 후기)</p>
+									                </c:when>
+									            </c:choose>
+									        </c:forEach>
+									    </c:when>
+									    <c:otherwise>
+									        <p>0.0 ⭐ (0개의 후기) </p>
+									    </c:otherwise>
+									</c:choose>
+								</div>
 								
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								 ${dto.price}원/ 1박</p>
+								<div class="col">
+									 ${dto.price}원/ 1박</p>
+								</div>
+							</div><!-- end .row  -->
+							
 						</div>
 						<!-- end .card-body -->
 					</div>
