@@ -518,6 +518,7 @@ function sittingReportReceive(memSid)
 								                var today = new Date();
 								                var twoMonthsLater = new Date(today.getFullYear(), today.getMonth() + 2, today.getDate());
 								                
+								                //체크인 달력
 								                var fp1 = flatpickr(document.getElementById("datepicker1"), {
 								                    "locale": "ko",
 								                    "disable": fp1DisabledDates,
@@ -532,6 +533,7 @@ function sittingReportReceive(memSid)
 												
 								                var inDate = new Date(fp1.selectedDates[0]);
 								                
+								                // 체크아웃 달력
 								                var fp2 = flatpickr(document.getElementById("datepicker2"), {
 								                    "locale": "ko",
 								                    "disable": fp2DisabledDates,
@@ -558,12 +560,13 @@ function sittingReportReceive(memSid)
 												            }
 								                            
 								                            
-												            if (hasDisabledDates || checkoutDate < checkinDate) {
+												            if (hasDisabledDates || checkoutDate < checkinDate || checkoutDate > minCheckoutDate) {
 												                fp2.clear();
-												                showMessage("해당 날짜는 선택 불가합니다.");
+												                showMessage("최대 3박 4일까지 예약 가능합니다.");
 												            } else {
 												                hideMessage();
 												            }
+												            
 								                            
 								                        }
 								                    }
@@ -643,9 +646,11 @@ function sittingReportReceive(memSid)
 												<c:when test="${empty petList }">
 													<div class="col">
 														<input type="hidden" id="petOrNot" value="0"/>
-														<button id="registerPet">
-															<span class="card-text">반려견 등록하러 가기</span>
-														</button>
+														<div class="col d-flex align-items-center justify-content-center">
+															<button type="button" class="btn btn-warning custom-button" id="registerPet">
+																<span class="card-text"><a href="petinsertpage.action">반려견 등록하러 가기</a></span>
+															</button>
+														</div>
 													</div>
 												</c:when>
 												<c:otherwise>
@@ -690,16 +695,16 @@ function sittingReportReceive(memSid)
 									<!-- .oneText -->
 									<hr>
 									<div class="row">
-											<div class="col">
-												<span class="card-text">최종 결제금액</span>
-												<input type="hidden" id="sphSid" name="sphSid" value=""/>
-											</div>
-											<div class="col">
-												<!-- <input type="text" class="card-text" id="totalPrice" name="totalPrice" style="font-weight: bold; color: red;" value=""/> -->
-												<span class="card-text" id="totalPrice" style="font-weight: bold; color: red;" >&nbsp; = </span>
-												<input type="hidden" id="pricee" name="pricee" value=""/> 
-											</div>
+										<div class="col">
+											<span class="card-text">최종 결제금액</span>
+											<input type="hidden" id="sphSid" name="sphSid" value=""/>
 										</div>
+										<div class="col">
+											<!-- <input type="text" class="card-text" id="totalPrice" name="totalPrice" style="font-weight: bold; color: red;" value=""/> -->
+											<span class="card-text" id="totalPrice" style="font-weight: bold; color: red;" >&nbsp; = </span>
+											<input type="hidden" id="pricee" name="pricee" value=""/> 
+										</div>
+									</div>
 									<br>
 									<!-- <div
 										class="col d-flex align-items-center justify-content-center">
@@ -764,13 +769,13 @@ function sittingReportReceive(memSid)
 				                		alert("날짜를 선택해 주세요");
 										return;
 				                	}
-				                	/*
-				                	if($("#selectedPets".val() == ""))
+				                	
+				                	if(selectedPets == 0)
 				                	{
 				                		alert("반려견을 선택해 주세요");
 				                		return;
 				                	}
-				                	*/
+				                	
 				                	
 				                	
 				                	var totalPriceValue = $("#totalPrice").text(); // totalPrice 태그의 내용을 가져옴
@@ -792,7 +797,7 @@ function sittingReportReceive(memSid)
 								// 초기 가격 설정
 						        var basePrice = ${list.price};
 						        var additionalPrice = ${list.price / 2};
-						        var selectedPets = 0;
+						        selectedPets = 0;
 						        var daysBetweenDates = 0;
 						        var totalPrice = 0;
 						        
@@ -812,18 +817,30 @@ function sittingReportReceive(memSid)
 						            //$("#totalPrice").attr("value", totalPrice);
 						        }
 						     	
+						     	// 반려견 선택이 변경될 때마다 최종 금액 업데이트
 						        $(".pets").click(function() {
-						            $(this).toggleClass('selected');
-						            if ($(this).hasClass('selected')) {
-						                $(this).css('border', 'solid 5px #ff9800');
-						                selectedPets += 1;
-						                updateTotalPrice();
-						            } else {
-						                $(this).css('border', 'none');
-						                selectedPets -= 1;
-						                updateTotalPrice();
-						            }
-						            // 반려견 선택이 변경될 때마다 최종 금액 업데이트
+						        	
+						        	var maxPet = ${list.spMaxPet}
+						        	
+						        	// 최대 견수만큼 선택한 상황에서 반려견을 또 선택하려고 할 때
+						        	if(selectedPets >= maxPet && !$(this).hasClass('selected')) {
+						        		alert("최대 견수는 " + maxPet + "마리 입니다.");
+						        	} else {
+						        		$(this).toggleClass('selected');
+							            
+							            if ($(this).hasClass('selected')) {
+							        		$(this).css('border', 'solid 5px #ff9800');
+							                selectedPets += 1;
+							                updateTotalPrice();
+							            } 
+							            else {
+							                $(this).css('border', 'none');
+							                selectedPets -= 1;
+							                updateTotalPrice();
+							            }	
+						        	}
+						        	
+						            
 						        });
 						        
 								
@@ -855,14 +872,14 @@ function sittingReportReceive(memSid)
 						        
 						        // 예약완료 버튼 클릭 
 						        $("#reserveComplete").click(function() {
-									var selectedPets = [];
+									var selectedPetsList = [];
 									
 					                $('.pets.selected').each(function() 
 					                {
-					                	selectedPets.push($(this).attr('data-pet-sid'));
+					                	selectedPetsList.push($(this).attr('data-pet-sid'));
 					                });
 									
-						            $('#selectedPets').val(selectedPets.join(','));
+						            $('#selectedPets').val(selectedPetsList.join(','));
 						            $('#pricee').val(totalPrice);
 						            
 						            $("#sphSid").val($("#sphSid1").val());
