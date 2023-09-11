@@ -92,11 +92,11 @@ public class SittingController
 		String selectedPets = dto.getSelectedPets();
 		int pricee = dto.getPricee();
 		
-		//System.out.println(pMemSid);
-		//System.out.println(datePicker1);
-		//System.out.println(datePicker2);
-		//System.out.println(selectedPets);
-		//System.out.println(pricee);
+		//System.out.println("pMemSid: " + pMemSid);
+		//System.out.println("datePicker1: " + datePicker1);
+		//System.out.println("datePicker2: " + datePicker2);
+		//System.out.println("selectedPets: " + selectedPets);
+		//System.out.println("pricee: " + pricee);
 		
 		dto.setPrice(pricee);			
 		dto.setpMemSid(pMemSid);		 
@@ -115,6 +115,9 @@ public class SittingController
 		}
 		
 		dto.setSelectedPetsSid(selectedPetsSid);
+		
+		int result = sittingService.sittingFromCreateCartToBook(dto);
+		//System.out.println("서비스 다녀온 result : " + result);
 		
 		
 		String memSid = (String)session.getAttribute("memSid");
@@ -143,7 +146,7 @@ public class SittingController
 		String memSid = (String)session.getAttribute("memSid");
 
 		int num = sittingService.getReservationNum(memSid);
-		System.out.println(sittingService.getInfo(memSid, num));
+		//System.out.println(sittingService.getInfo(memSid, num));
 		
 		/*
 		 * // 견주라는 것 if(memSid == memSid2) {
@@ -151,7 +154,7 @@ public class SittingController
 		
 		
 		mv.addObject("num", num);
-		System.out.println(num);
+		//System.out.println(num);
 		mv.addObject("petList", sittingService.getInfo(memSid, num));
 		mv.addObject("dto", sittingService.getMatchingHistory(memSid, num));
 		
