@@ -199,7 +199,11 @@ function sittingReportReceive(memSid)
 	<section>
 		<!-- 맨 위에 사진과 캘린더 -->
 		<div class="image-container align-items-center">
-			<div class="image-half" style="background-image: url('images/sittingroom.png'); width: 100%;" ></div>
+			<c:choose>
+				<c:when test="${photos.spSid == list.spSid }">
+					<div class="image-half" style="background-image: url('${photos.sppLink}'); width: 100%;" ></div>
+				</c:when>
+			</c:choose>
 		</div>
 			
 		<div class="d-flex justify-content-center align-items-center" style="height: 100vh; overflow: hidden;">

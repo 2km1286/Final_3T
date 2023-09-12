@@ -56,6 +56,12 @@ public interface ISittingDAO
 	// 회원번호(펫시터)로 공개상태의 태그들 조회
 	public ArrayList<SittingDTO> sittingPlaceTagsByMemSid(String memSid);
 	
+	// 돌봄공간의 공간 사진들 조회
+	public ArrayList<SittingDTO> sittingPlacePhoto();
+	
+	// 공간번호로 돌봄공간의 사진들 조회
+	public SittingDTO sittingPlacePhotoBySpsid(int spSid);
+	
 	// 회원번호로 펫시터인 나에게 달린 후기 조회
 	public ArrayList<SittingDTO> sittingReviews(String memSid);
 	

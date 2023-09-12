@@ -41,6 +41,7 @@ public class SittingController
 		String view = "";
 
 		model.addAttribute("list", sittingService.list());
+		model.addAttribute("photoList", sittingService.sittingPlacePhoto());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
 		model.addAttribute("tagList", sittingService.tagList());
 		model.addAttribute("sittingSrwRates", sittingService.sittingSrwRates());
@@ -57,6 +58,7 @@ public class SittingController
 		
 		SittingDTO list = sittingService.listPublicByMemSid(memSid);
 		String pMemSid = (String)session.getAttribute("memSid");
+		SittingDTO photos = sittingService.sittingPlacePhotoBySpsid(list.getSpSid());
 		
 		ArrayList<SittingDTO> spListTags = sittingService.sittingPlaceTagsByMemSid(memSid);
 		ArrayList<SittingDTO> spRest = sittingService.spRest(memSid);
@@ -74,6 +76,7 @@ public class SittingController
 		model.addAttribute("sittingSrwRate", sittingSrwRate);
 		model.addAttribute("petList", petList);
 		model.addAttribute("sbList", sbList);
+		model.addAttribute("photos", photos);
 			
 		result = "/WEB-INF/views/sitting/SittingReservationPage.jsp";
 		

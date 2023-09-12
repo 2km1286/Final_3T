@@ -107,6 +107,17 @@
 		WHERE MEMSID = #{memSid}
 	</select>
 	
+	<select id="sittingPlacePhoto" resultType="com.act.sitting.SittingDTO">
+		SELECT SPP_SID AS SPPSID, SPP_LINK AS SPPLINK, SP_SID AS SPSID
+		FROM SITTING_PLACE_PHOTO
+	</select>
+	
+	<select id="sittingPlacePhotoBySpsid" resultType="com.act.sitting.SittingDTO">
+		SELECT SPP_SID AS SPPSID, SPP_LINK AS SPPLINK, SP_SID AS SPSID
+		FROM SITTING_PLACE_PHOTO
+		WHERE SP_SID = #{spSid}
+	</select>
+	
 	<select id="sittingReviews" resultType="com.act.sitting.SittingDTO">
 		SELECT SRWSID, SRWTITLE, SRWCONTENT, SRWRATE, SRWDATE, MEMSID, PMEMSID, PJMNICKNAME
 		FROM SITTING_REVIEW_VIEW
