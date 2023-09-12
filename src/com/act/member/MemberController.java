@@ -396,6 +396,7 @@ public class MemberController
 		String memSid = (String)session.getAttribute("memSid");
 		
 		model.addAttribute("dto", memberService.searchInfo(memSid));
+		model.addAttribute("pet", memberService.searchPet(memSid));
 		
 		// AJAX
 		result = "/WEB-INF/ajax/MyPageInfoForm.jsp";
@@ -427,6 +428,8 @@ public class MemberController
 	public String petInsertPage()
 	{
 		String result = "";
+		
+		
 		result = "/WEB-INF/views/member/PetInsertPage.jsp";
 		return result;
 	}
@@ -493,7 +496,9 @@ public class MemberController
 		// 수정쿼리문실행
 		memberService.updateInfo(dto);
 		
-		result = "redirect:mypage.action?flag=5";
+		// 로그아웃 하고 메인페이지로
+		session.removeAttribute("memSid");
+		result = "redirect:mainpage.action?flag=5";
 		return result;
 	}
 }

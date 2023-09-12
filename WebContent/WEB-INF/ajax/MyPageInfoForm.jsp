@@ -575,61 +575,27 @@
 			
 			<!-- 반려견 카드 목록 시작 -->
 			<div class="col-md-12">
-					<div class="card petCard">
-						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
-						<div class="card-body">
-						<h5 class="card-title">인절미</h5>
-						<p class="card-text">특이사항이 적혀있어요. 우리 절미는 뛰는걸 싫어해요. 걷기만 해주세요</p>
-					</div>
-						<ul class="list-group list-group-light list-group-small">
-							<li class="list-group-item px-4">성별 : <span>남</span> </li>
-							<li class="list-group-item px-4">무게(kg) : <span>15</span> </li>
-							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
-							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
-							<li class="list-group-item px-4">
-								<button type="button" id="petUpdateBtn123" class="detailBtn">수정하기</button>
-								<button type="button" id="petDeleteBrn${petSid }" class="detailBtn">삭제하기</button>
-							</li>
-						</ul>
-					</div>
+			<c:forEach items="${pet }" var="pet">
+			
+				<div class="card petCard">
+					<img src="${pet.petImage }" class="card-img-top" style="width: 100%;">
+					<div class="card-body">
+					<h5 class="card-title">${pet.petName }</h5>
+					<p class="card-text">${pet.petSpecialNote }</p>
+				</div>
+					<ul class="list-group list-group-light list-group-small">
+						<li class="list-group-item px-4">성별 : <span>${pet.petGen }</span> </li>
+						<li class="list-group-item px-4">무게(kg) : <span>${pet.petWeight }</span> </li>
+						<li class="list-group-item px-4">출생년도 : <span>${pet.petBirth }</span> </li>
+						<li class="list-group-item px-4">종 : <span>${pet.iptName }</span> </li>
+						<li class="list-group-item px-4">
+							<button type="button" id="petUpdateBtn${petSid }" class="detailBtn">수정하기</button>
+							<button type="button" id="petDeleteBtn${petSid }" class="detailBtn">삭제하기</button>
+						</li>
+					</ul>
+				</div>
 					
-					
-					<div class="card petCard">
-						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
-						<div class="card-body">
-						<h5 class="card-title">인절미</h5>
-						<p class="card-text">특이사항이 적혀있어요. 우리 절미는 뛰는걸 싫어해요. 걷기만 해주세요</p>
-					</div>
-						<ul class="list-group list-group-light list-group-small">
-							<li class="list-group-item px-4">성별 : <span>남</span> </li>
-							<li class="list-group-item px-4">무게(kg) : <span>15</span> </li>
-							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
-							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
-							<li class="list-group-item px-4">
-								<button type="button" id="petUpdateBtn123" class="detailBtn">수정하기</button>
-								<button type="button" id="" class="detailBtn">삭제하기</button>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="card petCard">
-						<img src="images/cute.png" class="card-img-top" style="width: 100%;">
-						<div class="card-body">
-						<h5 class="card-title">인절미</h5>
-						<p class="card-text">특이사항이 적혀있어요. 우리 절미는 뛰는걸 싫어해요. 걷기만 해주세요</p>
-					</div>
-						<ul class="list-group list-group-light list-group-small">
-							<li class="list-group-item px-4">성별 : <span>남</span> </li>
-							<li class="list-group-item px-4">무게(kg) : <span>15</span> </li>
-							<li class="list-group-item px-4">출생년도 : <span>2020</span> </li>
-							<li class="list-group-item px-4">종 : <span>시고르브잡종</span> </li>
-							<li class="list-group-item px-4">
-								<button type="button" id="" class="detailBtn petUpdateBtn">수정하기</button>
-								<button type="button" id="" class="detailBtn petDeleteBtn">삭제하기</button>
-							</li>
-						</ul>
-					</div>
-				
+				</c:forEach>
 				</div>
 				<!-- 반려견 카드 목록 끝 -->
 		</div>

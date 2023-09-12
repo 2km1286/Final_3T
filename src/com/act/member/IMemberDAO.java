@@ -55,4 +55,7 @@ public interface IMemberDAO
 
 	// 회원정보수정
 	public int updateInfo(MemberDTO dto);
+	
+	// 내 반려견 조회
+	public  ArrayList<MemberDTO> searchPet(String memSid);
 }
