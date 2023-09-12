@@ -288,14 +288,17 @@ p {
 				                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
 				                        extraAddr += data.bname;
 				                    }
+				                /*
 				                    // 건물명이 있고, 공동주택일 경우 추가한다.
 				                    if(data.buildingName !== '' && data.apartment === 'Y'){
 				                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
 				                    }
+				                
 				                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
 				                    if(extraAddr !== ''){
 				                        extraAddr = extraAddr;
 				                    }
+				                */
 				                    // 조합된 참고항목을 해당 필드에 넣는다.
 				                    document.getElementById("extraAddr").value = extraAddr;
 				                
@@ -475,9 +478,12 @@ p {
 
 					<div class="card sp" id="spPost" data-mem-sid="${dto.memSid }" style="margin: 5px; width: 32%; margin-bottom: 50px;">
 						
-
-						<img src="images/sitterroom.jpg" alt="" class="card-img-top"
-							style="width: 100%;">
+						<c:forEach items="${photoList }" var="photos">
+							<c:if test="${photos.spSid == dto.spSid }">
+								<img src="${photos.sppLink }" alt="" class="card-img-top"
+								style="width: 100%;">
+							</c:if>
+						</c:forEach>						
 						<div class="card-body">
 							<h5 class="card-title">
 								[${dto.grade}] ${dto.jmNickName}</h5>

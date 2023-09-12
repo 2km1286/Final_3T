@@ -34,6 +34,8 @@ public interface ISittingService
 	public ArrayList<SittingDTO> spRest(String memSid);
 	public ArrayList<SittingDTO> sittingReviewsPhoto();
 	public ArrayList<SittingDTO> sittingPlaceTagsByMemSid(String memSid);
+	public ArrayList<SittingDTO> sittingPlacePhoto();
+	public SittingDTO sittingPlacePhotoBySpsid(int spSid);
 	public SittingDTO sittingSrwRate(String memSid);
 	public ArrayList<SittingDTO> sittingSrwRates();
 	public ArrayList<SittingDTO> petListByMemSid(String pMemSid);
