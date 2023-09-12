@@ -292,13 +292,11 @@ String cp = request.getContextPath();
 													extraAddr = extraAddr;
 												}
 												// 조합된 참고항목을 해당 필드에 넣는다.
-												document
-														.getElementById("extraAddr").value = extraAddr;
+												document.getElementById("extraAddr").value = extraAddr;
 	
 											} else
 											{
-												document
-														.getElementById("extraAddr").value = '';
+												document.getElementById("extraAddr").value = extraAddr;
 											}
 	
 											// 우편번호와 주소 정보를 해당 필드에 넣는다.
