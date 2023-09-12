@@ -396,6 +396,7 @@ public class MemberController
 		String memSid = (String)session.getAttribute("memSid");
 		
 		model.addAttribute("dto", memberService.searchInfo(memSid));
+		model.addAttribute("pet", memberService.searchPet(memSid));
 		
 		// AJAX
 		result = "/WEB-INF/ajax/MyPageInfoForm.jsp";
@@ -427,6 +428,8 @@ public class MemberController
 	public String petInsertPage()
 	{
 		String result = "";
+		
+		
 		result = "/WEB-INF/views/member/PetInsertPage.jsp";
 		return result;
 	}

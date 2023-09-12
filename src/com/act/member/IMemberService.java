@@ -1,5 +1,6 @@
 package com.act.member;
 
+import java.util.ArrayList;
 
 public interface IMemberService
 {
@@ -33,4 +34,6 @@ public interface IMemberService
 	public MemberDTO searchInfo(String memSid);
 	
 	public int updateInfo(MemberDTO dto);
+	
+	public ArrayList<MemberDTO> searchPet(String memSid);
 }

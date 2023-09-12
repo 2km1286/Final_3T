@@ -96,16 +96,16 @@ span.badge
         
         <div class="infoOneNoline">	
         <h4><span class="smallTitle">특이사항</span></h4>
-        <textarea rows="" cols=""></textarea>
+        <textarea rows="3" cols="40"></textarea>
         </div>
         
         <div class="infoOneNoline">	
         <div class="select-container">
           <label for="gender"><h4><span class="smallTitle">성별</span></h4></label>
           <select id="gender" name="gender">
-            <option value="1">중성</option>
-            <option value="1">남자</option>
-            <option value="2">여자</option>
+            <option value="중성">중성</option>
+            <option value="암컷">암컷</option>
+            <option value="수컷">수컷</option>
           </select>
         </div>
         </div>
