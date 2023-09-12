@@ -62,12 +62,6 @@
 			goPetSitting();
 		}
 		
-		if (flag == "5") // 내 정보 수정하고 다시 내 정보페이지로 보내기
-		{
-			alert("회원정보가 수정되었습니다.");
-			goInfo();
-		}
-		
 		/* 펫시팅 페이지 ajax */
 		function goPetSitting()
 		{
@@ -89,27 +83,6 @@
 			});
 		}	
 		
-		// 내정보페이지ajax
-		function goInfo()
-		{
-			$.ajax(
-					{
-						type:"POST"
-						, url:"mypageinfoform.action"
-						, async:true
-						, success:function(data)
-						{
-							$("#myPageMain").html(data);
-												
-						}
-						, error:function(e)
-						{
-							alert(e.responseText);
-						}
-						
-					});
-		}
-			
 			
 		// 알림창
 		$("#myPageNotice").click(function()

@@ -1,5 +1,7 @@
 package com.act.member;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -173,6 +175,19 @@ public class MemberService implements IMemberService
 		result = dao.updateInfo(dto);
 		
 		return result;
+	}
+
+	// 내 반려견 조회
+	@Override
+	public ArrayList<MemberDTO> searchPet(String memSid)
+	{
+		ArrayList<MemberDTO> result = new ArrayList<MemberDTO>();
+		
+		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		
+		result = dao.searchPet(memSid);
+		
+		return result;	
 	}
 	
 	
