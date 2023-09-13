@@ -36,6 +36,9 @@ public class SittingDTO {
    // 펫시팅 리스트 검색조건 - 날짜
    private String datePicker;
    
+   // 펫시팅 리스트 검색조건 - 지역
+   private String searchExtraAddr;
+   
    // 펫시팅 후기의 사진들
    private String srpLink, srpDate;
    
@@ -623,6 +626,14 @@ public void setIptSid(int iptSid)
    {
       this.petWeight = petWeight;
    }
+	public String getSearchExtraAddr()
+	{
+		return searchExtraAddr;
+	}
+	public void setSearchExtraAddr(String searchExtraAddr)
+	{
+		this.searchExtraAddr = searchExtraAddr;
+	}
 
 
 
