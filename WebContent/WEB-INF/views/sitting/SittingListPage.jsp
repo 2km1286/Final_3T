@@ -244,8 +244,7 @@ p {
 				
 				<!-- 동 검색 구역 시작 -->
 				<input type="button" onclick="DaumPostcode()" value="지역 찾기">
-				<input type="text" onclick="DaumPostcode()" id="searchExtraAddr" name="searchExtraAddr" 
-				value = "${searchExtraAddr }" placeholder="동" readonly="readonly">
+				<input type="text" onclick="DaumPostcode()" id="searchExtraAddr" name="searchExtraAddr" placeholder="동" readonly="readonly">
 				
 				
 				<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
