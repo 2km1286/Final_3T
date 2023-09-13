@@ -155,22 +155,23 @@
 		FROM SITTING_PLACE_LIST_VIEW
 		WHERE 1=1
 		 -->
-		 SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, EXTRAADDR, MEMSID,
+		SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, EXTRAADDR, MEMSID,
 		SPHSID, SPHSTART, SPHEND, SPMAXPET, SPSID, GRADE, PRICE
 		FROM SITTING_PLACE_LIST_VIEW
 		WHERE 1=1
-		<if test="#{extraAddr} != null">
-			AND EXTRAADDR = #{extraAddr}
+		<if test="#{searchExtraAddr} != null">
+			AND EXTRAADDR = #{searchExtraAddr}
 		</if>
 		<!-- 
 		<if test="#{datePicker} != null">
 			AND #{datePicker} NOT BETWEEN TO_CHAR(SRSTART, 'YYYY-MM-DD') 
 									  AND TO_CHAR(SREND, 'YYYY-MM-DD')
 		</if>
-		 -->
+		
 		<if test="#{spMaxPet} != null">
 			AND SPMAXPET >= #{spMaxPet}
 		</if>
+		 -->
 	</select>
 	
 	<select id="searchNick" resultType="java.lang.String">

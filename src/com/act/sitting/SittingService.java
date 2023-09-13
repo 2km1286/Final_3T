@@ -24,7 +24,7 @@ public class SittingService implements ISittingService
 	public ArrayList<SittingDTO> list()
 	{
 		ArrayList<SittingDTO> list = new ArrayList<SittingDTO>();
-
+		
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		list = dao.list();
 		
@@ -120,6 +120,7 @@ public class SittingService implements ISittingService
 	{
 		ArrayList<SittingDTO> filterlist = new ArrayList<SittingDTO>();
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		System.out.println("sitting에서 searchExtraAddr : " + dto.getSearchExtraAddr());
 		filterlist = dao.spfilterlist(dto);
 		
 		
@@ -129,23 +130,23 @@ public class SittingService implements ISittingService
 	
 	
 	// << 미완>>
-	  // 펫시팅 리스트 태그 검색조건 리스트 반환
-	  @Override public ArrayList<SittingDTO> sittingFilterTagList(SittingDTO dto) 
-	  {
-		  ArrayList<SittingDTO> filtertaglist = new ArrayList<SittingDTO>();
-		  ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
-		  System.out.println("서비스단 dao 불러온다ㅜ제바류ㅠㅠㅠ"); 
-		  filtertaglist = dao.spFilterTagList(dto);
+	// 펫시팅 리스트 태그 검색조건 리스트 반환
+	@Override public ArrayList<SittingDTO> sittingFilterTagList(SittingDTO dto) 
+	{
+		ArrayList<SittingDTO> filtertaglist = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		System.out.println("서비스단 dao 불러온다ㅜ제바류ㅠㅠㅠ"); 
+		filtertaglist = dao.spFilterTagList(dto);
+		
+		for(SittingDTO s : filtertaglist)
+		{
+			System.out.println("내가 검색하는 태그들을 가지고 있는 돌봄장소의 모든 태그 : " + s.getIsptName());
+		}
 		  
-		  for(SittingDTO s : filtertaglist)
-		  {
-			  System.out.println("내가 검색하는 태그들을 가지고 있는 돌봄장소의 모든 태그 : " + s.getIsptName());
-		  }
 		  
-		  
-		  return filtertaglist;
+		return filtertaglist;
 	  
-	  }
+	}
 	 
 	// ※현재 사용하고 있는 돌봄장소※의 태그들 조회
 	@Override

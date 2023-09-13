@@ -39,7 +39,8 @@ public class SittingController
 	public String sittingList(Model model)
 	{
 		String view = "";
-
+		
+		
 		model.addAttribute("list", sittingService.list());
 		model.addAttribute("photoList", sittingService.sittingPlacePhoto());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
@@ -49,6 +50,8 @@ public class SittingController
 		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
 		return view;
 	}
+	
+	
 
 	// 펫시터 예약화면 데이터 바인딩
 	@RequestMapping("/sittingreservationpage.action")
@@ -666,10 +669,17 @@ public class SittingController
 		  
 		  dto.setIsptSidListInteger(isptSidListInteger);
 		  */
-		  model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
+		  System.out.println("controller에서 searchExtraAddr : " + dto.getSearchExtraAddr());
+		  
+		  model.addAttribute("list", sittingService.sittingFilterList(dto));
+		  model.addAttribute("photoList", sittingService.sittingPlacePhoto());
+		  model.addAttribute("IndexTagList", sittingService.IndexTagList());
+		  model.addAttribute("tagList", sittingService.tagList());
+		  model.addAttribute("sittingSrwRates", sittingService.sittingSrwRates());
+		  
 		  //model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
 		  
-		  view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp"; 
+		  view = "/WEB-INF/views/sitting/SittingListPage.jsp";
 		  return view ;
 	  }
 	 
