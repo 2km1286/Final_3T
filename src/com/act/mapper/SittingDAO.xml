@@ -207,7 +207,7 @@
 		            ON SCC.MEM_SID = MEM.MEM_SID
 		                JOIN JOIN_MEMBER JM
 		                ON MEM.MEM_SID = JM.MEM_SID
-		WHERE SCL.SCL_DATE = SYSDATE
+		WHERE TO_CHAR(SCL.SCL_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
 		AND JM.MEM_SID = #{memSid}
 	</select>
 
