@@ -238,14 +238,13 @@ p {
 		<div class="container-fluid py-5 bg-light"  style="padding-left: 150px; padding-right: 150px;">
 
 			<!-- Selection Bar -->
-		<form class="form-filter" id="filterForm">
+		<form class="form-filter" id="filterForm" action="sittingfilterlistform.action">
 			<div class="selection-bar mb-4" 
 				style="font-family: Jua; font-size: 13pt; padding-left: 30px; padding-right: 30px;">
 				
 				<!-- 동 검색 구역 시작 -->
 				<input type="button" onclick="DaumPostcode()" value="지역 찾기">
-				<input type="text" onclick="DaumPostcode()" id="jmAddr1" name="jmAddr1" placeholder="주소" readonly="readonly">
-				<input type="text" onclick="DaumPostcode()" id="extraAddr" name="extraAddr" placeholder="동" readonly="readonly">
+				<input type="text" onclick="DaumPostcode()" id="searchExtraAddr" name="searchExtraAddr" placeholder="동" readonly="readonly">
 				
 				
 				<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
@@ -300,11 +299,11 @@ p {
 				                    }
 				                */
 				                    // 조합된 참고항목을 해당 필드에 넣는다.
-				                    document.getElementById("extraAddr").value = extraAddr;
+				                    document.getElementById("searchExtraAddr").value = extraAddr;
 				                
 				
 				                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-				                document.getElementById("jmAddr1").value = addr;
+				                //document.getElementById("jmAddr1").value = addr;
 				
 				                // iframe을 넣은 element를 안보이게 한다.
 				                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -357,9 +356,11 @@ p {
 				</script>
 				 
 				 
-				 <label for="dogs">견수:</label> <input type="number" id="spMaxPet" name="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
+				<label for="dogs">견수:</label>
+				<input type="number" id="spMaxPet" name="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
 
 				<button class="button" id="filter">적용</button>
+				
 				<button class="button" onclick="sittingTest()" style="float: right;" type="button">펫시터 지원하기</button>
 				<script>
 					function sittingTest()
@@ -367,6 +368,7 @@ p {
 						window.location.href = "sittingtest.action";
 					}
 				</script>
+				
 			</div>
 
 
@@ -391,6 +393,7 @@ p {
 			
 				$(document).ready(function()
 				{
+					
 					// 클릭한 버튼에 selected 클래스 추가 및 제거
 					$('.isptTag').click(function()
 					{
@@ -411,7 +414,7 @@ p {
 					// 필터 버튼 클릭 시
 					$("#filter").click(function()
 					{	
-						/*
+				/*
 						// 사용자가 검색할 태그들의 isptSid 를 담을 배열
 						//var selectedTags = [];
 						
@@ -426,7 +429,7 @@ p {
 						
 						// 확인
 		                alert($("#isptSidList").val());
-						*/
+						
 						
 						$("#filterForm").submit();
 						
@@ -457,6 +460,12 @@ p {
 						});
 						
 						return false;
+				*/
+						
+						// extraAddr에 데이터 담아서 다시 sittinglistpage.action 호출
+						
+						$("#filterForm").submit();
+						
 					});
 					
 					
@@ -470,6 +479,7 @@ p {
 			<div id="cardContainer">
 			
 				<c:forEach var="dto" items="${list}" varStatus="status">
+					
 					<c:if test="${status.count % 3 == 1}">
 						<div class="row justify-content-between">
 					</c:if>

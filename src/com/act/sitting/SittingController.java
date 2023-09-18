@@ -39,7 +39,8 @@ public class SittingController
 	public String sittingList(Model model)
 	{
 		String view = "";
-
+		
+		
 		model.addAttribute("list", sittingService.list());
 		model.addAttribute("photoList", sittingService.sittingPlacePhoto());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
@@ -49,6 +50,8 @@ public class SittingController
 		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
 		return view;
 	}
+	
+	
 
 	// 펫시터 예약화면 데이터 바인딩
 	@RequestMapping("/sittingreservationpage.action")
@@ -645,10 +648,10 @@ public class SittingController
 	
 	  // 펫시팅 리스트 검색필터 버튼 (태그검색 포함)
 	  
-	  @RequestMapping("/sittingfilterlistform.action") 
-	  public String sittingFilterListForm(SittingDTO dto, Model model) 
-	  { 
-		  String view = "";
+	@RequestMapping("/sittingfilterlistform.action") 
+	public String sittingFilterListForm(SittingDTO dto, Model model) 
+	{ 
+		String view = "";
 		  /*
 		  // 검색태그들을 담은 배열을 ,으로 쪼개서 String 타입의 배열에 담는다.
 		  String[] isptSidList = dto.getIsptSidList().split(",");
@@ -666,12 +669,19 @@ public class SittingController
 		  
 		  dto.setIsptSidListInteger(isptSidListInteger);
 		  */
-		  model.addAttribute("filterlist", sittingService.sittingFilterList(dto));
-		  //model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
+		
+		System.out.println("controller에서 datePicker: " + dto.getDatepicker());
+		
+		model.addAttribute("list", sittingService.sittingFilterList(dto));
+		model.addAttribute("photoList", sittingService.sittingPlacePhoto());
+		model.addAttribute("IndexTagList", sittingService.IndexTagList());
+		model.addAttribute("tagList", sittingService.tagList());
+		model.addAttribute("sittingSrwRates", sittingService.sittingSrwRates());
 		  
-		  view = "/WEB-INF/ajax/sitting/SittingFilterListForm.jsp"; 
-		  return view ;
-	  }
+		  
+		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
+		return view ;
+	}
 	 
 	// 펫시팅 프로필 신고
 	@RequestMapping("/profilereportreceive.action")

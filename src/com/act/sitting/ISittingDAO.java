@@ -74,6 +74,14 @@ public interface ISittingDAO
 	// 나에게 달린 후기를 쓴 회원번호로 그 회원의 닉네임 조회를 위한 전체출력
 	public ArrayList<SittingDTO> sittingReviewers();
 	
+	//public ArrayList<SittingDTO> baseQuery();
+	
+	//public ArrayList<SittingDTO> locationQuery(SittingDTO dto); 
+	
+	//public ArrayList<SittingDTO> maxPetQuery(SittingDTO dto); 
+
+	//public ArrayList<SittingDTO> searchDate(SittingDTO dto);
+	
 	// 펫시팅 리스트 검색 1차(지역/견수)
 	public ArrayList<SittingDTO> spfilterlist(SittingDTO dto);
 	

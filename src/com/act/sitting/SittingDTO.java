@@ -34,7 +34,10 @@ public class SittingDTO {
 
 
    // 펫시팅 리스트 검색조건 - 날짜
-   private String datePicker;
+   private String datepicker;
+   
+   // 펫시팅 리스트 검색조건 - 지역
+   private String searchExtraAddr;
    
    // 펫시팅 후기의 사진들
    private String srpLink, srpDate;
@@ -471,14 +474,6 @@ public void setSrrDetail(String srrDetail) {
    {
       this.sbSid = sbSid;
    }
-   public String getDatePicker()
-   {
-      return datePicker;
-   }
-   public void setDatePicker(String datePicker)
-   {
-      this.datePicker = datePicker;
-   }
    public String getSrpLink()
    {
       return srpLink;
@@ -623,6 +618,22 @@ public void setIptSid(int iptSid)
    {
       this.petWeight = petWeight;
    }
+	public String getSearchExtraAddr()
+	{
+		return searchExtraAddr;
+	}
+	public void setSearchExtraAddr(String searchExtraAddr)
+	{
+		this.searchExtraAddr = searchExtraAddr;
+	}
+	public String getDatepicker()
+	{
+		return datepicker;
+	}
+	public void setDatepicker(String datepicker)
+	{
+		this.datepicker = datepicker;
+	}
 
 
 
