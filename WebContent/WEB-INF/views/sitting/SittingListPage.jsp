@@ -303,7 +303,7 @@ p {
 				                
 				
 				                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-				                document.getElementById("jmAddr1").value = addr;
+				                //document.getElementById("jmAddr1").value = addr;
 				
 				                // iframe을 넣은 element를 안보이게 한다.
 				                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -356,7 +356,8 @@ p {
 				</script>
 				 
 				 
-				 <label for="dogs">견수:</label> <input type="number" id="spMaxPet" name="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
+				<label for="dogs">견수:</label>
+				<input type="number" id="spMaxPet" name="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
 
 				<button class="button" id="filter">적용</button>
 				
@@ -367,6 +368,7 @@ p {
 						window.location.href = "sittingtest.action";
 					}
 				</script>
+				
 			</div>
 
 

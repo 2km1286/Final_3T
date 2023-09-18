@@ -648,10 +648,10 @@ public class SittingController
 	
 	  // 펫시팅 리스트 검색필터 버튼 (태그검색 포함)
 	  
-	  @RequestMapping("/sittingfilterlistform.action") 
-	  public String sittingFilterListForm(SittingDTO dto, Model model) 
-	  { 
-		  String view = "";
+	@RequestMapping("/sittingfilterlistform.action") 
+	public String sittingFilterListForm(SittingDTO dto, Model model) 
+	{ 
+		String view = "";
 		  /*
 		  // 검색태그들을 담은 배열을 ,으로 쪼개서 String 타입의 배열에 담는다.
 		  String[] isptSidList = dto.getIsptSidList().split(",");
@@ -669,19 +669,19 @@ public class SittingController
 		  
 		  dto.setIsptSidListInteger(isptSidListInteger);
 		  */
-		  System.out.println("controller에서 searchExtraAddr : " + dto.getSearchExtraAddr());
+		
+		System.out.println("controller에서 datePicker: " + dto.getDatepicker());
+		
+		model.addAttribute("list", sittingService.sittingFilterList(dto));
+		model.addAttribute("photoList", sittingService.sittingPlacePhoto());
+		model.addAttribute("IndexTagList", sittingService.IndexTagList());
+		model.addAttribute("tagList", sittingService.tagList());
+		model.addAttribute("sittingSrwRates", sittingService.sittingSrwRates());
 		  
-		  model.addAttribute("list", sittingService.sittingFilterList(dto));
-		  model.addAttribute("photoList", sittingService.sittingPlacePhoto());
-		  model.addAttribute("IndexTagList", sittingService.IndexTagList());
-		  model.addAttribute("tagList", sittingService.tagList());
-		  model.addAttribute("sittingSrwRates", sittingService.sittingSrwRates());
 		  
-		  //model.addAttribute("filtertaglist", sittingService.sittingFilterTagList(dto));
-		  
-		  view = "/WEB-INF/views/sitting/SittingListPage.jsp";
-		  return view ;
-	  }
+		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
+		return view ;
+	}
 	 
 	// 펫시팅 프로필 신고
 	@RequestMapping("/profilereportreceive.action")
