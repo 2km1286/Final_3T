@@ -146,31 +146,44 @@
 		SELECT JM_NICKNAME AS PJMNICKNAME, MEM_SID AS PMEMSID
 		FROM JOIN_MEMBER
 	</select>
-	
 
+ 
 	<select id="spfilterlist" resultType="com.act.sitting.SittingDTO">
-		<!-- 
-		SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, EXTRAADDR, MEMSID,
-		SPHSID, SPHSTART, SPHEND, SRWSID, STLESID, SPMAXPET, SPSID, GRADE, PRICE
-		FROM SITTING_PLACE_LIST_VIEW
-		WHERE 1=1
-		 -->
-		 SELECT JMNICKNAME, SPTITLE, SPADDR1, SPADDR2, EXTRAADDR, MEMSID,
+		SELECT JMNICKNAME, SPTITLE, SUBSTR(SPADDR1, 0, INSTR(SPADDR1, ' ', 1, 2)) AS SPADDR1, SPADDR2, EXTRAADDR, MEMSID,
 		SPHSID, SPHSTART, SPHEND, SPMAXPET, SPSID, GRADE, PRICE
 		FROM SITTING_PLACE_LIST_VIEW
 		WHERE 1=1
-		<if test="#{extraAddr} != null">
-			AND EXTRAADDR = #{extraAddr}
-		</if>
-		<!-- 
-		<if test="#{datePicker} != null">
-			AND #{datePicker} NOT BETWEEN TO_CHAR(SRSTART, 'YYYY-MM-DD') 
-									  AND TO_CHAR(SREND, 'YYYY-MM-DD')
-		</if>
-		 -->
-		<if test="#{spMaxPet} != null">
+		
+		<if test="spMaxPet != 0">
 			AND SPMAXPET >= #{spMaxPet}
 		</if>
+		
+		<if test="searchExtraAddr != ''">
+			AND EXTRAADDR = #{searchExtraAddr}
+		</if>
+<!-- 		
+		<if test="datePicker != null">
+			AND MEMSID IN (SELECT T.MEMSID
+							FROM
+							(
+							    SELECT SPLV.JMNICKNAME, SPLV.SPTITLE, SUBSTR(SPLV.SPADDR1, 0, INSTR(SPLV.SPADDR1, ' ', 1, 2)) AS SPADDR1, SPLV.SPADDR2, SPLV.EXTRAADDR, SPLV.MEMSID,
+							            SPLV.SPHSID, SPLV.SPHSTART, SPLV.SPHEND, SPLV.SPMAXPET, SPLV.SPSID, SPLV.GRADE, SPLV.PRICE
+							         , TO_CHAR(SR.SR_START, 'YYYY-MM-DD') AS SRSTART, TO_CHAR(SR.SR_END, 'YYYY-MM-DD') AS SREND
+							         , TO_CHAR(SB.SB_START, 'YYYY-MM-DD') AS SBSTART, TO_CHAR(SB.SB_END, 'YYYY-MM-DD') AS SBEND
+							            FROM SITTING_PLACE_LIST_VIEW SPLV JOIN SITTING_REST SR
+							                                              ON SPLV.SPHSID = SR.SPH_SID
+							                                              JOIN SITTING_BOOK SB
+							                                              ON SPLV.SPHSID = SB.SPH_SID
+								                                              WHERE TO_DATE(#{datePicker}, 'YYYY-MM-DD') 
+								                                                    NOT BETWEEN TO_CHAR(SR.SR_START, 'YYYY-MM-DD')
+								                                                            AND TO_CHAR(SR.SR_END, 'YYYY-MM-DD')
+								                                                AND TO_DATE(#{datePicker}, 'YYYY-MM-DD')
+								                                                    NOT BETWEEN TO_CHAR(SB.SB_START, 'YYYY-MM-DD')
+								                                                            AND TO_CHAR(SB.SB_END, 'YYYY-MM-DD')
+							) T
+							GROUP BY T.MEMSID)
+		</if> -->
+		
 	</select>
 	
 	<select id="searchNick" resultType="java.lang.String">
