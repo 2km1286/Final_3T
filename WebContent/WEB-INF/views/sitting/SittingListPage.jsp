@@ -347,8 +347,14 @@ p {
 				<label for="datepicker">날짜 선택:</label> 
 				<input type="text" id="datepicker" name="datepicker" class="custom-textbox" readonly style="width: 115px;">			 		 
 				 <script>
-					var fp = flatpickr(document.getElementById("datepicker"), {
-						"locale": "ko" 
+				 	// 검색 가능 날짜 오늘~2달후 까지
+				 	var today = new Date();
+	                var twoMonthsLater = new Date(today.getFullYear(), today.getMonth() + 2, today.getDate());
+					
+	                var fp = flatpickr(document.getElementById("datepicker"), {
+						"locale": "ko" ,
+						"minDate": today,
+						"maxDate": twoMonthsLater
 						 
 					});
 					
