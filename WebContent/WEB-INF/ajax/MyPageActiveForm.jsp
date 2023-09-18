@@ -28,8 +28,8 @@ div.porfilCard{margin-left: 20%; width: 360px;}
 						<div class="card porfilCard">
 				            <div class="card-block">
 				              <h4 class="card-title">[마스터 산책러] 우사인볼트이서<br></h4>
-				              <h6 class="card-subtitle text-muted">후기 4,928개<br>산책완료 횟수 5,221건 </h6>
-				              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,888<br></p>
+				              <h6 class="card-subtitle text-muted">후기 10개<br>산책완료 횟수 10건 </h6>
+				              <p class="card-text p-y-1" style="float: right;"><br>❤️ 8<br></p>
 				              <a href="#" class="card-link"><br>공고글 보기</a>
 				            </div>
 				         </div>
@@ -47,14 +47,15 @@ div.porfilCard{margin-left: 20%; width: 360px;}
 					
 					<div><!-- 팔로잉 한 펫시터 시작 -->
 				          
-					          <div class="card porfilCard">
+					          <!-- <div class="card porfilCard">
 					            <div class="card-block">
 					              <h4 class="card-title">[마스터 펫시터] 멍뭉스토리기민 <br></h4>
 					              <h6 class="card-subtitle text-muted">후기 2,001개<br>예약완료 횟수 2,812건 </h6>
 					              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,021<br></p>
 					              <a href="#" class="card-link"><br>공고글 보기</a>
 					            </div>
-					          </div>
+					          </div> -->
+					          <div class="noNotice"><h2><span>팔로잉 한 펫시터가 없습니다.</span></h2></div>
 				          
 					</div><!-- 팔로잉 한 펫시터 끝 -->
 					
@@ -76,27 +77,15 @@ div.porfilCard{margin-left: 20%; width: 360px;}
 						    </tr>
 						    <tr>
 						      <td class="EndTd">대리산책</td>
-						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">2023-07-26</td>
 						      <td class="EndTd">5</td>
 						      <td class="EndTd"><button type="button" class="detailBtn" onclick="openPopup()">자세히보기</button></td>
 						    </tr>
 						    <tr>
 						      <td class="EndTd">펫시팅</td>
-						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">2023-07-30</td>
 						      <td class="EndTd">5</td>
 						      <td class="EndTd"><button type="button" class="detailBtn" onclick="openPopup()">자세히보기</button></td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">대리산책</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
-						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">대리산책</td>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">5</td>
-						      <td class="EndTd"><button type="button" class="detailBtn">자세히보기</button></td>
 						    </tr>
 						</table>
 					
@@ -117,7 +106,7 @@ div.porfilCard{margin-left: 20%; width: 360px;}
 						      <th class="EndTh">예약 상대</th>
 						    </tr>
 						    <tr>
-						      <td class="EndTd">2023-07-29</td>
+						      <td class="EndTd">2023-07-25</td>
 						      <td class="EndTd">대리산책</td>
 						      <td class="EndTd">진행완료</td>
 						      <td class="EndTd">폴폴이</td>
@@ -126,19 +115,7 @@ div.porfilCard{margin-left: 20%; width: 360px;}
 						      <td class="EndTd">2023-07-29</td>
 						      <td class="EndTd">대리산책</td>
 						      <td class="EndTd">진행완료</td>
-						      <td class="EndTd">폴폴이</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">대리산책</td>
-						      <td class="EndTd">진행완료</td>
-						      <td class="EndTd">폴폴이</td>
-						    </tr>
-						    <tr>
-						      <td class="EndTd">2023-07-29</td>
-						      <td class="EndTd">대리산책</td>
-						      <td class="EndTd">진행완료</td>
-						      <td class="EndTd">폴폴이</td>
+						      <td class="EndTd">귀요미</td>
 						    </tr>
 						</table>
 					

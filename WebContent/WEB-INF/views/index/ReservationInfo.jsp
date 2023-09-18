@@ -238,7 +238,7 @@
 						</div>
 						<hr>
 						<div class="text-center"><!--images/dogdog.png  -->
-							<img src="images/dogdog.png" alt="" class="rounded-circle" style="width: 230px; margin: 20px;">
+							<img src="${dto.petimage }" alt="" class="rounded-circle" style="width: 230px; margin: 20px;">
 						</div>
 						<div class="text-center">
 							<h5>${dto.petname}</h5>							

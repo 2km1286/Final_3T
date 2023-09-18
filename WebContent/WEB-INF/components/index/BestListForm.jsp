@@ -132,8 +132,8 @@ h2 span {
             <div class="card-block">
             <span class="card-rank card-rank-1">1위</span>
               <h4 class="card-title">[마스터 산책러] 우사인볼트이서<br></h4>
-              <h6 class="card-subtitle text-muted">후기 4,928개<br>산책완료 횟수 5,221건 </h6>
-              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,888<br></p>
+              <h6 class="card-subtitle text-muted">후기 10개<br>산책완료 횟수 10건 </h6>
+              <p class="card-text p-y-1" style="float: right;"><br>❤️ 8<br></p>
               <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
@@ -144,8 +144,8 @@ h2 span {
             <div class="card-block">
             <span class="card-rank card-rank-2">2위</span>
               <h4 class="card-title">[마스터 산책러] 철인3종하경<br></h4>
-              <h6 class="card-subtitle text-muted">후기 3,128개<br>산책완료 횟수 4,002건 </h6>
-              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,688<br></p>
+              <h6 class="card-subtitle text-muted">후기 8개<br>산책완료 횟수 8건 </h6>
+              <p class="card-text p-y-1" style="float: right;"><br>❤️ 7<br></p>
               <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
@@ -156,8 +156,8 @@ h2 span {
             <div class="card-block">
             <span class="card-rank card-rank-3">3위</span>
               <h4 class="card-title">[마스터 산책러] 파괴왕김덕배<br></h4>
-              <h6 class="card-subtitle text-muted">후기 2,918개<br>산책완료 횟수 3,821건 </h6>
-              <p class="card-text p-y-1" style="float: right;"><br>❤️ 3,128<br></p>
+              <h6 class="card-subtitle text-muted">후기 7개<br>산책완료 횟수 7건 </h6>
+              <p class="card-text p-y-1" style="float: right;"><br>❤️ 6<br></p>
               <a href="#" class="card-link"><br>프로필 이동</a>
             </div>
           </div>
