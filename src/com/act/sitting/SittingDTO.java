@@ -636,5 +636,4 @@ public void setIptSid(int iptSid)
 	}
 
 
-
 }

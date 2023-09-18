@@ -161,8 +161,8 @@
 		<if test="searchExtraAddr != ''">
 			AND EXTRAADDR = #{searchExtraAddr}
 		</if>
-<!-- 		
-		<if test="datePicker != null">
+		
+		<if test="datepicker != null">
 			AND MEMSID IN (SELECT T.MEMSID
 							FROM
 							(
@@ -174,15 +174,15 @@
 							                                              ON SPLV.SPHSID = SR.SPH_SID
 							                                              JOIN SITTING_BOOK SB
 							                                              ON SPLV.SPHSID = SB.SPH_SID
-								                                              WHERE TO_DATE(#{datePicker}, 'YYYY-MM-DD') 
+								                                              WHERE TO_DATE(#{datepicker}, 'YYYY-MM-DD') 
 								                                                    NOT BETWEEN TO_CHAR(SR.SR_START, 'YYYY-MM-DD')
 								                                                            AND TO_CHAR(SR.SR_END, 'YYYY-MM-DD')
-								                                                AND TO_DATE(#{datePicker}, 'YYYY-MM-DD')
+								                                                AND TO_DATE(#{datepicker}, 'YYYY-MM-DD')
 								                                                    NOT BETWEEN TO_CHAR(SB.SB_START, 'YYYY-MM-DD')
 								                                                            AND TO_CHAR(SB.SB_END, 'YYYY-MM-DD')
 							) T
 							GROUP BY T.MEMSID)
-		</if> -->
+		</if>
 		
 	</select>
 	
