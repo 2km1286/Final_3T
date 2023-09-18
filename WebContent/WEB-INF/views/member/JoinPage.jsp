@@ -307,7 +307,7 @@ form input[name="jmZipCode"] {
 				</div>
 				<div class="select-container">
 					<label for="jmGender">성별 선택</label> 
-					<select name="jmGen" id="jmGen">
+					<select name="jmGender" id="jmGender">
 						<option value="-1">--성별 선택--</option>
 						<option value="남자">남성</option>
 					    <option value="여자">여성</option>
@@ -647,7 +647,7 @@ form input[name="jmZipCode"] {
 								|| $("#jmName").val() == ""
 								|| $("#jmSsn1").val() == ""
 								|| $("#jmSsn2").val() == ""
-								|| $("#jmGen").val() == ""
+								|| $("#jmGender").val() == ""
 								|| $("#jmNickName").val() == ""
 								|| $("#jmTel1").val() == ""
 								|| $("#jmTel2").val() == ""

@@ -301,6 +301,8 @@
 					</div>	
 					
 			    </form>
+			    <br><br><br>
+			    <button type="button" id="delete-button">탈퇴하기</button>
 			      
 		      </div>
 		      <!-- 내 정보 끝 -->
