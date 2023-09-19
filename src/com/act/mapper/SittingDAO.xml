@@ -163,25 +163,17 @@
 		</if>
 		
 		<if test="datepicker != null">
-			AND MEMSID IN (SELECT T.MEMSID
-							FROM
-							(
-							    SELECT SPLV.JMNICKNAME, SPLV.SPTITLE, SUBSTR(SPLV.SPADDR1, 0, INSTR(SPLV.SPADDR1, ' ', 1, 2)) AS SPADDR1, SPLV.SPADDR2, SPLV.EXTRAADDR, SPLV.MEMSID,
-							            SPLV.SPHSID, SPLV.SPHSTART, SPLV.SPHEND, SPLV.SPMAXPET, SPLV.SPSID, SPLV.GRADE, SPLV.PRICE
-							         , TO_CHAR(SR.SR_START, 'YYYY-MM-DD') AS SRSTART, TO_CHAR(SR.SR_END, 'YYYY-MM-DD') AS SREND
-							         , TO_CHAR(SB.SB_START, 'YYYY-MM-DD') AS SBSTART, TO_CHAR(SB.SB_END, 'YYYY-MM-DD') AS SBEND
-							            FROM SITTING_PLACE_LIST_VIEW SPLV JOIN SITTING_REST SR
-							                                              ON SPLV.SPHSID = SR.SPH_SID
-							                                              JOIN SITTING_BOOK SB
-							                                              ON SPLV.SPHSID = SB.SPH_SID
-								                                              WHERE TO_DATE(#{datepicker}, 'YYYY-MM-DD') 
-								                                                    NOT BETWEEN TO_CHAR(SR.SR_START, 'YYYY-MM-DD')
-								                                                            AND TO_CHAR(SR.SR_END, 'YYYY-MM-DD')
-								                                                AND TO_DATE(#{datepicker}, 'YYYY-MM-DD')
-								                                                    NOT BETWEEN TO_CHAR(SB.SB_START, 'YYYY-MM-DD')
-								                                                            AND TO_CHAR(SB.SB_END, 'YYYY-MM-DD')
-							) T
-							GROUP BY T.MEMSID)
+			AND SPHSID NOT IN (
+							    SELECT SPH_SID
+								FROM SITTING_REST
+								WHERE TO_DATE(#{datepicker}, 'YYYY-MM-DD')
+								             BETWEEN SR_START AND SR_END
+								UNION
+								SELECT SPH_SID
+								FROM SITTING_BOOK
+								WHERE TO_DATE(#{datepicker}, 'YYYY-MM-DD')
+								             BETWEEN SB_START AND SB_END
+								)
 		</if>
 		
 	</select>
