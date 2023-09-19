@@ -10,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -19,13 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.act.walk.WalkDTO;
 
 
 @Controller
@@ -646,37 +642,33 @@ public class SittingController
 	}
 	
 	
-	  // 펫시팅 리스트 검색필터 버튼 (태그검색 포함)
-	  
+	// 펫시팅 리스트 검색필터 버튼 (태그검색 포함)
 	@RequestMapping("/sittingfilterlistform.action") 
 	public String sittingFilterListForm(SittingDTO dto, Model model) 
 	{ 
 		String view = "";
-		  /*
-		  // 검색태그들을 담은 배열을 ,으로 쪼개서 String 타입의 배열에 담는다.
-		  String[] isptSidList = dto.getIsptSidList().split(",");
-		  
-		  // String 타입의 배열을 Sid의 원래 데이터 타입인 Integer 타입의 배열로 바꾸기 위한 Integer 타입의 배열 선언
-		  List<Integer> isptSidListInteger = new ArrayList<>();
-		  
-		  // 하나씩 꺼내서 Integer로 형변환하여 담는다.
-		  for(String str : isptSidList)
-		  {
-			  int value = Integer.parseInt(str);
-			  isptSidListInteger.add(value);
-		  }
-		  
-		  
-		  dto.setIsptSidListInteger(isptSidListInteger);
-		  */
 		
-		System.out.println("controller에서 datePicker: " + dto.getDatepicker());
+		String[] isptSidList = dto.getIsptSidList().split(",");
+		
+		List<String> isptSidListString = new ArrayList<String>();
+		
+		for(String str : isptSidList)
+		{
+			isptSidListString.add(str);
+		}
+		
+		dto.setIsptSidListSize(isptSidListString.size());
+		dto.setIsptSidListString(isptSidListString);
 		
 		model.addAttribute("list", sittingService.sittingFilterList(dto));
 		model.addAttribute("photoList", sittingService.sittingPlacePhoto());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
 		model.addAttribute("tagList", sittingService.tagList());
 		model.addAttribute("sittingSrwRates", sittingService.sittingSrwRates());
+		
+		model.addAttribute("searchAddr", dto.getSearchExtraAddr());
+		model.addAttribute("searchDate", dto.getDatepicker());
+		model.addAttribute("searchMaxPet", dto.getSpMaxPet());
 		  
 		  
 		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
