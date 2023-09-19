@@ -80,7 +80,16 @@ public class SittingController
 		model.addAttribute("petList", petList);
 		model.addAttribute("sbList", sbList);
 		model.addAttribute("photos", photos);
-			
+		
+		//System.out.println( list.getSphEnd().split(":")[0] );
+		int ch = Integer.valueOf(list.getSphStart().split(":")[0]);
+		ch = ch - 2;
+		
+		String checkOut = String.valueOf(ch);
+		checkOut = checkOut + ":00";
+		
+		model.addAttribute("checkOut", checkOut);
+		
 		result = "/WEB-INF/views/sitting/SittingReservationPage.jsp";
 		
 		return result;
