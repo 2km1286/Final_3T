@@ -90,8 +90,29 @@ public class SittingDTO {
    private int irSid;
    private String irName;
    
+   // 타임라인 사진
+   private String stlpDate, stlpLink;
+   
+   
+   
 
-   public int getIrSid() {
+   public String getStlpDate()
+{
+	return stlpDate;
+}
+public void setStlpDate(String stlpDate)
+{
+	this.stlpDate = stlpDate;
+}
+public String getStlpLink()
+{
+	return stlpLink;
+}
+public void setStlpLink(String stlpLink)
+{
+	this.stlpLink = stlpLink;
+}
+public int getIrSid() {
    return irSid;
 }
 public void setIrSid(int irSid) {

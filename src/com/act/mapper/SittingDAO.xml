@@ -528,9 +528,15 @@ GROUP BY MEM.MEM_SID
 		VALUES(SEQ_SRR.NEXTVAL, #{memSid}, #{spSid}, #{irSid}, DEFAULT, #{srrDetail})
 	</insert>
 	
-	
-	
-	
+	<!-- 예약번호로 타임라인 사진 조회 -->
+	<select id="stlpList" resultType="com.act.sitting.SittingDTO">
+		SELECT STLP.STLP_DATE AS STLPDATE, STLP.STLP_LINK AS STLPLINK
+		FROM SITTING_TIME_LINE STL
+		    JOIN SITTING_TIME_LINE_PHOTO STLP
+		    ON STL.STL_SID = STLP.STL_SID
+		WHERE STL.SB_SID = #{num}
+		ORDER BY STLPDATE
+	</select>
 	
 
 </mapper>

@@ -167,6 +167,7 @@ public class SittingController
 		 * // 견주라는 것 if(memSid == memSid2) {
 		 */
 		
+		mv.addObject("stlpList", sittingService.stlpList(num));
 		
 		mv.addObject("num", num);
 		//System.out.println(num);
@@ -185,6 +186,8 @@ public class SittingController
 		mv.addObject("rate", rate);
 		mv.addObject("count", count);
 		mv.addObject("price", price);
+		
+		
 		
 		/*
 		 } else {
