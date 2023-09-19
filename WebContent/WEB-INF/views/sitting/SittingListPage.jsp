@@ -244,7 +244,17 @@ p {
 				
 				<!-- 동 검색 구역 시작 -->
 				<input type="button" onclick="DaumPostcode()" value="지역 찾기">
-				<input type="text" onclick="DaumPostcode()" id="searchExtraAddr" name="searchExtraAddr" placeholder="동" readonly="readonly">
+				<c:choose>
+					<c:when test="${searchAddr == '' }">
+						<input type="text" onclick="DaumPostcode()" id="searchExtraAddr" name="searchExtraAddr" 
+						placeholder="동" readonly="readonly">
+					</c:when>
+					<c:otherwise>
+						<input type="text" onclick="DaumPostcode()" id="searchExtraAddr" name="searchExtraAddr" 
+						value="${searchAddr}" placeholder="동" readonly="readonly">
+					</c:otherwise>
+				</c:choose>
+				
 				
 				
 				<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
@@ -344,11 +354,20 @@ p {
 				<!-- 주소 검색 메소드 끝 -->
 				<!-- 동 검색 구역 끝 -->
 							 
-				<label for="datepicker">날짜 선택:</label> 
-				<input type="text" id="datepicker" name="datepicker" class="custom-textbox" readonly style="width: 115px;">			 		 
-				 <script>
-				 	// 검색 가능 날짜 오늘~2달후 까지
-				 	var today = new Date();
+				<label for="datepicker">날짜 선택:</label>
+				<c:choose>
+					<c:when test="${searchDate == null }">
+						<input type="text" id="datepicker" name="datepicker" 
+						class="custom-textbox" readonly style="width: 115px;">			 		 
+					</c:when>
+					<c:otherwise>
+						<input type="text" id="datepicker" name="datepicker" 
+						value="${searchDate } class="custom-textbox" readonly style="width: 115px;">
+					</c:otherwise>
+				</c:choose>
+				<script>
+					// 검색 가능 날짜 오늘~2달후 까지
+					var today = new Date();
 	                var twoMonthsLater = new Date(today.getFullYear(), today.getMonth() + 2, today.getDate());
 					
 	                var fp = flatpickr(document.getElementById("datepicker"), {
@@ -363,9 +382,18 @@ p {
 				 
 				 
 				<label for="dogs">견수:</label>
-				<input type="number" id="spMaxPet" name="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
-
-				<button class="button" id="filter">적용</button>
+				<!-- <input type="number" id="spMaxPet" name="spMaxPet" value="1" class="custom-textbox" min="1" max="2"> -->
+				
+				<c:choose>
+					<c:when test="${searchMaxPet == 2 }">
+						<input type="number" id="spMaxPet" name="spMaxPet" value="2" class="custom-textbox" min="1" max="2">
+					</c:when>
+					<c:otherwise>
+						<input type="number" id="spMaxPet" name="spMaxPet" value="1" class="custom-textbox" min="1" max="2">
+					</c:otherwise>
+				</c:choose>
+					
+				<button class="button" id="filter">검색</button>
 				
 				<button class="button" onclick="sittingTest()" style="float: right;" type="button">펫시터 지원하기</button>
 				<script>

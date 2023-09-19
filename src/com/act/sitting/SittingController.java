@@ -670,13 +670,15 @@ public class SittingController
 		  dto.setIsptSidListInteger(isptSidListInteger);
 		  */
 		
-		System.out.println("controller에서 datePicker: " + dto.getDatepicker());
-		
 		model.addAttribute("list", sittingService.sittingFilterList(dto));
 		model.addAttribute("photoList", sittingService.sittingPlacePhoto());
 		model.addAttribute("IndexTagList", sittingService.IndexTagList());
 		model.addAttribute("tagList", sittingService.tagList());
 		model.addAttribute("sittingSrwRates", sittingService.sittingSrwRates());
+		
+		model.addAttribute("searchAddr", dto.getSearchExtraAddr());
+		model.addAttribute("searchDate", dto.getDatepicker());
+		model.addAttribute("searchMaxPet", dto.getSpMaxPet());
 		  
 		  
 		view = "/WEB-INF/views/sitting/SittingListPage.jsp";
