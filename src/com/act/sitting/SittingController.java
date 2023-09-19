@@ -80,7 +80,16 @@ public class SittingController
 		model.addAttribute("petList", petList);
 		model.addAttribute("sbList", sbList);
 		model.addAttribute("photos", photos);
-			
+		
+		//System.out.println( list.getSphEnd().split(":")[0] );
+		int ch = Integer.valueOf(list.getSphStart().split(":")[0]);
+		ch = ch - 2;
+		
+		String checkOut = String.valueOf(ch);
+		checkOut = checkOut + ":00";
+		
+		model.addAttribute("checkOut", checkOut);
+		
 		result = "/WEB-INF/views/sitting/SittingReservationPage.jsp";
 		
 		return result;
@@ -158,6 +167,7 @@ public class SittingController
 		 * // 견주라는 것 if(memSid == memSid2) {
 		 */
 		
+		mv.addObject("stlpList", sittingService.stlpList(num));
 		
 		mv.addObject("num", num);
 		//System.out.println(num);
@@ -176,6 +186,8 @@ public class SittingController
 		mv.addObject("rate", rate);
 		mv.addObject("count", count);
 		mv.addObject("price", price);
+		
+		
 		
 		/*
 		 } else {

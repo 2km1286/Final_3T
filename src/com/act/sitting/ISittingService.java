@@ -72,6 +72,9 @@ public interface ISittingService
 	
 	// 예약날짜
 	public ArrayList<SittingDTO> sbDates(String memSid);
+	
+	// 타임라인 사진 조회
+	public ArrayList<SittingDTO> stlpList(int num);
 
 }	
 
