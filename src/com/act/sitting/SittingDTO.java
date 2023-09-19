@@ -46,7 +46,8 @@ public class SittingDTO {
    private String isptSidList;
 
    // 태그검색 선택된 태그들의 sid번호 담는 리스트
-   private List<Integer> isptSidListInteger;
+   private List<String> isptSidListString;
+   private int isptSidListSize;
 
    // 펫시터 팔로잉 리스트에서 팔로워 수 담을 변수
    private int followingCount;
@@ -498,14 +499,6 @@ public void setSrrDetail(String srrDetail) {
    {
       this.isptSidList = isptSidList;
    }
-   public List<Integer> getIsptSidListInteger()
-   {
-      return isptSidListInteger;
-   }
-   public void setIsptSidListInteger(List<Integer> isptSidListInteger)
-   {
-      this.isptSidListInteger = isptSidListInteger;
-   }
    public int getFollowingCount()
    {
       return followingCount;
@@ -633,6 +626,22 @@ public void setIptSid(int iptSid)
 	public void setDatepicker(String datepicker)
 	{
 		this.datepicker = datepicker;
+	}
+	public List<String> getIsptSidListString()
+	{
+		return isptSidListString;
+	}
+	public void setIsptSidListString(List<String> isptSidListString)
+	{
+		this.isptSidListString = isptSidListString;
+	}
+	public int getIsptSidListSize()
+	{
+		return isptSidListSize;
+	}
+	public void setIsptSidListSize(int isptSidListSize)
+	{
+		this.isptSidListSize = isptSidListSize;
 	}
 
 
