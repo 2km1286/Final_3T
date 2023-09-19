@@ -176,6 +176,20 @@
 								)
 		</if>
 		
+		<if test="isptSidList != ''">
+		    AND SPSID IN (
+					        SELECT SP_SID
+					        FROM SITTING_PLACE_TAG
+					        WHERE ISPT_SID IN 
+					        <foreach collection="isptSidListString" item="ii" open="(" separator="," close=")">
+					        	#{ii}
+					        </foreach>
+					        GROUP BY SP_SID
+					        HAVING COUNT(DISTINCT ISPT_SID) = #{isptSidListSize}
+					     )
+		</if>
+
+		
 	</select>
 	
 	<select id="searchNick" resultType="java.lang.String">
