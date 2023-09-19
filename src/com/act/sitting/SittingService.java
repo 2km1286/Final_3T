@@ -121,13 +121,7 @@ public class SittingService implements ISittingService
 		ArrayList<SittingDTO> filterlist = new ArrayList<SittingDTO>();
 		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
 		
-		
-		
-		System.out.println("sitting에서 searchExtraAddr : " + dto.getSearchExtraAddr());
-		System.out.println("sitting에서 spMaxPet :" + dto.getSpMaxPet());
-		System.out.println("sitting에서 datePicker: " + dto.getDatepicker());
 		filterlist = dao.spfilterlist(dto);
-		System.out.println("sitting에서 filterlist : " + filterlist);
 		
 		return filterlist;
 	}
