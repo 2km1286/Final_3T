@@ -132,14 +132,46 @@
 	</select>
 
 	<select id="sittingSrwRate" resultType="com.act.sitting.SittingDTO">
-		SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, SRWCOUNT, SRWRATEAVG, STLECOUNT
-		FROM SITTING_FOLLOWINGCOUNT_VIEW
-		WHERE MEMSID = #{memSid}
+		SELECT MEM.MEM_SID AS MEMSID, AVG(SRW.SRW_RATE) AS SRWRATEAVG, COUNT(SRW.SRW_SID) AS SRWCOUNT
+		FROM SITTING_REVIEW SRW JOIN SITTING_TIME_LINE_END STLE
+		                        ON SRW.STLE_SID = STLE.STLE_SID
+		                            JOIN SITTING_TIME_LINE STL
+		                            ON STLE.STL_SID = STL.STL_SID
+		                                JOIN SITTING_BOOK SB
+		                                ON STL.SB_SID = SB.SB_SID
+		                                    JOIN SITTING_PLACE_HUB SPH
+		                                    ON SB.SPH_SID = SPH.SPH_SID
+		                                        JOIN SITTING_LICENSE SL
+		                                        ON SPH.SL_SID = SL.SL_SID
+		                                            JOIN SITTING_TEST_SUBMIT STS
+		                                            ON SL.STS_SID = STS.STS_SID
+		                                                JOIN SITTING_TEST_RECEIVE STR
+		                                                ON STS.STR_SID = STR.STR_SID
+		                                                    JOIN MEMBER MEM
+		                                                    ON STR.MEM_SID = MEM.MEM_SID
+WHERE MEM.MEM_SID = #{memSid}
+GROUP BY MEM.MEM_SID
 	</select>
 	
 	<select id="sittingSrwRates" resultType="com.act.sitting.SittingDTO">
-		SELECT MEMSID, GRADE, JMNICKNAME, SPHSID, SPSID, FOLLOWINGCOUNT, NVL(SRWCOUNT, 0), NVL(SRWRATEAVG, 0), NVL(STLECOUNT, 0)
-		FROM SITTING_FOLLOWINGCOUNT_VIEW
+		SELECT MEM.MEM_SID AS MEMSID, AVG(SRW.SRW_RATE) AS SRWRATEAVG, COUNT(SRW.SRW_SID) AS SRWCOUNT
+		FROM SITTING_REVIEW SRW JOIN SITTING_TIME_LINE_END STLE
+		                        ON SRW.STLE_SID = STLE.STLE_SID
+		                            JOIN SITTING_TIME_LINE STL
+		                            ON STLE.STL_SID = STL.STL_SID
+		                                JOIN SITTING_BOOK SB
+		                                ON STL.SB_SID = SB.SB_SID
+		                                    JOIN SITTING_PLACE_HUB SPH
+		                                    ON SB.SPH_SID = SPH.SPH_SID
+		                                        JOIN SITTING_LICENSE SL
+		                                        ON SPH.SL_SID = SL.SL_SID
+		                                            JOIN SITTING_TEST_SUBMIT STS
+		                                            ON SL.STS_SID = STS.STS_SID
+		                                                JOIN SITTING_TEST_RECEIVE STR
+		                                                ON STS.STR_SID = STR.STR_SID
+		                                                    JOIN MEMBER MEM
+		                                                    ON STR.MEM_SID = MEM.MEM_SID
+		GROUP BY MEM.MEM_SID
 	</select>
 	
 	<select id="sittingReviewers" resultType="com.act.sitting.SittingDTO">
@@ -502,9 +534,15 @@
 		VALUES(SEQ_SRR.NEXTVAL, #{memSid}, #{spSid}, #{irSid}, DEFAULT, #{srrDetail})
 	</insert>
 	
-	
-	
-	
+	<!-- 예약번호로 타임라인 사진 조회 -->
+	<select id="stlpList" resultType="com.act.sitting.SittingDTO">
+		SELECT STLP.STLP_DATE AS STLPDATE, STLP.STLP_LINK AS STLPLINK
+		FROM SITTING_TIME_LINE STL
+		    JOIN SITTING_TIME_LINE_PHOTO STLP
+		    ON STL.STL_SID = STLP.STL_SID
+		WHERE STL.SB_SID = #{num}
+		ORDER BY STLPDATE
+	</select>
 	
 
 </mapper>

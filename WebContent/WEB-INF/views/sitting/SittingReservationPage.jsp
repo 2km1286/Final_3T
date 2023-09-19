@@ -297,8 +297,8 @@ function sittingReportReceive(memSid)
 							<div>
 								<h5  class="card-title text-center">영업시간</h5>
 								<div class="card-title text-center">
-									<li><span class="card-subtitle text-muted">체크인 가능 시간 : ${list.sphStart } 이후</span></li>
-									<li><span class="card-subtitle text-muted">체크아웃 시간 : 영업시간 2시간 전 </span></li>
+									<li><span class="card-subtitle text-muted">체크인: 시작시간 ${list.sphStart } ~  종료시간 ${list.sphEnd }</span></li>
+									<li><span class="card-subtitle text-muted">체크아웃: ~ ${checkOut } </span></li>
 								</div>
 							</div>
 							<hr><br>

@@ -779,6 +779,17 @@ public class SittingService implements ISittingService
 		return sbList;
 		
 	}
+
+	// 타임라인 사진 조회
+	@Override
+	public ArrayList<SittingDTO> stlpList(int num)
+	{
+		ArrayList<SittingDTO> stlpList = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		stlpList = dao.stlpList(num);
+		
+		return stlpList;
+	}
 	
 	
 	

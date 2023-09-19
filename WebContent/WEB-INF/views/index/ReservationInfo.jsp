@@ -349,7 +349,24 @@
 									</div>
 									<br>
 									<hr>
-									<div class="container mt-5">
+									
+									<c:forEach items="${stlpList }" var="stlp">
+										<div class="container mt-5">
+											<div class="row">
+												<div class="col-1 text-center">
+													<div class="timeline-point"></div>
+												</div>
+												<div class="col-9">
+													<h6 class="text-muted"> ${stlp.stlpDate }</h6>
+												</div>
+											</div>
+											<div class="text-center">
+												<img src="${stlp.stlpLink }" alt="" style="width: 400px; height:250px;">
+											</div>
+										</div>
+									</c:forEach>
+																		
+									<!-- <div class="container mt-5">
 										<div class="row">
 											<div class="col-1">
 												<div class="timeline-point"></div>
@@ -365,9 +382,9 @@
 									
 									<div class="container mt-5">
 										<div class="row">
-											<!-- <div class="col-2 text-right text-center">
+											<div class="col-2 text-right text-center">
 												<strong>2023</strong>
-											</div> -->
+											</div>
 											<div class="col-1">
 												<div class="timeline-point"></div>
 											</div>
@@ -392,7 +409,9 @@
 										<div class="text-center">
 											<img src="images/walktestpro.jpg" alt="" style="width: 400px; height:250px;">
 										</div>
-									</div>
+									</div> -->
+									
+									
 									<br>
 									<hr>
 								<div class="center-button-container">
@@ -465,7 +484,10 @@
 	<script>
 		// 현재 날짜 및 시간 가져오기
 		var currentDate = new Date();
-
+		
+		//alert(currentDate);  
+		//-- Tue Sep 19 2023 17:21:29 GMT+0900 (한국 표준시)
+		
 		// ${dto.sbend} 값을 Date 객체로 변환
 		var dateTimeStr = "${dto.sbend}"; 
 
@@ -474,7 +496,10 @@
 
 		var targetDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2],
 				timeParts[0], timeParts[1], timeParts[2]);
-
+		
+		// alert(targetDate);
+		//-- Mon Oct 02 2023 00:00:00 GMT+0900 (한국 표준시)
+		
 		// 현재 날짜 및 시간과 ${dto.sbend} 비교
 		if (currentDate >= targetDate)
 		{
