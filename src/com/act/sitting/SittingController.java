@@ -67,6 +67,11 @@ public class SittingController
 		ArrayList<SittingDTO> petList = sittingService.petListByMemSid(pMemSid);
 		ArrayList<SittingDTO> sbList = sittingService.sbDates(memSid);
 		
+		ArrayList<SittingDTO> irList = new ArrayList<SittingDTO>();
+		irList = sittingService.indexReport();
+		
+		model.addAttribute("irList", irList);
+		
 		model.addAttribute("list", list);
 		model.addAttribute("spListTags", spListTags);
 		model.addAttribute("spRest", spRest);
