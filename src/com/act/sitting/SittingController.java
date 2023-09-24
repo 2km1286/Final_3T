@@ -718,9 +718,10 @@ public class SittingController
 	
 	// 펫시팅 돌봄공간 신고
 	@RequestMapping("/sittingreportreceive.action")
-	public String placeResportReceive()
+	public String placeReportReceive(Model model, SittingDTO dto)
 	{
 		String result = "";
+		model.addAttribute("placeReportReceive",sittingService.placeReportReceive(dto));
 		
 		result = "redirect:sittinglistpage.action";
 		return result;

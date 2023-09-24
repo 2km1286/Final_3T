@@ -68,9 +68,13 @@ h2, h4, h5 {
 			var memSid = $("#memSid").val();
 			var spSid = $("#spSid").val();
 			var irSid = $("#selectedIrSid").val();
-			$("#sittingReportBtn").modal("hide");
+			$("#sittingReportModal").modal("hide");
 			sittingReportReceive(sittingReportText,memSid,spSid,irSid);
 		});
+		
+		
+		
+		
 		
 		
 		
@@ -909,7 +913,7 @@ function sittingReportReceive(memSid)
 				</div>
 			</div>
 	</section>
-	<!-- 게시글 신고버튼  -->
+	<!-- 게시글 버튼  -->
 	<div class="d-flex align-items-center justify-content-end">
 		<button type="button" class="btn btn-outline-danger" id="sittingReportBtn"
 			style="margin-right: 320px;">
