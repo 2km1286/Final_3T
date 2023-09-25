@@ -68,9 +68,13 @@ h2, h4, h5 {
 			var memSid = $("#memSid").val();
 			var spSid = $("#spSid").val();
 			var irSid = $("#selectedIrSid").val();
-			$("#sittingReportBtn").modal("hide");
+			$("#sittingReportModal").modal("hide");
 			sittingReportReceive(sittingReportText,memSid,spSid,irSid);
 		});
+		
+		
+		
+		
 		
 		
 		
@@ -909,7 +913,7 @@ function sittingReportReceive(memSid)
 				</div>
 			</div>
 	</section>
-	<!-- 게시글 신고버튼  -->
+	<!-- 게시글 버튼  -->
 	<div class="d-flex align-items-center justify-content-end">
 		<button type="button" class="btn btn-outline-danger" id="sittingReportBtn"
 			style="margin-right: 320px;">
@@ -998,20 +1002,21 @@ function sittingReportReceive(memSid)
 		<div class="modal fade" id="sittingReportModal" tabindex="-1" role="dialog" aria-labelledby="sittingReportModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title" id="sittingReportModalLabel">신고 사유 작성</h5>
 					<div class="modal-body">
 						<div id="irSelect">
 							<c:forEach items="${irList}" var="ir">
 						        <label>
-						            <input type="radio" name="selectedIrSid" value="${ir.irSid}">
+						            <input type="radio" name="selectedIrSid" id="selectedIrSid" value="${ir.irSid}">
 						            ${ir.irName}
 						        </label>
 						        <br>
 						    </c:forEach>
 						</div>
-						<textarea class="form-control" id="reviewText" rows="3"
-							placeholder="여기에 상세사유를 작성해주세요."></textarea>
 					</div>
-				
+				</div>
+					<!-- 1. 불쾌감 조성, 2. 광고도배, 3. 욕설 및 비방 -->
 					<div class="modal-header">
 						<h5 class="modal-title" id="sittingReportModalLabel">신고 사유 작성</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">

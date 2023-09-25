@@ -67,6 +67,11 @@ public class SittingController
 		ArrayList<SittingDTO> petList = sittingService.petListByMemSid(pMemSid);
 		ArrayList<SittingDTO> sbList = sittingService.sbDates(memSid);
 		
+		ArrayList<SittingDTO> irList = new ArrayList<SittingDTO>();
+		irList = sittingService.indexReport();
+		
+		model.addAttribute("irList", irList);
+		
 		model.addAttribute("list", list);
 		model.addAttribute("spListTags", spListTags);
 		model.addAttribute("spRest", spRest);
@@ -713,9 +718,10 @@ public class SittingController
 	
 	// 펫시팅 돌봄공간 신고
 	@RequestMapping("/sittingreportreceive.action")
-	public String placeResportReceive()
+	public String placeReportReceive(Model model, SittingDTO dto)
 	{
 		String result = "";
+		model.addAttribute("placeReportReceive",sittingService.placeReportReceive(dto));
 		
 		result = "redirect:sittinglistpage.action";
 		return result;
