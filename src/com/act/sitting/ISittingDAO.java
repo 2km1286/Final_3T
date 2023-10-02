@@ -97,7 +97,7 @@ public interface ISittingDAO
 	// 펫시터로서 오늘 반려당한 펫시팅 돌봄장소
 	public ArrayList<SittingDTO> sittingCompanionToday(String memSid);
 
-	// 견주입장에서 본인이 오늘 결제한 펫시팅의 시작일 ~ 종료일
+	// 견주입장에서 본인이 오늘 결제한 펫시팅 예약번호
 	public ArrayList<SittingDTO> memSittingBookToday(String memSid);
 	
 	// 펫시터로서 오늘 들어온 예약의 시작일 ~ 종료일
@@ -218,4 +218,12 @@ public interface ISittingDAO
 	
 	// 타임라인 사진 조회
 	public ArrayList<SittingDTO> stlpList(int num);
+	
+	// 예약번호로 산책 반려견 정보 조회
+	public ArrayList<SittingDTO> bookPet(int num);
+	
+	// 예약번호로 펫시터, 돌봄장소 조회
+	public ArrayList<SittingDTO> bookSitterPlace(int num);
+	
+	
 }

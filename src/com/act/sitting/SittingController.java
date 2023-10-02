@@ -567,73 +567,26 @@ public class SittingController
 	}
 	
 	
-	// 예약정보 확인 -> 견주일때, 펫시터일때 
-	@RequestMapping("/reservationInfo.action")
+	// 예약정보 확인 -> 견주일때
+	@RequestMapping("/sittingreservationinfo.action")
 	public String getReservation(HttpSession session, Model model, HttpServletRequest request,SittingDTO dto)
 	{
 		String result = "";
 		
 		String memSid = (String)session.getAttribute("memSid");
-		System.out.println(memSid);
 		
-		/*
-		 * System.out.println(dto.getSbSid()); System.out.println(dto.getDatepicker1());
-		 * -- 이값만 들어옴 System.out.println(dto.getDatepicker2()); -- 이값만 들어옴
-		 * System.out.println(dto.getPetGen()); System.out.println(dto.getPetImage());
-		 * System.out.println(dto.getGrade()); System.out.println(dto.getJmNickName());
-		 */
+		int sbSid = Integer.parseInt(request.getParameter("sbSid"));
 		
-		int reservationNum = sittingService.sittingFromCreateCartToBook(dto);
-		System.out.println(reservationNum);
+		// 예약번호로 산책 반려견 정보 조회
+		model.addAttribute("bookPet",sittingService.bookPet(sbSid));
 		
+		// 예약번호로 펫시터, 돌봄장소 조회
+		model.addAttribute("bookSitterPlace", sittingService.bookSitterPlace(sbSid));
 		
+		// 예약번호로 타임라인사진 조회
+		model.addAttribute("stlpList", sittingService.stlpList(sbSid));
 		
-		int num = sittingService.getReservationNum(memSid);
-		//System.out.println(num);
-		//String memSid2 = sittingService.getReservationMem(num);
-		//System.out.println(memSid2);
-		System.out.println(sittingService.getInfo(memSid, num));
-		//sittingService.getMatchingHistory(memSid, num);
-		
-		/*
-		 * // 견주라는 것 if(memSid == memSid2) {
-		 */
-		ReservationInfoDTO dto2 = sittingService.getMatchingHistory(memSid, num);
-		
-		model.addAttribute("num", num);
-		System.out.println(num);
-		model.addAttribute("petList", sittingService.getInfo(memSid, num));
-		model.addAttribute("dto", sittingService.getMatchingHistory(memSid, num));
-		
-		System.out.println(dto2.getMaxpet());
-		System.out.println(dto2.getSphstart());
-		System.out.println(dto2.getSphend());
-		
-		
-		
-		String nick = request.getParameter("nick");
-		String grade = request.getParameter("grade");
-		//String spSid = request.getParameter("spSid");
-		String rate = request.getParameter("rate");
-		String count = request.getParameter("count");
-		String price = request.getParameter("price");
-		
-		model.addAttribute("nick", nick);
-		model.addAttribute("grade", grade);
-		model.addAttribute("rate", rate);
-		model.addAttribute("count", count);
-		model.addAttribute("price", price);
-		
-		
-		/*
-		 } else {
-		  
-		 }
-		 */
-		
-		
-		
-		result = "/WEB-INF/views/index/ReservationInfo.jsp";
+		result = "/WEB-INF/views/index/NewReservationInfo.jsp";
 		
 		return result;
 	}

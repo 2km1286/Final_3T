@@ -131,8 +131,8 @@
 		    ON WB.WCC_SID = WCC.WCC_SID
 		        JOIN MEMBER MEM
 		        ON WCC.MEM_SID = MEM.MEM_SID
-		WHERE TO_CHAR(WB.WB_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
-		AND WCC.MEM_SID = #{memSid}
+		WHERE WCC.MEM_SID = #{memSid}
+		ORDER BY WBSTART
 	</select>
 
 	<select id="walkBookToday" resultType="com.act.walk.WalkDTO">
@@ -146,8 +146,8 @@
 		            ON WTS.WTR_SID = WTR.WTR_SID
 		                JOIN MEMBER MEM
 		                ON WTR.MEM_SID = MEM.MEM_SID
-		WHERE TO_CHAR(WB.WB_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
-		AND MEM.MEM_SID = #{memSid}
+		WHERE MEM.MEM_SID = #{memSid}
+		ORDER BY WBSTART
 	</select>
 
 	<select id="walkBookMyPage" resultType="com.act.walk.WalkDTO">

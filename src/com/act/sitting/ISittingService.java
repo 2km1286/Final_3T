@@ -75,6 +75,12 @@ public interface ISittingService
 	
 	// 타임라인 사진 조회
 	public ArrayList<SittingDTO> stlpList(int num);
-
+	
+	// 예약번호로 산책 반려견 정보 조회
+	public ArrayList<SittingDTO> bookPet(int num);
+	
+	// 예약번호로 펫시터, 돌봄장소 조회
+	public ArrayList<SittingDTO> bookSitterPlace(int num);
+	
 }	
 
