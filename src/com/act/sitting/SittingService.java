@@ -387,7 +387,7 @@ public class SittingService implements ISittingService
 		return result;
 	}
 	
-	// 견주입장에서 본인이 오늘 결제한 펫시팅 예약번호
+	// 견주입장에서 본인이 결제한 펫시팅 예약번호 시작일 ~ 종료일
 	@Override
 	public ArrayList<SittingDTO> memSittingBookToday(String memSid)
 	{
@@ -400,7 +400,7 @@ public class SittingService implements ISittingService
 		return result;
 	}
 	
-	// 펫시터로서 오늘 들어온 예약의 시작일 ~ 종료일
+	// 펫시터로서 들어온 예약의 시작일 ~ 종료일
 	@Override
 	public ArrayList<SittingDTO> sittingBookToday(String memSid)
 	{
