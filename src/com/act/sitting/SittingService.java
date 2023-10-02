@@ -387,7 +387,7 @@ public class SittingService implements ISittingService
 		return result;
 	}
 	
-	// 견주입장에서 본인이 오늘 결제한 펫시팅의 시작일 ~ 종료일
+	// 견주입장에서 본인이 오늘 결제한 펫시팅 예약번호
 	@Override
 	public ArrayList<SittingDTO> memSittingBookToday(String memSid)
 	{
@@ -789,6 +789,28 @@ public class SittingService implements ISittingService
 		stlpList = dao.stlpList(num);
 		
 		return stlpList;
+	}
+
+	// 예약번호로 산책할 반려견 조회 
+	@Override
+	public ArrayList<SittingDTO> bookPet(int num)
+	{
+		ArrayList<SittingDTO> bookPet = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		bookPet = dao.bookPet(num);
+		
+		return bookPet;
+	}
+	
+	// 예약번호로 펫시터, 돌봄장소 조회
+	@Override
+	public ArrayList<SittingDTO> bookSitterPlace(int num)
+	{
+		ArrayList<SittingDTO> bookSitterPlace = new ArrayList<SittingDTO>();
+		ISittingDAO dao = sqlSession.getMapper(ISittingDAO.class);
+		bookSitterPlace = dao.bookSitterPlace(num);
+		
+		return bookSitterPlace;
 	}
 	
 	

@@ -16,10 +16,12 @@
 	
 	$().ready(function()
 	{
-		$(".detailBtn").click(function()
+		//alert($(".detailBtn").val());
+		
+		/* $(".detailBtn").click(function()
 		{
-			window.location.href = "reservationinfo.action";
-		});
+			window.location.href = "sittingreservationinfo.action?sbSid=" + $(".detailBtn").val();
+		}); */
 		
 		// 알림에서 프로필 반려알림이 들어왔을 때 프로필보기버튼
 		$("#profilBtn").click(function()
@@ -197,14 +199,14 @@
 				
 				</div><!-- 1행1열 끝 -->
 				
-				<!-- 견주로서 오늘 결제한 예약 -->
+				<!-- 견주로서 결제한 예약 -->
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">내가 결제한 예약</span></h3>
 					
 					<div><!-- 예약내역 시작 -->
 					<c:choose>
 					<c:when test="${empty memWalkBookToday && empty memSittingBookToday}">
-						<div class="noNotice"><h2><span>오늘 결제한 예약이 없습니다.</span></h2></div>
+						<div class="noNotice"><h2><span>결제한 예약이 없습니다.</span></h2></div>
 					</c:when>
 					
 					<c:otherwise>
@@ -232,11 +234,12 @@
 						    </div>
 						</c:forEach>
 						
-						<c:forEach items="${memSittingBookToday }" var="memSittingBook">
+						<c:forEach items="${memSittingBookToday }" var="memSittingBookToday">
 							<div class="card">
 								<div class="card-header d-flex justify-content-between">
-									펫시팅
-									<button type="button" class="detailBtn" value="${memSittingBook.sbSid }">
+									펫시팅[예약번호 ${memSittingBookToday.sbSid}]
+									<button type="button" class="detailBtn" value="${memSittingBookToday.sbSid }"
+									onclick="location.href='sittingreservationinfo.action?sbSid=' + ${memSittingBookToday.sbSid } ">
 									자세히보러가기
 									</button>
 								</div>	
@@ -246,7 +249,7 @@
 						    	        <div class="oneText">
 						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
 						    		        <span class="card-text" style="font-size: 14pt;">
-						    		        ${memSittingBook.sbStart } ~ ${memSittingBook.sbEnd }
+						    		        ${memSittingBookToday.sbStart } ~ ${memSittingBookToday.sbEnd }
 						    		        </span>
 						    	        </div>
 						    	      </div>
@@ -264,13 +267,13 @@
 			</div><!-- 1행 끝 -->
 			
 			<div class="row">
-				<!-- 대리산책러로서 오늘 들어온 예약 -->
+				<!-- 대리산책러로서 들어온 예약 -->
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">나에게 들어온 예약/대리산책</span></h3>
 					<div><!-- 대리산책러 예약내역 시작 -->
 					<c:choose>
 					<c:when test="${empty walkBookToday }">
-						<div class="noNotice"><h2><span>오늘 들어온 예약이 없습니다.</span></h2></div>				
+						<div class="noNotice"><h2><span>들어온 예약이 없습니다.</span></h2></div>				
 					</c:when>
 					
 					<c:otherwise>
@@ -301,22 +304,25 @@
 					</div><!-- 대리산책러 예약내역 끝 -->
 				</div><!-- 2행1열 끝 -->
 				
-				<!-- 펫시터로서 오늘 들어온 예약 -->
+				<!-- 펫시터로서 들어온 예약 -->
 				<div class="col-md-6 container-mypage" style="height: 440px; overflow: auto;">
 					<h3><span class="badge">나에게 들어온 예약/펫시팅</span></h3>
 					<div><!-- 펫시터 예약내역 시작 -->
 					<c:choose>
 					<c:when test="${empty sittingBookToday }" >
-						<div class="noNotice"><h2><span>오늘 들어온 예약이 없습니다.</span></h2></div>
+						<div class="noNotice"><h2><span>들어온 예약이 없습니다.</span></h2></div>
 					</c:when>
 					
 					<c:otherwise>
 						
 						<c:forEach items="${sittingBookToday }" var="sittingBook">
-						
 							<div class="card">
 								<div class="card-header d-flex justify-content-between">
-									펫시팅 <button type="button" class="detailBtn" value="${sittingBook.sbSid }">자세히보러가기</button>
+									펫시팅[예약번호 ${sittingBook.sbSid}]
+									<button type="button" class="detailBtn" value="${sittingBook.sbSid }"
+									onclick="location.href='sittingreservationinfo.action?sbSid=' + ${sittingBook.sbSid } ">
+									자세히보러가기
+									</button>
 								</div>	
 						    	  <div class="row g-0">
 						    	    <div class="col-md cardInfo" >
@@ -324,14 +330,13 @@
 						    	        <div class="oneText">
 						    		        <span class="card-text"><small class="text-muted">시작일~종료일</small></span><br>
 						    		        <span class="card-text" style="font-size: 14pt;">
-						    		        ${sittingBook.sbSStart } ~ ${sittingBook.sbEnd }
+						    		        ${sittingBook.sbStart } ~ ${sittingBook.sbEnd }
 						    		        </span>
 						    	        </div>
 						    	      </div>
 						    	    </div>
 						    	  </div>
 						    </div>
-						    
 						</c:forEach>
 					
 					</c:otherwise>
